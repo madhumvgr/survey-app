@@ -1,0 +1,203 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+/* TEMP STYLING GOES HERE
+--------------------*/
+
+
+
+
+/* Please DO Not edit below styling 
+--------------------------*/
+
+/* 1. GENERAL STYLES  
+---------------*/
+
+body {
+    background-color: #f6f6f6;
+    font-family: 'Spartan';
+  }
+  
+  a {
+    color:#002e62;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #004ca4;
+    text-decoration: underline;
+  }
+  
+  /* Main Navigation*/
+  .navbar {
+    height: 80px;
+    border-bottom:4px solid #008ade;
+  }
+  
+  .navbar-toggler {
+    background-color: #002e62;
+    color:white;
+    height: 48px;
+    margin-left:20px;
+  }
+  
+  .menu-icon {
+    font-size:1.2em;
+    padding-right:5px;
+  }
+  
+  
+  /* Breadcrumbs */
+  .breadcrumb {
+    margin-bottom:0;
+  }
+  
+  /* Container */
+  .container {
+    max-width:1000px;
+  }
+  
+  /* Logo */
+  .logo {
+    width: 164px;
+    height: 37px;
+  }
+  
+  /* Typography */
+  
+  h1 {
+    font-size: 35px;
+    color: #000;
+    font-weight: 600;
+    padding-top:58px;
+  }
+  
+  h2 {
+    font-size: 25px;
+    color:#000;
+    font-weight: 600;
+  }
+  
+  .h2-underline {
+    width: 50px;
+    height: 4px;
+    background-color: #414141;
+    display:block;
+  }
+  
+  h3 {
+    font-size: 20px;
+    color: #000;
+    font-weight: 600;
+  }
+  
+  p {
+    line-height: 1.6;
+  }
+  
+  /* Cards (Thumbnails)*/
+  
+  .welcome-card {
+    width: 474px;
+  }
+  
+  .welcome-card img {
+    object-fit: none;
+    height: 100%;
+    padding-right: 10px;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .thumb-cards {
+    width:315px;
+  }
+  
+  /* Primary CTA's */
+  .btn-primary {
+    background-color: #002e62;
+    border:#002e62;
+    font-weight: 600;
+  }
+  .btn-primary:hover {
+    background-color: #004ca4;
+  }
+  
+  /* Secondary CTA's */
+  .btn-secondary {
+    background-color: #fff;
+    border: solid 2px #002e62;
+    color: #002e62;
+    font-weight: 600;
+  }
+  
+  .btn-secondary:hover {
+    border: solid 2px #002e62;
+    background-color: #002e62;
+    color: white;
+  }
+  
+  .h2-separator {
+    width: 50px;
+    height: 4px;
+    background-color: #414141;
+    display: block;
+  }
+  
+  /* 2. RESPONSIVE
+  ---------------------------*/
+  
+  /* Welcome page cards */
+   
+  @media(max-width:979px) {
+    .welcome-card {
+      width: 315px;
+    }
+  
+    .welcome-card .img-wrap {
+      height: 114px;
+      overflow: hidden;
+      border-radius: 5px 5px 0 0;
+      width: 100%;
+    }
+  
+    .welcome-card .img-wrap img {
+      padding:0;
+      width:100%;
+      object-fit: inherit;
+      height: auto;
+      margin-top:-25px;
+    }
+  
+    .welcome-card .card-body-wrap {
+      width: 100%;
+    }
+  
+  }  
+  
+  
+  @media(max-width:575px) {
+    .menu-icon {
+      font-size:1.5em;
+      padding-right:0;
+    }
+    .menu-icon-descirption {
+      display: none;
+    }
+    .lang-taggle {
+      display: none;
+    }
+  }
+  
+  /* 3 COLOR's 
+  ----------*/
+  
+  /* Notification -pop-up */
+  /* background-color: #009ade; */
+  
+  /* Footer background */
+  /* background-color: #414141; */
+  
+  
+  

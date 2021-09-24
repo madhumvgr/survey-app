@@ -1,0 +1,57 @@
+<!--h1 Intro Section-->
+<div>
+    <!-- Login Form-->
+
+    <div class="px-3 pb-4" *ngIf="!hide">
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <h1>Login</h1>
+                    <p>
+                        Welcome! You’re about to shape the future of Canadian broadcasting. We use cookies to improve
+                        your experience! By continuing, you accept our
+                        <a (click)="navigateTo()" [routerLink]="['/login/cookies']">Cookie Policy</a>
+                    </p>
+                </div>
+                <!--end Row-->
+            </div>
+            <div class="row">
+                <form class="col-md-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="bg-white shadow-sm rounded p-4">
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="inputEmail" formControlName="email"
+                                aria-describedby="emailHelp">
+                            <span class="text-danger"
+                                *ngIf="(loginFormControl.email.touched || submitted) && loginFormControl.email.errors?.required">
+                                Email is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="loginFormControl.email.touched && loginFormControl.email.errors?.email">
+                                Enter a valid email address
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPass" class="form-label">Password</label>
+                            <input type="password" class="form-control" formControlName="password" id="inputPass">
+                            <span class="text-danger"
+                                *ngIf="(loginFormControl.password.touched || submitted) && loginFormControl.password.errors?.required">
+                                Password is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="loginFormControl.password.touched && loginFormControl.password.errors?.invalidPassword">
+                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                                letter and 1 number
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Log in</button>
+                        <span *ngIf="showInvalidError" class="text-danger">
+                           Invalid UserName/Password. 
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

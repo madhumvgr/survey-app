@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     } else {
-      this.router.navigate(['login']);
+      this.router.navigate(['registersuccess']);
     }
   }
 }

@@ -1,0 +1,62 @@
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]= "['/welcome']">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Account settings</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- SURVEY HUB PAGE -->
+
+<!--h1 Intro Section-->
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Account Settings</h1>
+                <p>
+                    Use your account settings to change your password, adjust your email notifications, or learn about our Privacy Policy. 
+                </p>
+            </div><!--end col-->
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->
+
+<section class="px-3 pb-4">
+    <div class="container">
+        <!--Thumbnails-->
+        <div class="row g-4">
+            <!--Card-->
+            <div class="col-md-4">
+                <div class="card shadow-sm rounded border-0">
+                    <div class="card-body">
+                    <h5 class="card-title">Change password</h5>
+                    <p class="card-text">Changing your password is easy.</p>
+                    <a [routerLink]="['/update-password']" class="btn btn-light">Update</a>
+                    </div>
+                </div>
+            </div>
+            <!--Card-->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body shadow-sm rounded border-0">
+                    <h5 class="card-title">Email notifications</h5>
+                    <p class="card-text">Choose the type of emails you want to receive.</p>
+                    <a [routerLink]="['/welcome']" class="btn btn-light">Update</a>
+                    </div>
+                </div>
+            </div>
+             <!--Card-->
+             <div class="col-md-4">
+                <div class="card shadow-sm rounded border-0">
+                    <div class="card-body">
+                    <h5 class="card-title">Privacy policy</h5>
+                    <p class="card-text">Protecting your privacy is our top priority.</p>
+                    <a [routerLink]="['/account-settings-privacy']" class="btn btn-light">Update</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--end Container-->
+</section><!--end Section-->     

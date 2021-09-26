@@ -1,0 +1,23 @@
+<div>
+    <section>
+<div class="row mb-3">
+    <h1> Ready ? Let`s create your account</h1>
+<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+
+    <div class="form-group mb-3">
+        <label for="key">key</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="10" />
+        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+            <div *ngIf="password.errors?.required">key is required</div>
+            <div *ngIf="password.errors?.minlength">key must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <button class="btn btn-primary">Continue</button>
+    </div>
+    <div class="mb-3"><a href="#" class ="font-size: small">Need Help your Key</a></div>
+</form>
+</div>
+</section>
+</div>
+<router-outlet></router-outlet>

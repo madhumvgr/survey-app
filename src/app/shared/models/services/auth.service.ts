@@ -31,12 +31,14 @@ export class AuthService {
 
   // Sign-in
   signIn(user: User): boolean {
-      if(user.email==='admin@gmail.com' && user.password==='Admin@123'){
-          return true;
-      }
-      else {
-          return false;
-      }
+
+    // get password from local storage. 
+    const password = localStorage.getItem('password');
+    if (password) {
+      return user.email === 'admin@gmail.com' && user.password === password;
+    } else {
+      return user.email === 'admin@gmail.com' && user.password === 'Admin@123';
+    }
     // return this.http.post<any>(`${this.endpoint}/signin`, user)
     //   .subscribe((res: any) => {
     //     localStorage.setItem('access_token', res.token)
@@ -64,15 +66,15 @@ export class AuthService {
   }
 
   // User profile
-//   getUserProfile(id:string): Observable<any> {
-//     let api = `${this.endpoint}/user-profile/${id}`;
-//     return this.http.get(api, { headers: this.headers }).pipe(
-//       map((res: Response) => {
-//         return res || {}
-//       }),
-//       catchError(this.handleError)
-//     )
-//   }
+  //   getUserProfile(id:string): Observable<any> {
+  //     let api = `${this.endpoint}/user-profile/${id}`;
+  //     return this.http.get(api, { headers: this.headers }).pipe(
+  //       map((res: Response) => {
+  //         return res || {}
+  //       }),
+  //       catchError(this.handleError)
+  //     )
+  //   }
 
   // Error 
   handleError(error: HttpErrorResponse) {

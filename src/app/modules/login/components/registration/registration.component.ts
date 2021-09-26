@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomvalidationService } from '../services/customvalidation.service';
-import { AuthService } from '../shared/models/services/auth.service';
+import { CustomvalidationService } from 'src/app/services/customvalidation.service';
+import { AuthService } from 'src/app/shared/models/services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     } else {
-      this.router.navigate(['registersuccess']);
+      this.router.navigate(['login/registersuccess']);
     }
   }
 }

@@ -43,7 +43,7 @@ export class ChangePasswordComponent implements OnInit {
     } else {
       // update password in local storage.
       localStorage.setItem('password', this.changePasswordFormControl.newPassword.value) 
-      this.router.navigate(['login']);
+      this.router.navigate(['login/login']);
     }
   }
 }

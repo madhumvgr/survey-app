@@ -17,7 +17,7 @@ export class RegisterkeyComponent implements OnInit {
   }
 
   navToRegister() {
-    this.router.navigate(['register']);
+    this.router.navigate(['login/register']);
   }
 
   onSubmit() {

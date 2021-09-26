@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomvalidationService } from '../services/customvalidation.service';
-import { AuthService } from '../shared/models/services/auth.service';
-import { User } from '../shared/models/user.model';
+import { CustomvalidationService } from 'src/app/services/customvalidation.service';
+import { AuthService } from 'src/app/shared/models/services/auth.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-login',

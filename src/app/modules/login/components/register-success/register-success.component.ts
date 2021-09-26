@@ -13,7 +13,7 @@ export class RegisterSuccessComponent implements OnInit {
   ngOnInit(): void {
   }
   continue() {
-    this.router.navigate(['login']);
+    this.router.navigate(['login/login']);
   }
 
 }

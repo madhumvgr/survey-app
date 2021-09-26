@@ -1,9 +1,7 @@
-<div>
-    <section>
+<section class="px-3 pb-4">
 <div class="row mb-3">
     <h1> Ready ? Let`s create your account</h1>
 <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
-
     <div class="form-group mb-3">
         <label for="key">key</label>
         <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="10" />
@@ -19,5 +17,4 @@
 </form>
 </div>
 </section>
-</div>
 <router-outlet></router-outlet>

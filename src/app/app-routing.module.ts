@@ -8,6 +8,8 @@ const routes: Routes = [
     component: WelcomeComponent
   },
   { path: 'login', loadChildren: () => import(`./modules/login/login.module`).then(m => m.LoginModule) },
+  { path: 'notification', loadChildren: () => import(`./modules/notification/notification.module`).then(m => m.NotificationModule) },
+
   { path: '', pathMatch: 'full', redirectTo: 'login' }];
 
 @NgModule({

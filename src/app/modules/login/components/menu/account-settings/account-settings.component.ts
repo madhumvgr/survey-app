@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountSettingsComponent implements OnInit {
 
+  isRegister= false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  registerForNotifi(){
+    this.isRegister = true;
+  }
 }

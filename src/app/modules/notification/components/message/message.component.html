@@ -1,9 +1,38 @@
 
 
 
-Display list of messages. 
+<!-- Display list of messages. 
 <h1>
     {{title}}
 </h1>
-<button (click)="notify()">Show Notiication</button>
+<button (click)="notify()">Show Notiication</button> -->
 
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/notification/messages']">Message center</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Message</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- SURVEY HUB PAGE -->
+
+<!--h1 Intro Section-->
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Message Subject Line</h1>
+                <p>Sent on: Nov 2, 2021 1:25 PM</p>
+                <p>
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quidem eveniet velit nisi accusamus ex commodi vitae earum sit iure, pariatur magnam? Ducimus, rem autem? Blanditiis modi expedita doloremque vero nam illum delectus, velit enim illo, harum nobis at dolorum iure adipisci nulla nostrum iste fugit sequi. Libero, nesciunt aliquam. Cum, ea sed excepturi modi voluptatum voluptatem neque molestiae! Voluptatibus possimus perferendis minus accusantium ad, saepe animi quia porro? Autem sed provident dolores assumenda eligendi perferendis unde aliquid amet expedita nemo necessitatibus quam sunt, eaque quaerat facere, illo ipsam vel nisi vero totam facilis doloremque cumque explicabo. Quasi, ipsam placeat.
+                </p>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-secondary">Back</button>
+            </div>
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->

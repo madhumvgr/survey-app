@@ -1,11 +1,23 @@
-<ng-container *ngIf="isRegister else button">
 
-    Notifications count : <a href="/notification">10 </a>
 
-</ng-container> 
-<ng-template #button>
-<input type="button" value="Register for notification" (click)="registerForNotifi()"/>
-</ng-template>
+<ng-container class="px-3 notification-bar" *ngIf = "!notify">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 py-2">
+                <div class="d-flex align-items-center border-0" role="alert">
+                    <i class="material-icons">
+                        <div class="h2 text-white">  
+                            circle_notifications
+                        </div>
+                    </i>
+                    <div class="ps-3">
+                    <a class="text-white notification-bar-link" href="notification" (click)= "openNotification()">You have 1 new action(s) and 1new message(s)</a>
+                    </div>
+                </div>
+            </div>
+        </div><!--end Row-->
+    </div><!--end Container-->
+</ng-container>
 
 <section class="px-3 pb-4">
 <div class="container">

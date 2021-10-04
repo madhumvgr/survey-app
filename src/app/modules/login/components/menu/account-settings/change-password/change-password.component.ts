@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomvalidationService } from 'src/app/services/customvalidation.service';
-import { AuthService } from 'src/app/shared/models/services/auth.service';
+import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-change-password',

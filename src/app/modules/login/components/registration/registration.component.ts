@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomvalidationService } from 'src/app/services/customvalidation.service';
-import { AuthService } from 'src/app/shared/models/services/auth.service';
+import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +20,8 @@ export class RegistrationComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private authService: AuthService,
-    private router: Router) {
+    private router: Router,
+    private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     } else {
+      this.userService.create(this.registerForm.value);
       this.router.navigate(['login/registersuccess']);
     }
   }

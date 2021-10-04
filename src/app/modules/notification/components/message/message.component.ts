@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PushNotificationsService } from 'src/app/services/push-notification.service';
+import { PushNotificationsService } from 'src/app/shared/services/push-notification.service';
 
 @Component({
   selector: 'app-message',

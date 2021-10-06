@@ -35,6 +35,12 @@ export class ResourceService<T extends Resource> {
             .pipe(map((data: any) => this.serializer.fromJson(data) as T));
     }
 
+    public customRead(url: string): Observable<T> {
+        return this.httpClient
+            .get(`${this.url}api/portal-user-otps/${url}`)
+            .pipe(map((data: any) => (data) as T));
+    }
+
     //   list(queryOptions: QueryOptions): Observable<T[]> {
     //     return this.httpClient
     //       .get(`${this.url}/${this.endpoint}?${queryOptions.toQueryString()}`)

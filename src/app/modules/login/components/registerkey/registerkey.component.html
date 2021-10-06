@@ -1,13 +1,14 @@
 <section class="px-3 pb-4">
+    <div *ngIf="showOtpError" class="error"> Enter valid OTP.</div>
 <div class="row mb-3">
     <h1> Ready ? Let`s create your account</h1>
 <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
     <div class="form-group mb-3">
         <label for="key">key</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="10" />
+        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="5" />
         <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
             <div *ngIf="password.errors?.required">key is required</div>
-            <div *ngIf="password.errors?.minlength">key must be at least 6 characters</div>
+            <div *ngIf="password.errors?.minlength">key must be at least 5 characters</div>
         </div>
     </div>
     <div class="form-group mb-3">

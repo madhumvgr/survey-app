@@ -44,6 +44,9 @@
                                 letter and 1 number
                             </span>
                         </div>
+                        <div class="mb-3">
+                            <a [routerLink] = "['/login/forgot-password']" class ="font-size: small">Forgot Password</a>
+                        </div>
                         <button type="submit" class="btn btn-primary">Log in</button>
                         <span *ngIf="showInvalidError" class="text-danger">
                            Invalid UserName/Password. 

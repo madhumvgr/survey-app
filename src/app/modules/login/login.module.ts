@@ -12,6 +12,7 @@ import { RegisterSuccessComponent } from './components/register-success/register
 import { MenuComponent } from './components/menu/menu.component';
 import { AccountSettingsComponent } from './components/menu/account-settings/account-settings.component';
 import { ChangePasswordComponent } from './components/menu/account-settings/change-password/change-password.component';
+import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
 
 
 
@@ -25,7 +26,8 @@ import { ChangePasswordComponent } from './components/menu/account-settings/chan
     MenuComponent,
     AccountSettingsComponent,
     ChangePasswordComponent,
-    PrivacyComponent,],
+    PrivacyComponent,
+    ForgotPasswordComponent,],
   imports: [
     CommonModule,
     LoginRoutingModule,

@@ -4,3 +4,7 @@ export interface User {
     email: String;
     password: String;
 }
+
+export interface ForgotPassword {
+    email: string;
+}

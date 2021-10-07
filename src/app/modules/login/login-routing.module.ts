@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CookiePolicyComponent } from './components/cookie-policy/cookie-policy.component';
+import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
 import { AccountSettingsComponent } from './components/menu/account-settings/account-settings.component';
 import { ChangePasswordComponent } from './components/menu/account-settings/change-password/change-password.component';
@@ -21,6 +22,7 @@ component: RegistrationComponent},
 {path: 'account-settings', component: AccountSettingsComponent},
 {path:'update-password', component: ChangePasswordComponent},
 {path:'account-settings-privacy', component: PrivacyComponent},
+{path: 'forgot-password', component: ForgotPasswordComponent},
 {path: '', pathMatch: 'full', redirectTo: 'registerkey'}];
 
 @NgModule({

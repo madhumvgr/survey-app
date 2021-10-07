@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UrlConstants } from 'src/app/shared/models/url-constants';
+import { environment } from 'src/environments/environment';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -20,18 +22,21 @@ export class RegisterkeyComponent implements OnInit {
 
   navToRegister() {
     // validate otp in backend. 
-    this.userService.customRead(this.model.password).subscribe( response => {
-      if(response.id)
-      this.router.navigate(['login/register']);
-      else
-      this.showOtpError =true;
-    })
-    
+    const url = UrlConstants.registerKeyForOtp+'/'+this.model.password
+    this.userService.customRead(url).subscribe( response => {
+      if(response.id){
+        this.showOtpError=false;
+        localStorage.setItem("profileId",response['portalHome'] ['homeNo']);
+        this.router.navigate(['login/register']);
+      }
+      else{
+        this.showOtpError=true;
+      }
+    },err => this.showOtpError=true,
+    () => this.showOtpError=true);
   }
 
   onSubmit() {
     this.navToRegister();
-
   }
-
 }

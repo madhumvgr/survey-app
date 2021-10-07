@@ -90,6 +90,9 @@
                         Confirm Password
                         must be match.
                     </span>
+                    <div *ngIf="showError">
+                         User Registration failed. 
+                    </div>
                 </div>
             </div>
         <button type="submit" class="btn btn-primary">Register</button>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,14 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class LoginComponent implements OnInit {
   hide = false;
-  loginForm: FormGroup =this.fb.group({});
+  loginForm: FormGroup = this.fb.group({});
   submitted = false;
-  showInvalidError =false;
-  
+  showInvalidError = false;
+  showError = false;
+
   constructor(private fb: FormBuilder,
-    private customValidator: CustomvalidationService, 
-    private authService: AuthService,
+    private customValidator: CustomvalidationService,
+    private userService: UserService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -26,12 +28,12 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
-     }
+    }
     );
   }
-  
+
   navigateTo() {
-  this.hide = true;
+    this.hide = true;
   }
 
   get loginFormControl() {
@@ -43,16 +45,22 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       console.table(this.loginForm.value);
       let user: User = {
-        email: this.loginFormControl.email.value,
-        password:  this.loginFormControl.password.value
+        username: this.loginFormControl.email.value,
+        password: this.loginFormControl.password.value,
+        rememberMe: false
       };
-      
-      if(this.authService.signIn(user)){
-        this.showInvalidError= false;
-        this.router.navigate(['/welcome']);
-      }else{
-        this.showInvalidError= true;
-      }
+
+
+      this.userService.signIn(user).subscribe(response => {
+        if (response) {
+          this.showError = false;
+          // After successful sign in, we have to set username into localstorage
+          localStorage.setItem('access_token', response['username'])
+          this.router.navigate(['/welcome']);
+        }
+      }, err => this.showError = true,
+        () => this.showError = true);
+
     }
   }
 }

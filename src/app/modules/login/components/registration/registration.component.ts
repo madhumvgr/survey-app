@@ -17,6 +17,7 @@ export class RegistrationComponent implements OnInit {
   registerForm: FormGroup = this.fb.group({});
   submitted = false;
   showInvalidError = false;
+  showError= false;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private authService: AuthService,
@@ -36,15 +37,30 @@ export class RegistrationComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get registerFormControl() { return this.registerForm.controls; }
+  get registerFormControl() { return this.registerForm.controls }
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     } else {
-      this.userService.create(this.registerForm.value);
-      this.router.navigate(['login/registersuccess']);
+      //get profileNo from local storage. 
+      const profileId=localStorage.getItem('profileId');
+
+      const registerUser= {
+        profileId: profileId,
+        login: this.registerFormControl.email.value,
+        password: this.registerFormControl.password.value
+      }
+      console.log(registerUser);
+      this.userService.create(registerUser).subscribe( response => {
+        if(response){
+          this.showError=false;
+          this.router.navigate(['login/registersuccess']);
+        }
+      },err => this.showError=true,
+      () => this.showError=true);
+      //this.router.navigate(['login/registersuccess']);
     }
   }
 }

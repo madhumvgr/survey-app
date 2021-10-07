@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ForgotPassword, User } from 'src/app/shared/models/user.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,46 +13,40 @@ import { CustomvalidationService } from 'src/app/shared/services/customvalidatio
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  hide = false;
-  loginForm: FormGroup =this.fb.group({});
+  forgotForm: FormGroup =this.fb.group({});
   submitted = false;
   showInvalidError =false;
+  showError = false;
   
   constructor(private fb: FormBuilder,
-    private customValidator: CustomvalidationService, 
-    private router: Router) { }
+    private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.hide = false;
-    this.loginForm = this.fb.group({
+    this.forgotForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
-     }
+       }
     );
   }
-  
-  navigateTo() {
-  this.hide = true;
-  }
 
-  get loginFormControl() {
-    return this.loginForm.controls;
+  get forgotFormControl() {
+    return this.forgotForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.loginForm.valid) {
-      console.table(this.loginForm.value);
+    if (this.forgotForm.valid) {
+      console.table(this.forgotForm.value);
       let forgotPassword: ForgotPassword = {
-        email: this.loginFormControl.email.value
+        email: this.forgotFormControl.email.value
       };
-      
-      // if(this.authService.signIn(forgotPassword)){
-      //   this.showInvalidError= false;
-      //   this.router.navigate(['/welcome']);
-      // }else{
-      //   this.showInvalidError= true;
-      // }
+  
+      this.userService.initiateForgotPassword(forgotPassword).subscribe(response => {
+        if (response) {
+          this.showError = false;
+          this.router.navigate(['/welcome']);
+        }
+      }, err => this.showError = true,
+        () => this.showError = true)
     }
   }
 

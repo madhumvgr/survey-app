@@ -1,6 +1,6 @@
 
 
-<ng-container class="px-3 notification-bar" *ngIf = "!notify">
+<ng-container class="notification-bar" *ngIf = "!notify">
     <div class="container">
         <div class="row">
             <div class="col-12 py-2">
@@ -19,7 +19,7 @@
     </div><!--end Container-->
 </ng-container>
 
-<section class="px-3 pb-4">
+<section class="pb-4">
 <div class="container">
     <div class="row">
         <h1>Welcome, Joe Public</h1>
@@ -33,7 +33,7 @@
 
 <!-- Quick Start Cards Section-->
 
-<section class="px-3 pb-4">
+<section class="pb-4">
 <div class="container">
     <div class="row g-4">
         <h2>Quick start<span class="h2-separator"></span></h2>
@@ -52,7 +52,7 @@
                         <h5 class="card-title">Survey Hub</h5>
                         <p class="card-text">All surveys organized in
                         one place for you.</p>
-                        <a href="survey-hub.html" class="btn btn-secondary">Get Started</a>
+                        <a [routerLink] = "['/login/survey-hub']" class="btn btn-secondary">Get Started</a>
                     </div>
                 </div>
             </div>

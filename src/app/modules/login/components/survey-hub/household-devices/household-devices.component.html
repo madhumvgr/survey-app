@@ -1,0 +1,110 @@
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.html">Survey hub</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Household devices</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- SURVEY HUB PAGE -->
+
+<!--h1 Intro Section-->
+<section class="px-3 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Household Devices</h1>
+                <p>
+                    This section shows surveys for all media devices connected to your home internet. 
+                </p>
+            </div>
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->
+        
+<!-- Aсtion Rquird Section - If there are no actions such in prgroress or new then the whole section not visible-->
+<section class="px-3 pb-5">
+    <div class="container">
+        <div class="row g-4">
+            <h2>Action required <span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0">New devices shows surveys for devices that have been recently added to your home network. This is a good place to begin. Devices in progress shows surveys for devices that you’ve begun but have still to complete. </p>
+            <!-- New Devices -->
+            <a [routerLink] = "['../household-devices/new-devices']" class="col-md-6">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons-outlined p-3 new-devices-icon d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">event_note</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">New</h3>
+                        <p>Currently: <span>10</span></p>   
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+            <!-- In Progress Devices -->
+            <a [routerLink] = "['../household-devices/inprogress-devices']" class="col-md-6">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons-outlined p-3 in-progress-icon d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">bookmark_border</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">In Progress</h3>
+                        <p>Currently: <span>4</span></p>   
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+
+          
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->
+
+<!-- Aсtion Rquird Section - If there are no actions such in prgroress or new then the whole section not visible-->
+<section class="px-3 pb-5">
+    <div class="container">
+        <div class="row g-4">
+            <h2>History <span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0">Completed devices shows surveys that you have completed. You can review, change and resubmit any of these surveys. Devices that are not in use shows surveys for devices you marked  “not in use”. If you ever put them to use again, please tap to update their status.  </p>
+            <!-- completed Devices -->
+            <a [routerLink] = "['../household-devices/completed-devices']" class="col-md-6">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons-outlined p-3 completed-devices-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">verified</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">Completed</h3>
+                        <p>Currently: <span>10</span></p>   
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+            <!-- Not in use -->
+            <a [routerLink] = "['../household-devices/not-in-use-devices']" class="col-md-6">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons-outlined p-3 not-in-use-icon d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">report_off</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">Not in use</h3>
+                        <p>Currently: <span>4</span></p>   
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->

@@ -26,11 +26,27 @@ export class UserService extends ResourceService<User> {
 
     }
 
+    public changePassword(user: any): Observable<any>{
+      return this.httpClient
+      .post(`${environment.host}${UrlConstants.changePassword}`, user)
+      .pipe(map(data => data));
+
+    }
+
+
     public initiateForgotPassword(user: any): Observable<any>{
       return this.httpClient
       .post(`${environment.host}${UrlConstants.initiateForgotPassword}`, user)
       .pipe(map(data => data));
 
     }
+
+    public finishResetPassword(user: any): Observable<any>{
+      return this.httpClient
+      .post(`${environment.host}${UrlConstants.finishForgotPassword}`, user)
+      .pipe(map(data => data));
+
+    }
+
     
   }

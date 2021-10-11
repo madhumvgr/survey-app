@@ -13,15 +13,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AccountSettingsComponent } from './components/menu/account-settings/account-settings.component';
 import { ChangePasswordComponent } from './components/menu/account-settings/change-password/change-password.component';
 import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
-
-import { SurveyHubComponent } from './components/survey-hub/survey-hub.component';
-import { HouseholdDevicesComponent } from './components/survey-hub/household-devices/household-devices.component';
-import { DevicesComponent } from './components/survey-hub/devices/devices.component';
-import { NewDevicesComponent } from './components/survey-hub/household-devices/new-devices/new-devices.component';
-import { InProgressDevicesComponent } from './components/survey-hub/household-devices/in-progress-devices/in-progress-devices.component';
-import { CompletedDevicesComponent } from './components/survey-hub/household-devices/completed-devices/completed-devices.component';
-import { NotInUseDevicesComponent } from './components/survey-hub/household-devices/not-in-use-devices/not-in-use-devices.component';
-
+import { FinishPasswordResetComponent } from './components/menu/account-settings/finish-password-reset/finish-password-reset.component';
 
 
 @NgModule({
@@ -36,13 +28,7 @@ import { NotInUseDevicesComponent } from './components/survey-hub/household-devi
     ChangePasswordComponent,
     PrivacyComponent,
     ForgotPasswordComponent,
-    DevicesComponent,
-    SurveyHubComponent,
-    HouseholdDevicesComponent,
-    NewDevicesComponent,
-    InProgressDevicesComponent,
-    CompletedDevicesComponent,
-    NotInUseDevicesComponent],
+    FinishPasswordResetComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,

@@ -55,7 +55,8 @@ export class LoginComponent implements OnInit {
         if (response) {
           this.showError = false;
           // After successful sign in, we have to set username into localstorage
-          localStorage.setItem('access_token', response['username'])
+          localStorage.setItem('id_token', response['id_token']);
+          localStorage.setItem('username',  this.loginFormControl.email.value);
           this.router.navigate(['/welcome']);
         }
       }, err => this.showError = true,

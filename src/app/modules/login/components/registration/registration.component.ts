@@ -54,13 +54,11 @@ export class RegistrationComponent implements OnInit {
       }
       console.log(registerUser);
       this.userService.create(registerUser).subscribe( response => {
-        if(response){
           this.showError=false;
           this.router.navigate(['login/registersuccess']);
-        }
+        //}
       },err => this.showError=true,
       () => this.showError=true);
-      //this.router.navigate(['login/registersuccess']);
     }
   }
 }

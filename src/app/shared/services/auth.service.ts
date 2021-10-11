@@ -39,14 +39,6 @@ export class AuthService {
     } else {
       return user.email === 'admin@gmail.com' && user.password === 'Admin@123';
     }
-    // return this.http.post<any>(`${this.endpoint}/signin`, user)
-    //   .subscribe((res: any) => {
-    //     localStorage.setItem('access_token', res.token)
-    //     this.getUserProfile(res._id).subscribe((res) => {
-    //       this.currentUser = res;
-    //       this.router.navigate(['user-profile/' + res.msg._id]);
-    //     })
-    //   })
   }
 
   getToken() {

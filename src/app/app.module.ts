@@ -9,13 +9,18 @@ import { RouterModule} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
+import { Page401Component } from './components/page401/page401.component';
+import { Page403Component } from './components/page403/page403.component';
+import { AuthGuard } from './shared/services/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    Page401Component,
+    Page403Component
   ],
   imports: [
     BrowserModule,
@@ -25,13 +30,14 @@ import { AuthInterceptor } from './shared/services/auth.interceptor';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  // providers: [
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: AuthInterceptor,
-  //     multi: true
-  //   }
-  // ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

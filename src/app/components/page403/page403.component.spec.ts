@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SurveyHubComponent } from './survey-hub.component';
+import { Page403Component } from './page403.component';
 
-describe('SurveyHubComponent', () => {
-  let component: SurveyHubComponent;
-  let fixture: ComponentFixture<SurveyHubComponent>;
+describe('Page403Component', () => {
+  let component: Page403Component;
+  let fixture: ComponentFixture<Page403Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SurveyHubComponent ]
+      declarations: [ Page403Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SurveyHubComponent);
+    fixture = TestBed.createComponent(Page403Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

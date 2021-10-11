@@ -9,6 +9,7 @@ import {
 
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, filter, finalize, switchMap, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -19,69 +20,128 @@ export class AuthInterceptor implements HttpInterceptor {
         null
     );
 
-    intercept(
-        req: HttpRequest<any>,
-        next: HttpHandler
-    ): Observable<HttpEvent<any>> {
-        if (!req.headers.has("Content-Type")) {
-            req = req.clone({
-                headers: req.headers.set("Content-Type", "application/json")
-            });
+    constructor(public router: Router) {
+    }
+
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        // if we need to set any token. 
+        const token = localStorage.getItem('id_token');
+        if(token){
+            req = req.clone({ headers: req.headers.set('id_token', ''+token) });
+            if (!req.headers.has("Content-Type")) {
+                req = req.clone({
+                    headers: req.headers.set("Content-Type", "application/json")
+                });
+            }
         }
-        // add to header if required. 
-       // req = this.addAuthenticationToken(req);
-
+        else{
+            // not a login user, navigate to login page. 
+            this.router.navigateByUrl("/login/login");
+        }
+       
         return next.handle(req).pipe(
-            catchError((error: HttpErrorResponse) => {
-                if (error && error.status === 401) {
-                    // 401 errors are most likely going to be because we have an expired token that we need to refresh.
-                    if (this.refreshTokenInProgress) {
-                        // If refreshTokenInProgress is true, we will wait until refreshTokenSubject has a non-null value
-                        // which means the new token is ready and we can retry the request again
-                        return this.refreshTokenSubject.pipe(
-                            filter(result => result !== null),
-                            take(1),
-                            switchMap(() => next.handle(this.addAuthenticationToken(req)))
-                        );
+            catchError((error) => {
+
+                let handled: boolean = false;
+                console.error(error);
+                if (error instanceof HttpErrorResponse) {
+                    if (error.error instanceof ErrorEvent) {
+                        console.error("Error Event");
                     } else {
-                        this.refreshTokenInProgress = true;
-
-                        // Set the refreshTokenSubject to null so that subsequent API calls will wait until the new token has been retrieved
-                        this.refreshTokenSubject.next(null);
-
-                        return this.refreshAccessToken().pipe(
-                            switchMap((success: boolean) => {
-                                this.refreshTokenSubject.next(success);
-                                return next.handle(this.addAuthenticationToken(req));
-                            }),
-                            // When the call to refreshToken completes we reset the refreshTokenInProgress to false
-                            // for the next time the token needs to be refreshed
-                            finalize(() => (this.refreshTokenInProgress = false))
-                        );
+                        console.log(`error status : ${error.status} ${error.statusText}`);
+                        switch (error.status) {
+                            case 401:      //login
+                                this.router.navigateByUrl("/401page");
+                                console.log(`redirect to login`);
+                                handled = true;
+                                break;
+                            case 403:     //forbidden
+                                this.router.navigateByUrl("/403page");
+                                console.log(`redirect to login`);
+                                handled = true;
+                                break;
+                        }
                     }
+                }
+                else {
+                    console.error("Other Errors");
+                }
+
+                if (handled) {
+                    console.log('return back ');
+                    return of(error);
                 } else {
+                    console.log('throw error back to to the subscriber');
                     return throwError(error);
                 }
+
             })
-        ) as Observable<HttpEvent<any>>;
+        )
     }
+    // intercept(
+    //     req: HttpRequest<any>,
+    //     next: HttpHandler
+    // ): Observable<HttpEvent<any>> {
+    //     if (!req.headers.has("Content-Type")) {
+    //         req = req.clone({
+    //             headers: req.headers.set("Content-Type", "application/json")
+    //         });
+    //     }
+    //     // add to header if required. 
+    //    // req = this.addAuthenticationToken(req);
 
-    private refreshAccessToken(): Observable<any> {
-        return of("secret token");
-    }
+    //     return next.handle(req).pipe(
+    //         catchError((error: HttpErrorResponse) => {
+    //             if (error && error.status === 401) {
+    //                 // 401 errors are most likely going to be because we have an expired token that we need to refresh.
+    //                 if (this.refreshTokenInProgress) {
+    //                     // If refreshTokenInProgress is true, we will wait until refreshTokenSubject has a non-null value
+    //                     // which means the new token is ready and we can retry the request again
+    //                     return this.refreshTokenSubject.pipe(
+    //                         filter(result => result !== null),
+    //                         take(1),
+    //                         switchMap(() => next.handle(this.addAuthenticationToken(req)))
+    //                     );
+    //                 }
+    //                  else {
+    //                     this.refreshTokenInProgress = true;
 
-    private addAuthenticationToken(request: HttpRequest<any>): HttpRequest<any> {
-        // If we do not have a token yet then we should not set the header.
-        // Here we could first retrieve the token from where we store it.
-        if (!this.token) {
-            return request;
-        }
-        // If you are calling an outside domain then do not add the token.
-        if (!request.url.match(/www.mydomain.com\//)) {
-            return request;
-        }
-        return request.clone({
-            headers: request.headers.set(this.AUTH_HEADER, "Bearer " + this.token)
-        });
-    }
+    //                     // Set the refreshTokenSubject to null so that subsequent API calls will wait until the new token has been retrieved
+    //                     this.refreshTokenSubject.next(null);
+
+    //                     return this.refreshAccessToken().pipe(
+    //                         switchMap((success: boolean) => {
+    //                             this.refreshTokenSubject.next(success);
+    //                             return next.handle(this.addAuthenticationToken(req));
+    //                         }),
+    //                         // When the call to refreshToken completes we reset the refreshTokenInProgress to false
+    //                         // for the next time the token needs to be refreshed
+    //                         finalize(() => (this.refreshTokenInProgress = false))
+    //                     );
+    //                 }
+    //             } else {
+    //                 return throwError(error);
+    //             }
+    //         })
+    //     ) as Observable<HttpEvent<any>>;
+    // }
+
+    // // private refreshAccessToken(): Observable<any> {
+    // //     return of("secret token");
+    // // }
+
+    // // private addAuthenticationToken(request: HttpRequest<any>): HttpRequest<any> {
+    // //     // If we do not have a token yet then we should not set the header.
+    // //     // Here we could first retrieve the token from where we store it.
+    // //     if (!this.token) {
+    // //         return request;
+    // //     }
+    // //     // If you are calling an outside domain then do not add the token.
+    // //     if (!request.url.match(/www.mydomain.com\//)) {
+    // //         return request;
+    // //     }
+    // //     return request.clone({
+    // //         headers: request.headers.set(this.AUTH_HEADER, "Bearer " + this.token)
+    // //     });
+    // // }
 }

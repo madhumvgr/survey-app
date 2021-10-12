@@ -26,29 +26,27 @@ export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // if we need to set any token. 
         const token = localStorage.getItem('id_token');
-        if(token){
-            req = req.clone({ headers: req.headers.set('id_token', ''+token) });
+        if (token) {
+            req = req.clone({ headers: req.headers.set('id_token', '' + token) });
             if (!req.headers.has("Content-Type")) {
                 req = req.clone({
                     headers: req.headers.set("Content-Type", "application/json")
                 });
             }
         }
-        else{
+        else {
             // not a login user, navigate to login page. 
             this.router.navigateByUrl("/login/login");
         }
-       
+
         return next.handle(req).pipe(
             catchError((error) => {
-
                 let handled: boolean = false;
                 console.error(error);
                 if (error instanceof HttpErrorResponse) {
                     if (error.error instanceof ErrorEvent) {
                         console.error("Error Event");
-                    } else {
-                        console.log(`error status : ${error.status} ${error.statusText}`);
+                    } else if (req.url && req.url.indexOf('api/authenticate') === -1) {
                         switch (error.status) {
                             case 401:      //login
                                 this.router.navigateByUrl("/401page");

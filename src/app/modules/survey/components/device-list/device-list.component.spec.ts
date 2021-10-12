@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InProgressDevicesComponent } from './in-progress-devices.component';
+import { DeviceListComponent } from './device-list.component';
 
-describe('InProgressDevicesComponent', () => {
-  let component: InProgressDevicesComponent;
-  let fixture: ComponentFixture<InProgressDevicesComponent>;
+describe('DeviceListComponent', () => {
+  let component: DeviceListComponent;
+  let fixture: ComponentFixture<DeviceListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InProgressDevicesComponent ]
+      declarations: [ DeviceListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InProgressDevicesComponent);
+    fixture = TestBed.createComponent(DeviceListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

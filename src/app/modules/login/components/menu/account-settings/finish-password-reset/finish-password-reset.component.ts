@@ -17,11 +17,9 @@ export class FinishPasswordResetComponent implements OnInit {
   constructor(private Activatedroute:ActivatedRoute, private userService:UserService) { }
 
   ngOnInit(): void {
-    let username = this.Activatedroute.snapshot.queryParamMap.get('username');
-    let resetKey = this.Activatedroute.snapshot.queryParamMap.get('resetKey');
-    if (username && resetKey) {
+    let resetKey = this.Activatedroute.snapshot.params['resetKey'];
+    if (resetKey) {
       let user: User = {
-        username: username,
         resetKey: resetKey
       };
       this.userService.finishResetPassword(user).subscribe((response: any) => {

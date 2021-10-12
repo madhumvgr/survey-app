@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/services/auth.guard';
 import { CookiePolicyComponent } from './components/cookie-policy/cookie-policy.component';
 import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
@@ -26,9 +27,9 @@ const routes: Routes = [
   },
   { path: 'registerkey', component: RegisterkeyComponent },
   { path: 'registersuccess', component: RegisterSuccessComponent },
-  { path: 'account-settings', component: AccountSettingsComponent },
-  { path: 'change-password', component: ChangePasswordComponent },
-  { path: 'finish-password-reset/:username/:resetKey', component: FinishPasswordResetComponent },
+  { path: 'account-settings', component: AccountSettingsComponent, canActivate: [AuthGuard] },
+  { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard] },
+  { path: 'finish-password-reset/:resetKey', component: FinishPasswordResetComponent },
   { path: 'account-settings-privacy', component: PrivacyComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: '', pathMatch: 'full', redirectTo: 'registerkey' }];

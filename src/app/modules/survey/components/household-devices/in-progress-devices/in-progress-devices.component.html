@@ -1,1 +1,188 @@
-<p>in-progress-devices works!</p>
+<!-- Breadcrumbs -->
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink] = "['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-devices']">Household devices</a></li>
+            <li class="breadcrumb-item active" aria-current="page">In progress</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- SURVEY HUB PAGE -->
+
+<!--h1 Intro Section-->
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>In Progress</h1>
+                <p>
+                    This page lists surveys for media devices that you have started but are yet to complete. Each survey has some basic questions about a device’s usage. Select an arrow to complete a survey. 
+                </p>
+            </div>
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->
+          
+<!-- New Devices Overview Page -->
+<section class="px-3 pb-5">
+    <div class="container">
+        <div class="row g-4">
+            <h2>Devices for which surveys are in progress: 10<span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0">Select devices to continue your progress</p>
+
+             <!-- Newly Detected Device (Smart TV) -->
+             <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">personal_video</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">Smart TV</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>   
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+            <!-- Newly Detected Device (PC Desktop) -->
+            <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">desktop_windows</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">PC Desktop</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>     
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+
+            <!-- Newly Detected Device (PC Laptop) -->
+            <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">laptop</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">PC Laptop</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>     
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+
+            <!-- Newly Detected Device (Any Android or Windows Phone) -->
+            <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">smartphone</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">Android</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>     
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+            <!-- Newly Detected Device (iMac) -->
+            <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">desktop_mac</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">iMac</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>      
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+            <!-- Newly Detected Device (MacBook Pro) -->
+            <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">laptop</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">MacBook Pro</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>      
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+            <!-- Newly Detected Device (iPhone) -->
+            <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">phone_iphone</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">iPhone</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>     
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+            <!-- Newly Detected Device (iPhone) -->
+            <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">videogame_asset</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">Playstation</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>     
+                    </div>
+                    <!--Any gaming console will share the same icon approach here-->
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+             <!-- Newly Detected Device (Devices Unknown) -->
+            <a href="#.html">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 in-progress-icon  d-flex icon-red align-items-center h-100">
+                        <div class="h1 mb-0">devices_other</div>
+                    </i>
+                    <div class="ps-3 description">
+                        <h3 class="text-truncate">Devices Other</h3>
+                        <p class="text-truncate">Completion estimate: <span>12 min</span></p>   
+                    </div>
+                    <!--Any gaming console will share the same icon approach here-->
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->
+

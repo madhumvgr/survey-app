@@ -1,0 +1,170 @@
+<p>survey-start works!</p>
+<nav class="navbar bg-white px-3">
+    <div class="container d-flex">
+        <a href="index.html" class="navbar-brand flex-grow-1">
+            <img class="img-fluid" src="img/logo.png" alt="">
+        </a> 
+        <a href="#" class="lang-taggle">français</a>
+        <button class="navbar-toggler d-sm-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <i class="material-icons text-white"><div class="menu-icon">menu</div></i>
+            <span class="menu-icon-descirption"> Menu</span>
+        </button>
+</nav><!--end nav-->
+
+<!-- Breadcrumbs -->
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="#.html">Survey hub</a></li>
+            <li class="breadcrumb-item"><a href="#.html">Household devices</a></li>
+            <li class="breadcrumb-item"><a href="#.html">New devices</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Device name</li><!--has to reflect devices name here-->
+        </ol>
+    </div>
+</nav>
+
+<!-- SURVEY HUB PAGE -->
+
+<!--h1 Intro Section-->
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1><!--Select Devices-->Device Name</h1>
+                <p>
+                    Let’s talk a bit about your <span><!--Select Devices-->Device Name</span>. It helps us understand how it’s being used. [hyperlink markup to Privacy Policy] Be assured that your privacy is our top concern[hyperlink markup ends] and we check your device for specific data only
+                </p>
+            </div><!--end col-->
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->
+
+<!--Device Info Section-->
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row">
+            <!--Platform-->
+            <div class="d-flex align-items-center mb-3">
+                <i class="material-icons d-flex h-100">
+                    <div class="h4 m-0">feed</div>
+                </i>
+                <div class="ps-3 description">
+                    <p><strong>Device platform</strong></p>
+                    <span>Data not available</span>
+                </div>
+            </div>
+             <!--OS-->
+             <div class="d-flex align-items-center mb-3">
+                <i class="material-icons d-flex h-100">
+                    <div class="h4 m-0">feed</div>
+                </i>
+                <div class="ps-3 description">
+                    <p><strong>Operation system:</strong></p>
+                    <span>Data not available</span>
+                </div>
+            </div>
+             <!--MAC address-->
+             <div class="d-flex align-items-center mb-3">
+                <i class="material-icons d-flex h-100">
+                    <div class="h4 m-0">feed</div>
+                </i>
+                <div class="ps-3 description">
+                    <p><strong>MAC address:</strong></p>
+                    <span>Data not available</span>
+                </div>
+            </div>
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->
+
+
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row pb-4">
+            <h2>Device Information<span class="h2-separator"></span></h2>
+            <div class="col-12 mt-3">
+                <div class="shadow-sm rounded bg-white p-4 mb-4">
+                    <form>
+                        <!-- Question 1 -->
+                        <h4>Naming this device makes it easy for you to identify it in the future. Your focal meter says this 
+                        device is called “Yoda”. Continue using this name or enter a different one below.</h4>
+                        <div class="mb-4">
+                            <label for="question1" class="form-label">Enter different device name </label>
+                            <input type="email" class="form-control" id="question1" aria-describedby="emailHelp">
+                        </div>
+                        <!-- Question 2 -->
+                        <div class="mb-4">
+                            <h4>How many household members use this device?</h4>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question2" id="Radio1">
+                                <label class="form-check-label" for="Radio1">1</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question2" id="Radio2">
+                                <label class="form-check-label" for="Radio2">2 to 10</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question2" id="Radio3">
+                                <label class="form-check-label" for="Radio3">11 to 20</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question2" id="Radio4">
+                                <label class="form-check-label" for="Radio4">More than 20</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" id="Radio5">
+                                <label class="form-check-label" for="Radio5">This device no longer in use</label>
+                            </div>
+                        </div>
+                        <!-- Question 3 -->
+                        <div class="mb-4">
+                            <h4>How often do you or your household members watch something on this device?</h4>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question3" id="Radio6">
+                                <label class="form-check-label" for="Radio6">Daily</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question3" id="Radio7">
+                                <label class="form-check-label" for="Radio7">A few times each week</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question3" id="Radio8">
+                                <label class="form-check-label" for="Radio8">A few times each month</label>
+                            </div>
+                        </div>
+                        <!-- Question 4-->
+                        <div class="mb-4">
+                            <h4>How long do you plan on using this device?</h4>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question4" id="Radio6">
+                                <label class="form-check-label" for="Radio6">For less than 6 months</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question4" id="Radio7">
+                                <label class="form-check-label" for="Radio7">More than 6 months</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question4" id="Radio8">
+                                <label class="form-check-label" for="Radio8">More than 1 year</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="question4" id="Radio8">
+                                <label class="form-check-label" for="Radio8">As long as it lasts!</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Action buttons -->
+                <div class="col-xs-6 d-grid gap-2 d-md-block">
+                    <button type="submit" class="btn btn-dark">Back</button>
+                    <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                    <button type="submit" class="btn btn-primary ms-md-3">Continue</button>
+                </div>
+               
+            </div><!--end Col-->
+        </div><!--end Row-->
+
+    </div><!--end Container-->
+</section><!--end Section--> 

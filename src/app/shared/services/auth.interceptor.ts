@@ -10,24 +10,25 @@ import {
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, filter, finalize, switchMap, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
     private AUTH_HEADER = "Authorization";
-    private token = "secrettoken";
-    private refreshTokenInProgress = false;
-    private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(
-        null
-    );
 
-    constructor(public router: Router) {
+    constructor(public router: Router,
+        private spinner: NgxSpinnerService) {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        this.spinner.show();
         // if we need to set any token. 
         const token = localStorage.getItem('id_token');
         if (token) {
-            req = req.clone({ headers: req.headers.set('id_token', '' + token) });
+            //req = req.clone({ headers: req.headers.set('id_token', '' + token) });
+            req = req.clone({
+                headers: req.headers.set(this.AUTH_HEADER, "Bearer " + token)
+            });
             if (!req.headers.has("Content-Type")) {
                 req = req.clone({
                     headers: req.headers.set("Content-Type", "application/json")
@@ -60,20 +61,20 @@ export class AuthInterceptor implements HttpInterceptor {
                                 break;
                         }
                     }
-                }
-                else {
-                    console.error("Other Errors");
+                    this.spinner.hide();
                 }
 
                 if (handled) {
                     console.log('return back ');
+                    this.spinner.hide();
                     return of(error);
                 } else {
                     console.log('throw error back to to the subscriber');
+                    this.spinner.hide();
                     return throwError(error);
                 }
-
-            })
+            }),
+            finalize(() => this.spinner.hide())
         )
     }
     // intercept(

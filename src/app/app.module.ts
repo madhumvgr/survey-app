@@ -12,6 +12,8 @@ import { AuthInterceptor } from './shared/services/auth.interceptor';
 import { Page401Component } from './components/page401/page401.component';
 import { Page403Component } from './components/page403/page403.component';
 import { AuthGuard } from './shared/services/auth.guard';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AuthGuard } from './shared/services/auth.guard';
     RouterModule, 
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

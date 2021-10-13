@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DeviceService } from 'src/app/modules/login/services/device.service';
+import { DeviceConstants } from 'src/app/shared/models/url-constants';
+
+export interface Member {
+  deviceId: string;
+  homeNo: string;
+  memberName: string;
+  memberNo: string;
+  memberSurveyStatus: string;
+  memberSurveyStatusId: number;
+  usePercentage: number;
+}
 
 @Component({
   selector: 'app-multi-user-list',
@@ -8,16 +20,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MultiUserListComponent implements OnInit {
 
-  deviceType : any;
+  deviceId : any;
   deviceState: any;
-  constructor(private Activatedroute:ActivatedRoute,private router: Router) { }
+  memberList: Member[] = [];
+  constructor(private Activatedroute:ActivatedRoute,private router: Router, 
+    private deviceService: DeviceService) { }
 
   ngOnInit(): void {
-    this.deviceType = this.Activatedroute.snapshot.params['type'];
+    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
+      if (response) {
+        this.memberList = response;
+      }
+    });
   }
   continueNavigate(){
-    this.router.navigateByUrl('survey/deviceUsage/'+this.deviceState+'/'+this.deviceType);
+    this.router.navigateByUrl('survey/deviceUsage/'+this.deviceState+'/'+this.deviceId);
   }
 
 

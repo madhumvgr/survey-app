@@ -14,11 +14,11 @@ import { SurveyComponent } from './components/survey/survey.component';
 const routes: Routes = [
 {path: 'survey', component: SurveyComponent},
 {path: 'deviceList/:state', component: DeviceListComponent},
-{path: 'deviceInformation/:state/:type', component: DeviceInformationComponent},
-{path: 'deviceOwnerInformation/:state/:type', component: DeviceOwnerInformationComponent},
-{path: 'multiUserList/:state/:type', component: MultiUserListComponent},
-{path: 'deviceUsage/:state/:type', component: DeviceUsageComponent},
-{path: 'deviceGeneres/:state/:type', component: DeviceGenresComponent},
+{path: 'deviceInformation/:state/:deviceId', component: DeviceInformationComponent},
+{path: 'deviceOwnerInformation/:state/:deviceId', component: DeviceOwnerInformationComponent},
+{path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent},
+{path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent},
+{path: 'deviceGeneres/:state/:deviceId', component: DeviceGenresComponent},
 {path: 'household-devices', component: HouseholdDevicesComponent},
 {path: '', pathMatch: 'full', redirectTo: 'registerkey'}];
 

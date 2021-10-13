@@ -8,13 +8,17 @@ import { HouseholdDevicesComponent } from './components/household-devices/househ
 import { NotInUseDevicesComponent } from './components/household-devices/not-in-use-devices/not-in-use-devices.component';
 import { DeviceListComponent } from './components/device-list/device-list.component';
 import { DeviceInformationComponent } from './components/device-information/device-information.component';
+import { DeviceOwnerInformationComponent } from './components/device-owner-information/device-owner-information.component';
+import { MultiUserListComponent } from './components/multi-user-list/multi-user-list.component';
 
 @NgModule({
   declarations: [  SurveyComponent,
     HouseholdDevicesComponent,
     NotInUseDevicesComponent,
     DeviceListComponent,
-    DeviceInformationComponent
+    DeviceInformationComponent,
+    DeviceOwnerInformationComponent,
+    MultiUserListComponent
   ],
   imports: [
     CommonModule,

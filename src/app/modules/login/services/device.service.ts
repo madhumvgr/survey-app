@@ -19,9 +19,9 @@ export class DeviceService extends ResourceService<User> {
         new UserSerializer());
     }
 
-    public getUserDeviceDetails(): Observable<any>{
+    public getCustomRequest(url:any): Observable<any>{
       return this.httpClient
-      .get(`${environment.host}${DeviceConstants.deviceDetails}`)
+      .get(`${environment.host}${url}`)
       .pipe(map(data => data));
     }
     

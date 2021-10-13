@@ -8,12 +8,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DeviceGenresComponent implements OnInit {
 
-  deviceType : any;
+  deviceId : any;
   deviceState: any;
   constructor(private Activatedroute:ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
-    this.deviceType = this.Activatedroute.snapshot.params['type'];
+    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
   }
   continueNavigate(){

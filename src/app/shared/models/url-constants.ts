@@ -10,5 +10,9 @@ export class UrlConstants {
 
 export class DeviceConstants {
     public static deviceDetails ="api/account";
+    public static deviceCountWithStatus ="api/deviceCountWithStatus";
+    public static deviceListByStatus ="api/deviceListByStatus/"; 
+    public static deviceOwnerByDeviceId ="api/deviceOwnerByDeviceId/"; 
+    public static memberListByDeviceId ="api/memberListByDeviceId/"; 
     
 }

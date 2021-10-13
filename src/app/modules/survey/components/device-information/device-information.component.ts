@@ -7,16 +7,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./device-information.component.css']
 })
 export class DeviceInformationComponent implements OnInit {
-  deviceType : any;
+  deviceId : any;
   deviceState: any;
   constructor(private Activatedroute:ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
-    this.deviceType = this.Activatedroute.snapshot.params['type'];
+    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
   }
   continueNavigate(){
-    this.router.navigateByUrl('survey/deviceOwnerInformation/'+this.deviceState+'/'+this.deviceType);
+    this.router.navigateByUrl('survey/deviceOwnerInformation/'+this.deviceState+'/'+this.deviceId);
   }
 
 }

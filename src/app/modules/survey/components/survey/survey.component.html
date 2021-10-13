@@ -3,7 +3,7 @@
         <div class="row g-4">
             <h4>Household<span class="h2-separator"></span></h4>
     
-            <!-- Card -->
+            <!-- Devices Card -->
             <div class="card welcome-card col-sm-6 bg-transparent border-0">
     
                 <div class="row g-0 bg-white shadow-sm rounded">
@@ -24,6 +24,45 @@
     
             </div>
     
+            <!-- Demographic Card -->
+            <div *ngIf="panelistType=='VAM'"  class="card welcome-card col-sm-6 bg-transparent border-0">
+    
+                <div class="row g-0 bg-white shadow-sm rounded">
+    
+                    <div class="col-sm-5 img-wrap">
+                        <img class="img-fluid" src="../assets/survey_hub_thumb.jpg"alt="">
+                    </div>
+    
+                    <div class="col-sm-7 card-body-wrap d-sm-flex align-items-center justify-content-between">
+                        <div class="card-body">
+                            <h5 class="card-title">Demographic</h5>
+                            <p class="card-text">All surveys organized in
+                            one place for you.</p>
+                            <a [routerLink] = "['/survey/household-devices']" class="btn btn-secondary">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Television Card -->
+            <div *ngIf="panelistType=='VAM'" class="card welcome-card col-sm-6 bg-transparent border-0">
+    
+                <div class="row g-0 bg-white shadow-sm rounded">
+    
+                    <div class="col-sm-5 img-wrap">
+                        <img class="img-fluid" src="../assets/survey_hub_thumb.jpg"alt="">
+                    </div>
+    
+                    <div class="col-sm-7 card-body-wrap d-sm-flex align-items-center justify-content-between">
+                        <div class="card-body">
+                            <h5 class="card-title">Television</h5>
+                            <p class="card-text">All surveys organized in
+                            one place for you.</p>
+                            <a [routerLink] = "['/survey/household-devices']" class="btn btn-secondary">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
             
         </div><!--end Row-->
     </div><!--end Container-->

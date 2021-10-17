@@ -14,6 +14,8 @@ import { Page403Component } from './components/page403/page403.component';
 import { AuthGuard } from './shared/services/auth.guard';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/material/material.module';
+import { DialogComponent } from './modules/material/components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     RouterModule, 
-    FormsModule, 
+    FormsModule,
+    MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
@@ -42,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     },
     AuthGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

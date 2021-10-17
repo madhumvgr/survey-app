@@ -10,6 +10,7 @@ import { DeviceListComponent } from './components/device-list/device-list.compon
 import { DeviceInformationComponent } from './components/device-information/device-information.component';
 import { DeviceOwnerInformationComponent } from './components/device-owner-information/device-owner-information.component';
 import { MultiUserListComponent } from './components/multi-user-list/multi-user-list.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [  SurveyComponent,
@@ -25,7 +26,8 @@ import { MultiUserListComponent } from './components/multi-user-list/multi-user-
     SurveyRoutingModule,
     RouterModule, 
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class SurveyModule { }

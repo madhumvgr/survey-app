@@ -11,6 +11,7 @@ export interface Device {
   estimationTime: string;
   macAddress: string;
   manufacturerName: string;
+  iconDescription: string;
 }
 
 @Component({
@@ -20,7 +21,7 @@ export interface Device {
 })
 export class DeviceListComponent implements OnInit {
   deviceState: any;
-  devicesList: Device[]=[];
+  devicesList: Device[] = [];
 
   constructor(private Activatedroute: ActivatedRoute, private router: Router, private deviceService: DeviceService) { }
 
@@ -29,11 +30,32 @@ export class DeviceListComponent implements OnInit {
     this.deviceService.getCustomRequest(DeviceConstants.deviceListByStatus + this.deviceState).subscribe(response => {
       if (response) {
         this.devicesList = response;
+        this.devicesList.forEach((device: Device) => {
+          device['iconDescription'] = this.getMatIconDescription(device.deviceName);
+        });
       }
     });
   }
 
   navigateTo(device: Device) {
     this.router.navigateByUrl('survey/deviceInformation/' + this.deviceState + '/' + device.deviceId);
+  }
+
+  getMatIconDescription(deviceType: any) {
+    console.log(deviceType);
+    switch (deviceType) {
+      case "Smart TV":
+        return "personal_video";
+      case "Laptop MAC":
+        return "personal_video";
+      case "Samsung Mobile":
+        return "personal_video";
+      case "iPhone Satish":
+        return "personal_video";
+      case "Playstation 4":
+        return "personal_video";
+      default:
+        return "";
+    }
   }
 }

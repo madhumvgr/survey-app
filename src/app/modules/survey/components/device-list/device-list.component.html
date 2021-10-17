@@ -35,15 +35,8 @@
              <a *ngFor="let device of devicesList" (click) ="navigateTo(device)">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons p-3 new-devices-icon d-flex icon-red align-items-center h-100">
-                        <div class="h1 mb-0">personal_video</div>
+                        <div class="h1 mb-0">{{device?.iconDescription}}</div>
                     </i>
-                    <!-- description: string;
-                    deviceId: string;
-                    deviceSurveryStatus: string;
-                    deviceType: string;
-                    estimationTime: string;
-                    macAddress: string;
-                    manufacturerName: string; -->
                     <div class="ps-3 description">
                         <h3 class="text-truncate">{{device.deviceName}}</h3>
                         <p class="text-truncate">Mac Address: <span>{{device.macAddress}}</span>

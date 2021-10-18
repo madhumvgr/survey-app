@@ -42,18 +42,25 @@ export class DeviceListComponent implements OnInit {
   }
 
   getMatIconDescription(deviceType: any) {
-    console.log(deviceType);
     switch (deviceType) {
       case "Smart TV":
         return "personal_video";
       case "Laptop MAC":
-        return "personal_video";
+        return "laptop";
       case "Samsung Mobile":
-        return "personal_video";
+        return "phone_iphone";
       case "iPhone Satish":
-        return "personal_video";
+        return "phone_iphone";
       case "Playstation 4":
-        return "personal_video";
+        return "videogame_asset";
+      case "Devices Other":
+        return "devices_other";    
+      case "iMac":
+        return "desktop_mac";  
+      case "PC Desktop":
+        return "desktop_windows";
+      case "Android":
+        return "smartphone";
       default:
         return "";
     }

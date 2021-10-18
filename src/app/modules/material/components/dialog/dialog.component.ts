@@ -11,8 +11,8 @@ import {
 })
 export class DialogComponent implements OnInit {
 
-  title="Sample title";
-  message="Sample Message";
+  title="Save and Exit";
+  message="Your work is saved! You can always finish the reset of it later.";
   constructor( public dialogRef: MatDialogRef<DialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any){}
 
   ngOnInit(): void {

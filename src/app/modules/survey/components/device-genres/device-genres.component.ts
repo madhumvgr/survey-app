@@ -14,28 +14,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   deviceId: any;
   deviceState: any;
-  constructor(public Activatedroute: ActivatedRoute,public router: Router, public matDialog:MatDialog) {
-    super();
+  constructor(public activatedroute: ActivatedRoute,public router: Router, public matDialog:MatDialog) {
+    super(matDialog);
   }
 
   ngOnInit(): void {
-    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
-    this.deviceState = this.Activatedroute.snapshot.params['state'];
+    this.deviceId = this.activatedroute.snapshot.params['deviceId'];
+    this.deviceState = this.activatedroute.snapshot.params['state'];
   }
-  continueNavigate() {
-    //  this.router.navigateByUrl('survey/deviceUsage/'+this.deviceState+'/'+this.deviceType);
-  }
-
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { name: "some name"};
-    let dialogRef =  this.matDialog.open(DialogComponent, dialogConfig);
-
-    dialogRef.afterClosed().subscribe((value: any) => {
-      console.log(`Dialog sent: ${value}`); 
-      alert(value);
-    });
-  }
-
-
 }

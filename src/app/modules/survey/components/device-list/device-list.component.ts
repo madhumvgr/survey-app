@@ -31,7 +31,7 @@ export class DeviceListComponent implements OnInit {
       if (response) {
         this.devicesList = response;
         this.devicesList.forEach((device: Device) => {
-          device['iconDescription'] = this.getMatIconDescription(device.deviceName);
+          device['iconDescription'] = this.getMatIconDescription(device.deviceType);
         });
       }
     });
@@ -43,24 +43,22 @@ export class DeviceListComponent implements OnInit {
 
   getMatIconDescription(deviceType: any) {
     switch (deviceType) {
-      case "Smart TV":
+      case "TV":
         return "personal_video";
-      case "Laptop MAC":
+      case "Laptop":
         return "laptop";
-      case "Samsung Mobile":
+      case "Mobile":
         return "phone_iphone";
-      case "iPhone Satish":
-        return "phone_iphone";
-      case "Playstation 4":
+      case "Gaming":
         return "videogame_asset";
-      case "Devices Other":
-        return "devices_other";    
-      case "iMac":
-        return "desktop_mac";  
-      case "PC Desktop":
-        return "desktop_windows";
-      case "Android":
-        return "smartphone";
+      // case "Devices Other":
+      //   return "devices_other";    
+      // case "iMac":
+      //   return "desktop_mac";  
+      // case "PC Desktop":
+      //   return "desktop_windows";
+      // case "Android":
+      //   return "smartphone";
       default:
         return "";
     }

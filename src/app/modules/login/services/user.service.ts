@@ -15,8 +15,7 @@ export class UserService extends ResourceService<User> {
       super(
         httpClient,
         environment.host,
-        UrlConstants.registerUser,
-        new UserSerializer());
+        UrlConstants.registerUser);
     }
 
     public signIn(user: any): Observable<any>{

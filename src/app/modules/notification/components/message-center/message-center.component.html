@@ -22,16 +22,17 @@
     <div class="container">
         <div class="row g-4">
 
-            <h2>1 Action(s) required<span class="h2-separator"></span></h2>
+            <h2>{{actions.length}} Action(s) required<span class="h2-separator"></span></h2>
 
-             <a [routerLink]="['message']">
+             <a *ngFor="let action of actions" [routerLink]="['message']">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    Message ID:{{action.messageId}}
                     <i class="material-icons p-3 icon-action-required  d-flex icon-red align-items-center h-100">
                         <div class="h1">warning_amber</div>
                     </i>
                     <div class="ps-3 description">
-                        <h3 class="truncate">Action Subject Line</h3>
-                        <p class="truncate"><span>02/11/21 -</span> Etiam tincidunt dui ut elit pulvinar, et placerat erat semper. Etiam tincidunt dui ut elite</p>   
+                        <h3 class="truncate">{{action.messageHeader}}</h3>
+                        <p class="truncate"><span>{{action.messageDate}} -</span>{{action.messageContent}}</p>   
                     </div>
                     <i class="material-icons ms-auto pe-3">  
                         arrow_forward_ios
@@ -46,31 +47,20 @@
 <section class="px-2 pb-2">
     <div class="container">
         <div class="row g-4">
-            <h2>1 New message(s)<span class="h2-separator"></span></h2>
-            <a [routerLink]="['message']">
+            <h2>{{messages.length}} New message(s)<span class="h2-separator"></span></h2>
+            <a  *ngFor="let message of messages" [routerLink]="['message']">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons-outlined p-3 icon-new-message d-flex icon-red align-items-center h-100">
-                        <div class="h1">email</div>
+                        <ng-container *ngIf="message.isRead else unread">
+                            <div class="h1">email_read</div>
+                        </ng-container>
+                        <ng-template #unread> 
+                            <div class="h1">email</div>
+                        </ng-template>
                     </i>
                     <div class="ps-3 description">
-                        <h3 class="ttruncate">Message Subject Line</h3>
-                        <p class="truncate"><span>02/11/21 -</span> Etiam tincidunt dui ut elit pulvinar, et placerat erat semper. Etiam tincidunt dui ut elite</p>   
-                    </div>
-                    <i class="material-icons ms-auto pe-3">  
-                        arrow_forward_ios
-                    </i>
-                </div>
-            </a>
-
-            <!-- Visited Message Card -->
-            <a [routerLink]="['message']">
-                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
-                    <i class="material-icons-outlined p-3 icon-visited d-flex icon-red align-items-center h-100">
-                        <div class="h1">mark_email_read</div>
-                    </i>
-                    <div class="ps-3 description">
-                        <h3 class="truncate">Message Subject Line</h3>
-                        <p class="truncate"><span>02/11/21 -</span> Etiam tincidunt dui ut elit pulvinar, et placerat erat semper. Etiam tincidunt dui ut elite</p>   
+                        <h3 class="ttruncate">{{message.messageHeader}}</h3>
+                        <p class="truncate"><span>{{message.messageDate}} -</span> {{message.messageContent}}</p>
                     </div>
                     <i class="material-icons ms-auto pe-3">  
                         arrow_forward_ios

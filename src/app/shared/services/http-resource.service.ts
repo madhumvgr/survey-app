@@ -13,8 +13,7 @@ export class ResourceService<T extends Resource> {
     constructor(
         public httpClient: HttpClient,
         private url: string,
-        private endpoint: string,
-        private serializer: Serializer) { }
+        private endpoint: string) { }
 
     public create(item: any): Observable<any> {
         return this.httpClient
@@ -22,12 +21,11 @@ export class ResourceService<T extends Resource> {
             .pipe(map(data => data));
     }
 
-    // public update(item: T): Observable<T> {
-    //     return this.httpClient
-    //         .put<T>(`${this.url}/${this.endpoint}/${item.id}`,
-    //             this.serializer.toJson(item))
-    //         .pipe(map(data => this.serializer.fromJson(data) as T));
-    // }
+    public customUpdate(url:any): Observable<T> {
+        return this.httpClient
+            .put<T>(`${this.url}/${this.endpoint}/${url}`,{})
+            .pipe(map(data => data as T));
+    }
 
     // read(id: number): Observable<T> {
     //     return this.httpClient
@@ -47,10 +45,10 @@ export class ResourceService<T extends Resource> {
     //       .pipe(map((data: any) => this.convertData(data.items)));
     //   }
 
-    // delete(id: number) {
-    //     return this.httpClient
-    //         .delete(`${this.url}/${this.endpoint}/${id}`);
-    // }
+    delete(id: number) {
+        return this.httpClient
+            .delete(`${this.url}/${this.endpoint}/${id}`);
+    }
 
     // private convertData(data: any): T[] {
     //     return data.map((item: any) => this.serializer.fromJson(item));

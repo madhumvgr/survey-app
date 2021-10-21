@@ -15,8 +15,7 @@ export class DeviceService extends ResourceService<User> {
       super(
         httpClient,
         environment.host,
-        '',
-        new UserSerializer());
+        '');
     }
 
     public getCustomRequest(url:any): Observable<any>{

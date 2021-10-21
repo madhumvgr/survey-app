@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NotificationService } from '../modules/notification/service/notification.service';
 
 @Component({
   selector: 'app-welcome',
@@ -8,11 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class WelcomeComponent implements OnInit {
 
   notify = false;
-  constructor() { }
+  count :any;
+  constructor(private notifService: NotificationService, private router: Router) {
+    this.notifService.getUnReadMessageCount().subscribe(res => {
+      this.count = res;
+    })
+  }
 
   ngOnInit(): void {
   }
-  openNotification(){
+  openNotification() {
     this.notify = true;
+    this.router.navigateByUrl('/messages');
+    
   }
 }

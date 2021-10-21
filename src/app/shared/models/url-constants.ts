@@ -16,3 +16,8 @@ export class DeviceConstants {
     public static memberListByDeviceId ="api/memberListByDeviceId/"; 
     
 }
+
+export class NotificationConstants {
+    public static api ="api/portal-notifications";
+    
+}

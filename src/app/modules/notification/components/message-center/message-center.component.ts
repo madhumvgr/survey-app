@@ -14,9 +14,10 @@ export class MessageCenterComponent implements OnInit {
   actions: Array<Message> = [];
 
   constructor(private notifService: NotificationService, private router: Router) {
-    this.notifService.getMessageList().subscribe(res => {
+    this.notifService.getUnReadMessageCount().subscribe(res => {
+      
       let messages = res.reduce((obj: any[], cur: any) => {
-        if (cur.type === "Message") {
+        if (cur.messageType === "Message") {
           obj.push(cur)
         }
         return obj
@@ -25,7 +26,7 @@ export class MessageCenterComponent implements OnInit {
 
 
       let actions = res.reduce((obj: any[], cur: any) => {
-        if (cur.type === "Action") {
+        if (cur.messageType === "Action") {
           obj.push(cur)
         }
         return obj

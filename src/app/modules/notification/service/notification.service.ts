@@ -20,7 +20,7 @@ export class NotificationService extends ResourceService<Message> {
   }
 
   getUnReadMessageCount() {
-    return this.customRead('');
+    return this.customRead(NotificationConstants.api);
   }
 
   getMessageList() {

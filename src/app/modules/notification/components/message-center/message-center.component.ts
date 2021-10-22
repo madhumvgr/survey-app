@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { SharedService } from 'src/app/shared/services/shared.service';
 import { Message } from '../../model/message.model';
 import { NotificationService } from '../../service/notification.service';
 
@@ -8,37 +10,26 @@ import { NotificationService } from '../../service/notification.service';
   templateUrl: './message-center.component.html',
   styleUrls: ['./message-center.component.css']
 })
-export class MessageCenterComponent implements OnInit {
+export class MessageCenterComponent implements OnInit, OnDestroy {
 
-  messages: Array<Message> = [];
-  actions: Array<Message> = [];
+  messages: any;
+  subscription: any = new Subscription();
 
-  constructor(private notifService: NotificationService, private router: Router) {
-    this.notifService.getUnReadMessageCount().subscribe(res => {
-      
-      let messages = res.reduce((obj: any[], cur: any) => {
-        if (cur.messageType === "Message") {
-          obj.push(cur)
-        }
-        return obj
+  constructor(private notifService: NotificationService, private sharedService: SharedService, private router: Router, private zone: NgZone) {
 
-      }, [])
-
-
-      let actions = res.reduce((obj: any[], cur: any) => {
-        if (cur.messageType === "Action") {
-          obj.push(cur)
-        }
-        return obj
-
-      }, [])
-
-      console.log(messages);
-      console.log(actions);
-    })
   }
-
+  ngOnDestroy(): void {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
   ngOnInit(): void {
+    this.notifService.getMessageList();
+    this.subscription.add(this.sharedService.getMessagesObservable().subscribe(data => {
+      this.zone.run(() => {
+        console.log(data);
+        this.messages = data;
+      })
+    }));
   }
 
   navToRegister() {
@@ -50,8 +41,12 @@ export class MessageCenterComponent implements OnInit {
 
   }
 
-  navToMessageDetail(messageId: any) {
-    this.router.navigateByUrl('/messages/message/' + messageId);
+  navToMessageDetail(message: any) {
+    if (!message.isRead) {
+      this.notifService.markMessageRead(message.messageId).subscribe(res => {
+        this.router.navigateByUrl('notification/message/' + message.messageId);
+      });
+    }
   }
 
   deleteMessage(messageId: any) {

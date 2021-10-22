@@ -6,7 +6,7 @@ import { MessageComponent } from './components/message/message.component';
 const routes: Routes = [
 {path: 'messages', 
 component: MessageCenterComponent},
-{path: 'messages/message/:messageId', component: MessageComponent},
+{path: 'message/:messageId', component: MessageComponent},
 {path: '', pathMatch: 'full', redirectTo: 'messages'}];
 
 @NgModule({

@@ -1,4 +1,3 @@
-import { INFERRED_TYPE } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,7 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit(): void {
-    this.isLogin = localStorage.getItem("id_token") ? true : false;
+    // this.isLogin = localStorage.getItem("id_token") ? true : false;
   }
 
 }

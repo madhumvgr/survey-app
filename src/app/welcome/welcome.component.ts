@@ -2,6 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotificationService } from '../modules/notification/service/notification.service';
+import { AuthService } from '../shared/services/auth.service';
 import { SharedService } from '../shared/services/shared.service';
 
 @Component({
@@ -14,7 +15,11 @@ export class WelcomeComponent implements OnInit {
   notify = false;
   messages: any;
   subscription: any = new Subscription();
-  constructor(private zone: NgZone, private notifService: NotificationService, private sharedService: SharedService, private router: Router) {
+  constructor(private authService:AuthService,
+    private zone: NgZone, 
+    private notifService: NotificationService, 
+    private sharedService: SharedService, 
+    private router: Router) {
 
   }
 
@@ -26,10 +31,11 @@ export class WelcomeComponent implements OnInit {
         this.messages = data;
       })
     }));
+    this.authService.isAuthenticatedUser(true);
   }
   openNotification() {
     this.notify = true;
-    this.router.navigateByUrl('/messages');
+    this.router.navigateByUrl('/notification/messages');
 
   }
 }

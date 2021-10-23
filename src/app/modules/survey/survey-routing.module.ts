@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PrivacyPolicyComponent } from '../login/components/login/forgot-password/privacy-policy/privacy-policy.component';
 import { DeviceGenresComponent } from './components/device-genres/device-genres.component';
 import { DeviceInformationComponent } from './components/device-information/device-information.component';
 import { DeviceListComponent } from './components/device-list/device-list.component';
@@ -13,13 +14,16 @@ import { SurveyComponent } from './components/survey/survey.component';
 
 const routes: Routes = [
 {path: 'survey', component: SurveyComponent},
+{path: 'privacy-policy', component: PrivacyPolicyComponent},
 {path: 'deviceList/:state', component: DeviceListComponent},
-{path: 'deviceInformation/:state/:deviceId', component: DeviceInformationComponent},
-{path: 'deviceOwnerInformation/:state/:deviceId', component: DeviceOwnerInformationComponent},
-{path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent},
-{path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent},
-{path: 'deviceGeneres/:state/:deviceId', component: DeviceGenresComponent},
+{path: '/survey/deviceList/New', component: DeviceListComponent},
+{path: 'deviceInformation/:state/:type', component: DeviceInformationComponent},
+{path: 'deviceOwnerInformation/:state/:type', component: DeviceOwnerInformationComponent},
+{path: 'multiUserList/:state/:type', component: MultiUserListComponent},
+{path: 'deviceUsage/:state/:type', component: DeviceUsageComponent},
+{path: 'deviceGeneres/:state/:type', component: DeviceGenresComponent},
 {path: 'household-devices', component: HouseholdDevicesComponent},
+{path:'household-devices/not-in-use-devices', component: NotInUseDevicesComponent},
 {path: '', pathMatch: 'full', redirectTo: 'registerkey'}];
 
 @NgModule({

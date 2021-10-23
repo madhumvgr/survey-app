@@ -1,7 +1,7 @@
 
 export class UrlConstants {
     public static login ="api/authenticate";
-    public static changePassword ="api/change-password";
+    public static changePassword ="api/account/change-password";
     public static initiateForgotPassword = "api/account/reset-password/init"
     public static finishForgotPassword = "api/account/reset-password/finish"
     public static registerUser = "api/register";
@@ -19,5 +19,4 @@ export class DeviceConstants {
 
 export class NotificationConstants {
     public static api ="api/portal-notifications";
-    
 }

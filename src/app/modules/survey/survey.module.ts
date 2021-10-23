@@ -10,8 +10,7 @@ import { DeviceListComponent } from './components/device-list/device-list.compon
 import { DeviceInformationComponent } from './components/device-information/device-information.component';
 import { DeviceOwnerInformationComponent } from './components/device-owner-information/device-owner-information.component';
 import { MultiUserListComponent } from './components/multi-user-list/multi-user-list.component';
-import { MaterialModule } from '../material/material.module';
-
+import { AuthService } from 'src/app/shared/services/auth.service';
 @NgModule({
   declarations: [  SurveyComponent,
     HouseholdDevicesComponent,
@@ -19,15 +18,19 @@ import { MaterialModule } from '../material/material.module';
     DeviceListComponent,
     DeviceInformationComponent,
     DeviceOwnerInformationComponent,
-    MultiUserListComponent
+    MultiUserListComponent,
   ],
   imports: [
     CommonModule,
     SurveyRoutingModule,
     RouterModule, 
     FormsModule, 
-    ReactiveFormsModule,
-    MaterialModule
+    ReactiveFormsModule
   ]
 })
-export class SurveyModule { }
+export class SurveyModule { 
+   constructor (public authService:AuthService){
+     this.authService.isAuthenticatedUser(true);
+   }
+  
+}

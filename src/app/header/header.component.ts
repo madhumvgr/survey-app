@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   @Input() isMenu = true;
-
-  isLogin = false;
-
-  constructor(public router: Router) { }
+  constructor(public authService:AuthService) { }
 
   ngOnInit(): void {
-    // this.isLogin = localStorage.getItem("id_token") ? true : false;
+  }
+
+  public doLogout() {
+    this.authService.doLogout();
   }
 
 }

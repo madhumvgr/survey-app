@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { User } from '../models/user.model';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,7 @@ export class AuthService {
     private http: HttpClient,
     public router: Router
   ) {
+
   }
 
   // Sign-up
@@ -41,19 +42,28 @@ export class AuthService {
     }
   }
 
+
   getToken() {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem('id_token');
   }
 
   get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access_token');
+    let authToken = localStorage.getItem('id_token');
+    return (authToken !== null) ? true : false;
+  }
+
+  isAuthenticatedUser(isPageRedirect: boolean = false): boolean {
+    let authToken = localStorage.getItem('id_token');
+    if (authToken === null && isPageRedirect) {
+      this.router.navigate(['/login/login']);
+    }
     return (authToken !== null) ? true : false;
   }
 
   doLogout() {
-    let removeToken = localStorage.removeItem('access_token');
+    let removeToken = localStorage.removeItem('id_token');
     if (removeToken == null) {
-      this.router.navigate(['log-in']);
+      this.router.navigate(['/login/login']);
     }
   }
 

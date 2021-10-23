@@ -25,6 +25,7 @@ export class FinishPasswordResetComponent implements OnInit {
       this.userService.finishResetPassword(user).subscribe((response: any) => {
         if (response) {
           this.showError = false;
+          this.router.navigate(['/login/login'])
         }
       });
     }

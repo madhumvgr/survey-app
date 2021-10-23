@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { AuthGuard } from './shared/services/auth.guard';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { MatIconModule } from '@angular/material/icon'
 
 const routes: Routes = [
   { 
@@ -35,6 +36,6 @@ const routes: Routes = [
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule,MatIconModule] //,
 })
 export class AppRoutingModule { }

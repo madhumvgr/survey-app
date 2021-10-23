@@ -14,6 +14,9 @@ import { AccountSettingsComponent } from './components/menu/account-settings/acc
 import { ChangePasswordComponent } from './components/menu/account-settings/change-password/change-password.component';
 import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
 import { FinishPasswordResetComponent } from './components/menu/account-settings/finish-password-reset/finish-password-reset.component';
+import { KeyhelpComponent } from './components/registerkey/keyhelp/keyhelp.component';
+import { PrivacyPolicyComponent } from './components/login/forgot-password/privacy-policy/privacy-policy.component';
+import { EmailNotificationsComponent } from './components/menu/account-settings/email-notifications/email-notifications.component';
 
 
 @NgModule({
@@ -28,7 +31,11 @@ import { FinishPasswordResetComponent } from './components/menu/account-settings
     ChangePasswordComponent,
     PrivacyComponent,
     ForgotPasswordComponent,
-    FinishPasswordResetComponent],
+    FinishPasswordResetComponent,
+    KeyhelpComponent,
+    PrivacyPolicyComponent,
+    EmailNotificationsComponent,
+  ],
   imports: [
     CommonModule,
     LoginRoutingModule,

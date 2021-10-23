@@ -1,14 +1,28 @@
+<!-- <nav class="navbar bg-white px-3">
+    <div class="container d-flex">
+        <a href="survey-hub.html" class="navbar-brand flex-grow-1">
+            <img class="img-fluid" src="../assets/logo.png" alt="">
+        </a> 
+        <a href="#" class="lang-taggle">français</a>
+        </div>
+</nav> -->
+
+
 <!-- Registration form with OTP-->
 <section class="px-3 pb-4">
-    <div>
-        Be between 8 and 20 characters long. &#9989;
-    </div>
-    <div>
-        Have both letters and numbers. &#9989;
-    </div>
-    <div>
-        Not have spaces, special characters or emojis.&#9989;
-    </div>
+    <div class="container">
+        <div class="row">
+        <div>Register/Create Profile</div>
+        <div><h1>Create Profile</h1></div>
+        <div><p>Enter your username and password below</p></div>
+        <div>Tips:</div>
+        <div>
+        <ul>
+        <li> Must be between 8 to 20 characters long. &#9989;</li>
+        <li> Must contain both letters and numbers. &#9989; </li>
+        <li>Must not have spaces, special characters or emojis.&#9989;</li>
+        </ul>
+        </div>
     <div *ngIf="!showRegistraion" class="container">
         <!-- <div class="row mb-3">
                 <h1> Ready ? Let`s create your account</h1>
@@ -88,14 +102,19 @@
                     </span>
                     <span class="text-danger" *ngIf="registerFormControl.confirmPassword.errors?.mustMatch && registerFormControl.confirmPassword.touched">Password and
                         Confirm Password
-                        must be match.
+                        must match.
                     </span>
                     <div *ngIf="showError">
                          User Registration failed. 
                     </div>
-                </div>
+              
+            <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary">Register</button>
             </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </div>
     </form>
     </div>
+</div>
+ </div>
 </section>

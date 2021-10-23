@@ -18,6 +18,8 @@ import { MaterialModule } from './modules/material/material.module';
 import { DialogComponent } from './modules/material/components/dialog/dialog.component';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule,
+    MatIconModule
   ],
   providers: [
     {

@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "material-icons/iconfont/material-icons.css";
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
 
 
 
@@ -100,6 +101,18 @@ h3 {
   font-weight: 600;
 }
 
+h3.accordion-header button {
+  font-size: 20px!important;
+  color:#002E62;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 18px;
+  color: #000;
+  font-weight: 600;
+}
+
 p, b {
   line-height: 1.6;
 }
@@ -119,8 +132,65 @@ a.notification-bar-link:hover {
   font-weight: 600;
 }
 
+/* Form 
+---------------------- */ 
+.form-check-input[type=radio] {
+  border:2px solid #002e62; 
+}
 
-/* Messaging center cards */
+input {
+  border:2px solid #002e62!important; 
+}
+
+/* Device Usage Icons */
+
+.device-usage-icon{
+  background-color:#EBEEF1;
+  color: #232323;
+}
+
+/* Genres Icon */
+.genres-icon {
+  background-color:#EBEEF1;
+  color: #002E62;
+}
+
+/*Checkboxes*/
+.check-input-bg {
+  background:#EBEEF1;
+  font-weight: 600;
+}
+
+
+/* Household devices
+---------------------- */
+
+/* New Devices Icon */
+.new-devices-icon {
+  background-color:#EBF7FE;
+  color: #2B46BF;
+}
+
+/* In Progress Devices Icon */
+.in-progress-icon {
+  background-color:#FEF7EC;
+  color: #754E00;
+}
+
+/* Completed Devices Icon */
+.completed-devices-icon {
+  background-color:#ECF7F0;
+  color: #1C7D48;
+}
+
+/* Not in use Devices Icon */
+.not-in-use-icon {
+  background-color:#E8E8E8;
+  color: #232323;
+}
+
+/* Messaging center cards 
+---------------------- */
 
 .message-card {
   height:78px;
@@ -156,7 +226,7 @@ a.notification-bar-link:hover {
   color: #2B46BF;
 }
 
-/* New message Icon */
+/* Read message*/
 .icon-visited {
   background-color:#EBEEF1;
   color: #000000;
@@ -180,8 +250,21 @@ a.notification-bar-link:hover {
   width:315px;
 }
 
+/*Multiple users
+--------------------*/
+.multiple-users-card{
+  background:#EBEEF1;
+  border:10px solid white;
+}
+.multi-user-select {
+  width:100px;
+}
 
-/* Primary CTA's */
+
+/* Buttons
+---------------- */
+
+/* Primary CTA */
 .btn-primary {
   background-color: #002e62;
   border:#002e62;
@@ -191,7 +274,7 @@ a.notification-bar-link:hover {
   background-color: #004ca4;
 }
 
-/* Secondary CTA's */
+/* Secondary CTA */
 
 .btn-secondary {
   background-color: #343A40;
@@ -216,6 +299,10 @@ a.notification-bar-link:hover {
   border: solid 2px #002e62;
   background-color: #002e62;
   color: white;
+}
+
+.btn-dark {
+  font-weight: 600;
 }
 
 /*Separators*/

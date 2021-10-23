@@ -1,11 +1,20 @@
 
 <!-- MAIN NAVIGATION -->
+<nav class="navbar bg-white px-3">
+    <div class="container d-flex">
+        <a href="survey-hub.html" class="navbar-brand flex-grow-1">
+            <img class="img-fluid" src="../assets/logo.png" alt="">
+        </a> 
+        <a href="#" class="lang-taggle">français</a>
+        </div>
+</nav>
+
 
 <!-- Breadcrumbs -->
 <div class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/login']">Login</a></li> 
+            <li class="breadcrumb-item"><a [routerLink]="['/login/login']">Login</a></li> 
             <li class="breadcrumb-item active" aria-current="page">Cookie Policy</li>
         </ol>
     </div>
@@ -27,11 +36,17 @@
             <p>We never disclose names, addresses or phone numbers of panel members, nor will we ever sell your personal information to a third party, provide it to our members and licensees or include it in our rating service.</p>
             <p>We may employ other companies to provide services such as the delivery of our mailings or data processing. They may have limited access to your information only to perform these services and are bound by a contract to Numeris not to disclose or use it for any other purposes and must comply with our Privacy Policies.</p>
             <p>By completing this questionnaire, you consent to the collection of your personal information by Numeris as described above. Please note that you are free to stop participation at any time. You may also choose not to complete the questionnaire, although that will disqualify you from participating in the Numeris Panel.</p>
+
             <h2>Confidentiality</h2>
             <p>We expect that you will keep your participation in the ratings panel confidential and not reveal your identity to any radio or television broadcasters or media/advertising agencies, including via social network sites.</p>
             <h2>Enquiries</h2>
             <p>If you have any questions or concerns about how your privacy is protected at Numeris, please go to our website at www.numeris.ca or contact our Privacy Officer by mail at the following address: Privacy Officer, Numeris, 1500 Don Mills Road, 3rd Floor, Toronto, Ontario, M3B 3L7.</p>
 
+    <button type="submit" class="btn btn-primary" [routerLink]="['/login/login']">Back</button>
+           
+
         </div><!--end Row-->
+  
     </div><!--end Container-->
 </div><!--end Section-->
+

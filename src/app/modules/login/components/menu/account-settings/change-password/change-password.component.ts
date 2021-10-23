@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/modules/login/services/user.service';
 
 @Component({
   selector: 'app-change-password',
@@ -17,12 +18,11 @@ export class ChangePasswordComponent implements OnInit {
   showError = false;
   changePasswordForm: FormGroup = this.fb.group({});
   submitted = false;
-  showInvalidError = false;
-  userService: any;
+  //showInvalidError = false;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private authService: AuthService,
-    private router: Router) {
+    private router: Router,public userService:UserService) {
   }
   ngOnInit(): void {
     this.changePasswordForm = this.fb.group({
@@ -60,7 +60,9 @@ export class ChangePasswordComponent implements OnInit {
             localStorage.setItem('username', this.changePasswordFormControl.email.value);
             this.router.navigate(['/login/login']);
           }
+        
         });
+       
       }
     }
   }

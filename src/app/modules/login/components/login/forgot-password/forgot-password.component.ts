@@ -36,14 +36,11 @@ export class ForgotPasswordComponent implements OnInit {
     this.submitted = true;
     if (this.forgotForm.valid) {
       console.table(this.forgotForm.value);
-      let forgotPassword: ForgotPassword = {
-        email: this.forgotFormControl.email.value
-      };
-  
+      let forgotPassword = this.forgotFormControl.email.value;
       this.userService.initiateForgotPassword(forgotPassword).subscribe(response => {
         if (response) {
           this.showError = false;
-          this.router.navigate(['/welcome']);
+          this.router.navigate(['/login/login']);
         }
       }, err => this.showError = true,
         () => this.showError = true)

@@ -16,6 +16,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { DialogComponent } from './modules/material/components/dialog/dialog.component';
+import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { DialogComponent } from './modules/material/components/dialog/dialog.com
     FooterComponent,
     WelcomeComponent,
     Page401Component,
-    Page403Component
+    Page403Component,
+    PageNotfoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

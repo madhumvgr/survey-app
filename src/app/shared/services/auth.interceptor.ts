@@ -37,7 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
         }
         else {
             // not a login user, navigate to login page. 
-            this.router.navigateByUrl("/login/login");
+            this.router.navigateByUrl("login/login");
         }
 
         return next.handle(req).pipe(

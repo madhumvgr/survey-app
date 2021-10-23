@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { INFERRED_TYPE } from '@angular/compiler/src/output/output_ast';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() isMenu = true;
+
+  isLogin = false;
+
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
+    this.isLogin = localStorage.getItem("id_token") ? true : false;
   }
 
 }

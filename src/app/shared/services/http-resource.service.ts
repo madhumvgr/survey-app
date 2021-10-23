@@ -23,7 +23,7 @@ export class ResourceService<T extends Resource> {
 
     public customUpdate(url:any): Observable<T> {
         return this.httpClient
-            .put<T>(`${this.url}/${this.endpoint}/${url}`,{})
+            .put<T>(`${this.url}${this.endpoint}${url}`,{})
             .pipe(map(data => data as T));
     }
 

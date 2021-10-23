@@ -43,8 +43,8 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
 
   navToMessageDetail(message: any) {
     if (!message.isRead) {
-      this.notifService.markMessageRead(message.messageId).subscribe(res => {
-        this.router.navigateByUrl('notification/message/' + message.messageId);
+      this.notifService.markMessageRead(message.id).subscribe(res => {
+        this.router.navigateByUrl('notification/message/' + message.id);
       });
     }
   }

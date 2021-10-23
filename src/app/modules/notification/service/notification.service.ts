@@ -41,8 +41,8 @@ export class NotificationService extends ResourceService<Message> {
      });
   }
 
-  markMessageRead(messageId: any) {
-    return this.customUpdate('/read/' + messageId);
+  markMessageRead(id: any) {
+    return this.customUpdate('/read/' + id);
   }
 
 }

@@ -18,8 +18,8 @@ import { EmailNotificationsComponent } from './components/menu/account-settings/
 import { LoginHomeComponent } from './components/login-home/login-home.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     children: [
       {
         path: 'login',
@@ -35,20 +35,20 @@ const routes: Routes = [
       },
       { path: 'registerkey', component: RegisterkeyComponent },
       { path: 'registersuccess', component: RegisterSuccessComponent },
-      { path: 'account-settings', component: AccountSettingsComponent, canActivate:[AuthGuard]},
-      { path: 'change-password', component: ChangePasswordComponent, canActivate:[AuthGuard] },
+      { path: 'account-settings', component: AccountSettingsComponent, canActivate: [AuthGuard] },
+      { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard] },
       { path: 'finish-password-reset/:resetKey', component: FinishPasswordResetComponent },
-      { path: 'account-settings-privacy', component: PrivacyComponent,canActivate:[AuthGuard] },
+      { path: 'account-settings-privacy', component: PrivacyComponent, canActivate: [AuthGuard] },
       { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: 'email-notifications', component: EmailNotificationsComponent,canActivate:[AuthGuard]},
-      {path: 'keyhelp', component: KeyhelpComponent},
-      {path: 'privacy-policy', component: PrivacyPolicyComponent, canActivate:[AuthGuard]},
-      
+      { path: 'email-notifications', component: EmailNotificationsComponent, canActivate: [AuthGuard] },
+      { path: 'keyhelp', component: KeyhelpComponent },
+      { path: 'privacy-policy', component: PrivacyPolicyComponent, canActivate: [AuthGuard] },
+
       { path: '', pathMatch: 'full', redirectTo: 'registerkey' }
-     ],
+    ],
     component: LoginHomeComponent
-  }  
-  ];
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

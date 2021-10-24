@@ -63,7 +63,7 @@ export class AuthService {
   doLogout() {
     let removeToken = localStorage.removeItem('id_token');
     if (removeToken == null) {
-      this.router.navigate(['/login/login']);
+      this.router.navigate(['/login/registerkey']);
     }
   }
 

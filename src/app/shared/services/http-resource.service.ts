@@ -47,7 +47,7 @@ export class ResourceService<T extends Resource> {
 
     delete(id: number) {
         return this.httpClient
-            .delete(`${this.url}/${this.endpoint}/${id}`);
+            .delete(`${this.url}/124${this.endpoint}/${id}`);
     }
 
     // private convertData(data: any): T[] {

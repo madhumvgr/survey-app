@@ -11,6 +11,8 @@ import { Message } from "../model/message.model";
   providedIn: 'root'
 })
 export class NotificationService extends ResourceService<Message> {
+
+  message = [];
   
   constructor(public httpClient: HttpClient,public sharedService: SharedService) {
     super(
@@ -40,9 +42,13 @@ export class NotificationService extends ResourceService<Message> {
       this.sharedService.updateMessages(messagesList);
      });
   }
+  displaymessage() {
+   return this.message;
+  }
 
-  markMessageRead(id: any) {
-    return this.customUpdate('/read/' + id);
+  markMessageRead(message: any) {
+    this.message = message;
+    return this.customUpdate('/read/' + message.id);
   }
 
 }

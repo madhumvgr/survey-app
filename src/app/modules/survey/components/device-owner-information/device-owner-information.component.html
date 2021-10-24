@@ -2,10 +2,10 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="#.html">Survey hub</a></li>
-            <li class="breadcrumb-item"><a href="#.html">Household devices</a></li>
-            <li class="breadcrumb-item"><a href="#.html">New devices</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-devices']">Household devices</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/deviceList/New']">New devices</a></li>
             <li class="breadcrumb-item active" aria-current="page">Device name</li>
             <!--has to reflect devices name here-->
         </ol>

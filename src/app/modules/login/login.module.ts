@@ -17,6 +17,9 @@ import { FinishPasswordResetComponent } from './components/menu/account-settings
 import { KeyhelpComponent } from './components/registerkey/keyhelp/keyhelp.component';
 import { PrivacyPolicyComponent } from './components/login/forgot-password/privacy-policy/privacy-policy.component';
 import { EmailNotificationsComponent } from './components/menu/account-settings/email-notifications/email-notifications.component';
+import { LoginHomeComponent } from './components/login-home/login-home.component';
+import { SharedModule } from '../shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -35,13 +38,16 @@ import { EmailNotificationsComponent } from './components/menu/account-settings/
     KeyhelpComponent,
     PrivacyPolicyComponent,
     EmailNotificationsComponent,
+    LoginHomeComponent,
   ],
   imports: [
     CommonModule,
     LoginRoutingModule,
     RouterModule, 
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    TranslateModule 
   ]
 })
 export class LoginModule { }

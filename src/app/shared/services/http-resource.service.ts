@@ -27,11 +27,11 @@ export class ResourceService<T extends Resource> {
             .pipe(map(data => data as T));
     }
 
-    // read(id: number): Observable<T> {
-    //     return this.httpClient
-    //         .get(`${this.url}/${this.endpoint}/${id}`)
-    //         .pipe(map((data: any) => this.serializer.fromJson(data) as T));
-    // }
+    read(id: string): Observable<T> {
+        return this.httpClient
+            .get(`${this.url}${this.endpoint}/${id}`)
+            .pipe(map((data: any) => data ));
+    }
 
     public customRead(url: string): Observable<any> {
         return this.httpClient

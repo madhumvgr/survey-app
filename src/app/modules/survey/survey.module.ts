@@ -11,6 +11,8 @@ import { DeviceInformationComponent } from './components/device-information/devi
 import { DeviceOwnerInformationComponent } from './components/device-owner-information/device-owner-information.component';
 import { MultiUserListComponent } from './components/multi-user-list/multi-user-list.component';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { SurveyHomeComponent } from './components/survey-home/survey-home.component';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [  SurveyComponent,
     HouseholdDevicesComponent,
@@ -19,18 +21,19 @@ import { AuthService } from 'src/app/shared/services/auth.service';
     DeviceInformationComponent,
     DeviceOwnerInformationComponent,
     MultiUserListComponent,
+    SurveyHomeComponent
   ],
   imports: [
-    CommonModule,
     SurveyRoutingModule,
-    RouterModule, 
+    CommonModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class SurveyModule { 
-   constructor (public authService:AuthService){
-     this.authService.isAuthenticatedUser(true);
-   }
+  //  constructor (public authService:AuthService){
+  //    this.authService.isAuthenticatedUser(true);
+  //  }
   
 }

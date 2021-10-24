@@ -6,15 +6,18 @@ import { RouterModule } from '@angular/router';
 import { ActionComponent } from './components/message/action/action.component';
 import { MessageCenterComponent } from './components/message-center/message-center.component';
 import { MessageComponent } from './components/message/message.component';
+import { NotificationHomeComponent } from './notification-home/notification-home.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [  MessageComponent, MessageCenterComponent, ActionComponent ],
+  declarations: [  MessageComponent, MessageCenterComponent, ActionComponent, NotificationHomeComponent ],
   imports: [
     CommonModule,
     NotificationRoutingModule,
     RouterModule, 
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class NotificationModule { }

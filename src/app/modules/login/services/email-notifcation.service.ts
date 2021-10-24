@@ -10,21 +10,11 @@ import { User } from "../model/user.model";
 @Injectable({
   providedIn: 'root'
 })
-export class DeviceService extends ResourceService<User> {
+export class EmailNotificationService extends ResourceService<any> {
     constructor( public httpClient: HttpClient) {
       super(
         httpClient,
         environment.host,
-        '/api/deviceInfo');
-    }
-
-    public getCustomRequest(url:any): Observable<any>{
-      return this.httpClient
-      .get(`${environment.host}${url}`)
-      .pipe(map(data => data));
-    }
-    
-    public getDeviceInfo(deviceId:any){
-         return this.getCustomRequest(DeviceConstants.deviceInfo+deviceId);
+        'api/email-notification-settings');
     }
   }

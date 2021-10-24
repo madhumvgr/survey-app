@@ -31,41 +31,41 @@
             <h2>Select your preferences below<span class="h2-separator"></span></h2>
         </div><!--end Row-->
         <div class="row">
-            <form action="submit"  (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+            <form [formGroup]="emailNotifForm" >
             <div class="col-md-6" >
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
                     <p>Keep me informed about new features and company-related news.</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" ng-model name="Radio1" id="Radio1">
+                        <input formControlName="companyNews" class="form-check-input" type="radio"name="companyNews" id="Radio1" value="true"/>
                         <label class="form-check-label" for="Radio1">Yes</label>
                         
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" ng-model name="Radio1" id="Radio2" >
+                        <input formControlName="companyNews" class="form-check-input" type="radio" name="companyNews" id="Radio2" value="false"/>
                         <label class="form-check-label" for="Radio2">No</label>
                         
                     </div>
                     <p>I’d like to receive promotional and special offers.</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" ng-model="question2.name" name="Radio2" id="Radio3">
+                        <input formControlName="promotionOffers" class="form-check-input" type="radio" name="promotionOffers" id="Radio3" value="true"/>
                         <label class="form-check-label" for="Radio3">Yes</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" ng-model="question2.name" name="Radio2" id="Radio4" >
+                        <input formControlName="promotionOffers" class="form-check-input" type="radio" name="promotionOffers" id="Radio4" value="false"/>
                         <label class="form-check-label" for="Radio4">No</label>
                     </div>
                     <p>Notify me each time there’s a login into my account.</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" ng-model="question3.name" name="Radio3"  id="Radio5">
-                        <label class="form-check-label" for="Radio5">Yes</label>
+                        <input formControlName="loginEvent" class="form-check-input" type="radio" name="loginEvent"  id="loginEvent1" value="true"/>
+                        <label class="form-check-label" for="loginEvent1">Yes</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" ng-model="question3.name" name="Radio3" id="Radio6" >
-                        <label class="form-check-label" for="Radio6">No</label>
+                        <input formControlName="loginEvent" class="form-check-input" type="radio" name="loginEvent" id="loginEvent2" value="false"/>
+                        <label class="form-check-label" for="loginEvent2">No</label>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-secondary" [routerLink]="['/login/account-settings']">Cancel</button>
-                <button type="submit" class="btn btn-primary ms-3">Update</button>
+                <button type="button" (click)= "saveAndExit()" class="btn btn-primary ms-3">Update</button>
             </div><!--end Col-->
             </form>
         </div><!--end Row-->

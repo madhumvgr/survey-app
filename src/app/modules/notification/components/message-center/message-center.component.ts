@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared/services/shared.service';
@@ -15,7 +15,11 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
   messages: any;
   subscription: any = new Subscription();
 
-  constructor(private notifService: NotificationService, private sharedService: SharedService, private router: Router, private zone: NgZone) {
+  constructor(private notifService: NotificationService, 
+    private sharedService: SharedService, 
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router, 
+    private zone: NgZone) {
 
   }
   ngOnDestroy(): void {
@@ -27,6 +31,7 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
     this.subscription.add(this.sharedService.getMessagesObservable().subscribe(data => {
       this.zone.run(() => {
         this.messages = data;
+        this.changeDetectorRef.detectChanges();
       })
     }));
   }

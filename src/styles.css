@@ -370,4 +370,15 @@ input {
 /* Footer background */
 /* background-color: #414141; */
 
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
 
+.navbar .navbar-collapse {
+  text-align: center;
+}
+ul.nav.navbar-nav .dropdown.open .dropdown-toggle{
+color: red;
+background-color: green;
+}

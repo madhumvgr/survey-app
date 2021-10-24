@@ -24,14 +24,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Message Subject Line</h1>
-                <p>Sent on: Nov 2, 2021 1:25 PM</p>
-                <p>
-                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quidem eveniet velit nisi accusamus ex commodi vitae earum sit iure, pariatur magnam? Ducimus, rem autem? Blanditiis modi expedita doloremque vero nam illum delectus, velit enim illo, harum nobis at dolorum iure adipisci nulla nostrum iste fugit sequi. Libero, nesciunt aliquam. Cum, ea sed excepturi modi voluptatum voluptatem neque molestiae! Voluptatibus possimus perferendis minus accusantium ad, saepe animi quia porro? Autem sed provident dolores assumenda eligendi perferendis unde aliquid amet expedita nemo necessitatibus quam sunt, eaque quaerat facere, illo ipsam vel nisi vero totam facilis doloremque cumque explicabo. Quasi, ipsam placeat.
-                </p>
+                <h1>{{displayMessage?.messageHeader}}</h1>
+                <p>{{displayMessage?.messageDate}}</p>
+                <p>{{displayMessage?.messageContent}}</p>
             </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-secondary">Back</button>
+            <div class="col-12" >
+                <button type="submit" class="btn btn-primary pr-2" (click) = "deleteMessage(displayMessage?.id)">Delete</button>
+                <button type="submit" class="btn btn-secondary"  [routerLink]="['/notification']">Back</button>
             </div>
         </div><!--end Row-->
     </div><!--end Container-->

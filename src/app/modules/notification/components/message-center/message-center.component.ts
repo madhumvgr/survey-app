@@ -26,7 +26,6 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
     this.notifService.getMessageList();
     this.subscription.add(this.sharedService.getMessagesObservable().subscribe(data => {
       this.zone.run(() => {
-        console.log(data);
         this.messages = data;
       })
     }));
@@ -42,15 +41,13 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
   }
 
   navToMessageDetail(message: any) {
-    if (!message.isRead) {
-      this.notifService.markMessageRead(message.id).subscribe(res => {
-        this.router.navigateByUrl('notification/message/' + message.id);
-      });
-    }
-  }
-
-  deleteMessage(messageId: any) {
-    this.notifService.delete(messageId).subscribe(res =>
-      console.log("message deleted" + messageId));
+    // if (!message.isRead) {
+    //   this.notifService.markMessageRead(message.id).subscribe(res => {
+    //     this.router.navigateByUrl('notification/message/' + message.id);
+    //   });
+    // }
+      this.notifService.markMessageRead(message).subscribe(res => {
+      this.router.navigateByUrl('notification/message/' + message.id);
+      })
   }
 }

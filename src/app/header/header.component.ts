@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { AuthService } from '../shared/services/auth.service';
 export class HeaderComponent implements OnInit {
 
   @Input() isMenu = true;
-  constructor(public authService:AuthService) { }
+  isFrance=false;
+  constructor(public authService:AuthService,private translate: TranslateService) { 
+    this.isFrance = localStorage.getItem("lang") === "fr";
+  }
 
   ngOnInit(): void {
   }
@@ -18,4 +22,13 @@ export class HeaderComponent implements OnInit {
     this.authService.doLogout();
   }
 
+  changeLanguage(lang: string){
+    if(lang ==='fr'){
+      this.isFrance=true;
+    }else{
+      this.isFrance= false;
+    }
+    localStorage.setItem("lang",lang);
+    this.translate.setDefaultLang(lang);
+  }
 }

@@ -6,16 +6,16 @@ import { MessageCenterComponent } from './components/message-center/message-cent
 import { NotificationHomeComponent } from './notification-home/notification-home.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     children: [
-      {path: 'messages', component: MessageCenterComponent},
-      {path: 'message/:messageId', component: MessageComponent},
-      {path: 'messages/message', component: MessageComponent},
-      {path: 'messages/action', component: ActionComponent},
-      {path: '', pathMatch: 'full', redirectTo: 'messages'}
+      { path: 'messages', component: MessageCenterComponent },
+      { path: 'message/:messageId', component: MessageComponent },
+      { path: 'messages/message', component: MessageComponent },
+      { path: 'messages/action', component: ActionComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
-    component:NotificationHomeComponent
+    component: NotificationHomeComponent
   }
 ];
 

@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'project';
 
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('fr');
+    translate.setDefaultLang('en');
+    if(!localStorage.getItem("lang"))
+    localStorage.setItem("lang","en");
   }
 }

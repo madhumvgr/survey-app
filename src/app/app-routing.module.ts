@@ -18,6 +18,7 @@ const routes: Routes = [
         canActivate: [AuthGuard] 
       },
       { path: 'login', loadChildren: () => import(`./modules/login/login.module`).then(m => m.LoginModule) },
+      { path: 'account-settings', loadChildren: () => import(`./modules/account-setting/account-setting.module`).then(m => m.AccountSettingModule) },
       { path: 'survey', loadChildren: () => import(`./modules/survey/survey.module`).then(m => m.SurveyModule) ,canActivate: [AuthGuard] },
       { path: 'notification', loadChildren: () => import(`./modules/notification/notification.module`).then(m => m.NotificationModule),canActivate: [AuthGuard]  },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }

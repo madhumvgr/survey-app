@@ -13,6 +13,7 @@ const routes: Routes = [
       { path: 'message/:messageId', component: MessageComponent },
       { path: 'messages/message', component: MessageComponent },
       { path: 'messages/action', component: ActionComponent },
+      {path: 'messages/action/:messageId', component: ActionComponent},
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
     component: NotificationHomeComponent

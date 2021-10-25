@@ -2,5 +2,8 @@
     "loginPage": {
         "title": "Login",
         "text": "Welcome! You’re about to shape the future of Canadian broadcasting. We use cookies to improve your experience! By continuing, you accept our."
+    },
+    "welcomePage":{
+        "title":"Welcome"
     }
 }

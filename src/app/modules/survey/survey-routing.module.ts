@@ -15,22 +15,23 @@ import { SurveyComponent } from './components/survey/survey.component';
 
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     children: [
-      {path: 'survey', component: SurveyComponent},
-      {path: 'privacy-policy', component: PrivacyPolicyComponent},
-      {path: 'deviceList/:state', component: DeviceListComponent},
-      {path: '/survey/deviceList/New', component: DeviceListComponent},
-      {path: 'deviceInformation/:state/:deviceId', component: DeviceInformationComponent},
-      {path: 'deviceOwnerInformation/:state/:deviceId', component: DeviceOwnerInformationComponent},
-      {path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent},
-      {path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent},
-      {path: 'deviceGeneres/:state/:deviceId', component: DeviceGenresComponent},
-      {path: 'household-devices', component: HouseholdDevicesComponent},
-      {path:'household-devices/not-in-use-devices', component: NotInUseDevicesComponent}
+      { path: 'survey', component: SurveyComponent },
+      { path: 'privacy-policy', component: PrivacyPolicyComponent },
+      { path: 'deviceList/:state', component: DeviceListComponent },
+      { path: '/survey/deviceList/New', component: DeviceListComponent },
+      { path: 'deviceInformation/:state/:deviceId', component: DeviceInformationComponent },
+      { path: 'deviceOwnerInformation/:state/:deviceId', component: DeviceOwnerInformationComponent },
+      { path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent },
+      { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
+      { path: 'deviceGeneres/:state/:deviceId', component: DeviceGenresComponent },
+      { path: 'household-devices', component: HouseholdDevicesComponent },
+      { path: 'household-devices/not-in-use-devices', component: NotInUseDevicesComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
-    component:SurveyHomeComponent
+    component: SurveyHomeComponent
   },
 ];
 

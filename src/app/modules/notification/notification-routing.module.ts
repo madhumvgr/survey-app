@@ -6,8 +6,8 @@ import { MessageCenterComponent } from './components/message-center/message-cent
 import { NotificationHomeComponent } from './notification-home/notification-home.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     children: [
       {path: 'messages', component: MessageCenterComponent},
       {path: 'message/:messageId', component: MessageComponent},
@@ -16,7 +16,7 @@ const routes: Routes = [
       {path: 'messages/action/:messageId', component: ActionComponent},
       {path: '', pathMatch: 'full', redirectTo: 'messages'}
     ],
-    component:NotificationHomeComponent
+    component: NotificationHomeComponent
   }
 ];
 

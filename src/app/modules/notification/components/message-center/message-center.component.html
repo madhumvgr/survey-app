@@ -24,7 +24,7 @@
 
             <h2>{{messages?.actions?.length}} Action(s) required<span class="h2-separator"></span></h2>
 
-             <a *ngFor="let action of messages?.actions" [routerLink]="['message']">
+             <a *ngFor="let action of messages?.actions" (click)="navToMessageDetail(action)">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons p-3 icon-action-required  d-flex icon-red align-items-center h-100">
                         <div class="h1">warning_amber</div>

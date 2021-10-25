@@ -9,11 +9,12 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'messages', component: MessageCenterComponent },
-      { path: 'message/:messageId', component: MessageComponent },
-      { path: 'messages/message', component: MessageComponent },
-      { path: 'messages/action', component: ActionComponent },
-      { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
+      {path: 'messages', component: MessageCenterComponent},
+      {path: 'message/:messageId', component: MessageComponent},
+      {path: 'messages/message', component: MessageComponent},
+      {path: 'messages/action', component: ActionComponent},
+      {path: 'messages/action/:messageId', component: ActionComponent},
+      {path: '', pathMatch: 'full', redirectTo: 'messages'}
     ],
     component: NotificationHomeComponent
   }

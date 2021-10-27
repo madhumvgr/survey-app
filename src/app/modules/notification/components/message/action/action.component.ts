@@ -14,9 +14,8 @@ export class ActionComponent implements OnInit {
   subscription: any = new Subscription();
   displayAction : any;
 
-
   constructor(private notifService: NotificationService, private router: Router, private sharedService: SharedService, private zone: NgZone) {
-
+    
   }
 
   ngOnInit(): void {

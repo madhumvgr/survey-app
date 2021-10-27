@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { SharedModule } from './modules/shared/shared.module';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
       useClass: AuthInterceptor,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
+    {provide: LocationStrategy,
+      useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
@@ -66,5 +69,5 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 export class AppModule { }
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

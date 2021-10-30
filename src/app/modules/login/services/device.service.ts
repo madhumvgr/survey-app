@@ -27,4 +27,9 @@ export class DeviceService extends ResourceService<User> {
     public getDeviceInfo(deviceId:any){
          return this.getCustomRequest(DeviceConstants.deviceInfo+deviceId);
     }
+
+    public updateDeviceMember(item:any){
+      return this.customCreate(item,DeviceConstants.deviceOwnerByDeviceId);
+
+    }
   }

@@ -21,6 +21,13 @@ export class ResourceService<T extends Resource> {
             .pipe(map(data => data));
     }
 
+    public customCreate(item: any,url: string): Observable<any> {
+        return this.httpClient
+            .post(`${this.url}${url}`, item)
+            .pipe(map(data => data));
+    }
+
+
     public customUpdate(url:any): Observable<T> {
         return this.httpClient
             .put<T>(`${this.url}${this.endpoint}${url}`,{})

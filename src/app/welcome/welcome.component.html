@@ -33,7 +33,7 @@
 <section class="px-3 pb-4">
 <div class="container">
     <div class="row">
-        <h1>{{ 'welcomePage.title' | translate }}, Joe Public</h1>
+        <h1>{{ 'welcomePage.title' | translate }}, {{firstName}} {{lastName}}</h1>
         <p>
             Welcome to the Survey Hub! Here, you’ll find surveys that are quick and easy.  We ask only basic questions to understand the type of entertainment programs you enjoy, and the devices you prefer watching them on. Be assured that
             <a [routerLink]="['/login/privacy-policy']">your data and privacy are always protected.</a>

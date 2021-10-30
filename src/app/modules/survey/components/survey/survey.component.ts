@@ -15,13 +15,13 @@ export class SurveyComponent implements OnInit {
   constructor(private router: Router, private deviceService: DeviceService) { }
 
   ngOnInit(): void {
-    this.deviceService.getCustomRequest(DeviceConstants.deviceDetails).subscribe(response => {
-      if (response) {
-        this.showError = false;
-        this.panelistType = response['panelistType'];
-      }
-    }, err => this.showError = true,
-      () => this.showError = true);
+    // this.deviceService.getCustomRequest(DeviceConstants.deviceDetails).subscribe(response => {
+    //   if (response) {
+    //     this.showError = false;
+    //     this.panelistType = response['panelistType'];
+    //   }
+    // }, err => this.showError = true,
+    //   () => this.showError = true);
   }
 
 }

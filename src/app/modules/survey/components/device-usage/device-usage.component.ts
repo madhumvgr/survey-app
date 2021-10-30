@@ -16,7 +16,7 @@ export class DeviceUsageComponent implements OnInit {
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
   }
-  continueNavigate(){
+  continueNavigate(){ 
     this.router.navigateByUrl('survey/deviceGeneres/'+this.deviceState+'/'+this.deviceId);
   }
 

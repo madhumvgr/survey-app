@@ -29,9 +29,9 @@ export class DeviceOwnerInformationComponent implements OnInit {
   ngOnInit(): void {
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
-    this.deviceService.getCustomRequest(DeviceConstants.deviceOwnerByDeviceId + this.deviceId).subscribe(response => {
+    this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
       if (response) {
-        this.ownerList = [response];
+        this.ownerList = response;
       }
     });
 

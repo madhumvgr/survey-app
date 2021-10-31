@@ -6,7 +6,8 @@
             <li class="breadcrumb-item"><a href="#.html">Survey hub</a></li>
             <li class="breadcrumb-item"><a href="#.html">Household devices</a></li>
             <li class="breadcrumb-item"><a href="#.html">New devices</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Device name</li><!--has to reflect devices name here-->
+            <li class="breadcrumb-item active" aria-current="page">Device name</li>
+            <!--has to reflect devices name here-->
         </ol>
     </div>
 </nav>
@@ -20,15 +21,21 @@
             <div class="col-12">
                 <h1>Multiple Users</h1>
                 <p>
-                    In this section, we wish to understand the approximate share (expressed in percentages) each household member has in watching this TV every month. 
+                    In this section, we wish to understand the approximate share (expressed in percentages) each
+                    household member has in watching this TV every month.
                 </p>
                 <p>
-                    Let’s consider an example. Three household members – a parent and 2 children – share a Smart TV. So, their shared device usage can be entered as: Parent=30%, Child  1 = 50%, Child 2 = 20%. 
+                    Let’s consider an example. Three household members – a parent and 2 children – share a Smart TV. So,
+                    their shared device usage can be entered as: Parent=30%, Child 1 = 50%, Child 2 = 20%.
                 </p>
-            </div><!--end col-->
-        </div><!--end Row-->
-    </div><!--end Container-->
-</section><!--end Section-->
+            </div>
+            <!--end col-->
+        </div>
+        <!--end Row-->
+    </div>
+    <!--end Container-->
+</section>
+<!--end Section-->
 
 <section class="px-3 pb-4">
     <div class="container">
@@ -42,44 +49,57 @@
                     <p><strong>Tips:</strong></p>
                     <ul>
                         <li>Enter an approximate percentage value for each member.</li>
-                        <li>If a member hasn’t viewed the device at all in the past month, enter 0% against their name.</li>
+                        <li>If a member hasn’t viewed the device at all in the past month, enter 0% against their name.
+                        </li>
                         <li>The total for all members should add up to 100.</li>
                     </ul>
 
                     <div class="row g-0">
+                        <form [formGroup]="multiUserListForm">
+                            <!-- Multi User Card -->
+                            <div formArrayName="arr" *ngFor="let a of controls; let i = index"
+                                class="col-sm-12 col-md-6 multiple-users-card mb-3 d-flex align-items-center">
+                                <div [formGroupName]="i" class="ps-3 py-3 col-6 d-flex align-items-center">
+                                    <i class="material-icons d-flex h-100">
+                                        <div class="h4 m-0">person</div>
+                                    </i>
+                                    <p class="ps-2 mb-0 description">
+                                        <strong>{{controls[i].value["memberName"]}}</strong></p>
+                                </div>
 
-                        <!-- Multi User Card -->
-                        <div *ngFor="let mem of memberList" class="col-sm-12 col-md-6 multiple-users-card mb-3 d-flex align-items-center">
-
-                            <div class="ps-3 py-3 col-6 d-flex align-items-center">
-                                <i class="material-icons d-flex h-100">
-                                    <div class="h4 m-0">person</div>
-                                </i>
-                                <p class="ps-2 mb-0 description"><strong>{{mem?.memberName}}</strong></p>
+                                <div [formGroupName]="i" class="col-6 d-flex justify-content-end pe-3">
+                                    <select class="form-select multi-user-select" formControlName="usePercentage"
+                                        aria-label="Select percentage">
+                                        <option selected>0%</option>
+                                        <option value="25">25%</option>
+                                        <option value="50">50%</option>
+                                        <option value="75">75%</option>
+                                        <option value="100">100%</option>
+                                    </select>
+                                </div>
                             </div>
-                            
-                            <div class="col-6 d-flex justify-content-end pe-3">
-                                <select class="form-select multi-user-select" aria-label="Select percentage" [value]=mem.usePercentage>
-                                    <option selected>0%</option>
-                                    <option value="25">25%</option>
-                                    <option value="50">50%</option>
-                                    <option value="75">75%</option>
-                                    <option value="100">100%</option>
-                                </select>
-                            </div>
-                        </div><!--end Multi User Card-->
-
-                    </div><!--End Row-->
-                </div><!--End Rounded backgorund-->
+                            <!--end Multi User Card-->
+                        </form>
+                    </div>
+                    <div class="error" *ngIf="showPercentageError"> 
+                        Percentage should not be more than 100. 
+                    </div>
+                    <!--End Row-->
+                </div>
+                <!--End Rounded backgorund-->
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
                     <button type="submit" class="btn btn-dark">Back</button>
-                    <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                    <button type="button" (click)="saveAndExit()" class="btn btn-secondary ms-md-3">Save & Exit</button>
                     <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue</button>
-                </div> 
-               
-            </div><!--end Col-->
-        </div><!--end Row-->
+                </div>
 
-    </div><!--end Container-->
-</section><!--end Section--> 
+            </div>
+            <!--end Col-->
+        </div>
+        <!--end Row-->
+
+    </div>
+    <!--end Container-->
+</section>
+<!--end Section-->

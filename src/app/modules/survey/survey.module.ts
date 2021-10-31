@@ -13,6 +13,7 @@ import { MultiUserListComponent } from './components/multi-user-list/multi-user-
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SurveyHomeComponent } from './components/survey-home/survey-home.component';
 import { SharedModule } from '../shared/shared.module';
+import { DeviceUsageComponent } from './components/device-usage/device-usage.component';
 @NgModule({
   declarations: [  SurveyComponent,
     HouseholdDevicesComponent,
@@ -21,7 +22,8 @@ import { SharedModule } from '../shared/shared.module';
     DeviceInformationComponent,
     DeviceOwnerInformationComponent,
     MultiUserListComponent,
-    SurveyHomeComponent
+    SurveyHomeComponent,
+    DeviceUsageComponent
   ],
   imports: [
     SurveyRoutingModule,

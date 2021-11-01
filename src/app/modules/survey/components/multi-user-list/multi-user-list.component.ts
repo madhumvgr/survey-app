@@ -24,8 +24,11 @@ export class MultiUserListComponent implements OnInit {
   deviceId: any;
   deviceState: any;
   multiUserListForm: FormGroup = this.fb.group({});
-  items: FormArray | undefined;
+  multiUserCoViewerForm: FormGroup = this.fb.group({});
+  members: FormArray | undefined;
+  coViewers: FormArray | undefined;
   controls: AbstractControl[] = [];
+  coViewerControls: AbstractControl[] = [];
   showPercentageError: boolean = false;
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService) { }
@@ -34,8 +37,11 @@ export class MultiUserListComponent implements OnInit {
     this.multiUserListForm = this.fb.group({
       arr: this.fb.array([])
     })
+    this.multiUserCoViewerForm = this.fb.group({
+      arr: this.fb.array([])
+    })
     this.controls = (this.multiUserListForm.get('arr') as FormArray).controls;
-
+    this.coViewerControls = (this.multiUserCoViewerForm.get('arr') as FormArray).controls;
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
@@ -45,11 +51,27 @@ export class MultiUserListComponent implements OnInit {
         });
       }
     });
+
+    this.deviceService.getCustomRequest(DeviceConstants.deviceCoviewer + this.deviceId).subscribe(response => {
+      if (response) {
+        response.forEach((mem: any) => {
+          this.addMemberCoviewerPercentage(mem);
+        });
+      }
+    });
   }
 
   addMemberPercentage(member: Member) {
-    this.items = this.multiUserListForm.get('arr') as FormArray;
-    this.items.push(this.fb.group({
+    this.members = this.multiUserListForm.get('arr') as FormArray;
+    this.members.push(this.fb.group({
+      usePercentage: member.usePercentage,
+      memberName: member.memberName
+    }))
+  }
+
+  addMemberCoviewerPercentage(member: Member) {
+    this.coViewers = this.multiUserCoViewerForm.get('arr') as FormArray;
+    this.coViewers.push(this.fb.group({
       usePercentage: member.usePercentage,
       memberName: member.memberName
     }))
@@ -65,6 +87,14 @@ export class MultiUserListComponent implements OnInit {
           this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
         }
       );
+
+      console.log(this.coViewerControls);
+      this.deviceService.updateDeviceMemberWithPercentage(this.coViewerControls.values).subscribe(
+        res => {
+          this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+        }
+      );
+
       this.showPercentageError = false;
     }
   }
@@ -83,6 +113,11 @@ export class MultiUserListComponent implements OnInit {
       control => {
         sumPercentage = sumPercentage + parseInt(control.value["usePercentage"]);
       })
+
+    this.coViewerControls.forEach(
+        control => {
+          sumPercentage = sumPercentage + parseInt(control.value["usePercentage"]);
+        })
      return sumPercentage > 100? true: false;
   }
 

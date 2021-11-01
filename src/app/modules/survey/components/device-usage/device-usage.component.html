@@ -59,14 +59,16 @@
                         </h3>
                         <p class="text-truncate">Status: <span>{{mem.memberSurveyStatus}}</span></p>
                     </div>
-                    <button type="button" class="btn btn-light me-3">Start</button>
+                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Not Started'" (click) = "continueNavigate() ">Start</button>
+                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'In Progress'" (click) = "continueNavigate() ">Continue</button>
+                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Completed'" (click) = "continueNavigate() ">Edit</button>
                 </div>
 
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
                     <button type="button" class="btn btn-dark">Back</button>
                     <button type="button" class="btn btn-secondary ms-md-3">Save & Exit</button>
-                    <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue</button>
+                    <button type="button" (click)="submit()" class="btn btn-primary ms-md-3">Submit</button>
                 </div>
 
             </div>

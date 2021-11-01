@@ -13,6 +13,7 @@ export class DeviceUsageComponent implements OnInit {
   deviceId : any;
   deviceState: any;
   memberList: any;
+  button = 'Edit';
   constructor(private Activatedroute:ActivatedRoute,private router: Router,private deviceService: DeviceService) { }
 
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class DeviceUsageComponent implements OnInit {
   }
   continueNavigate(){ 
     this.router.navigateByUrl('survey/deviceGeneres/'+this.deviceState+'/'+this.deviceId);
+  }
+
+  submit() {
+    
   }
 
 

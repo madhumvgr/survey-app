@@ -24,6 +24,7 @@ export class DeviceOwnerInformationComponent implements OnInit {
   deviceState: any;
   ownerList: Owner[] = [];
   ownerSelect: any = "";
+  error: boolean = false;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute,
     private router: Router, private deviceService: DeviceService) { }
@@ -39,6 +40,8 @@ export class DeviceOwnerInformationComponent implements OnInit {
         this.ownerList = response;
       }
     });
+
+    
   }
 
   // convenience getter for easy access to form fields
@@ -46,6 +49,9 @@ export class DeviceOwnerInformationComponent implements OnInit {
 
   continueNavigate() {
     let selectedOwner = this.deviceInfoFormControl["selectedOwner"];
+    if(selectedOwner.value == '') {
+     this.error = true;
+    }
     console.log(selectedOwner.value);
     let selectedOwn:any;
     selectedOwn=this.ownerList.filter( owner => owner.memberNo === selectedOwner.value)[0];

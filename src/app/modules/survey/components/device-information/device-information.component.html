@@ -7,7 +7,7 @@
             <li class="breadcrumb-item"><a [routerLink] = "['/welcome']">Home</a></li>
             <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
             <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-devices']">Household devices</a></li>
-            <li class="breadcrumb-item"><a [routerLink] = "['/survey/deviceList/New']">New devices</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/deviceList/'+deviceState]">{{deviceState}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{deviceId}}</li>
             <!--has to reflect devices name here-->
         </ol>
@@ -163,7 +163,7 @@
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
                     <button type="submit" class="btn btn-dark">Back</button>
                     <button type="button" (click)="saveAndExit()" class="btn btn-secondary ms-md-3">Save & Exit</button>
-                    <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue Button</button>
+                    <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue</button>
                 </div>
 
             </div>

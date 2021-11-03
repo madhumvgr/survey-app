@@ -118,7 +118,7 @@ export class MultiUserListComponent implements OnInit {
         control => {
           sumPercentage = sumPercentage + parseInt(control.value["usePercentage"]);
         })
-     return sumPercentage > 100? true: false;
-  }
+    return sumPercentage != 100? true: false;
+      }
 
 }

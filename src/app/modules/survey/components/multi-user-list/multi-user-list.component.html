@@ -2,10 +2,10 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="#.html">Survey hub</a></li>
-            <li class="breadcrumb-item"><a href="#.html">Household devices</a></li>
-            <li class="breadcrumb-item"><a href="#.html">New devices</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">Household devices</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceState}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">Device name</li>
             <!--has to reflect devices name here-->
         </ol>
@@ -79,6 +79,9 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="error text-danger" *ngIf="showPercentageError">
+                                Percentage always equals to 100%.
+                            </div>
                             <!--end Multi User Card-->
                         </form>
                     </div>
@@ -112,13 +115,14 @@
                             </div>
                         </div>
                         <!--end Multi User Card-->
+                        <div class="error text-danger" *ngIf="showPercentageError">
+                            Percentage always equals to 100%.
+                        </div>
                     </form>
                 </div>
 
                 <!--End Row-->
-                <div class="error" *ngIf="showPercentageError">
-                    Percentage should not be more than 100.
-                </div>
+            
                 <!--End Rounded backgorund-->
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">

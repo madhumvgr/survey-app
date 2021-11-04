@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Account Settings</h1>
+                <h1>Account settings</h1>
                 <p>
                     Use your account settings to change your password, adjust your email notifications, or learn about our Privacy Policy. 
                 </p>
@@ -29,34 +29,37 @@
         <div class="row g-4">
             <!--Card-->
             <div class="col-md-4">
-                <div class="card shadow-sm rounded border-0">
-                    <div class="card-body">
-                    <h5 class="card-title">Change password</h5>
+                <div class="card">
+                    <div class="card-body shadow-sm rounded border-0">
+                    <h5 class="card-title"><b>Change password</b></h5>
                     <p class="card-text">Changing your password is easy.</p>
                     <a [routerLink]="['/account-settings/change-password']" class="btn btn-light">Update</a>
                     </div>
                 </div>
             </div>
             <!--Card-->
+            
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body shadow-sm rounded border-0">
-                    <h5 class="card-title">Email notifications</h5>
+                    <h5 class="card-title"><b>Email notifications</b></h5>
                     <p class="card-text">Choose the type of emails you want to receive.</p>
-                    <a [routerLink]="['/account-settings/email-notifications']" class="btn btn-light">Update</a>
+                    <a [routerLink]="['/account-settings/email-notifications']" class="btn btn-light">Continue</a>
                     </div>
                 </div>
             </div>
+            
              <!--Card-->
              <div class="col-md-4">
-                <div class="card shadow-sm rounded border-0">
-                    <div class="card-body">
-                    <h5 class="card-title">Privacy policy</h5>
+                <div class="card ">
+                    <div class="card-body shadow-sm rounded border-0">
+                    <h5 class="card-title"><b>Privacy policy</b></h5>
                     <p class="card-text">Protecting your privacy is our top priority.</p>
-                    <a [routerLink]="['/account-settings/account-settings-privacy']" class="btn btn-light">Update</a>
+                    <a [routerLink]="['/account-settings/account-settings-privacy']" class="btn btn-light">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
     </div><!--end Container-->
-</section><!--end Section-->     
+</section><!--end Section-->  
+<section class="px-3 pb-4"></section>   

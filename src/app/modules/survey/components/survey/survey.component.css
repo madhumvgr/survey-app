@@ -1,0 +1,11 @@
+.y{
+    margin-top: -20px;
+}
+.button{
+  background-color: transparent;
+  border:none;
+     border:solid 2px black;
+     border-radius: 5px;
+     background: rgba(255, 255, 255, 0);
+  font-weight: 600;
+}

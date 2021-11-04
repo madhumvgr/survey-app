@@ -1,42 +1,42 @@
-
+<!--h1 Intro Section-->
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row">
-            <h1></h1>
-            <p>
-                Please enter your email below to resend the One Time Password(OTP).
-            </p>
+            <div class="col-12">
+                <h1>Connect with Numeris</h1>
+                <p>
+                    Problem with your account? Something not right? Use this form to tell us more about the issue. Within 1 business day, our team will reply to the email you’ve registered with us. 
+                </p>
+            </div><!--end col-->
         </div><!--end Row-->
     </div><!--end Container-->
 </section><!--end Section-->
 
-<!-- Login Form-->
 <section class="px-3 pb-4">
     <div class="container">
-        <div class="row">
-            <form class="col-md-6" [formGroup]="helpForm" (ngSubmit)="onSubmit()">
-                <div class="bg-white shadow-sm rounded p-4">
-                    <div class="mb-3">
-                        <label for="inputEmail" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="inputEmail" 
-                        aria-describedby="emailHelp" formControlName="email">
-                        <span class="text-danger"
-                                *ngIf="(helpFormControl.email.touched || submitted) && helpFormControl.email.errors?.required">
-                                Email is required
-                            </span>
-                            <span class="text-danger"
-                                *ngIf="helpFormControl.email.touched && helpFormControl.email.errors?.email">
-                                Enter a valid email address
-                            </span>
-                    </div>
-                    <button type="submit" class="btn btn-primary" [routerLink]="['/login/registerkey']">Resend</button>
-                    <span *ngIf="showInvalidError" class="text-danger">
-                        Invalid Email. 
-                     </span>
+        <div class="row pb-4">
+            <h2>How can we help?<span class="h2-separator"></span></h2>
+            <div class="col-12 mt-3">
+                <div class="shadow-sm rounded bg-white p-4 mb-4">
+                    <form>
+                        <div class="mb-4 col-md-6">
+                            <label for="subject" class="form-label">Subject (E.g. Cant’ change my password)</label>
+                            <input type="email" class="form-control" id="subject" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-4 col-md-12">
+                            <label for="validationTextarea" class="form-label">Give us some more details about the issue you’re facing. </label>
+                            <textarea  style="border-style:solid; border-width: 2px; border-color: black;" cols="50" rows="10" class="form-control" id="validationTextarea" placeholder="Start typing"></textarea>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-    </div>
-</section>
-        
+            </div><!--end Col-->
+           <!-- Action buttons -->
+           <div class="col-xs-6 d-grid gap-2 d-md-block">
+                <button type="button" class="btn btn-dark" [routerLink]="['/login/registerkey']">Cancel</button>
+                <button type="button" class="btn btn-primary ms-md-3">Send</button>
+            </div>
 
+        </div><!--end Row-->
+
+    </div><!--end Container-->
+</section><!--end Section-->  

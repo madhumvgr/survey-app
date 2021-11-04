@@ -1,69 +1,30 @@
-<!-- <nav class="navbar bg-white px-3">
-    <div class="container d-flex">
-        <a href="survey-hub.html" class="navbar-brand flex-grow-1">
-            <img class="img-fluid" src="../assets/logo.png" alt="">
-        </a> 
-        <a href="#" class="lang-taggle">français</a>
-        </div>
-</nav> -->
 
 
 <!-- Registration form with OTP-->
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row">
-        <div>Register/Create Profile</div>
-        <div><h1>Create Profile</h1></div>
+
+        <p class="x">Register/Create Profile</p>
+        <div><h1 class="y">Create Profile</h1></div>
         <div><p>Enter your username and password below</p></div>
-        <div>Tips:</div>
+        <div><b>Tips:</b></div>
+        
         <div>
-        <ul>
-        <li> Must be between 8 to 20 characters long. &#9989;</li>
-        <li> Must contain both letters and numbers. &#9989; </li>
-        <li>Must not have spaces, special characters or emojis.&#9989;</li>
-        </ul>
+        
+        <li> Be between 8 and 20 characters long
+            <span class="check"> &#10003;</span></li>
+        <li> Have both letters and numbers
+            <span class="check"> &#10003;</span></li>
+        <li>Not have spaces, special characters or emojis
+            <span class="check"> &#10003;</span></li>
         </div>
+        <section class="px-3 pb-4">
     <div *ngIf="!showRegistraion" class="container">
-        <!-- <div class="row mb-3">
-                <h1> Ready ? Let`s create your account</h1>
-                <form class="col-md-6" (ngSubmit)="onSubmit()" #form="ngForm">
-                    <div class="bg-white shadow-sm rounded p-4">
-                        <div class="mb-3">
-                            <label for="key" class="form-label">key</label>
-                            <input type="password" class="form-control" id="key" name="keyPassword" aria-describedby="emailHelp" required 
-                            [class.is-invalid]="!isValid(form, 'keyPassword') && isTouched(form, 'keyPassword')">
-                            <small class="text-danger" [class.d-none]="isValid(form, 'keyPassword') || !isTouched(form, 'keyPassword')">Key is Required</small>
-                        </div>
-                    </div>
 
-                </form>
-                <div class ="mb-3"><button type="submit" class="btn btn-primary" (click)="navToRegister()">Continue</button></div>
-                 
-                <div class="mb-3"><a href="#" class ="font-size: small">Need Help your Key</a></div> -->
-
-        <div class="row mb-3">
-            <h1> Ready ? Let`s create your account</h1>
-            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
-
-                <div class="form-group mb-3">
-                    <label for="key">key</label>
-                    <input type="password" class="form-control" name="password" [(ngModel)]="model.password"
-                        #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required
-                        minlength="6" />
-                    <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                        <div *ngIf="password.errors?.required">key is required</div>
-                        <div *ngIf="password.errors?.minlength">key must be at least 6 characters</div>
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <button class="btn btn-primary">Continue</button>
-                </div>
-                <div class="mb-3"><a href="#" class="font-size: small">Need Help your Key</a></div>
-
-
-            </form>
-        </div>
+    
     </div>
+    </section>
     <div *ngIf="showRegistraion">
         <form class="col-md-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="bg-white shadow-sm rounded p-4">
@@ -81,8 +42,14 @@
                     </span>
                 </div>
                 <div class="mb-3">
+                    <div class="search-wrapper cf">
+                        
                     <label for="inputPass" class="form-label">Password</label>
-                    <input type="password" class="form-control" formControlName="password" id="inputPass">
+                    <input style="padding-left: 50px" matInput [type]="show ? 'password' : 'text'" type="password" class="form-control" formControlName="password" id="inputPass">
+                    <button type="button" mat-icon-button matSuffix (click)="show = !show" [attr.aria-label]="'Show password'" [attr.aria-pressed]="show">
+                        <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
+                       </button>
+              </div>
                     <span class="text-danger"
                         *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
                         Password is required
@@ -94,11 +61,18 @@
                     </span>
                 </div>
                 <div class="mb-3">
+                    <div class="search-wrapper cf">
                     <label for="inputPass" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPass">
+                    
+                    <input style="padding-left: 50px" matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" formControlName="confirmPassword" id="confirmPass">
+         
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Show password1'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                       </button>
+              </div>
                     <span class="text-danger"
                         *ngIf="(registerFormControl.confirmPassword.touched || submitted) && registerFormControl.password.errors?.required">
-                        Password is required
+                        Confirm password is required
                     </span>
                     <span class="text-danger" *ngIf="registerFormControl.confirmPassword.errors?.mustMatch && registerFormControl.confirmPassword.touched">Password and
                         Confirm Password
@@ -107,14 +81,22 @@
                     <div *ngIf="showError">
                          User Registration failed. 
                     </div>
-              
-            <div class="form-group mb-3">
-            <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+            </form>
             </div>
         </div>
+         </div>
+        </section>
+            
+        <section class="px-3 pb-4">
+            <div class="px-3 pb-4 form-group mb-3">
+                <div class="container">
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+            <button type="submit" class="btn btn-primary">Register</button>
+           </form>
+        </div>
     </div>
-    </form>
-    </div>
-</div>
- </div>
-</section>
+    </section>
+        
+    <router-outlet></router-outlet>

@@ -11,6 +11,7 @@ import { EmailNotificationService } from 'src/app/modules/login/services/email-n
   styleUrls: ['./email-notifications.component.css']
 })
 export class EmailNotificationsComponent implements OnInit {
+ 
   emailNotifForm: FormGroup = this.fb.group({});
   emailNotification : EmailNotification = new EmailNotification();
   constructor(private fb: FormBuilder,private Activatedroute:ActivatedRoute,private router: Router, 
@@ -45,6 +46,7 @@ export class EmailNotificationsComponent implements OnInit {
     })
     this.emailNotifService.create(this.emailNotifForm.value).subscribe( res => {
       console.log("Email notification update"+res);
+      this.router.navigate(['/account-settings/thankyou/Email Notifications'])
     });
   }
 
@@ -54,4 +56,5 @@ export class EmailNotification {
   promotionOffers: string | undefined;
   loginEvent: string | undefined;
   homeNo: string | undefined;
+ 
 }

@@ -10,7 +10,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./registerkey.component.css']
 })
 export class RegisterkeyComponent implements OnInit {
-
+  hide= true;
   model: any = {};
   password: any;
   showOtpError =false;
@@ -21,6 +21,7 @@ export class RegisterkeyComponent implements OnInit {
   }
 
   navToRegister() {
+    this.hide=true;
     // validate otp in backend. 
     const url = UrlConstants.registerKeyForOtp+'/'+this.model.password
     this.userService.customRead(url).subscribe( response => {

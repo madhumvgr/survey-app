@@ -7,6 +7,7 @@ import { ChangePasswordComponent } from './components/account-settings/change-pa
 import { PrivacyComponent } from './components/account-settings/privacy/privacy.component';
 import { EmailNotificationsComponent } from './components/account-settings/email-notifications/email-notifications.component';
 import { HomeComponent } from './components/home/home.component';
+import { ThankyouComponent } from './components/account-settings/thankyou/thankyou.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,10 @@ const routes: Routes = [
       { path: 'account-settings', component: AccountSettingsComponent, canActivate: [AuthGuard] },
       { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard] },
       { path: 'account-settings-privacy', component: PrivacyComponent, canActivate: [AuthGuard] },
-      { path: 'email-notifications', component: EmailNotificationsComponent, canActivate: [AuthGuard] }
+      { path: 'email-notifications', component: EmailNotificationsComponent, canActivate: [AuthGuard] },
+      { path: 'thankyou/:value', component: ThankyouComponent},
+      { path: '/account-settings/Email Notifications', component: ThankyouComponent},
+      { path: '/account-settings/Change Password', component: ThankyouComponent}
     ],
     component: HomeComponent
   }

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
-
 export interface Owner {
   memberName: string;
   memberNo: string;

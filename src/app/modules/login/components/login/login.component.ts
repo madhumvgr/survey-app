@@ -6,24 +6,36 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from '../../services/user.service';
 
+
+
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+ 
   hide = false;
+  show = false;
   loginForm: FormGroup = this.fb.group({});
   submitted = false;
   showInvalidError = false;
   showError = false;
+  signin: any;
 
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private userService: UserService,
     private router: Router) { }
 
+    
+
   ngOnInit(): void {
+   
+    this.show= true;
     this.hide = false;
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -32,15 +44,20 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  
+
   navigateTo() {
     this.hide = true;
   }
+
+ 
 
   get loginFormControl() {
     return this.loginForm.controls;
   }
 
   onSubmit() {
+ 
     this.submitted = true;
     if (this.loginForm.valid) {
       console.table(this.loginForm.value);
@@ -64,4 +81,10 @@ export class LoginComponent implements OnInit {
 
     }
   }
+
+  
 }
+function passwordInput() {
+  throw new Error('Function not implemented.');
+}
+

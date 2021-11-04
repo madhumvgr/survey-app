@@ -12,7 +12,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
   imports: [
     CommonModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+  
   ],
   exports: [
     MatButtonModule, MatDialogModule

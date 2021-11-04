@@ -20,7 +20,9 @@ import { EmailNotificationsComponent } from '../account-setting/components/accou
 import { LoginHomeComponent } from './components/login-home/login-home.component';
 import { SharedModule } from '../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { MatIconModule } from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [  RegistrationComponent,
@@ -32,6 +34,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ForgotPasswordComponent,
     FinishPasswordResetComponent,
     KeyhelpComponent,
+   
     PrivacyPolicyComponent,
     LoginHomeComponent,
   ],
@@ -42,7 +45,8 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule, 
     ReactiveFormsModule,
     SharedModule,
-    TranslateModule 
+    TranslateModule,
+    MatIconModule,MatFormFieldModule,MatInputModule
   ]
 })
 export class LoginModule { }

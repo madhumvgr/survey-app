@@ -37,7 +37,7 @@ export class MessageComponent implements OnInit {
   deleteMessage(messageId: any) {
     this.notifService.delete(messageId).subscribe(res =>
       console.log("message deleted" + messageId));
-      this.router.navigateByUrl('/notification');
+      this.router.navigateByUrl('/notification/messages');
   }
 
   ngOnDestroy(): void {

@@ -10,6 +10,7 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 })
 
 export class AuthService {
+  [x: string]: any;
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
@@ -63,7 +64,7 @@ export class AuthService {
   doLogout() {
     let removeToken = localStorage.removeItem('id_token');
     if (removeToken == null) {
-      this.router.navigate(['/login/registerkey']);
+      this.router.navigate(['/login/login']);
     }
   }
 

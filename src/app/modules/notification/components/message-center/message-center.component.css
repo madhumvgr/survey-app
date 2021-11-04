@@ -7,3 +7,6 @@
     text-overflow: ellipsis;
     min-width: auto;
 }
+.row{
+    margin-top: 5px;
+}

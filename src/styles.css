@@ -10,7 +10,21 @@
 
 /* TEMP STYLING GOES HERE
 --------------------*/
+footer{
+  /*margin-top: auto;*/
+  height: 0px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding-top: 20px;
+  padding-bottom: 0px;
 
+}
+
+.container1{
+  bottom: 0;
+  position: relative;
+}
 
 
 
@@ -24,6 +38,8 @@ body {
   background-color: #f6f6f6;
   font-family: 'Spartan';
 }
+
+
 
 a {
   color:#002e62;

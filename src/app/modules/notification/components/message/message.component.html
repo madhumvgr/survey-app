@@ -1,4 +1,13 @@
-<nav class="px-3 mt-4">
+
+
+
+<!-- Display list of messages. 
+<h1>
+    {{title}}
+</h1>
+<button (click)="notify()">Show Notiication</button> -->
+
+<!--<div class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
@@ -6,23 +15,31 @@
             <li class="breadcrumb-item active" aria-current="page">Message</li>
         </ol>
     </div>
-</nav>
+</div> -->
 
 <!-- SURVEY HUB PAGE -->
 
 <!--h1 Intro Section-->
-<section class="px-3 pb-4">
+<div class="px-3 pb-4">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>{{displayMessage?.messageHeader}}</h1>
-                <p>{{displayMessage?.messageDate}}</p>
-                <p>{{displayMessage?.messageContent}}</p>
-            </div>
-            <div class="col-12" >
-                <button type="submit" class="btn btn-primary pr-2" (click) = "deleteMessage(displayMessage?.id)">Delete</button>
-                <button type="submit" class="btn btn-secondary"  [routerLink]="['/notification']">Go Back</button>
-            </div>
+        <div class="row mb-3">
+           
+                <h1 class="x">{{displayMessage?.messageHeader}}</h1>
+                <p class="y"><b>{{displayMessage?.messageDate | date : 'EE, MMMM dd, hh:mm aaaa'}}</b></p>
+                <p class="z">{{displayMessage?.messageContent}}</p>
+      
         </div><!--end Row-->
     </div><!--end Container-->
-</section><!--end Section-->
+</div><!--end Section-->
+
+<div class="px-3 pb-4">
+    <div class="container">
+            <div class="mb-3">
+              
+                <button type="submit" class="btn btn-secondary pr-2" (click) = "deleteMessage(displayMessage?.id)">Delete</button>
+                <button type="submit" class="btn btn-primary ms-3"  [routerLink]="['/notification/messages']"> Go Back</button>
+          
+            </div>
+            </div>
+</div>
+        

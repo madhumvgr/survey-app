@@ -1,12 +1,12 @@
 
-<nav class="px-3 mt-4">
+<!--<nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Message center</li>
         </ol>
     </div>
-</nav>
+</nav>-->
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -31,7 +31,7 @@
                     </i>
                     <div class="ps-3 description">
                         <h3 class="truncate">{{action.messageHeader}}</h3>
-                        <p class="truncate"><span>{{action.messageDate}} -</span>{{action.messageContent}}</p>   
+                        <p class="truncate"><span>{{action.messageDate | date: 'MMMM dd' }} -</span>{{action.messageContent}}</p>   
                     </div>
                     <i class="material-icons ms-auto pe-3">  
                         arrow_forward_ios
@@ -46,7 +46,8 @@
 <section class="px-2 pb-2">
     <div class="container">
         <div class="row g-4">
-            <h2>{{messages?.messages.length}} New message(s)<span class="h2-separator"></span></h2>
+
+            <h2 >{{messages?.messages.length}} New message(s)<span class="h2-separator"></span></h2>
             <a  *ngFor="let message of messages?.messages" (click)="navToMessageDetail(message)">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons-outlined p-3 icon-new-message d-flex icon-red align-items-center h-100">
@@ -58,8 +59,8 @@
                         </ng-template>
                     </i>
                     <div class="ps-3 description">
-                        <h3 class="ttruncate">{{message.messageHeader}}</h3>
-                        <p class="truncate"><span>{{message.messageDate}} -</span> {{message.messageContent}}</p>
+                        <h3 class="truncate">{{message.messageHeader}}</h3>
+                        <p class="truncate"><span>{{message.messageDate | date: 'MMMM dd' }} -</span> {{message.messageContent}}</p>
                     </div>
                     <i class="material-icons ms-auto pe-3">  
                         arrow_forward_ios

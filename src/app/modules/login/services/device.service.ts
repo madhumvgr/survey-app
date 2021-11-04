@@ -11,6 +11,7 @@ import { User } from "../model/user.model";
   providedIn: 'root'
 })
 export class DeviceService extends ResourceService<User> {
+    [x: string]: any;
     constructor( public httpClient: HttpClient) {
       super(
         httpClient,

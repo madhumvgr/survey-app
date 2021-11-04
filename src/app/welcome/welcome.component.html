@@ -35,11 +35,15 @@
     <div class="row">
         <h1>{{ 'welcomePage.title' | translate }}, {{firstName}} {{lastName}}</h1>
         <p>
-            Welcome to the Survey Hub! Here, you’ll find surveys that are quick and easy.  We ask only basic questions to understand the type of entertainment programs you enjoy, and the devices you prefer watching them on. Be assured that
-            <a [routerLink]="['/login/privacy-policy']">your data and privacy are always protected.</a>
+            We're happy to have you! You now have the power to shape Canada's broadcasting industry! By taking part
+            in our surveys, you help broadcasters understand the kind of entertainment Canadians care about. Be
+            assured that 
+            <a [routerLink]="['/login/privacy-policy']" style="text-decoration: underline;">your data and privacy are always protected.</a>
+            We hope you enjoy time with us.
         </p>
+        </div>
     </div><!--end Row-->
-</div><!--end Container-->
+<!--end Container-->
 </section><!--end Section-->
 
 <!-- Quick Start Cards Section-->
@@ -63,7 +67,7 @@
                         <h5 class="card-title">Survey Hub</h5>
                         <p class="card-text">All surveys organized in
                         one place for you.</p>
-                        <button type="submit" [routerLink]="['/survey/survey']" class="btn btn-secondary">Get Started</button>
+                        <button type="submit" [routerLink]="['/survey/survey']" class="btn btn-light">Get Started</button>
                     </div>
                 </div>
             </div>
@@ -84,7 +88,7 @@
                     <h5 class="card-title">Tech Support</h5>
                     <p class="card-text">We are here to help you. Just 
                         ask!</p>
-                    <a href="#" class="btn btn-secondary">Learn More</a>
+                    <a href="#" class="btn btn-light">Learn More</a>
                     </div>
                 </div>
             </div>

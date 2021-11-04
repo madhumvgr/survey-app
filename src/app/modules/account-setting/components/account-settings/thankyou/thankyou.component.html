@@ -1,0 +1,45 @@
+
+    
+    <!-- Breadcrumbs -->
+    <nav class="px-3 mt-4">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+                
+                <li class="breadcrumb-item active" aria-current="page">Thankyou  </li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- SURVEY HUB PAGE -->
+   <body>
+    <!--h1 Intro Section-->
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Thank you</h1>
+                    <p>
+                        You have successfully updated {{newValue}}. 
+                    </p>
+                </div>
+                
+            </div><!--end Row-->
+        </div><!--end Container-->
+    </section><!--end Section-->
+
+    <section class="px-3 pb-4">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-20">
+            
+                    <button type="submit" class="btn btn-primary px-3" [routerLink]="['/welcome']">Back</button>
+                    
+                    <button type="submit" class="btn btn-primary px-3 ms-3" [routerLink]="['/login/login']">Exit</button>
+               </div>
+               </div>
+            </div><!--end Container-->
+        </section><!--end Section-->    
+        </body> 
+               

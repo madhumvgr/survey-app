@@ -10,7 +10,9 @@ import { PrivacyComponent } from './components/account-settings/privacy/privacy.
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
 import { ChangePasswordComponent } from './components/account-settings/change-password/change-password.component';
 import { EmailNotificationsComponent } from './components/account-settings/email-notifications/email-notifications.component';
-
+import { MatIconModule } from '@angular/material/icon';
+import { ThankyouComponent } from './components/account-settings/thankyou/thankyou.component';
+import { Title } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { EmailNotificationsComponent } from './components/account-settings/email
     AccountSettingsComponent,
     ChangePasswordComponent,
     EmailNotificationsComponent,
+    ThankyouComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,9 @@ import { EmailNotificationsComponent } from './components/account-settings/email
     FormsModule, 
     ReactiveFormsModule,
     SharedModule,
-    TranslateModule 
-  ]
+    TranslateModule,
+    MatIconModule
+  ],
+  providers: [Title],
 })
 export class AccountSettingModule { }

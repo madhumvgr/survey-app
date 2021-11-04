@@ -1,7 +1,7 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home </a></li>
             <li class="breadcrumb-item active" aria-current="page">Survey Hub</li>
             
         </ol>
@@ -10,11 +10,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Survey Hub</h1>
+                <h1 class="y">Survey Hub</h1>
                 <p>
                     Welcome to Survey Hub! Here, you'll find surveys that are quick and easy. We ask only basic questions to understand
                     the type of entertainment programs you enjoy - and the device you prefer watching them on.
-                    Be assured that your <a [routerLink]="['/login/privacy-policy']">data and privacy are always protected.</a>
+                    Be assured that your <a [routerLink]="['/login/privacy-policy']" style="text-decoration: underline;">data and privacy are always protected.</a>
                 </p>
             </div>
         </div><!--end Row-->
@@ -39,7 +39,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Devices</h5>
                             <p class="card-text">Surveys about media devices you have at home.</p>
-                            <a [routerLink] = "['/survey/household-devices']" class="btn btn-secondary">Continue</a>
+                            <a [routerLink] = "['/survey/household-devices']" class="btn button">Continue</a>
                         </div>
                     </div>
                 </div>
@@ -89,3 +89,4 @@
         </div><!--end Row-->
     </div><!--end Container-->
     </section><!--end Section-->
+    <router-outlet></router-outlet>

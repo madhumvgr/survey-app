@@ -11,6 +11,8 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  show=false;
+  hide=true;
   model: any = {};
   password: any;
   showRegistraion = true;
@@ -26,6 +28,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.show=true;
+    this.hide=true;
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],

@@ -5,7 +5,8 @@ export class Message extends Resource {
     messageId: string | undefined;
     messageType: string | undefined;
     messageHeader: string | undefined;
-    messageDate: string | undefined;
+    messagDate: Date = new Date();
+    //messageDate: string | undefined;
     messageContent: string | undefined;
     isRead: boolean | undefined;
     isDeleted: boolean | undefined;

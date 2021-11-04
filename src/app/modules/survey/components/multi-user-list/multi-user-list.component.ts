@@ -83,7 +83,7 @@ export class MultiUserListComponent implements OnInit {
     }else{
       console.log(this.controls);
       this.deviceService.updateDeviceMemberWithPercentage(this.controls.values).subscribe(
-        res => {
+      res => {
           this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
         }
       );

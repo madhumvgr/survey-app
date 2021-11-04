@@ -1,5 +1,5 @@
 <!-- Breadcrumbs -->
-<nav class="px-3 mt-4">
+<!--<nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
@@ -7,23 +7,30 @@
             <li class="breadcrumb-item active" aria-current="page">Action required</li>
         </ol>
     </div>
-</nav>
+</nav>-->
 
 <!-- SURVEY HUB PAGE -->
 
 <!--h1 Intro Section-->
-<section class="px-3 pb-4">
+<div class="px-3 pb-4">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>{{displayAction?.messageHeader}}</h1>
-                <p>{{displayAction?.messageDate}}</p>
-                <p>{{displayAction?.messageContent}} </p>
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-secondary" [routerLink]="['/notification']">Back</button>
+        <div class="row mb-3">
+            
+                <h1 class="x">{{displayAction?.messageHeader}}</h1>
+                <p class="y"><b>{{displayAction?.messageDate | date : 'EE, MMMM dd, hh:mm aaaa'}}</b></p>
+                <p class="z">{{displayAction?.messageContent}} </p>
+                
+          </div>
+          </div>
+          </div>
+
+          <div class="px-3 pb-4">
+            <div class="container">
+                    <div class="mb-3">
+            
+                <button type="submit" class="btn btn-secondary pr-2" [routerLink]="['/notification/messages']">Back</button>
                 <button type="submit" class="btn btn-primary ms-3">Take Action</button>
-            </div>
+           
         </div><!--end Row-->
     </div><!--end Container-->
-</section><!--end Section-->
+</div><!--end Section-->

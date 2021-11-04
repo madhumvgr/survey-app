@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/modules/login/services/user.service';
 
+
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -13,18 +14,30 @@ import { UserService } from 'src/app/modules/login/services/user.service';
 })
 export class ChangePasswordComponent implements OnInit {
   model: any = {};
+  hide= false;
   password: any;
   showRegistraion = true;
   showError = false;
   changePasswordForm: FormGroup = this.fb.group({});
+  showInvalidError = false;
   submitted = false;
+  show=false;
+  view=false;
+  visible=false;
+  
+  
+  showPassword!: boolean;
   //showInvalidError = false;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private authService: AuthService,
-    private router: Router,public userService:UserService) {
+    private router: Router, public userService:UserService) {
   }
   ngOnInit(): void {
+    this.visible=true;
+    this.view=true;
+    this.show=true;
+    this.hide = false;
     this.changePasswordForm = this.fb.group({
       currentPassword: ['', [Validators.required, this.customValidator.patternValidator()]],
       newPassword: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
@@ -34,16 +47,20 @@ export class ChangePasswordComponent implements OnInit {
     }
     );
   }
-
+  navigateTo() {
+    this.hide = true;
+  }
   // convenience getter for easy access to form fields
-  get changePasswordFormControl() { return this.changePasswordForm.controls; }
+  get changePasswordFormControl() { 
+    return this.changePasswordForm.controls; }
 
   onSubmit() {
+   
     this.submitted = true;
     // stop here if form is invalid
-    if (this.changePasswordForm.invalid) {
-      return;
-    } else {
+    if (this.changePasswordForm.valid) {
+      console.table(this.changePasswordForm.value);
+      this.router.navigate(['/account-settings/thankyou/Change password']);
       // update password in local storage.
       let username = localStorage.getItem('username');
       if (username) {
@@ -58,12 +75,18 @@ export class ChangePasswordComponent implements OnInit {
             // After successful sign in, we have to set username into localstorage
             localStorage.setItem('id_token', response['id_token']);
             localStorage.setItem('username', this.changePasswordFormControl.email.value);
-            this.router.navigate(['/login/login']);
+            //this.router.navigate(['/welcome']);
           }
+         
         
-        });
+        }, err => this.showError = true,
+        () => this.showError = true);
+
        
       }
     }
   }
+ 
 }
+
+

@@ -30,6 +30,7 @@ export class MultiUserListComponent implements OnInit {
   controls: AbstractControl[] = [];
   coViewerControls: AbstractControl[] = [];
   showPercentageError: boolean = false;
+  singleViewerPe: string = "";
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService) { }
 
@@ -52,11 +53,12 @@ export class MultiUserListComponent implements OnInit {
       }
     });
 
-    this.deviceService.getCustomRequest(DeviceConstants.deviceCoviewer + this.deviceId).subscribe(response => {
+    /* TODO:
+    Currently hardcoded 101, where post is not working
+    */
+    this.deviceService.getCustomRequest(DeviceConstants.deviceCoviewer + '101').subscribe(response => {
       if (response) {
-        response.forEach((mem: any) => {
-          this.addMemberCoviewerPercentage(mem);
-        });
+        this.addMemberCoviewerPercentage(response);
       }
     });
   }
@@ -65,60 +67,89 @@ export class MultiUserListComponent implements OnInit {
     this.members = this.multiUserListForm.get('arr') as FormArray;
     this.members.push(this.fb.group({
       usePercentage: member.usePercentage,
-      memberName: member.memberName
+      memberName: member.memberName,
+      deviceId: member.deviceId,
+      homeNo: member.homeNo,
+      memberNo: member.memberNo
     }))
   }
 
-  addMemberCoviewerPercentage(member: Member) {
+  updateMemberDevice(index: any) {
+    if (this.members) {
+      this.deviceService.updateDeviceMemberWithPercentage(this.controls[index].value).subscribe(
+        res => {
+           console.log("Updated Member device");
+        }
+      );
+    }
+  }
+
+  updateCoviewerDevice(index: any) {
+    if (this.members) {
+      this.deviceService.updateCoviewerWithPercentage(this.coViewerControls[index].value).subscribe(
+          res => {
+            console.log("Updated Coviewer device");
+          }
+        );
+    }
+  }
+  addMemberCoviewerPercentage(member: any) {
     this.coViewers = this.multiUserCoViewerForm.get('arr') as FormArray;
     this.coViewers.push(this.fb.group({
-      usePercentage: member.usePercentage,
-      memberName: member.memberName
+      coViewerPerce: member['coViewerPerce'],
+      deviceId: member.deviceId,
+      homeNo: member.homeNo,
+      singleViewerPe: member.singleViewerPe
     }))
+    this.singleViewerPe = member.singleViewerPe;
   }
 
-  saveAndExit(){
-    if(this.isPercentageMoreThanHundered()){
+  saveAndExit() {
+    if (this.isPercentageMoreThanHundered()) {
       this.showPercentageError = true;
-    }else{
-      console.log(this.controls);
-      this.deviceService.updateDeviceMemberWithPercentage(this.controls.values).subscribe(
-      res => {
-          this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
-        }
-      );
+    } else {
+      // let memberObj: any[] = [];
+      // this.controls.forEach(control => {
+      //   memberObj.push(control.value);
+      // });
+      // this.deviceService.updateDeviceMemberWithPercentage(memberObj).subscribe(
+      //   res => {
+      //     this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+      //   }
+      // );
 
-      console.log(this.coViewerControls);
-      this.deviceService.updateDeviceMemberWithPercentage(this.coViewerControls.values).subscribe(
-        res => {
-          this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
-        }
-      );
+      // let coViewerObj = this.coViewerControls[0].value;
+      // // prepare coviewer value. 
+      // this.deviceService.updateCoviewerWithPercentage(coViewerObj).subscribe(
+      //   res => {
+      //     this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+      //   }
+      // );
 
       this.showPercentageError = false;
     }
   }
   continueNavigate() {
-    if(this.isPercentageMoreThanHundered()){
+    if (this.isPercentageMoreThanHundered()) {
       this.showPercentageError = true;
-    }else{
+    } else {
       this.showPercentageError = false;
       this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
     }
   }
 
-  isPercentageMoreThanHundered(){
-    let sumPercentage=0;
+  isPercentageMoreThanHundered() {
+    let sumPercentage = 0;
     this.controls.forEach(
       control => {
         sumPercentage = sumPercentage + parseInt(control.value["usePercentage"]);
       })
 
     this.coViewerControls.forEach(
-        control => {
-          sumPercentage = sumPercentage + parseInt(control.value["usePercentage"]);
-        })
-    return sumPercentage != 100? true: false;
-      }
+      control => {
+        sumPercentage = sumPercentage + parseInt(control.value["coViewerPerce"]);
+      })
+    return sumPercentage > 100;
+  }
 
 }

@@ -70,8 +70,8 @@
 
                                 <div [formGroupName]="i" class="col-6 d-flex justify-content-end pe-3">
                                     <select class="form-select multi-user-select" formControlName="usePercentage"
-                                        aria-label="Select percentage">
-                                        <option selected>0%</option>
+                                        aria-label="Select percentage"  (change)="updateMemberDevice(i)">
+                                        <option selected value="0">0%</option>
                                         <option value="25">25%</option>
                                         <option value="50">50%</option>
                                         <option value="75">75%</option>
@@ -79,46 +79,43 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="error text-danger" *ngIf="showPercentageError">
-                                Percentage always equals to 100%.
-                            </div>
                             <!--end Multi User Card-->
                         </form>
                     </div>
 
+                    <div class="row g-0">
+                        <form [formGroup]="multiUserCoViewerForm">
+                            <!-- Multi User Card -->
+                            <div formArrayName="arr" *ngFor="let a of coViewerControls; let i = index"
+                                class="col-sm-12 col-md-6 multiple-users-card mb-3 d-flex align-items-center">
+                                <div [formGroupName]="i" class="ps-3 py-3 col-6 d-flex align-items-center">
+                                    <i class="material-icons d-flex h-100">
+                                        <div class="h4 m-0">person</div>
+                                    </i>
+                                    <p class="ps-2 mb-0 description">
+                                        <strong>Co Viewer</strong>
+                                    </p>
+                                </div>
+    
+                                <div [formGroupName]="i" class="col-6 d-flex justify-content-end pe-3">
+                                    <select class="form-select multi-user-select" (change)="updateCoviewerDevice(i)" formControlName="coViewerPerce"
+                                        aria-label="Select percentage">
+                                        <option selected value="0">0%</option>
+                                        <option value="25">25%</option>
+                                        <option value="50">50%</option>
+                                        <option value="75">75%</option>
+                                        <option value="100">100%</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--end Multi User Card-->
+                            <div class="error text-danger" *ngIf="showPercentageError">
+                                Percentage always equals to 100%.
+                            </div>
+                        </form>
+                    </div>
+
                     <!--End Row-->
-                </div>
-
-                <div class="row g-0">
-                    <form [formGroup]="multiUserCoViewerForm">
-                        <!-- Multi User Card -->
-                        <div formArrayName="arr" *ngFor="let a of coViewerControls; let i = index"
-                            class="col-sm-12 col-md-6 multiple-users-card mb-3 d-flex align-items-center">
-                            <div [formGroupName]="i" class="ps-3 py-3 col-6 d-flex align-items-center">
-                                <i class="material-icons d-flex h-100">
-                                    <div class="h4 m-0">person</div>
-                                </i>
-                                <p class="ps-2 mb-0 description">
-                                    <strong>{{coViewerControls[i].value["memberName"]}}</strong>
-                                </p>
-                            </div>
-
-                            <div [formGroupName]="i" class="col-6 d-flex justify-content-end pe-3">
-                                <select class="form-select multi-user-select" formControlName="usePercentage"
-                                    aria-label="Select percentage">
-                                    <option selected>0%</option>
-                                    <option value="25">25%</option>
-                                    <option value="50">50%</option>
-                                    <option value="75">75%</option>
-                                    <option value="100">100%</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!--end Multi User Card-->
-                        <div class="error text-danger" *ngIf="showPercentageError">
-                            Percentage always equals to 100%.
-                        </div>
-                    </form>
                 </div>
 
                 <!--End Row-->

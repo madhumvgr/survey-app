@@ -25,8 +25,8 @@ export class DeviceUsageComponent implements OnInit {
       }
     });
   }
-  continueNavigate(){ 
-    this.router.navigateByUrl('survey/deviceGeneres/'+this.deviceState+'/'+this.deviceId);
+  continueNavigate(homeNo:any){ 
+    this.router.navigateByUrl('survey/deviceGeneres/'+homeNo+'/'+this.deviceId);
   }
 
   submit() {

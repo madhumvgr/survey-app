@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginHomeComponent } from '../login/components/login-home/login-home.component';
 import { PrivacyPolicyComponent } from '../login/components/login/forgot-password/privacy-policy/privacy-policy.component';
 import { DeviceGenresComponent } from './components/device-genres/device-genres.component';
 import { DeviceInformationComponent } from './components/device-information/device-information.component';
@@ -26,7 +25,7 @@ const routes: Routes = [
       { path: 'deviceOwnerInformation/:state/:deviceId', component: DeviceOwnerInformationComponent },
       { path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent },
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
-      { path: 'deviceGeneres/:state/:deviceId', component: DeviceGenresComponent },
+      { path: 'deviceGeneres/:homeNo/:deviceId', component: DeviceGenresComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },
       { path: 'household-devices/not-in-use-devices', component: NotInUseDevicesComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }

@@ -20,6 +20,9 @@ export class DeviceConstants {
 
     public static deviceCoviewer= "api/portalDeviceCoviewer/";
     public static deviceCoviewerPostUrl = "api/portalDeviceCoviewer";
+
+    public static deviceGenersGetUrl ="api/portal-genres/";
+    public static deviceGenersPostUrl ="api/portal-genres";
 }
 
 export class NotificationConstants {

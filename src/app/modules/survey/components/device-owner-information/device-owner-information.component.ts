@@ -24,6 +24,7 @@ export class DeviceOwnerInformationComponent implements OnInit {
   ownerList: Owner[] = [];
   ownerSelect: any = "";
   error: boolean = false;
+  selectedOwner: any = {};
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute,
     private router: Router, private deviceService: DeviceService) { }
@@ -37,10 +38,15 @@ export class DeviceOwnerInformationComponent implements OnInit {
     this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
       if (response) {
         this.ownerList = response;
+        // get owner information of a particular device. 
+        this.deviceService.getCustomRequest(DeviceConstants.deviceOwnerByDeviceId + this.deviceId).subscribe(response => {
+          if (response) {
+              this.selectedOwner = response;
+              this.deviceOwnerInfoForm.get('selectedOwner')?.setValue(this.selectedOwner['memberNo']); 
+          }
+        });
       }
     });
-
-    
   }
 
   // convenience getter for easy access to form fields
@@ -48,12 +54,12 @@ export class DeviceOwnerInformationComponent implements OnInit {
 
   continueNavigate() {
     let selectedOwner = this.deviceInfoFormControl["selectedOwner"];
-    if(selectedOwner.value == '') {
-     this.error = true;
+    if (selectedOwner.value == '') {
+      this.error = true;
     }
     console.log(selectedOwner.value);
-    let selectedOwn:any;
-    selectedOwn=this.ownerList.filter( owner => owner.memberNo === selectedOwner.value)[0];
+    let selectedOwn: any;
+    selectedOwn = this.ownerList.filter(owner => owner.memberNo === selectedOwner.value)[0];
     // post call to save device member information.
     let device = {
       "deviceId": this.deviceId,

@@ -40,17 +40,19 @@ export class MultiUserListComponent implements OnInit {
     private deviceService: DeviceService) { }
 
   ngOnInit(): void {
+    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
+    this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.multiUserListForm = this.fb.group({
       arr: this.fb.array([])
     })
     this.multiUserCoViewerForm = this.fb.group({
       singleViewerPe: new FormControl(''),
-      coViewerPerce: new FormControl('')
+      coViewerPerce: new FormControl(''),
+      deviceId:  this.deviceId
     })
     this.controls = (this.multiUserListForm.get('arr') as FormArray).controls;
-    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
-    this.deviceState = this.Activatedroute.snapshot.params['state'];
-    this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
+   
+    this.deviceService.getCustomRequest(DeviceConstants.memberDeviceUsageGetUrl + this.deviceId).subscribe(response => {
       if (response) {
         response.forEach((mem: any) => {
           this.addMemberPercentage(mem);
@@ -61,7 +63,7 @@ export class MultiUserListComponent implements OnInit {
     /* TODO:
     Currently hardcoded 101, where post is not working
     */
-    this.deviceService.getCustomRequest(DeviceConstants.deviceCoviewer + '101').subscribe(response => {
+    this.deviceService.getCustomRequest(DeviceConstants.deviceCoviewer + this.deviceId).subscribe(response => {
       if (response) {
         this.coViewerForm.coViewerPerce.setValue('' + response['coViewerPerce']);
         this.coViewerForm.singleViewerPe.setValue('' + response['singleViewerPe']);

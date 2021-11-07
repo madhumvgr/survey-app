@@ -12,7 +12,7 @@
             <!--has to reflect devices name here-->
         </ol>
     </div>
-</nav> 
+</nav>
 
 <!-- SURVEY HUB PAGE -->
 
@@ -22,11 +22,11 @@
         <div class="row">
             <div class="col-12">
                 <h1>
-                    <!--Select Devices-->{{deviceId}}
+                    <!--Select Devices-->{{deviceName}}
                 </h1>
                 <p>
                     Let’s talk a bit about your <span>
-                        <!--Select Devices-->{{deviceId}}
+                        <!--Select Devices-->{{deviceName}}
                     </span>. It helps us understand how it’s being used. [hyperlink markup to Privacy Policy] Be assured
                     that your privacy is our top concern[hyperlink markup ends] and we check your device for specific
                     data only
@@ -95,7 +95,7 @@
                             device is called “Yoda”. Continue using this name or enter a different one below.</h4>
                         <div class="mb-4">
                             <label for="question1" class="form-label">Enter different device name </label>
-                            <input type="text" class="form-control" formControlName="deviceNickName" name="deviceNickName" id="question1">
+                            <input type="email" class="form-control" id="question1" aria-describedby="emailHelp">
                         </div>
                         <!-- Question 2 -->
                         <div class="mb-4">
@@ -161,7 +161,7 @@
                 </div>
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">Back</button>
+                    <button type="submit" class="btn btn-dark">Back</button>
                     <button type="button" (click)="saveAndExit()" class="btn btn-secondary ms-md-3">Save & Exit</button>
                     <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue</button>
                 </div>

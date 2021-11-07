@@ -41,4 +41,7 @@ export class DeviceService extends ResourceService<User> {
       return this.customCreate(item,DeviceConstants.deviceCoviewerPostUrl);
     }
     
+    public updateDeviceTimeLine(item:any){
+      return this.customCreate(item,DeviceConstants.deviceGenersPostUrl);
+    }
   }

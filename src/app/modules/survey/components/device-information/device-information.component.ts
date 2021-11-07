@@ -14,6 +14,7 @@ export class DeviceInformationComponent implements OnInit {
   deviceState: any;
   deviceInfoForm: FormGroup = this.fb.group({});
   deviceInformation : DeviceInfo = new DeviceInfo();
+  deviceName: any;
   constructor(private fb: FormBuilder,private Activatedroute:ActivatedRoute,private router: Router, 
     private deviceService: DeviceService) { }
 
@@ -32,11 +33,10 @@ export class DeviceInformationComponent implements OnInit {
     );
     //get device information. 
     this.deviceService.getDeviceInfo(this.deviceId).subscribe( res => {
-      console.log(res);
-      this.deviceInfoFormControl.deviceNickName.setValue(''+res.deviceNickName);
       this.deviceInfoFormControl.numberOfUsers.setValue(''+res.numberOfUsers);
       this.deviceInfoFormControl.oftenUsed.setValue(''+res.oftenUsed);
       this.deviceInfoFormControl.planToUseDuration.setValue(''+res.planToUseDuration);
+      this.deviceName= res.deviceNickName;
     });
     // this.deviceInformation = {
     //   numberOfUsers: "1",

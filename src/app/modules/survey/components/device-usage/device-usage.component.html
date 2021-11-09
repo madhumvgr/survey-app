@@ -59,14 +59,14 @@
                         </h3>
                         <p class="text-truncate">Status: <span>{{mem.memberSurveyStatus}}</span></p>
                     </div>
-                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Not Started'" (click) = "continueNavigate(mem.homeNo) ">Start</button>
-                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'In Progress'" (click) = "continueNavigate(mem.homeNo) ">Continue</button>
-                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Completed'" (click) = "continueNavigate(mem.homeNo) ">Edit</button>
+                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Not Started'" (click) = "continueNavigate(mem.memberNo) ">Start</button>
+                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'In Progress'" (click) = "continueNavigate(mem.memberNo) ">Continue</button>
+                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Completed'" (click) = "continueNavigate(mem.memberNo) ">Edit</button>
                 </div>
 
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="button" class="btn btn-dark">Back</button>
+                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/multiUserList/' + deviceState + '/' + deviceId]">Back</button>
                     <button type="button" class="btn btn-secondary ms-md-3">Save & Exit</button>
                     <button type="button" (click)="submit()" class="btn btn-primary ms-md-3">Submit</button>
                 </div>
@@ -75,7 +75,6 @@
             <!--end Col-->
         </div>
         <!--end Row-->
-
     </div>
     <!--end Container-->
 </section>

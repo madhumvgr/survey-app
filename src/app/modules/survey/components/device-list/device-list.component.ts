@@ -38,7 +38,11 @@ export class DeviceListComponent implements OnInit {
   }
 
   navigateTo(device: Device) {
+    if(device.deviceSurveryStatus == 'Completed') {
+      this.router.navigateByUrl('survey/completed-devices/' + this.deviceState + '/' + device.deviceId);
+    } else {
     this.router.navigateByUrl('survey/deviceInformation/' + this.deviceState + '/' + device.deviceId);
+    }
   }
 
   getMatIconDescription(deviceType: any) {
@@ -51,14 +55,14 @@ export class DeviceListComponent implements OnInit {
         return "phone_iphone";
       case "Gaming":
         return "videogame_asset";
-      // case "Devices Other":
-      //   return "devices_other";    
-      // case "iMac":
-      //   return "desktop_mac";  
-      // case "PC Desktop":
-      //   return "desktop_windows";
-      // case "Android":
-      //   return "smartphone";
+      case "Devices Other":
+        return "devices_other";    
+      case "iMac":
+        return "desktop_mac";  
+      case "PC Desktop":
+        return "desktop_windows";
+      case "Android":
+        return "smartphone";
       default:
         return "";
     }

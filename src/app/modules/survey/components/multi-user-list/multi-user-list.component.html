@@ -80,9 +80,24 @@
                                 </div>
                             </div>
                             <!--end Multi User Card-->
+                            <div class="error text-danger" *ngIf="showPercentageError">
+                                Member Percentage always equals to 100%.
+                             </div>
                         </form>
                     </div>
 
+                </div>
+
+                <!--End Row-->
+                <div class="shadow-sm rounded bg-white p-4 mb-4">
+                    <h3 class="mb-3">Select how long this device is used by single vs multiple member at one time</h3>
+                    <p><strong>Tips:</strong></p>
+                    <ul>
+                        <li>Enter an approximate percentage value for each member.</li>
+                        <li>If a member hasn’t viewed the device at all in the past month, enter 0% against their name.
+                        </li>
+                        <li>The total for all members should add up to 100.</li>
+                    </ul>
                     <div class="row g-0">
                         <form [formGroup]="multiUserCoViewerForm">
                             <!-- Multi User Card -->
@@ -93,7 +108,7 @@
                                         <div class="h4 m-0">person</div>
                                     </i>
                                     <p class="ps-2 mb-0 description">
-                                        <strong>Single Viewer</strong>
+                                        <strong>Single Memeber</strong>
                                     </p>
                                 </div>
     
@@ -108,18 +123,17 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div
-                            class="col-sm-12 col-md-6 multiple-users-card mb-3 d-flex align-items-center">
+    
+                            <div class="col-sm-12 col-md-6 multiple-users-card mb-3 d-flex align-items-center">
                             <div class="ps-3 py-3 col-6 d-flex align-items-center">
                                 <i class="material-icons d-flex h-100">
                                     <div class="h4 m-0">person</div>
                                 </i>
                                 <p class="ps-2 mb-0 description">
-                                    <strong>Co Viewer</strong>
+                                    <strong>Multiple Members</strong>
                                 </p>
                             </div>
-
+    
                             <div class="col-6 d-flex justify-content-end pe-3">
                                 <select class="form-select multi-user-select" (change)="updateCoviewerDevice()" formControlName="coViewerPerce"
                                     aria-label="Select percentage">
@@ -132,34 +146,28 @@
                             </div>
                         </div>
                             <!--end Multi User Card-->
-                            <div class="error text-danger" *ngIf="showPercentageError">
-                               Member Percentage always equals to 100%.
-                            </div>
                             <div class="error text-danger" *ngIf="showCoviewerPercentageError">
                                Coviewer Percentage always equals to 100%.
                             </div>
                         </form>
                     </div>
-
-                    <!--End Row-->
-                </div>
-
-                <!--End Row-->
             
+                            </div>
+               
+</div>
+                <!--End Row-->
+            </div>
                 <!--End Rounded backgorund-->
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark">Back</button>
+                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceOwnerInformation/' + deviceState + '/' + deviceId]">Back</button>
                     <button type="button" (click)="saveAndExit()" class="btn btn-secondary ms-md-3">Save & Exit</button>
                     <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue</button>
                 </div>
 
             </div>
             <!--end Col-->
-        </div>
         <!--end Row-->
-
-    </div>
     <!--end Container-->
 </section>
 <!--end Section-->

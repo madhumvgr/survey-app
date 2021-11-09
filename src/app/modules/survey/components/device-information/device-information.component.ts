@@ -36,7 +36,8 @@ export class DeviceInformationComponent implements OnInit {
       this.deviceInfoFormControl.numberOfUsers.setValue(''+res.numberOfUsers);
       this.deviceInfoFormControl.oftenUsed.setValue(''+res.oftenUsed);
       this.deviceInfoFormControl.planToUseDuration.setValue(''+res.planToUseDuration);
-      this.deviceName= res.deviceNickName;
+      this.deviceInfoFormControl.deviceNickName.setValue(''+res.deviceNickName);
+     // this.deviceName= res.deviceNickName;
     });
     // this.deviceInformation = {
     //   numberOfUsers: "1",
@@ -46,10 +47,35 @@ export class DeviceInformationComponent implements OnInit {
     //   deviceId: "1000",
     //   homeNo: "",
     // }
+
+    this.deviceName = this.getDeviceName(this.deviceId);
   }
 
   get deviceInfoFormControl() {
     return this.deviceInfoForm.controls;
+  }
+
+  getDeviceName(deviceId: string) {
+    switch (deviceId) {
+      case "000001":
+        return "Smart TV";
+      case "000002":
+        return "Laptop MAC";
+      case "000003":
+        return "Samsung Mobile";
+      case "000004":
+        return "iPhone Satish";
+      case "000005":
+        return "Playstation 4";    
+      case "000006":
+        return "desktop_mac";  
+      case "000001":
+        return "desktop_windows";
+      case "000001":
+        return "smartphone";
+      default:
+        return "";
+    }
   }
 
   continueNavigate(){

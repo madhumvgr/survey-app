@@ -95,7 +95,7 @@
                             device is called “Yoda”. Continue using this name or enter a different one below.</h4>
                         <div class="mb-4">
                             <label for="question1" class="form-label">Enter different device name </label>
-                            <input type="email" class="form-control" id="question1" aria-describedby="emailHelp">
+                            <input type="input" class="form-control" id="question1" formControlName="deviceNickName" name ="deviceNickName" >
                         </div>
                         <!-- Question 2 -->
                         <div class="mb-4">
@@ -161,7 +161,7 @@
                 </div>
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark">Back</button>
+                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">Back</button>
                     <button type="button" (click)="saveAndExit()" class="btn btn-secondary ms-md-3">Save & Exit</button>
                     <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue</button>
                 </div>

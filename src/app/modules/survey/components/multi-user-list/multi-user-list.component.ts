@@ -16,10 +16,7 @@ export interface Member {
 
 @Component({
   selector: 'app-multi-user-list',
-  templateUrl:
-
-
-    './multi-user-list.component.html',
+  templateUrl: './multi-user-list.component.html',
   styleUrls: ['./multi-user-list.component.css']
 })
 export class MultiUserListComponent implements OnInit {
@@ -40,17 +37,20 @@ export class MultiUserListComponent implements OnInit {
     private deviceService: DeviceService) { }
 
   ngOnInit(): void {
+
+    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
+    this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.multiUserListForm = this.fb.group({
       arr: this.fb.array([])
     })
     this.multiUserCoViewerForm = this.fb.group({
+      deviceId:  this.deviceId,
       singleViewerPe: new FormControl(''),
       coViewerPerce: new FormControl('')
     })
     this.controls = (this.multiUserListForm.get('arr') as FormArray).controls;
-    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
-    this.deviceState = this.Activatedroute.snapshot.params['state'];
-    this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
+
+    this.deviceService.getCustomRequest(DeviceConstants.memberDeviceUsageGetUrl + this.deviceId).subscribe(response => {
       if (response) {
         response.forEach((mem: any) => {
           this.addMemberPercentage(mem);
@@ -61,7 +61,7 @@ export class MultiUserListComponent implements OnInit {
     /* TODO:
     Currently hardcoded 101, where post is not working
     */
-    this.deviceService.getCustomRequest(DeviceConstants.deviceCoviewer + '101').subscribe(response => {
+    this.deviceService.getCustomRequest(DeviceConstants.deviceCoviewer + this.deviceId).subscribe(response => {
       if (response) {
         this.coViewerForm.coViewerPerce.setValue('' + response['coViewerPerce']);
         this.coViewerForm.singleViewerPe.setValue('' + response['singleViewerPe']);
@@ -151,13 +151,13 @@ export class MultiUserListComponent implements OnInit {
       control => {
         MemberSumPercentage = MemberSumPercentage + parseInt(control.value["usePercentage"]);
       })
-    return MemberSumPercentage > 100;
+    return MemberSumPercentage != 100;
   }
 
   isCoViewerPercentageMoreThanHundered(){
     let coViewerSumPercentage = 0;
     coViewerSumPercentage = parseInt(this.coViewerForm.coViewerPerce.value) + 
     parseInt(this.coViewerForm.singleViewerPe.value);
-    return coViewerSumPercentage > 100;
+    return coViewerSumPercentage != 100;
   }
 }

@@ -24,79 +24,89 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   },
   {
     "id": '2',
-    "name": "Kids Programming"
+    "name": "Sports"
   },
   {
     "id": '3',
-    "name": "Sports"
-  },
-  {
-    "id": '4',
-    "name": "Hobbies & Leisure"
-  },
-  {
-    "id": '5',
-    "name": "Sports"
-  },
-  {
-    "id": '6',
-    "name": "Drama"
-  },
-  {
-    "id": '7',
-    "name": "Movies"
-  },
-  {
-    "id": '8',
-    "name": "Comedy"
-  },
-  {
-    "id": '9',
     "name": "Entertainment"
   },
   {
-    "id": '10',
+    "id": '4',
+    "name": "Movies"
+  },
+  {
+    "id": '5',
+    "name": "Drama"
+  },
+  {
+    "id": '6',
+    "name": "Kids Programming"
+  },
+  {
+    "id": '7',
+    "name": "Comedy"
+  },
+ 
+  {
+    "id": '8',
     "name": "Documentaries"
   },
   {
-    "id": '11',
+    "id": '9',
+    "name": "Hobbies & Leisure"
+  },
+  {
+    "id": '10',
     "name": "Other"
   },
+  {
+    "id": '11',
+    "name": "None"
+  },
+  {
+    "id": '12',
+    "name": "New_Genre"
+  }
   ]
   timeLines: Array<DeviceTimeSlot> = [
     {
-      "usageTimelineId": "1",
+      "usageTimelineId": "0",
       "label": "6AM-9AM",
       "addNew": false
     },
     {
+      "usageTimelineId": "1",
+      "label": "9AM-12PM",
+      "addNew": false
+    },
+    {
       "usageTimelineId": "2",
-      "label": "9AM-1PM",
+      "label": "12PM-4PM",
       "addNew": false
     },
     {
       "usageTimelineId": "3",
-      "label": "1PM-4PM",
-      "addNew": false
-    },
-    {
-      "usageTimelineId": "4",
       "label": "4PM-7PM",
       "addNew": false
     },
     {
+      "usageTimelineId": "4",
+      "label": "7PM-9PM",
+      "addNew": false
+    },
+    {
       "usageTimelineId": "5",
-      "label": "7PM-10PM",
+      "label": "9PM-11PM",
       "addNew": false
     },
     {
       "usageTimelineId": "6",
-      "label": "10PM-2AM",
+      "label": "11PM-1AM",
       "addNew": false
     },
     {
       "usageTimelineId": "7",
-      "label": "2AM-6AM",
+      "label": "1AM-6AM",
       "addNew": false
     },
   ];
@@ -108,7 +118,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
-    this.memberNo = this.activatedroute.snapshot.params['homeNo'];
+    this.memberNo = this.activatedroute.snapshot.params['memberNo'];
     this.generes.forEach((genere, i) => {
       this.createForm(genere.id);
       for (let d of this.timeLines) {

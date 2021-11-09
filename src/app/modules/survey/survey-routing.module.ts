@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PrivacyPolicyComponent } from '../login/components/login/forgot-password/privacy-policy/privacy-policy.component';
+import { CompletedDevicesViewComponent } from './components/completed-devices-view/completed-devices-view.component';
 import { DeviceGenresComponent } from './components/device-genres/device-genres.component';
 import { DeviceInformationComponent } from './components/device-information/device-information.component';
 import { DeviceListComponent } from './components/device-list/device-list.component';
@@ -25,9 +26,10 @@ const routes: Routes = [
       { path: 'deviceOwnerInformation/:state/:deviceId', component: DeviceOwnerInformationComponent },
       { path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent },
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
-      { path: 'deviceGeneres/:homeNo/:deviceId', component: DeviceGenresComponent },
+      { path: 'deviceGeneres/:memberNo/:deviceId', component: DeviceGenresComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },
       { path: 'household-devices/not-in-use-devices', component: NotInUseDevicesComponent },
+      {path: 'completed-devices/:state/:deviceId', component: CompletedDevicesViewComponent},
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
     component: SurveyHomeComponent

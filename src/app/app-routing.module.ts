@@ -21,6 +21,7 @@ const routes: Routes = [
       { path: 'account-settings', loadChildren: () => import(`./modules/account-setting/account-setting.module`).then(m => m.AccountSettingModule) },
       { path: 'survey', loadChildren: () => import(`./modules/survey/survey.module`).then(m => m.SurveyModule) ,canActivate: [AuthGuard] },
       { path: 'notification', loadChildren: () => import(`./modules/notification/notification.module`).then(m => m.NotificationModule),canActivate: [AuthGuard]  },
+      { path: 'support', loadChildren: () => import(`./modules/support/support.module`).then(m => m.SupportModule) },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
      ],
     component: HomeComponent

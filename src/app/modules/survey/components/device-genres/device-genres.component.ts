@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
+import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 
@@ -16,8 +17,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   deviceState: any;
   homeNo: any;
   memberNo:any;
+  modalConfig!: ModalConfig;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
+
   generes: Array<any> = [{
     "id": '1',
     "name": "News & Analysis"
@@ -129,6 +134,9 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       subscribe(response => {
         this.setPreviousValues(response);
       });
+      this.modalConfig = {
+        "modalTitle": "Sample",
+      }
   }
 
   setPreviousValues(genereList: any) {
@@ -205,6 +213,9 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     console.log(this.timeLinesForm[1].value)
   }
 
+  async openModal() {
+    return await this.modalComponent.open()
+  }
 }
 export interface DeviceGenere {
   genreName?: String;

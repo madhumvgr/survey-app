@@ -9,11 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }

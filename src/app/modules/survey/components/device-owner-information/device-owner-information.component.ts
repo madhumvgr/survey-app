@@ -69,7 +69,7 @@ export class DeviceOwnerInformationComponent implements OnInit {
 
     this.deviceService.updateDeviceMember(device).subscribe(response => {
       console.log(response);
-      this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
+      this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId +'/'+ selectedOwn.memberName);
     });
 
   }

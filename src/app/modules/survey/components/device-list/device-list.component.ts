@@ -40,7 +40,10 @@ export class DeviceListComponent implements OnInit {
   navigateTo(device: Device) {
     if(device.deviceSurveryStatus == 'Completed') {
       this.router.navigateByUrl('survey/completed-devices/' + this.deviceState + '/' + device.deviceId);
-    } else {
+    } else if(device.deviceSurveryStatus == 'NotInUse'){
+      this.router.navigateByUrl('survey/not-in-use-devices/' + this.deviceState + '/' + device.deviceId);
+    }
+     else {
     this.router.navigateByUrl('survey/deviceInformation/' + this.deviceState + '/' + device.deviceId);
     }
   }

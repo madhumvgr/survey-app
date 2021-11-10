@@ -1,0 +1,54 @@
+
+
+<!-- Breadcrumbs -->
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tech support</li>
+        </ol>
+    </div>
+</nav>
+
+<!--h1 Intro Section-->
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Tech Support</h1>
+                <p>
+                    Have a question? Run into a problem? No sweat! Try searching the FAQ section for an answer and If that doesn’t work, drop us a line. 
+                </p>
+            </div><!--end col-->
+        </div><!--end Row-->
+    </div><!--end Container-->
+</section><!--end Section-->
+
+<section class="px-3 pb-4">
+    <div class="container">
+        <!--Thumbnails-->
+        <div class="row g-4">
+            <!--Card-->
+            <div class="col-md-4">
+                <div class="card shadow-sm rounded border-0">
+                    <div class="card-body">
+                    <h5 class="card-title">FAQs</h5>
+                    <p class="card-text">Search answers to frequently asked questions.</p>
+                    <a href="#" class="btn btn-light" [routerLink]="['/support/faqs']">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <!--Card-->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body shadow-sm rounded border-0">
+                    <h5 class="card-title">Connect with Numeris</h5>
+                    <p class="card-text">Drop us a line and we’ll look into it for you.</p>
+                    <a href="#" class="btn btn-light" [routerLink]="['/support/connect']">Connect</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--end Container-->
+</section><!--end Section-->     
+        

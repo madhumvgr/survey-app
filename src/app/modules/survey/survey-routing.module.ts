@@ -28,7 +28,7 @@ const routes: Routes = [
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
       { path: 'deviceGeneres/:memberNo/:deviceId', component: DeviceGenresComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },
-      { path: 'household-devices/not-in-use-devices', component: NotInUseDevicesComponent },
+      { path: 'not-in-use-devices/:state/:deviceId', component: NotInUseDevicesComponent },
       {path: 'completed-devices/:state/:deviceId', component: CompletedDevicesViewComponent},
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

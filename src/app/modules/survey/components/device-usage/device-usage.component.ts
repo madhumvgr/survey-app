@@ -13,12 +13,14 @@ export class DeviceUsageComponent implements OnInit {
   deviceId : any;
   deviceState: any;
   memberList: any;
+  ownerName: any;
   button = 'Edit';
   constructor(private Activatedroute:ActivatedRoute,private router: Router,private deviceService: DeviceService) { }
 
   ngOnInit(): void {
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    this.ownerName = this.Activatedroute.snapshot.params['memeberName'];
     this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
       if (response) {
         this.memberList = response;

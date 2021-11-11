@@ -2,10 +2,11 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="index.html">Survey hub</a></li>
-            <li class="breadcrumb-item"><a href="index.html">Household devices</a></li>
-            <li class="breadcrumb-item active" aria-current="page">New devices</li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">Household devices</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceState}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Device name</li>
         </ol>
     </div>
 </nav>
@@ -72,9 +73,9 @@
                                         <option value="11">Other</option>
                                     </select>
                                     <h4>Select weekday time slots</h4>
-                                    <div formArrayName="weekDays">
+                                    <div formArrayName="weekDays" class="w-75">
                                         <div *ngFor="let item of getWeekDayControl(generId+1).controls; let i = index;"
-                                            [formGroupName]="i">
+                                            [formGroupName]="i" class="check-input-bg p-2 mb-3 rounded form-check-inline">
                                             <!-- *ngIf="item.value?.usageTimelineId" -->
                                             <div class="form-check">
                                                 <input formControlName="addNew" class="form-check-input"
@@ -87,13 +88,13 @@
                                     </div>
 
                                     <h3>Select weekend times slots </h3>
-                                    <div formArrayName="weekEnds">
+                                    <div formArrayName="weekEnds" class="w-75">
                                         <div *ngFor="let item of getWeekEndControl(generId+1).controls; let i = index;"
-                                            [formGroupName]="i" (change)="updateTimeLine(item)">
+                                            [formGroupName]="i"  class="check-input-bg p-2 mb-3 rounded form-check-inline" >
                                             <!-- *ngIf="item.value?.usageTimelineId" -->
                                             <div class="form-check">
                                                 <input formControlName="addNew" class="form-check-input"
-                                                    type="checkbox">
+                                                    type="checkbox" (change)="updateTimeLine(item)">
                                                 <label class="form-check-label">
                                                     {{item.value.label}}
                                                 </label>

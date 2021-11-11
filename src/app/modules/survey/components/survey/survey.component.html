@@ -27,64 +27,42 @@
             <p>This section contains basic information about household members and the media devices they use.</p>
     
             <!-- Devices Card -->
-            <div class="card welcome-card col-sm-6 bg-transparent border-0">
-    
-                <div class="row g-0 bg-white shadow-sm rounded">
-    
-                    <div class="col-sm-5 img-wrap">
-                        <img class="img-fluid" src="./assets/survey_hub_thumb.jpg"alt="">
-                    </div>
-    
-                    <div class="col-sm-7 card-body-wrap d-sm-flex align-items-center justify-content-between">
-                        <div class="card-body">
-                            <h5 class="card-title">Devices</h5>
-                            <p class="card-text">Surveys about media devices you have at home.</p>
-                            <a [routerLink] = "['/survey/household-devices']" class="btn button">Continue</a>
-                        </div>
+            <div class="card thumb-cards col-md-4 bg-transparent border-0">
+                <div class="shadow-sm rounded bg-white">
+                    <img class="img-fluid rounded-top" src="./assets/devices_thumb.jpg" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Devices</h5>
+                        <p class="card-text">Basic questions about members in your household.</p>
+                        <a [routerLink] = "['/survey/household-devices']" class="btn btn-primary">Continue</a>
                     </div>
                 </div>
-    
             </div>
-    
+            
             <!-- Demographic Card -->
-            <div *ngIf="panelistType=='VAM'"  class="card welcome-card col-sm-6 bg-transparent border-0">
-    
-                <div class="row g-0 bg-white shadow-sm rounded">
-    
-                    <div class="col-sm-5 img-wrap">
-                        <img class="img-fluid" src="./assets/survey_hub_thumb.jpg"alt="">
-                    </div>
-    
-                    <div class="col-sm-7 card-body-wrap d-sm-flex align-items-center justify-content-between">
-                        <div class="card-body">
-                            <h5 class="card-title">Demographic</h5>
-                            <p class="card-text">All surveys organized in
-                            one place for you.</p>
-                            <a [routerLink] = "['/survey/household-devices']" class="btn btn-secondary">Get Started</a>
-                        </div>
+
+            <!-- <div *ngIf="panelistType=='VAM'"  class="card welcome-card col-sm-6 bg-transparent border-0"> -->
+            <div class="card thumb-cards col-md-4 bg-transparent border-0">
+                <div class="shadow-sm rounded bg-white">
+                    <img class="img-fluid rounded-top" src="./assets/demographics_thumb.jpg" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Demographic</h5>
+                        <p class="card-text">Surveys about media devices you have at home.</p>
+                        <a [routerLink] = "['/survey/survey']" class="btn btn-primary">Continue</a>
                     </div>
                 </div>
             </div>
             <!-- Television Card -->
-            <div *ngIf="panelistType=='VAM'" class="card welcome-card col-sm-6 bg-transparent border-0">
-    
-                <div class="row g-0 bg-white shadow-sm rounded">
-    
-                    <div class="col-sm-5 img-wrap">
-                        <img class="img-fluid" src="./assets/survey_hub_thumb.jpg"alt="">
-                    </div>
-    
-                    <div class="col-sm-7 card-body-wrap d-sm-flex align-items-center justify-content-between">
+            <!-- <div *ngIf="panelistType=='VAM'" class="card welcome-card col-sm-6 bg-transparent border-0"> -->
+                <div class="card thumb-cards col-md-4 bg-transparent border-0">     
+                    <div class="shadow-sm rounded bg-white">               
+                        <img class="img-fluid rounded-top" src="./assets/demographics_thumb.jpg" alt="">
                         <div class="card-body">
                             <h5 class="card-title">Television</h5>
-                            <p class="card-text">All surveys organized in
-                            one place for you.</p>
-                            <a [routerLink] = "['/survey/household-devices']" class="btn btn-secondary">Get Started</a>
+                            <p class="card-text">Surveys about your cable and antena television usage.</p>
+                            <a [routerLink] = "['/survey/survey']" class="btn btn-primary">Continue</a>
                         </div>
                     </div>
                 </div>
-    
-            </div>
             
         </div><!--end Row-->
     </div><!--end Container-->

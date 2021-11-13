@@ -16,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DeviceUsageComponent } from './components/device-usage/device-usage.component';
 import { DeviceGenresComponent } from './components/device-genres/device-genres.component';
 import { CompletedDevicesViewComponent } from './components/completed-devices-view/completed-devices-view.component';
+import { TelevisionComponent } from './components/television/television.component';
 @NgModule({
   declarations: [  SurveyComponent,
     HouseholdDevicesComponent,
@@ -27,7 +28,8 @@ import { CompletedDevicesViewComponent } from './components/completed-devices-vi
     SurveyHomeComponent,
     DeviceUsageComponent,
     DeviceGenresComponent,
-    CompletedDevicesViewComponent
+    CompletedDevicesViewComponent,
+    TelevisionComponent
   ],
   imports: [
     SurveyRoutingModule,

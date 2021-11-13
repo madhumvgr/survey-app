@@ -215,6 +215,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       this.deviceService.updateMemberSurvey(this.deviceId,this.memberNo).subscribe(
         res => {console.log(res);
         });
+        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
 
   }
 

@@ -23,7 +23,6 @@ export class MultiUserListComponent implements OnInit {
 
   deviceId: any;
   deviceState: any;
-  memberName:any;
   multiUserListForm: FormGroup = this.fb.group({});
   multiUserCoViewerForm: FormGroup = this.fb.group({});
   members: FormArray | undefined;
@@ -41,7 +40,6 @@ export class MultiUserListComponent implements OnInit {
 
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
-    this.memberName = this.Activatedroute.snapshot.params['memberName'];
     this.multiUserListForm = this.fb.group({
       arr: this.fb.array([])
     })

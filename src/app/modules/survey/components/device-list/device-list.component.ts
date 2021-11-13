@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 export interface Device {
   description: string;
   deviceId: string;
@@ -23,7 +24,9 @@ export class DeviceListComponent implements OnInit {
   deviceState: any;
   devicesList: Device[] = [];
 
-  constructor(private Activatedroute: ActivatedRoute, private router: Router, private deviceService: DeviceService) { }
+  constructor(private Activatedroute: ActivatedRoute, 
+    private localStorageService: LocalStorageService,
+    private router: Router, private deviceService: DeviceService) { }
 
   ngOnInit(): void {
     this.deviceState = this.Activatedroute.snapshot.params['state'];
@@ -32,6 +35,7 @@ export class DeviceListComponent implements OnInit {
         this.devicesList = response;
         this.devicesList.forEach((device: Device) => {
           device['iconDescription'] = this.getMatIconDescription(device.deviceType);
+          this.localStorageService.setDeviceName(device['deviceName']);
         });
       }
     });

@@ -15,7 +15,6 @@ import { BaseComponent } from 'src/app/shared/util/base.util';
 export class DeviceGenresComponent extends BaseComponent implements OnInit {
   deviceId: any;
   deviceState: any;
-  homeNo: any;
   memberNo:any;
   modalConfig!: ModalConfig;
   // timeLinesForm: FormGroup = this.fb.group({});
@@ -210,7 +209,13 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.timeLinesForm[1].value)
+    // this.deviceService.updateHomeSurvey(DeviceConstants.memberHouseHoldSurveyPostUrl+this.deviceId).subscribe(
+    //   res => {console.log(res);
+    //   });
+      this.deviceService.updateMemberSurvey(this.deviceId,this.memberNo).subscribe(
+        res => {console.log(res);
+        });
+
   }
 
   async openModal() {

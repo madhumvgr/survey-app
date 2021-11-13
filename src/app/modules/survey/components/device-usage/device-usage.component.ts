@@ -15,6 +15,7 @@ export class DeviceUsageComponent implements OnInit {
   memberList: any;
   ownerName: any;
   button = 'Edit';
+  isCompleted= false;
   constructor(private Activatedroute:ActivatedRoute,private router: Router,private deviceService: DeviceService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,15 @@ export class DeviceUsageComponent implements OnInit {
     this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
       if (response) {
         this.memberList = response;
+        let count=0;
+         this.memberList.forEach( (element1:any) => {
+           if(element1.memberSurveyStatusId == 1){
+              count++;
+           }
+         });
+         if( count== this.memberList.length){
+          this.isCompleted = true;
+         }
       }
     });
   }
@@ -32,7 +42,10 @@ export class DeviceUsageComponent implements OnInit {
   }
 
   submit() {
-    
+    // submit whole home survey. 
+    this.deviceService.updateHomeSurvey(this.deviceId).subscribe(
+      res => {console.log(res);
+      });
   }
 
 

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-device-information',
@@ -9,14 +10,16 @@ import { DeviceService } from 'src/app/modules/login/services/device.service';
   styleUrls: ['./device-information.component.css']
 })
 
-export class DeviceInformationComponent implements OnInit {
+export class DeviceInformationComponent implements OnInit,OnChanges {
   deviceId : any;
   deviceState: any;
   deviceInfoForm: FormGroup = this.fb.group({});
   deviceInformation : DeviceInfo = new DeviceInfo();
+
   deviceName: any;
   constructor(private fb: FormBuilder,private Activatedroute:ActivatedRoute,private router: Router, 
-    private deviceService: DeviceService) { }
+    private deviceService: DeviceService,
+    private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
@@ -37,52 +40,32 @@ export class DeviceInformationComponent implements OnInit {
       this.deviceInfoFormControl.oftenUsed.setValue(''+res.oftenUsed);
       this.deviceInfoFormControl.planToUseDuration.setValue(''+res.planToUseDuration);
       this.deviceInfoFormControl.deviceNickName.setValue(''+res.deviceNickName);
-     // this.deviceName= res.deviceNickName;
+      // get device device internal details. 
+      this.deviceService.getDeviceInnerInfo(this.deviceId).subscribe( res1 => {
+       this.deviceInformation.devicePlatform=res1['devicePlatform'];
+       this.deviceInformation.os=res1['os'];
+       this.deviceInformation.macAddress=res1['macAddress'];
+      });
     });
-    // this.deviceInformation = {
-    //   numberOfUsers: "1",
-    //   oftenUsed: "2",
-    //   planToUseDuration:"2",
-    //   deviceNickName:"NickName",
-    //   deviceId: "1000",
-    //   homeNo: "",
-    // }
 
-    this.deviceName = this.getDeviceName(this.deviceId);
+    this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
+  }
+
+  ngOnChanges(){
+    // this.deviceInfoForm.valueChanges.subscribe(val => {
+    //   this.updateForm();
+    // });
   }
 
   get deviceInfoFormControl() {
     return this.deviceInfoForm.controls;
   }
 
-  getDeviceName(deviceId: string) {
-    switch (deviceId) {
-      case "000001":
-        return "Smart TV";
-      case "000002":
-        return "Laptop MAC";
-      case "000003":
-        return "Samsung Mobile";
-      case "000004":
-        return "iPhone Satish";
-      case "000005":
-        return "Playstation 4";    
-      case "000006":
-        return "desktop_mac";  
-      case "000001":
-        return "desktop_windows";
-      case "000001":
-        return "smartphone";
-      default:
-        return "";
-    }
-  }
-
   continueNavigate(){
     this.router.navigateByUrl('survey/deviceOwnerInformation/'+this.deviceState+'/'+this.deviceId);
   }
 
-  saveAndExit(){
+  updateForm(){
     // send API to submit device information. 
     this.deviceInfoForm.patchValue({
       deviceId: this.deviceId
@@ -98,4 +81,7 @@ export class DeviceInfo {
   deviceNickName: string | undefined;
   deviceId: string | undefined;
   homeNo: string | undefined;
+  devicePlatform: string | undefined;
+  os: string | undefined;
+  macAddress: string | undefined;
 }

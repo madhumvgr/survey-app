@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: '/survey/deviceList/New', component: DeviceListComponent },
       { path: 'deviceInformation/:state/:deviceId', component: DeviceInformationComponent },
       { path: 'deviceOwnerInformation/:state/:deviceId', component: DeviceOwnerInformationComponent },
-      { path: 'multiUserList/:state/:deviceId/:memberName', component: MultiUserListComponent },
+      { path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent },
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
       { path: 'deviceGeneres/:memberNo/:deviceId', component: DeviceGenresComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },

@@ -19,12 +19,16 @@ export class DeviceConstants {
     
  
     public static deviceInfo="api/deviceInfo/";
+    public static deviceInnerInfo="api/portal-devices/"
 
     public static deviceCoviewer= "api/portalDeviceCoviewer/";
     public static deviceCoviewerPostUrl = "api/portalDeviceCoviewer";
 
     public static deviceGenersGetUrl ="api/portal-genres/";
     public static deviceGenersPostUrl ="api/portal-genres";
+
+    public static deviceHouseHoldSurveyPostUrl = "api/portal-survey-trackers/householdSurvey/";
+    public static memberHouseHoldSurveyPostUrl = "api/portal-survey-trackers/memberSurvey/";
 }
 
 export class NotificationConstants {

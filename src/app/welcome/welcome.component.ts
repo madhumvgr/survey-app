@@ -30,7 +30,7 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.notifService.getMessageList();
-    this.subscription.add(this.sharedService.getMessagesObservable().subscribe(data => {
+    this.subscription.add(this.sharedService.getMessagesObservable().subscribe((data:any) => {
       this.zone.run(() => {
         console.log(data);
         this.messages = data;

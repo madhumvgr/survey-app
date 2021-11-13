@@ -5,6 +5,7 @@ import { CustomvalidationService } from 'src/app/shared/services/customvalidatio
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/modules/login/services/user.service';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ChangePasswordComponent implements OnInit {
   //showInvalidError = false;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
-    private authService: AuthService,
+    private localStorageService:LocalStorageService,
     private router: Router, public userService:UserService) {
   }
   ngOnInit(): void {
@@ -62,7 +63,7 @@ export class ChangePasswordComponent implements OnInit {
       console.table(this.changePasswordForm.value);
       this.router.navigate(['/account-settings/thankyou/Change password']);
       // update password in local storage.
-      let username = localStorage.getItem('username');
+      let username = this.localStorageService.getItem(StorageItem.USERNAME);
       if (username) {
         let user: User = {
           username: username,
@@ -73,8 +74,8 @@ export class ChangePasswordComponent implements OnInit {
           if (response) {
             this.showError = false;
             // After successful sign in, we have to set username into localstorage
-            localStorage.setItem('id_token', response['id_token']);
-            localStorage.setItem('username', this.changePasswordFormControl.email.value);
+            this.localStorageService.setIdToken(response['id_token']);
+            this.localStorageService.setUserName(this.changePasswordFormControl.email.value);
             //this.router.navigate(['/welcome']);
           }
          

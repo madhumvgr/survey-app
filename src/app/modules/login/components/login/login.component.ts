@@ -5,6 +5,7 @@ import { CustomvalidationService } from 'src/app/shared/services/customvalidatio
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from '../../services/user.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 
 
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private userService: UserService,
+    private localStorageService: LocalStorageService,
     private router: Router) { }
 
     
@@ -72,8 +74,8 @@ export class LoginComponent implements OnInit {
         if (response) {
           this.showError = false;
           // After successful sign in, we have to set username into localstorage
-          localStorage.setItem('id_token', response['id_token']);
-          localStorage.setItem('username',  this.loginFormControl.email.value);
+          this.localStorageService.setIdToken( response['id_token']);
+          this.localStorageService.setUserName(this.loginFormControl.email.value);
           this.router.navigate(['/welcome']);
         }
       }, err => this.showError = true,

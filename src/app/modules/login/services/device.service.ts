@@ -29,6 +29,10 @@ export class DeviceService extends ResourceService<User> {
          return this.getCustomRequest(DeviceConstants.deviceInfo+deviceId);
     }
 
+    public getDeviceInnerInfo(deviceId:any){
+      return this.getCustomRequest(DeviceConstants.deviceInnerInfo+deviceId);
+    }
+
     public updateDeviceMember(item:any){
       return this.customCreate(item,DeviceConstants.deviceOwnerByDeviceId);
     }
@@ -43,5 +47,13 @@ export class DeviceService extends ResourceService<User> {
     
     public updateDeviceTimeLine(item:any){
       return this.customCreate(item,DeviceConstants.deviceGenersPostUrl);
+    }
+
+    public updateMemberSurvey(deviceId:string,memberNo:string){
+      return this.customCreate({},DeviceConstants.memberHouseHoldSurveyPostUrl+deviceId+'/'+memberNo);
+    }
+
+    public updateHomeSurvey(deviceId:string){
+      return this.customCreate({},DeviceConstants.deviceHouseHoldSurveyPostUrl+deviceId);
     }
   }

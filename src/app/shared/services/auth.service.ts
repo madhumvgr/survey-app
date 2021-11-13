@@ -4,6 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { LocalStorageService, StorageItem } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    public router: Router
+    public router: Router,
+    private localStorageService: LocalStorageService
   ) {
 
   }
@@ -35,7 +37,7 @@ export class AuthService {
   signIn(user: User): boolean {
 
     // get password from local storage. 
-    const password = localStorage.getItem('password');
+    const password = this.localStorageService.getItem('password');
     if (password) {
       return user.email === 'admin@gmail.com' && user.password === password;
     } else {
@@ -45,16 +47,16 @@ export class AuthService {
 
 
   getToken() {
-    return localStorage.getItem('id_token');
+    return this.localStorageService.getItem(StorageItem.ID_TOKEN);
   }
 
   get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('id_token');
+    let authToken = this.localStorageService.getItem(StorageItem.ID_TOKEN);
     return (authToken !== null) ? true : false;
   }
 
   isAuthenticatedUser(isPageRedirect: boolean = false): boolean {
-    let authToken = localStorage.getItem('id_token');
+    let authToken = this.localStorageService.getItem(StorageItem.ID_TOKEN);
     if (authToken === null && isPageRedirect) {
       this.router.navigate(['/login/login']);
     }
@@ -62,7 +64,7 @@ export class AuthService {
   }
 
   doLogout() {
-    let removeToken = localStorage.removeItem('id_token');
+    let removeToken = this.localStorageService.removeAllItem();
     if (removeToken == null) {
       this.router.navigate(['/login/login']);
     }

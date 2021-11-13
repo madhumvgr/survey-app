@@ -51,7 +51,7 @@
                 </i>
                 <div class="ps-3 description">
                     <p><strong>Device platform</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.devicePlatform}}</span>
                 </div>
             </div>
             <!--OS-->
@@ -61,7 +61,7 @@
                 </i>
                 <div class="ps-3 description">
                     <p><strong>Operation system:</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.os}}</span>
                 </div>
             </div>
             <!--MAC address-->
@@ -71,7 +71,7 @@
                 </i>
                 <div class="ps-3 description">
                     <p><strong>MAC address:</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.macAddress}}</span>
                 </div>
             </div>
         </div>
@@ -101,23 +101,23 @@
                         <div class="mb-4">
                             <h4>How many household members use this device?</h4>
                             <div class="form-check mb-2">
-                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" name="numberOfUsers" id="Radio1" value="0">
+                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio1" value="0">
                                 <label class="form-check-label" for="Radio1">1</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" name="numberOfUsers" id="Radio2" value="1">
+                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio2" value="1">
                                 <label class="form-check-label" for="Radio2">2 to 10</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" name="numberOfUsers" id="Radio3" value="2">
+                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio3" value="2">
                                 <label class="form-check-label" for="Radio3">11 to 20</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" name="numberOfUsers" id="Radio4" value="3">
+                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio4" value="3">
                                 <label class="form-check-label" for="Radio4">More than 20</label>
                             </div>
                             <div class="form-check">
-                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" name="numberOfUsers" id="Radio5" value="4">
+                                <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio5" value="4">
                                 <label class="form-check-label" for="Radio5">This device no longer in use</label>
                             </div>
                         </div>
@@ -125,15 +125,15 @@
                         <div class="mb-4">
                             <h4>How often do you or your household members watch something on this device?</h4>
                             <div class="form-check mb-2">
-                                <input formControlName="oftenUsed" class="form-check-input" type="radio" name="oftenUsed" id="Radio6" value="0">
+                                <input formControlName="oftenUsed" class="form-check-input" type="radio" (change)="updateForm()" name="oftenUsed" id="Radio6" value="0">
                                 <label class="form-check-label" for="Radio6">Daily</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input formControlName="oftenUsed" class="form-check-input" type="radio" name="oftenUsed" id="Radio7" value="1">
+                                <input formControlName="oftenUsed" class="form-check-input" type="radio" (change)="updateForm()" name="oftenUsed" id="Radio7" value="1">
                                 <label class="form-check-label" for="Radio7">A few times each week</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input formControlName="oftenUsed" class="form-check-input" type="radio" name="oftenUsed" id="Radio8" value="2">
+                                <input formControlName="oftenUsed" class="form-check-input" type="radio" (change)="updateForm()" name="oftenUsed" id="Radio8" value="2">
                                 <label class="form-check-label" for="Radio8">A few times each month</label>
                             </div>
                         </div>
@@ -141,19 +141,19 @@
                         <div class="mb-4">
                             <h4>How long do you plan on using this device?</h4>
                             <div class="form-check mb-2">
-                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" name="planToUseDuration" id="Radio6" value="0">
+                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio6" value="0">
                                 <label class="form-check-label" for="Radio6">For less than 6 months</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" name="planToUseDuration" id="Radio7" value="1">
+                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio7" value="1">
                                 <label class="form-check-label" for="Radio7">More than 6 months</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" name="planToUseDuration" id="Radio8" value="2">
+                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio8" value="2">
                                 <label class="form-check-label" for="Radio8">More than 1 year</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" name="planToUseDuration" id="Radio8" value="3">
+                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio8" value="3">
                                 <label class="form-check-label" for="Radio8">As long as it lasts!</label>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
                     <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">Back</button>
-                    <button type="button" (click)="saveAndExit()" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                    <button type="button" (click)="updateForm()" class="btn btn-secondary ms-md-3">Save & Exit</button>
                     <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue</button>
                 </div>
 

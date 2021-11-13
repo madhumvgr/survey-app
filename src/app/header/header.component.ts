@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../shared/services/auth.service';
+import { LocalStorageService, StorageItem } from '../shared/services/local-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,9 @@ export class HeaderComponent implements OnInit {
 
   @Input() isMenu = true;
   isFrance=false;
-  constructor(public authService:AuthService,private translate: TranslateService) { 
-    this.isFrance = localStorage.getItem("lang") === "fr";
+  constructor(public authService:AuthService,private translate: TranslateService,
+     private localStorageService:LocalStorageService) { 
+    this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
   }
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class HeaderComponent implements OnInit {
     }else{
       this.isFrance= false;
     }
-    localStorage.setItem("lang",lang);
+    this.localStorageService.setLanguageItem(lang);
     this.translate.setDefaultLang(lang);
   }
 }

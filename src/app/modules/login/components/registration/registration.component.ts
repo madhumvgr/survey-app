@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from '../../services/user.service';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +23,7 @@ export class RegistrationComponent implements OnInit {
   showError= false;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
-    private authService: AuthService,
+    private localStorageService: LocalStorageService,
     private router: Router,
     private userService: UserService) {
   }
@@ -49,7 +50,7 @@ export class RegistrationComponent implements OnInit {
       return;
     } else {
       //get profileNo from local storage. 
-      const profileId=localStorage.getItem('profileId');
+      const profileId=this.localStorageService.getItem(StorageItem.PROFILEID);
 
       const registerUser= {
         profileId: profileId,

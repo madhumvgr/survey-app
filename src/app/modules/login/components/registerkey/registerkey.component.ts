@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UrlConstants } from 'src/app/shared/models/url-constants';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../../services/user.service';
 
@@ -15,7 +16,8 @@ export class RegisterkeyComponent implements OnInit {
   password: any;
   showOtpError =false;
 
-  constructor(private router: Router,private userService: UserService) { }
+  constructor(private router: Router,private userService: UserService,
+    private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +29,7 @@ export class RegisterkeyComponent implements OnInit {
     this.userService.customRead(url).subscribe( response => {
       if(response.id){
         this.showOtpError=false;
-        localStorage.setItem("profileId",response['portalHome'] ['homeNo']);
+        this.localStorageService.setProfileId(response['portalHome'] ['homeNo']);
         this.router.navigate(['login/register']);
       }
       else{

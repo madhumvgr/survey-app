@@ -15,7 +15,7 @@ export class DeviceConstants {
     public static deviceOwnerByDeviceId ="api/deviceOwnerByDeviceId/"; 
     public static memberListByDeviceId ="api/memberListByDeviceId/"; 
     public static memberDeviceUsagePostUrl= "api/memberDeviceUsage";
-    public static memberDeviceUsageGetUrl= "api/memberDeviceUsage/"
+    public static memberDeviceUsageGetUrl= "api/memberListByDeviceId/"
     
  
     public static deviceInfo="api/deviceInfo/";

@@ -27,9 +27,9 @@ export class DeviceInformationComponent implements OnInit,OnChanges {
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.deviceInfoForm = this.fb.group({
       //set to empty. 
-      numberOfUsers: ['2'],
-      oftenUsed: ['2'],
-      planToUseDuration: ['2'],
+      numberOfUsers: [''],
+      oftenUsed: [''],
+      planToUseDuration: [''],
       deviceNickName: [''],
       deviceId: [''],
       homeNo: ['']

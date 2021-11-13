@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-device-usage',
@@ -14,11 +15,13 @@ export class DeviceUsageComponent implements OnInit {
   deviceState: any;
   memberList: any;
   ownerName: any;
+  deviceName: any;
   button = 'Edit';
   isCompleted= false;
-  constructor(private Activatedroute:ActivatedRoute,private router: Router,private deviceService: DeviceService) { }
+  constructor(private Activatedroute:ActivatedRoute, private localStorageService:LocalStorageService, private router: Router,private deviceService: DeviceService) { }
 
   ngOnInit(): void {
+    this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.ownerName = this.Activatedroute.snapshot.params['memeberName'];

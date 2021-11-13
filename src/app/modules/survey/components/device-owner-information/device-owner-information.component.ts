@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 export interface Owner {
   memberName: string;
   memberNo: string;
@@ -20,6 +21,7 @@ export interface Owner {
 })
 export class DeviceOwnerInformationComponent implements OnInit {
   deviceId: any;
+  deviceName:any;
   deviceState: any;
   ownerList: Owner[] = [];
   ownerSelect: any = "";
@@ -27,9 +29,10 @@ export class DeviceOwnerInformationComponent implements OnInit {
   selectedOwner: any = {};
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute,
-    private router: Router, private deviceService: DeviceService) { }
+    private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
+    this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceOwnerInfoForm = this.fb.group({
       selectedOwner: [''],
     });

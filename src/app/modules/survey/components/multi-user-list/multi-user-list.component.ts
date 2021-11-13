@@ -3,6 +3,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from 
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 export interface Member {
   deviceId: string;
@@ -32,12 +33,13 @@ export class MultiUserListComponent implements OnInit {
   showPercentageError: boolean = false;
   showCoviewerPercentageError: boolean = false;
   singleViewerPe: string = "";
+  deviceName:any;
 
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService) { }
+    private deviceService: DeviceService,  private localStorageService:LocalStorageService,) { }
 
   ngOnInit(): void {
-
+    this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.multiUserListForm = this.fb.group({

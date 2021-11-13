@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
                 <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-devices']">Household devices</a></li>
                 <li class="breadcrumb-item"><a [routerLink] = "['/survey/deviceList/'+deviceState]">{{deviceState}}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{deviceId}}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
                 <!--has to reflect devices name here-->
             </ol>
         </ol>
@@ -38,7 +38,7 @@
                 </i>
                 <div class="ps-3 description">
                     <p><strong>Device platform</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.devicePlatform}}</span>
                 </div>
             </div>
              <!--Name-->
@@ -48,7 +48,7 @@
                 </i>
                 <div class="ps-3 description">
                     <p><strong>Device name:</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.deviceName}}</span>
                 </div>
             </div>
                <!--OS-->
@@ -58,7 +58,7 @@
                 </i>
                 <div class="ps-3 description">
                     <p><strong>Operation system:</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.os}}</span>
                 </div>
             </div>
              <!--MAC address-->
@@ -68,7 +68,7 @@
                 </i>
                 <div class="ps-3 description">
                     <p><strong>MAC address:</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.macAddress}}</span>
                 </div>
             </div>
         </div><!--end Row-->

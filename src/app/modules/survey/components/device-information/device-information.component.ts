@@ -22,6 +22,7 @@ export class DeviceInformationComponent implements OnInit,OnChanges {
     private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
+    this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.deviceInfoForm = this.fb.group({
@@ -47,8 +48,6 @@ export class DeviceInformationComponent implements OnInit,OnChanges {
        this.deviceInformation.macAddress=res1['macAddress'];
       });
     });
-
-    this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
   }
 
   ngOnChanges(){
@@ -84,4 +83,5 @@ export class DeviceInfo {
   devicePlatform: string | undefined;
   os: string | undefined;
   macAddress: string | undefined;
+  deviceName: string | undefined;
 }

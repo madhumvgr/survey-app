@@ -15,7 +15,7 @@ import { BaseComponent } from 'src/app/shared/util/base.util';
 export class DeviceGenresComponent extends BaseComponent implements OnInit {
   deviceId: any;
   deviceState: any;
-  memberNo:any;
+  memberNo: any;
   modalConfig!: ModalConfig;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
@@ -50,7 +50,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     "id": '7',
     "name": "Comedy"
   },
- 
+
   {
     "id": '8',
     "name": "Documentaries"
@@ -133,9 +133,9 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       subscribe(response => {
         this.setPreviousValues(response);
       });
-      this.modalConfig = {
-        "modalTitle": "Sample",
-      }
+    this.modalConfig = {
+      "modalTitle": "Sample",
+    }
   }
 
   setPreviousValues(genereList: any) {
@@ -158,16 +158,14 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     });
   }
 
-  updateTimeLine(control:any){
-    let item= control.value;
-    item['deviceId']=this.deviceId;
-    item['memberNo']=this.memberNo;
+  updateTimeLine(control: any) {
+    let item = control.value;
+    item['deviceId'] = this.deviceId;
+    item['memberNo'] = this.memberNo;
     this.deviceService.updateDeviceTimeLine(item).
-    subscribe((response:any) => {
-      console.log("Update record");
-    });
-
-    console.log(item.value);
+      subscribe((response: any) => {
+        console.log("Update record");
+      });
   }
   getWeekDayControl(generId: number) {
     return this.timeLinesForm[generId].get('weekDays') as FormArray;
@@ -209,18 +207,51 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   submit() {
-    // this.deviceService.updateHomeSurvey(DeviceConstants.memberHouseHoldSurveyPostUrl+this.deviceId).subscribe(
-    //   res => {console.log(res);
-    //   });
-      this.deviceService.updateMemberSurvey(this.deviceId,this.memberNo).subscribe(
-        res => {console.log(res);
-        });
-        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
-
+    this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
+      res => {
+        console.log(res);
+      });
+    this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
   }
 
   async openModal() {
     return await this.modalComponent.open()
+  }
+
+  copyValues(source: number, target: any) {
+    let selectedWeekEndIds: string[] = [];
+    let selectedWeekDayIds: string[] = [];
+    if (source+1 !== parseInt(target.target.value)) {
+      let weekDayControls = this.getWeekDayControl(source + 1).controls;
+      let weekEndControl = this.getWeekEndControl(source + 1).controls;
+      weekDayControls.forEach(weekDay => {
+        if (weekDay.value['addNew']) {
+          selectedWeekDayIds.push(weekDay.value['usageTimelineId']);
+        }
+      });
+
+      weekEndControl.forEach(weekEnd => {
+        if (weekEnd.value['addNew']) {
+          selectedWeekEndIds.push(weekEnd.value['usageTimelineId']);
+        }
+      });
+
+      // deselect all elements in target accodion and set the new values. 
+      let targetWeekDayControls = this.getWeekDayControl(parseInt(target.target.value)).controls;
+      let targetWeekEndControl = this.getWeekEndControl(parseInt(target.target.value)).controls;
+      targetWeekDayControls.forEach(weekDay => {
+        weekDay.patchValue({ "addNew": false });
+        if (selectedWeekDayIds.indexOf(weekDay.value.usageTimelineId) > -1) {
+          weekDay.patchValue({ "addNew": true });
+        }
+      });
+      targetWeekEndControl.forEach(weekEnd => {
+        weekEnd.patchValue({ "addNew": false });
+        if (selectedWeekEndIds.indexOf(weekEnd.value.usageTimelineId) > -1) {
+          weekEnd.patchValue({ "addNew": true });
+        }
+      });
+    }
   }
 }
 export interface DeviceGenere {

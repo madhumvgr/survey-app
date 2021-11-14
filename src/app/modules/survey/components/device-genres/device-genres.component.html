@@ -58,19 +58,19 @@
                             <form [formGroup]="timeLinesForm[generId+1]" (ngSubmit)="submit()">
                                 <div class="accordion-body">
                                     <h4>Content watched is same as for </h4>
-                                    <select class="form-select mb-4" aria-label="content select">
+                                    <select class="form-select mb-4" aria-label="content select" (change)="copyValues(generId,$event)">
                                         <option selected>Select Content</option>
                                         <option value="1">News & Analysis</option>
-                                        <option value="2">Kids Programming</option>
-                                        <option value="3">Sports</option>
-                                        <option value="4">Hobbies & Leisure</option>
-                                        <option value="5">Sports</option>
-                                        <option value="6">Drama</option>
-                                        <option value="7">Movies</option>
-                                        <option value="8">Comedy</option>
-                                        <option value="9">Entertainment</option>
-                                        <option value="10">Documentaries</option>
-                                        <option value="11">Other</option>
+                                        <option value="2">Sports</option>
+                                        <option value="3">Entertainment</option>
+                                        <option value="4">Movies</option>
+                                        <option value="5">Drama</option>
+                                        <option value="6">Kids Programming</option>
+                                        <option value="7">Comedy</option>
+                                        <option value="8">Documentaries</option>
+                                        <option value="9">Hobbies & Leisure</option>
+                                        <option value="10">NONE</option>
+                                        <option value="11">New_Genre</option>
                                     </select>
                                     <h4>Select weekday time slots</h4>
                                     <div formArrayName="weekDays" class="w-75">

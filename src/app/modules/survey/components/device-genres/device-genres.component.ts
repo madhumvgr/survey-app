@@ -16,7 +16,6 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   deviceId: any;
   deviceState: any;
   memberNo: any;
-  modalConfig!: ModalConfig;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
   @ViewChild('modal')
@@ -116,8 +115,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   ];
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService, public matDialog: MatDialog) {
-    super(matDialog);
+    private deviceService: DeviceService) {
+    super();
+  }
+
+  ngAfterViewInit(){
+    super.afterViewInit(this.modalComponent);
   }
 
   ngOnInit(): void {
@@ -133,9 +136,6 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       subscribe(response => {
         this.setPreviousValues(response);
       });
-    this.modalConfig = {
-      "modalTitle": "Sample",
-    }
   }
 
   setPreviousValues(genereList: any) {
@@ -214,16 +214,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
   }
 
-  async openModal() {
-    return await this.modalComponent.open()
-  }
-
-  copyValues(source: number, target: any) {
+  copyValues(target: number, sourceNode: any) {
     let selectedWeekEndIds: string[] = [];
     let selectedWeekDayIds: string[] = [];
-    if (source+1 !== parseInt(target.target.value)) {
-      let weekDayControls = this.getWeekDayControl(source + 1).controls;
-      let weekEndControl = this.getWeekEndControl(source + 1).controls;
+    if (target+1 !== parseInt(sourceNode.target.value)) {
+      let weekDayControls = this.getWeekDayControl(parseInt(sourceNode.target.value)).controls;
+      let weekEndControl = this.getWeekEndControl(parseInt(sourceNode.target.value)).controls;
       weekDayControls.forEach(weekDay => {
         if (weekDay.value['addNew']) {
           selectedWeekDayIds.push(weekDay.value['usageTimelineId']);
@@ -237,21 +233,27 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       });
 
       // deselect all elements in target accodion and set the new values. 
-      let targetWeekDayControls = this.getWeekDayControl(parseInt(target.target.value)).controls;
-      let targetWeekEndControl = this.getWeekEndControl(parseInt(target.target.value)).controls;
+      let targetWeekDayControls = this.getWeekDayControl(target + 1).controls;
+      let targetWeekEndControl = this.getWeekEndControl(target +1 ).controls;
       targetWeekDayControls.forEach(weekDay => {
         weekDay.patchValue({ "addNew": false });
         if (selectedWeekDayIds.indexOf(weekDay.value.usageTimelineId) > -1) {
           weekDay.patchValue({ "addNew": true });
         }
+        this.updateTimeLine(weekDay);
       });
       targetWeekEndControl.forEach(weekEnd => {
         weekEnd.patchValue({ "addNew": false });
         if (selectedWeekEndIds.indexOf(weekEnd.value.usageTimelineId) > -1) {
           weekEnd.patchValue({ "addNew": true });
+          this.updateTimeLine(weekEnd);
         }
+        this.updateTimeLine(weekEnd);
       });
     }
+  }
+  exitEvent(){
+    this.submit();
   }
 }
 export interface DeviceGenere {

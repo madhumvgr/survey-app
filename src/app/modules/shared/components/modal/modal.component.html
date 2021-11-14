@@ -3,19 +3,19 @@
       <h5 class="modal-title">{{ modalConfig.modalTitle }}</h5>
     </div>
     <div class="modal-body">
-      <ng-content></ng-content>
+       {{ modalConfig.content}}
     </div>
     <div class="modal-footer">
       <button type="button"
               class="btn btn-outline-secondary"
-              (click)="dismiss()"
+              (click)="cancel()"
               *ngIf="modalConfig.hideDismissButton === undefined || !modalConfig.hideDismissButton()"
               [disabled]="modalConfig.disableDismissButton !== undefined && modalConfig.disableDismissButton()">
         {{ modalConfig.dismissButtonLabel }}
       </button>
       <button type="button"
               class="btn btn-outline-primary"
-              (click)="close()"
+              (click)="exit()"
               *ngIf="modalConfig.hideCloseButton === undefined || !modalConfig.hideCloseButton()"
               [disabled]="modalConfig.disableCloseButton !== undefined && modalConfig.disableCloseButton()">
         {{ modalConfig.closeButtonLabel }}

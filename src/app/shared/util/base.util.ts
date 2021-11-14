@@ -1,17 +1,28 @@
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { ActivatedRoute, Router } from "@angular/router";
-import { DialogComponent } from "src/app/modules/material/components/dialog/dialog.component";
+import { ModalComponent } from "src/app/modules/shared/components/modal/modal.component";
 
 export class BaseComponent {
-    constructor(public matDialog: MatDialog) {
+    private modalComponent1!: ModalComponent;
+    modalConfig = {
+        "modalTitle": "Save and Exit",
+        "content": "Your work is Saved! You can always finish the rest of it later.",
+        "dismissButtonLabel": "Cancel",
+        "closeButtonLabel": "Exit",
     }
-    openDialog() {
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.data = { name: "some name" };
-        let dialogRef = this.matDialog.open(DialogComponent, dialogConfig);
 
-        dialogRef.afterClosed().subscribe((value: any) => {
-            console.log(`Dialog sent: ${value}`);
-        });
+    constructor() {
+    }
+
+    async openModal() {
+        return await this.modalComponent1.open()
+    }
+
+    afterViewInit(modalComponent: ModalComponent) {
+        this.modalComponent1 = modalComponent;
+    }
+    cancelEvent(){
+    
+    }
+    exitEvent(){
+     
     }
 }

@@ -78,7 +78,7 @@ export class MultiUserListComponent implements OnInit {
   addMemberPercentage(member: Member) {
     this.members = this.multiUserListForm.get('arr') as FormArray;
     this.members.push(this.fb.group({
-      usePercentage: member.usePercentage,
+      usePercentage: member.usePercentage?member.usePercentage: "0",
       memberName: member.memberName,
       deviceId: member.deviceId,
       homeNo: member.homeNo,

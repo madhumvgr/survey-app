@@ -1,4 +1,4 @@
-import { Component, Injectable, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
+import { Component, EventEmitter, Injectable, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core'
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
@@ -10,6 +10,12 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap'
 export class ModalComponent implements OnInit {
   @Input()
   public modalConfig!: ModalConfig;
+  @Output() 
+  public cancelEvent= new EventEmitter();
+
+  @Output() 
+  public exitEvent= new EventEmitter();
+    
   @ViewChild('modal') private modalContent: TemplateRef<ModalComponent> | undefined
   private modalRef!: NgbModalRef
 
@@ -24,16 +30,18 @@ export class ModalComponent implements OnInit {
     })
   }
 
-  async close(): Promise<void> {
+  async exit(): Promise<void> {
     if (this.modalConfig.shouldClose === undefined || (await this.modalConfig.shouldClose())) {
       const result = this.modalConfig.onClose === undefined || (await this.modalConfig.onClose())
+      this.exitEvent.emit('0');
       this.modalRef.close(result)
     }
   }
 
-  async dismiss(): Promise<void> {
+  async cancel(): Promise<void> {
     if (this.modalConfig.shouldDismiss === undefined || (await this.modalConfig.shouldDismiss())) {
       const result = this.modalConfig.onDismiss === undefined || (await this.modalConfig.onDismiss())
+      this.cancelEvent.emit('0');
       this.modalRef.dismiss(result)
     }
   }
@@ -42,6 +50,7 @@ export interface ModalConfig {
   modalTitle: string
   dismissButtonLabel?: string
   closeButtonLabel?: string
+  content?:string
   shouldClose?(): Promise<boolean> | boolean
   shouldDismiss?(): Promise<boolean> | boolean
   onClose?(): Promise<boolean> | boolean

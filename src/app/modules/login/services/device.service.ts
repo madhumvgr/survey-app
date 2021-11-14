@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { DeviceConstants, UrlConstants } from "src/app/shared/models/url-constants";
 import { ResourceService } from "src/app/shared/services/http-resource.service";
 import { environment } from "src/environments/environment";
+import { TechSupport } from "../../support/connect/connect.component";
 import { User } from "../model/user.model";
 
 @Injectable({
@@ -55,5 +56,17 @@ export class DeviceService extends ResourceService<User> {
 
     public updateHomeSurvey(deviceId:string){
       return this.customCreate({},DeviceConstants.deviceHouseHoldSurveyPostUrl+deviceId);
+    }
+
+    public updateNotInUse(deviceId:string){
+      return this.update(DeviceConstants.markNotInUse+deviceId);
+    }
+
+    public updateInUse(deviceId:string){
+      return this.update(DeviceConstants.markInUse+deviceId);
+    }
+
+    public updateTechSupport(data:TechSupport){
+      return this.customCreate(data,DeviceConstants.techSupport);
     }
   }

@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Device Name</h1>
+                <h1>{{deviceName}}</h1>
                 <p>
                     You are about to edit a survey that you completed earlier for the device above. Please select the section that you’d like to edit from the list below. 
                 </p>
@@ -39,40 +39,30 @@
                 </i>
                 <div class="ps-3 description">
                     <p><strong>Device platform</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.devicePlatform}}</span>
                 </div>
             </div>
-             <!--Name-->
-             <div class="d-flex align-items-center mb-3">
-                <i class="material-icons d-flex h-100">
-                    <div class="h4 m-0">feed</div>
-                </i>
-                <div class="ps-3 description">
-                    <p><strong>Device name:</strong></p>
-                    <span>Data not available</span>
-                </div>
-            </div>
-               <!--OS-->
-               <div class="d-flex align-items-center mb-3">
+            <!--OS-->
+            <div class="d-flex align-items-center mb-3">
                 <i class="material-icons d-flex h-100">
                     <div class="h4 m-0">feed</div>
                 </i>
                 <div class="ps-3 description">
                     <p><strong>Operation system:</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.os}}</span>
                 </div>
             </div>
-             <!--MAC address-->
-             <div class="d-flex align-items-center mb-3">
+            <!--MAC address-->
+            <div class="d-flex align-items-center mb-3">
                 <i class="material-icons d-flex h-100">
                     <div class="h4 m-0">feed</div>
                 </i>
                 <div class="ps-3 description">
                     <p><strong>MAC address:</strong></p>
-                    <span>Data not available</span>
+                    <span>{{deviceInformation?.macAddress}}</span>
                 </div>
             </div>
-        </div><!--end Row-->
+        </div>
     </div><!--end Container-->
 </section><!--end Section-->
           
@@ -87,11 +77,12 @@
                     <div>
                         <p>Is this device currently in use?</p>
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="question1" id="Radio1">
+                            <input class="form-check-input" value="false" type="radio" [(ngModel)]="question1" name="question1" id="Radio1" checked>
                             <label class="form-check-label" for="Radio1">No</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="question1" id="Radio2" checked>
+                            <input class="form-check-input" value="true"
+                             type="radio"  [(ngModel)]="question1" name="question1" id="Radio2">
                             <label class="form-check-label" for="Radio2">Yes</label>
                         </div>
                     </div>
@@ -100,7 +91,7 @@
             <!-- Action buttons -->
             <div class="col-xs-6 d-grid gap-2 d-md-block">
                 <button type="submit" class="btn btn-secondary">Cancel</button>
-                <button type="submit" class="btn btn-primary ms-md-3">Update</button>
+                <button type="button" [disabled]="question1=='false'" class="btn btn-primary ms-md-3" (click)="updateForm()">Update</button>
             </div>
         </div><!--end Row-->
     </div><!--end Container-->

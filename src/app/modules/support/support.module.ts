@@ -10,6 +10,7 @@ import { ConnectComponent } from './connect/connect.component';
 import { ContactComponent } from './contact/contact.component';
 import { ExitComponent } from './exit/exit.component';
 import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,13 +25,12 @@ import { HomeComponent } from './home/home.component';
     ContactComponent,
     ExitComponent,
     HomeComponent,
-  
-   
   ],
   imports: [
     CommonModule,
     SupportRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
  
 })

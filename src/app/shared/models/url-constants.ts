@@ -29,6 +29,11 @@ export class DeviceConstants {
 
     public static deviceHouseHoldSurveyPostUrl = "api/portal-survey-trackers/householdSurvey/";
     public static memberHouseHoldSurveyPostUrl = "api/portal-survey-trackers/memberSurvey/";
+    
+    public static markNotInUse = "api/portal-devices/markNotInUse/";
+    public static markInUse = "api/portal-devices/markInUse/";
+    //public static memberHouseHoldSurveyPostUrl = "api/portal-survey-trackers/memberSurvey/";
+    public static techSupport ="api/tech-supports";
 }
 
 export class NotificationConstants {

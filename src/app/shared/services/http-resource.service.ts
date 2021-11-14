@@ -34,6 +34,12 @@ export class ResourceService<T extends Resource> {
             .pipe(map(data => data as T));
     }
 
+    public update(url:any): Observable<T> {
+        return this.httpClient
+            .put<T>(`${this.url}${url}`,{})
+            .pipe(map(data => data as T));
+    }
+
     read(id: string): Observable<T> {
         return this.httpClient
             .get(`${this.url}${this.endpoint}/${id}`)

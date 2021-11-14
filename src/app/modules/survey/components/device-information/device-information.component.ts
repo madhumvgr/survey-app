@@ -10,16 +10,16 @@ import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-
   styleUrls: ['./device-information.component.css']
 })
 
-export class DeviceInformationComponent implements OnInit,OnChanges {
-  deviceId : any;
+export class DeviceInformationComponent implements OnInit {
+  deviceId: any;
   deviceState: any;
   deviceInfoForm: FormGroup = this.fb.group({});
-  deviceInformation : DeviceInfo = new DeviceInfo();
+  deviceInformation: DeviceInfo = new DeviceInfo();
 
   deviceName: any;
-  constructor(private fb: FormBuilder,private Activatedroute:ActivatedRoute,private router: Router, 
+  constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
-    private localStorageService:LocalStorageService) { }
+    private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
@@ -36,40 +36,46 @@ export class DeviceInformationComponent implements OnInit,OnChanges {
     }
     );
     //get device information. 
-    this.deviceService.getDeviceInfo(this.deviceId).subscribe( res => {
-      this.deviceInfoFormControl.numberOfUsers.setValue(''+res.numberOfUsers);
-      this.deviceInfoFormControl.oftenUsed.setValue(''+res.oftenUsed);
-      this.deviceInfoFormControl.planToUseDuration.setValue(''+res.planToUseDuration);
-      this.deviceInfoFormControl.deviceNickName.setValue(''+res.deviceNickName);
+    this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => {
+      this.deviceInfoFormControl.numberOfUsers.setValue('' + res.numberOfUsers);
+      this.deviceInfoFormControl.oftenUsed.setValue('' + res.oftenUsed);
+      this.deviceInfoFormControl.planToUseDuration.setValue('' + res.planToUseDuration);
+      this.deviceInfoFormControl.deviceNickName.setValue('' + res.deviceNickName);
       // get device device internal details. 
-      this.deviceService.getDeviceInnerInfo(this.deviceId).subscribe( res1 => {
-       this.deviceInformation.devicePlatform=res1['devicePlatform'];
-       this.deviceInformation.os=res1['os'];
-       this.deviceInformation.macAddress=res1['macAddress'];
+      this.deviceService.getDeviceInnerInfo(this.deviceId).subscribe(res1 => {
+        this.deviceInformation.devicePlatform = res1['devicePlatform'];
+        this.deviceInformation.os = res1['os'];
+        this.deviceInformation.macAddress = res1['macAddress'];
       });
     });
-  }
-
-  ngOnChanges(){
-    // this.deviceInfoForm.valueChanges.subscribe(val => {
-    //   this.updateForm();
-    // });
   }
 
   get deviceInfoFormControl() {
     return this.deviceInfoForm.controls;
   }
 
-  continueNavigate(){
-    this.router.navigateByUrl('survey/deviceOwnerInformation/'+this.deviceState+'/'+this.deviceId);
+  continueNavigate() {
+    this.router.navigateByUrl('survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
   }
 
-  updateForm(){
+  setNotInuse() {
+    //set device to not in use. 
+    this.deviceService.create(this.deviceInfoForm.value).subscribe(res => {
+      this.deviceService.updateNotInUse(this.deviceId).subscribe(
+        res1 => {
+          console.log("Updated to not in use");
+        }
+      );
+      console.log(res);
+    });
+  }
+
+  updateForm() {
     // send API to submit device information. 
     this.deviceInfoForm.patchValue({
       deviceId: this.deviceId
     })
-    this.deviceService.create(this.deviceInfoForm.value).subscribe( res => 
+    this.deviceService.create(this.deviceInfoForm.value).subscribe(res =>
       console.log(res));
   }
 }

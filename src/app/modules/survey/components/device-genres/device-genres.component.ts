@@ -253,8 +253,18 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       });
     }
   }
+  backAction(){
+    this.modalConfig = {
+      "modalTitle": "Back action",
+      "content": "Your work is Saved! You can always finish the rest of it later.",
+      "dismissButtonLabel": "Cancel",
+      "closeButtonLabel": "Exit",
+  }
+  this.openModal();
+    //this.router.navigateByUrl('/survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+  }
   exitEvent(){
-    this.submit();
+    // this.submit();
   }
 }
 export interface DeviceGenere {

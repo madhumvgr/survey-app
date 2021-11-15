@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { BaseComponent } from 'src/app/shared/util/base.util';
 export interface Owner {
   memberName: string;
   memberNo: string;
@@ -19,7 +21,7 @@ export interface Owner {
   templateUrl: './device-owner-information.component.html',
   styleUrls: ['./device-owner-information.component.css']
 })
-export class DeviceOwnerInformationComponent implements OnInit {
+export class DeviceOwnerInformationComponent extends BaseComponent implements OnInit {
   deviceId: any;
   deviceName:any;
   deviceState: any;
@@ -27,9 +29,17 @@ export class DeviceOwnerInformationComponent implements OnInit {
   ownerSelect: any = "";
   error: boolean = false;
   selectedOwner: any = {};
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute,
-    private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService) { }
+    private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService) {
+      super();
+     }
+
+     ngAfterViewInit(){
+      super.afterViewInit(this.modalComponent);
+    }
 
   ngOnInit(): void {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);

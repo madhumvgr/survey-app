@@ -162,7 +162,7 @@
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
                     <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">Back</button>
-                    <button type="button" (click)="updateForm()" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                    <button type="button" (click)="openModal()"  class="btn btn-secondary ms-md-3">Save & Exit</button>
                     <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3">Continue</button>
                 </div>
 
@@ -175,3 +175,6 @@
     <!--end Container-->
 </section>
 <!--end Section-->
+<modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent()" (exitEvent)="exitEvent()">
+    <!--  body of the modal  -->
+  </modal>

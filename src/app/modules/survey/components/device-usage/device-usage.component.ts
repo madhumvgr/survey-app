@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { BaseComponent } from 'src/app/shared/util/base.util';
 
 @Component({
   selector: 'app-device-usage',
   templateUrl: './device-usage.component.html',
   styleUrls: ['./device-usage.component.css']
 })
-export class DeviceUsageComponent implements OnInit {
+export class DeviceUsageComponent extends BaseComponent implements OnInit {
 
   deviceId : any;
   deviceState: any;
@@ -18,7 +20,14 @@ export class DeviceUsageComponent implements OnInit {
   deviceName: any;
   button = 'Edit';
   isCompleted= false;
-  constructor(private Activatedroute:ActivatedRoute, private localStorageService:LocalStorageService, private router: Router,private deviceService: DeviceService) { }
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
+  constructor(private Activatedroute:ActivatedRoute, private localStorageService:LocalStorageService, private router: Router,private deviceService: DeviceService) { 
+    super();
+  }
+  ngAfterViewInit(){
+    super.afterViewInit(this.modalComponent);
+  }
 
   ngOnInit(): void {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
@@ -41,7 +50,7 @@ export class DeviceUsageComponent implements OnInit {
     });
   }
   continueNavigate(memberNo:any){ 
-    this.router.navigateByUrl('survey/deviceGeneres/'+memberNo+'/'+this.deviceId);
+    this.router.navigateByUrl('survey/deviceGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId);
   }
 
   submit() {

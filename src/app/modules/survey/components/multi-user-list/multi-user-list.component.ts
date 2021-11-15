@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { BaseComponent } from 'src/app/shared/util/base.util';
 
 export interface Member {
   deviceId: string;
@@ -20,7 +22,7 @@ export interface Member {
   templateUrl: './multi-user-list.component.html',
   styleUrls: ['./multi-user-list.component.css']
 })
-export class MultiUserListComponent implements OnInit {
+export class MultiUserListComponent extends BaseComponent implements OnInit {
 
   deviceId: any;
   deviceState: any;
@@ -34,9 +36,16 @@ export class MultiUserListComponent implements OnInit {
   showCoviewerPercentageError: boolean = false;
   singleViewerPe: string = "";
   deviceName:any;
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
 
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService,  private localStorageService:LocalStorageService,) { }
+    private deviceService: DeviceService,  private localStorageService:LocalStorageService,) {
+      super();
+     }
+     ngAfterViewInit(){
+      super.afterViewInit(this.modalComponent);
+    }
 
   ngOnInit(): void {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);

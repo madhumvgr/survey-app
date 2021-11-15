@@ -125,6 +125,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
+    this.deviceState = this.activatedroute.snapshot.params['state'];
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
     this.generes.forEach((genere, i) => {
       this.createForm(genere.id);

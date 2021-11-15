@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'deviceOwnerInformation/:state/:deviceId', component: DeviceOwnerInformationComponent },
       { path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent },
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
-      { path: 'deviceGeneres/:memberNo/:deviceId', component: DeviceGenresComponent },
+      { path: 'deviceGeneres/:state/:memberNo/:deviceId', component: DeviceGenresComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },
       { path: 'not-in-use-devices/:state/:deviceId', component: NotInUseDevicesComponent },
       {path: 'completed-devices/:state/:deviceId', component: CompletedDevicesViewComponent},

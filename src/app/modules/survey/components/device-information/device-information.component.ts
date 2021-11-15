@@ -1,8 +1,10 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
+import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { BaseComponent } from 'src/app/shared/util/base.util';
 
 @Component({
   selector: 'app-device-information',
@@ -10,16 +12,23 @@ import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-
   styleUrls: ['./device-information.component.css']
 })
 
-export class DeviceInformationComponent implements OnInit {
+export class DeviceInformationComponent extends BaseComponent implements OnInit {
   deviceId: any;
   deviceState: any;
   deviceInfoForm: FormGroup = this.fb.group({});
   deviceInformation: DeviceInfo = new DeviceInfo();
 
   deviceName: any;
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
-    private localStorageService: LocalStorageService) { }
+    private localStorageService: LocalStorageService) {
+      super();
+     }
+     ngAfterViewInit(){
+      super.afterViewInit(this.modalComponent);
+    }
 
   ngOnInit(): void {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
@@ -69,6 +78,10 @@ export class DeviceInformationComponent implements OnInit {
       console.log(res);
     });
   }
+
+exitEvent() {
+  this.updateForm();
+}
 
   updateForm() {
     // send API to submit device information. 

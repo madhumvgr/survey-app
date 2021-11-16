@@ -47,8 +47,8 @@ export class ModalComponent implements OnInit {
   }
 }
 export interface ModalConfig {
-  isBackAction:boolean
-  modalTitle: string
+  isBackAction?:boolean
+  modalTitle?: string
   dismissButtonLabel?: string
   closeButtonLabel?: string
   content?:string

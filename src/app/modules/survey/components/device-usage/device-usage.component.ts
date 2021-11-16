@@ -49,8 +49,8 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
       }
     });
   }
-  continueNavigate(memberNo:any){ 
-    this.router.navigateByUrl('survey/deviceGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId);
+  continueNavigate(memberNo:any,memberName:any){ 
+    this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { state: { memberName: memberName } });
   }
 
   submit() {

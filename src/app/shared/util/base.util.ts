@@ -9,7 +9,6 @@ export class BaseComponent {
         "dismissButtonLabel": "Cancel",
         "closeButtonLabel": "Exit",
     }
-
     constructor() {
     }
 

@@ -16,6 +16,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   deviceId: any;
   deviceState: any;
   memberNo: any;
+  memberName: any;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
   @ViewChild('modal')
@@ -117,6 +118,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService) {
     super();
+    this.memberName=this.router.getCurrentNavigation()?.extras?.state?.memberName; // should log out 'bar'
   }
 
   ngAfterViewInit(){
@@ -211,8 +213,9 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
       res => {
         console.log(res);
+        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
       });
-    this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+   
   }
 
   copyValues(target: number, sourceNode: any) {
@@ -253,6 +256,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       });
     }
   }
+  // backAction(){
+  //   this.modalConfig={
+  //     "isBackAction": true,
+  //     "modalTitle": "Hello",
+  //     "content": "Your work is saved! You can always finish the rest of it later.",
+  //     "dismissButtonLabel": "Cancel",
+  //     "closeButtonLabel": "Exit",
+  //   }
+  //   this.openModal();
+  // }
   cancelEvent(isBackAction:boolean){
     console.log(isBackAction);
   }

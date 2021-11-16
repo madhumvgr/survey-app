@@ -17,6 +17,9 @@ import { DeviceUsageComponent } from './components/device-usage/device-usage.com
 import { DeviceGenresComponent } from './components/device-genres/device-genres.component';
 import { CompletedDevicesViewComponent } from './components/completed-devices-view/completed-devices-view.component';
 import { TelevisionComponent } from './components/television/television.component';
+import { TelevisionRoutingModule } from './components/television.routing.module';
+import { TvChannelsComponent } from './components/television/tv-channels/tv-channels.component';
+import { TvGenresComponent } from './components/television/tv-genres/tv-genres.component';
 @NgModule({
   declarations: [  SurveyComponent,
     HouseholdDevicesComponent,
@@ -29,10 +32,13 @@ import { TelevisionComponent } from './components/television/television.componen
     DeviceUsageComponent,
     DeviceGenresComponent,
     CompletedDevicesViewComponent,
-    TelevisionComponent
+    TelevisionComponent,
+    TvChannelsComponent,
+    TvGenresComponent
   ],
   imports: [
     SurveyRoutingModule,
+    TelevisionRoutingModule,
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,

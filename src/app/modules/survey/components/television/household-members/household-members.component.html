@@ -1,0 +1,87 @@
+    <!-- Breadcrumbs -->
+    <nav class="px-3 mt-4">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+                <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Television usage</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!--h1 Intro Section-->
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Television Usage</h1>
+                    <p>
+                        This section has surveys for each household members who viewing channels on a TV set connected to a cable box, satellite or antenna.
+                    </p>
+                </div><!--end col-->
+            </div><!--end Row-->
+        </div><!--end Container-->
+    </section><!--end Section-->
+
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row pb-4">
+                <h2>List of individual members: 4</h2>
+                <p>Complete the survey that has your name. You may also fill a survey on behalf of another household member.  </p>
+
+                <div class="col-12 mt-3">
+
+                    <!-- House Hold Member -->
+                    <div class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
+                        <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
+                            <div class="h1 mb-0">person</div>
+                        </i>
+                        <div class="ps-3 description">
+                            <h3 class="text-truncate"><!-- Name of the household memeber -->Household Member</h3>
+                            <p class="text-truncate">Status: <span>Not started</span></p>   
+                        </div>
+                        <button type="button" class="btn btn-light me-3" [routerLink] = "['/television/tv-genres']">Start</button>
+                    </div>
+
+                    <!-- House Hold Member -->
+                    <div class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
+                        <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
+                            <div class="h1 mb-0">person</div>
+                        </i>
+                        <div class="ps-3 description">
+                            <h3 class="text-truncate"><!-- Name of the household memeber -->Household Member</h3>
+                            <p class="text-truncate">Status: <span>Not started</span></p>   
+                        </div>
+                        <button type="button" class="btn btn-light me-3">Start</button>
+                    </div>
+
+                    <!-- House Hold Member -->
+                    <div class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
+                        <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
+                            <div class="h1 mb-0">person</div>
+                        </i>
+                        <div class="ps-3 description">
+                            <h3 class="text-truncate"><!-- Name of the household memeber -->Household Member</h3>
+                            <p class="text-truncate">Status: <span>Not started</span></p>   
+                        </div>
+                        <button type="button" class="btn btn-light me-3">Start</button>
+                    </div>
+
+
+                    <!-- House Hold Member -->
+                    <div class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
+                        <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
+                            <div class="h1 mb-0">person</div>
+                        </i>
+                        <div class="ps-3 description">
+                            <h3 class="text-truncate"><!-- Name of the household memeber -->Household Memeber</h3>
+                            <p class="text-truncate">Status: <span>Not started</span></p>   
+                        </div>
+                        <button type="button" class="btn btn-light me-3">Start</button>
+                    </div>
+
+                </div><!--end Col-->
+            </div><!--end Row-->
+
+        </div><!--end Container-->
+    </section><!--end Section--> 

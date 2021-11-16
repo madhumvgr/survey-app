@@ -79,7 +79,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     });
   }
 
-exitEvent() {
+exitEvent(isBackAction:boolean) {
   this.updateForm();
 }
 

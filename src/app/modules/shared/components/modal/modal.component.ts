@@ -33,7 +33,7 @@ export class ModalComponent implements OnInit {
   async exit(): Promise<void> {
     if (this.modalConfig.shouldClose === undefined || (await this.modalConfig.shouldClose())) {
       const result = this.modalConfig.onClose === undefined || (await this.modalConfig.onClose())
-      this.exitEvent.emit('0');
+      this.exitEvent.emit(this.modalConfig.isBackAction);
       this.modalRef.close(result)
     }
   }
@@ -41,12 +41,13 @@ export class ModalComponent implements OnInit {
   async cancel(): Promise<void> {
     if (this.modalConfig.shouldDismiss === undefined || (await this.modalConfig.shouldDismiss())) {
       const result = this.modalConfig.onDismiss === undefined || (await this.modalConfig.onDismiss())
-      this.cancelEvent.emit('0');
+      this.cancelEvent.emit(this.modalConfig.isBackAction);
       this.modalRef.dismiss(result)
     }
   }
 }
 export interface ModalConfig {
+  isBackAction:boolean
   modalTitle: string
   dismissButtonLabel?: string
   closeButtonLabel?: string

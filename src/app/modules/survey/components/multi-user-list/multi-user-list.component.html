@@ -171,6 +171,6 @@
     <!--end Container-->
 </section>
 <!--end Section-->
-<modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent()" (exitEvent)="exitEvent()">
+<modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
     <!--  body of the modal  -->
   </modal>

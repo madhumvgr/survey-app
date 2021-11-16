@@ -3,6 +3,7 @@ import { ModalComponent } from "src/app/modules/shared/components/modal/modal.co
 export class BaseComponent {
     private modalComponent1!: ModalComponent;
     modalConfig = {
+        "isBackAction": false,
         "modalTitle": "Save and Exit",
         "content": "Your work is saved! You can always finish the rest of it later.",
         "dismissButtonLabel": "Cancel",
@@ -19,10 +20,22 @@ export class BaseComponent {
     afterViewInit(modalComponent: ModalComponent) {
         this.modalComponent1 = modalComponent;
     }
-    cancelEvent(){
-    
+    cancelEvent(event:boolean) {
+
     }
-    exitEvent(){
-     
+    exitEvent(event:boolean) {
+
+    }
+
+    backAction() {
+        this.modalConfig = {
+            "isBackAction": true,
+            "modalTitle": "Device usaga surveys not complete",
+            "content": "Device usage surveys for 0 members aren't complete. You may still submit the ones you've completed and come back later for the rest.",
+            "dismissButtonLabel": "Cancel",
+            "closeButtonLabel": "submit",
+        }
+        this.openModal();
+        //this.router.navigateByUrl('/survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
     }
 }

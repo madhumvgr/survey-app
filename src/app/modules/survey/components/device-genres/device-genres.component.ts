@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 
 @Component({
@@ -17,6 +18,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   deviceState: any;
   memberNo: any;
   memberName: any;
+  deviceName: any;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
   @ViewChild('modal')
@@ -116,7 +118,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   ];
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService) {
+    private deviceService: DeviceService, private localStorageService:LocalStorageService) {
     super();
     this.memberName=this.router.getCurrentNavigation()?.extras?.state?.memberName; // should log out 'bar'
   }
@@ -126,6 +128,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.activatedroute.snapshot.params['state'];
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];

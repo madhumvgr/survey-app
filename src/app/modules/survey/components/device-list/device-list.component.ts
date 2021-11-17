@@ -24,6 +24,8 @@ export class DeviceListComponent implements OnInit {
   deviceState: any;
   devicesList: Device[] = [];
 
+  deviceCount: number = 0;
+
   constructor(private Activatedroute: ActivatedRoute, 
     private localStorageService: LocalStorageService,
     private router: Router, private deviceService: DeviceService) { }
@@ -33,6 +35,7 @@ export class DeviceListComponent implements OnInit {
     this.deviceService.getCustomRequest(DeviceConstants.deviceListByStatus + this.deviceState).subscribe(response => {
       if (response) {
         this.devicesList = response;
+        this.deviceCount = this.devicesList.length;
         this.devicesList.forEach((device: Device) => {
           device['iconDescription'] = this.getMatIconDescription(device.deviceType);
           this.localStorageService.setDeviceName(device['deviceName']);

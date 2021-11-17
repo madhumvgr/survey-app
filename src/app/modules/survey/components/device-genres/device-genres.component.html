@@ -6,7 +6,7 @@
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">Household devices</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceState}}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Device name</li>
+            <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
         </ol>
     </div>
 </nav>
@@ -128,7 +128,7 @@
 
             <!-- Action buttons -->
             <div class="col-xs-6 d-grid gap-2 d-md-block">
-                <button type="button" class="btn btn-dark" (click)="backAction()">Back</button>
+                <button type="button" class="btn btn-dark" [routerLink] ="['/survey/deviceUsage/' +deviceState + '/' +deviceId]">Back</button>
                 <button type="button" (click)="openModal()" class="btn btn-secondary ms-md-3">Save & Exit</button>
                 <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit</button>
             </div>

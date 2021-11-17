@@ -17,7 +17,7 @@
             <div class="col-12">
                 <h1>{{deviceState}} Devices</h1>
                 <p>
-                    This page shows all media devices that are {{deviceState}} connected to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your <a href="#">privacy policy</a> data and privacy are always protected
+                    This page shows all media devices that are {{deviceState}} connected to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your <a [routerLink]="['/login/privacy-policy']">privacy policy</a>. data and privacy are always protected
                 </p>
             </div>
         </div><!--end Row-->
@@ -28,7 +28,7 @@
 <section class="px-3 pb-5">
     <div class="container">
         <div class="row g-4">
-            <h2>{{deviceState}} devices detected: 9<span class="h2-separator"></span></h2>
+            <h2>{{deviceState}} devices detected: {{deviceCount}}<span class="h2-separator"></span></h2>
             <p class="mt-2 mb-0">Select devices to start a survey</p>
 
              <!-- Newly Detected Device (Smart TV) -->

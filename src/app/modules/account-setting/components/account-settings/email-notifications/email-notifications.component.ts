@@ -46,7 +46,7 @@ export class EmailNotificationsComponent implements OnInit {
     })
     this.emailNotifService.create(this.emailNotifForm.value).subscribe( res => {
       console.log("Email notification update"+res);
-      this.router.navigate(['/account-settings/thankyou/Email Notifications'])
+      this.router.navigate(['/account-settings/thankyou/Email Notifications'],{state: {message: "Email Notifications"}});
     });
   }
 

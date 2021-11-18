@@ -54,9 +54,17 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   }
 
   submit() {
-    // submit whole home survey. 
+    let message: any;  
+    if(this.deviceState == "Completed") {
+     message ="You have successfully Re-submitted " +this.deviceName+ " device information to us";
+    } else {
+      message ="You have successfully submitted " +this.deviceName+ " device information to us";
+    }
     this.deviceService.updateHomeSurvey(this.deviceId).subscribe(
       res => {console.log(res);
+        
+        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+ 
       });
   }
 

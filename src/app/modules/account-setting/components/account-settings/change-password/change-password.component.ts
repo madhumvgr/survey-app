@@ -61,7 +61,7 @@ export class ChangePasswordComponent implements OnInit {
     // stop here if form is invalid
     if (this.changePasswordForm.valid) {
       console.table(this.changePasswordForm.value);
-      this.router.navigate(['/account-settings/thankyou/Change password'],{state: {message: "Change Password"}});
+      this.router.navigate(['/account-settings/thankyou/Change password'],{state: {message: "You have successfully updated Change Password"}});
       
       // update password in local storage.
       let username = this.localStorageService.getItem(StorageItem.USERNAME);

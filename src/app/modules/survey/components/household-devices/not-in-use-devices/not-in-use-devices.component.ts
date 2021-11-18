@@ -18,7 +18,7 @@ export class NotInUseDevicesComponent implements OnInit {
   deviceInformation: DeviceInfo = new DeviceInfo();
   constructor(private Activatedroute: ActivatedRoute,
     private deviceService: DeviceService,
-    private localStorageService: LocalStorageService) { }
+    private localStorageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
@@ -32,9 +32,12 @@ export class NotInUseDevicesComponent implements OnInit {
   }
 
   updateForm(){
+    this.deviceState = "Inprogress";
+    //const message ="We have saved your survey in the <a [routerLink] = this.router.navigate(['/survey/deviceList/'+this.deviceState])> In Progress </a> section. You can always go back to it and complete it.";
     this.deviceService.updateInUse(this.deviceId).subscribe(
       res1 => {
         console.log("Updated to not in use");
+        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: { deviceId: this.deviceId, inputRoute: "notUsed"}});
       }
     );
   }

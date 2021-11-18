@@ -14,13 +14,26 @@
     <!-- SURVEY HUB PAGE -->
    <body>
     <!--h1 Intro Section-->
-    <section class="px-3 pb-4">
+    <section class="px-3 pb-4" *ngIf ="state?.inputRoute != 'notUsed'">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <h1>Thank you</h1>
                     <p> 
-                        You have successfully updated {{message}}
+                        {{message}}
+                    </p>
+                </div>
+                
+            </div><!--end Row-->
+        </div><!--end Container-->
+    </section><!--end Section-->
+    <section class="px-3 pb-4" *ngIf ="state?.inputRoute == 'notUsed'">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Thank you</h1>
+                    <p> 
+                        "We have saved your survey in the <a [routerLink] = "['/survey/deviceList/Inprogress']"> In Progress </a> section. You can always go back to it and complete it."
                     </p>
                 </div>
                 
@@ -30,13 +43,9 @@
 
     <section class="px-3 pb-4">
         <div class="container">
-
             <div class="row">
                 <div class="col-20">
-            
-                    <button type="submit" class="btn btn-primary px-3" [routerLink]="['/welcome']">Back</button>
-                    
-                    <button type="submit" class="btn btn-primary px-3 ms-3" [routerLink]="['/login/login']">Exit</button>
+                 <button type="submit" class="btn btn-primary px-3 ms-3" [routerLink]="['/welcome']">Exit</button>
                </div>
                </div>
             </div><!--end Container-->

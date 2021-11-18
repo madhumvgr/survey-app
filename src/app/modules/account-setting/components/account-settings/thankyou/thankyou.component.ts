@@ -12,10 +12,12 @@ export class ThankyouComponent implements OnInit {
   //deviceState: any;
   data: any;
   message: any;
+  state:any;
+
   
   constructor(private Activatedroute: ActivatedRoute, private router: Router) { 
-    this.message = 
-    this.router.getCurrentNavigation()?.extras?.state?.message;
+    this.state = this.router.getCurrentNavigation()?.extras?.state;
+    this.message = this.router.getCurrentNavigation()?.extras?.state?.message;
   }
 
   ngOnInit(): void {

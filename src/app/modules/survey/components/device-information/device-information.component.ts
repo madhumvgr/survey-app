@@ -69,6 +69,9 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
 
   setNotInuse() {
     //set device to not in use. 
+    this.deviceInfoForm.patchValue({
+      deviceId: this.deviceId
+    })
     this.deviceService.create(this.deviceInfoForm.value).subscribe(res => {
       this.deviceService.updateNotInUse(this.deviceId).subscribe(
         res1 => {

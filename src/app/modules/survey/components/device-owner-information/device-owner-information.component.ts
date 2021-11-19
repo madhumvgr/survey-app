@@ -30,6 +30,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   error: boolean = false;
   selectedOwner: any = {};
   notUsed: boolean = false;
+  singleMemeber: boolean = false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
@@ -60,6 +61,13 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
       if (response) {
         this.ownerList = response;
+        const memberCount: any = this.ownerList.length;
+        console.log(memberCount);
+        if(memberCount == 1) {
+          this.singleMemeber = true;
+          console.log(this.singleMemeber)
+        }
+
         // get owner information of a particular device. 
         this.deviceService.getCustomRequest(DeviceConstants.deviceOwnerByDeviceId + this.deviceId).subscribe(response => {
           if (response) {
@@ -94,6 +102,8 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       if(this.notUsed) {
        const message ="You have successfully update " +this.deviceName+ " device state";
         this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+      }else if(this.singleMemeber) {
+        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
       } else{
         this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
       }

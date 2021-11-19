@@ -29,6 +29,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   ownerSelect: any = "";
   error: boolean = false;
   selectedOwner: any = {};
+  notUsed: boolean = false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
@@ -48,6 +49,14 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     });
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
+      const deviceCheck = res.numberOfUsers;
+      console.log(deviceCheck)
+      if(deviceCheck == "4") {
+        this.notUsed = true;
+      }
+
+    });
     this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
       if (response) {
         this.ownerList = response;
@@ -82,7 +91,13 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
 
     this.deviceService.updateDeviceMember(device).subscribe(response => {
       console.log(response);
-      this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
+      if(this.notUsed) {
+       const message ="You have successfully update " +this.deviceName+ " device state";
+        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+      } else{
+        this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
+      }
+    
     });
 
   }

@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
+import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
-import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { DeviceConstants, TelevisionConstants } from 'src/app/shared/models/url-constants';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 
@@ -19,6 +19,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   memberNo: any;
   memberName: any;
   deviceName: any;
+  isTvGenere: boolean = false;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
   @ViewChild('modal')
@@ -118,9 +119,14 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   ];
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService, private localStorageService:LocalStorageService) {
+    private deviceService: DeviceService, private localStorageService:LocalStorageService,
+    private televisionService:TelevisionService) {
     super();
-    this.memberName=this.router.getCurrentNavigation()?.extras?.state?.memberName; // should log out 'bar'
+    this.memberName=this.router.getCurrentNavigation()?.extras?.state?.memberName; 
+    let url = this.activatedroute.snapshot.url[0].path;
+    if(url =="tv-genres"){
+      this.isTvGenere = true;
+    }
   }
 
   ngAfterViewInit(){
@@ -138,10 +144,19 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
         this.addMore(d, i + 1);
       }
     });
-    this.deviceService.getCustomRequest(DeviceConstants.deviceGenersGetUrl + this.memberNo + '/' + this.deviceId).
+
+    if(this.isTvGenere){
+      this.televisionService.getCustomRequest(TelevisionConstants.tvStationByMember + this.memberNo).
       subscribe(response => {
         this.setPreviousValues(response);
       });
+    }else{
+      this.deviceService.getCustomRequest(DeviceConstants.deviceGenersGetUrl + this.memberNo + '/' + this.deviceId).
+      subscribe(response => {
+        this.setPreviousValues(response);
+      });
+    }
+
   }
 
   setPreviousValues(genereList: any) {
@@ -168,10 +183,18 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     let item = control.value;
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
-    this.deviceService.updateDeviceTimeLine(item).
+
+    if(this.isTvGenere){
+      this.televisionService.updateDeviceTimeLine(item).
       subscribe((response: any) => {
         console.log("Update record");
       });
+    }else{
+      this.deviceService.updateDeviceTimeLine(item).
+      subscribe((response: any) => {
+        console.log("Update record");
+      });
+    }
   }
   getWeekDayControl(generId: number) {
     return this.timeLinesForm[generId].get('weekDays') as FormArray;
@@ -213,12 +236,22 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   submit() {
-    this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
-      });
-   
+    if(this.isTvGenere){
+      this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigateByUrl('television/tv-channels/' + this.memberNo);
+        });  
+    }
+    else{
+      this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+        });
+     
+    }
+    
   }
 
   copyValues(target: number, sourceNode: any) {

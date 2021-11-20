@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
 
 @Component({
@@ -8,18 +9,25 @@ import { TelevisionService } from 'src/app/modules/login/services/television-ser
 })
 export class HouseholdMembersComponent implements OnInit {
 
-  constructor(private televisionService : TelevisionService) { }
-  members:any = [];
+
+  members: any = [];
+  constructor(private televisionService: TelevisionService,
+    private router: Router) { }
+    
   ngOnInit(): void {
     this.getTelevisionMembers();
   }
 
-  async getTelevisionMembers(){
-    let res:any = await this.televisionService.getTelevision().toPromise();
-    this.members = res;
-    console.log(this.members)
-
+  getTelevisionMembers() {
+    this.televisionService.getTelevision().subscribe(
+      (res: any) => {
+        this.members = res;
+      }
+    );
   }
  
+  continueNavigate(memberId:any){
+    this.router.navigateByUrl('/television/tv-genres/'+memberId);
+  }
 }
 

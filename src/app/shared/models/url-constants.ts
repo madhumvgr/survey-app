@@ -39,3 +39,16 @@ export class DeviceConstants {
 export class NotificationConstants {
     public static api ="api/portal-notifications";
 }
+
+export class TelevisionConstants {
+    public static memberList ="api/memberListByDeviceId-television";
+    public static tvStationByMember ="api/portal-genres-television/";
+    public static updateTimeLine="api/portal-genres-television";
+    public static markMember="api/portal-survey-trackers-television/memberSurvey/";
+
+    //station apis
+    public static getStations= "api/portal-tv-claim-stations-television/byMember/";
+    //public static getStations= "api/portal-claim-station-usages/";
+    public static updateStations= "api/portal-tv-claim-stations-television/byMember/";
+    
+}

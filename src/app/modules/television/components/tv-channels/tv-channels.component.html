@@ -1,0 +1,88 @@
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/household-members']">Television usage</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Household memeber name</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- SURVEY HUB PAGE -->
+
+<!--h1 Intro Section-->
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Houshold member name</h1>
+                <p>
+                    Please indicate how much time the household member spends watching TV programs using cableor antenna
+                    on each of the following TV channels on an average day?
+                </p>
+            </div>
+        </div>
+        <!--end Row-->
+    </div>
+    <!--end Container-->
+</section>
+<!--end Section-->
+
+<!-- New Devices Overview Page -->
+<section class="px-3 pb-5 customPadd">
+    <div class="container">
+        <div class="row g-4">
+            <h2>List view of 7 channels<span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0">Select answers for each channel below</p>
+            <ng-container *ngFor="let station of stations; let generId = index">
+                <!-- Channel  -->
+                <div class="bg-white shadow-sm rounded p-3 mb-4">
+                    <h3 class="pt-1 pb-0 px-3">{{station.name}}</h3>
+                    <form [formGroup]="stationForm[generId+1]" >
+
+                    <div class="d-md-flex align-items-center">
+                        <div class="col-sm-12 col-md-6 p-3">
+                            <h4>Weekdays</h4>
+                            <select formControlName="weekDays" class="form-select" aria-label="Select household member">
+                                <option value="1" selected>Select answer</option>
+                                <option value="2">I don’t watch this channel</option>
+                                <option value="3">Up to 30 minutes</option>
+                                <option value="4">More than 30 minutes up to 1hr</option>
+                                <option value="5">More than 1 hour up to 2 hours</option>
+                                <option value="6">More than 2 hours up to 3 hours</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-6 p-3">
+                            <h4>Weekends</h4>
+                            <select formControlName="weekEnds" class="form-select" aria-label="Select household member">
+                                <option value="1" selected>Select answer</option>
+                                <option value="2">I don’t watch this channel</option>
+                                <option value="3">Up to 30 minutes</option>
+                                <option value="4">More than 30 minutes up to 1hr</option>
+                                <option value="5">More than 1 hour up to 2 hours</option>
+                                <option value="6">More than 2 hours up to 3 hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <!--End Channel-->
+            </ng-container>
+            
+            <!-- Action buttons -->
+            <div class="col-xs-6 d-grid gap-2 d-md-block">
+                <button type="submit" class="btn btn-dark">Back</button>
+                <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                <button type="button" class="btn btn-primary ms-md-3"
+                (click)="submit()">Submit</button>
+            </div>
+
+        </div>
+        <!--end Col-->
+    </div>
+    <!--end Row-->
+    
+    <!--end Container-->
+</section>
+<!--end Section-->

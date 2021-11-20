@@ -2,8 +2,8 @@
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
-            <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
-            <li class="breadcrumb-item"><a href="survey-hub.html">Television usage</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-members']">Television usage</a></li>
             <li class="breadcrumb-item active" aria-current="page">Household memeber name</li>
         </ol>
     </div>
@@ -279,7 +279,7 @@
 
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark">Back</button>
+                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/household-members']">Back</button>
                     <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
                     <button type ="submit" class="btn btn-primary ms-md-3" (click) = "navigateToChannel()" >Continue</button>
                 </div> 

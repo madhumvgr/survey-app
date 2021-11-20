@@ -2,8 +2,8 @@
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
-            <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
-            <li class="breadcrumb-item"><a href="survey-hub.html">Television usage</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-members']">Television usage</a></li>
             <li class="breadcrumb-item active" aria-current="page">Household memeber name</li>
         </ol>
     </div>
@@ -26,7 +26,7 @@
 </section><!--end Section-->
           
 <!-- New Devices Overview Page -->
-<section class="px-3 pb-5">
+<section class="px-3 pb-5 customPadd">
     <div class="container">
         <div class="row g-4">
             <h2>List view of 7 channels<span class="h2-separator"></span></h2>

@@ -5,6 +5,8 @@ import { HouseholdMembersComponent } from './television/household-members/househ
 import { TvGenresComponent } from './television/tv-genres/tv-genres.component';
 import { TvChannelsComponent } from './television/tv-channels/tv-channels.component';
 import { ThankyouComponent } from './television/thankyou/thankyou.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -23,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [CommonModule,RouterModule.forChild(routes)],
   exports: [RouterModule],
   declarations: [
     HouseholdMembersComponent

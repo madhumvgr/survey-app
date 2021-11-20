@@ -25,7 +25,7 @@
                     <h1>{{ 'loginPage.title' | translate }}</h1>
                     <p>
                         {{ 'loginPage.text' | translate }}
-                        <a  (click)="navigateTo()" style="text-decoration: underline" [routerLink]="['/login/cookies']">Cookie Policy.</a>
+                        <a  (click)="navigateTo()" style="text-decoration: underline" [routerLink]="['/login/cookies']">Cookie Policy</a>
                     </p>
                 </div>
                 <!--end Row-->
@@ -65,10 +65,10 @@
                                 *ngIf="loginFormControl.password.touched && loginFormControl.password.errors?.invalidPassword">
                                 <!--Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
                                 letter and 1 number-->
-                                Email and Password do not match, please try again.
+                                The username or Password do not match, please try again.
                             </span>
                             <div *ngIf="showError" class="error">
-                                Email and Password do not match, please try again.
+                                The username or Password do not match, please try again.
                            </div>
                         </div>
                         
@@ -82,7 +82,7 @@
         <div class="container">
             <form class="col-md-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                      <div class="px-3 mb-3">
-                        <button type="submit" class="btn btn-primary">Log in</button>
+                        <button type="submit" class="btn btn-primary">Log In</button>
                         <span *ngIf="showInvalidError" class="text-danger">
                            Invalid UserName/Password. 
                         </span>

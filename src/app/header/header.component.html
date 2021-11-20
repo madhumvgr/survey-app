@@ -1,8 +1,8 @@
 <nav class="navbar bg-white px-3">
     <div class="container d-flex">
-        <a href="survey-hub.html" class="navbar-brand flex-grow-1">
-            <img class="img-fluid" src="./assets/logo.png" alt="">
-        </a> 
+      <a [routerLink]="['/welcome']" class="navbar-brand flex-grow-1">
+        <img class="img-fluid" src="./assets/logo.png" alt="">
+      </a>
         <ng-container *ngIf="!isFrance else english">
           <a (click)="changeLanguage('fr')" class="lang-taggle">français</a>
         </ng-container>
@@ -45,8 +45,13 @@
                         <mat-icon aria-hidden="false">chevron_right</mat-icon>
                       </button>
                       <div class="dropdown-divider"></div>
-                      <button ngbDropdownItem>Tech Support
+                      <button [routerLink]="['/support/techsupport']" ngbDropdownItem>Tech Support
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                        <mat-icon aria-hidden="false">chevron_right</mat-icon>
+                      </button>
+                      <div class="dropdown-divider"></div>
+                      <button [routerLink]="['/support/contact']" ngbDropdownItem>Contact Us
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                         <mat-icon aria-hidden="false">chevron_right</mat-icon>
                       </button>
                       <div class="dropdown-divider"></div>

@@ -62,9 +62,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     }
     this.deviceService.updateHomeSurvey(this.deviceId).subscribe(
       res => {console.log(res);
-        
         this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
- 
       });
   }
 

@@ -4,7 +4,7 @@
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/household-members']">Television usage</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Household memeber name</li>
+            <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
         </ol>
     </div>
 </nav>
@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Houshold member name</h1>
+                <h1>{{memberName}}</h1>
                 <p>
                     Please indicate how much time the household member spends watching TV programs using cableor antenna
                     on each of the following TV channels on an average day?

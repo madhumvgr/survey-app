@@ -21,7 +21,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { SharedModule } from './modules/shared/shared.module';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { TelevisionModule } from './modules/television/television.module';
 
 @NgModule({

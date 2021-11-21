@@ -1,79 +1,96 @@
 <nav class="navbar bg-white px-3">
-    <div class="container d-flex">
-      <a [routerLink]="['/welcome']" class="navbar-brand flex-grow-1">
-        <img class="img-fluid" src="./assets/logo.png" alt="">
-      </a>
-        <ng-container *ngIf="!isFrance else english">
-          <a (click)="changeLanguage('fr')" class="lang-taggle">français</a>
-        </ng-container>
-        <ng-template #english>
-          <a (click)="changeLanguage('en')" class="lang-taggle">English</a>
-        </ng-template>
-        
-        <div class="row" *ngIf="isMenu">
-            <div class="col">
-              <div ngbDropdown class="d-inline-block" >
-                <button  
-                class="navbar-toggler d-sm-flex align-items-center justify-content-between" type="button" 
-                data-bs-toggle="collapse" data-bs-target="#navmenu"
-                id="dropdownBasic1" ngbDropdownToggle>
-                <i class="material-icons text-white"><div class="menu-icon">menu</div></i>
-                <span class="menu-icon-descirption"> Menu
-                </span>
-               <!--<mat-icon aria-hidden="false" aria-label="Menu icon">menu</mat-icon> &nbsp; Menu -->
-              </button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
-              
-                <button ngbDropdownItem>Joe Public
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
-                        <mat-icon aria-hidden="false" aria-label="Cancel icon">cancel</mat-icon> </button>
-                        <div class="dropdown-divider"></div>
-                      <button ngbDropdownItem [routerLink]="['/welcome']" >Home 
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                      <mat-icon aria-hidden="false">chevron_right</mat-icon></button>
-                      <div class="dropdown-divider"></div>
-                      <button ngbDropdownItem [routerLink]="['/notification/messages']">Message Center
-                          &nbsp; &nbsp;  
-                        <mat-icon aria-hidden="false">chevron_right</mat-icon></button>
-                      <div class="dropdown-divider"></div>
-                      <button ngbDropdownItem [routerLink]="['/survey/survey']">Survey Hub
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                        <mat-icon aria-hidden="false">chevron_right</mat-icon></button>
-                      <div class="dropdown-divider"></div>
-                      <button ngbDropdownItem [routerLink]="['/account-settings/account-settings']">Account Settings
-                        &nbsp; &nbsp; 
-                        <mat-icon aria-hidden="false">chevron_right</mat-icon>
-                      </button>
-                      <div class="dropdown-divider"></div>
-                      <button [routerLink]="['/support/techsupport']" ngbDropdownItem>Tech Support
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                        <mat-icon aria-hidden="false">chevron_right</mat-icon>
-                      </button>
-                      <div class="dropdown-divider"></div>
-                      <button [routerLink]="['/support/contact']" ngbDropdownItem>Contact Us
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                        <mat-icon aria-hidden="false">chevron_right</mat-icon>
-                      </button>
-                      <div class="dropdown-divider"></div>
-                      <button ngbDropdownItem (click)="doLogout()">Logout
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                        <mat-icon aria-hidden="false" >chevron_right</mat-icon>
-                    
-                      </button> 
-              </div>
-            </div>
+  <div class="container d-flex">
+    <a [routerLink]="['/welcome']" class="navbar-brand flex-grow-1">
+      <img class="img-fluid" src="./assets/logo.png" alt="">
+    </a>
+    <ng-container *ngIf="!isFrance else english">
+      <a (click)="changeLanguage('fr')" class="lang-taggle">français</a>
+    </ng-container>
+    <ng-template #english>
+      <a (click)="changeLanguage('en')" class="lang-taggle">English</a>
+    </ng-template>
+
+    <div class="row" *ngIf="isMenu">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button class="navbar-toggler d-sm-flex align-items-center justify-content-between" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navmenu" id="dropdownBasic1" ngbDropdownToggle>
+            <i class="material-icons text-white">
+              <div class="menu-icon">menu</div>
+            </i>
+            <span class="menu-icon-descirption"> Menu
+            </span>
+            <!--<mat-icon aria-hidden="false" aria-label="Menu icon">menu</mat-icon> &nbsp; Menu -->
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+            <button ngbDropdownItem>Joe Public
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <mat-icon aria-hidden="false" aria-label="Cancel icon">cancel</mat-icon>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem [routerLink]="['/welcome']">Home
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <mat-icon aria-hidden="false">chevron_right</mat-icon>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem [routerLink]="['/notification/messages']">Message Center
+              &nbsp; &nbsp;
+              <mat-icon aria-hidden="false">chevron_right</mat-icon>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem [routerLink]="['/survey/survey']">Survey Hub
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <mat-icon aria-hidden="false">chevron_right</mat-icon>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem [routerLink]="['/account-settings/account-settings']">Account Settings
+              &nbsp; &nbsp;
+              <mat-icon aria-hidden="false">chevron_right</mat-icon>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button [routerLink]="['/support/techsupport']" ngbDropdownItem>Tech Support
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <mat-icon aria-hidden="false">chevron_right</mat-icon>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button [routerLink]="['/support/contact']" ngbDropdownItem>Contact Us
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+              <mat-icon aria-hidden="false">chevron_right</mat-icon>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem (click)="doLogout()">Logout
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <mat-icon aria-hidden="false">chevron_right</mat-icon>
+
+            </button>
+          </div>
         </div>
       </div>
-      
-              
-
-      
-
-
-        <!--<button class="navbar-toggler d-sm-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">-->
-            <!-- <span class="navbar-toggler-icon"></span> -->
-           <!-- <i class="material-icons text-white"><div class="menu-icon">menu</div></i>
-            <span class="menu-icon-descirption"> Menu</span>
-        </button>-->
     </div>
-</nav><!--end nav-->
+  </div>
+</nav>
+<!--end nav-->
+
+<section class="px-3 notification-bar" *ngIf="isNotification">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 py-2">
+        <div class="d-flex align-items-center border-0" role="alert">
+          <i class="material-icons">
+            <div class="h2 text-white">
+              circle_notifications
+            </div>
+          </i>
+          <div class="ps-3">
+            <a class="text-white notification-bar-link" (click)="openNotification()">You have
+              {{messages?.actions?.length}} new action(s) and {{messages?.messages?.length}} new message(s)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end Row-->
+  </div>
+  <!--end Container-->
+</section>
+<!--end Section-->

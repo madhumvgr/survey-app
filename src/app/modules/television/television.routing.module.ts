@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HouseholdMembersComponent } from './components/household-members/household-members.component';
-import { TvGenresComponent } from './components/tv-genres/tv-genres.component';
 import { TvChannelsComponent } from './components/tv-channels/tv-channels.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { TelevisionComponent } from './television.component';

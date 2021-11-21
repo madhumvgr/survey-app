@@ -14,6 +14,8 @@ import { BaseComponent } from 'src/app/shared/util/base.util';
 })
 export class TvChannelsComponent implements OnInit {
   stationForm: FormGroup[] = []
+  memberNo: any;
+  memberName: any;
   stations: Array<any> = [{
     "id": '1',
     "name": "CTV"
@@ -72,10 +74,11 @@ export class TvChannelsComponent implements OnInit {
   ]
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
-    private televisionService: TelevisionService) {
-
+    private televisionService: TelevisionService,
+    private localStorageService: LocalStorageService) {
+      this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
   }
-  memberNo: any;
+
   ngOnInit(): void {
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
     this.stations.forEach((station, i) => {

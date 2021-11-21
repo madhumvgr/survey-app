@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-household-members',
@@ -12,6 +13,7 @@ export class HouseholdMembersComponent implements OnInit {
 
   members: any = [];
   constructor(private televisionService: TelevisionService,
+    private localStorageService: LocalStorageService,
     private router: Router) { }
     
   ngOnInit(): void {
@@ -26,7 +28,8 @@ export class HouseholdMembersComponent implements OnInit {
     );
   }
  
-  continueNavigate(memberId:any){
+  continueNavigate(memberId:any,memberName:any){
+    this.localStorageService.setMemberName(memberName);
     this.router.navigateByUrl('/television/tv-genres/'+memberId);
   }
 }

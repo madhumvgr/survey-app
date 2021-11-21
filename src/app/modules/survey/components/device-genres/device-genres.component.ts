@@ -122,11 +122,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
     private televisionService: TelevisionService) {
     super();
-    this.memberName = this.router.getCurrentNavigation()?.extras?.state?.memberName;
     let url = this.activatedroute.snapshot.url[0].path;
     if (url == "tv-genres") {
       this.isTvGenere = true;
     }
+    if(this.isTvGenere){
+      this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
+    }else{
+      this.memberName = this.router.getCurrentNavigation()?.extras?.state?.memberName;
+    } 
+   
   }
 
   ngAfterViewInit() {
@@ -236,7 +241,8 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   submit() {
-    if (this.isTvGenere) {
+    // TODO: change device name to Smart TV. 
+    if (this.isTvGenere || this.deviceName=== "Device 2") {
       // this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
       //   res => {
       //     console.log(res);
@@ -254,6 +260,15 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   }
 
+  backAction(){
+    let url;
+    if(this.isTvGenere){
+      url= "television/household-members";
+    }else{
+      url= "/survey/deviceUsage/" +this.deviceState + "/" +this.deviceId;
+    }
+    this.router.navigateByUrl(url);
+  }
   copyValues(target: number, sourceNode: any) {
     let selectedWeekEndIds: string[] = [];
     let selectedWeekDayIds: string[] = [];

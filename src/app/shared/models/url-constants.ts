@@ -49,6 +49,6 @@ export class TelevisionConstants {
     //station apis
     public static getStations= "api/portal-tv-claim-stations-television/byMember/";
     //public static getStations= "api/portal-claim-station-usages/";
-    public static updateStations= "api/portal-tv-claim-stations-television/byMember/";
+    public static updateStations= "api/portal-tv-claim-stations-television";
     
 }

@@ -119,17 +119,17 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   ];
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService, private localStorageService:LocalStorageService,
-    private televisionService:TelevisionService) {
+    private deviceService: DeviceService, private localStorageService: LocalStorageService,
+    private televisionService: TelevisionService) {
     super();
-    this.memberName=this.router.getCurrentNavigation()?.extras?.state?.memberName; 
+    this.memberName = this.router.getCurrentNavigation()?.extras?.state?.memberName;
     let url = this.activatedroute.snapshot.url[0].path;
-    if(url =="tv-genres"){
+    if (url == "tv-genres") {
       this.isTvGenere = true;
     }
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     super.afterViewInit(this.modalComponent);
   }
 
@@ -145,16 +145,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       }
     });
 
-    if(this.isTvGenere){
+    if (this.isTvGenere) {
       this.televisionService.getCustomRequest(TelevisionConstants.tvStationByMember + this.memberNo).
-      subscribe(response => {
-        this.setPreviousValues(response);
-      });
-    }else{
+        subscribe(response => {
+          this.setPreviousValues(response);
+        });
+    } else {
       this.deviceService.getCustomRequest(DeviceConstants.deviceGenersGetUrl + this.memberNo + '/' + this.deviceId).
-      subscribe(response => {
-        this.setPreviousValues(response);
-      });
+        subscribe(response => {
+          this.setPreviousValues(response);
+        });
     }
 
   }
@@ -184,16 +184,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
 
-    if(this.isTvGenere){
+    if (this.isTvGenere) {
       this.televisionService.updateDeviceTimeLine(item).
-      subscribe((response: any) => {
-        console.log("Update record");
-      });
-    }else{
+        subscribe((response: any) => {
+          console.log("Update record");
+        });
+    } else {
       this.deviceService.updateDeviceTimeLine(item).
-      subscribe((response: any) => {
-        console.log("Update record");
-      });
+        subscribe((response: any) => {
+          console.log("Update record");
+        });
     }
   }
   getWeekDayControl(generId: number) {
@@ -236,28 +236,28 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   submit() {
-    if(this.isTvGenere){
-      this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
-        res => {
-          console.log(res);
+    if (this.isTvGenere) {
+      // this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
+      //   res => {
+      //     console.log(res);
           this.router.navigateByUrl('television/tv-channels/' + this.memberNo);
-        });  
+        // });
     }
-    else{
+    else {
       this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
         res => {
           console.log(res);
           this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
         });
-     
+
     }
-    
+
   }
 
   copyValues(target: number, sourceNode: any) {
     let selectedWeekEndIds: string[] = [];
     let selectedWeekDayIds: string[] = [];
-    if (target+1 !== parseInt(sourceNode.target.value)) {
+    if (target + 1 !== parseInt(sourceNode.target.value)) {
       let weekDayControls = this.getWeekDayControl(parseInt(sourceNode.target.value)).controls;
       let weekEndControl = this.getWeekEndControl(parseInt(sourceNode.target.value)).controls;
       weekDayControls.forEach(weekDay => {
@@ -274,7 +274,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
       // deselect all elements in target accodion and set the new values. 
       let targetWeekDayControls = this.getWeekDayControl(target + 1).controls;
-      let targetWeekEndControl = this.getWeekEndControl(target +1 ).controls;
+      let targetWeekEndControl = this.getWeekEndControl(target + 1).controls;
       targetWeekDayControls.forEach(weekDay => {
         weekDay.patchValue({ "addNew": false });
         if (selectedWeekDayIds.indexOf(weekDay.value.usageTimelineId) > -1) {
@@ -302,10 +302,10 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   //   }
   //   this.openModal();
   // }
-  cancelEvent(isBackAction:boolean){
+  cancelEvent(isBackAction: boolean) {
     console.log(isBackAction);
   }
-  exitEvent(isBackAction:boolean){
+  exitEvent(isBackAction: boolean) {
     // this.submit();
     console.log(isBackAction);
   }

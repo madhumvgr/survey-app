@@ -44,7 +44,7 @@
                     <div class="d-md-flex align-items-center">
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>Weekdays</h4>
-                            <select formControlName="weekDays" class="form-select" aria-label="Select household member">
+                            <select formControlName="weekDays" class="form-select" aria-label="Select household member" (change)="updateTimeLine(generId+1)">
                                 <option value="1" selected>Select answer</option>
                                 <option value="2">I don’t watch this channel</option>
                                 <option value="3">Up to 30 minutes</option>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>Weekends</h4>
-                            <select formControlName="weekEnds" class="form-select" aria-label="Select household member">
+                            <select formControlName="weekEnds" class="form-select" aria-label="Select household member" (change)="updateTimeLine(generId+1)">
                                 <option value="1" selected>Select answer</option>
                                 <option value="2">I don’t watch this channel</option>
                                 <option value="3">Up to 30 minutes</option>

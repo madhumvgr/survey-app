@@ -71,24 +71,21 @@ export class TvChannelsComponent implements OnInit {
 
   ]
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService, 
-    private televisionService:TelevisionService) {
-   
+    private deviceService: DeviceService,
+    private televisionService: TelevisionService) {
+
   }
   memberNo: any;
   ngOnInit(): void {
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
     this.stations.forEach((station, i) => {
       this.createForm(station.id);
-      // for (let d of this.timeLines) {
-      //   this.addMore(d, i + 1);
-      // }
     });
 
     this.televisionService.getCustomRequest(TelevisionConstants.getStations + this.memberNo).
-    subscribe(response => {
-      console.log(response);
-    });
+      subscribe(response => {
+        this.setPreviousValues(response);
+      });
   }
 
   createForm(genereId: number) {
@@ -98,8 +95,58 @@ export class TvChannelsComponent implements OnInit {
     });
   }
 
+  setPreviousValues(genereList: any) {
+    genereList.forEach((element: any) => {
+      if (element.portalTvStationUsageDTO) {
+        this.stationForm[element.stationId]?.patchValue({
+          weekDays: element.portalTvStationUsageDTO.avgWeekdayUsa?''+element.portalTvStationUsageDTO.avgWeekdayUsa:'1',
+          weekEnds: element.portalTvStationUsageDTO.avgWeekendUsa?''+element.portalTvStationUsageDTO.avgWeekendUsa:'1'
+        }); 
+      }
+    });
+  }
+
   submit() {
-    console.log(this.stationForm);
-    // if(this.isTvGenere){
+    
+    this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
+      res => {
+        this.router.navigateByUrl('television/thankyou');
+      });
+  }
+
+
+  updateTimeLine(generId: any) {
+    console.log(generId);
+    let weekDayStationValue, weekEndstationValue;
+    weekDayStationValue = this.stationForm[generId]?.get('weekDays')?.value;
+    weekEndstationValue = this.stationForm[generId]?.get('weekEnds')?.value;
+
+    let updateItem = {
+      "stationClaimId": generId,
+      "avgWeekdayUsa": weekDayStationValue,
+      "avgWeekEndUsa": weekEndstationValue,
+      "memberNo": this.memberNo,
+      "portalTvStations": {
+        "id": generId
+      }
     }
+    this.televisionService.updateTelevisionStation(updateItem).
+      subscribe((response: any) => {
+        console.log("Update record");
+      });
+
+  }
+
+  // let item = control.value;
+  // item['memberNo'] = this.memberNo;
+
+  //if(this.isTvGenere){
+
+  //}else{
+  //   this.deviceService.updateDeviceTimeLine(item).
+  //   subscribe((response: any) => {
+  //     console.log("Update record");
+  //   });
+  // }
 }
+

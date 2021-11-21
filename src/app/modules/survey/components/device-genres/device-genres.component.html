@@ -62,7 +62,7 @@
                         </h3>
                         <div [id]="'collapse-one'+generId" class="accordion-collapse collapse" aria-labelledby="open-one"
                             data-bs-parent="#genres-target">
-                            <form [formGroup]="timeLinesForm[generId+1]" (ngSubmit)="submit()">
+                            <form [formGroup]="timeLinesForm[generId+1]">
                                 <div class="accordion-body">
                                     <h4>Content watched is same as for </h4>
                                     <select class="form-select mb-4" aria-label="content select" (change)="copyValues(generId,$event)">
@@ -137,7 +137,13 @@
             <div class="col-xs-6 d-grid gap-2 d-md-block">
                 <button type="button" class="btn btn-dark" [routerLink] ="['/survey/deviceUsage/' +deviceState + '/' +deviceId]">Back</button>
                 <button type="button" (click)="openModal()" class="btn btn-secondary ms-md-3">Save & Exit</button>
-                <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit</button>
+                <ng-container *ngIf="isTvGenere==true else submit1">
+                    <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Continue</button>
+                </ng-container>
+                <ng-template #submit1>
+                    <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit
+                    </button>
+                </ng-template>
             </div>
 
         </div>

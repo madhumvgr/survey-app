@@ -16,6 +16,10 @@ export class TvChannelsComponent implements OnInit {
   stationForm: FormGroup[] = []
   memberNo: any;
   memberName: any;
+  isTvGenere: boolean = false;
+  deviceName: any;
+  deviceId: any;
+  deviceState: any;
   stations: Array<any> = [{
     "id": '1',
     "name": "CTV"
@@ -76,11 +80,18 @@ export class TvChannelsComponent implements OnInit {
     private deviceService: DeviceService,
     private televisionService: TelevisionService,
     private localStorageService: LocalStorageService) {
-      this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
+      let url = this.activatedroute.snapshot.url[0].path;
+      if (url == "tv-channels") {
+        this.isTvGenere = true;
+      }
   }
 
   ngOnInit(): void {
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
+    this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
+    this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
+    this.deviceId = this.activatedroute.snapshot.params['deviceId'];
+    this.deviceState = this.activatedroute.snapshot.params['state'];
     this.stations.forEach((station, i) => {
       this.createForm(station.id);
     });
@@ -129,7 +140,7 @@ export class TvChannelsComponent implements OnInit {
     let updateItem = {
       "stationClaimId": generId,
       "avgWeekdayUsa": weekDayStationValue,
-      "avgWeekEndUsa": weekEndstationValue,
+      "avgWeekendUsa": weekEndstationValue,
       "memberNo": this.memberNo,
       "portalTvStations": {
         "id": generId
@@ -140,6 +151,14 @@ export class TvChannelsComponent implements OnInit {
         console.log("Update record");
       });
 
+  }
+
+  backRoute() {
+    if(this.isTvGenere) {
+      this.router.navigateByUrl('/television/tv-genres/'+this.memberNo);
+    } else {
+      this.router.navigateByUrl('survey/deviceGeneres/'+this.deviceState+'/'+this.memberNo+'/'+this.deviceId);
+    }
   }
 
   // let item = control.value;

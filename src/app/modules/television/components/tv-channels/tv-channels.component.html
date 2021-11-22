@@ -3,8 +3,15 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">Television usage</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
+            <ng-container *ngIf="isTvGenere else device">
+                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">Television Usage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
+              </ng-container>
+              <ng-template #device>
+                <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">Household devices</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceState}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
+              </ng-template>
         </ol>
     </div>
 </nav>
@@ -72,7 +79,7 @@
             
             <!-- Action buttons -->
             <div class="col-xs-6 d-grid gap-2 d-md-block">
-                <button type="submit" class="btn btn-dark">Back</button>
+                <button type="submit" class="btn btn-dark" (click) = backRoute()>Back</button>
                 <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
                 <button type="button" class="btn btn-primary ms-md-3"
                 (click)="submit()">Submit</button>

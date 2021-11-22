@@ -21,6 +21,7 @@ export class RegistrationComponent implements OnInit {
   submitted = false;
   showInvalidError = false;
   showError= false;
+  errorMessage: any;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private localStorageService: LocalStorageService,
@@ -57,13 +58,21 @@ export class RegistrationComponent implements OnInit {
         login: this.registerFormControl.email.value,
         password: this.registerFormControl.password.value
       }
-      console.log(registerUser);
+     // console.log(registerUser);
       this.userService.create(registerUser).subscribe( response => {
+        console.log(response);
           this.showError=false;
           this.router.navigate(['login/registersuccess']);
         //}
-      },err => this.showError=true,
-      () => this.showError=true);
+      },
+    
+      err => {
+       console.log(err.error.errorKey),
+       this.showError=true,
+       this.errorMessage = err.error.errorKey });
+      
+
+      // () => this.showError=true);
     }
   }
 }

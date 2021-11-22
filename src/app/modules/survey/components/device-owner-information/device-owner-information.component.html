@@ -53,7 +53,8 @@
                         <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceInformation/' + deviceState + '/' + deviceId]">Back</button>
                         <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()" >Save & Exit</button>
                         <button type="button" (click)="continueNavigate()"
-                            class="btn btn-primary ms-md-3">Continue</button>
+                            class="btn btn-primary ms-md-3" *ngIf ="!resubmit">Continue</button>
+                            <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
                     </div>
                 </form>
             </div>

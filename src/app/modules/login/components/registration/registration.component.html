@@ -8,7 +8,7 @@
         <p class="x">Register/Create Profile</p>
         <div><h1 class="y">Create Profile</h1></div>
         <div><p>Enter your username and password below</p></div>
-        <div><b>Tips:</b></div>
+        <div><b>Tips</b></div>
         
         <div>
         
@@ -78,8 +78,8 @@
                         Confirm Password
                         must match.
                     </span>
-                    <div *ngIf="showError">
-                         User Registration failed. 
+                    <div *ngIf="showError" class = "text-danger">
+                        {{errorMessage}}
                     </div>
                 </div>
             </div>

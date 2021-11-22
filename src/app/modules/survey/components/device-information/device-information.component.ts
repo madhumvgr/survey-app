@@ -17,6 +17,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   deviceState: any;
   deviceInfoForm: FormGroup = this.fb.group({});
   deviceInformation: DeviceInfo = new DeviceInfo();
+  resubmit: boolean = false;
 
   deviceName: any;
   @ViewChild('modal')
@@ -34,6 +35,9 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    if(this.deviceState == "Completed") {
+      this.resubmit = true;
+    }
     this.deviceInfoForm = this.fb.group({
       //set to empty. 
       numberOfUsers: [''],
@@ -83,7 +87,9 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   }
 
 exitEvent(isBackAction:boolean) {
+ const message ="You have successfully submitted " +this.deviceName+ " device information to us";
   this.updateForm();
+  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
 }
 
   updateForm() {
@@ -94,6 +100,11 @@ exitEvent(isBackAction:boolean) {
     this.deviceService.create(this.deviceInfoForm.value).subscribe(res =>
       console.log(res));
   }
+  resubmitForm() {
+    const message ="Thank you for updating your info page! ";
+  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+  }
+
 }
 export class DeviceInfo {
   numberOfUsers: string | undefined;

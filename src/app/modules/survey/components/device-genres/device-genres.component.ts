@@ -242,11 +242,13 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   submit() {
     // TODO: change device name to Smart TV. 
-    if (this.isTvGenere || this.deviceName=== "Device 2") {
+    if (this.isTvGenere ) {
       // this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
       //   res => {
       //     console.log(res);
-          this.router.navigateByUrl('television/tv-channels/' + this.memberNo);
+      this.router.navigateByUrl('television/tv-channels/' + this.memberNo); 
+      }else if(this.deviceName=== "Device 2") {
+         this.router.navigateByUrl('survey/deviceChannels/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId);
         // });
     }
     else {
@@ -320,10 +322,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   cancelEvent(isBackAction: boolean) {
     console.log(isBackAction);
   }
-  exitEvent(isBackAction: boolean) {
-    // this.submit();
-    console.log(isBackAction);
-  }
+  exitEvent(isBackAction:boolean) {
+    if(this.isTvGenere) {
+      const message ="You have successfully submitted information to us";
+      this.router.navigate(['television/thankyou'], {state: {message: message}});
+    } else {
+      const message ="You have successfully submitted " +this.deviceName+ " device information to us";
+      this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+
+    }
+   }
 }
 export interface DeviceGenere {
   genreName?: String;

@@ -28,7 +28,9 @@ export class DeviceListComponent implements OnInit {
 
   constructor(private Activatedroute: ActivatedRoute, 
     private localStorageService: LocalStorageService,
-    private router: Router, private deviceService: DeviceService) { }
+    private router: Router, private deviceService: DeviceService) {
+      
+     }
 
   ngOnInit(): void {
     this.deviceState = this.Activatedroute.snapshot.params['state'];
@@ -38,13 +40,13 @@ export class DeviceListComponent implements OnInit {
         this.deviceCount = this.devicesList.length;
         this.devicesList.forEach((device: Device) => {
           device['iconDescription'] = this.getMatIconDescription(device.deviceType);
-          this.localStorageService.setDeviceName(device['deviceName']);
         });
       }
     });
   }
 
   navigateTo(device: Device) {
+    this.localStorageService.setDeviceName(device['deviceName']);
     if(device.deviceSurveryStatus == 'Completed') {
       this.router.navigateByUrl('survey/completed-devices/' + this.deviceState + '/' + device.deviceId);
     } else if(device.deviceSurveryStatus == 'Notused'){

@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HouseholdMembersComponent } from './components/household-members/household-members.component';
 import { TvChannelsComponent } from './components/tv-channels/tv-channels.component';
-import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { TelevisionComponent } from './television.component';
 import { DeviceGenresComponent } from '../survey/components/device-genres/device-genres.component';
+import { ThankyouComponent } from '../account-setting/components/account-settings/thankyou/thankyou.component';
 
 
 

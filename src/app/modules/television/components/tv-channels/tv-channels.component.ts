@@ -110,10 +110,12 @@ export class TvChannelsComponent implements OnInit {
   }
 
   submit() {
-    
+
+    const message ="You have successfully submitted information to us";
     this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
       res => {
-        this.router.navigateByUrl('television/thankyou');
+        this.router.navigateByUrl('');
+        this.router.navigate(['television/thankyou'], {state: {message: message}});
       });
   }
 

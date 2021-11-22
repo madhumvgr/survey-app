@@ -31,6 +31,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   selectedOwner: any = {};
   notUsed: boolean = false;
   singleMemeber: boolean = false;
+  resubmit: boolean = false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
@@ -45,11 +46,14 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
 
   ngOnInit(): void {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
-    this.deviceOwnerInfoForm = this.fb.group({
+     this.deviceOwnerInfoForm = this.fb.group({
       selectedOwner: [''],
     });
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    if(this.deviceState == "Completed") {
+      this.resubmit = true;
+    }
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
       const deviceCheck = res.numberOfUsers;
       console.log(deviceCheck)
@@ -109,7 +113,16 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       }
     
     });
+  }
 
+  exitEvent(isBackAction:boolean) {
+    const message ="You have successfully submitted " +this.deviceName+ " device information to us";
+     this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+   }
+
+   resubmitForm() {
+    const message ="Thank you for updating your info page! ";
+  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 
 }

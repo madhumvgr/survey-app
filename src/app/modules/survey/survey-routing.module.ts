@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ThankyouComponent } from '../account-setting/components/account-settings/thankyou/thankyou.component';
 import { PrivacyPolicyComponent } from '../login/components/login/forgot-password/privacy-policy/privacy-policy.component';
+import { TvChannelsComponent } from '../television/components/tv-channels/tv-channels.component';
 import { CompletedDevicesViewComponent } from './components/completed-devices-view/completed-devices-view.component';
 import { DeviceGenresComponent } from './components/device-genres/device-genres.component';
 import { DeviceInformationComponent } from './components/device-information/device-information.component';
@@ -28,10 +29,11 @@ const routes: Routes = [
       { path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent },
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
       { path: 'deviceGeneres/:state/:memberNo/:deviceId', component: DeviceGenresComponent },
+      { path: 'deviceChannels/:state/:memberNo/:deviceId', component: TvChannelsComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },
       { path: 'not-in-use-devices/:state/:deviceId', component: NotInUseDevicesComponent },
       { path: 'completed-devices/:state/:deviceId', component: CompletedDevicesViewComponent},
-      
+      {path:  'tv-Channels/:memberNo', component: TvChannelsComponent },
       { path: 'Thankyou/:deviceName', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

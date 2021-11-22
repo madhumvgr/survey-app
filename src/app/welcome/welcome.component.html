@@ -13,13 +13,7 @@
 <div class="container">
     <div class="row">
         <h1>{{ 'welcomePage.title' | translate }}, {{firstName}} {{lastName}}</h1>
-        <p>
-            We're happy to have you! You now have the power to shape Canada's broadcasting industry! By taking part
-            in our surveys, you help broadcasters understand the kind of entertainment Canadians care about. Be
-            assured that your
-            <a [routerLink]="['/login/privacy-policy']" style="text-decoration: underline;">data and privacy are always protected</a>
-            We hope you enjoy time with us.
-        </p>
+        <p> {{ 'welcomePage.text' | translate }}</p>
         </div>
     </div><!--end Row-->
 <!--end Container-->

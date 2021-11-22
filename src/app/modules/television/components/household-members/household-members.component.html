@@ -6,7 +6,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
                 <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
-                <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-members']">Television usage</a></li>
+                <li class="breadcrumb-item"><a [routerLink] = "['/television/household-members']">Television usage</a></li>
             </ol>
         </div>
     </nav>
@@ -41,7 +41,10 @@
                             <h3 class="text-truncate"><!-- Name of the household memeber -->{{member.memberName}}</h3>
                             <p class="text-truncate">Status: <span>{{member.memberSurveyStatus}}</span></p>   
                         </div>
-                        <button type="button" class="btn btn-light me-3" (click)="continueNavigate(member.memberNo,member.memberName)">Start</button>
+                        
+                        <button type="button" class="btn btn-light me-3" *ngIf = "member.memberSurveyStatus == 'Not Started'" (click) = "continueNavigate(member.memberNo,member.memberName) ">Start</button>
+                        <button type="button" class="btn btn-light me-3" *ngIf = "member.memberSurveyStatus == 'In Progress'" (click) = "continueNavigate(member.memberNo,member.memberName) ">Continue</button>
+                        <button type="button" class="btn btn-light me-3" *ngIf = "member.memberSurveyStatus == 'Completed'" (click) = "continueNavigate(member.memberNo,member.memberName) ">Edit</button>
                     </div>
 
                 </div><!--end Col-->

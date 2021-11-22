@@ -7,15 +7,13 @@ import { TelevisionComponent } from './television.component';
 import { TvChannelsComponent } from './components/tv-channels/tv-channels.component';
 import { HouseholdMembersComponent } from './components/household-members/household-members.component';
 import { RouterModule } from '@angular/router';
-import { ThankyouComponent } from './components/thankyou/thankyou.component';
+
 
 @NgModule({
   declarations: [
     TelevisionComponent,
     HouseholdMembersComponent,
-    ThankyouComponent,
-    TvChannelsComponent,
-    ThankyouComponent
+    TvChannelsComponent
   ],
   imports: [
     SharedModule,

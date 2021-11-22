@@ -38,10 +38,10 @@ export class AuthInterceptor implements HttpInterceptor {
                 });
             }
         }
-        else {
-            // not a login user, navigate to login page. 
-            this.router.navigateByUrl("/login/registerkey");
-        }
+        // else {
+        //     // not a login user, navigate to login page. 
+        //     this.router.navigateByUrl("/login/registerkey");
+        // }
 
         return next.handle(req).pipe(
             catchError((error) => {

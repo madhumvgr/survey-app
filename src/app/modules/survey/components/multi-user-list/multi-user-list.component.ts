@@ -36,6 +36,7 @@ export class MultiUserListComponent extends BaseComponent implements OnInit {
   showCoviewerPercentageError: boolean = false;
   singleViewerPe: string = "";
   deviceName:any;
+  resubmit: boolean = false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
 
@@ -51,6 +52,9 @@ export class MultiUserListComponent extends BaseComponent implements OnInit {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    if(this.deviceState == "Completed") {
+      this.resubmit = true;
+    }
     this.multiUserListForm = this.fb.group({
       arr: this.fb.array([])
     })
@@ -170,5 +174,15 @@ export class MultiUserListComponent extends BaseComponent implements OnInit {
     coViewerSumPercentage = parseInt(this.coViewerForm.coViewerPerce.value) + 
     parseInt(this.coViewerForm.singleViewerPe.value);
     return coViewerSumPercentage != 100;
+  }
+
+  exitEvent(isBackAction:boolean) {
+    const message ="You have successfully submitted " +this.deviceName+ " device information to us";
+     this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+   }
+
+   resubmitForm() {
+    const message ="Thank you for updating your info page! ";
+  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 }

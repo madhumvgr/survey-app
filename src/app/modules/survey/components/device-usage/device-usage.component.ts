@@ -20,6 +20,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   deviceName: any;
   button = 'Edit';
   isCompleted= false;
+  resubmit: boolean = false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   constructor(private Activatedroute:ActivatedRoute, private localStorageService:LocalStorageService, private router: Router,private deviceService: DeviceService) { 
@@ -34,6 +35,9 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.ownerName = this.Activatedroute.snapshot.params['memeberName'];
+    if(this.deviceState == "Completed") {
+      this.resubmit = true;
+    }
     this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
       if (response) {
         this.memberList = response;
@@ -66,5 +70,9 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
       });
   }
 
+  resubmitForm() {
+    const message ="Thank you for updating your info page! ";
+  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+  }
 
 }

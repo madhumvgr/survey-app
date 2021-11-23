@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row">
         <h1>{{ 'welcomePage.title' | translate }}, {{firstName}} {{lastName}}</h1>
-        <p> {{ 'welcomePage.text' | translate }}</p>
+        <p> {{ 'welcomePage.text' | translate }} <a [routerLink]="['/login/privacy-policy']">{{'welcomePage.Link' | translate}}</a>{{'welcomePage.text1' | translate}}</p>
         </div>
     </div><!--end Row-->
 <!--end Container-->
@@ -59,7 +59,7 @@
                     <div class="card-body">
                     <h5 class="card-title">{{'welcomePage.techSupportLabel' | translate}}</h5>
                     <p class="card-text">{{'welcomePage.techSupportText' | translate}}</p>
-                        <a class="btn btn-light" [routerLink]="['/support/techsupport']" >{{'welcomePage.techSupportButton ' | translate}}</a>
+                        <a class="btn btn-light" [routerLink]="['/support/techsupport']" >{{'welcomePage.techSupportButton' | translate}}</a>
                     </div>
                 </div>
             </div>

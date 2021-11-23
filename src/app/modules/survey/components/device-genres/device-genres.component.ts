@@ -126,12 +126,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     if (url == "tv-genres") {
       this.isTvGenere = true;
     }
-    if(this.isTvGenere){
+    if (this.isTvGenere) {
       this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
-    }else{
+    } else {
       this.memberName = this.router.getCurrentNavigation()?.extras?.state?.memberName;
-    } 
-   
+    }
+
   }
 
   ngAfterViewInit() {
@@ -242,14 +242,9 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   submit() {
     // TODO: change device name to Smart TV. 
-    if (this.isTvGenere ) {
-      // this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
-      //   res => {
-      //     console.log(res);
-      this.router.navigateByUrl('television/tv-channels/' + this.memberNo); 
-      }else if(this.deviceName=== "Device 2") {
-         this.router.navigateByUrl('survey/deviceChannels/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId);
-        // });
+    let deviceId = this.deviceId ? this.deviceId : 'none';
+    if (this.isTvGenere || this.deviceName === "Device 2") {
+      this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
     }
     else {
       this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
@@ -257,17 +252,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
           console.log(res);
           this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
         });
-
     }
 
   }
 
-  backAction(){
+  backAction() {
     let url;
-    if(this.isTvGenere){
-      url= "television/household-members";
-    }else{
-      url= "/survey/deviceUsage/" +this.deviceState + "/" +this.deviceId;
+    if (this.isTvGenere) {
+      url = "television/household-members";
+    } else {
+      url = "/survey/deviceUsage/" + this.deviceState + "/" + this.deviceId;
     }
     this.router.navigateByUrl(url);
   }
@@ -322,16 +316,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   cancelEvent(isBackAction: boolean) {
     console.log(isBackAction);
   }
-  exitEvent(isBackAction:boolean) {
-    if(this.isTvGenere) {
-      const message ="You have successfully submitted information to us";
-      this.router.navigate(['television/thankyou'], {state: {message: message}});
+  exitEvent(isBackAction: boolean) {
+    if (this.isTvGenere) {
+      const message = "You have successfully submitted information to us";
+      this.router.navigate(['television/thankyou'], { state: { message: message } });
     } else {
-      const message ="You have successfully submitted " +this.deviceName+ " device information to us";
-      this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+      const message = "You have successfully submitted " + this.deviceName + " device information to us";
+      this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
 
     }
-   }
+  }
 }
 export interface DeviceGenere {
   genreName?: String;

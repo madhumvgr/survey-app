@@ -46,9 +46,12 @@ export class TelevisionConstants {
     public static updateTimeLine="api/portal-genres-television";
     public static markMember="api/portal-survey-trackers-television/memberSurvey/";
 
-    //station apis
+    //station apis with out device id
     public static getStations= "api/portal-tv-claim-stations-television/byMember/";
-    //public static getStations= "api/portal-claim-station-usages/";
     public static updateStations= "api/portal-tv-claim-stations-television";
-    
+
+    //station apis with device id
+    public static getStationsWithDeviceId= "api/portal-tv-stations/";
+    public static updateStationsWithDeviceId= "api/portal-tv-claim-stations";
+
 }

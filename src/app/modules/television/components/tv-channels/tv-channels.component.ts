@@ -92,14 +92,22 @@ export class TvChannelsComponent implements OnInit {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.activatedroute.snapshot.params['state'];
+
     this.stations.forEach((station, i) => {
       this.createForm(station.id);
     });
-
-    this.televisionService.getCustomRequest(TelevisionConstants.getStations + this.memberNo).
+    if(this.deviceId !=="none"){
+      this.televisionService.getCustomRequest(TelevisionConstants.getStationsWithDeviceId + this.memberNo+'/'+this.deviceId).
       subscribe(response => {
         this.setPreviousValues(response);
       });
+    }else{
+      this.televisionService.getCustomRequest(TelevisionConstants.getStations + this.memberNo).
+      subscribe(response => {
+        this.setPreviousValues(response);
+      });
+    }
+    
   }
 
   createForm(genereId: number) {
@@ -137,7 +145,7 @@ export class TvChannelsComponent implements OnInit {
     weekDayStationValue = this.stationForm[generId]?.get('weekDays')?.value;
     weekEndstationValue = this.stationForm[generId]?.get('weekEnds')?.value;
 
-    let updateItem = {
+    let updateItem:any = {
       "stationClaimId": generId,
       "avgWeekdayUsa": weekDayStationValue,
       "avgWeekendUsa": weekEndstationValue,
@@ -146,11 +154,21 @@ export class TvChannelsComponent implements OnInit {
         "id": generId
       }
     }
-    this.televisionService.updateTelevisionStation(updateItem).
+    if(this.deviceId !=="none"){
+      updateItem['deviceId']= this.deviceId;
+      this.televisionService.updateStationsWithDeviceId(updateItem).
       subscribe((response: any) => {
         console.log("Update record");
       });
 
+    }else{
+      this.televisionService.updateTelevisionStation(updateItem).
+      subscribe((response: any) => {
+        console.log("Update record");
+      });
+
+    }
+  
   }
 
   backRoute() {

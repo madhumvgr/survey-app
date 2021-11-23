@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       { path: 'household-members', component: HouseholdMembersComponent },
       { path: 'tv-genres/:memberNo', component: DeviceGenresComponent },
-      { path: 'tv-channels/:memberNo', component: TvChannelsComponent },
+      { path: 'tv-channels/:memberNo/:deviceId', component: TvChannelsComponent },
       { path: 'thankyou', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

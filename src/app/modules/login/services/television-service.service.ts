@@ -48,5 +48,9 @@ export class TelevisionService extends ResourceService<any> {
     return this.customCreate(item,TelevisionConstants.updateStations);
   }
 
+  public updateStationsWithDeviceId(item:any){
+    return this.customCreate(item,TelevisionConstants.updateStationsWithDeviceId);
+  }
+
 
 }

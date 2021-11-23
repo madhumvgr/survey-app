@@ -69,7 +69,7 @@ export class RegistrationComponent implements OnInit {
       err => {
        console.log(err.error.errorKey),
        this.showError=true,
-       this.errorMessage = err.error.errorKey });
+       this.errorMessage = err.error.title });
       
 
       // () => this.showError=true);

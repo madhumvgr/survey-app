@@ -37,10 +37,9 @@
 
                 <div class="col-sm-7 card-body-wrap d-sm-flex align-items-center justify-content-between">
                     <div class="card-body">
-                        <h5 class="card-title">Survey Hub</h5>
-                        <p class="card-text">All surveys organized in
-                        one place for you.</p>
-                        <button type="submit" [routerLink]="['/survey/survey']" class="btn btn-light">Get Started</button>
+                        <h5 class="card-title">{{'welcomePage.surveyhubLabel' | translate}}</h5>
+                        <p class="card-text">{{'welcomePage.surveyhubText' | translate}}</p>
+                        <button type="submit" [routerLink]="['/survey/survey']" class="btn btn-light">{{'welcomePage.surveyhubButton' | translate}}</button>
                     </div>
                 </div>
             </div>
@@ -58,10 +57,9 @@
 
                 <div class="col-sm-7 card-body-wrap d-sm-flex align-items-center justify-content-between">
                     <div class="card-body">
-                    <h5 class="card-title">Tech Support</h5>
-                    <p class="card-text">We are here to help you. Just 
-                        ask!</p>
-                        <a class="btn btn-light" [routerLink]="['/support/techsupport']" >Learn More</a>
+                    <h5 class="card-title">{{'welcomePage.techSupportLabel' | translate}}</h5>
+                    <p class="card-text">{{'welcomePage.techSupportText' | translate}}</p>
+                        <a class="btn btn-light" [routerLink]="['/support/techsupport']" >{{'welcomePage.techSupportButton ' | translate}}</a>
                     </div>
                 </div>
             </div>

@@ -46,13 +46,10 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  
 
   navigateTo() {
     this.hide = true;
   }
-
- 
 
   get loginFormControl() {
     return this.loginForm.controls;

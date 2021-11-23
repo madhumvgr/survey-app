@@ -23,7 +23,8 @@ export class ConnectComponent implements OnInit {
       description: this.description
     }
     this.deviceService.updateTechSupport(this.techSupport).subscribe( res => {
-      this.router.navigate(['/support/thankyou'],{state: {message: "support page"}});
+      console.log(res);
+      this.router.navigate(['/support/thankyou'],{state: {message: res.id}});
       console.log(res);
     });
   }

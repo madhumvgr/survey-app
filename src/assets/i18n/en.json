@@ -5,6 +5,12 @@
     },
     "welcomePage":{
         "title":"Welcome",
-        "text": "We're happy to have you! You now have the power to shape Canada's broadcasting industry! By taking part in our surveys, you help broadcasters understand the kind of entertainment Canadians care about. Be assured that your data and privacy are always protected. We hope you enjoy time with us."
+        "text": "We're happy to have you! You now have the power to shape Canada's broadcasting industry! By taking part in our surveys, you help broadcasters understand the kind of entertainment Canadians care about. Be assured that your data and privacy are always protected. We hope you enjoy time with us.",
+        "surveyhubLabel": "Survey Hub",
+        "surveyhubText": "All surveys organized in one place for you.",
+        "surveyhubButton": "Get Started",
+        "techSupportLabel": "Tech Support",
+        "techSupportText": "We are here to help. Just ask!",
+        "techSupportButton": "Learn More"
     }
 }

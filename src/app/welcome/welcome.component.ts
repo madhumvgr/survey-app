@@ -51,4 +51,7 @@ export class WelcomeComponent implements OnInit {
     this.router.navigateByUrl('/notification/messages');
 
   }
+  openWindow(){
+    window.open("https://numeris.ca/", '_blank');
+  }
 }

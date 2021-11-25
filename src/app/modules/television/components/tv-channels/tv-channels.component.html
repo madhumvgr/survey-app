@@ -52,24 +52,26 @@
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>Weekdays</h4>
                             <select formControlName="weekDays" class="form-select" aria-label="Select household member" (change)="updateTimeLine(generId+1)">
-                                <option value="1" selected>Select answer</option>
+                                <option value="" selected>Select answer</option>
                                 <option value="2">I don’t watch this channel</option>
                                 <option value="3">Up to 30 minutes</option>
                                 <option value="4">More than 30 minutes up to 1hr</option>
                                 <option value="5">More than 1 hour up to 2 hours</option>
                                 <option value="6">More than 2 hours up to 3 hours</option>
                             </select>
+                            <p *ngIf="stationForm[generId+1]?.get('weekDays')?.hasError('required')">This Field is required</p>
                         </div>
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>Weekends</h4>
                             <select formControlName="weekEnds" class="form-select" aria-label="Select household member" (change)="updateTimeLine(generId+1)">
-                                <option value="1" selected>Select answer</option>
+                                <option value="" selected>Select answer</option>
                                 <option value="2">I don’t watch this channel</option>
                                 <option value="3">Up to 30 minutes</option>
                                 <option value="4">More than 30 minutes up to 1hr</option>
                                 <option value="5">More than 1 hour up to 2 hours</option>
                                 <option value="6">More than 2 hours up to 3 hours</option>
                             </select>
+                            <p *ngIf="stationForm[generId+1]?.get('weekEnds')?.hasError('required')">This Field is required</p>
                         </div>
                     </div>
                     </form>

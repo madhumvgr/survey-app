@@ -12,7 +12,11 @@ export class ConnectComponent implements OnInit {
   subject:any;
   description:any;
   techSupport: TechSupport={};
-  constructor(private deviceService: DeviceService, private router: Router) { }
+  constructor(private deviceService: DeviceService, private router: Router) { 
+    this.subject;
+    this.description;
+   
+  }
 
   ngOnInit(): void {
   }
@@ -22,11 +26,12 @@ export class ConnectComponent implements OnInit {
       subject:this.subject,
       description: this.description
     }
-    this.deviceService.updateTechSupport(this.techSupport).subscribe( res => {
-      console.log(res);
-      this.router.navigate(['/support/thankyou'],{state: {message: res.id}});
-      console.log(res);
-    });
+    
+    if(this.subject!=null){
+      this.deviceService.updateTechSupport(this.techSupport).subscribe( res => {
+        this.router.navigate(['/support/thankyou'],{state: {message: res.id}});
+      });
+    }
   }
 }
 export interface TechSupport{

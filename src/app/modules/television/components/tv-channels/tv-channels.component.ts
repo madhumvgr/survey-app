@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
@@ -112,8 +112,8 @@ export class TvChannelsComponent implements OnInit {
 
   createForm(genereId: number) {
     this.stationForm[genereId] = this.fb.group({
-      weekDays: new FormControl("1"),
-      weekEnds: new FormControl("1")
+      weekDays: new FormControl(null,Validators.required),
+      weekEnds: new FormControl(null,Validators.required)
     });
   }
 
@@ -130,12 +130,16 @@ export class TvChannelsComponent implements OnInit {
 
   submit() {
 
-    const message ="You have successfully submitted information to us";
-    this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
-      res => {
-        this.router.navigateByUrl('');
-        this.router.navigate(['television/thankyou'], {state: {message: message}});
-      });
+    if(this.stationForm.filter(e => !e.valid).length === 0){
+      const message ="You have successfully submitted information to us";
+      this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
+        res => {
+          this.router.navigateByUrl('');
+          this.router.navigate(['television/thankyou'], {state: {message: message}});
+        });
+    }
+
+   
   }
 
 

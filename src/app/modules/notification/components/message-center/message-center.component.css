@@ -1,12 +1,2 @@
 
-.truncate {
-    overflow: hidden;
-    display: block;
-    width: 750px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    min-width: auto;
-}
-.row{
-    margin-top: 5px;
-}
+

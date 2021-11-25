@@ -6,46 +6,8 @@
 
 
 
-
-
 /* TEMP STYLING GOES HERE
 --------------------*/
-footer{
-  /*margin-top: auto;*/
-  height: 0px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  padding-top: 20px;
-  padding-bottom: 0px;
-
-}
-
-.custom-footer{
-  background-color: grey;
-  height: fit-content;
-  width: 100%;
-  position: inherit;
-  right: 0px;
-  padding-left: 272px;
-  padding-top: 0px;
-  color: aliceblue !important;
-}
-
-.custom-footer p{
-    margin-bottom: 0px;
-    height: 30px;
-    line-height: 10px;
-}
-
-.customPadd{
-  padding-bottom: 100px !important;
-}
-
-.container1{
-  bottom: 0;
-  position: relative;
-}
 
 
 
@@ -59,8 +21,6 @@ body {
   background-color: #f6f6f6;
   font-family: 'Spartan';
 }
-
-
 
 a {
   color:#002e62;
@@ -176,7 +136,7 @@ a.notification-bar-link:hover {
   border:2px solid #002e62; 
 }
 
-input {
+input, textarea {
   border:2px solid #002e62!important; 
 }
 
@@ -353,6 +313,15 @@ input {
   margin-top:10px;
 }
 
+footer {
+  background:black;
+}
+
+footer p {
+  color:white;
+  padding:0;
+  margin:0;
+}
 
 /* 2. RESPONSIVE
 ---------------------------*/
@@ -408,15 +377,13 @@ input {
 /* Footer background */
 /* background-color: #414141; */
 
-.navbar .navbar-nav {
-  display: inline-block;
-  float: none;
-}
 
-.navbar .navbar-collapse {
-  text-align: center;
-}
-ul.nav.navbar-nav .dropdown.open .dropdown-toggle{
-color: red;
-background-color: green;
-}
+
+
+
+
+
+
+
+
+

@@ -19,7 +19,8 @@ export class DeviceConstants {
     
  
     public static deviceInfo="api/deviceInfo/";
-    public static deviceInnerInfo="api/portal-devices/"
+    public static deviceInnerInfo="api/portal-devices/";
+    public static devicePreviousStatus="api/portal-devices/status/";
 
     public static deviceCoviewer= "api/portalDeviceCoviewer/";
     public static deviceCoviewerPostUrl = "api/portalDeviceCoviewer";

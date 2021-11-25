@@ -15,6 +15,7 @@ export class NotInUseDevicesComponent implements OnInit {
   question1:any="false";
   deviceId: any;
   deviceState: any;
+  devicePreviousState:any;
   deviceInformation: DeviceInfo = new DeviceInfo();
   constructor(private Activatedroute: ActivatedRoute,
     private deviceService: DeviceService,
@@ -28,16 +29,23 @@ export class NotInUseDevicesComponent implements OnInit {
       this.deviceInformation.devicePlatform = res1['devicePlatform'];
       this.deviceInformation.os = res1['os'];
       this.deviceInformation.macAddress = res1['macAddress'];
+      
     });
+    this.deviceService.getDevicePreviousStatus(this.deviceId).subscribe(res1 => {
+      this.devicePreviousState = res1['deviceSurveryStatus'];
+    });
+    
   }
 
   updateForm(){
     this.deviceState = "Inprogress";
+    //TODO: change if we get previous state. 
+    this.devicePreviousState= this.devicePreviousState?this.devicePreviousState: this.deviceState;
     //const message ="We have saved your survey in the <a [routerLink] = this.router.navigate(['/survey/deviceList/'+this.deviceState])> In Progress </a> section. You can always go back to it and complete it.";
     this.deviceService.updateInUse(this.deviceId).subscribe(
       res1 => {
         console.log("Updated to not in use");
-        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: { deviceId: this.deviceId, inputRoute: "notUsed"}});
+        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: { deviceId: this.deviceId, inputRoute: "notUsed",previousState:this.devicePreviousState}});
       }
     );
   }

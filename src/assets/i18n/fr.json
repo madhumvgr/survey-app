@@ -14,6 +14,11 @@
          "techSupportLabel": "Soutien tech",
          "techSupportText": "Nous sommes ici pour vous aider. Demandez! Voir plus",
          "techSupportButton": "Voir plus"
+        },
+    "messageCenter": {
+            "title": "Centre de Messagerie",
+            "description": "Bienvenue au centre de messagerie, où vous pouvez accéder aux messages et effectuer d'autres tâches."
+    
         }
 }
 

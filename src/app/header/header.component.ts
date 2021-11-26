@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
           if(this.messages.actions.length == 0 && this.messages.messages.length == 0) {
             this.isNotification = false;
           }else if(this.messages.actions.length != 0 && this.messages.messages.length != 0) {
-            this.displayContent = " You have " +this.messages?.actions?.length+ " new action(s) and " +this.messages?.messages?.length+ "new message(s)";
+            this.displayContent = " You have " +this.messages?.actions?.length+ " new action(s) and " +this.messages?.messages?.length+ " new message(s)";
           } else if(this.messages.actions.length != 0 && this.messages.messages.length == 0){
             this.displayContent = " You have " +this.messages?.actions?.length+ " new action(s)";
           } else{

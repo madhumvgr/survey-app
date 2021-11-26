@@ -11,6 +11,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { KeyhelpComponent } from './components/registerkey/keyhelp/keyhelp.component';
 import { PrivacyPolicyComponent } from './components/login/forgot-password/privacy-policy/privacy-policy.component';
 import { LoginHomeComponent } from './components/login-home/login-home.component';
+import { ConnectComponent } from '../support/connect/connect.component';
+import { ContactComponent } from '../support/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -31,7 +33,7 @@ const routes: Routes = [
       { path: 'registerkey', component: RegisterkeyComponent },
       { path: 'registersuccess', component: RegisterSuccessComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: 'keyhelp', component: KeyhelpComponent },
+      { path: 'keyhelp', component: ContactComponent },
       { path: 'privacy-policy', component: PrivacyPolicyComponent, canActivate: [AuthGuard] },
 
       { path: '', pathMatch: 'full', redirectTo: 'registerkey' }

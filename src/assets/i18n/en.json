@@ -14,5 +14,9 @@
         "techSupportLabel": "Tech Support",
         "techSupportText": "We are here to help. Just ask!",
         "techSupportButton": "Learn More"
+    },
+    "messageCenter": {
+        "title": "Messaging Center",
+        "description": "Welcome to the messaging center where you can access messages and take actions."
     }
 }

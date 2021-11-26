@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedroute: ActivatedRoute) {
+    let url = this.activatedroute.snapshot.url[0].path;
+    console.log(url);
+   }
 
   ngOnInit(): void {
   }

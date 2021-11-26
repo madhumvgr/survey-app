@@ -31,9 +31,7 @@ export class NotInUseDevicesComponent implements OnInit {
       this.deviceInformation.macAddress = res1['macAddress'];
       
     });
-    this.deviceService.getDevicePreviousStatus(this.deviceId).subscribe(res1 => {
-      this.devicePreviousState = res1['deviceSurveryStatus'];
-    });
+  
     
   }
 
@@ -44,9 +42,13 @@ export class NotInUseDevicesComponent implements OnInit {
     //const message ="We have saved your survey in the <a [routerLink] = this.router.navigate(['/survey/deviceList/'+this.deviceState])> In Progress </a> section. You can always go back to it and complete it.";
     this.deviceService.updateInUse(this.deviceId).subscribe(
       res1 => {
+        this.deviceService.getDevicePreviousStatus(this.deviceId).subscribe(res1 => {
+          this.devicePreviousState = res1['deviceSurveryStatus'];
+          this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: { deviceId: this.deviceId, inputRoute: "notUsed",previousState:this.devicePreviousState}});
+   
+        });
         console.log("Updated to not in use");
-        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: { deviceId: this.deviceId, inputRoute: "notUsed",previousState:this.devicePreviousState}});
-      }
+           }
     );
   }
 }

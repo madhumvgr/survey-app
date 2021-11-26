@@ -21,18 +21,9 @@ import { HttpClient } from '@angular/common/http';
     FormsModule, 
     ReactiveFormsModule,
     SharedModule,
-    TranslateModule.forRoot({
-      loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-      }
-  })
+    TranslateModule
   ]
 })
 export class NotificationModule {
   
- }
- export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
  }

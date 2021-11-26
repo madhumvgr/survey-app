@@ -13,7 +13,8 @@
          "surveyhubButton": "Démarrer",
          "techSupportLabel": "Soutien tech",
          "techSupportText": "Nous sommes ici pour vous aider. Demandez! Voir plus",
-         "techSupportButton": "Voir plus"
+         "techSupportButton": "Voir plus",
+         "privacyPolicyUrl":"https://numeris.ca/politique-sur-la-vie-privee/"
         },
     "messageCenter": {
             "title": "Centre de Messagerie",

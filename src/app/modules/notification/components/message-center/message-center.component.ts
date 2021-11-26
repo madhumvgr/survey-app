@@ -14,6 +14,7 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
 
   messages: any;
   subscription: any = new Subscription();
+  action_type: any;
 
   constructor(private notifService: NotificationService, 
     private sharedService: SharedService, 
@@ -54,8 +55,9 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
 
     //action
     if(message.messageType === "Action") {
+      this.action_type = message.actionType.replace(/\s/g, "");
       this.notifService.markMessageRead(message).subscribe(res => {
-        this.router.navigateByUrl('notification/messages/action/' + message.id+'/'+message.actionType);
+        this.router.navigateByUrl('notification/messages/action/' + message.id+'/'+this.action_type);
       })  
     } else{
       this.notifService.markMessageRead(message).subscribe(res => {

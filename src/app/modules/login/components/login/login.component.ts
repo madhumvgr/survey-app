@@ -66,18 +66,18 @@ export class LoginComponent implements OnInit {
         rememberMe: false
       };
 
-     this.localStorageService.setIdToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaXRpbnBlZG5la2FyMkBnbWFpbC5jb20iLCJhdXRoIjoiIiwiSG9tZU5vIjoiNTUyMTU5MiIsImV4cCI6MTYzNzk0NzYwM30.jFVjCd3GV3pI9JusLEO-cMNM1xcCoZeciMJ1BaHxsMlAmFChKwJJSe6uZN2NxtKq58pBgYP3QZ5zsgN2tnEbHw");
-     this.router.navigate(['/welcome']);
-      // this.userService.signIn(user).subscribe(response => {
-      //   if (response) {
-      //     this.showError = false;
-      //     // After successful sign in, we have to set username into localstorage
-      //     this.localStorageService.setIdToken( response['id_token']);
-      //     this.localStorageService.setUserName(this.loginFormControl.email.value);
-      //     this.router.navigate(['/welcome']);
-      //   }
-      // }, err => this.showError = true,
-      //   () => this.showError = true);
+   //  this.localStorageService.setIdToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaXRpbnBlZG5la2FyMkBnbWFpbC5jb20iLCJhdXRoIjoiIiwiSG9tZU5vIjoiNTUyMTU5MiIsImV4cCI6MTYzNzk0NzYwM30.jFVjCd3GV3pI9JusLEO-cMNM1xcCoZeciMJ1BaHxsMlAmFChKwJJSe6uZN2NxtKq58pBgYP3QZ5zsgN2tnEbHw");
+    
+      this.userService.signIn(user).subscribe(response => {
+        if (response) {
+          this.showError = false;
+          // After successful sign in, we have to set username into localstorage
+          this.localStorageService.setIdToken( response['id_token']);
+          this.localStorageService.setUserName(this.loginFormControl.email.value);
+          this.router.navigate(['/welcome']);
+        }
+      }, err => this.showError = true,
+        () => this.showError = true);
 
     }
   }

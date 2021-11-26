@@ -37,7 +37,7 @@
    
                     <input style="padding-left: 50px" matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" name="password" 
                         [(ngModel)]="model.password" #password="ngModel" 
-                        [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="5" 
+                        [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" 
                         aria-describedby="keyHelp"/>
                         <button type="button" matPrefix mat-icon-button (click)="hide = !hide" [attr.aria-label]="'Show password1'" [attr.aria-pressed]="hide">
                           <mat-icon >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -48,7 +48,7 @@
                
                        <span *ngIf="f.submitted && password.invalid" class="invalid-feedback">
                          <div *ngIf="password.errors?.required">Key is required</div>
-                           <div *ngIf="password.errors?.minlength">Key must be at least 5 characters</div>
+                           <div *ngIf="password.errors?.minlength">Key must be at least 6 characters</div>
                        </span>
                           <span *ngIf="showOtpError" class="text-danger"> Enter valid OTP.</span>
                  </div>

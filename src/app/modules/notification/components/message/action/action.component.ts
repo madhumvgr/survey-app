@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { NotificationService } from '../../../service/notification.service';
@@ -14,11 +15,14 @@ export class ActionComponent implements OnInit {
   subscription: any = new Subscription();
   displayAction : any;
   actionType: any;
+  action_type:any;
 
   constructor(private notifService: NotificationService,
      private activatedroute: ActivatedRoute, private sharedService: SharedService, private zone: NgZone,
-     private router: Router) {
+     private router: Router, private translate: TranslateService) {
     this.actionType = this.activatedroute.snapshot.params['actionType'];
+    
+    this.action_type = this.actionType.replace(/\s/g, "");
   }
 
   ngOnInit(): void {
@@ -34,17 +38,20 @@ export class ActionComponent implements OnInit {
   }
 
   takeAction(){
-    if(this.actionType=='New Device'){
-      this.router.navigateByUrl('/survey/deviceInformation/Inprogress/'+this.displayAction.deviceId);
-    }else if(this.actionType=='Re-do Survey'){
-      this.router.navigateByUrl('/survey/survey');
-    }else if(this.actionType=='Privacy Policy Update'){
-      window.open('https\://numeris.ca/privacy-policy/','name','width=600,height=400,top=200');
+    if(this.actionType=='NewDevice' && this.displayAction.deviceId !="null"){
+      this.router.navigateByUrl('/survey/deviceInformation/New/'+this.displayAction.deviceId);
+    }else if(this.actionType=='Re-doSurvey'){
+      this.router.navigateByUrl('/survey/deviceList/Inprogress');
+    }else if(this.actionType=='PrivacyPolicyUpdate'){
+      window.open(this.translate.instant('welcomePage.privacyPolicyUrl'),'name','width=600,height=400,top=200');
     }
   }
   ngOnDestroy(): void {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
+  
+  showWindow(){
+     }
 
 }

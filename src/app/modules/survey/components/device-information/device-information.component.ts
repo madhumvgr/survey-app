@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
@@ -25,7 +26,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   private modalComponent!: ModalComponent;
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
-    private localStorageService: LocalStorageService) {
+    private localStorageService: LocalStorageService, private translate: TranslateService) {
       super();
      }
      ngAfterViewInit(){
@@ -109,6 +110,10 @@ exitEvent(isBackAction:boolean) {
   resubmitForm() {
     const message ="Thank you for updating your info page! ";
   this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+  }
+
+  showWindow(){
+    window.open(this.translate.instant('welcomePage.privacyPolicyUrl'),'name','width=600,height=400,top=200');
   }
 
 }

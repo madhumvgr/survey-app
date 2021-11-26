@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { DeviceService } from '../modules/login/services/device.service';
 import { NotificationService } from '../modules/notification/service/notification.service';
@@ -24,7 +25,7 @@ export class WelcomeComponent implements OnInit {
     private notifService: NotificationService, 
     private sharedService: SharedService, 
     private router: Router,
-    private deviceService: DeviceService) {
+    private deviceService: DeviceService, private translate: TranslateService) {
 
   }
 
@@ -51,7 +52,8 @@ export class WelcomeComponent implements OnInit {
     this.router.navigateByUrl('/notification/messages');
 
   }
-  openWindow(){
-    window.open("https://numeris.ca/", '_blank');
+  showWindow(){
+    window.open(this.translate.instant('welcomePage.privacyPolicyUrl'),'name','width=600,height=400,top=200');
   }
+
 }

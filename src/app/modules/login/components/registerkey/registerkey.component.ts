@@ -27,9 +27,9 @@ export class RegisterkeyComponent implements OnInit {
     // validate otp in backend. 
     const url = UrlConstants.registerKeyForOtp+'/'+this.model.password
     this.userService.customRead(url).subscribe( response => {
-      if(response.id){
+      if(response.otpId){
         this.showOtpError=false;
-        this.localStorageService.setProfileId(response['portalHome'] ['homeNo']);
+        this.localStorageService.setProfileId(response.homeNo);
         this.router.navigate(['login/register']);
       }
       else{

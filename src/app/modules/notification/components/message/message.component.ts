@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { NotificationService } from '../../service/notification.service';
@@ -46,5 +47,6 @@ export class MessageComponent implements OnInit {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
+
 
 }

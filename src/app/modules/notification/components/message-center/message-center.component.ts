@@ -55,7 +55,7 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
     //action
     if(message.messageType === "Action") {
       this.notifService.markMessageRead(message).subscribe(res => {
-        this.router.navigateByUrl('notification/messages/action/' + message.id);
+        this.router.navigateByUrl('notification/messages/action/' + message.id+'/'+message.actionType);
       })  
     } else{
       this.notifService.markMessageRead(message).subscribe(res => {

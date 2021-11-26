@@ -4,7 +4,7 @@
             <li class="breadcrumb-item"><a [routerLink] = "['/welcome']">Home</a></li>
             <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
             <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-devices']">Household devices</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{deviceState}} devices</li>
+            <li class="breadcrumb-item active" aria-current="page">{{deviceStatus}} devices</li>
         </ol>
     </div>
 </nav>
@@ -15,9 +15,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>{{deviceState}} Devices</h1>
+                <h1>{{deviceStatus}} Devices</h1>
                 <p>
-                    This page shows all media devices that are {{deviceState}} connected to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your <a href="https://numeris.ca/privacy-policy/" target="popup" onclick="window.open('https\://numeris.ca/privacy-policy/','name','width=600,height=400,top=200')">privacy policy</a>. data and privacy are always protected
+                    This page shows all media devices that are {{deviceStatus}} connected to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your <a href="https://numeris.ca/privacy-policy/" target="popup" onclick="window.open('https\://numeris.ca/privacy-policy/','name','width=600,height=400,top=200')">privacy policy</a>. data and privacy are always protected
                 </p>
             </div>
         </div><!--end Row-->
@@ -28,7 +28,7 @@
 <section class="px-3 pb-5">
     <div class="container">
         <div class="row g-4">
-            <h2>{{deviceState}} devices detected: {{deviceCount}}<span class="h2-separator"></span></h2>
+            <h2>{{deviceStatus}} devices detected: {{deviceCount}}<span class="h2-separator"></span></h2>
             <p class="mt-2 mb-0">Select devices to start a survey</p>
 
              <!-- Newly Detected Device (Smart TV) -->

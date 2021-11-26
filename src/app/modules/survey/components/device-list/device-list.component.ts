@@ -25,6 +25,7 @@ export class DeviceListComponent implements OnInit {
   devicesList: Device[] = [];
 
   deviceCount: number = 0;
+  deviceStatus: any;
 
   constructor(private Activatedroute: ActivatedRoute, 
     private localStorageService: LocalStorageService,
@@ -34,6 +35,11 @@ export class DeviceListComponent implements OnInit {
 
   ngOnInit(): void {
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    if(this.deviceState =="Inprogress") {
+      this.deviceStatus = "In Progress"
+    }else {
+      this.deviceStatus = this.deviceState;
+    }
     this.deviceService.getCustomRequest(DeviceConstants.deviceListByStatus + this.deviceState).subscribe(response => {
       if (response) {
         this.devicesList = response;

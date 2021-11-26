@@ -19,6 +19,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   memberNo: any;
   memberName: any;
   deviceName: any;
+  deviceStatus:any;
   isTvGenere: boolean = false;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
@@ -142,6 +143,11 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.activatedroute.snapshot.params['state'];
+    if(this.deviceState =="Inprogress") {
+      this.deviceStatus = "In Progress"
+    }else {
+      this.deviceStatus = this.deviceState;
+    }
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
     this.generes.forEach((genere, i) => {
       this.createForm(genere.id);

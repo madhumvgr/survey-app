@@ -18,6 +18,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   deviceInfoForm: FormGroup = this.fb.group({});
   deviceInformation: DeviceInfo = new DeviceInfo();
   resubmit: boolean = false;
+  deviceStatus: any;
 
   deviceName: any;
   @ViewChild('modal')
@@ -35,6 +36,11 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    if(this.deviceState =="Inprogress") {
+      this.deviceStatus = "In Progress"
+    }else {
+      this.deviceStatus = this.deviceState;
+    }
     if(this.deviceState == "Completed") {
       this.resubmit = true;
     }

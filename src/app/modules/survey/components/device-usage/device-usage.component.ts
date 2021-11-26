@@ -22,6 +22,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   totalMembers: any;
   isCompleted= false;
   resubmit: boolean = false;
+  deviceStatus: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   constructor(private Activatedroute:ActivatedRoute, private localStorageService:LocalStorageService, private router: Router,private deviceService: DeviceService) { 
@@ -35,6 +36,11 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    if(this.deviceState =="Inprogress") {
+      this.deviceStatus = "In Progress"
+    }else {
+      this.deviceStatus = this.deviceState;
+    }
     this.ownerName = this.Activatedroute.snapshot.params['memeberName'];
     if(this.deviceState == "Completed") {
       this.resubmit = true;

@@ -32,6 +32,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   notUsed: boolean = false;
   singleMemeber: boolean = false;
   resubmit: boolean = false;
+  deviceStatus: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
@@ -51,6 +52,11 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     });
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
+    if(this.deviceState =="Inprogress") {
+      this.deviceStatus = "In Progress"
+    }else {
+      this.deviceStatus = this.deviceState;
+    }
     if(this.deviceState == "Completed") {
       this.resubmit = true;
     }

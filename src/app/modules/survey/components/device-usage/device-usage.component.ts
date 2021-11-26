@@ -19,6 +19,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   ownerName: any;
   deviceName: any;
   button = 'Edit';
+  totalMembers: any;
   isCompleted= false;
   resubmit: boolean = false;
   @ViewChild('modal')
@@ -41,6 +42,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     this.deviceService.getCustomRequest(DeviceConstants.memberListByDeviceId + this.deviceId).subscribe(response => {
       if (response) {
         this.memberList = response;
+        this.totalMembers = this.memberList.length;
         let count=0;
          this.memberList.forEach( (element1:any) => {
            if(element1.memberSurveyStatusId == 1){
@@ -74,5 +76,18 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     const message ="Thank you for updating your info page! ";
   this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
+
+  backButton() {
+    if(this.totalMembers == 1) {
+      this.router.navigateByUrl('/survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
+    } else  {
+      this.router.navigateByUrl('/survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
+    }
+  }
+
+  exitEvent(isBackAction:boolean) {
+    const message ="You have successfully submitted " +this.deviceName+ " device information to us";
+     this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+   }
 
 }

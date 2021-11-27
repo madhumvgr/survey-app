@@ -19,7 +19,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   memberNo: any;
   memberName: any;
   deviceName: any;
-  deviceStatus:any;
+  deviceStatus: any;
   isTvGenere: boolean = false;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
@@ -62,14 +62,6 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   {
     "id": '9',
     "name": "Hobbies & Leisure"
-  },
-  {
-    "id": '10',
-    "name": "Other"
-  },
-  {
-    "id": '11',
-    "name": "None"
   },
   {
     "id": '12',
@@ -143,16 +135,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.activatedroute.snapshot.params['state'];
-    if(this.deviceState =="Inprogress") {
+    if (this.deviceState == "Inprogress") {
       this.deviceStatus = "In Progress"
-    }else {
+    } else {
       this.deviceStatus = this.deviceState;
     }
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
     this.generes.forEach((genere, i) => {
       this.createForm(genere.id);
       for (let d of this.timeLines) {
-        this.addMore(d, i + 1);
+        this.addMore(d, parseInt(genere.id));
       }
     });
 
@@ -172,7 +164,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   setPreviousValues(genereList: any) {
     genereList.forEach((element: any) => {
-      if (element.listGenresTimeline) {
+      if (element.listGenresTimeline && (element.id!=10 && element.id!=11)) {
         element.listGenresTimeline.forEach((timeLine: any) => {
           if (timeLine.dayOfWeek && timeLine.dayOfWeek == 1) {
             let innerControl = this.getWeekDayControl(element.id).controls[parseInt(timeLine.usageTimelineId)];
@@ -216,6 +208,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   addMore(d: DeviceTimeSlot, genereId: number) {
+    console.log(genereId);
     this.getWeekDayControl(genereId).push(this.buildTimelines(d, genereId, "1"));
     this.getWeekEndControl(genereId).push(this.buildTimelines(d, genereId, "2"));
   }
@@ -249,6 +242,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   submit() {
     // TODO: change device name to Smart TV. 
     let deviceId = this.deviceId ? this.deviceId : 'none';
+    let isTouched= false;
+    this.timeLinesForm.forEach( form => {
+      if(form.touched){
+        isTouched =true;
+      }
+    });
+    if(!isTouched){
+      alert("Not Touched");
+    }
+
     if (this.isTvGenere || this.deviceName === "Device 2") {
       this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
     }

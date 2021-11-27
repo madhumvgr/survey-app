@@ -6,14 +6,16 @@
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
             <ng-container *ngIf="isTvGenere else device">
-                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">Television Usage</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">Television Usage</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
-              </ng-container>
-              <ng-template #device>
+            </ng-container>
+            <ng-template #device>
                 <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">Household devices</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceStatus}}</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceStatus}}</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
-              </ng-template>
+            </ng-template>
         </ol>
     </div>
 </nav>
@@ -49,76 +51,88 @@
             <div class="accordion accordion-flush" id="genres-target">
 
                 <!-- Accoridian Genre Tab 1 -->
-               <ng-container *ngFor="let genere of generes; let generId = index"> 
-                    <div class="accordion-item shadow-sm rounded mb-3">
-                        <h3 class="accordion-header" id="open-one">
-                            <button class="py-0 ps-0 pe-3 accordion-button collapsed" type="button"
-                                data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-one'+generId" aria-expanded="false"
-                                [attr.aria-controls]="'collapse-one'+generId">
-                                <i class="material-icons p-3 me-3 genres-icon">
-                                    <div class="h3 mb-0">movie_filter</div>
-                                </i> {{genere?.name}}
-                            </button>
-                        </h3>
-                        <div [id]="'collapse-one'+generId" class="accordion-collapse collapse" aria-labelledby="open-one"
-                            data-bs-parent="#genres-target">
-                            <form [formGroup]="timeLinesForm[generId+1]">
-                                <div class="accordion-body">
-                                    <h4>Content watched is same as for </h4>
-                                    <select class="form-select mb-4" aria-label="content select" (change)="copyValues(generId,$event)">
-                                        <option selected>Select Content</option>
-                                        <option value="1">News & Analysis</option>
-                                        <option value="2">Sports</option>
-                                        <option value="3">Entertainment</option>
-                                        <option value="4">Movies</option>
-                                        <option value="5">Drama</option>
-                                        <option value="6">Kids Programming</option>
-                                        <option value="7">Comedy</option>
-                                        <option value="8">Documentaries</option>
-                                        <option value="9">Hobbies & Leisure</option>
-                                        <option value="10">NONE</option>
-                                        <option value="11">New_Genre</option>
-                                    </select>
-                                    <h4>Select weekday time slots</h4>
-                                    <div formArrayName="weekDays" class="w-75">
-                                        <div *ngFor="let item of getWeekDayControl(generId+1).controls; let i = index;"
-                                            [formGroupName]="i" class="check-input-bg p-2 mb-3 rounded form-check-inline">
-                                            <!-- *ngIf="item.value?.usageTimelineId" -->
-                                            <div class="form-check">
-                                                <input formControlName="addNew" class="form-check-input"
-                                                    type="checkbox" (change)="updateTimeLine(item)">
-                                                <label class="form-check-label">
-                                                    {{item.value.label}}
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
+                <ng-container *ngFor="let genere of generes; let generId = index">
+                    {{generId}}
+                    <ng-container *ngIf="generId!=9">
+                        <ng-container *ngIf="generId!=10">
 
-                                    <h3>Select weekend times slots </h3>
-                                    <div formArrayName="weekEnds" class="w-75">
-                                        <div *ngFor="let item of getWeekEndControl(generId+1).controls; let i = index;"
-                                            [formGroupName]="i"  class="check-input-bg p-2 mb-3 rounded form-check-inline" >
-                                            <!-- *ngIf="item.value?.usageTimelineId" -->
-                                            <div class="form-check">
-                                                <input formControlName="addNew" class="form-check-input"
-                                                    type="checkbox" (change)="updateTimeLine(item)">
-                                                <label class="form-check-label">
-                                                    {{item.value.label}}
-                                                </label>
+                            <div class="accordion-item shadow-sm rounded mb-3">
+                                <h3 class="accordion-header" id="open-one">
+                                    <button class="py-0 ps-0 pe-3 accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-one'+generId"
+                                        aria-expanded="false" [attr.aria-controls]="'collapse-one'+generId">
+                                        <i class="material-icons p-3 me-3 genres-icon">
+                                            <div class="h3 mb-0">movie_filter</div>
+                                        </i> {{genere?.name}}
+                                    </button>
+                                </h3>
+                                <div [id]="'collapse-one'+generId" class="accordion-collapse collapse"
+                                    aria-labelledby="open-one" data-bs-parent="#genres-target">
+
+                                hhhhhhhhh{{generId+1}}
+                                    <form [formGroup]="timeLinesForm[generId+1]">
+                                        <div class="accordion-body">
+                                            <h4>Content watched is same as for </h4>
+                                            <select class="form-select mb-4" aria-label="content select"
+                                                (change)="copyValues(generId,$event)">
+                                                <option selected>Select Content</option>
+                                                <option value="1">News & Analysis</option>
+                                                <option value="2">Sports</option>
+                                                <option value="3">Entertainment</option>
+                                                <option value="4">Movies</option>
+                                                <option value="5">Drama</option>
+                                                <option value="6">Kids Programming</option>
+                                                <option value="7">Comedy</option>
+                                                <option value="8">Documentaries</option>
+                                                <option value="9">Hobbies & Leisure</option>
+                                                <option value="10">NONE</option>
+                                                <option value="11">New_Genre</option>
+                                            </select>
+                                            <h4>Select weekday time slots</h4>
+                                            <div formArrayName="weekDays" class="w-75">
+                                                <div *ngFor="let item of getWeekDayControl(generId+1).controls; let i = index;"
+                                                    [formGroupName]="i"
+                                                    class="check-input-bg p-2 mb-3 rounded form-check-inline">
+                                                    <!-- *ngIf="item.value?.usageTimelineId" -->
+                                                    <div class="form-check">
+                                                        <input formControlName="addNew" class="form-check-input"
+                                                            type="checkbox" (change)="updateTimeLine(item)">
+                                                        <label class="form-check-label">
+                                                            {{item.value.label}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h3>Select weekend times slots </h3>
+                                            <div formArrayName="weekEnds" class="w-75">
+                                                <div *ngFor="let item of getWeekEndControl(generId+1).controls; let i = index;"
+                                                    [formGroupName]="i"
+                                                    class="check-input-bg p-2 mb-3 rounded form-check-inline">
+                                                    <!-- *ngIf="item.value?.usageTimelineId" -->
+                                                    <div class="form-check">
+                                                        <input formControlName="addNew" class="form-check-input"
+                                                            type="checkbox" (change)="updateTimeLine(item)">
+                                                        <label class="form-check-label">
+                                                            {{item.value.label}}
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
+
+                                    <!--end-accoriding-inner-->
                                 </div>
-                            </form> 
-                            <!--end-accoriding-inner-->
-                        </div>
-                        <!--end-accoriding-collapse-->
-                    </div>
-               </ng-container> 
+                                <!--end-accoriding-collapse-->
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
                 <!--End Accoridian Genre Tab -->
 
 
-               
+
                 <!-- IMPORTANT --------------------------- 
 
                         Hi Naga and Kajal, 
@@ -154,4 +168,4 @@
 <!--end Section-->
 <modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
     <!--  body of the modal  -->
-  </modal>
+</modal>

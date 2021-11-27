@@ -68,7 +68,9 @@
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
                     <button type="submit" class="btn btn-dark" (click) = "backButton()">Back</button>
                     <button type="button" class="btn btn-secondary ms-md-3" (click)="openModal()" >Save & Exit</button>
-                    <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" [disabled]="!isCompleted" *ngIf ="!resubmit">Submit</button>
+                    <ng-container *ngIf="isCompleted">
+                        <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">Submit</button>
+                    </ng-container>
                     <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
 
                 </div>

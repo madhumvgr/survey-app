@@ -11,8 +11,11 @@
     </ng-template>
 
     <div class="row" *ngIf="isMenu">
+      <!--background toggle use -->
+      <div class="background-nav-overlay" [style.display]="showOnlyMenu"></div>
+      <!--End Backgorund toggle-->
       <div class="col">
-        <div ngbDropdown class="d-inline-block">
+        <div ngbDropdown (openChange) = "onMenuOpen($event)"  class="d-inline-block">
           <button class="navbar-toggler d-sm-flex align-items-center justify-content-between" type="button"
             data-bs-toggle="collapse" data-bs-target="#navmenu" id="dropdownBasic1" ngbDropdownToggle>
             <i class="material-icons text-white">

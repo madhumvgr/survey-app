@@ -1,6 +1,6 @@
 
-    <section class="px-3 notification-bar">
-        <div class="container">
+    <section *ngIf="browserStatus==displayBrowser()" class="px-3 notification-bar">
+        <div  class="container">
             <div class="row">
                 <div class="col-12 py-2">
                     <div class="d-flex align-items-center border-0" role="alert">
@@ -9,7 +9,7 @@
                             </div>
                          </i>
                         <div class="ps-3">
-                        <a class="text-white">For better user experience please update your browser.</a>
+                        <a class="text-white" href="https://support.google.com/googleone/answer/9891898?hl=en" target="_blank">For better user experience please update your browser.</a>
                         </div>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
         </div><!--end Container-->
     </section><!--end Section-->
 
-
+    
     <section class="px-3 pb-4" *ngIf="!hide">
         <div class="container">
             <div class="container">
@@ -52,7 +52,7 @@
                             <label for="inputPass" class="form-label">Password</label>
    
                                 <input style="padding-left: 50px"  matInput [type]="show ? 'password' : 'text'" type="password"  class="form-control" formControlName="password" id="inputPass" required>
-                                 <button type="button" mat-icon-button matSuffix (click)="show = !show" [attr.aria-label]="'Show password'" [attr.aria-pressed]="show">
+                                 <button type="button" mat-icon-button matSuffix (click)="show = !show" [attr.aria-label]="'Show password'" [attr.aria-pressed]="show" class="eye-hide">
                                   <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
                                  </button>
                         </div>

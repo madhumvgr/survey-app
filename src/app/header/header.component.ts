@@ -1,5 +1,6 @@
 import { Component, Input, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Block } from '@material-ui/icons';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { NotificationService } from '../modules/notification/service/notification.service';
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit {
   messages: any;
   displayContent: any;
   notify = false;
+  showOnlyMenu="none";
   constructor(public authService:AuthService,private translate: TranslateService,
      private localStorageService:LocalStorageService,
      private zone: NgZone, 
@@ -68,4 +70,9 @@ export class HeaderComponent implements OnInit {
     this.notify = true;
     this.router.navigateByUrl('/notification/messages');
   }
+  
+  onMenuOpen(isOpen:Boolean){
+    this.showOnlyMenu = isOpen? "block":"none";
+  }
+
 }

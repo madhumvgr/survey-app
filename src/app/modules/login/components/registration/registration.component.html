@@ -46,7 +46,7 @@
                         
                     <label for="inputPass" class="form-label">Password</label>
                     <input style="padding-left: 50px" matInput [type]="show ? 'password' : 'text'" type="password" class="form-control" formControlName="password" id="inputPass">
-                    <button type="button" mat-icon-button matSuffix (click)="show = !show" [attr.aria-label]="'Show password'" [attr.aria-pressed]="show">
+                    <button type="button" mat-icon-button matSuffix (click)="show = !show" [attr.aria-label]="'Show password'" [attr.aria-pressed]="show" class=”eye-hide”>
                         <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
                        </button>
               </div>
@@ -66,7 +66,7 @@
                     
                     <input style="padding-left: 50px" matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" formControlName="confirmPassword" id="confirmPass">
          
-                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Show password1'" [attr.aria-pressed]="hide">
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Show password1'" [attr.aria-pressed]="hide"  class=”eye-hide”>
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                        </button>
               </div>

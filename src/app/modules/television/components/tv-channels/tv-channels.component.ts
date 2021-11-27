@@ -129,16 +129,23 @@ export class TvChannelsComponent implements OnInit {
   }
 
   submit() {
+    let  message ="You have successfully submitted information to us";
+  
+    if(this.stationForm.filter(e => !e.valid).length === 0 || this.isTvGenere){
+        
+        this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
+          res => {
+            this.router.navigateByUrl('');
+            this.router.navigate(['television/thankyou'], {state: {message: message}});
+          });
 
-    if(this.stationForm.filter(e => !e.valid).length === 0){
-      const message ="You have successfully submitted information to us";
-      this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
+    } else {
+      this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
         res => {
-          this.router.navigateByUrl('');
-          this.router.navigate(['television/thankyou'], {state: {message: message}});
+          console.log(res); 
+          this.router.navigate(['survey/Thankyou/' +this.deviceName], {state: {message: message}});;
         });
     }
-
    
   }
 

@@ -256,11 +256,9 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
     }
     else {
-      this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
-        res => {
-          console.log(res); 
-          this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);
-        });
+     
+       this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);
+  
     }
 
   }

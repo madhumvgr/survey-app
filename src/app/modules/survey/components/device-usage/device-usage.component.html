@@ -61,7 +61,7 @@
                     </div>
                     <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Not Started'" (click) = "continueNavigate(mem.memberNo,mem.memberName) ">Start</button>
                     <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'In Progress'" (click) = "continueNavigate(mem.memberNo,mem.memberName) ">Continue</button>
-                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Completed'" (click) = "continueNavigate(mem.memberNo,mem.memberName) ">Edit</button>
+                    <button type="button" class="btn btn-light me-3" *ngIf = "mem.memberSurveyStatus == 'Completed'" (click) = "continueNavigate(mem.memberNo,mem.memberName) ">Continue</button>
                 </div>
 
                 <!-- Action buttons -->

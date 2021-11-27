@@ -242,24 +242,24 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   submit() {
     // TODO: change device name to Smart TV. 
     let deviceId = this.deviceId ? this.deviceId : 'none';
-    let isTouched= false;
-    this.timeLinesForm.forEach( form => {
-      if(form.touched){
-        isTouched =true;
-      }
-    });
-    if(!isTouched){
-      alert("Not Touched");
-    }
+    // let isTouched= false;
+    // this.timeLinesForm.forEach( form => {
+    //   if(form.touched){
+    //     isTouched =true;
+    //   }
+    // });
+    // if(!isTouched){
+    //   alert("Not Touched");
+    // }
 
-    if (this.isTvGenere || this.deviceName === "Device 2") {
+    if (this.isTvGenere) {
       this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
     }
     else {
       this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
         res => {
-          console.log(res);
-          this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+          console.log(res); 
+          this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);
         });
     }
 

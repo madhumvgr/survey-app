@@ -33,7 +33,7 @@ const routes: Routes = [
       { path: 'household-devices', component: HouseholdDevicesComponent },
       { path: 'not-in-use-devices/:state/:deviceId', component: NotInUseDevicesComponent },
       { path: 'completed-devices/:state/:deviceId', component: CompletedDevicesViewComponent},
-      {path:  'tv-Channels/:memberNo', component: TvChannelsComponent },
+      {path:  'tv-Channels/:state/:deviceId/:memberNo', component: TvChannelsComponent },
       { path: 'Thankyou/:deviceName', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
@@ -47,9 +47,9 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     }
     this.deviceInfoForm = this.fb.group({
       //set to empty. 
-      numberOfUsers: [''],
-      oftenUsed: [''],
-      planToUseDuration: [''],
+      numberOfUsers: ['',Validators.required],
+      oftenUsed: ['',Validators.required],
+      planToUseDuration: ['',Validators.required],
       deviceNickName: [''],
       deviceId: [''],
       homeNo: ['']
@@ -57,10 +57,10 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     );
     //get device information. 
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => {
-      this.deviceInfoFormControl.numberOfUsers.setValue('' + res.numberOfUsers);
-      this.deviceInfoFormControl.oftenUsed.setValue('' + res.oftenUsed);
-      this.deviceInfoFormControl.planToUseDuration.setValue('' + res.planToUseDuration);
-      this.deviceInfoFormControl.deviceNickName.setValue('' + res.deviceNickName);
+      this.deviceInfoFormControl.numberOfUsers.setValue(''+(res.numberOfUsers?res.numberOfUsers:'0'));
+      this.deviceInfoFormControl.oftenUsed.setValue('' + (res.oftenUsed?res.oftenUsed:'0'));
+      this.deviceInfoFormControl.planToUseDuration.setValue('' + (res.planToUseDuration?res.planToUseDuration:'0'));
+      this.deviceInfoFormControl.deviceNickName.setValue('' + res.deviceNickName?res.deviceNickName:'');
       // get device device internal details. 
       this.deviceService.getDeviceInnerInfo(this.deviceId).subscribe(res1 => {
         this.deviceInformation.devicePlatform = res1['devicePlatform'];
@@ -75,6 +75,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   }
 
   continueNavigate() {
+    console.log(this.deviceInfoForm);
     this.router.navigateByUrl('survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
   }
 

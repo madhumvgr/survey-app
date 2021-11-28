@@ -74,6 +74,11 @@
                             <p *ngIf="stationForm[generId+1]?.get('weekEnds')?.hasError('required')">This Field is required</p>
                         </div>
                     </div>
+                    <div style="color:red">
+                       <ng-container *ngIf="stationForm[generId+1]?.errors?.atLeastOne">
+                        Should select atleast one value. 
+                       </ng-container>
+                    </div>
                     </form>
                 </div>
                 <!--End Channel-->

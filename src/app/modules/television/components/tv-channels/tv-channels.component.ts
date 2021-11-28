@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
@@ -7,6 +7,26 @@ import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/m
 import { DeviceConstants, TelevisionConstants } from 'src/app/shared/models/url-constants';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
+
+export function createPasswordStrengthValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+
+    if (!value) {
+      return null;
+    }
+
+    const hasUpperCase = /[A-Z]+/.test(value);
+
+    const hasLowerCase = /[a-z]+/.test(value);
+
+    const hasNumeric = /[0-9]+/.test(value);
+
+    const passwordValid = hasUpperCase && hasLowerCase && hasNumeric;
+
+    return !passwordValid ? { passwordStrength: true } : null;
+  }
+}
 @Component({
   selector: 'app-tv-channels',
   templateUrl: './tv-channels.component.html',
@@ -80,10 +100,10 @@ export class TvChannelsComponent implements OnInit {
     private deviceService: DeviceService,
     private televisionService: TelevisionService,
     private localStorageService: LocalStorageService) {
-      let url = this.activatedroute.snapshot.url[0].path;
-      if (url == "tv-channels") {
-        this.isTvGenere = true;
-      }
+    let url = this.activatedroute.snapshot.url[0].path;
+    if (url == "tv-channels") {
+      this.isTvGenere = true;
+    }
   }
 
   ngOnInit(): void {
@@ -96,24 +116,24 @@ export class TvChannelsComponent implements OnInit {
     this.stations.forEach((station, i) => {
       this.createForm(station.id);
     });
-    if(this.deviceId !=="none"){
-      this.televisionService.getCustomRequest(TelevisionConstants.getStationsWithDeviceId + this.memberNo+'/'+this.deviceId).
-      subscribe(response => {
-        this.setPreviousValues(response);
-      });
-    }else{
+    if (this.deviceId !== "none") {
+      this.televisionService.getCustomRequest(TelevisionConstants.getStationsWithDeviceId + this.memberNo + '/' + this.deviceId).
+        subscribe(response => {
+          this.setPreviousValues(response);
+        });
+    } else {
       this.televisionService.getCustomRequest(TelevisionConstants.getStations + this.memberNo).
-      subscribe(response => {
-        this.setPreviousValues(response);
-      });
+        subscribe(response => {
+          this.setPreviousValues(response);
+        });
     }
-    
+
   }
 
   createForm(genereId: number) {
     this.stationForm[genereId] = this.fb.group({
-      weekDays: new FormControl(null,Validators.required),
-      weekEnds: new FormControl(null,Validators.required)
+      weekDays: new FormControl(null, [createPasswordStrengthValidator()]),
+      weekEnds: new FormControl(null, [createPasswordStrengthValidator()]),
     });
   }
 
@@ -121,42 +141,57 @@ export class TvChannelsComponent implements OnInit {
     genereList.forEach((element: any) => {
       if (element.portalTvStationUsageDTO) {
         this.stationForm[element.stationId]?.patchValue({
-          weekDays: element.portalTvStationUsageDTO.avgWeekdayUsa?''+element.portalTvStationUsageDTO.avgWeekdayUsa:'1',
-          weekEnds: element.portalTvStationUsageDTO.avgWeekendUsa?''+element.portalTvStationUsageDTO.avgWeekendUsa:'1'
-        }); 
+          weekDays: element.portalTvStationUsageDTO.avgWeekdayUsa ? '' + element.portalTvStationUsageDTO.avgWeekdayUsa : '1',
+          weekEnds: element.portalTvStationUsageDTO.avgWeekendUsa ? '' + element.portalTvStationUsageDTO.avgWeekendUsa : '1'
+        });
       }
     });
   }
 
   submit() {
-    let  message ="You have successfully submitted information to us";
+
+    if(this.isFormValid()){
+      let message = "You have successfully submitted information to us";
+
+      if (this.stationForm.filter(e => !e.valid).length === 0 || this.isTvGenere) {
   
-    if(this.stationForm.filter(e => !e.valid).length === 0 || this.isTvGenere){
-        
         this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
           res => {
             this.router.navigateByUrl('');
-            this.router.navigate(['television/thankyou'], {state: {message: message}});
+            this.router.navigate(['television/thankyou'], { state: { message: message } });
           });
-
-    } else {
-      this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
-        res => {
-          console.log(res); 
-          this.router.navigate(['survey/Thankyou/' +this.deviceName], {state: {message: message}});;
-        });
+  
+      } else {
+        this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
+          res => {
+            console.log(res);
+            this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });;
+          });
+      }
     }
-   
   }
 
+  isFormValid(){
+    this.stationForm.forEach( form => {
+      if(!form.value.weekDays || form.value.weekDays==''|| form.value.weekDays=='0'){
+        if(!form.value.weekEnds || form.value.weekEnds==''|| form.value.weekEnds=='0'){
+          form.setErrors({'atLeastOne':true});
+        }else{
+          form.setErrors(null);
+        }
+      }else{
+        form.setErrors(null);
+      }
+    });
+    return true;
+  }
 
   updateTimeLine(generId: any) {
-    console.log(generId);
     let weekDayStationValue, weekEndstationValue;
     weekDayStationValue = this.stationForm[generId]?.get('weekDays')?.value;
     weekEndstationValue = this.stationForm[generId]?.get('weekEnds')?.value;
 
-    let updateItem:any = {
+    let updateItem: any = {
       "stationClaimId": generId,
       "avgWeekdayUsa": weekDayStationValue,
       "avgWeekendUsa": weekEndstationValue,
@@ -165,28 +200,28 @@ export class TvChannelsComponent implements OnInit {
         "id": generId
       }
     }
-    if(this.deviceId !=="none"){
-      updateItem['deviceId']= this.deviceId;
+    if (this.deviceId !== "none") {
+      updateItem['deviceId'] = this.deviceId;
       this.televisionService.updateStationsWithDeviceId(updateItem).
-      subscribe((response: any) => {
-        console.log("Update record");
-      });
+        subscribe((response: any) => {
+          console.log("Update record");
+        });
 
-    }else{
+    } else {
       this.televisionService.updateTelevisionStation(updateItem).
-      subscribe((response: any) => {
-        console.log("Update record");
-      });
+        subscribe((response: any) => {
+          console.log("Update record");
+        });
 
     }
-  
+
   }
 
   backRoute() {
-    if(this.isTvGenere) {
-      this.router.navigateByUrl('/television/tv-genres/'+this.memberNo);
+    if (this.isTvGenere) {
+      this.router.navigateByUrl('/television/tv-genres/' + this.memberNo);
     } else {
-      this.router.navigateByUrl('survey/deviceGeneres/'+this.deviceState+'/'+this.memberNo+'/'+this.deviceId);
+      this.router.navigateByUrl('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId);
     }
   }
 

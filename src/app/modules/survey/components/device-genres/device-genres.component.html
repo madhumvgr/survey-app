@@ -49,17 +49,14 @@
 
             <!-- Genres wrapper-->
             <div class="accordion accordion-flush" id="genres-target">
-
+                {{generes |json}}
                 <!-- Accoridian Genre Tab 1 -->
                 <ng-container *ngFor="let genere of generes; let generId = index">
-                    <ng-container *ngIf="generId!=9">
-                        <ng-container *ngIf="generId!=10">
-
                             <div class="accordion-item shadow-sm rounded mb-3">
                                 <h3 class="accordion-header" id="open-one">
                                     <button class="py-0 ps-0 pe-3 accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-one'+generId"
-                                        aria-expanded="false" [attr.aria-controls]="'collapse-one'+generId">
+                                        data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-one'+genere.id"
+                                        aria-expanded="false" [attr.aria-controls]="'collapse-one'+genere.id">
                                         <i class="material-icons p-3 me-3 genres-icon">
                                             <div class="h3 mb-0">movie_filter</div>
                                         </i> {{genere?.name}}
@@ -67,9 +64,7 @@
                                 </h3>
                                 <div [id]="'collapse-one'+generId" class="accordion-collapse collapse"
                                     aria-labelledby="open-one" data-bs-parent="#genres-target">
-
-                                    {{generId+1}}
-                                    <form [formGroup]="timeLinesForm[generId+1]">
+                                    <form [formGroup]="timeLinesForm[genere.id]">
                                         <div class="accordion-body">
                                             <h4>Content watched is same as for </h4>
                                             <select class="form-select mb-4" aria-label="content select"
@@ -89,7 +84,7 @@
                                             </select>
                                             <h4>Select weekday time slots</h4>
                                             <div formArrayName="weekDays" class="w-75">
-                                                <div *ngFor="let item of getWeekDayControl(generId+1).controls; let i = index;"
+                                                <div *ngFor="let item of getWeekDayControl(genere.id).controls; let i = index;"
                                                     [formGroupName]="i"
                                                     class="check-input-bg p-2 mb-3 rounded form-check-inline">
                                                     <!-- *ngIf="item.value?.usageTimelineId" -->
@@ -105,7 +100,7 @@
 
                                             <h3>Select weekend times slots </h3>
                                             <div formArrayName="weekEnds" class="w-75">
-                                                <div *ngFor="let item of getWeekEndControl(generId+1).controls; let i = index;"
+                                                <div *ngFor="let item of getWeekEndControl(genere.id).controls; let i = index;"
                                                     [formGroupName]="i"
                                                     class="check-input-bg p-2 mb-3 rounded form-check-inline">
                                                     <!-- *ngIf="item.value?.usageTimelineId" -->
@@ -125,8 +120,6 @@
                                 </div>
                                 <!--end-accoriding-collapse-->
                             </div>
-                        </ng-container>
-                    </ng-container>
                 </ng-container>
                 <!--End Accoridian Genre Tab -->
 

@@ -250,17 +250,15 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     // });
     // if(!isTouched){
     //   alert("Not Touched");
+    //   return;
     // }
 
     if (this.isTvGenere) {
       this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
     }
     else {
-     
        this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);
-  
     }
-
   }
 
   backAction() {

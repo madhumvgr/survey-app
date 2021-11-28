@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DeviceUsageComponent } from './components/device-usage/device-usage.component';
 import { DeviceGenresComponent } from './components/device-genres/device-genres.component';
 import { CompletedDevicesViewComponent } from './components/completed-devices-view/completed-devices-view.component';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [  SurveyComponent,
     HouseholdDevicesComponent,
@@ -32,7 +33,8 @@ import { CompletedDevicesViewComponent } from './components/completed-devices-vi
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ]
 })
 export class SurveyModule { 

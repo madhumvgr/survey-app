@@ -1,0 +1,11 @@
+.ellipsis {
+    width: 600px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

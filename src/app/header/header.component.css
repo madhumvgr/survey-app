@@ -1,0 +1,7 @@
+.fullName{
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+}

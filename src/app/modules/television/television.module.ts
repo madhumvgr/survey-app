@@ -7,6 +7,7 @@ import { TelevisionComponent } from './television.component';
 import { TvChannelsComponent } from './components/tv-channels/tv-channels.component';
 import { HouseholdMembersComponent } from './components/household-members/household-members.component';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ]
 })
 export class TelevisionModule { }

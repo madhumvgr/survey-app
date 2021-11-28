@@ -56,9 +56,15 @@ export class MessageCenterComponent implements OnInit, OnDestroy {
     //action
     if(message.messageType === "Action") {
       this.action_type = message.actionType.replace(/\s/g, "");
-      this.notifService.markMessageRead(message).subscribe(res => {
-        this.router.navigateByUrl('notification/messages/action/' + message.id+'/'+this.action_type);
-      })  
+      if(this.action_type==="PrivacyPolicyUpdate"){
+        this.router.navigateByUrl('notification/messages/action/' + message.id+'/'+this.action_type, {state: {message: message}});
+       
+      }
+      else{
+        this.notifService.markMessageRead(message).subscribe(res => {
+          this.router.navigateByUrl('notification/messages/action/' + message.id+'/'+this.action_type);
+        })  
+      }
     } else{
       this.notifService.markMessageRead(message).subscribe(res => {
         this.router.navigateByUrl('notification/message/' + message.id);

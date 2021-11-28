@@ -6,6 +6,7 @@ import { DeviceService } from '../modules/login/services/device.service';
 import { NotificationService } from '../modules/notification/service/notification.service';
 import { DeviceConstants } from '../shared/models/url-constants';
 import { AuthService } from '../shared/services/auth.service';
+import { LocalStorageService } from '../shared/services/local-storage.service';
 import { SharedService } from '../shared/services/shared.service';
 
 @Component({
@@ -25,7 +26,8 @@ export class WelcomeComponent implements OnInit {
     private notifService: NotificationService, 
     private sharedService: SharedService, 
     private router: Router,
-    private deviceService: DeviceService, private translate: TranslateService) {
+    private deviceService: DeviceService, private translate: TranslateService,
+    private localStorageService:LocalStorageService) {
 
   }
 
@@ -40,6 +42,7 @@ export class WelcomeComponent implements OnInit {
     this.deviceService.getCustomRequest(DeviceConstants.deviceDetails).subscribe(response => {
       if (response) {
         console.log(response);
+        this.localStorageService.setUserFullName(response.firstName+' '+response.lastName);
         this.firstName = response['firstName'];
         this.lastName = response['lastName'];
       }

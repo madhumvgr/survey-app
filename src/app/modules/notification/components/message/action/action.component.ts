@@ -16,12 +16,14 @@ export class ActionComponent implements OnInit {
   displayAction : any;
   actionType: any;
   action_type:any;
+  privacyMessage:any;
 
   constructor(private notifService: NotificationService,
      private activatedroute: ActivatedRoute, private sharedService: SharedService, private zone: NgZone,
      private router: Router, private translate: TranslateService) {
     this.actionType = this.activatedroute.snapshot.params['actionType'];
-    
+    this.privacyMessage = this.router.getCurrentNavigation()?.extras?.state?.message;
+
     this.action_type = this.actionType.replace(/\s/g, "");
   }
 
@@ -43,7 +45,9 @@ export class ActionComponent implements OnInit {
     }else if(this.actionType=='Re-doSurvey'){
       this.router.navigateByUrl('/survey/deviceList/Inprogress');
     }else if(this.actionType=='PrivacyPolicyUpdate'){
-      window.open(this.translate.instant('welcomePage.privacyPolicyUrl'),'name','width=600,height=400,top=200');
+      this.notifService.markMessageRead(this.privacyMessage).subscribe(res => {
+        window.open(this.translate.instant('welcomePage.privacyPolicyUrl'),'name','width=600,height=400,top=200');
+      })  
     }
   }
   ngOnDestroy(): void {

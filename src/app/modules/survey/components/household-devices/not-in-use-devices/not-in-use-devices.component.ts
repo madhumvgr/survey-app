@@ -43,7 +43,7 @@ export class NotInUseDevicesComponent implements OnInit {
     this.deviceService.updateInUse(this.deviceId).subscribe(
       res1 => {
         this.deviceService.getDevicePreviousStatus(this.deviceId).subscribe(res1 => {
-          this.devicePreviousState = res1['deviceSurveryStatus'];
+          this.devicePreviousState = res1['status'];
           this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: { deviceId: this.deviceId, inputRoute: "notUsed",previousState:this.devicePreviousState}});
    
         });

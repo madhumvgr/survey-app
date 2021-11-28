@@ -12,7 +12,9 @@
 <section class="px-3 pb-4">
 <div class="container">
     <div class="row">
-        <h1>{{ 'welcomePage.title' | translate }}, {{firstName}} {{lastName}}</h1>
+        <div class="ellipsis">
+            <h1>{{ 'welcomePage.title' | translate }}, {{firstName}} {{lastName}}</h1>
+          </div>
         <p> {{ 'welcomePage.text' | translate }} <a href='javascript:void(0);' (click)="showWindow()" style="text-decoration: underline;">{{'welcomePage.Link' | translate}}</a>{{'welcomePage.text1' | translate}}</p>
         </div>
     </div><!--end Row-->

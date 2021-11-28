@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   displayContent: any;
   notify = false;
   showOnlyMenu="none";
+  fullName: any;
   constructor(public authService:AuthService,private translate: TranslateService,
      private localStorageService:LocalStorageService,
      private zone: NgZone, 
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
      private sharedService: SharedService,
      private router: Router) { 
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
+    this.fullName = this.localStorageService.getItem(StorageItem.FULLNAME);
   }
 
   ngOnInit(): void {

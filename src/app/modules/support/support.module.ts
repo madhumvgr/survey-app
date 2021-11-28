@@ -11,6 +11,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ExitComponent } from './exit/exit.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     SupportRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ]
  
 })

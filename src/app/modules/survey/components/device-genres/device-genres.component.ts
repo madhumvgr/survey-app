@@ -64,8 +64,8 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     "name": "Hobbies & Leisure"
   },
   {
-    "id": '12',
-    "name": "New_Genre"
+    "id": '10',
+    "name": "Other"
   }
   ]
   timeLines: Array<DeviceTimeSlot> = [

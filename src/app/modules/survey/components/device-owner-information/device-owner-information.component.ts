@@ -63,7 +63,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
       const deviceCheck = res.numberOfUsers;
       console.log(deviceCheck)
-      if(deviceCheck == null || '4') {
+      if(deviceCheck == null ) {
         this.notUsed = true;
       }
 

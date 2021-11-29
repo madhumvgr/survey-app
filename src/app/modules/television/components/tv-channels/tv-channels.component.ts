@@ -192,16 +192,13 @@ export class TvChannelsComponent implements OnInit {
     weekEndstationValue = this.stationForm[generId]?.get('weekEnds')?.value;
 
     let updateItem: any = {
-      "stationClaimId": generId,
       "avgWeekdayUsa": weekDayStationValue,
       "avgWeekendUsa": weekEndstationValue,
       "memberNo": this.memberNo,
-      "portalTvStations": {
-        "id": generId
-      }
+      "stationId": generId
     }
     if (this.deviceId !== "none") {
-      updateItem['deviceId'] = this.deviceId;
+      updateItem['deviceNo'] = this.deviceId;
       this.televisionService.updateStationsWithDeviceId(updateItem).
         subscribe((response: any) => {
           console.log("Update record");

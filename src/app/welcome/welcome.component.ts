@@ -42,7 +42,7 @@ export class WelcomeComponent implements OnInit {
     this.deviceService.getCustomRequest(DeviceConstants.deviceDetails).subscribe(response => {
       if (response) {
         console.log(response);
-        this.localStorageService.setUserFullName(response.firstName+' '+response.lastName);
+        this.localStorageService.setUserFullName(response.firstName);
         this.firstName = response['firstName'];
         this.lastName = response['lastName'];
       }

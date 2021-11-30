@@ -87,7 +87,7 @@
             <!-- Action buttons -->
             <div class="col-xs-6 d-grid gap-2 d-md-block">
                 <button type="submit" class="btn btn-dark" (click) = backRoute()>Back</button>
-                <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                <button type="submit" (click)="openModal()" class="btn btn-secondary ms-md-3">Save & Exit</button>
                 <button type="button" class="btn btn-primary ms-md-3"
                 (click)="submit()">Submit</button>
             </div>
@@ -100,3 +100,6 @@
     <!--end Container-->
 </section>
 <!--end Section-->
+<modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
+    <!--  body of the modal  -->
+  </modal>

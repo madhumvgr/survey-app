@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
@@ -32,7 +32,7 @@ export function createPasswordStrengthValidator(): ValidatorFn {
   templateUrl: './tv-channels.component.html',
   styleUrls: ['./tv-channels.component.css']
 })
-export class TvChannelsComponent implements OnInit {
+export class TvChannelsComponent extends BaseComponent implements OnInit {
   stationForm: FormGroup[] = []
   memberNo: any;
   memberName: any;
@@ -40,6 +40,8 @@ export class TvChannelsComponent implements OnInit {
   deviceName: any;
   deviceId: any;
   deviceState: any;
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
   stations: Array<any> = [{
     "id": '1',
     "name": "CTV"
@@ -100,11 +102,17 @@ export class TvChannelsComponent implements OnInit {
     private deviceService: DeviceService,
     private televisionService: TelevisionService,
     private localStorageService: LocalStorageService) {
+    super();
     let url = this.activatedroute.snapshot.url[0].path;
     if (url == "tv-channels") {
       this.isTvGenere = true;
     }
   }
+
+  ngAfterViewInit(){
+    super.afterViewInit(this.modalComponent);
+  }
+
 
   ngOnInit(): void {
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
@@ -222,6 +230,21 @@ export class TvChannelsComponent implements OnInit {
     } else {
       this.router.navigateByUrl('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId);
     }
+  }
+
+  exitEvent(isBackAction: boolean) {
+    if (this.isTvGenere) {
+      const message = "You have successfully submitted information to us";
+      this.router.navigate(['television/thankyou'], { state: { message: message } });
+    } else {
+      const message = "You have successfully submitted " + this.deviceName + " device information to us";
+      this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
+
+    }
+  }
+
+   cancelEvent(isBackAction: boolean) {
+    console.log(isBackAction);
   }
 
   // let item = control.value;

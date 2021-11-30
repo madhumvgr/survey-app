@@ -39,7 +39,9 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     if(this.deviceState =="Inprogress") {
       this.deviceStatus = "In Progress"
-    }else {
+    }else if(this.deviceState =="Notused") {
+      this.deviceStatus = "Not in Use"
+    } else {
       this.deviceStatus = this.deviceState;
     }
     if(this.deviceState == "Completed") {

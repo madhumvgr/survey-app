@@ -172,18 +172,17 @@ export class TvChannelsComponent implements OnInit {
   }
 
   isFormValid(){
-    let isValid = false;
+    let isValid = true;
     this.stationForm.forEach( form => {
-      if(!form.value.weekDays || form.value.weekDays==''|| form.value.weekDays=='0'){
-        if(!form.value.weekEnds || form.value.weekEnds==''|| form.value.weekEnds=='0'){
+      if(!form.value.weekDays || form.value.weekDays==''|| form.value.weekDays=='1'){
+        if(!form.value.weekEnds || form.value.weekEnds==''|| form.value.weekEnds=='1'){
           form.setErrors({'atLeastOne':true});
+          isValid= false;
         }else{
           form.setErrors(null);
-          isValid = true;
         }
       }else{
         form.setErrors(null);
-        isValid = true;
       }
     });
     return isValid;

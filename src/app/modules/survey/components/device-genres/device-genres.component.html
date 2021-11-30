@@ -54,16 +54,16 @@
                             <div class="accordion-item shadow-sm rounded mb-3">
                                 <h3 class="accordion-header" id="open-one">
                                     <button class="py-0 ps-0 pe-3 accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-one'+genere.id"
-                                        aria-expanded="false" [attr.aria-controls]="'collapse-one'+genere.id">
+                                        data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-one'+(generId + 1)"
+                                        aria-expanded="false" [attr.aria-controls]="'collapse-one'+(generId+1)">
                                         <i class="material-icons p-3 me-3 genres-icon">
                                             <div class="h3 mb-0">movie_filter</div>
                                         </i> {{genere?.name}}
                                     </button>
                                 </h3>
-                                <div [id]="'collapse-one'+generId" class="accordion-collapse collapse"
+                                <div [id]="'collapse-one'+(generId+1)" class="accordion-collapse collapse"
                                     aria-labelledby="open-one" data-bs-parent="#genres-target">
-                                    <form [formGroup]="timeLinesForm[genere.id]">
+                                    <form [formGroup]="timeLinesForm[generId+1]">
                                         <div class="accordion-body">
                                             <h4>Content watched is same as for </h4>
                                             <select class="form-select mb-4" aria-label="content select"
@@ -78,6 +78,7 @@
                                                 <option value="7">Comedy</option>
                                                 <option value="8">Documentaries</option>
                                                 <option value="9">Hobbies & Leisure</option>
+                                                <option value="10">Other</option>
                                             </select>
                                             <h4>Select weekday time slots</h4>
                                             <div formArrayName="weekDays" class="w-75">

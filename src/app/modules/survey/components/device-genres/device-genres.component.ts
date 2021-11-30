@@ -21,6 +21,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   deviceName: any;
   deviceStatus: any;
   isTvGenere: boolean = false;
+  isValid:boolean= true;
   // timeLinesForm: FormGroup = this.fb.group({});
   timeLinesForm: FormGroup[] = []
   @ViewChild('modal')
@@ -242,22 +243,28 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   submit() {
     // TODO: change device name to Smart TV. 
     let deviceId = this.deviceId ? this.deviceId : 'none';
-    // let isTouched= false;
-    // this.timeLinesForm.forEach( form => {
-    //   if(form.touched){
-    //     isTouched =true;
-    //   }
-    // });
-    // if(!isTouched){
-    //   alert("Not Touched");
-    //   return;
-    // }
+     this.isValid= true;
+     let errorCount=1;
+    this.timeLinesForm.forEach( form => {
+      let hasWeekDay = form.value.weekDays.some( (weekDay:any) => weekDay['addNew'] === true );
+      let hasWeekEnd = form.value.weekDays.some( (weekDay:any) => weekDay['addNew'] === true );
 
-    if (this.isTvGenere) {
-      this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
+      if(!hasWeekDay && !hasWeekEnd)
+      {
+        errorCount++;
+      }
+      
+    });
+    if(errorCount === this.timeLinesForm.length){
+      this.isValid= false;
     }
-    else {
-       this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);
+    if(this.isValid){
+      if (this.isTvGenere) {
+        this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
+      }
+      else {
+         this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);
+      }
     }
   }
 

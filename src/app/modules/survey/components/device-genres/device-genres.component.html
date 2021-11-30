@@ -133,7 +133,9 @@
                         Let me know if you have any questions
 
                     ------------------------------------------>
-
+                    <div *ngIf="!isValid" style="color:red">
+                            Atlease one check box should be selected. 
+                    </div>
             </div>
             <!--end Ganres-->
 

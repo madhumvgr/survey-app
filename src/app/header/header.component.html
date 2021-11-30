@@ -1,6 +1,9 @@
 <nav class="navbar bg-white px-3">
   <div class="container d-flex">
-    <a [routerLink]="['/welcome']" class="navbar-brand flex-grow-1">
+    <a [routerLink]="['/welcome']" class="navbar-brand flex-grow-1" *ngIf="isMenu">
+      <img class="img-fluid" src="./assets/logo.png" alt="">
+    </a>
+    <a  class="navbar-brand flex-grow-1" *ngIf="!isMenu">
       <img class="img-fluid" src="./assets/logo.png" alt="">
     </a>
     <ng-container *ngIf="!isFrance else english">

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+
+   
+    
+    <!-- Breadcrumbs -->
+    <nav class="px-3 mt-4">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
+                <li class="breadcrumb-item"><a href="household-demograpgics.html">Household demographics</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Individual member</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!--h1 Intro Section-->
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1><!--Household Member Name -->Houshold Member Name</h1>
+                    <p>
+                        Please complete these questions to tell us a bit more about yourself. These questions will only be used in order to report your viewing in the correct group.If possible, please complete the survey in one session. If you exit before clicking submit at the end of the survey, your answers will not be saved.
+                    </p>
+                </div><!--end col-->
+            </div><!--end Row-->
+        </div><!--end Container-->
+    </section><!--end Section-->
+
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row pb-4">
+                <h2>Page 2 of 7<span class="h2-separator"></span></h2>
+                <div class="col-12 mt-3">
+                    <div class="shadow-sm rounded bg-white p-4 mb-4">
+                        <form>
+                           <!-- Question 5 -->
+                            <div class="mb-4">
+                                <h4>Which of the following best describes the industry in which you are employed?
+                                </h4>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio13">
+                                    <label class="form-check-label" for="Radio13">Business, Finance, Accounting - e.g., banks, investment/accounting companies</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio14">
+                                    <label class="form-check-label" for="Radio14">Natural and Applied Sciences, High Tech - e.g., physics, engineering, information technology, 
+                                        electronics, pharmaceuticals</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio15">
+                                    <label class="form-check-label" for="Radio15">Health and Health Services - e.g., hospitals, private practice, medical technology</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio16">
+                                    <label class="form-check-label" for="Radio16">Law and Legal Services - e.g., law firms</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio17">
+                                    <label class="form-check-label" for="Radio17">Social, Community and Government Services, and Social Sciences - e.g., all levels of government, 
+                                        politics, public protection services, counseling, marketing research, psychology, sociology, 
+                                        anthropology, religion</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio18">
+                                    <label class="form-check-label" for="Radio18">Education, Training - e.g., teaching, apprenticeships, business training</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio19">
+                                    <label class="form-check-label" for="Radio19">Arts, Culture, Recreation, Sport - e.g., theatre, museums, libraries, fashion, broadcasting</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio20">
+                                    <label class="form-check-label" for="Radio20">Sales and Service - e.g., retail, advertising, travel & tourism, restaurants</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio21">
+                                    <label class="form-check-label" for="Radio21">Transport - e.g., public transit, transportation, shipping</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio21">
+                                    <label class="form-check-label" for="Radio13">Construction, Installation, Maintenance - e.g., building, plumbing, electrical, HVAC</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio22">
+                                    <label class="form-check-label" for="Radio22">Agriculture and Related Production - e.g., agriculture, horticulture</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio23">
+                                    <label class="form-check-label" for="Radio23">Natural Resources and Related Production - e.g., fishing, forestry, mining</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio24">
+                                    <label class="form-check-label" for="Radio24">Manufacturing and Utilities - e.g. oil refinery, pulp & paper mill, auto manufacture, electrical company</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="question5" id="Radio25">
+                                    <label class="form-check-label" for="Radio25">Other (please specify)</label>
+                                    <input type="other comments" class="form-control" aria-describedby="specify">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Action buttons -->
+                    <div class="col-xs-6 d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn btn-dark">Back</button>
+                        <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                        <button [routerLink] = "['/demographics/demographics-individual-members-page3']" type="submit" class="btn btn-primary ms-md-3">Continue</button>
+                    </div>
+                   
+                </div><!--end Col-->
+            </div><!--end Row-->
+
+        </div><!--end Container-->
+    </section><!--end Section--> 
+</body>
+</html>

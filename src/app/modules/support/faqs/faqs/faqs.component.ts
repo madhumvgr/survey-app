@@ -12,4 +12,11 @@ export class FaqsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  scrollInView(id:string){
+    const dom:any = document.getElementById(id);
+    if(dom){
+      dom.scrollIntoView();
+    }
+  }
+
 }

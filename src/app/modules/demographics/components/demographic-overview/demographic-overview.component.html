@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+
+
+<body>
+
+    <!-- Breadcrumbs -->
+    <nav class="px-3 mt-4">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Household demographics</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!--h1 Intro Section-->
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Household Demographic</h1>
+                    <p>
+                        This section has surveys that gather basic information about household members, and how they consume media on the devices they own. Be assured that  your <a href="#">data and privacy</a> are always protected.
+                    </p>
+                </div><!--end col-->
+            </div><!--end Row-->
+        </div><!--end Container-->
+    </section><!--end Section-->
+
+    <section class="px-3 pb-4">
+        <div class="container">
+            <!--Thumbnails-->
+            <div class="row g-4">
+                <!--Card-->
+                <div class="col-md-4">
+                    <div class="card shadow-sm rounded border-0">
+                        <div class="card-body">
+                        <h5 class="card-title">Individual Member</h5>
+                        <p class="card-text">Survey for each member in your household.</p>
+                        <a [routerLink] = "['/demographics/demographics-individual-members']" class="btn btn-light">Continue</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Card-->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body shadow-sm rounded border-0">
+                        <h5 class="card-title">Household Owner</h5>
+                        <p class="card-text">Survey for the head of the house.</p>
+                        <a [routerLink] = "['/demographics/demographics-owner']" class="btn btn-light">Continue</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end Container-->
+    </section><!--end Section-->     
+            
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+
+  
+    
+    <!-- Breadcrumbs -->
+    <nav class="px-3 mt-4">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
+                <li class="breadcrumb-item"><a href="household-demograpgics.html">Household demographics</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Household Owner</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!--h1 Intro Section-->
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1><!--Household Member Name -->Houshold Member Name</h1>
+                    <p>
+                        Let’s quickly review your answers. To change something, use the back button below to go back and change it. If everything looks ok, hit Continue.
+                    </p>
+                </div><!--end col-->
+            </div><!--end Row-->
+        </div><!--end Container-->
+    </section><!--end Section-->
+
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row pb-4">
+                <h2>Confirmation<span class="h2-separator"></span></h2>
+                <div class="col-12 mt-3">
+                    <div class="shadow-sm rounded bg-white p-4 mb-4">
+                      <h3>How many TV sets do you have in your home?</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>Which of the following income ranges best describes your total annual household income
+                        Form from all sources before taxes, for last year? Please include the income for all household 
+                        Members 15 years of age or older.</h3>
+                      <p>Member Answer/Choice</p>
+                    </div>
+                    <!-- Action buttons -->
+                    <div class="col-xs-6 d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn btn-dark">Back</button>
+                        <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                        <button [routerLink] = "['/demographics/demographics-owner-survey']" type="submit" class="btn btn-primary ms-md-3">Continue</button>
+                    </div>
+                   
+                </div><!--end Col-->
+            </div><!--end Row-->
+
+        </div><!--end Container-->
+    </section><!--end Section--> 
+</body>
+</html>

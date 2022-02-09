@@ -23,6 +23,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { TelevisionModule } from './modules/television/television.module';
+import { DemographicsModule } from './modules/demographics/demographics.module';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { TelevisionModule } from './modules/television/television.module';
     MatIconModule,
     SharedModule, 
     TelevisionModule,
+    DemographicsModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

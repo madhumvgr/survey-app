@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+
+ 
+    
+    <!-- Breadcrumbs -->
+    <nav class="px-3 mt-4">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
+                <li class="breadcrumb-item"><a href="household-demograpgics.html">Household demographics</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Individual member</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- SURVEY HUB PAGE -->
+
+    <!--h1 Intro Section-->
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1><!--Household Member Name -->Houshold Member Name</h1>
+                    <p>
+                        Please complete these questions to tell us a bit more about yourself. These questions will only be used in order to report your viewing in the correct group.If possible, please complete the survey in one session. If you exit before clicking submit at the end of the survey, your answers will not be saved.
+                    </p>
+                </div><!--end col-->
+            </div><!--end Row-->
+        </div><!--end Container-->
+    </section><!--end Section-->
+
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row pb-4">
+                <h2>Page 7 of 7<span class="h2-separator"></span></h2>
+                <div class="col-12 mt-3">
+                    <div class="shadow-sm rounded bg-white p-4 mb-4">
+                        <form>
+                            <!-- Question 11 -->
+                            <div class="mb-4">
+                                <h4>What is your marital status?</h4>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="question11" id="Radio84">
+                                    <label class="form-check-label" for="Radio85">Never married</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="question11" id="Radio85">
+                                    <label class="form-check-label" for="Radio85">Married or common law</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="question11" id="Radio86">
+                                    <label class="form-check-label" for="Radio86">Widowed</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="question11" id="Radio87">
+                                    <label class="form-check-label" for="Radio87">Separated or divorced</label>
+                                </div>
+                            </div>                            
+                            <!-- Question 12 -->
+                            <h4>Please provide your email address below. We may need to contact you by email to send 
+                                you important information about the panel and your participation. Your email address will 
+                                only be used to communicate about your participation on the panel and will not be 
+                                shared with any other organizations.</h4>
+                            <div class="row ">
+                                <div class="mb-4 col-md-6">
+                                    <label for="question12" class="form-label">Email address: </label>
+                                    <input type="email" class="form-control" id="question12" aria-describedby="Eamil">
+                                </div>
+                                <div class="mb-4 col-md-6">
+                                    <label for="question12" class="form-label">Confirm Email address:
+                                    </label>
+                                    <input type="email" class="form-control" id="question12" aria-describedby="ConfirmEmail">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Action buttons -->
+                    <div class="col-xs-6 d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn btn-dark">Back</button>
+                        <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                        <button [routerLink] = "['/demographics/demographics-individual-members-sign']" type="submit" class="btn btn-primary ms-md-3">Continue</button>
+                    </div>
+                   
+                </div><!--end Col-->
+            </div><!--end Row-->
+
+        </div><!--end Container-->
+    </section><!--end Section--> 
+</body>
+</html>

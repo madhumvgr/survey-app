@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+
+    
+    <!-- Breadcrumbs -->
+    <nav class="px-3 mt-4">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
+                <li class="breadcrumb-item"><a href="household-demograpgics.html">Household demographics</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Individual member</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!--h1 Intro Section-->
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1><!--Household Member Name -->Houshold Member Name</h1>
+                    <p>
+                        Please complete these questions to tell us a bit more about yourself. These questions will only be used in order to report your viewing in the correct group.If possible, please complete the survey in one session. If you exit before clicking submit at the end of the survey, your answers will not be saved.
+                    </p>
+                </div><!--end col-->
+            </div><!--end Row-->
+        </div><!--end Container-->
+    </section><!--end Section-->
+
+    <section class="px-3 pb-4">
+        <div class="container">
+            <div class="row pb-4">
+                <h2>Sign and Submit<span class="h2-separator"></span></h2>
+                <div class="col-12 mt-3">
+                    <div class="shadow-sm rounded bg-white p-4 mb-4">
+                        <form>
+                            <h4>Please tell us your household #</h4>
+                            <div class="row ">
+                                <div class="mb-4 col-md-6">
+                                    <label for="question12" class="form-label">household # </label>
+                                    <input type="email" class="form-control" id="question12" aria-describedby="Eamil">
+                                </div>
+                            </div>
+                            <h4>Name of person who completed this questionnaire</h4>
+                            <div class="row ">
+                                <div class="mb-4 col-md-6">
+                                    <label for="question12" class="form-label">First Name </label>
+                                    <input type="FirstName" class="form-control" id="question12" aria-describedby="FirsName">
+                                </div>
+                                <div class="mb-4 col-md-6">
+                                    <label for="question12" class="form-label">Last Name
+                                    </label>
+                                    <input type="LastName" class="form-control" id="question12" aria-describedby="LastName">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Action buttons -->
+                    <div class="col-xs-6 d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn btn-dark">Back</button>
+                        <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                        <button [routerLink] = "['/demographics/demographics-individual-members-terms']" type="submit" class="btn btn-primary ms-md-3">Continue</button>
+                    </div>
+                   
+                </div><!--end Col-->
+            </div><!--end Row-->
+
+        </div><!--end Container-->
+    </section><!--end Section--> 
+</body>
+</html>

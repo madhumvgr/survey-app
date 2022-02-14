@@ -11,8 +11,26 @@ export class DemographicOverviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+
     var json = { elements: [
+      {
+        "type": "text",
+        "name": "firstName",
+        "title": "What is your name?",
+      },
+      {
+        "type": "radiogroup",
+        "name": "gender",
+        "title": "What was your sex at birth?",
+        "choices": ["Male", "Female"]
+      },
+      {
+        "type": "radiogroup",
+        "name": "gender",
+        "title": " What is the language that you first learned in childhood and still understand? (Check only one)?",
+        "choices": ["English", "French","Arabic","Chinese","German","Italian","Korean","Persian (Farsi)","Polish","Portuguese","Punjabi","Russian"]
+      },
+     
       {
         "type": "matrixdropdown",
         "name": "Feelings",

@@ -30,6 +30,11 @@ import { DemograpgicsOwnerConfirmationComponent } from './components/demograpgic
 import { DemograpgicsOwnerSurveyComponent } from './components/demograpgics-owner-survey/demograpgics-owner-survey.component';
 import { DemograpgicsOwnerTermsComponent } from './components/demograpgics-owner-terms/demograpgics-owner-terms.component';
 import { DemograpgicsOwnerThankyouComponent } from './components/demograpgics-owner-thankyou/demograpgics-owner-thankyou.component';
+import { YesNoComponent } from './components/yesNo/yesNo.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { RadiogroupComponent } from './components/radiogroup/radiogroup.component';
+import { QuestionarieComponent } from './components/questionarie/questionarie.component';
+import { QuestionComponent } from './components/question/question.component';
 
 
 @NgModule({
@@ -53,7 +58,12 @@ import { DemograpgicsOwnerThankyouComponent } from './components/demograpgics-ow
     DemograpgicsOwnerConfirmationComponent,
     DemograpgicsOwnerSurveyComponent,
     DemograpgicsOwnerTermsComponent,
-    DemograpgicsOwnerThankyouComponent
+    DemograpgicsOwnerThankyouComponent,
+    YesNoComponent,
+    CheckboxComponent,
+    RadiogroupComponent,
+    QuestionarieComponent,
+    QuestionComponent
   ],
   imports: [
 

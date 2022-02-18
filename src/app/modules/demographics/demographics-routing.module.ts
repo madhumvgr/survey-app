@@ -18,6 +18,7 @@ import { DemograpgicsOwnerTermsComponent } from './components/demograpgics-owner
 import { DemograpgicsOwnerThankyouComponent } from './components/demograpgics-owner-thankyou/demograpgics-owner-thankyou.component';
 import { DemograpgicsOwnerComponent } from './components/demograpgics-owner/demograpgics-owner.component';
 import { DemographicOverviewComponent } from './components/demographic-overview/demographic-overview.component';
+import { QuestionarieComponent } from './components/questionarie/questionarie.component';
 import { DemographicsHomeComponent } from './demographics-home.component';
 
 const routes: Routes = [
@@ -42,10 +43,7 @@ const routes: Routes = [
       { path: 'demographics-owner-survey', component: DemograpgicsOwnerSurveyComponent },
       { path: 'demographics-owner-terms', component: DemograpgicsOwnerTermsComponent },
       { path: 'demographics-owner-thankyou', component: DemograpgicsOwnerThankyouComponent },
-      
-
-
-      
+      { path: 'questionaire', component: QuestionarieComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
     component: DemographicsHomeComponent

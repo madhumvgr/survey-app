@@ -46,6 +46,12 @@ export class ResourceService<T extends Resource> {
             .pipe(map((data: any) => data ));
     }
 
+    list(): Observable<any> {
+        return this.httpClient
+            .get(`${this.url}${this.endpoint}`)
+            .pipe(map((data: any) => data ));
+    }
+
     public customRead(url: string): Observable<any> {
         return this.httpClient
             .get(`${this.url}${url}`)

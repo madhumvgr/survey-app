@@ -1,0 +1,2251 @@
+[ {
+    "queId" : 1,
+    "queNo" : 4,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "Would you consider yourself to be a head of your household?",
+    "description" : "(A head of the household is responsible for maintaining the household, including paying the bills. There may be one or more members of the household sharing this responsibility.)",
+    "column" : [ ],
+    "row" : [ ]
+  }, {
+    "queId" : 2,
+    "queNo" : 5,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "What is your relationship to the head of your household?",
+    "description" : null,
+    "column" : [ ],
+    "row" : [ {
+      "value" : 3,
+      "seqNo" : 1,
+      "text" : "Self",
+      "description" : null
+    }, {
+      "value" : 4,
+      "seqNo" : 2,
+      "text" : "Spouse/Partner",
+      "description" : null
+    }, {
+      "value" : 5,
+      "seqNo" : 3,
+      "text" : "Child",
+      "description" : null
+    }, {
+      "value" : 6,
+      "seqNo" : 4,
+      "text" : "Other relative",
+      "description" : null
+    }, {
+      "value" : 7,
+      "seqNo" : 5,
+      "text" : "Other non-relative",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 3,
+    "queNo" : 6,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "What is your marital status?",
+    "description" : null,
+    "column" : [ ],
+    "row" : [ {
+      "value" : 8,
+      "seqNo" : 1,
+      "text" : "What is your marital status?",
+      "description" : null
+    }, {
+      "value" : 9,
+      "seqNo" : 2,
+      "text" : "Never married",
+      "description" : null
+    }, {
+      "value" : 10,
+      "seqNo" : 3,
+      "text" : "Married or common-law",
+      "description" : null
+    }, {
+      "value" : 11,
+      "seqNo" : 4,
+      "text" : "Widowed",
+      "description" : null
+    }, {
+      "value" : 12,
+      "seqNo" : 5,
+      "text" : "Separated or divorced",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 4,
+    "queNo" : 7,
+    "type" : "matrix",
+    "queType" : "CB",
+    "name" : "individualSurvey",
+    "title" : "Which of the following languages do you speak well enough\r\nto conduct a conversation?",
+    "description" : "(Check only one)",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 14,
+      "seqNo" : 1,
+      "text" : "English",
+      "description" : null
+    }, {
+      "value" : 15,
+      "seqNo" : 2,
+      "text" : "French",
+      "description" : null
+    }, {
+      "value" : 16,
+      "seqNo" : 3,
+      "text" : "English & French",
+      "description" : null
+    }, {
+      "value" : 17,
+      "seqNo" : 4,
+      "text" : "Neither English nor French",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 5,
+    "queNo" : 8,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "What is the language that you first learned in childhood and still understand?",
+    "description" : "(Check only one)?",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 18,
+      "seqNo" : 1,
+      "text" : "English",
+      "description" : null
+    }, {
+      "value" : 19,
+      "seqNo" : 2,
+      "text" : "French",
+      "description" : null
+    }, {
+      "value" : 20,
+      "seqNo" : 3,
+      "text" : "Arabic",
+      "description" : null
+    }, {
+      "value" : 21,
+      "seqNo" : 4,
+      "text" : "Chinese",
+      "description" : null
+    }, {
+      "value" : 22,
+      "seqNo" : 5,
+      "text" : "German",
+      "description" : null
+    }, {
+      "value" : 23,
+      "seqNo" : 6,
+      "text" : "Italian",
+      "description" : null
+    }, {
+      "value" : 24,
+      "seqNo" : 7,
+      "text" : "Korean",
+      "description" : null
+    }, {
+      "value" : 25,
+      "seqNo" : 8,
+      "text" : "Persian (Farsi)",
+      "description" : null
+    }, {
+      "value" : 26,
+      "seqNo" : 9,
+      "text" : "Polish",
+      "description" : null
+    }, {
+      "value" : 27,
+      "seqNo" : 10,
+      "text" : "Portuguese",
+      "description" : null
+    }, {
+      "value" : 28,
+      "seqNo" : 11,
+      "text" : "Punjabi",
+      "description" : null
+    }, {
+      "value" : 29,
+      "seqNo" : 12,
+      "text" : "Russian",
+      "description" : null
+    }, {
+      "value" : 30,
+      "seqNo" : 13,
+      "text" : "Spanish",
+      "description" : null
+    }, {
+      "value" : 31,
+      "seqNo" : 14,
+      "text" : "Tamil",
+      "description" : null
+    }, {
+      "value" : 32,
+      "seqNo" : 15,
+      "text" : "Tagalog",
+      "description" : null
+    }, {
+      "value" : 33,
+      "seqNo" : 16,
+      "text" : "Urdu or Hindi",
+      "description" : null
+    }, {
+      "value" : 34,
+      "seqNo" : 17,
+      "text" : "Other South Asian languages",
+      "description" : null
+    }, {
+      "value" : 35,
+      "seqNo" : 18,
+      "text" : "Vietnamese",
+      "description" : null
+    }, {
+      "value" : 36,
+      "seqNo" : 19,
+      "text" : "Other",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 6,
+    "queNo" : 9,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "What language do you speak most often at home now?",
+    "description" : "(Check only one)",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 37,
+      "seqNo" : 1,
+      "text" : "English",
+      "description" : null
+    }, {
+      "value" : 38,
+      "seqNo" : 2,
+      "text" : "French",
+      "description" : null
+    }, {
+      "value" : 39,
+      "seqNo" : 3,
+      "text" : "Arabic",
+      "description" : null
+    }, {
+      "value" : 40,
+      "seqNo" : 4,
+      "text" : "Chinese",
+      "description" : null
+    }, {
+      "value" : 41,
+      "seqNo" : 5,
+      "text" : "German",
+      "description" : null
+    }, {
+      "value" : 42,
+      "seqNo" : 6,
+      "text" : "Italian",
+      "description" : null
+    }, {
+      "value" : 43,
+      "seqNo" : 7,
+      "text" : "Korean",
+      "description" : null
+    }, {
+      "value" : 44,
+      "seqNo" : 8,
+      "text" : "Persian (Farsi)",
+      "description" : null
+    }, {
+      "value" : 45,
+      "seqNo" : 9,
+      "text" : "Polish",
+      "description" : null
+    }, {
+      "value" : 46,
+      "seqNo" : 10,
+      "text" : "Portuguese",
+      "description" : null
+    }, {
+      "value" : 47,
+      "seqNo" : 11,
+      "text" : "Punjabi",
+      "description" : null
+    }, {
+      "value" : 48,
+      "seqNo" : 12,
+      "text" : "Russian",
+      "description" : null
+    }, {
+      "value" : 49,
+      "seqNo" : 13,
+      "text" : "Spanish",
+      "description" : null
+    }, {
+      "value" : 50,
+      "seqNo" : 14,
+      "text" : "Tamil",
+      "description" : null
+    }, {
+      "value" : 51,
+      "seqNo" : 15,
+      "text" : "Tagalog",
+      "description" : null
+    }, {
+      "value" : 52,
+      "seqNo" : 16,
+      "text" : "Urdu or Hindi",
+      "description" : null
+    }, {
+      "value" : 53,
+      "seqNo" : 17,
+      "text" : "Other South Asian languages",
+      "description" : null
+    }, {
+      "value" : 54,
+      "seqNo" : 18,
+      "text" : "Vietnamese",
+      "description" : null
+    }, {
+      "value" : 55,
+      "seqNo" : 19,
+      "text" : "Other",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 7,
+    "queNo" : 10,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "Which of the following languages do you speak well enough to conduct a conversation?",
+    "description" : "(Check only one)",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 56,
+      "seqNo" : 1,
+      "text" : "Secondary (High) School Diploma or Equivalency Certificate",
+      "description" : null
+    }, {
+      "value" : 57,
+      "seqNo" : 2,
+      "text" : "Registered Apprenticeship, Trades Certificate or",
+      "description" : null
+    }, {
+      "value" : 58,
+      "seqNo" : 3,
+      "text" : "other Trades Diploma",
+      "description" : null
+    }, {
+      "value" : 59,
+      "seqNo" : 4,
+      "text" : "Completed Community/Technical College, CEGEP or other",
+      "description" : null
+    }, {
+      "value" : 60,
+      "seqNo" : 5,
+      "text" : "non-university certificate or diploma",
+      "description" : null
+    }, {
+      "value" : 61,
+      "seqNo" : 6,
+      "text" : "University Undergraduate Degree, Certificate or Diploma",
+      "description" : null
+    }, {
+      "value" : 62,
+      "seqNo" : 7,
+      "text" : "(e.g., B.A., B.Sc., LL.B)",
+      "description" : null
+    }, {
+      "value" : 63,
+      "seqNo" : 8,
+      "text" : "University Post-Graduate Degree (e.g., M.A., Ph.D., M.D., D.D.S)",
+      "description" : null
+    }, {
+      "value" : 64,
+      "seqNo" : 9,
+      "text" : "No certificate or diploma",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 8,
+    "queNo" : 11,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "How many hours a week do you normally work for pay",
+    "description" : "(or in own farm, business or professional practice)?",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 65,
+      "seqNo" : 1,
+      "text" : "None",
+      "description" : null
+    }, {
+      "value" : 66,
+      "seqNo" : 2,
+      "text" : "1–19 hours",
+      "description" : null
+    }, {
+      "value" : 67,
+      "seqNo" : 3,
+      "text" : "20–29 hours",
+      "description" : null
+    }, {
+      "value" : 68,
+      "seqNo" : 4,
+      "text" : "30 or more hours",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 9,
+    "queNo" : 12,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "if you work less than 20 hours a week or are not working for pay which category best describes you?",
+    "description" : null,
+    "column" : [ ],
+    "row" : [ {
+      "value" : 69,
+      "seqNo" : 1,
+      "text" : "for pay which category best describes you?",
+      "description" : null
+    }, {
+      "value" : 70,
+      "seqNo" : 2,
+      "text" : "Under school age",
+      "description" : null
+    }, {
+      "value" : 71,
+      "seqNo" : 3,
+      "text" : "Student",
+      "description" : null
+    }, {
+      "value" : 72,
+      "seqNo" : 4,
+      "text" : "Homemaker",
+      "description" : null
+    }, {
+      "value" : 73,
+      "seqNo" : 5,
+      "text" : "Retired/Semi-retired",
+      "description" : null
+    }, {
+      "value" : 74,
+      "seqNo" : 6,
+      "text" : "Unemployed",
+      "description" : null
+    }, {
+      "value" : 75,
+      "seqNo" : 7,
+      "text" : "Other",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 10,
+    "queNo" : 13,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "Which category best describes the industry in which you are currently employed?",
+    "description" : "(Check only one)?",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 76,
+      "seqNo" : 1,
+      "text" : "Not currently employed",
+      "description" : null
+    }, {
+      "value" : 77,
+      "seqNo" : 2,
+      "text" : "Business, Finance, Accounting",
+      "description" : null
+    }, {
+      "value" : 78,
+      "seqNo" : 3,
+      "text" : "(e.g., banks, investment/accounting companies)",
+      "description" : null
+    }, {
+      "value" : 79,
+      "seqNo" : 4,
+      "text" : "Natural and Applied Sciences, High Tech (e.g., physics,",
+      "description" : null
+    }, {
+      "value" : 80,
+      "seqNo" : 5,
+      "text" : "engineering, information technology, electronics,",
+      "description" : null
+    }, {
+      "value" : 81,
+      "seqNo" : 6,
+      "text" : "pharmaceuticals)",
+      "description" : null
+    }, {
+      "value" : 82,
+      "seqNo" : 7,
+      "text" : "Health and Health Services",
+      "description" : null
+    }, {
+      "value" : 83,
+      "seqNo" : 8,
+      "text" : "(e.g., hospitals, private practice, medical technology)",
+      "description" : null
+    }, {
+      "value" : 84,
+      "seqNo" : 9,
+      "text" : "Law and Legal Services (e.g., law firms)",
+      "description" : null
+    }, {
+      "value" : 85,
+      "seqNo" : 10,
+      "text" : "Social, Community and Government Services and Social Sciences",
+      "description" : null
+    }, {
+      "value" : 86,
+      "seqNo" : 11,
+      "text" : "(e.g., all levels of government, politics, public protection",
+      "description" : null
+    }, {
+      "value" : 87,
+      "seqNo" : 12,
+      "text" : "services, counseling, marketing research, psychology,",
+      "description" : null
+    }, {
+      "value" : 88,
+      "seqNo" : 13,
+      "text" : "sociology, anthropology, religion)",
+      "description" : null
+    }, {
+      "value" : 89,
+      "seqNo" : 14,
+      "text" : "Education, Training",
+      "description" : null
+    }, {
+      "value" : 90,
+      "seqNo" : 15,
+      "text" : "(e.g., teaching, apprenticeships, business training)",
+      "description" : null
+    }, {
+      "value" : 91,
+      "seqNo" : 16,
+      "text" : "Arts, Culture, Recreation, Sport",
+      "description" : null
+    }, {
+      "value" : 92,
+      "seqNo" : 17,
+      "text" : "(e.g., theatre, museums, libraries, fashion, broadcasting)",
+      "description" : null
+    }, {
+      "value" : 93,
+      "seqNo" : 18,
+      "text" : "Sales and Service",
+      "description" : null
+    }, {
+      "value" : 94,
+      "seqNo" : 19,
+      "text" : "(e.g., retail, advertising, travel & tourism, restaurants)",
+      "description" : null
+    }, {
+      "value" : 95,
+      "seqNo" : 20,
+      "text" : "Transport (e.g., public transit, transportation, shipping)",
+      "description" : null
+    }, {
+      "value" : 96,
+      "seqNo" : 21,
+      "text" : "Construction, Installation, Maintenance",
+      "description" : null
+    }, {
+      "value" : 97,
+      "seqNo" : 22,
+      "text" : "(e.g., building, plumbing, electrical, HVAC)",
+      "description" : null
+    }, {
+      "value" : 98,
+      "seqNo" : 23,
+      "text" : "Agriculture and Related Production",
+      "description" : null
+    }, {
+      "value" : 99,
+      "seqNo" : 24,
+      "text" : "(e.g., agriculture, horticulture)",
+      "description" : null
+    }, {
+      "value" : 100,
+      "seqNo" : 25,
+      "text" : "Natural Resources and Related Production",
+      "description" : null
+    }, {
+      "value" : 101,
+      "seqNo" : 26,
+      "text" : "(e.g., fishing, forestry, mining)",
+      "description" : null
+    }, {
+      "value" : 102,
+      "seqNo" : 27,
+      "text" : "Manufacturing, and Utilities (e.g., oil refinery, pulp",
+      "description" : null
+    }, {
+      "value" : 103,
+      "seqNo" : 28,
+      "text" : "& paper mill, auto manufacture, electrical company)",
+      "description" : null
+    }, {
+      "value" : 104,
+      "seqNo" : 29,
+      "text" : "Other Industry (please specify)",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 11,
+    "queNo" : 14,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "Which of the following best describes your current occupation?",
+    "description" : "(Check one only)",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 105,
+      "seqNo" : 1,
+      "text" : "Not currently employed",
+      "description" : null
+    }, {
+      "value" : 106,
+      "seqNo" : 2,
+      "text" : "Senior Manager/Executive",
+      "description" : null
+    }, {
+      "value" : 107,
+      "seqNo" : 3,
+      "text" : "(e.g., president, CEO, vice-president, legislator, CFO)",
+      "description" : null
+    }, {
+      "value" : 108,
+      "seqNo" : 4,
+      "text" : "Middle and Other Manager (e.g., controller, director,",
+      "description" : null
+    }, {
+      "value" : 109,
+      "seqNo" : 5,
+      "text" : "manager, chief actuary, school principal, fire chief,",
+      "description" : null
+    }, {
+      "value" : 110,
+      "seqNo" : 6,
+      "text" : "commissioned police officer)",
+      "description" : null
+    }, {
+      "value" : 111,
+      "seqNo" : 7,
+      "text" : "Professional (e.g., lawyer, accountant, architect, actuary,",
+      "description" : null
+    }, {
+      "value" : 112,
+      "seqNo" : 8,
+      "text" : "doctor, veterinarian, registered nurse, engineer, teacher,",
+      "description" : null
+    }, {
+      "value" : 113,
+      "seqNo" : 9,
+      "text" : "librarian, systems analyst, minister, probation officer,",
+      "description" : null
+    }, {
+      "value" : 114,
+      "seqNo" : 10,
+      "text" : "journalist, artist)",
+      "description" : null
+    }, {
+      "value" : 115,
+      "seqNo" : 11,
+      "text" : "Administrative/Office Support (e.g., executive assistant,",
+      "description" : null
+    }, {
+      "value" : 116,
+      "seqNo" : 12,
+      "text" : "receptionist, appraiser, bookkeeper, shipper/receiver,",
+      "description" : null
+    }, {
+      "value" : 117,
+      "seqNo" : 13,
+      "text" : "dispatcher,court officer, underwriter)",
+      "description" : null
+    }, {
+      "value" : 118,
+      "seqNo" : 14,
+      "text" : "Technical/Skilled Occupations (e.g., technician, pilot,",
+      "description" : null
+    }, {
+      "value" : 119,
+      "seqNo" : 15,
+      "text" : "optician,dental hygienist, ambulance attendant, product",
+      "description" : null
+    }, {
+      "value" : 120,
+      "seqNo" : 16,
+      "text" : "designer, systems administrator, graphic designer,",
+      "description" : null
+    }, {
+      "value" : 121,
+      "seqNo" : 17,
+      "text" : "craftsperson, coach, fire fighter, police officer, correctional",
+      "description" : null
+    }, {
+      "value" : 122,
+      "seqNo" : 18,
+      "text" : "service officer, early childhood educator)",
+      "description" : null
+    }, {
+      "value" : 123,
+      "seqNo" : 19,
+      "text" : "Trades or Skilled Equipment Operators (e.g., electrician,",
+      "description" : null
+    }, {
+      "value" : 124,
+      "seqNo" : 20,
+      "text" : "plumber, gas fitter, welder, carpenter, painter, mechanic,",
+      "description" : null
+    }, {
+      "value" : 125,
+      "seqNo" : 21,
+      "text" : "tailor, jeweller, railway engineer, truck driver, farmer, fisher,",
+      "description" : null
+    }, {
+      "value" : 126,
+      "seqNo" : 22,
+      "text" : "landscaping contractor, motor vehicle assembler, animal",
+      "description" : null
+    }, {
+      "value" : 127,
+      "seqNo" : 23,
+      "text" : "control officer)",
+      "description" : null
+    }, {
+      "value" : 128,
+      "seqNo" : 24,
+      "text" : "Specialized Sales and Service (e.g., real estate agent,",
+      "description" : null
+    }, {
+      "value" : 129,
+      "seqNo" : 25,
+      "text" : "technical sales, chef, hair stylist, loan officer)",
+      "description" : null
+    }, {
+      "value" : 130,
+      "seqNo" : 26,
+      "text" : "Other Sales and Service (e.g., customer service representative,",
+      "description" : null
+    }, {
+      "value" : 131,
+      "seqNo" : 27,
+      "text" : "travel agent, security guard, retail salesperson, cashier,",
+      "description" : null
+    }, {
+      "value" : 132,
+      "seqNo" : 28,
+      "text" : "server, building inspector, childcare worker, housekeeper,",
+      "description" : null
+    }, {
+      "value" : 133,
+      "seqNo" : 29,
+      "text" : "telemarketer, food preparer, dry cleaner, valet)",
+      "description" : null
+    }, {
+      "value" : 134,
+      "seqNo" : 30,
+      "text" : "Labourer (e.g., primary production labourer, mine",
+      "description" : null
+    }, {
+      "value" : 135,
+      "seqNo" : 31,
+      "text" : "labourer, harvesting labourer, landscape labourer,",
+      "description" : null
+    }, {
+      "value" : 136,
+      "seqNo" : 32,
+      "text" : "labourer in processing and manufacturing)",
+      "description" : null
+    }, {
+      "value" : 137,
+      "seqNo" : 33,
+      "text" : "Self-Employed (own your own business)",
+      "description" : null
+    }, {
+      "value" : 138,
+      "seqNo" : 34,
+      "text" : "Other Occupation (Please specify)",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 12,
+    "queNo" : 15,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "ow do you usually get to work?",
+    "description" : "(e.g., car, truck, motorcycle)",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 139,
+      "seqNo" : 1,
+      "text" : "Private vehicle (e.g., car, truck, motorcycle)",
+      "description" : null
+    }, {
+      "value" : 140,
+      "seqNo" : 2,
+      "text" : "Public transit or taxicab",
+      "description" : null
+    }, {
+      "value" : 141,
+      "seqNo" : 3,
+      "text" : "Self-propelled (e.g., walk, bicycle)",
+      "description" : null
+    }, {
+      "value" : 142,
+      "seqNo" : 4,
+      "text" : "Other method",
+      "description" : null
+    }, {
+      "value" : 143,
+      "seqNo" : 5,
+      "text" : "Do not commute to work",
+      "description" : null
+    }, {
+      "value" : 144,
+      "seqNo" : 6,
+      "text" : "Not Currently Employed",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 13,
+    "queNo" : 16,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "In your household, who does most of the grocery shopping?",
+    "description" : null,
+    "column" : [ ],
+    "row" : [ {
+      "value" : 145,
+      "seqNo" : 1,
+      "text" : "Self",
+      "description" : null
+    }, {
+      "value" : 146,
+      "seqNo" : 2,
+      "text" : "Self and other member(s) of the household equally",
+      "description" : null
+    }, {
+      "value" : 147,
+      "seqNo" : 3,
+      "text" : "Another member of the household",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 14,
+    "queNo" : 17,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "In the PAST 12 MONTHS, how much did you personally spend on the following items for yourself or others?",
+    "description" : null,
+    "column" : [ {
+      "value" : 1,
+      "seqNo" : 1,
+      "text" : "Nothing",
+      "description" : null
+    }, {
+      "value" : 2,
+      "seqNo" : 2,
+      "text" : "Less than $250",
+      "description" : null
+    }, {
+      "value" : 3,
+      "seqNo" : 3,
+      "text" : "$250 to $499",
+      "description" : null
+    }, {
+      "value" : 4,
+      "seqNo" : 4,
+      "text" : "$500 or more",
+      "description" : null
+    }, {
+      "value" : 5,
+      "seqNo" : 1,
+      "text" : "Nothing",
+      "description" : null
+    }, {
+      "value" : 6,
+      "seqNo" : 2,
+      "text" : "Less than $250",
+      "description" : null
+    }, {
+      "value" : 7,
+      "seqNo" : 3,
+      "text" : "$250 to $499",
+      "description" : null
+    }, {
+      "value" : 8,
+      "seqNo" : 4,
+      "text" : "$500 or more",
+      "description" : null
+    }, {
+      "value" : 9,
+      "seqNo" : 1,
+      "text" : "Nothing",
+      "description" : null
+    }, {
+      "value" : 10,
+      "seqNo" : 2,
+      "text" : "Less than $250",
+      "description" : null
+    }, {
+      "value" : 11,
+      "seqNo" : 3,
+      "text" : "$250 to $499",
+      "description" : null
+    }, {
+      "value" : 12,
+      "seqNo" : 4,
+      "text" : "$500 or more",
+      "description" : null
+    }, {
+      "value" : 13,
+      "seqNo" : 1,
+      "text" : "Nothing",
+      "description" : null
+    }, {
+      "value" : 14,
+      "seqNo" : 2,
+      "text" : "Less than $250",
+      "description" : null
+    }, {
+      "value" : 15,
+      "seqNo" : 3,
+      "text" : "$250 to $499",
+      "description" : null
+    }, {
+      "value" : 16,
+      "seqNo" : 4,
+      "text" : "$500 or more",
+      "description" : null
+    }, {
+      "value" : 17,
+      "seqNo" : 1,
+      "text" : "Nothing",
+      "description" : null
+    }, {
+      "value" : 18,
+      "seqNo" : 2,
+      "text" : "Less than $250",
+      "description" : null
+    }, {
+      "value" : 19,
+      "seqNo" : 3,
+      "text" : "$250 to $499",
+      "description" : null
+    }, {
+      "value" : 20,
+      "seqNo" : 4,
+      "text" : "$500 or more",
+      "description" : null
+    } ],
+    "row" : [ {
+      "value" : 148,
+      "seqNo" : 1,
+      "text" : "Children’s clothing",
+      "description" : null
+    }, {
+      "value" : 149,
+      "seqNo" : 2,
+      "text" : "Men’s clothing",
+      "description" : null
+    }, {
+      "value" : 150,
+      "seqNo" : 3,
+      "text" : "Women’s clothing",
+      "description" : null
+    }, {
+      "value" : 151,
+      "seqNo" : 4,
+      "text" : "Cosmetics & fragrances",
+      "description" : null
+    }, {
+      "value" : 152,
+      "seqNo" : 5,
+      "text" : "Sporting goods",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 15,
+    "queNo" : 18,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "Please indicate if you visited the following types of establishments in the PAST MONTH, including takeout, delivery or in restaurant.",
+    "description" : "[Check YES or NO for each]",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 153,
+      "seqNo" : 1,
+      "text" : "Coffee/Donut shop",
+      "description" : null
+    }, {
+      "value" : 154,
+      "seqNo" : 2,
+      "text" : "Fast food restaurant",
+      "description" : null
+    }, {
+      "value" : 155,
+      "seqNo" : 3,
+      "text" : "Casual dining restaurant",
+      "description" : null
+    }, {
+      "value" : 156,
+      "seqNo" : 4,
+      "text" : "Fine dining restaurant",
+      "description" : null
+    }, {
+      "value" : 157,
+      "seqNo" : 5,
+      "text" : "Bar/Pub",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 16,
+    "queNo" : 19,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "Did you go to any of the following during the PAST 12 MONTHS?",
+    "description" : "[Check YES or NO for each]",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 158,
+      "seqNo" : 1,
+      "text" : "Movie theatre",
+      "description" : null
+    }, {
+      "value" : 159,
+      "seqNo" : 2,
+      "text" : "Live theatre/Ballet/Opera/Art Gallery/Museum",
+      "description" : null
+    }, {
+      "value" : 160,
+      "seqNo" : 3,
+      "text" : "Professional sporting events",
+      "description" : null
+    }, {
+      "value" : 161,
+      "seqNo" : 4,
+      "text" : "Musical concerts",
+      "description" : null
+    }, {
+      "value" : 162,
+      "seqNo" : 5,
+      "text" : "Casino",
+      "description" : null
+    }, {
+      "value" : 163,
+      "seqNo" : 6,
+      "text" : "Consumer shows (auto, home, finance, etc.)",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 17,
+    "queNo" : 20,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "Do you use any of the following devices?",
+    "description" : "[Check YES or NO for each]",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 164,
+      "seqNo" : 1,
+      "text" : "Smartphone",
+      "description" : null
+    }, {
+      "value" : 165,
+      "seqNo" : 2,
+      "text" : "Other mobile phone",
+      "description" : null
+    }, {
+      "value" : 166,
+      "seqNo" : 3,
+      "text" : "Tablet",
+      "description" : null
+    }, {
+      "value" : 167,
+      "seqNo" : 4,
+      "text" : "Wearable device (eg. smartwatch, fitness monitor)",
+      "description" : null
+    }, {
+      "value" : 168,
+      "seqNo" : 5,
+      "text" : "Smart speaker",
+      "description" : null
+    }, {
+      "value" : 169,
+      "seqNo" : 6,
+      "text" : "Smart TV/ Connected TV",
+      "description" : null
+    }, {
+      "value" : 170,
+      "seqNo" : 7,
+      "text" : "Game console",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 18,
+    "queNo" : 21,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "Do you pay to receive a subscription satellite radio service?",
+    "description" : "(e.g., Sirius, XM)",
+    "column" : [ ],
+    "row" : [ ]
+  }, {
+    "queId" : 19,
+    "queNo" : 22,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "In the PAST 7 DAYS, have you accessed TV, Radio, or the Internet in locations other than your home?",
+    "description" : "(Check YES or NO for each)",
+    "column" : [ {
+      "value" : 21,
+      "seqNo" : 1,
+      "text" : "TV",
+      "description" : null
+    }, {
+      "value" : 22,
+      "seqNo" : 2,
+      "text" : "Radio",
+      "description" : null
+    }, {
+      "value" : 23,
+      "seqNo" : 3,
+      "text" : "Internet",
+      "description" : null
+    }, {
+      "value" : 24,
+      "seqNo" : 1,
+      "text" : "TV",
+      "description" : null
+    }, {
+      "value" : 25,
+      "seqNo" : 2,
+      "text" : "Radio",
+      "description" : null
+    }, {
+      "value" : 26,
+      "seqNo" : 3,
+      "text" : "Internet",
+      "description" : null
+    }, {
+      "value" : 27,
+      "seqNo" : 1,
+      "text" : "TV",
+      "description" : null
+    }, {
+      "value" : 28,
+      "seqNo" : 2,
+      "text" : "Radio",
+      "description" : null
+    }, {
+      "value" : 29,
+      "seqNo" : 3,
+      "text" : "Internet",
+      "description" : null
+    }, {
+      "value" : 30,
+      "seqNo" : 1,
+      "text" : "TV",
+      "description" : null
+    }, {
+      "value" : 31,
+      "seqNo" : 2,
+      "text" : "Radio",
+      "description" : null
+    }, {
+      "value" : 32,
+      "seqNo" : 3,
+      "text" : "Internet",
+      "description" : null
+    }, {
+      "value" : 33,
+      "seqNo" : 1,
+      "text" : "TV",
+      "description" : null
+    }, {
+      "value" : 34,
+      "seqNo" : 2,
+      "text" : "Radio",
+      "description" : null
+    }, {
+      "value" : 35,
+      "seqNo" : 3,
+      "text" : "Internet",
+      "description" : null
+    }, {
+      "value" : 36,
+      "seqNo" : 1,
+      "text" : "TV",
+      "description" : null
+    }, {
+      "value" : 37,
+      "seqNo" : 2,
+      "text" : "Radio",
+      "description" : null
+    }, {
+      "value" : 38,
+      "seqNo" : 3,
+      "text" : "Internet",
+      "description" : null
+    } ],
+    "row" : [ {
+      "value" : 173,
+      "seqNo" : 1,
+      "text" : "Work",
+      "description" : null
+    }, {
+      "value" : 174,
+      "seqNo" : 2,
+      "text" : "Private vehicle",
+      "description" : null
+    }, {
+      "value" : 175,
+      "seqNo" : 3,
+      "text" : "(e.g., car, truck, motorcycle)",
+      "description" : null
+    }, {
+      "value" : 176,
+      "seqNo" : 4,
+      "text" : "School or library",
+      "description" : null
+    }, {
+      "value" : 177,
+      "seqNo" : 5,
+      "text" : "Public transit or taxicab",
+      "description" : null
+    }, {
+      "value" : 178,
+      "seqNo" : 6,
+      "text" : "Other (e.g., café, health club, bar)",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 20,
+    "queNo" : 23,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "In the PAST 7 DAYS, how much time did you spend on the Internet?",
+    "description" : null,
+    "column" : [ ],
+    "row" : [ {
+      "value" : 179,
+      "seqNo" : 1,
+      "text" : "No internet access",
+      "description" : null
+    }, {
+      "value" : 180,
+      "seqNo" : 2,
+      "text" : "Did not access in past 7 days",
+      "description" : null
+    }, {
+      "value" : 181,
+      "seqNo" : 3,
+      "text" : "Less than 1 hour",
+      "description" : null
+    }, {
+      "value" : 182,
+      "seqNo" : 4,
+      "text" : "1–5 hours",
+      "description" : null
+    }, {
+      "value" : 183,
+      "seqNo" : 5,
+      "text" : "6–10 hours",
+      "description" : null
+    }, {
+      "value" : 184,
+      "seqNo" : 6,
+      "text" : "11–15 hours",
+      "description" : null
+    }, {
+      "value" : 185,
+      "seqNo" : 7,
+      "text" : "Over 15 hours",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 21,
+    "queNo" : 24,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "In the PAST 7 DAYS, please indicate if you engaged in the following activities on a computer or mobile device?",
+    "description" : "[Check YES or NO for each]",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 186,
+      "seqNo" : 1,
+      "text" : "Access radio station website",
+      "description" : null
+    }, {
+      "value" : 187,
+      "seqNo" : 2,
+      "text" : "Access TV station website",
+      "description" : null
+    }, {
+      "value" : 188,
+      "seqNo" : 3,
+      "text" : "Listen to subscription music service",
+      "description" : null
+    }, {
+      "value" : 189,
+      "seqNo" : 4,
+      "text" : "Listen to radio via streaming/apps",
+      "description" : null
+    }, {
+      "value" : 190,
+      "seqNo" : 5,
+      "text" : "Watch TV programs via streaming/apps",
+      "description" : null
+    }, {
+      "value" : 191,
+      "seqNo" : 6,
+      "text" : "Watch other video",
+      "description" : null
+    }, {
+      "value" : 192,
+      "seqNo" : 7,
+      "text" : "Research products or services",
+      "description" : null
+    }, {
+      "value" : 193,
+      "seqNo" : 8,
+      "text" : "Purchase products or services",
+      "description" : null
+    }, {
+      "value" : 194,
+      "seqNo" : 9,
+      "text" : "Download or play podcasts",
+      "description" : null
+    }, {
+      "value" : 195,
+      "seqNo" : 10,
+      "text" : "Visit a social networking site",
+      "description" : null
+    }, {
+      "value" : 196,
+      "seqNo" : 11,
+      "text" : "Post/share content (eg., blog)",
+      "description" : null
+    }, {
+      "value" : 197,
+      "seqNo" : 12,
+      "text" : "Banking",
+      "description" : null
+    }, {
+      "value" : 198,
+      "seqNo" : 13,
+      "text" : "Enter online contests",
+      "description" : null
+    }, {
+      "value" : 199,
+      "seqNo" : 14,
+      "text" : "Register with a website/newsletter",
+      "description" : null
+    }, {
+      "value" : 200,
+      "seqNo" : 15,
+      "text" : "Redeem online offer",
+      "description" : null
+    }, {
+      "value" : 201,
+      "seqNo" : 16,
+      "text" : "Play video games online",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 22,
+    "queNo" : 25,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "About how many kilometers do you personally drive in a year?",
+    "description" : null,
+    "column" : [ ],
+    "row" : [ {
+      "value" : 202,
+      "seqNo" : 1,
+      "text" : "None - do not drive",
+      "description" : null
+    }, {
+      "value" : 203,
+      "seqNo" : 2,
+      "text" : "1–9,999 km",
+      "description" : null
+    }, {
+      "value" : 204,
+      "seqNo" : 3,
+      "text" : "10,000–19,999 km",
+      "description" : null
+    }, {
+      "value" : 205,
+      "seqNo" : 4,
+      "text" : "20,000–29,999 km",
+      "description" : null
+    }, {
+      "value" : 206,
+      "seqNo" : 5,
+      "text" : "30,000 km or more",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 23,
+    "queNo" : 26,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "In the PAST 12 MONTHS, have you travelled to the following locations, for personal reasons?",
+    "description" : "[Check YES or NO for each]",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 207,
+      "seqNo" : 1,
+      "text" : "In own province",
+      "description" : null
+    }, {
+      "value" : 208,
+      "seqNo" : 2,
+      "text" : "Out of province, within Canada",
+      "description" : null
+    }, {
+      "value" : 209,
+      "seqNo" : 3,
+      "text" : "United States",
+      "description" : null
+    }, {
+      "value" : 210,
+      "seqNo" : 4,
+      "text" : "Caribbean, Mexico, Central/South America",
+      "description" : null
+    }, {
+      "value" : 211,
+      "seqNo" : 5,
+      "text" : "Europe",
+      "description" : null
+    }, {
+      "value" : 212,
+      "seqNo" : 6,
+      "text" : "Other",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 24,
+    "queNo" : 27,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "In the PAST 12 MONTHS, have you travelled for business reasons?",
+    "description" : null,
+    "column" : [ ],
+    "row" : [ ]
+  }, {
+    "queId" : 25,
+    "queNo" : 28,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "Do you currently have or use any of the following financial products or services(in your own name or jointly with someone else)?",
+    "description" : "[Check YES or NO for each]",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 215,
+      "seqNo" : 1,
+      "text" : "Automobile loan/financing",
+      "description" : null
+    }, {
+      "value" : 216,
+      "seqNo" : 2,
+      "text" : "GIC/Term deposit/Gov’t savings bond",
+      "description" : null
+    }, {
+      "value" : 217,
+      "seqNo" : 3,
+      "text" : "Mortgage",
+      "description" : null
+    }, {
+      "value" : 218,
+      "seqNo" : 4,
+      "text" : "Mutual funds",
+      "description" : null
+    }, {
+      "value" : 219,
+      "seqNo" : 5,
+      "text" : "Online banking",
+      "description" : null
+    }, {
+      "value" : 220,
+      "seqNo" : 6,
+      "text" : "Overdraft protection",
+      "description" : null
+    }, {
+      "value" : 221,
+      "seqNo" : 7,
+      "text" : "Personal line of credit",
+      "description" : null
+    }, {
+      "value" : 222,
+      "seqNo" : 8,
+      "text" : "Registered Retirement Savings Plan (RRSP)",
+      "description" : null
+    }, {
+      "value" : 223,
+      "seqNo" : 9,
+      "text" : "Registered Education Savings Plan (RESP)",
+      "description" : null
+    }, {
+      "value" : 224,
+      "seqNo" : 10,
+      "text" : "Registered Retirement Income Fund (RRIF)",
+      "description" : null
+    }, {
+      "value" : 225,
+      "seqNo" : 11,
+      "text" : "Stocks/Bonds",
+      "description" : null
+    }, {
+      "value" : 226,
+      "seqNo" : 12,
+      "text" : "Tax Free Savings Account (TFSA)",
+      "description" : null
+    }, {
+      "value" : 227,
+      "seqNo" : 13,
+      "text" : "Financial planner",
+      "description" : null
+    }, {
+      "value" : 228,
+      "seqNo" : 14,
+      "text" : "Tax preparation service",
+      "description" : null
+    }, {
+      "value" : 229,
+      "seqNo" : 15,
+      "text" : "Will/Estate planner",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 26,
+    "queNo" : 29,
+    "type" : "matrix",
+    "queType" : "YES-NO",
+    "name" : "individualSurvey",
+    "title" : "Did you personally use the following media in the PAST 7 DAYS, including paper or online?",
+    "description" : "[Check YES or NO for each]",
+    "column" : [ ],
+    "row" : [ {
+      "value" : 230,
+      "seqNo" : 1,
+      "text" : "Read or looked into a Monday to Friday daily newspaper",
+      "description" : null
+    }, {
+      "value" : 231,
+      "seqNo" : 2,
+      "text" : "Read or looked into a Saturday or Sunday newspaper",
+      "description" : null
+    }, {
+      "value" : 232,
+      "seqNo" : 3,
+      "text" : "Read or looked into a community newspaper",
+      "description" : null
+    }, {
+      "value" : 233,
+      "seqNo" : 4,
+      "text" : "Read or looked into a magazine",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 27,
+    "queNo" : 30,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "In season, how often do you personally participate in each of the following activities?",
+    "description" : null,
+    "column" : [ {
+      "value" : 39,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 40,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 41,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 42,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 43,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 44,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 45,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 46,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 47,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 48,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 49,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 50,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 51,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 52,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 53,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 54,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 55,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 56,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 57,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 58,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 59,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 60,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 61,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 62,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 63,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 64,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 65,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 66,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 67,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 68,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 69,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 70,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 71,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 72,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 73,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 74,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 75,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 76,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 77,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 78,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 79,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 80,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 81,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 82,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 83,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    }, {
+      "value" : 84,
+      "seqNo" : 1,
+      "text" : "Never",
+      "description" : null
+    }, {
+      "value" : 85,
+      "seqNo" : 2,
+      "text" : "Sometimes",
+      "description" : null
+    }, {
+      "value" : 86,
+      "seqNo" : 3,
+      "text" : "Regularly",
+      "description" : null
+    } ],
+    "row" : [ {
+      "value" : 234,
+      "seqNo" : 1,
+      "text" : "Aerobics/working out",
+      "description" : null
+    }, {
+      "value" : 235,
+      "seqNo" : 2,
+      "text" : "Bowling",
+      "description" : null
+    }, {
+      "value" : 236,
+      "seqNo" : 3,
+      "text" : "Cross country skiing/Snowshoeing",
+      "description" : null
+    }, {
+      "value" : 237,
+      "seqNo" : 4,
+      "text" : "Cycling",
+      "description" : null
+    }, {
+      "value" : 238,
+      "seqNo" : 5,
+      "text" : "Downhill skiing/Snowboarding",
+      "description" : null
+    }, {
+      "value" : 239,
+      "seqNo" : 6,
+      "text" : "Fishing/Hunting",
+      "description" : null
+    }, {
+      "value" : 240,
+      "seqNo" : 7,
+      "text" : "Gardening",
+      "description" : null
+    }, {
+      "value" : 241,
+      "seqNo" : 8,
+      "text" : "Golf",
+      "description" : null
+    }, {
+      "value" : 242,
+      "seqNo" : 9,
+      "text" : "Hiking/Camping",
+      "description" : null
+    }, {
+      "value" : 243,
+      "seqNo" : 10,
+      "text" : "Hockey/Ice skating",
+      "description" : null
+    }, {
+      "value" : 244,
+      "seqNo" : 11,
+      "text" : "Jogging/Running",
+      "description" : null
+    }, {
+      "value" : 245,
+      "seqNo" : 12,
+      "text" : "Power boating/Sailing/Jet skiing",
+      "description" : null
+    }, {
+      "value" : 246,
+      "seqNo" : 13,
+      "text" : "Racquet sports",
+      "description" : null
+    }, {
+      "value" : 247,
+      "seqNo" : 14,
+      "text" : "Riding snowmobile/ATV",
+      "description" : null
+    }, {
+      "value" : 248,
+      "seqNo" : 15,
+      "text" : "Yoga/Pilates/Martial arts",
+      "description" : null
+    }, {
+      "value" : 249,
+      "seqNo" : 16,
+      "text" : "Other individual/team sports",
+      "description" : null
+    } ]
+  }, {
+    "queId" : 28,
+    "queNo" : 31,
+    "type" : "matrix",
+    "queType" : "RB",
+    "name" : "individualSurvey",
+    "title" : "In the PAST 7 DAYS, how many single servings of the following beverages did you drink?",
+    "description" : null,
+    "column" : [ {
+      "value" : 88,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 89,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 90,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 91,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 93,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 94,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 95,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 96,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 98,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 99,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 100,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 101,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 103,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 104,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 105,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 106,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 108,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 109,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 110,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 111,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 113,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 114,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 115,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 116,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 118,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 119,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 120,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 121,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 123,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 124,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 125,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 126,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 128,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 129,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 130,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 131,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 138,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 139,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 140,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 141,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 143,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 144,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 145,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 146,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 148,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 149,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 150,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 151,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    }, {
+      "value" : 153,
+      "seqNo" : 2,
+      "text" : "1 to 3",
+      "description" : null
+    }, {
+      "value" : 154,
+      "seqNo" : 3,
+      "text" : "4 to 6",
+      "description" : null
+    }, {
+      "value" : 155,
+      "seqNo" : 4,
+      "text" : "7 to 11",
+      "description" : null
+    }, {
+      "value" : 156,
+      "seqNo" : 5,
+      "text" : "12 or more",
+      "description" : null
+    } ],
+    "row" : [ {
+      "value" : 250,
+      "seqNo" : 1,
+      "text" : "Bottled water",
+      "description" : null
+    }, {
+      "value" : 251,
+      "seqNo" : 2,
+      "text" : "Regular soft drinks",
+      "description" : null
+    }, {
+      "value" : 252,
+      "seqNo" : 3,
+      "text" : "Diet soft drinks",
+      "description" : null
+    }, {
+      "value" : 253,
+      "seqNo" : 4,
+      "text" : "Sports drinks",
+      "description" : null
+    }, {
+      "value" : 254,
+      "seqNo" : 5,
+      "text" : "Energy drinks",
+      "description" : null
+    }, {
+      "value" : 255,
+      "seqNo" : 6,
+      "text" : "Juice",
+      "description" : null
+    }, {
+      "value" : 256,
+      "seqNo" : 7,
+      "text" : "Coffee",
+      "description" : null
+    }, {
+      "value" : 257,
+      "seqNo" : 8,
+      "text" : "Tea",
+      "description" : null
+    }, {
+      "value" : 258,
+      "seqNo" : 9,
+      "text" : "Milk",
+      "description" : null
+    }, {
+      "value" : 259,
+      "seqNo" : 10,
+      "text" : "",
+      "description" : "For those of legal drinking age..."
+    }, {
+      "value" : 260,
+      "seqNo" : 11,
+      "text" : "Beer",
+      "description" : null
+    }, {
+      "value" : 261,
+      "seqNo" : 12,
+      "text" : "Wine",
+      "description" : null
+    }, {
+      "value" : 262,
+      "seqNo" : 13,
+      "text" : "Coolers",
+      "description" : null
+    }, {
+      "value" : 263,
+      "seqNo" : 14,
+      "text" : "Spirits/Liquor",
+      "description" : null
+    } ]
+  } ]

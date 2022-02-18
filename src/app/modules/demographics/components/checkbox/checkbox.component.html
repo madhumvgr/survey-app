@@ -1,0 +1,8 @@
+
+<br/>
+<ng-container>
+    <div>{{ question?.title}}</div>
+    <div *ngFor="let row of question?.row">
+        <input type="checkbox" [id]="row?.seqNo" [name]="row?.seqNo" [value]="row?.value"> {{row?.text}}
+    </div>
+</ng-container>

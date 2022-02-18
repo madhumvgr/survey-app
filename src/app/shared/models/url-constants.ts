@@ -56,3 +56,7 @@ export class TelevisionConstants {
     public static updateStationsWithDeviceId= "api/portal-tv-claim-stations";
 
 }
+
+export class QuestionConstants {
+    public static questionaire ="api/survey-questions-individual";
+}

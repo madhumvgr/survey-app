@@ -1,0 +1,25 @@
+<div *ngFor="let question of questionList">
+    <ng-contaner [ngSwitch]="question.queType">
+        <div *ngSwitchCase="'YES-NO'">
+           <app-yesNo [question]="question"></app-yesNo>
+        </div>
+        <div *ngSwitchCase="'RB'">
+            <app-radiogroup [question]="question"></app-radiogroup>
+         </div>
+         <div *ngSwitchCase="'CB'">
+            <app-checkbox [question]="question"></app-checkbox>
+         </div>
+         <!-- <div *ngSwitchCase="'YES-NO'">
+            YES-NO
+         </div>
+         <div *ngSwitchCase="'YES-NO'">
+            YES-NO
+         </div>
+         <div *ngSwitchCase="'YES-NO'">
+            YES-NO
+         </div> -->
+        <div *ngSwitchDefault>
+            Default type
+        </div>
+    </ng-contaner>
+</div>

@@ -1,7 +1,10 @@
-<br/>
+<br />
 <ng-container>
-    <div>{{ question?.title}}</div>
-    <div *ngFor="let row of question?.row">
-        <input type="radio" [id]="row?.seqNo" [name]="row?.seqNo" [value]="row?.value"> {{row?.text}}
+    <h3>{{question?.queId}}.{{ question?.title}}</h3>
+    <div class="container" *ngFor="let row of question?.row">
+        <div class="top-left">{{row?.text}}</div>
+        <div class="top-right">
+            <input type="radio" [id]="row?.seqNo" [name]="row?.seqNo" [value]="row?.value">
+        </div>
     </div>
 </ng-container>

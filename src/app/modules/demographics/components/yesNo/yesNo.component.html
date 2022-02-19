@@ -1,6 +1,14 @@
-<br/>
+<br />
 <ng-container>
-    <div>{{ question?.title}}</div>
-    <input type="radio" [id]="question?.name" [name]="question?.name" value="Yes">Yes
-    <input type="radio" [id]="question?.name" [name]="question?.name" value="No"/>No
+    <h3>{{question?.queId}}.{{ question?.title}}</h3>
+    <div class="container">
+        <div class="top-left">Yes</div>
+        <div class="top-right">
+            <input type="radio" [id]="question?.name" [name]="question?.name" value="Yes" />
+        </div>
+        <div class="top-left">No</div>
+        <div class="top-right">
+            <input type="radio" [id]="question?.name" [name]="question?.name" value="No" />
+        </div>
+    </div>
 </ng-container>

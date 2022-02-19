@@ -1,25 +1,112 @@
-<div *ngFor="let question of questionList">
-    <ng-contaner [ngSwitch]="question.queType">
-        <div *ngSwitchCase="'YES-NO'">
-           <app-yesNo [question]="question"></app-yesNo>
-        </div>
-        <div *ngSwitchCase="'RB'">
-            <app-radiogroup [question]="question"></app-radiogroup>
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+   <!-- Breadcrumbs -->
+   <nav class="px-3 mt-4">
+      <div class="container">
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
+            <li class="breadcrumb-item"><a href="household-demograpgics.html">Household demographics</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Individual member</li>
+         </ol>
+      </div>
+   </nav>
+
+   <!--h1 Intro Section-->
+   <section class="px-3 pb-4">
+      <div class="container">
+         <div class="row">
+            <div class="col-12">
+               <h1>
+                  <!--Household Member Name -->Houshold Member Name
+               </h1>
+               <p>
+                  Let’s quickly review your answers. To change something, use the back button below to go back and
+                  change it. If everything looks ok, hit Continue button.
+               </p>
+            </div>
+            <!--end col-->
          </div>
-         <div *ngSwitchCase="'CB'">
-            <app-checkbox [question]="question"></app-checkbox>
+         <!--end Row-->
+      </div>
+      <!--end Container-->
+   </section>
+   <!--end Section-->
+
+   <section class="px-3 pb-4">
+      <div class="container">
+         <div class="row pb-4">
+            <h2>Confirmation<span class="h2-separator"></span></h2>
+            <div class="col-12 mt-3">
+               <div class="shadow-sm rounded bg-white p-4 mb-4">
+
+                  <div *ngFor="let question of questionList">
+                     <ng-contaner [ngSwitch]="question.queType">
+                        <div *ngSwitchCase="'YES-NO'">
+                           <app-yesNo [question]="question"></app-yesNo>
+                        </div>
+                        <div *ngSwitchCase="'RB'">
+                           <app-radiogroup [question]="question"></app-radiogroup>
+                        </div>
+                        <div *ngSwitchCase="'CB'">
+                           <app-checkbox [question]="question"></app-checkbox>
+                        </div>
+                        <div *ngSwitchDefault>
+                           Default type
+                        </div>
+                     </ng-contaner>
+                  </div>
+                  <!-- <h3>Please enter your name below</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>What is your gender?</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>To which age range do you belong?</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>How many hours per week do you normally work for pay (or in own farm, business 
+                        or professional practice)?</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>Which of the following best describes the industry in which you are employed?</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>Which of the following best describes your occupation?</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>What is the highest level of education you have completed?</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>How much time did you personally spend on the internet at home yesterday using 
+                        a computer, smartphone or other device? (Includes checking email, visiting websites 
+                        and streaming music and video)</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>What is the language that you first learned in childhood and still understand? (Check one only)</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>What language do you speak most often at home now? (Check one only)</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>What is your marital status?</h3>
+                      <p>Member Answer/Choice</p>
+                      <h3>Please provide your email address below. We may need to contact you by email to send 
+                        you important information about the panel and your participation. Your email address will 
+                        only be used to communicate about your participation on the panel and will not be 
+                        shared with any other organizations.</h3>
+                      <p>Member Answer/Choice</p> -->
+               </div>
+               <!-- Action buttons -->
+               <div class="col-xs-6 d-grid gap-2 d-md-block">
+                  <button type="submit" class="btn btn-dark">Back</button>
+                  <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+                  <button [routerLink]="['/demographics/demographics-individual-members-page1']" type="submit"
+                     class="btn btn-primary ms-md-3">Continue</button>
+               </div>
+
+            </div>
+            <!--end Col-->
          </div>
-         <!-- <div *ngSwitchCase="'YES-NO'">
-            YES-NO
-         </div>
-         <div *ngSwitchCase="'YES-NO'">
-            YES-NO
-         </div>
-         <div *ngSwitchCase="'YES-NO'">
-            YES-NO
-         </div> -->
-        <div *ngSwitchDefault>
-            Default type
-        </div>
-    </ng-contaner>
-</div>
+         <!--end Row-->
+
+      </div>
+      <!--end Container-->
+   </section>
+   <!--end Section-->
+</body>
+
+</html>

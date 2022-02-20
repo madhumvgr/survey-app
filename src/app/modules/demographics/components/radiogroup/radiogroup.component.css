@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    border-bottom: 1px solid blue;
   }
   
   .top-left {
@@ -11,3 +12,8 @@
   .top-right {
     margin-left: auto;
   }
+
+  /* .item {
+    border-bottom: 1px solid blue;
+    background-color: aliceblue;
+  } */

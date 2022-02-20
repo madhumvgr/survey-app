@@ -1,8 +1,4 @@
-.container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
+
   
   .top-left {
     width: 50%;
@@ -11,3 +7,16 @@
   .top-right {
     margin-left: auto;
   }
+.border{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom:1px solid blue;
+}
+.border1{
+  background-color: #888;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom:1px solid blue;
+}

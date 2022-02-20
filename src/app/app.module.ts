@@ -24,6 +24,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { TelevisionModule } from './modules/television/television.module';
 import { DemographicsModule } from './modules/demographics/demographics.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { DemographicsModule } from './modules/demographics/demographics.module';
     SharedModule, 
     TelevisionModule,
     DemographicsModule,
+    NgxPaginationModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

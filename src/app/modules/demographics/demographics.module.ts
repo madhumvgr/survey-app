@@ -35,6 +35,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { RadiogroupComponent } from './components/radiogroup/radiogroup.component';
 import { QuestionarieComponent } from './components/questionarie/questionarie.component';
 import { QuestionComponent } from './components/question/question.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { QuestionComponent } from './components/question/question.component';
     FormsModule, 
     ReactiveFormsModule,
     RouterModule,
-    TranslateModule
+    TranslateModule,
+    NgxPaginationModule
   ]
 })
 export class DemographicsModule { }

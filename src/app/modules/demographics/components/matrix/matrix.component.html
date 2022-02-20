@@ -1,0 +1,20 @@
+<br />
+<ng-container>
+    <h3>{{question?.queId}}.{{ question?.title}}</h3>
+    <div class="container"> 
+        <div class="top-left"></div>
+        <div class="top-right">
+            <ng-container *ngFor="let column of question?.column; let i = index">
+               <div *ngIf="i<=6" class="flex-item">{{column?.text}}</div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="container" *ngFor="let row of question?.row;let i=index"  [style.background-color]="i%2 == 1 ? '#888' : ''"> 
+        <div class="top-left">{{row?.text}}</div>
+        <div class="top-right">
+            <ng-container *ngFor="let column of question?.column;let j=index">
+                <div class="flex-item"  *ngIf="j<=6"> <input class="form-check-input" type="radio" [id]="row?.seqNo" [name]="row?.seqNo" [value]="column?.value"></div>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>

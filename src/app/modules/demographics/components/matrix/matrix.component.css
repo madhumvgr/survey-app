@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid blue;
+  }
+  
+  .top-left {
+    min-width: 30%;
+  }
+  
+  .top-right {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .flex-item {
+    padding: .5em;
+    width: 50px;
+  }
+
+  /* .item {
+    border-bottom: 1px solid blue;
+    background-color: aliceblue;
+  } */

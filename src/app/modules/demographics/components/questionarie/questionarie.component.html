@@ -49,7 +49,13 @@
                            <app-yesNo [question]="question"></app-yesNo>
                         </div>
                         <div *ngSwitchCase="'RB'">
-                           <app-radiogroup [question]="question"></app-radiogroup>
+                           <ng-container *ngIf="question?.column && question?.column?.length > 0 else radio">
+                              <app-matrix [question]="question"></app-matrix>
+                           </ng-container>
+
+                           <ng-template #radio>
+                              <app-radiogroup [question]="question"></app-radiogroup>
+                           </ng-template>
                         </div>
                         <div *ngSwitchCase="'CB'">
                            <app-checkbox [question]="question"></app-checkbox>
@@ -96,7 +102,7 @@
                   <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
                   <button [routerLink]="['/demographics/demographics-individual-members-page1']" type="submit"
                      class="btn btn-primary ms-md-3">Continue</button>
-                     <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+                  <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
                </div>
 
             </div>

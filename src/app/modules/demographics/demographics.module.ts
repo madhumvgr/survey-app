@@ -36,6 +36,7 @@ import { RadiogroupComponent } from './components/radiogroup/radiogroup.componen
 import { QuestionarieComponent } from './components/questionarie/questionarie.component';
 import { QuestionComponent } from './components/question/question.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatrixComponent } from './components/matrix/matrix.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CheckboxComponent,
     RadiogroupComponent,
     QuestionarieComponent,
-    QuestionComponent
+    QuestionComponent,
+    MatrixComponent
   ],
   imports: [
 

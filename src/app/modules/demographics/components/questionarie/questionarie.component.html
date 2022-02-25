@@ -42,59 +42,30 @@
             <h2>Confirmation<span class="h2-separator"></span></h2>
             <div class="col-12 mt-3">
                <div class="shadow-sm rounded bg-white p-4 mb-4">
-
                   <div *ngFor="let question of questionList | paginate: config">
                      <ng-contaner [ngSwitch]="question.queType">
                         <div *ngSwitchCase="'YES-NO'">
-                           <app-yesNo [question]="question"></app-yesNo>
+                           <app-yesNo  (changeEvent1)="changeEvent($event)" [question]="question"></app-yesNo>
                         </div>
                         <div *ngSwitchCase="'RB'">
                            <ng-container *ngIf="question?.column && question?.column?.length > 0 else radio">
-                              <app-matrix [question]="question"></app-matrix>
+                              <app-matrix (changeEvent1)="changeEvent($event)" [question]="question"></app-matrix>
                            </ng-container>
 
                            <ng-template #radio>
-                              <app-radiogroup [question]="question"></app-radiogroup>
+                              <app-radiogroup (changeEvent1)="changeEvent($event)" [question]="question"></app-radiogroup>
                            </ng-template>
                         </div>
                         <div *ngSwitchCase="'CB'">
-                           <app-checkbox [question]="question"></app-checkbox>
+                           <app-checkbox (changeEvent1)="changeEvent($event)" [question]="question"></app-checkbox>
                         </div>
                         <div *ngSwitchDefault>
                            Default type
                         </div>
                      </ng-contaner>
                   </div>
-                  <!-- <h3>Please enter your name below</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>What is your gender?</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>To which age range do you belong?</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>How many hours per week do you normally work for pay (or in own farm, business 
-                        or professional practice)?</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>Which of the following best describes the industry in which you are employed?</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>Which of the following best describes your occupation?</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>What is the highest level of education you have completed?</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>How much time did you personally spend on the internet at home yesterday using 
-                        a computer, smartphone or other device? (Includes checking email, visiting websites 
-                        and streaming music and video)</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>What is the language that you first learned in childhood and still understand? (Check one only)</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>What language do you speak most often at home now? (Check one only)</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>What is your marital status?</h3>
-                      <p>Member Answer/Choice</p>
-                      <h3>Please provide your email address below. We may need to contact you by email to send 
-                        you important information about the panel and your participation. Your email address will 
-                        only be used to communicate about your participation on the panel and will not be 
-                        shared with any other organizations.</h3>
-                      <p>Member Answer/Choice</p> -->
+         
+                  
                </div>
                <!-- Action buttons -->
                <div class="col-xs- d-grid gap-2 d-md-block">

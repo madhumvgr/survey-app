@@ -4,7 +4,7 @@
     <div class="container" *ngFor="let row of question?.row;let i=index"  [style.background-color]="i%2 == 1 ? '#888' : ''"> 
         <div class="top-left">{{row?.text}}</div>
         <div class="top-right">
-            <input class="form-check-input" type="radio" [id]="row?.seqNo" [name]="row?.seqNo" [value]="row?.value">
+            <input (change)="changeEvent(row?.value)" class="form-check-input" type="radio" [id]="row?.seqNo" [name]="row?.seqNo" [value]="row?.value">
         </div>
     </div>
 </ng-container>

@@ -11,6 +11,7 @@ export class Question extends Resource {
   description? : string | undefined;
   column? : any[] | undefined;
   row? : any[] | undefined;
+  answer?: any | undefined;
   }
 
   // {

@@ -1,17 +1,20 @@
 <br />
 <ng-container>
     <h3>{{question?.queId}}.{{ question?.title}}</h3>
-
-    <div class="border">
-        <div class="top-left">Yes</div>
-        <div class="top-right">
-            <input class="form-check-input" type="radio" (change)="changeEvent('Y')" [id]="question?.name" [name]="question?.name" value="Yes" />
+    <div [formGroup]="childFormGroup">
+        <div class="border">
+            <div class="top-left">Yes</div>
+            <div class="top-right">
+                <input class="form-check-input" type="radio" [formControlName]=" ''+question?.queNo || '' " (change)="changeEvent('Y')" [id]="question?.queNo"
+                   value="Yes" />
+            </div>
         </div>
-    </div>
-    <div class="border1">
-        <div class="top-left">No</div>
-        <div class="top-right">
-            <input class="form-check-input" type="radio" (change)="changeEvent('N')" [id]="question?.name" [name]="question?.name" value="No" />
+        <div class="border1">
+            <div class="top-left">No</div>
+            <div class="top-right">
+                <input class="form-check-input" type="radio" [formControlName]=" ''+question?.queNo || '' " (change)="changeEvent('N')" [id]="question?.queNo"
+                   value="No" />
+            </div>
         </div>
     </div>
 </ng-container>

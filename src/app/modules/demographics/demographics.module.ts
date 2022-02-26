@@ -37,6 +37,7 @@ import { QuestionarieComponent } from './components/questionarie/questionarie.co
 import { QuestionComponent } from './components/question/question.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatrixComponent } from './components/matrix/matrix.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { MatrixComponent } from './components/matrix/matrix.component';
     RadiogroupComponent,
     QuestionarieComponent,
     QuestionComponent,
-    MatrixComponent
+    MatrixComponent,
+    DynamicFormComponent
   ],
   imports: [
 

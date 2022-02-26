@@ -2,16 +2,17 @@ import { Resource } from "src/app/shared/services/http-resource.service";
 
 export class Question extends Resource {
     //id is inherited from Resource
-  queId? : string | undefined;
-  queNo? : number | undefined;
-  type? : string | undefined;
-  queType? : string | undefined;
-  name? : string | undefined;
-  title? : string | undefined;
-  description? : string | undefined;
-  column? : any[] | undefined;
-  row? : any[] | undefined;
-  answer?: any | undefined;
+  queId? : string;
+  queNo? : string;
+  type? : string;
+  queType? : string;
+  name? : string;
+  title? : string;
+  description? : string;
+  column? : any[];
+  row? : any[];
+  answer?: any;
+  required?:any;
   }
 
   // {

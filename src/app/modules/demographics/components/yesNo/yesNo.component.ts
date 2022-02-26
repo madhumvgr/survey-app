@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
 
@@ -7,28 +7,33 @@ import { Question } from 'src/app/modules/login/model/question.model';
   templateUrl: './yesNo.component.html',
   styleUrls: ['./yesNo.component.css']
 })
-export class YesNoComponent implements OnInit {
+export class YesNoComponent implements OnInit, OnChanges {
 
   @Input()
-  //formGroup!: FormGroup;
- // childFormGroup!: FormGroup;
-
-  @Input() question!: Question;
+  parentForm!: FormGroup;
+  childFormGroup!: FormGroup;
+  onlyOnce = false;
+  @Input() question: Question = new Question();
   @Output()
   public changeEvent1 = new EventEmitter();
+ 
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!this.onlyOnce && this.question) {
+      this.childFormGroup = new FormGroup({
+      });
+      this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''))
+      this.parentForm.addControl(''+this.question?.queNo,this.childFormGroup);
+      this.onlyOnce = true;
+    }
+  }
+
   ngOnInit(): void {
-   // this.childFormGroup.addControl(''+this.question?.name, new FormControl(''))
-    
-    /* Bind your child form control to parent form group
-       changes in 'nameTxt' directly reflect to your parent 
-       component formGroup
-      */          
- //  this.formGroup.addControl(''+this.question?.name, this.childFormGroup.controls.name);
   }
 
   changeEvent(value: any) {
+    this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(value);
     this.question.answer = value;
     this.changeEvent1.emit(this.question);
   }

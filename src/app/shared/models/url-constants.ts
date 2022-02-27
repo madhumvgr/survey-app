@@ -60,4 +60,6 @@ export class TelevisionConstants {
 export class QuestionConstants {
     public static questionaire ="api/survey-questions-individual";
     public static answers ="api/survey-answers";
+    public static memberIndividualList = "api/memberListOfDemoSurvey";
+    public static markSurveyCompleted = "api/survey-answers-completed/";
 }

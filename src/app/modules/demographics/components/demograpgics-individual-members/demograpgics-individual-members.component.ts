@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionConstants } from 'src/app/shared/models/url-constants';
+import { QuestionaireService } from '../../quersionarie.service';
 
 @Component({
   selector: 'app-demograpgics-individual-members',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemograpgicsIndividualMembersComponent implements OnInit {
 
-  constructor() { }
+  memberList: any[]= [];
+  constructor(public questionaireService: QuestionaireService) { }
 
   ngOnInit(): void {
+    this.questionaireService.customRead(QuestionConstants.memberIndividualList).subscribe( list => {
+      console.log(list);
+      this.memberList = list;
+    })
   }
 
 }

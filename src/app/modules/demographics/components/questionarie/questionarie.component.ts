@@ -19,6 +19,8 @@ import { QuestionConstants } from 'src/app/shared/models/url-constants';
 export class QuestionarieComponent implements OnInit {
   questionList: Question[] = [];
   config: any;
+  homeNo: any;
+  memberNo: any;
   constructor(public questionaireService: QuestionaireService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder) {
     this.config = {
@@ -30,6 +32,8 @@ export class QuestionarieComponent implements OnInit {
       this.config.currentPage = params['page'];
 
     });
+    this.memberNo = this.route.snapshot.params['memberNo'];
+    this.homeNo = this.route.snapshot.params['homeNo'];
   }
 
   ngOnInit(): void {
@@ -37,5 +41,10 @@ export class QuestionarieComponent implements OnInit {
       this.questionList = response;
     });
   }
-
+  
+  markCompleteEvent(event:any){
+    this.questionaireService.customCreate({},QuestionConstants.markSurveyCompleted+this.memberNo).subscribe ( result => {
+      console.log(result);
+    });
+  }
 }

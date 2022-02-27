@@ -41,7 +41,7 @@
          <div class="row pb-4">
             <h2>Confirmation<span class="h2-separator"></span></h2>
             <div class="col-12 mt-3">
-               <app-dynamic-form [questionList]="questionList"></app-dynamic-form>
+               <app-dynamic-form (markCompleteEvent)="markCompleteEvent($event)" [questionList]="questionList"></app-dynamic-form>
             </div>
             <!--end Col-->
          </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/modules/login/model/question.model';
 import { QuestionaireService } from '../../quersionarie.service';
@@ -19,6 +19,8 @@ export class DynamicFormComponent implements OnInit,OnChanges {
 
   @Input()
   questionList: Question[] = [];
+  @Output()
+  markCompleteEvent = new  EventEmitter();
   config: any;
   parentForm!: FormGroup;
   constructor(public questionaireService: QuestionaireService,
@@ -83,5 +85,9 @@ export class DynamicFormComponent implements OnInit,OnChanges {
     //   this.parentForm.addControl(''+question?.queNo,childFormGroup);
     //   });
     return new FormGroup({});
+  }
+
+  markComplete(){
+    this.markCompleteEvent.emit(null);
   }
 }

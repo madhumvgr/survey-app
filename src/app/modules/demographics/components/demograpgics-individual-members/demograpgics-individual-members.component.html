@@ -39,54 +39,19 @@
                 <p>Complete the survey that has your name. You may also fill a survey on behalf of another household member. </p>
 
                 <div class="col-12 mt-3">
-
+                   
+                   <!-- [ { "memberName": "TEST MIKE", "memberNo": "01", "homeNo": "9992323", "deviceId": null,
+                     "memberSurveyStatus": "Not Started", "memberSurveyStatusId": 0, "usePercentage": null }, { "memberName": "TEST ROB", "memberNo": "02", "homeNo": "9992323", "deviceId": null, "memberSurveyStatus": "Not Started", "memberSurveyStatusId": 0, "usePercentage": null }, { "memberName": "TEST ARUN", "memberNo": "03", "homeNo": "9992323", "deviceId": null, "memberSurveyStatus": "Not Started", "memberSurveyStatusId": 0, "usePercentage": null }, { "memberName": "Abdullahi", "memberNo": "04", "homeNo": "9992323", "deviceId": null, "memberSurveyStatus": "Not Started", "memberSurveyStatusId": 0, "usePercentage": null } ]-->
                     <!-- House Hold Member -->
-                    <div class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
+                    <div *ngFor="let member of memberList" class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
                         <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
                             <div class="h1 mb-0">person</div>
                         </i>
                         <div class="ps-3 description">
-                            <h3 class="text-truncate"><!-- Name of the household memeber -->Household Member</h3>
-                            <p class="text-truncate">Status: <span>Not started</span></p>   
+                            <h3 class="text-truncate"><!-- Name of the household memeber -->{{member?.memberName}}</h3>
+                            <p class="text-truncate">Status: <span>{{member?.memberSurveyStatus}}</span></p>   
                         </div>
-                        <button [routerLink] = "['/demographics/questionaire']" type="button" class="btn btn-light me-3">Start</button>
-                    </div>
-
-                    <!-- House Hold Member -->
-                    <div class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
-                        <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
-                            <div class="h1 mb-0">person</div>
-                        </i>
-                        <div class="ps-3 description">
-                            <h3 class="text-truncate"><!-- Name of the household memeber -->Household Member</h3>
-                            <p class="text-truncate">Status: <span>Not started</span></p>   
-                        </div>
-                        <button type="button" class="btn btn-light me-3">Start</button>
-                    </div>
-
-                    <!-- House Hold Member -->
-                    <div class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
-                        <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
-                            <div class="h1 mb-0">person</div>
-                        </i>
-                        <div class="ps-3 description">
-                            <h3 class="text-truncate"><!-- Name of the household memeber -->Household Member</h3>
-                            <p class="text-truncate">Status: <span>Not started</span></p>   
-                        </div>
-                        <button type="button" class="btn btn-light me-3">Start</button>
-                    </div>
-
-
-                    <!-- House Hold Member -->
-                    <div class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
-                        <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
-                            <div class="h1 mb-0">person</div>
-                        </i>
-                        <div class="ps-3 description">
-                            <h3 class="text-truncate"><!-- Name of the household memeber -->Household Memeber</h3>
-                            <p class="text-truncate">Status: <span>Not started</span></p>   
-                        </div>
-                        <button type="button" class="btn btn-light me-3">Start</button>
+                        <button [routerLink] = "['/demographics/questionaire/'+member.memberNo+'/'+member.homeNo ]" type="button" class="btn btn-light me-3">Start</button>
                     </div>
 
                 </div><!--end Col-->

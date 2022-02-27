@@ -6,12 +6,13 @@
   }
   
   .top-left {
-    min-width: 30%;
+    width: 30%;
   }
   
   .top-right {
     display: flex;
-    margin-left: auto;
+    width: 70%;
+    justify-content: space-around;
   }
 
   .flex-item {

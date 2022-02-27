@@ -13,6 +13,7 @@ export class Question extends Resource {
   row? : any[];
   answer?: any;
   required?:any;
+  questionLevel2Id?:any;
   }
 
   // {

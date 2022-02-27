@@ -17,6 +17,8 @@ import { QuestionConstants } from 'src/app/shared/models/url-constants';
 })
 export class DynamicFormComponent implements OnInit,OnChanges {
 
+  @Input() homeNo:any;
+  @Input() memberNo:any;
   @Input()
   questionList: Question[] = [];
   @Output()
@@ -47,7 +49,7 @@ export class DynamicFormComponent implements OnInit,OnChanges {
 
 
   pageChange(newPage: any) {
-    this.router.navigate(['/demographics/questionaire'], { queryParams: { page: newPage } });
+    this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
   }
 
   createQuestion(): FormGroup {
@@ -63,7 +65,7 @@ export class DynamicFormComponent implements OnInit,OnChanges {
     }
     obj ['questionId']= question.queId;
     obj ['questionLevel1Id'] = 1;
-    obj ['questionLevel2Id'] = null;
+    obj ['questionLevel2Id'] = question.questionLevel2Id;
     obj ['answer'] = question.answer;
 
     this.questionaireService.customCreate(obj,QuestionConstants.answers).subscribe( data => {

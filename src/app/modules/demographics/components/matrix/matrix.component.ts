@@ -27,9 +27,10 @@ export class MatrixComponent implements OnChanges {
     }
   }
 
-  changeEvent(value: any) {
+  changeEvent(value: any, colSeq: any) {
     this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(value);
     this.question.answer = value;
+    this.question['questionLevel2Id']= colSeq;
     this.changeEvent1.emit(this.question);
   }
 }

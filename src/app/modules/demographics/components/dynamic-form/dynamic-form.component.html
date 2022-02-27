@@ -1,0 +1,34 @@
+<div [formGroup]="parentForm" class="shadow-sm rounded bg-white p-4 mb-4">
+    <div *ngFor="let question of questionList | paginate: config">
+        <ng-contaner [ngSwitch]="question.queType">
+            <div *ngSwitchCase="'YES-NO'">
+                <app-yesNo [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question"></app-yesNo>
+            </div>
+            <div *ngSwitchCase="'RB'">
+                <ng-container *ngIf="question?.column && question?.column?.length > 0 else radio">
+                    <app-matrix [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question"></app-matrix>
+                </ng-container>
+
+                <ng-template #radio>
+                    <app-radiogroup [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question"></app-radiogroup>
+                </ng-template>
+            </div>
+            <div *ngSwitchCase="'CB'">
+                <app-checkbox [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question"></app-checkbox>
+            </div>
+            <div *ngSwitchDefault>
+                Default type
+            </div>
+        </ng-contaner>
+    </div>
+    <!-- Action buttons -->
+    <div class="col-xs- d-grid gap-2 d-md-block">
+        <button type="submit" class="btn btn-dark">Back</button>
+        <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
+        <!-- <button [routerLink]="['/demographics/demographics-individual-members-page1']" type="submit"
+       class="btn btn-primary ms-md-3">Continue</button> -->
+        <pagination-controls (pageChange)="pageChange($event)" class="my-pagination hide-page-numbers"
+            previousLabel="back" nextLabel="continue">
+        </pagination-controls>
+    </div>
+</div>

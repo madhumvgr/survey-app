@@ -31,6 +31,10 @@ export class LocalStorageService {
     this.setItem(StorageItem.MEMBERNAME,value);
   }
 
+  setIndividualName(value:string){
+    this.setItem(StorageItem.INDIVIDUALNAME,value);
+  }
+
   setUserFullName(userName:string){
     this.setItem(StorageItem.FULLNAME,userName);
   }
@@ -55,5 +59,6 @@ export enum StorageItem{
   PROFILEID='profileId',
   DEVICENAME='deviceName',
   MEMBERNAME='memberName',
-  FULLNAME='fullName'
+  FULLNAME='fullName',
+  INDIVIDUALNAME='individualName'
 }

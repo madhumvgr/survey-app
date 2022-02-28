@@ -19,6 +19,7 @@ export class DynamicFormComponent implements OnInit,OnChanges {
 
   @Input() homeNo:any;
   @Input() memberNo:any;
+  @Input() memberName:any;
   @Input()
   questionList: Question[] = [];
   @Output()

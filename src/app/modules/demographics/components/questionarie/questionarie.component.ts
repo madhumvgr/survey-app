@@ -10,6 +10,7 @@ import {
   Validators
 } from '@angular/forms';
 import { QuestionConstants } from 'src/app/shared/models/url-constants';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-questionarie',
@@ -21,13 +22,14 @@ export class QuestionarieComponent implements OnInit {
   config: any;
   homeNo: any;
   memberNo: any;
+  memberName: any;
   constructor(public questionaireService: QuestionaireService,
-    private route: ActivatedRoute, private router: Router, public fb: FormBuilder) {
+    private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
     this.config = {
       currentPage: 1,
       itemsPerPage: 2
     };
-
+    this.memberName = this.localStorageService.getItem(StorageItem.INDIVIDUALNAME);
     this.route.queryParams.subscribe(params => {
       this.config.currentPage = params['page'];
 

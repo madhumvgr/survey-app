@@ -45,6 +45,7 @@ export class QuestionarieComponent implements OnInit {
   markCompleteEvent(event:any){
     this.questionaireService.customCreate({},QuestionConstants.markSurveyCompleted+this.memberNo).subscribe ( result => {
       console.log(result);
+      this.router.navigate(['/account-settings/thankyou/questionarie'],{state: {message: "You have successfully submitted Individual House member survey. "}});
     });
   }
 }

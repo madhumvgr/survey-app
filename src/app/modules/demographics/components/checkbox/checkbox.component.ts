@@ -12,6 +12,7 @@ export class CheckboxComponent implements OnChanges {
   parentForm!: FormGroup;
   childFormGroup!: FormGroup;
   onlyOnce = false;
+  formArray: any[] = [];
   
   @Input() question!: Question;
   @Output()
@@ -30,30 +31,29 @@ export class CheckboxComponent implements OnChanges {
   }
   
   changeEvent(event:any,row: any) {
-    const formArray: FormArray = this.childFormGroup.get(row.seqNo) as FormArray;
 
     /* Selected */
   if(event.target.checked){
     // Add a new control in the arrayForm
-    formArray.push(new FormControl(event.target.value));
+    this.formArray.push(event.target.value);
   }
   /* unselected */
   else{
     // find the unselected element
     let i: number = 0;
 
-    formArray.controls.forEach((ctrl: any) => {
-      if(ctrl.value == event.target.value) {
+    this.formArray.forEach((ctrl: any) => {
+      if(ctrl == event.target.value) {
         // Remove the unselected element from the arrayForm
-        formArray.removeAt(i);
+        this.formArray.splice(i,1);
         return;
       }
       i++;
     });
   }
   
-    this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(row.value);
-    this.question.answer = row.value;
+    this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(this.formArray);
+    this.question.answer = this.formArray;
     this.changeEvent1.emit(this.question);
   }
 }

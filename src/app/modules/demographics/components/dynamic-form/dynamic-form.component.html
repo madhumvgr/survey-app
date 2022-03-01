@@ -23,12 +23,11 @@
     </div>
     <!-- Action buttons -->
     <div class="col-xs- d-grid gap-2 d-md-block">
-        <button type="submit" class="btn btn-dark">Back</button>
         <button type="submit" class="btn btn-secondary ms-md-3" (click)="markComplete()">Save & Exit</button>
         <!-- <button [routerLink]="['/demographics/demographics-individual-members-page1']" type="submit"
        class="btn btn-primary ms-md-3">Continue</button> -->
         <pagination-controls (pageChange)="pageChange($event)" class="my-pagination hide-page-numbers"
-            previousLabel="back" nextLabel="continue">
+            previousLabel="Back" nextLabel="Continue">
         </pagination-controls>
     </div>
 </div>

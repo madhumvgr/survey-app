@@ -6,7 +6,7 @@
             [style.background-color]="i%2 == 1 ? '#888' : ''">
             <div class="top-left">{{row?.text}}</div>
             <div class="top-right">
-                <input (change)="changeEvent(row?.value)" [formControlName]="question?.queNo || ''" class="form-check-input"
+                <input (change)="changeEvent(row?.value,$event)" [formControlName]="question?.queNo || ''" class="form-check-input"
                     type="radio" [id]="question?.queNo" [name]="question?.queNo || ''" [value]="row?.value">
             </div>
         </div>

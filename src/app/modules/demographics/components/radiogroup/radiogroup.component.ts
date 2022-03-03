@@ -30,9 +30,13 @@ export class RadiogroupComponent implements OnChanges {
     }
   }
 
-  changeEvent(value: any) {
+  changeEvent(value: any,event:any) {
     this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(value);
-    this.question.answer = value;
+    //console.log( event.target.checked);
+    this.question.answer ="Y";
+    this.question.questionLevel1Id = value;
+    this.question.questionLevel2Id = null;
+    //this.question.queType ="YES-NO";
     this.changeEvent1.emit(this.question);
   }
 }

@@ -35,6 +35,9 @@ export class YesNoComponent implements OnInit, OnChanges {
   changeEvent(value: any) {
     this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(value);
     this.question.answer = value;
+    this.question.questionLevel1Id = null;
+    this.question.questionLevel2Id = null;
+    console.log(this.question);
     this.changeEvent1.emit(this.question);
   }
 

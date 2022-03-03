@@ -65,10 +65,12 @@ export class DynamicFormComponent implements OnInit,OnChanges {
     let obj:any = {
     }
     obj ['questionId']= question.queId;
-    obj ['questionLevel1Id'] = 1;
+    obj ['queType'] =question.queType;
+    obj ['questionLevel1Id'] = question.questionLevel1Id;
     obj ['questionLevel2Id'] = question.questionLevel2Id;
     obj ['answer'] = question.answer;
     obj ['memberNo'] = this.memberNo;
+    obj ['maxLevel'] = question.maxLevel;
 
     this.questionaireService.customCreate(obj,QuestionConstants.answers).subscribe( data => {
       console.log(data);

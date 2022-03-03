@@ -35,13 +35,14 @@ export class CheckboxComponent implements OnChanges {
     /* Selected */
   if(event.target.checked){
     // Add a new control in the arrayForm
+    this.question.answer ="Y";
     this.formArray.push(event.target.value);
   }
   /* unselected */
   else{
     // find the unselected element
     let i: number = 0;
-
+    this.question.answer ="N";
     this.formArray.forEach((ctrl: any) => {
       if(ctrl == event.target.value) {
         // Remove the unselected element from the arrayForm
@@ -53,7 +54,11 @@ export class CheckboxComponent implements OnChanges {
   }
   
     this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(this.formArray);
-    this.question.answer = this.formArray;
+    //this.question.answer = this.formArray;
+    
+    
+    this.question.questionLevel1Id = event.target.value;
+    this.question.questionLevel2Id = null;
     this.changeEvent1.emit(this.question);
   }
 }

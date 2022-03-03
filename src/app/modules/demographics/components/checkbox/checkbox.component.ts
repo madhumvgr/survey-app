@@ -12,7 +12,7 @@ export class CheckboxComponent implements OnChanges {
   parentForm!: FormGroup;
   childFormGroup!: FormGroup;
   onlyOnce = false;
-  formArray: any[] = [];
+  formArray:  number[] = [];
   
   @Input() question!: Question;
   @Output()

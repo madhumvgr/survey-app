@@ -14,7 +14,7 @@
         <div class="top-left">{{row?.text}}</div>
         <div class="top-right">
             <ng-container *ngFor="let column of question?.column;let j=index">
-                <input *ngIf="j<=6" (change)="changeEvent(column?.value,column?.seqNo)"
+                <input *ngIf="j<=6" (change)="changeEvent(row?.value,column?.value)"
                 [formControlName]="question?.queNo+''+row?.value" class="form-check-input" type="radio"
                      [value]="column?.value" />
             </ng-container>

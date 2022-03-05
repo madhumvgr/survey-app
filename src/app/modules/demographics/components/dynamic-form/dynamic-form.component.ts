@@ -43,9 +43,9 @@ export class DynamicFormComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
-    this.questionaireService.list().subscribe(response => {
-      this.questionList = response;
-    });
+    // this.questionaireService.list().subscribe(response => {
+    //   this.questionList = response;
+    // });
   }
 
 

@@ -13,15 +13,11 @@ export class Question extends Resource {
   row? : any[];
   answer?: any;
   required?:any;
+  mandatory?:any;
   questionLevel1Id?:any;
   questionLevel2Id?:any;
+  selected?:[];
   }
-
-  // {
-  //   value : 3,
-  //   seqNo : 1,
-  //   text : Self,
-  //   description : null
 
 export class QuestionSerializer {
     fromJson(json: any): Question {

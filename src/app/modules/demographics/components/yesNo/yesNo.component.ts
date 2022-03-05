@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
 
 @Component({
@@ -23,9 +23,19 @@ export class YesNoComponent implements OnInit, OnChanges {
     if (!this.onlyOnce && this.question) {
       this.childFormGroup = new FormGroup({
       });
-      this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''))
+      //set selected value into childForm
+      let selected = this.question.selected;
+      let prevValue ={answer:''}
+      if(selected){
+         prevValue= selected[selected.length -1];
+      }
+      if(this.question?.mandatory && prevValue){
+        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue.answer,Validators.required));
+      }else{
+        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue.answer));
+      }
       this.parentForm.addControl(''+this.question?.queNo,this.childFormGroup);
-      this.onlyOnce = true;
+      this.onlyOnce = true;      
     }
   }
 

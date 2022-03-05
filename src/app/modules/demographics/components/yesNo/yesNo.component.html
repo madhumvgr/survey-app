@@ -16,9 +16,8 @@
                    value="N" />
             </div>
         </div>
-        {{this.childFormGroup.get(''+this.question?.queNo)?.errors?.requried}}
-        <!-- <span class="danger" *ngIf="this.childFormGroup.get(this.question?.queNo).errors?.requried">
+        <span class="danger" *ngIf="yesNoFormControl.errors?.required">
             Please select the field. 
-        </span> -->
+        </span> 
     </div>
 </ng-container>

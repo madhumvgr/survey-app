@@ -68,7 +68,7 @@ export class DynamicFormComponent implements OnInit,OnChanges {
     obj ['queType'] =question.queType;
     obj ['questionLevel1Id'] = question.questionLevel1Id;
     obj ['questionLevel2Id'] = question.questionLevel2Id;
-    obj ['answer'] = question.answer;
+    obj ['answer'] = question?.answer;
     obj ['memberNo'] = this.memberNo;
     obj ['maxLevel'] = question.maxLevel;
 
@@ -94,6 +94,7 @@ export class DynamicFormComponent implements OnInit,OnChanges {
   }
 
   markComplete(){
-    this.markCompleteEvent.emit(null);
+    console.log(this.parentForm);
+   // this.markCompleteEvent.emit(null);
   }
 }

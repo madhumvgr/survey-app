@@ -29,10 +29,10 @@ export class YesNoComponent implements OnInit, OnChanges {
       if(selected){
          prevValue= selected[selected.length -1];
       }
-      if(this.question?.mandatory && prevValue){
-        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue.answer,Validators.required));
+      if(this.question?.mandatory){
+        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue? prevValue?.answer: '',Validators.required));
       }else{
-        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue.answer));
+        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''));
       }
       this.parentForm.addControl(''+this.question?.queNo,this.childFormGroup);
       this.onlyOnce = true;      
@@ -41,6 +41,11 @@ export class YesNoComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
   }
+
+  get yesNoFormControl() {
+    return this.childFormGroup.controls[''+this.question?.queNo];
+  }
+
 
   changeEvent(value: any) {
     this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(value);

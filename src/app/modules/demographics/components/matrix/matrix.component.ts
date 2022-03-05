@@ -23,33 +23,24 @@ export class MatrixComponent implements OnChanges {
       });
       //set selected value into childForm
       let selected = this.question.selected;
-      let prevValue = { rowValue: '' }
+      let prevValue = { rowValue: '', colValue:'' }
       if (selected) {
         prevValue = selected[selected.length - 1];
       }
-
-//       0: {value: 148, seqNo: 1, text: 'Children’s clothing', description: null}
-// 1: {value: 149, seqNo: 2, text: 'Men’s clothing', description: null}
-// 2: {value: 150, seqNo: 3, text: 'Women’s clothing', description: null}
-// 3: {value: 151, seqNo: 4, text: 'Cosmetics & fragrances', description: null}
-// 4: {value: 152, seqNo: 5, text: 'Sporting goods', description: null}
-
       if(this.question?.row){
         let rows = this.question.row;
         rows.forEach( row =>{
           if (this.question?.mandatory && prevValue) {
-            this.childFormGroup.addControl('' + this.question?.queNo+row.value, new FormControl(prevValue?.rowValue, Validators.required));
+            this.childFormGroup.addControl('' + this.question?.queNo+row.value, new FormControl(prevValue?.colValue, Validators.required));
           } else {
-            if (prevValue && prevValue.rowValue)
-              this.childFormGroup.addControl('' + this.question?.queNo+row.value, new FormControl(prevValue?.rowValue));
+            if (prevValue && prevValue.colValue)
+              this.childFormGroup.addControl('' + this.question?.queNo+row.value, new FormControl(prevValue?.colValue));
             else {
               this.childFormGroup.addControl('' + this.question?.queNo+row.value, new FormControl(''))
             }
           }
         } );
-       
       }
-     
       // this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''))
       this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
       this.onlyOnce = true;
@@ -61,7 +52,6 @@ export class MatrixComponent implements OnChanges {
     this.question.answer = "Y";
     this.question.questionLevel1Id = colSeq;
     this.question.questionLevel2Id = value;
-    console.log(this.question);
     this.changeEvent1.emit(this.question);
   }
 }

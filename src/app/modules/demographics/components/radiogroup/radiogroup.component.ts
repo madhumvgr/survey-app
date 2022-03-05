@@ -31,19 +31,18 @@ export class RadiogroupComponent implements OnChanges {
       if(selected){
          prevValue= selected[selected.length -1];
       }
-      if (this.question?.mandatory && prevValue) {
-        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue?.rowValue, Validators.required));
+      if (this.question?.mandatory) {
+        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue?prevValue?.rowValue:'', Validators.required));
       } else {
-        if (prevValue && prevValue.rowValue)
-          this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue?.rowValue));
-        else {
-          this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''))
-        }
+          this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''));
       }
       this.parentForm.addControl(''+this.question?.queNo,this.childFormGroup);
-      //this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''));
       this.onlyOnce = true;
     }
+  }
+
+  get radioFormControl() {
+    return this.childFormGroup.controls[''+this.question?.queNo];
   }
 
   changeEvent(value: any,event:any) {

@@ -1,7 +1,7 @@
 <br />
 <ng-container>
     <h3>{{question?.queId}}.{{ question?.title}}</h3>
-    <div [formGroup]="childFormGroup" class="container">
+    <div class="container">
         <div class="top-left"></div>
         <div class="top-right">
             <ng-container *ngFor="let column of question?.column; let i = index">
@@ -9,13 +9,13 @@
             </ng-container>
         </div>
     </div>
-    <div class="container" *ngFor="let row of question?.row;let i=index"
+    <div [formGroup]="childFormGroup"  class="container" *ngFor="let row of question?.row;let i=index"
         [style.background-color]="i%2 == 1 ? '#888' : ''">
-        <div class="top-left">{{row | json}}</div>
+        <div class="top-left">{{row?.text}}</div>
         <div class="top-right">
             <ng-container *ngFor="let column of question?.column;let j=index">
                 <input *ngIf="j<=6" (change)="changeEvent(column?.value,column?.seqNo)"
-                [formControlName]="question?.queNo+row?.value || ''" class="form-check-input" type="radio"
+                [formControlName]="question?.queNo+''+row?.value" class="form-check-input" type="radio"
                      [value]="column?.value" />
             </ng-container>
         </div>

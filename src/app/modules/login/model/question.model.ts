@@ -10,13 +10,13 @@ export class Question extends Resource {
   title? : string;
   description? : string;
   column? : any[];
-  row? : any[];
+  row? : any[] = [];
   answer?: any;
   required?:any;
   mandatory?:any;
   questionLevel1Id?:any;
   questionLevel2Id?:any;
-  selected?:[];
+  selected?:any[] =[];
   }
 
 export class QuestionSerializer {

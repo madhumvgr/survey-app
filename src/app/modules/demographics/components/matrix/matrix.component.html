@@ -4,8 +4,8 @@
     <div class="container">
         <div class="top-left"></div>
         <div class="top-right">
-            <ng-container *ngFor="let column of question?.column; let i = index">
-                <div *ngIf="i<=6" class="flex-item">{{column?.text}}</div>
+            <ng-container *ngFor="let column of cols; let i = index">
+                <div class="flex-item">{{column?.text}}</div>
             </ng-container>
         </div>
     </div>
@@ -13,8 +13,8 @@
         [style.background-color]="i%2 == 1 ? '#888' : ''">
         <div class="top-left">{{row?.text}}</div>
         <div class="top-right">
-            <ng-container *ngFor="let column of question?.column;let j=index">
-                <input *ngIf="j<=6" (change)="changeEvent(row?.value,column?.value)"
+            <ng-container *ngFor="let column of cols;let j=index">
+                <input (change)="changeEvent(row?.value,column?.value)"
                 [formControlName]="question?.queNo+''+row?.value" class="form-check-input" type="radio"
                      [value]="column?.value" />
             </ng-container>

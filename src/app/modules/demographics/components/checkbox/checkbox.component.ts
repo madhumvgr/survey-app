@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
 @Component({
 
@@ -17,35 +17,83 @@ export class CheckboxComponent implements OnChanges {
   @Input() question!: Question;
   @Output()
   public changeEvent1 = new EventEmitter();
-  constructor() { }
+  orderControl1: any[] = [];
+  constructor(public fb: FormBuilder) {
 
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.onlyOnce && this.question) {
-      this.childFormGroup = new FormGroup({
-      });
-      let selected = this.question.selected;
-      let prevValue ={rowValue:''}
-      if(selected){
-         prevValue= selected[selected.length -1];
-      }
-      if (this.question?.mandatory && prevValue) {
-        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue?.rowValue, Validators.required));
-      } else {
-        if (prevValue && prevValue.rowValue)
-          this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue?.rowValue));
-        else {
-          this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''))
-        }
-      }
-      this.parentForm.addControl(''+this.question?.queNo,this.childFormGroup);
-      //this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''));
-      this.onlyOnce = true;
-    }
   }
 
-  changeEvent(value:any, event: any) {
+  ngOnChanges(changes: SimpleChanges): void {
 
+    if (!this.onlyOnce && this.question) {
+      let selected = this.question.selected;
+      {
+        //   this.question.selected.forEach((option: any) => {
+        //     checkboxes.addControl(option.row, new FormControl(true));
+        //   });
+        // }
+      }
+      if (this.question.row) {
+        const controlArray = this.question.row.map(c => new FormControl(c.value));
+        if (this.question.selected) {
+          this.question.selected.forEach ( sel => {
+            console.log(sel);
+            controlArray.forEach (  control => {
+              if(sel.rowValue !==  control.value){
+                control.setValue(false);
+              }
+            })
+          })
+        }
+        this.childFormGroup = this.fb.group({
+          checkboxes: this.fb.array(controlArray)
+        })
+      }
+    }
+
+    // const checkboxes = <FormGroup>this.childFormGroup.get('checkboxes');
+    // if (this.question.selected) {
+    //   this.question.selected.forEach((option: any) => {
+    //     checkboxes.addControl(option.row, new FormControl(true));
+    //   });
+    // }
+
+    // let selected = this.question.selected;
+
+    // let prevValue = { rowValue: '' }
+    // if (selected) {
+    //   prevValue = selected[selected.length - 1];
+    // }
+    // if (this.question?.mandatory && prevValue) {
+    //   if (this.childFormGroup.get('checkboxes')) {
+    //     this.childFormGroup.get('checkboxes')?.setValue([prevValue.rowValue]);
+    //   }
+    //   this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue?.rowValue, Validators.required));
+    // } else {
+    //   if (prevValue && prevValue.rowValue)
+    //     this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue?.rowValue));
+    //   else {
+    //     this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''))
+    //   }
+    // }
+    this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
+    //this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''));
+    this.onlyOnce = true;
+
+  }
+  get orderControl() {
+    if (this.childFormGroup?.get('checkboxes')) {
+      return (this.childFormGroup?.get('checkboxes') as FormArray).controls;
+    }
+    return [];
+  }
+
+  changeEvent(event: any) {
+
+    // const selectedOrderIds = this.childFormGroup.value.orders
+    //   .map((v: any, i: number) => v ? this.orders[i].id : null)
+    //   .filter((v: null) => v !== null);
+
+    // console.log(selectedOrderIds);
     /* Selected */
     if (event.target.checked) {
       // Add a new control in the arrayForm
@@ -68,7 +116,7 @@ export class CheckboxComponent implements OnChanges {
     }
     this.parentForm.get('' + this.question?.queNo)?.get('' + this.question.queNo)?.setValue('Y');
     //this.question.answer = this.formArray;
-    this.question.questionLevel1Id = event.target.value;
+    this.question.questionLevel1Id = parseInt(event.target.value);
     this.question.questionLevel2Id = null;
     this.changeEvent1.emit(this.question);
   }

@@ -1,12 +1,31 @@
-
 <br />
-<ng-container>
+<!-- <ng-container [formGroup]="childFormGroup">
     <h3>{{question?.queId}}.{{ question?.title}}</h3>
-    <div [formGroup]="childFormGroup" class="container" *ngFor="let row of question?.row;let i=index"  [style.background-color]="i%2 == 1 ? '#888' : ''">
+    <div  class="container" formArrayName="checkArray" *ngFor="let row of question?.row;let i=index"  [style.background-color]="i%2 == 1 ? '#888' : ''">
         <div class="top-left">{{row?.text}}</div>
         <div class="top-right">
-            <input (change)="changeEvent(row?.value,$event)" [formControlName]="question?.queNo || ''" class="form-check-input"
-            type="checkbox" [id]="question?.queNo" [name]="question?.queNo || ''" [value]="row?.value">
+            <input type="checkbox" [value]="row?.value" [formControlName]="row?.value"  (change)="changeEvent($event)"  class="form-check-input"/>
+            < <input (change)="changeEvent($event)" [formControlName]="question?.queNo || ''" class="form-check-input"
+            type="checkbox" [id]="question?.queNo" [name]="question?.queNo || ''" [value]="row?.value"> -->
+<!-- </div> -->
+
+<!-- <div *ngFor="let data of Data; let i=index"> -->
+<!-- <label> -->
+
+<!-- {{data.name}} -->
+<!-- </label> -->
+<!-- </div> -->
+
+<!-- </div> -->
+<!-- </ng-container> -->
+
+<form [formGroup]="childFormGroup">
+    <h3>{{question?.queId}}.{{ question?.title}}</h3>
+    <div class="container" formArrayName="checkboxes" *ngFor="let row  of question?.row; let i = index"
+        [style.background-color]="i%2 == 1 ? '#888' : ''">
+        <div class="top-left">{{row?.text}}</div>
+        <div class="top-right">
+            <input type="checkbox" [formControlName]="i" class="form-check-input">
         </div>
     </div>
-</ng-container>
+</form>

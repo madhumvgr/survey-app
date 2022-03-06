@@ -43,7 +43,7 @@ const routes: Routes = [
       { path: 'demographics-owner-survey', component: DemograpgicsOwnerSurveyComponent },
       { path: 'demographics-owner-terms', component: DemograpgicsOwnerTermsComponent },
       { path: 'demographics-owner-thankyou', component: DemograpgicsOwnerThankyouComponent },
-      { path: 'questionaire/:memberNo/:homeNo', component: QuestionarieComponent },
+      { path: 'questionaire/:memberNo/:homeNo/:pageNo', component: QuestionarieComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
     component: DemographicsHomeComponent

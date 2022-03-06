@@ -24,7 +24,7 @@ export class DemograpgicsIndividualMembersComponent implements OnInit {
 
   continueNavigate(memberNo:any,homeNo:any, memberName:string){
     this.localStorageService.setIndividualName(memberName);
-    this.router.navigateByUrl('/demographics/questionaire/'+memberNo+'/'+homeNo);
+    this.router.navigateByUrl('/demographics/questionaire/'+memberNo+'/'+homeNo+'/1');
   }
 
 }

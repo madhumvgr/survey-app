@@ -25,7 +25,7 @@ export class MatrixComponent implements OnChanges {
       let selected = this.question.selected;
       let prevValue = { rowValue: '', colValue:'' }
       if (selected) {
-        prevValue = selected[selected.length - 1];
+        prevValue = selected[selected.length-1];
       }
       if(this.question?.row){
         let rows = this.question.row;
@@ -50,8 +50,8 @@ export class MatrixComponent implements OnChanges {
   changeEvent(value: any, colSeq: any) {
     this.parentForm.get('' + this.question?.queNo)?.get('' + this.question.queNo)?.setValue(value);
     this.question.answer = "Y";
-    this.question.questionLevel1Id = colSeq;
-    this.question.questionLevel2Id = value;
+    this.question.questionLevel1Id = value;
+    this.question.questionLevel2Id = colSeq;
     this.changeEvent1.emit(this.question);
   }
 }

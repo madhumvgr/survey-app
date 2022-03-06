@@ -27,7 +27,7 @@ export class MatrixComponent implements OnChanges {
       let selected = this.question.selected;
       let prevValue = { rowValue: '', colValue: '' }
       if (selected) {
-        prevValue = selected[selected.length - selected.length];
+        prevValue = selected[selected.length-1];
       }
       if (this.question?.row) {
         let rows = this.question.row;

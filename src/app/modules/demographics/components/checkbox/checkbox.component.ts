@@ -25,31 +25,22 @@ export class CheckboxComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
 
     if (!this.onlyOnce && this.question) {
-      let selected = this.question.selected;
-      {
-        //   this.question.selected.forEach((option: any) => {
-        //     checkboxes.addControl(option.row, new FormControl(true));
-        //   });
-        // }
-      }
+     // let selected = this.question.selected;
       if (this.question.row) {
-        const controlArray = this.question.row.map(c => new FormControl(c.value));
-        if (this.question.selected) {
-          this.question.selected.forEach ( sel => {
-            console.log(sel);
-            controlArray.forEach (  control => {
-              if(sel.rowValue !==  control.value){
-                control.setValue(false);
-              }
-            })
-          })
-        }
+        const controlArray = this.question.row.map(c => {
+          let isMatch = false
+          if (this.question.selected) {
+            this.question.selected.forEach(sel => {
+              if (sel.rowValue === c.value) isMatch = true;
+            });
+          }
+          return new FormControl(isMatch);
+        });
         this.childFormGroup = this.fb.group({
           checkboxes: this.fb.array(controlArray)
         })
       }
     }
-
     // const checkboxes = <FormGroup>this.childFormGroup.get('checkboxes');
     // if (this.question.selected) {
     //   this.question.selected.forEach((option: any) => {

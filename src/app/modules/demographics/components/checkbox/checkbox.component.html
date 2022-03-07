@@ -25,7 +25,7 @@
         [style.background-color]="i%2 == 1 ? '#888' : ''">
         <div class="top-left">{{row?.text}}</div>
         <div class="top-right">
-            <input type="checkbox" [formControlName]="i" class="form-check-input">
+            <input type="checkbox" [formControlName]="i" class="form-check-input" (change)="changeEvent($event)" >
         </div>
     </div>
 </form>

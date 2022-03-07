@@ -24,14 +24,17 @@ export class MatrixComponent implements OnChanges {
       this.childFormGroup = new FormGroup({
       });
       //set selected value into childForm
-      let selected = this.question.selected;
+      // let selected = this.question.selected;
       let prevValue = { rowValue: '', colValue: '' }
-      if (selected) {
-        prevValue = selected[selected.length-1];
-      }
-      if (this.question?.row) {
+      // if (selected) {
+      //   prevValue = selected[selected.length-1];
+      // }
+      if (this.question?.row && this.question.selected) {
         let rows = this.question.row;
         rows.forEach(row => {
+          // getprevious value for the row. 
+          prevValue = this.getPrevSelectedValue(this.question.selected, row.value);
+          console.log(prevValue);
           if (this.question?.mandatory && prevValue) {
             this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
           } else {
@@ -44,11 +47,16 @@ export class MatrixComponent implements OnChanges {
         });
       }
       var groupedCols = this.groupBy(this.question.column);
-      if (groupedCols){
-       this.cols= groupedCols[Object.keys(groupedCols)[0]]; 
+      if (groupedCols) {
+        this.cols = groupedCols[Object.keys(groupedCols)[0]];
       }
       this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
       this.onlyOnce = true;
+    }
+  }
+  getPrevSelectedValue(selected: any[] | undefined, value: any) {
+    if (selected) {
+      return selected.find(sel => sel.rowValue === value);
     }
   }
 

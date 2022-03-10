@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/modules/login/model/question.model';
 import { QuestionaireService } from '../../quersionarie.service';
+import { BaseComponent } from 'src/app/shared/util/base.util';
 import {
   FormControl,
   FormGroup,
@@ -10,12 +11,13 @@ import {
   Validators
 } from '@angular/forms';
 import { QuestionConstants } from 'src/app/shared/models/url-constants';
+import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.css']
 })
-export class DynamicFormComponent implements OnInit,OnChanges {
+export class DynamicFormComponent extends BaseComponent implements OnInit,OnChanges,AfterViewInit {
 
   @Input() homeNo:any;
   @Input() memberNo:any;
@@ -26,56 +28,18 @@ export class DynamicFormComponent implements OnInit,OnChanges {
   markCompleteEvent = new  EventEmitter();
   config: any;
   parentForm!: FormGroup;
-
-  // collection = { count: 60, data: [{id:0,value:''}] };
-  // config1 = {
-  //   id: 'custom',
-  //   itemsPerPage: 5,
-  //   currentPage: 1,
-  //   totalItems: this.collection.count
-  // };
-
-  // public maxSize: number = 7;
-  // public directionLinks: boolean = true;
-  // public autoHide: boolean = false;
-  // public responsive: boolean = true;
-  // public labels: any = {
-  //     previousLabel: '<--',
-  //     nextLabel: '-->',
-  //     screenReaderPaginationLabel: 'Pagination',
-  //     screenReaderPageLabel: 'page',
-  //     screenReaderCurrentLabel: `You're on page`
-  // };
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
+  
   constructor(public questionaireService: QuestionaireService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder) {
+      super();
     this.config = {
       currentPage: 1,
       itemsPerPage: 2
     };
 
     this.config.currentPage = this.route.snapshot.params['pageNo'];
-  
-
-    // let currentPage = localStorage.getItem('currentPage');
-    // this.config = {
-    //     currentPage: currentPage ? currentPage : 1 ,
-    //     itemsPerPage: 2
-    // };
-
-    // this.route.queryParams.subscribe(params => {
-    //   this.config.currentPage = params['page'];
-    // });
-
-    
-    // //Create dummy data
-    // for (var i = 0; i < this.collection.count; i++) {
-    //   this.collection.data.push(
-    //     {
-    //       id: i + 1,
-    //       value: "items number " + (i + 1)
-    //     }
-    //   );
-    // }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -83,9 +47,11 @@ export class DynamicFormComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
-    // this.questionaireService.list().subscribe(response => {
-    //   this.questionList = response;
-    // });
+  }
+
+  
+  ngAfterViewInit() {
+    super.afterViewInit(this.modalComponent);
   }
 
 
@@ -131,5 +97,20 @@ export class DynamicFormComponent implements OnInit,OnChanges {
 
   markComplete(){
     this.markCompleteEvent.emit(null);
+  }
+
+  cancelEvent(isBackAction: boolean) {
+    console.log(isBackAction);
+  }
+  exitEvent(isBackAction: boolean) {
+    this.markComplete();
+    // if (this.isTvGenere) {
+    //   const message = "You have successfully submitted information to us";
+    //   this.router.navigate(['television/thankyou'], { state: { message: message } });
+    // } else {
+    //   const message = "You have successfully submitted " + this.deviceName + " device information to us";
+    //   this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
+
+    // }
   }
 }

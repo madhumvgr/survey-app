@@ -51,8 +51,13 @@
                             <h3 class="text-truncate"><!-- Name of the household memeber -->{{member?.memberName}}</h3>
                             <p class="text-truncate">Status: <span>{{member?.memberSurveyStatus}}</span></p>   
                         </div>
-                        <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">Start</button>
-                    </div>
+                        <div *ngIf="member?.memberSurveyStatus === 'Not Started'">
+                            <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">Start</button>
+                        </div>
+                        <div *ngIf="member?.memberSurveyStatus === 'In Progress'">
+                            <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">Continue</button>
+                        </div>
+                          </div>
 
                 </div><!--end Col-->
             </div><!--end Row-->

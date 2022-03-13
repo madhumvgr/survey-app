@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-matrix-two-level',
@@ -15,11 +16,18 @@ export class MatrixTwoLevelComponent implements OnChanges {
   @Input() question!: Question;
 
   cols: Column[] = [];
-  constructor() { }
+  isFrance: any = false;
+  constructor(  private localStorageService:LocalStorageService) { }
   @Output()
   public changeEvent1 = new EventEmitter();
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
+    var groupedCols = this.groupBy(this.question.column);
+      if (groupedCols) {
+        this.cols = groupedCols[Object.keys(groupedCols)[0]];
+      }
+
     if (!this.onlyOnce && this.question) {
       this.childFormGroup = new FormGroup({
       });
@@ -34,23 +42,21 @@ export class MatrixTwoLevelComponent implements OnChanges {
         rows.forEach(row => {
           // getprevious value for the row. 
           prevValue = this.getPrevSelectedValue(this.question.selected, row.value);
-          console.log(prevValue);
-          if (this.question?.mandatory && prevValue) {
-            this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
-          } else {
-            if (prevValue && prevValue.colValue)
-              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue));
-            else {
-              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(''))
+          this.cols.forEach ( col => {
+            if (this.question?.mandatory && prevValue) {
+              this.childFormGroup.addControl('' + this.question?.queId + col.value, new FormControl(prevValue?.colValue, Validators.required));
+            } else {
+              if (prevValue && prevValue.colValue)
+                this.childFormGroup.addControl('' + this.question?.queId + col.value, new FormControl(prevValue?.colValue));
+              else {
+                this.childFormGroup.addControl('' + this.question?.queId + col.value, new FormControl(''))
+              }
             }
-          }
+          });
         });
       }
-      var groupedCols = this.groupBy(this.question.column);
-      if (groupedCols) {
-        this.cols = groupedCols[Object.keys(groupedCols)[0]];
-      }
-      this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
+      
+      this.parentForm.addControl('' + this.question?.queId, this.childFormGroup);
       this.onlyOnce = true;
     }
   }
@@ -72,7 +78,7 @@ export class MatrixTwoLevelComponent implements OnChanges {
   }
 
   changeEvent(value: any, colSeq: any) {
-    this.parentForm.get('' + this.question?.queNo)?.get('' + this.question.queNo)?.setValue(value);
+    this.parentForm.get('' + this.question?.queId)?.get('' + this.question.queId)?.setValue(value);
     this.question.answer = "Y";
     this.question.questionLevel1Id = value;
     this.question.questionLevel2Id = colSeq;

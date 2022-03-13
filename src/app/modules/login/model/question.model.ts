@@ -17,6 +17,7 @@ export class Question extends Resource {
   questionLevel1Id?:any;
   questionLevel2Id?:any;
   selected?:any[] =[];
+  frTitle?: string;
   }
 
 export class QuestionSerializer {

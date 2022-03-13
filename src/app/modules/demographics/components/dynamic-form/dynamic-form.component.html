@@ -1,4 +1,3 @@
-TWOOOOOO LEVELllll
 <div [formGroup]="parentForm" class="shadow-sm rounded bg-white p-4 mb-4">
     <div *ngFor="let question of questionList | paginate: config">
         <ng-contaner [ngSwitch]="question.queType">
@@ -8,8 +7,14 @@ TWOOOOOO LEVELllll
             </div>
             <div *ngSwitchCase="'RB'">
                 <ng-container *ngIf="houseHold else nonHouseHold">
-                    <app-matrix-two-level [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question">
-                    </app-matrix-two-level>
+                    <ng-container *ngIf="question?.column && question?.column?.length > 0 else radio">
+                        <app-matrix-two-level [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question">
+                        </app-matrix-two-level>
+                    </ng-container>
+                    <ng-template #radio>
+                        <app-radiogroup [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
+                            [question]="question"></app-radiogroup>
+                    </ng-template>               
                 </ng-container>
                 <ng-template #nonHouseHold>
                     <ng-container *ngIf="question?.column && question?.column?.length > 0 else radio">

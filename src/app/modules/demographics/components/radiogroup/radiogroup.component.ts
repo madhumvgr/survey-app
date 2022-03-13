@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-radiogroup',
@@ -13,15 +14,16 @@ export class RadiogroupComponent implements OnChanges {
   parentForm!: FormGroup;
   childFormGroup!: FormGroup;
   onlyOnce = false;
-
+  isFrance: any = false;
   @Input() question!: Question ;
-  constructor() { }
+  constructor(  private localStorageService:LocalStorageService) { }
   @Output()
   public changeEvent1 = new EventEmitter();
   ngOnInit(): void {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     if (!this.onlyOnce && this.question) {
       this.childFormGroup = new FormGroup({
       });

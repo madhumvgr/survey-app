@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-yesNo',
@@ -16,10 +17,11 @@ export class YesNoComponent implements OnInit, OnChanges {
   @Input() question: Question = new Question();
   @Output()
   public changeEvent1 = new EventEmitter();
- 
-  constructor() { }
+  isFrance: any = false;
+  constructor(  private localStorageService:LocalStorageService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     if (!this.onlyOnce && this.question) {
       this.childFormGroup = new FormGroup({
       });

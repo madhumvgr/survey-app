@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 @Component({
 
   selector: 'app-checkbox',
@@ -18,12 +19,11 @@ export class CheckboxComponent implements OnChanges {
   @Output()
   public changeEvent1 = new EventEmitter();
   orderControl1: any[] = [];
-  constructor(public fb: FormBuilder) {
-
-  }
+  isFrance: any = false;
+  constructor(  private localStorageService:LocalStorageService,public fb: FormBuilder) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-
+    this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     if (!this.onlyOnce && this.question) {
      // let selected = this.question.selected;
       if (this.question.row) {

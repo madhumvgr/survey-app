@@ -10,18 +10,18 @@ import { QuestionaireService } from '../../quersionarie.service';
   styleUrls: ['./demograpgics-owner.component.css']
 })
 export class DemograpgicsOwnerComponent implements OnInit {
-  memberList: any[]= [];
+  member: any;
   constructor(public questionaireService: QuestionaireService,  private localStorageService: LocalStorageService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.questionaireService.customRead(QuestionConstants.memberHouseHoldList).subscribe( list => {
-      this.memberList = list;
+      this.member = list;
+      this.localStorageService.setIndividualName(this.member.memberName);
     })
   }
 
   continueNavigate(memberNo:any,homeNo:any, memberName:string){
-    this.localStorageService.setIndividualName(memberName);
     this.router.navigateByUrl('/demographics/questionaire/'+memberNo+'/'+homeNo+'/1');
   }
 }

@@ -23,6 +23,7 @@ export class QuestionarieComponent implements OnInit {
   homeNo: any;
   memberNo: any;
   memberName: any;
+  houseHold: boolean = false;
   constructor(public questionaireService: QuestionaireService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
     this.config = {
@@ -36,18 +37,32 @@ export class QuestionarieComponent implements OnInit {
     });
     this.memberNo = this.route.snapshot.params['memberNo'];
     this.homeNo = this.route.snapshot.params['homeNo'];
+    this.houseHold = this.route.snapshot.params['houseHold'];
+    
   }
 
   ngOnInit(): void {
-    this.questionaireService.list().subscribe(response => {
-      this.questionList = response;
-    });
+
+    if (this.houseHold) {
+      this.questionaireService.customRead(QuestionConstants.houseHoldQuestions).subscribe(list => {
+        this.questionList = list;
+      })
+    } else {
+      this.questionaireService.list().subscribe(response => {
+        this.questionList = response;
+      });
+    }
   }
-  
-  markCompleteEvent(event:any){
-    this.questionaireService.customCreate({},QuestionConstants.markSurveyCompleted+this.memberNo).subscribe ( result => {
-      console.log(result);
-      this.router.navigate(['/account-settings/thankyou/questionarie'],{state: {message: "You have successfully submitted Individual House member survey. "}});
-    });
+
+  markCompleteEvent(event: any) {
+    if(this.houseHold){
+      this.questionaireService.customCreate({}, QuestionConstants.markHouseHold + this.memberNo).subscribe(result => {
+        this.router.navigate(['/account-settings/thankyou/questionarie'], { state: { message: "You have successfully submitted Individual House member survey. " } });
+      });
+    }else{
+      this.questionaireService.customCreate({}, QuestionConstants.markSurveyCompleted + this.memberNo).subscribe(result => {
+        this.router.navigate(['/account-settings/thankyou/questionarie'], { state: { message: "You have successfully submitted Individual House member survey. " } });
+      });
+    }
   }
 }

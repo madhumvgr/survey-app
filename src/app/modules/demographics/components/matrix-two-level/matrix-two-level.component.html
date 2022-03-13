@@ -1,0 +1,23 @@
+<br />
+<ng-container>
+    <h3>{{question?.queId}}.{{ question?.title}}</h3>
+    <div class="container">
+        <div class="top-left"></div>
+        <div class="top-right">
+            <ng-container *ngFor="let column of cols; let i = index">
+                <div class="flex-item">{{column?.text}}</div>
+            </ng-container>
+        </div>
+    </div>
+    <div [formGroup]="childFormGroup"  class="container" *ngFor="let row of question?.row;let i=index"
+        [style.background-color]="i%2 == 1 ? '#888' : ''">
+        <div class="top-left">{{row?.text}}</div>
+        <div class="top-right">
+            <ng-container *ngFor="let column of cols;let j=index">
+                <input (change)="changeEvent(row?.value,column?.value)"
+                [formControlName]="question?.queNo+''+row?.value" class="form-check-input" type="radio"
+                     [value]="column?.value" />
+            </ng-container>
+        </div>
+    </div>
+</ng-container>

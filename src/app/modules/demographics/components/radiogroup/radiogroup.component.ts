@@ -31,22 +31,40 @@ export class RadiogroupComponent implements OnChanges {
       if(selected){
          prevValue= selected[selected.length -1];
       }
-      if (this.question?.mandatory) {
-        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue?prevValue?.rowValue:'', Validators.required));
-      } else {
-          this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''));
+      let questionNo;
+      if(this.question?.queNo){
+        questionNo= this.question?.queNo;
+      }else{
+        questionNo= this.question?.queId;
       }
-      this.parentForm.addControl(''+this.question?.queNo,this.childFormGroup);
+      if (this.question?.mandatory) {
+        this.childFormGroup.addControl('' +questionNo , new FormControl(prevValue?prevValue?.rowValue:'', Validators.required));
+      } else {
+          this.childFormGroup.addControl('' + questionNo, new FormControl(''));
+      }
+      this.parentForm.addControl(''+questionNo,this.childFormGroup);
       this.onlyOnce = true;
     }
   }
 
   get radioFormControl() {
-    return this.childFormGroup.controls[''+this.question?.queNo];
+    let questionNo;
+    if(this.question?.queNo){
+      questionNo= this.question?.queNo;
+    }else{
+      questionNo= this.question?.queId;
+    }
+    return this.childFormGroup.controls[''+questionNo];
   }
 
   changeEvent(value: any,event:any) {
-    this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(value);
+    let questionNo;
+    if(this.question?.queNo){
+      questionNo= this.question?.queNo;
+    }else{
+      questionNo= this.question?.queId;
+    }
+    this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
     //console.log( event.target.checked);
     this.question.answer ="Y";
     this.question.questionLevel1Id = value;

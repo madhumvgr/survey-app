@@ -17,7 +17,6 @@ export class DemograpgicsIndividualMembersComponent implements OnInit {
 
   ngOnInit(): void {
     this.questionaireService.customRead(QuestionConstants.memberIndividualList).subscribe( list => {
-      console.log(list);
       this.memberList = list;
     })
   }

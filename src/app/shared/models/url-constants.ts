@@ -62,4 +62,16 @@ export class QuestionConstants {
     public static answers ="api/survey-answers";
     public static memberIndividualList = "api/memberListOfDemoSurvey";
     public static markSurveyCompleted = "api/survey-answers-completed/";
+
+    // public static questionaire ="api/survey-questions-individual";
+    // public static answers ="api/survey-answers";
+    public static houseHoldQuestions = "api/survey-questions-household";
+    public static houseHoldAnswers = "api/household-survey-answers";
+    public static memberHouseHoldList = "api/memberListOfDemoSurvey";
+    public static markHouseHold = "api/household-survey-answers-completed";
+
+    //public static memberHouseHoldList = "api/householdStatusOfDemoSurvey";
+//    survey-questions-household
+
+    // public static markSurveyCompleted = "api/survey-answers-completed/";
 }

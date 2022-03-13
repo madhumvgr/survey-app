@@ -22,6 +22,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
   @Input() homeNo:any;
   @Input() memberNo:any;
   @Input() memberName:any;
+  @Input() houseHold:any;
   @Input()
   questionList: Question[] = [];
   @Output()
@@ -58,9 +59,16 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
   pageChange(newPage: any) {
     this.config.currentPage = newPage;
     //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
-    this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo+'/'+newPage]).then(() => {
-      window.location.reload();
-    });
+    if(this.houseHold){
+      this.router.navigate(['/demographics/questionaire/true/'+newPage]).then(() => {
+        window.location.reload();
+      });
+    }else{
+      this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo+'/'+newPage]).then(() => {
+        window.location.reload();
+      });
+    }
+   
     
     //  localStorage.setItem('currentPage', newPage);
     //this.config.currentPage = newPage;
@@ -85,9 +93,15 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
     obj ['memberNo'] = this.memberNo;
     obj ['maxLevel'] = question.maxLevel;
 
-    this.questionaireService.customCreate(obj,QuestionConstants.answers).subscribe( data => {
-      console.log(data);
-    })
+    if(this.houseHold){
+      this.questionaireService.customCreate(obj,QuestionConstants.houseHoldAnswers).subscribe( data => {
+        console.log(data);
+      });
+    }else{
+      this.questionaireService.customCreate(obj,QuestionConstants.answers).subscribe( data => {
+        console.log(data);
+      });
+    }
   }
 
   toFormGroup(questions: any[] ) {

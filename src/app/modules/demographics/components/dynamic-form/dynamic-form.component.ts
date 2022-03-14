@@ -117,14 +117,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
     console.log(isBackAction);
   }
   exitEvent(isBackAction: boolean) {
-    this.markComplete();
-    // if (this.isTvGenere) {
-    //   const message = "You have successfully submitted information to us";
-    //   this.router.navigate(['television/thankyou'], { state: { message: message } });
-    // } else {
-    //   const message = "You have successfully submitted " + this.deviceName + " device information to us";
-    //   this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
-
-    // }
+    const message = "You have successfully saved the survey";
+      this.router.navigate(['demographics/Thankyou/'], { state: { message: message } });
   }
 }

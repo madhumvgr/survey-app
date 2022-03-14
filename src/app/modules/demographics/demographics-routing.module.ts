@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ThankyouComponent } from '../account-setting/components/account-settings/thankyou/thankyou.component';
 import { DemograpgicsIndividualMembersConfirmationComponent } from './components/demograpgics-individual-members-confirmation/demograpgics-individual-members-confirmation.component';
 import { DemograpgicsIndividualMembersPage1Component } from './components/demograpgics-individual-members-page1/demograpgics-individual-members-page1.component';
 import { DemograpgicsIndividualMembersPage2Component } from './components/demograpgics-individual-members-page2/demograpgics-individual-members-page2.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'demographics-owner-thankyou', component: DemograpgicsOwnerThankyouComponent },
       { path: 'questionaire/:memberNo/:homeNo/:pageNo', component: QuestionarieComponent },
       { path: 'questionaire/:houseHold/:memberNo/:pageNo/:houseHold1', component: QuestionarieComponent },
+      { path: 'Thankyou', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
     component: DemographicsHomeComponent

@@ -16,12 +16,18 @@ export class YesNoComponent implements OnInit, OnChanges {
   onlyOnce = false;
   @Input() question: Question = new Question();
   @Input() houseHold:any;
+  questionNo: string= "0";
   @Output()
   public changeEvent1 = new EventEmitter();
   isFrance: any = false;
   constructor(  private localStorageService:LocalStorageService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if(this.houseHold){
+      this.questionNo = ""+this.question?.hhQueNo; 
+    }else{
+      this.questionNo = ""+this.question?.queNo;
+    }
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     if (!this.onlyOnce && this.question) {
       this.childFormGroup = new FormGroup({
@@ -33,11 +39,11 @@ export class YesNoComponent implements OnInit, OnChanges {
          prevValue= selected[selected.length -1];
       }
       if(this.question?.mandatory){
-        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(prevValue? prevValue?.answer: '',Validators.required));
+        this.childFormGroup.addControl(this.questionNo, new FormControl(prevValue? prevValue?.answer: '',Validators.required));
       }else{
-        this.childFormGroup.addControl('' + this.question?.queNo, new FormControl(''));
+        this.childFormGroup.addControl(this.questionNo, new FormControl(''));
       }
-      this.parentForm.addControl(''+this.question?.queNo,this.childFormGroup);
+      this.parentForm.addControl(this.questionNo,this.childFormGroup);
       this.onlyOnce = true;      
     }
   }
@@ -46,12 +52,12 @@ export class YesNoComponent implements OnInit, OnChanges {
   }
 
   get yesNoFormControl() {
-    return this.childFormGroup.controls[''+this.question?.queNo];
+    return this.childFormGroup.controls[this.questionNo];
   }
 
 
   changeEvent(value: any) {
-    this.parentForm.get(''+this.question?.queNo)?.get(''+this.question.queNo)?.setValue(value);
+    this.parentForm.get(this.questionNo)?.get(this.questionNo)?.setValue(value);
     this.question.answer = value;
     this.question.questionLevel1Id = null;
     this.question.questionLevel2Id = null;

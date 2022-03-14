@@ -16,6 +16,7 @@ export class RadiogroupComponent implements OnChanges {
   onlyOnce = false;
   isFrance: any = false;
   @Input() question!: Question ;
+  @Input() houseHold:any;
   constructor(  private localStorageService:LocalStorageService) { }
   @Output()
   public changeEvent1 = new EventEmitter();

@@ -15,6 +15,7 @@ export class YesNoComponent implements OnInit, OnChanges {
   childFormGroup!: FormGroup;
   onlyOnce = false;
   @Input() question: Question = new Question();
+  @Input() houseHold:any;
   @Output()
   public changeEvent1 = new EventEmitter();
   isFrance: any = false;

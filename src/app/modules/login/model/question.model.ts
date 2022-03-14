@@ -18,6 +18,7 @@ export class Question extends Resource {
   questionLevel2Id?:any;
   selected?:any[] =[];
   frTitle?: string;
+  hhQueNo?:boolean;
   }
 
 export class QuestionSerializer {

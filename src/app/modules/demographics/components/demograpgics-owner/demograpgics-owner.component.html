@@ -52,7 +52,7 @@
                             <h3 class="text-truncate"><!-- Name of the household memeber -->{{member?.memberName}}</h3>
                             <p class="text-truncate">Status: <span>{{member?.memberSurveyStatus}}</span></p>   
                         </div>
-                        <button [routerLink] = "['/demographics/questionaire/true/'+member.memberNo+'/1/true']" type="button" class="btn btn-light me-3">Start</button>
+                        <button [routerLink] = "['/demographics/questionaire/true/'+member?.memberNo+'/1/true']" type="button" class="btn btn-light me-3">Start</button>
                     </div>
 
                 </div><!--end Col-->

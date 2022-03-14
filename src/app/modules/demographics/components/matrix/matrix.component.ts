@@ -20,7 +20,7 @@ export class MatrixComponent implements OnChanges {
   constructor(  private localStorageService:LocalStorageService) { }
   @Output()
   public changeEvent1 = new EventEmitter();
-
+  @Input() houseHold:any;
   ngOnChanges(changes: SimpleChanges): void {
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     if (!this.onlyOnce && this.question) {

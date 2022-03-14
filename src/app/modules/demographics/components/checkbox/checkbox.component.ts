@@ -14,7 +14,7 @@ export class CheckboxComponent implements OnChanges {
   childFormGroup!: FormGroup;
   onlyOnce = false;
   formArray: number[] = [];
-
+  @Input() houseHold:any;
   @Input() question!: Question;
   @Output()
   public changeEvent1 = new EventEmitter();

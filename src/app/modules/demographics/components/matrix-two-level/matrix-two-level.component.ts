@@ -14,7 +14,7 @@ export class MatrixTwoLevelComponent implements OnChanges {
   childFormGroup!: FormGroup;
   onlyOnce = false;
   @Input() question!: Question;
-
+  @Input() questionId:any;
   cols: Column[] = [];
   isFrance: any = false;
   constructor(  private localStorageService:LocalStorageService) { }

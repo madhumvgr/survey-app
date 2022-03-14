@@ -33,7 +33,7 @@ export class MatrixTwoLevelComponent implements OnChanges {
       });
       //set selected value into childForm
       // let selected = this.question.selected;
-      let prevValue = { rowValue: '', colValue: '' }
+      let prevValue = { rowValue: '', colValue: '', answer:'' }
       // if (selected) {
       //   prevValue = selected[selected.length-1];
       // }
@@ -41,15 +41,15 @@ export class MatrixTwoLevelComponent implements OnChanges {
         let rows = this.question.row;
         rows.forEach(row => {
           // getprevious value for the row. 
-          prevValue = this.getPrevSelectedValue(this.question.selected, row.value);
           this.cols.forEach ( col => {
+            prevValue = this.getPrevSelectedValue(this.question.selected, row.value, col.value);
             if (this.question?.mandatory && prevValue) {
-              this.childFormGroup.addControl('' + this.question?.queId + col.value, new FormControl(prevValue?.colValue, Validators.required));
+              this.childFormGroup.addControl('' + this.question?.queId + row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer, Validators.required));
             } else {
               if (prevValue && prevValue.colValue)
-                this.childFormGroup.addControl('' + this.question?.queId + col.value, new FormControl(prevValue?.colValue));
+                this.childFormGroup.addControl('' + this.question?.queId +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer));
               else {
-                this.childFormGroup.addControl('' + this.question?.queId + col.value, new FormControl(''))
+                this.childFormGroup.addControl('' + this.question?.queId + row.value+col.value, new FormControl(''))
               }
             }
           });
@@ -60,9 +60,9 @@ export class MatrixTwoLevelComponent implements OnChanges {
       this.onlyOnce = true;
     }
   }
-  getPrevSelectedValue(selected: any[] | undefined, value: any) {
+  getPrevSelectedValue(selected: any[] | undefined, value: any, colValue : any) {
     if (selected) {
-      return selected.find(sel => sel.rowValue === value);
+      return selected.find(sel => sel.rowValue === value && sel.colValue === colValue);
     }
   }
 
@@ -77,9 +77,9 @@ export class MatrixTwoLevelComponent implements OnChanges {
     }, {});
   }
 
-  changeEvent(value: any, colSeq: any) {
-    this.parentForm.get('' + this.question?.queId)?.get('' + this.question.queId)?.setValue(value);
-    this.question.answer = "Y";
+  changeEvent(value: any, colSeq: any,answer:any) {
+    this.parentForm.get('' + this.question?.queId)?.get('' + this.question.queId)?.setValue(value+answer);
+    this.question.answer = answer;
     this.question.questionLevel1Id = value;
     this.question.questionLevel2Id = colSeq;
     this.changeEvent1.emit(this.question);

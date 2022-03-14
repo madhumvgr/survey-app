@@ -14,14 +14,14 @@
         <div class="top-left">{{row?.text}}</div>
         <div class="top-right"> 
             <ng-container *ngFor="let column of cols;let j=index">
-                <input (change)="changeEvent(row?.value,column?.value)"
-                [formControlName]="question?.queId+''+column?.value"
+                <input (change)="changeEvent(row?.value,column?.value,'Y')"
+                [formControlName]="question?.queId+''+row?.value+column?.value"
                  class="form-check-input" type="radio"
-                     [value]="column?.value" />
-                <input (change)="changeEvent(row?.value,column?.value)"
-                     [formControlName]="question?.queId+''+column?.value"
+                     [value]="row?.value+column?.value+'Y'" />
+                <input (change)="changeEvent(row?.value,column?.value,'N')"
+                     [formControlName]="question?.queId+''+row?.value+column?.value"
                       class="form-check-input" type="radio"
-                          [value]="column?.value" />
+                          [value]="row?.value+column?.value+'N'" />
             </ng-container>
         </div>
     </div>

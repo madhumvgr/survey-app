@@ -22,6 +22,6 @@ export class DemograpgicsOwnerComponent implements OnInit {
   }
 
   continueNavigate(memberNo:any,homeNo:any, memberName:string){
-    this.router.navigateByUrl('/demographics/questionaire/'+memberNo+'/'+homeNo+'/1');
+    this.router.navigateByUrl('/demographics/questionaire/true/'+memberNo+'/1/true');
   }
 }

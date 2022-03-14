@@ -65,8 +65,8 @@
                     </span>
                 </div>
                 <!--*ngIf="p.isLastPage()"-->
-                <button type="submit" class="btn btn-secondary ms-md-3">Save & Exit</button>
-                <button *ngIf="p.isLastPage()"  type="submit" (click)="openModal()"
+                <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()">Save & Exit</button>
+                <button *ngIf="p.isLastPage()"  type="submit" (click)="submit()"
                     class="btn btn-secondary ms-md-3">Submit</button>
                 <div class="pagination-next" [class.disabled]="p.isLastPage()">
                     <span *ngIf="!p.isLastPage()" (click)="p.next()">

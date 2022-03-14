@@ -116,6 +116,11 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
   cancelEvent(isBackAction: boolean) {
     console.log(isBackAction);
   }
+
+  submit(){
+    this.markCompleteEvent.emit(null);
+    this.router.navigateByUrl('demographics/Thankyou/');
+  } 
   exitEvent(isBackAction: boolean) {
     const message = "You have successfully saved the survey";
       this.router.navigate(['demographics/Thankyou/'], { state: { message: message } });

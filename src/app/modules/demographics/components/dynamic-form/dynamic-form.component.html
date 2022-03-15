@@ -1,41 +1,40 @@
 <div [formGroup]="parentForm" class="shadow-sm rounded bg-white p-4 mb-4">
     <div *ngFor="let question of questionList | paginate: config">
-        <ng-contaner [ngSwitch]="question.queType">
-            <div *ngSwitchCase="'YES-NO'">
-                <app-yesNo [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question">
-                </app-yesNo>
-            </div>
+        <ng-container [ngSwitch]="question.queType">
             <div *ngSwitchCase="'RB'">
-                <ng-container *ngIf="houseHold else nonHouseHold">
-                    <ng-container *ngIf="question?.column && question?.column?.length > 0 else radio">
-                        <app-matrix-two-level  [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question">
-                        </app-matrix-two-level>
+                <app-radiogroup *ngIf="question.maxLevel==1" [houseHold]="houseHold" [parentForm]="parentForm"
+                    (changeEvent1)="changeEvent($event)" [question]="question"></app-radiogroup>
+            </div>
+            <div *ngSwitchCase="'YES-NO'">
+                <ng-container [ngSwitch]="question.maxLevel">
+                    <ng-container *ngSwitchCase="0">
+                        <app-yesNo [houseHold]="houseHold" [parentForm]="parentForm"
+                            (changeEvent1)="changeEvent($event)" [question]="question">
+                        </app-yesNo>
                     </ng-container>
-                    <ng-template #radio>
-                        <app-radiogroup [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
-                            [question]="question"></app-radiogroup>
-                    </ng-template>               
-                </ng-container>
-                <ng-template #nonHouseHold>
-                    <ng-container *ngIf="question?.column && question?.column?.length > 0 else radio">
-                        <app-matrix [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question">
+
+                    <ng-container *ngSwitchCase="1">
+                        <app-matrix [houseHold]="houseHold" [parentForm]="parentForm"
+                            (changeEvent1)="changeEvent($event)" [question]="question">
                         </app-matrix>
                     </ng-container>
-    
-                    <ng-template #radio>
-                        <app-radiogroup [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
-                            [question]="question"></app-radiogroup>
-                    </ng-template>
-                </ng-template>
+
+                    <ng-container *ngSwitchCase="2">
+                        <app-matrix-two-level [houseHold]="houseHold" [parentForm]="parentForm"
+                            (changeEvent1)="changeEvent($event)" [question]="question">
+                        </app-matrix-two-level>
+                    </ng-container>
+                </ng-container>
             </div>
             <div *ngSwitchCase="'CB'">
-                <app-checkbox [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)" [question]="question">
+                <app-checkbox [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
+                    [question]="question">
                 </app-checkbox>
             </div>
             <div *ngSwitchDefault>
                 Default type
             </div>
-        </ng-contaner>
+        </ng-container>
     </div>
     <!-- Action buttons -->
     <!-- <div class="col-xs- d-grid gap-2 d-md-block"> -->
@@ -66,7 +65,7 @@
                 </div>
                 <!--*ngIf="p.isLastPage()"-->
                 <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()">Save & Exit</button>
-                <button *ngIf="p.isLastPage()"  type="submit" (click)="submit()"
+                <button *ngIf="p.isLastPage()" type="submit" (click)="submit()"
                     class="btn btn-secondary ms-md-3">Submit</button>
                 <div class="pagination-next" [class.disabled]="p.isLastPage()">
                     <span *ngIf="!p.isLastPage()" (click)="p.next()">

@@ -15,20 +15,38 @@ export class MatrixComponent implements OnChanges {
   onlyOnce = false;
   @Input() question!: Question;
 
-  cols: Column[] = [];
+  cols: any[] = [];
   isFrance: any = false;
   constructor(  private localStorageService:LocalStorageService) { }
   @Output()
   public changeEvent1 = new EventEmitter();
   @Input() houseHold:any;
   ngOnChanges(changes: SimpleChanges): void {
+    let yesCol = {
+      description: "",
+      frDescription: "",
+      rowValue: 1,
+      seqNo: 1,
+      text: "Yes",
+      value: "Y",
+    }
+    let noCol = {
+      description: "",
+      frDescription: "",
+      rowValue: 2,
+      seqNo: 2,
+      text: "No",
+      value: "N",
+    }
+    this.cols.push(yesCol);
+    this.cols.push(noCol);
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     if (!this.onlyOnce && this.question) {
       this.childFormGroup = new FormGroup({
       });
       //set selected value into childForm
       // let selected = this.question.selected;
-      let prevValue = { rowValue: '', colValue: '' }
+      let prevValue = { rowValue: '', colValue: '',answer:'' }
       // if (selected) {
       //   prevValue = selected[selected.length-1];
       // }
@@ -39,20 +57,20 @@ export class MatrixComponent implements OnChanges {
           prevValue = this.getPrevSelectedValue(this.question.selected, row.value);
           console.log(prevValue);
           if (this.question?.mandatory && prevValue) {
-            this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
+            this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.answer, Validators.required));
           } else {
-            if (prevValue && prevValue.colValue)
-              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue));
+            if (prevValue && prevValue.answer)
+              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.answer));
             else {
               this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(''))
             }
           }
         });
       }
-      var groupedCols = this.groupBy(this.question.column);
-      if (groupedCols) {
-        this.cols = groupedCols[Object.keys(groupedCols)[0]];
-      }
+      // var groupedCols = this.groupBy(this.question.column);
+      // if (groupedCols) {
+      //   this.cols = groupedCols[Object.keys(groupedCols)[0]];
+      // }
       this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
       this.onlyOnce = true;
     }
@@ -63,22 +81,11 @@ export class MatrixComponent implements OnChanges {
     }
   }
 
-  groupBy(objectArray: any) {
-    return objectArray.reduce((acc: any, obj: any) => {
-      var key = obj['rowValue'];
-      if (!acc[key]) {
-        acc[key] = [];
-      }
-      acc[key].push(obj);
-      return acc;
-    }, {});
-  }
-
-  changeEvent(value: any, colSeq: any) {
+  changeEvent(colSeq: any, value: any) {
     this.parentForm.get('' + this.question?.queNo)?.get('' + this.question.queNo)?.setValue(value);
-    this.question.answer = "Y";
-    this.question.questionLevel1Id = value;
-    this.question.questionLevel2Id = colSeq;
+    this.question.answer =  value;
+    this.question.questionLevel1Id = colSeq;
+    this.question.questionLevel2Id = null;
     this.changeEvent1.emit(this.question);
   }
 }

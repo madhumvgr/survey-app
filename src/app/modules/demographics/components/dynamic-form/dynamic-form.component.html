@@ -56,10 +56,20 @@
 
 
             <div class="custom-pagination">
-                <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+                <div class="pagination-previous" [class.disabled]="p.isFirstPage()" *ngIf != "houseHold">
                     <span *ngIf="p.isFirstPage()">
                         <button type="button" class="btn btn-dark"
                             [routerLink]="['/demographics/demographics-individual-members']">Back</button>
+                    </span>
+
+                    <span *ngIf="!p.isFirstPage()" (click)="p.previous()">
+                        <button type="button" class="btn btn-dark">Back</button>
+                    </span>
+                </div>
+                <div class="pagination-previous" [class.disabled]="p.isFirstPage()" *ngIf = "houseHold">
+                    <span *ngIf="p.isFirstPage()">
+                        <button type="button" class="btn btn-dark"
+                            [routerLink]="['/demographics/demographics-owner']">Back</button>
                     </span>
 
                     <span *ngIf="!p.isFirstPage()" (click)="p.previous()">

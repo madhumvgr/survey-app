@@ -1,0 +1,28 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid blue;
+  }
+  
+  .top-left {
+    width: 30%;
+  }
+  
+  .top-right {
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+  }
+
+  .flex-item {
+    padding: .5em;
+    width: 70px;
+    overflow-wrap: break-word;
+    text-align: -webkit-center;
+  }
+
+  /* .item {
+    border-bottom: 1px solid blue;
+    background-color: aliceblue;
+  } */

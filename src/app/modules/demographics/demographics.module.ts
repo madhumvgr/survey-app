@@ -39,6 +39,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatrixComponent } from './components/matrix/matrix.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { MatrixTwoLevelComponent } from './components/matrix-two-level/matrix-two-level.component';
+import { MatrixRbComponent } from './components/matrix-rb/matrix-rb.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { MatrixTwoLevelComponent } from './components/matrix-two-level/matrix-tw
     QuestionComponent,
     MatrixComponent,
     DynamicFormComponent,
-    MatrixTwoLevelComponent
+    MatrixTwoLevelComponent,
+    MatrixRbComponent
   ],
   imports: [
 

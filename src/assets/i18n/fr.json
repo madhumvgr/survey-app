@@ -20,6 +20,9 @@
             "title": "Centre de Messagerie",
             "description": "Bienvenue au centre de messagerie, où vous pouvez accéder aux messages et effectuer d'autres tâches."
     
+        },
+    "techSupportPage":{
+            "title":"Soutien technique"
         }
 }
 

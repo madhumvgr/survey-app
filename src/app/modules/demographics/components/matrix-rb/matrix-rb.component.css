@@ -17,7 +17,7 @@
 
   .flex-item {
     padding: .5em;
-    width: 70px;
+    width: -webkit-fill-available; 
     overflow-wrap: break-word;
     text-align: -webkit-center;
   }

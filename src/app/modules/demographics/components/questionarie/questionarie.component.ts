@@ -57,11 +57,11 @@ export class QuestionarieComponent implements OnInit {
   markCompleteEvent(event: any) {
     if(this.houseHold){
       this.questionaireService.customCreate({}, QuestionConstants.markHouseHold + this.memberNo).subscribe(result => {
-        this.router.navigate(['/account-settings/thankyou/questionarie'], { state: { message: "You have successfully submitted Individual House member survey. " } });
+        this.router.navigate(['/account-settings/thankyou/questionarie'], { state: { message: "You have successfully submitted  survey. " } });
       });
     }else{
       this.questionaireService.customCreate({}, QuestionConstants.markSurveyCompleted + this.memberNo).subscribe(result => {
-        this.router.navigate(['/account-settings/thankyou/questionarie'], { state: { message: "You have successfully submitted Individual House member survey. " } });
+        this.router.navigate(['/account-settings/thankyou/questionarie'], { state: { message: "You have successfully submitted  survey. " } });
       });
     }
   }

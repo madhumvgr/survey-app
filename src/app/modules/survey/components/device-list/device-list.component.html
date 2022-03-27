@@ -14,10 +14,19 @@
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" >
                 <h1>{{deviceStatus}} Devices</h1>
-                <p>
-                    This page shows all media devices that are {{deviceStatus}} connected to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your <a  href='javascript:void(0);' (click)="showWindow()">privacy policy</a>. data and privacy are always protected
+                <p *ngIf="deviceStatus == 'New'">
+                    This page shows all media devices that are newly added to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your privacy policy. <a  href='javascript:void(0);' (click)="showWindow()">data and privacy</a> are always protected.
+                </p>
+                <p *ngIf="deviceStatus == 'In Progress'">
+                    This page lists surveys for media devices that you started but are yet to complete. Each survey has basic questions about a device’s usage. Select a device to complete its survey. 
+                </p>
+                <p *ngIf="deviceStatus == 'Completed'">
+                    This page shows media devices for which you’ve completed surveys. Nice going! You can review, edit and resubmit a completed survey. 
+                </p>
+                <p *ngIf="deviceStatus == 'Not in Use'">
+                    This page shows media devices that you marked as “not in use”. If you’re using them again, please update its status by selecting a card below. 
                 </p>
             </div>
         </div><!--end Row-->
@@ -29,7 +38,7 @@
     <div class="container">
         <div class="row g-4">
             <h2>{{deviceStatus}} devices detected: {{deviceCount}}<span class="h2-separator"></span></h2>
-            <p class="mt-2 mb-0">Select devices to start a survey</p>
+            <p class="mt-2 mb-0" *ngIf="deviceStatus == 'New'">Select devices to start a survey</p>
 
              <!-- Newly Detected Device (Smart TV) -->
              <a *ngFor="let device of devicesList" (click) ="navigateTo(device)">

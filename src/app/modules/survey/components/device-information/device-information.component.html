@@ -122,7 +122,7 @@
                             </div>
                         </div>
                         <!-- Question 3 -->
-                        <div class="mb-4">
+                        <div class="mb-4" [hidden]="isDeviceNoLonger === true">
                             <h4>How often do you or your household members watch something on this device?</h4>
                             <div class="form-check mb-2">
                                 <input formControlName="oftenUsed" class="form-check-input" type="radio" (change)="updateForm()" name="oftenUsed" id="Radio6" value=0>
@@ -138,7 +138,7 @@
                             </div>
                         </div>
                         <!-- Question 4-->
-                        <div class="mb-4">
+                        <div class="mb-4" [hidden]="isDeviceNoLonger === true">
                             <h4>How long do you plan on using this device?</h4>
                             <div class="form-check mb-2">
                                 <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio6" value=0>

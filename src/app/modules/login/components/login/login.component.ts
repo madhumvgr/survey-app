@@ -25,11 +25,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   showInvalidError = false;
   showError = false;
-  signin: any;
-  
-  browserVersion = '';
-  oldBrowsers = "Chrome 70 Chrome 71";
-  public browserStatus = true;
+  signin: any;  
+  isIE = false;
 
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
@@ -40,8 +37,8 @@ export class LoginComponent implements OnInit {
     
 
   ngOnInit(): void {
-    
-    this.browserVersion = this.detectBrowserVersion();
+    // @ts-ignore
+    this.isIE = /*@cc_on!@*/false || !!document['documentMode'];
     this.show= true;
     this.hide = false;
     this.loginForm = this.fb.group({
@@ -86,36 +83,6 @@ export class LoginComponent implements OnInit {
 
     }
   }
-
-  detectBrowserVersion(){
-    var userAgent = navigator.userAgent, tem, 
-    matchTest = userAgent.match(/(opera|Edge|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-    
-    if(/trident/i.test(matchTest[1])){
-        tem =  /\brv[ :]+(\d+)/g.exec(userAgent) || [];
-        return 'IE '+(tem[1] || '');
-    }
-
-    if(matchTest[1]=== 'Chrome'){
-        tem = userAgent.match(/\b(OPR|Edge)\/(\d+)/);
-        if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
-    }
-
-    matchTest= matchTest[2]? [matchTest[1], matchTest[2]]: [navigator.appName, navigator.appVersion, '-?'];
-
-    if((tem= userAgent.match(/version\/(\d+)/i))!= null) matchTest.splice(1, 1, tem[1]);
-    return matchTest.join(' ');
-}
-
-public displayBrowser(){
-  if (this.oldBrowsers.search(this.browserVersion) == -1 ) { 
-    return false;
-  } else { 
-    return true;
-  }
-}
-
-  
 }
 function passwordInput() {
   throw new Error('Function not implemented.');

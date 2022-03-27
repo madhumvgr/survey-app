@@ -7,9 +7,9 @@
    <nav class="px-3 mt-4">
       <div class="container">
          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
-            <li class="breadcrumb-item"><a href="household-demograpgics.html">Household demographics</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/demographics/demographics-overview']">Household demographics</a></li>
             <li class="breadcrumb-item active" aria-current="page">Individual member</li>
          </ol>
       </div>

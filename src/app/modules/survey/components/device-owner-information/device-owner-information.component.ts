@@ -32,6 +32,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   notUsed: boolean = false;
   singleMemeber: boolean = false;
   resubmit: boolean = false;
+  singleUserFlow: boolean = false;
   deviceStatus: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
@@ -65,6 +66,8 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       console.log(deviceCheck)
       if(deviceCheck == null ) {
         this.notUsed = true;
+      } else if(deviceCheck == 0) {
+        this.singleUserFlow = true;
       }
 
     });
@@ -104,7 +107,8 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     let device = {
       "deviceId": this.deviceId,
       "homeNo": selectedOwn["homeNo"],
-      "memberNo": selectedOwn["memberNo"]
+      "memberNo": selectedOwn["memberNo"],
+      "memberName": selectedOwn["memberName"]
     }
 
     this.deviceService.updateDeviceMember(device).subscribe(response => {
@@ -114,7 +118,10 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
         this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
       }else if(this.singleMemeber) {
         this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
-      } else{
+      } else if(this.singleUserFlow) {
+        this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+device.memberNo+'/'+this.deviceId], { state: { memberName: device.memberName } });
+      }
+      else {
         this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
       }
     

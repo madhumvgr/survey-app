@@ -46,6 +46,7 @@
         <div class="row g-4">
 
             <h2 >{{messages?.messages.length}} New message(s)<span class="h2-separator"></span></h2>
+            <p *ngIf="messages?.messages.length == 0">Currently you have no new messages</p>
             <a  *ngFor="let message of messages?.messages" (click)="navToMessageDetail(message)">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons-outlined p-3 icon-new-message d-flex icon-red align-items-center h-100">

@@ -23,7 +23,7 @@
     </div><!--end Container-->
 </section><!--end Section-->
 
-<section class="px-3 pb-4">
+<section class="px-3 pb-4 faq-section">
     <div class="container">
         <div class="row pb-4">
             <h2>Most popular questions and answers<span class="h2-separator"></span></h2>
@@ -243,7 +243,7 @@
                     
                     <h3 id="q22">22. How does the FocalMeter exclude web traffic that is not on the Inclusion list? </h3>
                     <p> The FocalMeter ONLY tracks web traffic based on a pre-determined inclusion list 
-                        <a href="www.numeris.ca/inclusionlist" target="_blank">(www.numeris.ca/inclusionlist)</a>
+                        <a href="https://numeris.ca/inclusionlist/" target="_blank">(www.numeris.ca/inclusionlist)</a>
                         The inclusion list is a list of approved websites where the FocalMeter is allowed to monitor video viewing. 
                         Any website not on the inclusion list will not have any data logged by the FocalMeter. 
                         It DOES NOT monitor any secure traffic on your network, or any traffic on banking or e-commerce sites. 
@@ -397,6 +397,12 @@
     </div><!--end Container-->
 </section><!--end Section--> 
 
-<h3></h3>
+<button id="goTop" class="btn-top" [class.visible]="isScrollTop" (click)="topFunction()">
+  
+    <svg class="arrow up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 0 50 80" xml:space="preserve">
+        <polyline fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" 
+        points="0.375, 35.375 28.375, 0.375 58.67, 35.375 "/>
+    </svg>
+    
+</button>
 
-<p></p>

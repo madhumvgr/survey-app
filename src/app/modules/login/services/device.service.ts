@@ -17,7 +17,7 @@ export class DeviceService extends ResourceService<User> {
       super(
         httpClient,
         environment.host,
-        '/api/deviceInfo');
+        'api/deviceInfo');
     }
 
     public getCustomRequest(url:any): Observable<any>{

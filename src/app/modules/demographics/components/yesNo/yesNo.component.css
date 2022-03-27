@@ -1,5 +1,3 @@
-
-  
   .top-left {
     width: 80%;
   }
@@ -13,6 +11,8 @@
   display: flex;
   flex-wrap: wrap;
   border-bottom:1px solid blue;
+  text-align: left;
+  text-indent: 20px;
 }
 .border1{
   background-color: #888;
@@ -20,4 +20,12 @@
   display: flex;
   flex-wrap: wrap;
   border-bottom:1px solid blue;
+  text-align: left;
+  text-indent: 20px;
+}
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid blue;
 }

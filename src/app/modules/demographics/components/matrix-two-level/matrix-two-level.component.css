@@ -17,9 +17,10 @@
 
   .flex-item {
     padding: .5em;
-    width: 70px;
+    width:100px;
     overflow-wrap: break-word;
     text-align: -webkit-center;
+
   }
 
   /* .item {

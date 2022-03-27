@@ -40,6 +40,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   deviceName: any;
   deviceId: any;
   deviceState: any;
+  userCount: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   stations: Array<any> = [{
@@ -120,6 +121,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.activatedroute.snapshot.params['state'];
+    this.userCount = this.activatedroute.snapshot.params['userCount'];
 
     this.stations.forEach((station, i) => {
       this.createForm(station.id);
@@ -172,8 +174,12 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
       } else {
         this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
           res => {
-            console.log(res);
+            if(this.userCount != 0) {
+              this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+           }else {
+            this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
             this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });;
+            }
           });
       }
     }
@@ -183,12 +189,13 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     let isValid = true;
     this.stationForm.forEach( form => {
       if(!form.value.weekDays || form.value.weekDays==''|| form.value.weekDays=='1'){
-        if(!form.value.weekEnds || form.value.weekEnds==''|| form.value.weekEnds=='1'){
-          form.setErrors({'atLeastOne':true});
+      //  if(!form.value.weekEnds || form.value.weekEnds==''|| form.value.weekEnds=='1'){
+        const formControl = <FormControl>form.get('weekDays');
+        formControl.setErrors({'required':true});
           isValid= false;
-        }else{
-          form.setErrors(null);
-        }
+        // }else{
+        //   form.setErrors(null);
+        // }
       }else{
         form.setErrors(null);
       }

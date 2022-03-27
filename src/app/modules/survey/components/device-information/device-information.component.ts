@@ -20,6 +20,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   deviceInformation: DeviceInfo = new DeviceInfo();
   resubmit: boolean = false;
   deviceStatus: any;
+  isDeviceNoLonger: any;
 
   deviceName: any;
   @ViewChild('modal')
@@ -59,10 +60,16 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     );
     //get device information. 
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => {
-      this.deviceInfoFormControl.numberOfUsers.setValue(''+(res.numberOfUsers?res.numberOfUsers:'0'));
-      this.deviceInfoFormControl.oftenUsed.setValue('' + (res.oftenUsed?res.oftenUsed:'0'));
-      this.deviceInfoFormControl.planToUseDuration.setValue('' + (res.planToUseDuration?res.planToUseDuration:'0'));
+      this.deviceInfoFormControl.numberOfUsers.setValue(''+(res.numberOfUsers?res.numberOfUsers:''));
+      this.deviceInfoFormControl.oftenUsed.setValue('' + (res.oftenUsed?res.oftenUsed:''));
+      this.deviceInfoFormControl.planToUseDuration.setValue('' + (res.planToUseDuration?res.planToUseDuration:''));
       this.deviceInfoFormControl.deviceNickName.setValue('' + res.deviceNickName?res.deviceNickName:'');
+      
+      if(res.numberOfUsers === 4) {
+        this.isDeviceNoLonger = true;
+      }else {
+        this.isDeviceNoLonger = false;
+      }
       // get device device internal details. 
       this.deviceService.getDeviceInnerInfo(this.deviceId).subscribe(res1 => {
         this.deviceInformation.devicePlatform = res1['devicePlatform'];
@@ -82,6 +89,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   }
 
   setNotInuse() {
+    this.isDeviceNoLonger = true;
     //set device to not in use. 
     this.deviceInfoForm.patchValue({
       deviceId: this.deviceId
@@ -103,6 +111,7 @@ exitEvent(isBackAction:boolean) {
 }
 
   updateForm() {
+    this.isDeviceNoLonger = false;
     // send API to submit device information. 
     this.deviceInfoForm.patchValue({
       deviceId: this.deviceId

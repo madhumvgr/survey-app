@@ -19,5 +19,8 @@
     "messageCenter": {
         "title": "Messaging Center",
         "description": "Welcome to the messaging center where you can access messages and take actions."
+    },
+    "techSupportPage":{
+        "title":"Tech Support"
     }
 }

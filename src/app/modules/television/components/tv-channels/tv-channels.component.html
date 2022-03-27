@@ -59,7 +59,7 @@
                                 <option value="5">More than 1 hour up to 2 hours</option>
                                 <option value="6">More than 2 hours up to 3 hours</option>
                             </select>
-                            <p *ngIf="stationForm[generId+1]?.get('weekDays')?.hasError('required')">This Field is required</p>
+                            <p *ngIf="stationForm[generId+1]?.get('weekDays')?.hasError('required')" class="text-danger">This Field is required</p>
                         </div>
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>Weekends</h4>
@@ -71,13 +71,7 @@
                                 <option value="5">More than 1 hour up to 2 hours</option>
                                 <option value="6">More than 2 hours up to 3 hours</option>
                             </select>
-                            <p *ngIf="stationForm[generId+1]?.get('weekEnds')?.hasError('required')">This Field is required</p>
                         </div>
-                    </div>
-                    <div style="color:red">
-                       <ng-container *ngIf="stationForm[generId+1]?.errors?.atLeastOne">
-                        Should select atleast one value. 
-                       </ng-container>
                     </div>
                     </form>
                 </div>

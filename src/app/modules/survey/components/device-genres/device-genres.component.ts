@@ -20,6 +20,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   memberName: any;
   deviceName: any;
   deviceStatus: any;
+  userCount: any;
   isTvGenere: boolean = false;
   isValid:boolean= true;
   // timeLinesForm: FormGroup = this.fb.group({});
@@ -148,6 +149,9 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
         this.addMore(d, parseInt(genere.id));
       }
     });
+    this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
+      this.userCount = res.numberOfUsers;
+    });
 
     if (this.isTvGenere) {
       this.televisionService.getCustomRequest(TelevisionConstants.tvStationByMember + this.memberNo).
@@ -165,7 +169,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   setPreviousValues(genereList: any) {
     genereList.forEach((element: any) => {
-      if (element.listGenresTimeline && (element.id!=10 && element.id!=11)) {
+      if (element.listGenresTimeline && (element.id!=11 && element.id!=12)) {
         element.listGenresTimeline.forEach((timeLine: any) => {
           if (timeLine.dayOfWeek && timeLine.dayOfWeek == 1) {
             let innerControl = this.getWeekDayControl(element.id).controls[parseInt(timeLine.usageTimelineId)];
@@ -263,7 +267,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
         this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
       }
       else {
-         this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);
+         this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount);
       }
     }
   }

@@ -10,9 +10,9 @@
     <nav class="px-3 mt-4">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="survey-hub.html">Survey hub</a></li>
-                <li class="breadcrumb-item"><a href="household-demograpgics.html">Household demographics</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
+                <li class="breadcrumb-item"><a [routerLink] = "['/demographics/demographics-overview']">Household demographics</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Household Owner</li>
             </ol>
         </div>
@@ -52,7 +52,12 @@
                             <h3 class="text-truncate"><!-- Name of the household memeber -->{{member?.memberName}}</h3>
                             <p class="text-truncate">Status: <span>{{member?.memberSurveyStatus}}</span></p>   
                         </div>
-                        <button (click)="continueNavigate(member.memberNo, member.homeNo, member.memberName)" type="button" class="btn btn-light me-3">Start</button>
+                        <div *ngIf="member?.memberSurveyStatus === 'Not Started'">
+                            <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">Start</button>
+                        </div>
+                        <div *ngIf="member?.memberSurveyStatus === 'In Progress'">
+                            <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">Continue</button>
+                        </div>
                     </div>
 
                 </div><!--end Col-->

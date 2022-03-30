@@ -7,6 +7,7 @@ export interface User {
     rememberMe?: boolean;
     currentPassword?: String;
     newPassword?: String;
+    confirmPassword?:String;
     resetKey?: String;
 }
 

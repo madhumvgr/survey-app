@@ -13,6 +13,7 @@ import { PrivacyPolicyComponent } from './components/login/forgot-password/priva
 import { LoginHomeComponent } from './components/login-home/login-home.component';
 import { ConnectComponent } from '../support/connect/connect.component';
 import { ContactComponent } from '../support/contact/contact.component';
+import { FinishPasswordResetComponent } from '../account-setting/components/account-settings/finish-password-reset/finish-password-reset.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'registerkey', component: RegisterkeyComponent },
       { path: 'registersuccess', component: RegisterSuccessComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: 'reset/finish',component: FinishPasswordResetComponent},
       { path: 'keyhelp', component: ContactComponent },
       { path: 'privacy-policy', component: PrivacyPolicyComponent, canActivate: [AuthGuard] },
 

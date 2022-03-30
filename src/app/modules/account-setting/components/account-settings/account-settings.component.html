@@ -14,9 +14,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Account settings</h1>
+                <h1>{{'accountSettings.title' | translate}}</h1>
                 <p>
-                    Use your account settings to change your password, adjust your email notifications, or learn about our Privacy Policy. 
+                    {{'accountSettings.description' | translate}} 
                 </p>
             </div><!--end col-->
         </div><!--end Row-->
@@ -31,9 +31,9 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body shadow-sm rounded border-0">
-                    <h5 class="card-title"><b>Change password</b></h5>
-                    <p class="card-text">Changing your password is easy.</p>
-                    <a [routerLink]="['/account-settings/change-password']" class="btn btn-light">Update</a>
+                    <h5 class="card-title"><b>{{'accountSettings.changePasswordTitle' | translate}}</b></h5>
+                    <p class="card-text">{{'accountSettings.changePasswordDescription' | translate}}</p>
+                    <a [routerLink]="['/account-settings/change-password']" class="btn btn-light">{{'accountSettings.changePasswordButton' | translate}}</a>
                     </div>
                 </div>
             </div>
@@ -42,9 +42,9 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body shadow-sm rounded border-0">
-                    <h5 class="card-title"><b>Email notifications</b></h5>
-                    <p class="card-text">Choose the type of emails you want to receive.</p>
-                    <a [routerLink]="['/account-settings/email-notifications']" class="btn btn-light">Continue</a>
+                    <h5 class="card-title"><b>{{'accountSettings.emailNotificationsTitle' | translate}}</b></h5>
+                    <p class="card-text">{{'accountSettings.emailNotificationsDescription' | translate}}</p>
+                    <a [routerLink]="['/account-settings/email-notifications']" class="btn btn-light">{{'accountSettings.emailNotificationsButton' | translate}}</a>
                     </div>
                 </div>
             </div>
@@ -53,9 +53,9 @@
              <div class="col-md-4">
                 <div class="card ">
                     <div class="card-body shadow-sm rounded border-0">
-                    <h5 class="card-title"><b>Privacy policy</b></h5>
-                    <p class="card-text">Protecting your privacy is our top priority.</p>
-                    <a class="btn btn-light" href='javascript:void(0);' (click)="showWindow()">Learn More</a>
+                    <h5 class="card-title"><b>{{'accountSettings.privacyPolicyTitle' | translate}}</b></h5>
+                    <p class="card-text">{{'accountSettings.privacyPolicyDescription' | translate}}</p>
+                    <a class="btn btn-light" href='javascript:void(0);' (click)="showWindow()">{{'accountSettings.privacyPolicyButton' | translate}}</a>
                     </div>
                 </div>
             </div>

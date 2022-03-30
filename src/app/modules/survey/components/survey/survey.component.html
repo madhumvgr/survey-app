@@ -9,11 +9,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Survey Hub</h1>
+                <h1>{{ 'surveyHub.title' | translate }}</h1>
                 <p>
-                    Welcome to Survey Hub! Here, you'll find surveys that are quick and easy. We ask only basic questions to understand
-                    the type of entertainment programs you enjoy, and the device you prefer watching them on.
-                    Be assured that your <a href='javascript:void(0);' (click)="showWindow()" style="text-decoration: underline;">data and privacy are always protected</a>
+                    {{ 'surveyHub.description' | translate }} <a href='javascript:void(0);' (click)="showWindow()" style="text-decoration: underline;">{{'surveyHub.Link' | translate}}</a> {{'surveyHub.description1' | translate}}
                 </p>
             </div>
         </div><!--end Row-->
@@ -22,17 +20,17 @@
 <section class="pb-4">
     <div class="container">
         <div class="row g-4">
-            <h2>Household<span class="h2-separator"></span></h2>
-            <p class="pt-1 pb-0 m-0">This section contains basic information about household members and the media devices they use.</p>
+            <h2>{{ 'houseHold.title' | translate }}<span class="h2-separator"></span></h2>
+            <p class="pt-1 pb-0 m-0">{{ 'houseHold.description' | translate }}</p>
     
             <!-- Devices Card -->
             <div class="card thumb-cards col-md-4 bg-transparent border-0">
                 <div class="shadow-sm rounded bg-white">
                     <img class="img-fluid rounded-top" src="./assets/devices_thumb.jpg" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Devices</h5>
-                        <p class="card-text">Basic questions about members in your household.</p>
-                        <a [routerLink] = "['/survey/household-devices']" class="btn btn-primary">Continue</a>
+                        <h5 class="card-title">{{ 'houseHold.devicesCardTitle' | translate }}</h5>
+                        <p class="card-text">{{ 'houseHold.devicesCardDescription' | translate }}</p>
+                        <a [routerLink] = "['/survey/household-devices']" class="btn btn-primary">{{ 'houseHold.button' | translate }}</a>
                     </div>
                 </div>
             </div>
@@ -44,10 +42,10 @@
                 <div class="shadow-sm rounded bg-white">
                     <img class="img-fluid rounded-top" src="./assets/demographics_thumb.jpg" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Demographic</h5>
-                        <p class="card-text">Surveys about media devices you have at home.</p>
+                        <h5 class="card-title">{{ 'houseHold.demographicCardTitle' | translate }}</h5>
+                        <p class="card-text">{{ 'houseHold.demographicCardDescription' | translate }}</p>
                        <!-- <a [routerLink] = "['/demographics/demographics-overview']" class="btn btn-primary">Continue</a> -->
-                        <a class="btn btn-primary">Continue</a>
+                        <a class="btn btn-primary">{{ 'houseHold.button' | translate }}</a>
                     </div>
                 </div>
             </div>
@@ -57,9 +55,9 @@
                     <div class="shadow-sm rounded bg-white">               
                         <img class="img-fluid rounded-top" src="./assets/tv-anthena_thumb.jpg" alt="">
                         <div class="card-body">
-                            <h5 class="card-title">Television</h5>
-                            <p class="card-text">Surveys about your cable and antena television usage.</p>
-                            <a [routerLink] = "['/television/household-members']" class="btn btn-primary">Continue</a>
+                            <h5 class="card-title">{{ 'houseHold.televisionCardTitle' | translate }}</h5>
+                            <p class="card-text">{{ 'houseHold.televisionCardDescription' | translate }}</p>
+                            <a [routerLink] = "['/television/household-members']" class="btn btn-primary">{{ 'houseHold.button' | translate }}</a>
                         </div>
                     </div>
                 </div>

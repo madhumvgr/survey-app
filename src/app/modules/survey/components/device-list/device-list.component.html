@@ -17,16 +17,15 @@
             <div class="col-12" >
                 <h1>{{deviceStatus}} Devices</h1>
                 <p *ngIf="deviceStatus == 'New'">
-                    This page shows all media devices that are newly added to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your privacy policy. <a  href='javascript:void(0);' (click)="showWindow()">data and privacy</a> are always protected.
+                    {{'newDevices.description' | translate}} <a  href='javascript:void(0);' (click)="showWindow()">{{'newDevices.Link' | translate}}</a> {{'newDevices.description1' | translate}}
                 </p>
                 <p *ngIf="deviceStatus == 'In Progress'">
-                    This page lists surveys for media devices that you started but are yet to complete. Each survey has basic questions about a device’s usage. Select a device to complete its survey. 
+                    {{'inProgressDevices.description' | translate}} 
                 </p>
                 <p *ngIf="deviceStatus == 'Completed'">
-                    This page shows media devices for which you’ve completed surveys. Nice going! You can review, edit and resubmit a completed survey. 
-                </p>
+                   {{'completedDevices.description' | translate}}
                 <p *ngIf="deviceStatus == 'Not in Use'">
-                    This page shows media devices that you marked as “not in use”. If you’re using them again, please update its status by selecting a card below. 
+                    {{'notInUse.description' | translate}}
                 </p>
             </div>
         </div><!--end Row-->
@@ -38,7 +37,7 @@
     <div class="container">
         <div class="row g-4">
             <h2>{{deviceStatus}} devices detected: {{deviceCount}}<span class="h2-separator"></span></h2>
-            <p class="mt-2 mb-0" *ngIf="deviceStatus == 'New'">Select devices to start a survey</p>
+            <p class="mt-2 mb-0" *ngIf="deviceStatus == 'New'">{{'newDevices.devicesDetectedDescription' | translate}}</p>
 
              <!-- Newly Detected Device (Smart TV) -->
              <a *ngFor="let device of devicesList" (click) ="navigateTo(device)">

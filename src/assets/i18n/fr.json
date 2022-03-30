@@ -3,26 +3,237 @@
         "title": "Connexion",
         "text": "Bienvenue! Vous êtes sur le point de façonner l'avenir de la radiodiffusion canadienne. Nous utilisons des cookies pour améliorer votre expérience ! En poursuivant, vous acceptez notre"
     },
-    "welcomePage":{
-        "title":"Bienvenu",
-         "text": "Nous sommes enchantés de vous accueillir! Vous avez maintenant le pouvoir de façonner la configuration de l'industrie de la radiodiffusion canadienne! En prenant part à nos sondages, vous aidez les télédiffuseurs à comprendre le genre de divertissement qui intéresse les Canadiens. Veuillez être assuré que vos données",
-         "Link": "personnelles et votre sphère privée",
-         "text1": " seront toujours protégées. Nous espérons que vous apprécierez votre temps avec nous.",
-         "surveyhubLabel": "Sondages",
-         "surveyhubText": "Tous les sondages en un seul endroit.",
-         "surveyhubButton": "Démarrer",
-         "techSupportLabel": "Soutien tech",
-         "techSupportText": "Nous sommes ici pour vous aider. Demandez! Voir plus",
-         "techSupportButton": "Voir plus",
-         "privacyPolicyUrl":"https://numeris.ca/politique-sur-la-vie-privee/"
-        },
+    "welcomePage": {
+        "title": "Bienvenu",
+        "text": "Nous sommes enchantés de vous accueillir! Vous avez maintenant le pouvoir de façonner la configuration de l'industrie de la radiodiffusion canadienne! En prenant part à nos sondages, vous aidez les télédiffuseurs à comprendre le genre de divertissement qui intéresse les Canadiens. Veuillez être assuré que vos données",
+        "Link": "personnelles et votre sphère privée",
+        "text1": " seront toujours protégées. Nous espérons que vous apprécierez votre temps avec nous.",
+        "surveyhubLabel": "Sondages",
+        "surveyhubText": "Tous les sondages en un seul endroit.",
+        "surveyhubButton": "Démarrer",
+        "techSupportLabel": "Soutien tech",
+        "techSupportText": "Nous sommes ici pour vous aider. Demandez! Voir plus",
+        "techSupportButton": "Voir plus",
+        "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/"
+    },
     "messageCenter": {
-            "title": "Centre de Messagerie",
-            "description": "Bienvenue au centre de messagerie, où vous pouvez accéder aux messages et effectuer d'autres tâches."
-    
-        },
-    "techSupportPage":{
-            "title":"Soutien technique"
-        }
-}
+        "title": "Centre de Messagerie",
+        "description": "Bienvenue au centre de messagerie, où vous pouvez accéder aux messages et effectuer d'autres tâches."
+    },
+    "techSupportPage": {
+        "title": "Soutien technique",
+        "description": "Vous avez une question? Un problème? Aucun souci! Parcourez la section FAQ pour trouver la réponse à votre question. Si elle ne s’y trouve pas, n’hésitez pas à nous écrire"
+    },
+    "faq": {
+        "title": "FAQs",
+        "description": "Trouvez les réponses aux questions les plus fréquemment posées.",
+        "faqButton": "Recherche"
+    },
+    "connectNumeris": {
+        "title": "Communiquez avec Numeris",
+        "description": "Écrivez-nous et nous allons examiner le problème.",
+        "button": "Continuer"
+    },
+    "panelistRegistration ": {
+        "title": "Prêt? Créons votre compte.",
+        "description": "Veuillez entrer votre mot de passe à usage unique que vous avez reçu par courriel.",
+        "button": "Continuer",
+        "link": "Besoin d’aide avec votre mot de passe à usage unique?"
+    },
+    "surveyHub": {
+        "title": "Répertoire des sondages",
+        "description": "Bienvenue au répertoire des sondages! Les sondages sont faciles et rapides à faire. Nous posons seulement des questions de base afin de bien comprendre le type d’émissions de divertissement que vous aimez ainsi que les appareils que vous préférez utiliser pour les regarder.Soyez assuré que vos données et votre vie privée",
+        "description1": "demeurent toujours protégées.",
+        "Link": "personnelles et votre sphère privée",
+        "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/"
+    },
+    "houseHold": {
+        "title": "Ménage",
+        "description": "Cette section nous permet de recueillir des informations de base au sujet des membres de votre ménage et des appareils média qu’ils utilisent.",
+        "devicesCardTitle": "Appareils",
+        "devicesCardDescription": "Sondages concernant les appareils média dont vous disposez à domicile.",
+        "button": "Continuer",
+        "demographicCardTitle": "Données démographiques",
+        "demographicCardDescription": "Questions de base concernant les membres de votre ménage.",
+        "televisionCardTitle": "Télévision",
+        "televisionCardDescription": "Enquêtes sur votre utilisation de la télévision par câble et antenne."
+    },
+    "accountSettings": {
+        "title": "Paramètres du compte",
+        "description": "Utilisez vos paramètres de compte pour modifier votre mot de passe, ajuster vos avis par courriel ou en savoir plus sur notre Politique en matière de vie privée.",
+        "changePasswordTitle": "Changer son mot de passe",
+        "changePasswordDescription": "Changer votre mot de passe est facile.",
+        "changePasswordButton": "Changer",
+        "emailNotificationsTitle": "Avis par courriel",
+        "emailNotificationsDescription": "Choisissez le type de courriels que vous voulez recevoir.",
+        "emailNotificationsButton": "Continuer",
+        "privacyPolicyTitle": "Politique en matière de vie privée",
+        "privacyPolicyDescription": "La protection de votre vie privée est notre priorité absolue.",
+        "privacyPolicyButton": "En apprendre davantage"
+    },
+    "householdDevices": {
+        "title": "Appareils à domicile",
+        "description": "Cette section affiche les sondages concernant tous les appareils média connectés à votre Internet à la maison.",
+        "householdDevicesActionsTitle": "Action requise",
+        "householdDevicesActionsDescription": "",
+        "householdDevicesActionsLabel1": "Nouveaux",
+        "householdDevicesStatus": "Présentement ",
+        "householdDevicesActionsLabel2": "En cours",
+        "householdDevicesHistoryTitle": "Historique",
+        "householdDevicesHistoryDescription": "",
+        "householdDevicesHistoryLabel1": "Complétés",
+        "householdDevicesHistoryLabel2": "Non utilisés"
+    },
+    "faqPage": {
+        "title1": "FAQ",
+        "description1": "Vous avez une question? La barre de recherche peut vous aider à trouver réponse à vos questions. Vous pouvez également consulter les sujets ci-après.",
+        "heading2": "Les questions les plus fréquemment posées et leur réponse",
+        "title2": "Je n’ai pas trouvé la réponse à ma question",
+        "description2": "Nous sommes là pour vous. Simplement",
+        "link": "connectez-vous avec notre équipe",
+        "text2": "et nous serons heureux de vous aider!"
+    },
+    "helpNumeris": {
+        "title": "Communiquer avec Numeris",
+        "description": "Des problèmes avec votre compte? Quelque chose qui ne va pas? Utilisez le formulaire suivant pour nous décrire le problème. D’ici un jour ouvrable, nous vous contacterons à l’adresse courriel que vous avez enregistrée avec nous. ",
+        "heading": "Comment pouvons-nous vous aider?",
+        "subject": "Sujet (Par exemple. Impossible de changer mon mot de passe)",
+        "description1": "Donnez-nous plus de détails sur le problème auquel vous êtes confronté.",
+        "cancelButton": "Annuler",
+        "sendButton": "Envoyer",
+        "subjectRequired": "Le sujet est requis"
+    },
+    "contactUs": {
+        "title": "Nous contacter",
+        "description": "Envoyez-nous un message ou appelez-nous à nos bureaux de Montréal ou de Richmond.",
+        "heading": "Envoie-nous un message",
+        "description1": "Envoyez-nous simplement un message ci-dessous avec toutes vos questions, et nous vous répondrons",
+        "subject": "Sujet",
+        "message": "Votre message",
+        "sendButton": "Envoyer"
+    },
+    "forgotPassword": {
+        "title": "Mot de passe oublié",
+        "description": "Nous vous enverrons un e-mail avec des instructions sur la façon de réinitialiser votre mot de passe.",
+        "Email": "E-mail",
+        "emailRequired": "L'e-mail est requis",
+        "requestButtonLabel": "Demande",
+        "signIn": "Retour à la connexion"
+    },
+    "newAccount": {
+        "title": "Prêt? Créons votre compte.",
+        "description": "Veuillez entrer votre mot de passe à usage unique que vous avez reçu par courriel.",
+        "key": "Clé",
+        "keyRequired": "La clé est requise",
+        "keyRequiredText": "La clé doit comporter au moins 6 caractères",
+        "otpText": "Saisissez un OTP valide.",
+        "continueButtonLabel": "Continuez",
+        "keyHelpText": "Besoin d’aide avec votre mot de passe à usage unique?"
+    },
+    "newDevices": {
+        "title": "appareils",
+        "description": "Cette page indique le nombre de tous les appareils média nouvellement ajoutés à votre réseau domestique. Les sondages de cette section comportent des questions de base sur l’utilisation de chaque appareil. Soyez assuré que vos données et votre vie privée.",
+        "description1": "demeurent toujours protégées.",
+        "Link": "personnelles et votre sphère privée",
+        "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/",
+        "devicesDetectedTitle": "",
+        "devicesDetectedDescription": "Sélectionnez un appareil pour commencer un sondage."
+    },
+    "inProgressDevices": {
+        "title": "En cours",
+        "description": "Cette page énumère les sondages pour les appareils média que vous avez commencés, devant être complétés. Chaque sondage contient des questions de base concernant l’utilisation d’un appareil. Sélectionnez un appareil pour terminer le sondage qui lui est destiné."
+    },
+    "completedDevices": {
+        "title": "",
+        "description": "Cette page affiche les appareils média pour lesquels vous avez complété des sondages. Vous êtes bien parti! Vous pouvez passer en revue un sondage complété, le modifier puis le renvoyer. "
+    },
+    "notInUse": {
+        "title": "",
+        "description": "Cette page affiche les appareils média, identifiés comme étant « non utilisés ». Si vous les utilisez de nouveau, veuillez mettre à jour leur statut en sélectionnant la fiche ci-après. "
+    },
+    "deviceOwner": {
+        "title": "Information sur le propriétaire de l’appareil",
+        "description": "Veuillez sélectionner le nom du membre du ménage à qui appartient cet appareil. ",
+        "backButton": "Retour",
+        "SaveButton": "Sauvegarder et quitter",
+        "continueButton": "Continuer",
+        "ownerText": "Sélectionner le propriétaire de l’appareil"
+    },
+    "multipleUsers": {
+        "title": "Utilisateurs multiples",
+        "description1": "Dans cette section, nous voulons obtenir la part approximative (exprimée en pourcentage) d’utilisation partagée de ce  de chaque membre du ménage par mois.",
+        "description2": "En voici un exemple. Trois membres du ménage, soit un parent et deux enfants partagent l’utilisation d’un téléviseur intelligent. L’utilisation partagée de l’appareil peut se résumer comme suit : Parent=30 %, Enfant no 1 = 50 %, Enfant no 2 = 20 %. ",
+        "heading": "Utilisation partagée de l’appareil",
+        "text1": "Sélectionnez la durée d'utilisation de cet appareil par chaque membre du foyer",
+        "tipsLabel": "Astuces ",
+        "tip1": "Entrez une valeur en pourcentage approximative pour chaque membre. ",
+        "tip2": "Si l’un des membres n’a pas du tout utilisé cet appareil au cours du dernier mois, entrez 0 % à côté de son nom.",
+        "tip3": "Le total pour tous les membres doit donner 100 %.",
+        "text2": "Sélectionnez la durée d'utilisation de cet appareil par un seul ou plusieurs membres à la fois",
+        "backButton": "Retour",
+        "SaveButton": "Sauvegarder et quitter",
+        "continueButton": "Continuer"
+    },
+    "deviceUsage": {
+        "title": "Utilisation de l’appareil",
+        "description": "Les sondages de cette section nous aident à avoir un aperçu des catégories média que chaque membre du ménage regarde sur ce ",
+        "tipsLabel": "Astuces ",
+        "tip1": "Sélectionnez toutes les catégories regardées.",
+        "tip2": "Complétez les sondages selon l’ordre que vous voulez.",
+        "heading": "Liste des membres du ménage",
+        "text": "Sélectionnez le sondage identifié avec votre nom. Vous pouvez également compléter un sondage au nom d’un autre membre de votre ménage. Une fois que le statut de TOUS les membres affiche COMPLÉTÉ, sélectionnez SOUMETTRE pour continuer. ",
+        "backButton": "Retour",
+        "SaveButton": "Sauvegarder & quitter",
+        "continueButton": "Continuer",
+        "startButton": "Démarrer",
+        "Status": "Statut"
+    },
+    "genres": {
+        "description": "Nous cherchons à obtenir plus de détails à propos des catégories regardées en ligne par.",
+        "heading": "Liste de toutes les 11 catégories",
+        "text": "Veuillez sélectionner toutes les catégories que.",
+        "text2": "regarde en ligne, et l’heure durant la journée ou il ou elle est plus susceptible de le faire. Vous pouvez sélectionner plusieurs options de temps.",
+        "backButton": "Retour",
+        "SaveButton": "Sauvegarder & quitter",
+        "continueButton": "Continuer"
+    },
+    "changePassword": {
+        "title": "Changer son mot de passe",
+        "description": "",
+        "tipsLabel": "Astuces",
+        "tip1": "Doit contenir entre 8 et 20 caractères ",
+        "tip2": "Doit contenir à la fois des lettres et des chiffres",
+        "tip3": "Ne doit pas contenir d’espace, de caractères spéciaux ni d’emojis",
+        "currentPassword": "Mot de passe ",
+        "currentPasswordRequired": "Mot de passe est requis",
+        "newPassword": "Nouveau mot de passe",
+        "newPasswordRequired": "Nouveau mot de passe est requis",
+        "confirmNewPassword": "Confirmez votre nouveau mot de passe",
+        "confirmNewPasswordRequired": "Confirmez votre nouveau mot de passe est requis",
+        "passwordValidationMessage": "Le mot de passe doit contenir au moins 8 caractères, au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre",
+        "cancelButton": "Annuler",
+        "updateButton": "Mettre à jour",
+        "passwordMatchText": "Le mot de passe et la confirmation du mot de passe doivent correspondre."
+    },
+    "emailNotifications": {
+        "title": "Avis par courriel",
+        "description": "Choisissez le type de courriels que vous voulez recevoir de notre part.",
+        "heading": "Sélectionnez vos préférences ci-après.",
+        "q1": "Je veux rester informé des nouveautés et des dernières nouvelles de la compagnie.",
+        "q2": "J’aimerais recevoir les offres spéciales et en promotion.",
+        "q3": "Avisez-moi chaque fois qu’il y a une connexion dans mon compte.",
+        "option1": "Oui",
+        "option2": "Non",
+        "cancelButton": "Annuler",
+        "updateButton": "Mettre à jour"
+    },
+    "thankYouTechSupport": {
+        "title": "Merci!",
+        "description": "Excellent! Nous avons reçu votre message. Nous y donnerons suite par courriel d’ici un jour ouvrable. ",
+        "description2": "Votre numéro de confirmation est ",
+        "heading": "D’autres questions?",
+        "text1": "Vous cherchez à poser plus de questions ? Pas de soucis, nous sommes là pour vous !",
+        "text2": "Posez-nous une autre question."
 
+    }
+}

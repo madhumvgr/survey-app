@@ -16,9 +16,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Email Notifications</h1>
+                <h1>{{'emailNotifications.title' | translate}}</h1>
                 <p>
-                    Choose the type of emails you’d like to receive from us. 
+                    {{'emailNotifications.description' | translate}}
                 </p>
             </div><!--end col-->
         </div><!--end Row-->
@@ -28,49 +28,49 @@
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row pb-4">
-            <h2>Select your preferences below<span class="h2-separator"></span></h2>
+            <h2> {{'emailNotifications.heading' | translate}}<span class="h2-separator"></span></h2>
         </div><!--end Row-->
         <div class="row">
             <form [formGroup]="emailNotifForm" >
             <div class="col-md-6" >
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
                     <div class="mb-4">
-                    <p>Keep me informed about new features and company-related news.</p>
+                    <p>{{'emailNotifications.q1' | translate}}</p>
                     <div class="form-check">
                         <input formControlName="companyNews" class="form-check-input" type="radio"name="companyNews" id="Radio1" value="true"/>
-                        <label class="form-check-label" for="Radio1">Yes</label>
+                        <label class="form-check-label" for="Radio1">{{'emailNotifications.option1' | translate}}</label>
                         
                     </div>
                     
                     <div class="form-check">
                         <input formControlName="companyNews" class="form-check-input" type="radio" name="companyNews" id="Radio2" value="false"/>
-                        <label class="form-check-label" for="Radio2">No</label>
+                        <label class="form-check-label" for="Radio2">{{'emailNotifications.option2' | translate}}</label>
                         
                     </div>
                     </div>
                     <div class="mb-4">
-                    <p>I’d like to receive promotional and special offers.</p>
+                    <p>{{'emailNotifications.q2' | translate}}</p>
                     <div class="form-check">
                         <input formControlName="promotionOffers" class="form-check-input" type="radio" name="promotionOffers" id="Radio3" value="true"/>
-                        <label class="form-check-label" for="Radio3">Yes</label>
+                        <label class="form-check-label" for="Radio3">{{'emailNotifications.option1' | translate}}</label>
                     </div>
                     <div class="form-check">
                         <input formControlName="promotionOffers" class="form-check-input" type="radio" name="promotionOffers" id="Radio4" value="false"/>
-                        <label class="form-check-label" for="Radio4">No</label>
+                        <label class="form-check-label" for="Radio4">{{'emailNotifications.option2' | translate}}</label>
                     </div>
                     </div>
-                    <p>Notify me each time there’s a login into my account.</p>
+                    <p>{{'emailNotifications.q3' | translate}}</p>
                     <div class="form-check">
                         <input formControlName="loginEvent" class="form-check-input" type="radio" name="loginEvent"  id="loginEvent1" value="true"/>
-                        <label class="form-check-label" for="loginEvent1">Yes</label>
+                        <label class="form-check-label" for="loginEvent1">{{'emailNotifications.option1' | translate}}</label>
                     </div>
                     <div class="form-check">
                         <input formControlName="loginEvent" class="form-check-input" type="radio" name="loginEvent" id="loginEvent2" value="false"/>
-                        <label class="form-check-label" for="loginEvent2">No</label>
+                        <label class="form-check-label" for="loginEvent2">{{'emailNotifications.option2' | translate}}</label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-secondary px-5" [routerLink]="['../account-settings']">Cancel</button>
-                <button type="button" (click)= "saveAndExit()" class="btn btn-primary ms-5 px-5" style="float: right">Update</button>
+                <button type="submit" class="btn btn-secondary px-5" [routerLink]="['../account-settings']">{{'emailNotifications.cancelButton' | translate}}</button>
+                <button type="button" (click)= "saveAndExit()" class="btn btn-primary ms-5 px-5" style="float: right">{{'emailNotifications.updateButton' | translate}}</button>
             </div><!--end Col-->
             </form>
         </div><!--end Row-->

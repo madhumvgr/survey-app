@@ -19,14 +19,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Multiple Users</h1>
+                <h1>{{'multipleUsers.title' | translate}}</h1>
                 <p>
-                    In this section, we wish to understand the approximate share (expressed in percentages) each
-                    household member has in watching this TV every month.
+                    {{'multipleUsers.description1' | translate}}
                 </p>
                 <p>
-                    Let’s consider an example. Three household members – a parent and 2 children – share a Smart TV. So,
-                    their shared device usage can be entered as: Parent=30%, Child 1 = 50%, Child 2 = 20%.
+                    {{'multipleUsers.description2' | translate}}
                 </p>
             </div>
             <!--end col-->
@@ -40,18 +38,18 @@
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row pb-4">
-            <h2>Shared device usage<span class="h2-separator"></span></h2>
+            <h2>{{'multipleUsers.heading' | translate}}<span class="h2-separator"></span></h2>
 
             <div class="col-12 mt-3">
 
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
-                    <h3 class="mb-3">Select how long each household member uses this device</h3>
-                    <p><strong>Tips:</strong></p>
+                    <h3 class="mb-3">{{'multipleUsers.text1' | translate}}</h3>
+                    <p><strong>{{'multipleUsers.tipsLabel' | translate}}:</strong></p>
                     <ul>
-                        <li>Enter an approximate percentage value for each member.</li>
-                        <li>If a member hasn’t viewed the device at all in the past month, enter 0% against their name.
+                        <li>{{'multipleUsers.tip1' | translate}}</li>
+                        <li>{{'multipleUsers.tip2' | translate}}
                         </li>
-                        <li>The total for all members should add up to 100.</li>
+                        <li>{{'multipleUsers.tip3' | translate}}</li>
                     </ul>
 
                     <div class="row g-0">
@@ -90,13 +88,13 @@
 
                 <!--End Row-->
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
-                    <h3 class="mb-3">Select how long this device is used by single vs multiple member at one time</h3>
-                    <p><strong>Tips:</strong></p>
+                    <h3 class="mb-3">{{'multipleUsers.text2' | translate}}</h3>
+                    <p><strong>{{'multipleUsers.tipsLabel' | translate}}:</strong></p>
                     <ul>
-                        <li>Enter an approximate percentage value for each member.</li>
-                        <li>If a member hasn’t viewed the device at all in the past month, enter 0% against their name.
+                        <li>{{'multipleUsers.tip1' | translate}}</li>
+                        <li>{{'multipleUsers.tip2' | translate}}
                         </li>
-                        <li>The total for all members should add up to 100.</li>
+                        <li>{{'multipleUsers.tip3' | translate}}</li>
                     </ul>
                     <div class="row g-0">
                         <form [formGroup]="multiUserCoViewerForm">
@@ -160,9 +158,9 @@
                 <!--End Rounded backgorund-->
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceOwnerInformation/' + deviceState + '/' + deviceId]">Back</button>
-                    <button type="button"  (click)="openModal()" class="btn btn-secondary ms-md-3">Save & Exit</button>
-                    <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">Continue</button>
+                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceOwnerInformation/' + deviceState + '/' + deviceId]">{{'multipleUsers.backButton' | translate}}</button>
+                    <button type="button"  (click)="openModal()" class="btn btn-secondary ms-md-3">{{'multipleUsers.SaveButton' | translate}}</button>
+                    <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{'multipleUsers.continueButton' | translate}}</button>
                     <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
 
                 </div>

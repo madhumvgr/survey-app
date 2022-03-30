@@ -14,9 +14,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Connect with Numeris</h1>
+                <h1>{{'helpNumeris.title' | translate}}</h1>
                 <p>
-                    Problem with your account? Something not right? Use this form to tell us more about the issue. Within 1 business day, our team will reply to the email you’ve registered with us. 
+                    {{'helpNumeris.description' | translate}} 
                 </p>
             </div><!--end col-->
         </div><!--end Row-->
@@ -26,18 +26,18 @@
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row pb-4">
-            <h2>How can we help?<span class="h2-separator"></span></h2>
+            <h2>{{'helpNumeris.heading' | translate}} <span class="h2-separator"></span></h2>
             <div class="col-12 mt-3">
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
                     <div>
                         <div class="mb-4 col-md-6">
-                            <label for="subject" class="form-label">Subject (E.g. Cant’ change my password)</label>
+                            <label for="subject" class="form-label">{{'helpNumeris.subject' | translate}}</label>
                             <input [(ngModel)]="subject" required name="subject" #subjectdata="ngModel" type="input" class="form-control">
-                            <small *ngIf="subjectdata.touched && !subjectdata.valid" class="text-danger">Subject is required</small>
+                            <small *ngIf="subjectdata.touched && !subjectdata.valid" class="text-danger">{{'helpNumeris.subjectRequired' | translate}}</small>
                         </div>
                         
                         <div class="mb-4 col-md-12">
-                            <label for="validationTextarea" class="form-label">Give us some more details about the issue you’re facing. </label>
+                            <label for="validationTextarea" class="form-label">{{'helpNumeris.description1' | translate}} </label>
                             <textarea [(ngModel)]="description" style="border-style:solid; border-width: 2px; border-color: black;" cols="50" rows="10" class="form-control" id="validationTextarea" placeholder="Start typing"></textarea>
                         </div>
                     </div>
@@ -45,8 +45,8 @@
             </div><!--end Col-->
            <!-- Action buttons -->
            <div class="col-xs-6 d-grid gap-2 d-md-block">
-                <button type="button" class="btn btn-dark" [routerLink]="['/support/techsupport']">Cancel</button>
-                <button type="button" class="btn btn-primary ms-md-3" (click)="submit()">Send</button>
+                <button type="button" class="btn btn-dark" [routerLink]="['/support/techsupport']">{{'helpNumeris.cancelButton' | translate}} </button>
+                <button type="button" class="btn btn-primary ms-md-3" (click)="submit()">{{'helpNumeris.sendButton' | translate}}</button>
             </div>
 
         </div><!--end Row-->

@@ -19,9 +19,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Device Owner Information</h1>
+                <h1>{{'deviceOwner.title' | translate}}</h1>
                 <p>
-                    Please select the name of the household member who owns this device.
+                    {{'deviceOwner.description' | translate}}
                 </p>
             </div>
             <!--end col-->
@@ -39,7 +39,7 @@
                 <form [formGroup]="deviceOwnerInfoForm">
                     <div class="shadow-sm rounded bg-white p-4 mb-4">
                         <select class="form-select" aria-label="Select household member"
-                            formControlName="selectedOwner">
+                            formControlName="selectedOwner" (change) ="continueNavigate()">
                             <option value="">Select Owner</option>
                             <option *ngFor="let item of ownerList" [value]="item.memberNo">
                                 {{item.memberName}}
@@ -50,10 +50,10 @@
 
                     <!-- Action buttons -->
                     <div class="col-xs-6 d-grid gap-2 d-md-block">
-                        <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceInformation/' + deviceState + '/' + deviceId]">Back</button>
-                        <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()" >Save & Exit</button>
-                        <button type="button" (click)="continueNavigate()"
-                            class="btn btn-primary ms-md-3" *ngIf ="!resubmit">Continue</button>
+                        <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceInformation/' + deviceState + '/' + deviceId]">{{'deviceOwner.backButton' | translate}}</button>
+                        <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()" >{{'deviceOwner.SaveButton' | translate}}</button>
+                        <button type="button" (click)="nextPage()"
+                            class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{'deviceOwner.continueButton'| translate}}</button>
                             <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
                     </div>
                 </form>

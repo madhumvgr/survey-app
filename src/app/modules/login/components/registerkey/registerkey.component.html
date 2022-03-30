@@ -19,8 +19,8 @@
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row">
-            <h1> Ready ? Let`s create your account.</h1>
-               <p>Please enter the one-time password(OTP) we emailed you.</p>
+            <h1> {{'newAccount.title' | translate}}</h1>
+               <p>{{'newAccount.description' | translate}}</p>
         </div>
     </div>
 </section>
@@ -33,7 +33,7 @@
               <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
                 <div class="bg-white shadow-sm rounded p-4">
                   <div class="search-wrapper cf">
-                  <label for="key" class="form-label">Key</label>
+                  <label for="key" class="form-label">{{'newAccount.key' | translate}}</label>
    
                     <input style="padding-left: 50px" matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" name="password" 
                         [(ngModel)]="model.password" #password="ngModel" 
@@ -47,10 +47,10 @@
                 
                
                        <span *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                         <div *ngIf="password.errors?.required">Key is required</div>
-                           <div *ngIf="password.errors?.minlength">Key must be at least 6 characters</div>
+                         <div *ngIf="password.errors?.required">{{'newAccount.keyRequired' | translate}}</div>
+                           <div *ngIf="password.errors?.minlength">{{'newAccount.keyRequiredText' | translate}}</div>
                        </span>
-                          <span *ngIf="showOtpError" class="text-danger"> Enter valid OTP.</span>
+                          <span *ngIf="showOtpError" class="text-danger"> {{'newAccount.otpText' | translate}}</span>
                  </div>
                  </div>
                 
@@ -58,7 +58,7 @@
                 
                 
                    <div class="mb-3 pt-4">
-                    <button type="submit" class="btn btn-primary">Continue</button>
+                    <button type="submit" class="btn btn-primary">{{'newAccount.continueButtonLabel' | translate}}</button>
                   </div>
               </form>
              </div>
@@ -66,7 +66,7 @@
           
         </div>
         <div class="mb-3 pt-4">
-        <a class ="font-size: small" style="text-decoration: underline" [routerLink]="['/login/keyhelp']">Need Help with your Key ?</a>
+        <a class ="font-size: small" style="text-decoration: underline" [routerLink]="['/login/keyhelp']">{{'newAccount.keyHelpText' | translate}}</a>
         </div>
     </div> 
 </section>

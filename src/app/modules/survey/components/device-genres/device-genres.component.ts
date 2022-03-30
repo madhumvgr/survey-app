@@ -151,6 +151,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     });
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
       this.userCount = res.numberOfUsers;
+      console.log(this.userCount);
     });
 
     if (this.isTvGenere) {
@@ -276,7 +277,10 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     let url;
     if (this.isTvGenere) {
       url = "television/household-members";
-    } else {
+    } else if(this.userCount == 0){ 
+      url = "survey/deviceOwnerInformation/" + this.deviceState + '/' + this.deviceId;
+    }
+    else{
       url = "/survey/deviceUsage/" + this.deviceState + "/" + this.deviceId;
     }
     this.router.navigateByUrl(url);

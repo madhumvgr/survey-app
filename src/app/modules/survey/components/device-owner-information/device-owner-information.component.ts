@@ -34,6 +34,8 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   resubmit: boolean = false;
   singleUserFlow: boolean = false;
   deviceStatus: any;
+  memeberNo:any;
+  memberName:any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
@@ -63,7 +65,6 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     }
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
       const deviceCheck = res.numberOfUsers;
-      console.log(deviceCheck)
       if(deviceCheck == null ) {
         this.notUsed = true;
       } else if(deviceCheck == 0) {
@@ -75,7 +76,6 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       if (response) {
         this.ownerList = response;
         const memberCount: any = this.ownerList.length;
-        console.log(memberCount);
         if(memberCount == 1) {
           this.singleMemeber = true;
           console.log(this.singleMemeber)
@@ -113,19 +113,23 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
 
     this.deviceService.updateDeviceMember(device).subscribe(response => {
       console.log(response);
-      if(this.notUsed) {
-       const message ="You have successfully update " +this.deviceName+ " device state";
-        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
-      }else if(this.singleMemeber) {
-        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
-      } else if(this.singleUserFlow) {
-        this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+device.memberNo+'/'+this.deviceId], { state: { memberName: device.memberName } });
-      }
-      else {
-        this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
-      }
-    
+      this.memeberNo =device.memberNo;
+      this.memberName = device.memberName;
     });
+  }
+
+  nextPage() {
+    if(this.notUsed) {
+      const message ="You have successfully update " +this.deviceName+ " device state";
+       this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+     }else if(this.singleMemeber) {
+       this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+     } else if(this.singleUserFlow) {
+       this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+this.memeberNo+'/'+this.deviceId], { state: { memberName: this.memberName } });
+     }
+     else {
+       this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
+     }
   }
 
   exitEvent(isBackAction:boolean) {

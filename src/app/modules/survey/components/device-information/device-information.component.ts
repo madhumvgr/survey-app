@@ -60,9 +60,9 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     );
     //get device information. 
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => {
-      this.deviceInfoFormControl.numberOfUsers.setValue(''+(res.numberOfUsers?res.numberOfUsers:''));
-      this.deviceInfoFormControl.oftenUsed.setValue('' + (res.oftenUsed?res.oftenUsed:''));
-      this.deviceInfoFormControl.planToUseDuration.setValue('' + (res.planToUseDuration?res.planToUseDuration:''));
+      this.deviceInfoFormControl.numberOfUsers.setValue(''+(res.numberOfUsers));
+      this.deviceInfoFormControl.oftenUsed.setValue('' + (res.oftenUsed));
+      this.deviceInfoFormControl.planToUseDuration.setValue('' + (res.planToUseDuration));
       this.deviceInfoFormControl.deviceNickName.setValue('' + res.deviceNickName?res.deviceNickName:'');
       
       if(res.numberOfUsers === 4) {
@@ -77,6 +77,8 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
         this.deviceInformation.macAddress = res1['macAddress'];
       });
     });
+
+    console.log(this.deviceInfoFormControl.oftenUsed);
   }
 
   get deviceInfoFormControl() {

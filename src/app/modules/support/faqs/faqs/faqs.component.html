@@ -14,9 +14,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>FAQ’s</h1>
+                <h1>{{'faqPage.title1' | translate}}</h1>
                 <p>
-                    Have a question? Browse through the most frequently asked questions below.
+                    {{'faqPage.description1' | translate}}
                 </p>
             </div><!--end col-->
         </div><!--end Row-->
@@ -26,7 +26,7 @@
 <section class="px-3 pb-4 faq-section">
     <div class="container">
         <div class="row pb-4">
-            <h2>Most popular questions and answers<span class="h2-separator"></span></h2>
+            <h2> {{'faqPage.heading2' | translate}}<span class="h2-separator"></span></h2>
             <div class="col-12 mt-3">
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
                     
@@ -389,8 +389,8 @@
 
                 </div>
             </div><!--end Col-->
-            <h2>I did not find my answer<span class="h2-separator"></span></h2>
-            <div class="col-12 mt-3"><p>Did not find your answer? No worries,  we are here for your! Simply <a style="text-decoration: underline;" [routerLink]="['/support/contact']">connect with our team</a> and we will be glad to assist you! </p></div>
+            <h2>{{'faqPage.title2' | translate}}<span class="h2-separator"></span></h2>
+            <div class="col-12 mt-3"><p>{{'faqPage.description2' | translate}} <a style="text-decoration: underline;" [routerLink]="['/support/contact']">{{'faqPage.link' | translate}}</a> {{'faqPage.text2' | translate}}</p></div>
 
         </div><!--end Row-->
 

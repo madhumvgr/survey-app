@@ -3,9 +3,9 @@
         "title": "Login",
         "text": "Welcome! You’re about to shape the future of Canadian broadcasting. We use cookies to improve your experience! By continuing, you accept our"
     },
-    "welcomePage":{
-        "title":"Welcome",
-        "text": "We're happy to have you! You now have the power to shape Canada's broadcasting industry! By taking part in our surveys, you help broadcasters understand the kind of entertainment Canadians care about. Be assured that your data and privacy ",
+    "welcomePage": {
+        "title": "Welcome",
+        "text": "We're happy to have you! You now have the power to shape Canada's broadcasting industry! By taking part in our surveys, you help broadcasters understand the kind of entertainment Canadians care about. Be assured that your ",
         "Link": "data and privacy",
         "text1": " are always protected. We hope you enjoy time with us.",
         "surveyhubLabel": "Survey Hub",
@@ -14,13 +14,226 @@
         "techSupportLabel": "Tech Support",
         "techSupportText": "We are here to help. Just ask!",
         "techSupportButton": "Learn More",
-        "privacyPolicyUrl":"https://numeris.ca/privacy-policy/"
+        "privacyPolicyUrl": "https://numeris.ca/privacy-policy/"
     },
     "messageCenter": {
         "title": "Messaging Center",
         "description": "Welcome to the messaging center where you can access messages and take actions."
     },
-    "techSupportPage":{
-        "title":"Tech Support"
+    "techSupportPage": {
+        "title": "Tech Support",
+        "description": "Have a question? Run into a problem? No sweat! Try searching the FAQ section for an answer. If that doesn’t work, drop us a line."
+    },
+    "faq": {
+        "title": "FAQs",
+        "description": "Search answers to frequently asked questions.",
+        "faqButton": "Search"
+    },
+    "connectNumeris": {
+        "title": "Connect with Numeris",
+        "description": "Drop us a line and we’ll look into it for you.",
+        "button": "Continue"
+    },
+    "panelistRegistration ": {
+        "title": "Ready? Let’s create your account.",
+        "description": "Please enter the one-time password (OTP) we emailed you.",
+        "button": "Continue",
+        "link": "Need help with your OTP?"
+    },
+    "surveyHub": {
+        "title": "Survey Hub",
+        "description": "Welcome to Survey Hub! Here, you'll find surveys that are quick and easy. We ask only basic questions to understand the type of entertainment programs you enjoy, and the device you prefer watching them on. Be assured that your ",
+        "description1": "are always protected.",
+        "Link": "data and privacy",
+        "privacyPolicyUrl": "https://numeris.ca/privacy-policy/"
+    },
+    "houseHold": {
+        "title": "Household",
+        "description": "This section collects basic information about household members and the media devices they use.",
+        "devicesCardTitle": "Devices",
+        "devicesCardDescription": "Surveys about media devices you have at home.",
+        "button": "Continue",
+        "demographicCardTitle": "Demographics",
+        "demographicCardDescription": "Basic questions about members in your household.",
+        "televisionCardTitle": "Television",
+        "televisionCardDescription": "Surveys about your cable and antena television usage."
+    },
+    "accountSettings": {
+        "title": "Account settings",
+        "description": "Use your account settings to change your password, adjust your email notifications, or learn about our Privacy Policy.",
+        "changePasswordTitle": "Change password",
+        "changePasswordDescription": "Changing your password is easy.",
+        "changePasswordButton": "Change",
+        "emailNotificationsTitle": "Email notifications",
+        "emailNotificationsDescription": "Choose the type of emails you want to receive.",
+        "emailNotificationsButton": "Change",
+        "privacyPolicyTitle": "Privacy policy",
+        "privacyPolicyDescription": "Protecting your privacy is our top priority.",
+        "privacyPolicyButton": "Learn More"
+    },
+    "householdDevices": {
+        "title": "Household Devices",
+        "description": "This section shows surveys for all media devices connected to your home internet.",
+        "householdDevicesActionsTitle": "Action required",
+        "householdDevicesActionsDescription": "",
+        "householdDevicesActionsLabel1": "New",
+        "householdDevicesStatus": "Currently",
+        "householdDevicesActionsLabel2": "In progress",
+        "householdDevicesHistoryTitle": "History",
+        "householdDevicesHistoryDescription": "",
+        "householdDevicesHistoryLabel1": "Completed",
+        "householdDevicesHistoryLabel2": "Not in use"
+    },
+    "faqPage": {
+        "title1": "FAQ’s",
+        "description1": "Have a question? Browse through the most frequently asked questions below.",
+        "heading2": "Most subjectpopular questions and answers",
+        "title2": "I did not find my answer",
+        "description2": "We’re here for you. Simply",
+        "link": "connect with our team",
+        "text2": "and we will be glad to assist you!"
+    },
+    "helpNumeris": {
+        "title": "Connect with Numeris",
+        "description": "Problem with your account? Something not right? Use this form to tell us more about the issue. Within 1 business day, our team will reply to the email you’ve registered with us.",
+        "heading": "How can we help?",
+        "subject": "Subject (E.g. Cant’ change my password)",
+        "description1": "Give us some more details about the issue you’re facing.",
+        "cancelButton": "Cancel",
+        "sendButton": "Send",
+        "subjectRequired": "Subject is required"
+    },
+    "contactUs": {
+        "title": "Contact Us",
+        "description": "Send us a message or call us at our Montreal or Richmond office locations.",
+        "heading": "Send us a message",
+        "description1": "Just send us a message below with any questions you have, and we will get back to you.",
+        "subject": "Subject",
+        "message": "Your message",
+        "sendButton": "Send"
+    },
+    "forgotPassword": {
+        "title": "Forgot password",
+        "description": "We will send you an email with instructions on how to reset your password.",
+        "Email": "Email",
+        "emailRequired": "Email is required",
+        "requestButtonLabel": "Request",
+        "signIn": "Back to sign in"
+    },
+    "newAccount": {
+        "title": "Ready ? Let`s create your account.",
+        "description": "Please enter the one-time password(OTP) we emailed you.",
+        "key": "Key",
+        "keyRequired": "Key is required",
+        "keyRequiredText": "Key must be at least 6 characters",
+        "otpText": "Enter valid OTP.",
+        "continueButtonLabel": "Continue",
+        "keyHelpText": "Need Help with your Key ?"
+    },
+    "newDevices": {
+        "title": "Devices",
+        "description": "This page shows all media devices that are New connected to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your privacy policy.",
+        "description1": "are always protected.",
+        "Link": "data and privacy",
+        "privacyPolicyUrl": "https://numeris.ca/privacy-policy/",
+        "devicesDetectedTitle": "",
+        "devicesDetectedDescription": "Select a device to start a survey."
+    },
+    "inProgressDevices": {
+        "title": "In Progress Devices",
+        "description": "This page lists surveys for media devices that you started but are yet to complete. Each survey has basic questions about a device’s usage. Select a device to complete its survey."
+    },
+    "completedDevices": {
+        "title": "",
+        "description": "This page shows media devices for which you’ve completed surveys. Nice going! You can review, edit and resubmit a completed survey."
+    },
+    "notInUse": {
+        "title": "",
+        "description": "This page shows media devices that you marked as “not in use”. If you’re using them again, please update its status by selecting a card below."
+    },
+    "deviceOwner": {
+        "title": "Device Owner Information",
+        "description": "Please select the name of the household member who owns this device.",
+        "backButton": "Back",
+        "SaveButton": "Save & Exit",
+        "continueButton": "Continue",
+        "ownerText": "Select device owner"
+    },
+    "multipleUsers": {
+        "title": "Multiple Users",
+        "description1": "In this section, we wish to understand the approximate share (expressed in percentages) each household member has in watching this TV every month.",
+        "description2": "Let’s consider an example. Three household members – a parent and 2 children – share a Smart TV. So, their shared device usage can be entered as: Parent=30%, Child 1 = 50%, Child 2 = 20%.",
+        "heading": "Shared device usage",
+        "text1": "Select how long each household member uses this device",
+        "tipsLabel": "Tips",
+        "tip1": "Enter an approximate percentage value for each member.",
+        "tip2": "If a member hasn’t viewed the device at all in the past month, enter 0% against their name.",
+        "tip3": "The total for all members should add up to 100.",
+        "text2": "Select how long this device is used by single vs multiple member at one time",
+        "backButton": "Back",
+        "SaveButton": "Save & Exit",
+        "continueButton": "Continue"
+    },
+    "deviceUsage": {
+        "title": "Device Usage",
+        "description": "This section has surveys that help us understand the media genres that each household member watches on this Smart TV.",
+        "tipsLabel": "Tips",
+        "tip1": "This survey lists 13 genres in all. Choose all that apply.",
+        "tip2": "You may complete the surveys in any order you wish.",
+        "heading": "Household member list",
+        "text": "Select the survey under your name. You may also select and complete a survey on behalf of a household member. Only after the status for ALL members shows “COMPLETE”, tap the SUMBIT button to continue.",
+        "backButton": "Back",
+        "SaveButton": "Save & Exit",
+        "continueButton": "Continue",
+        "startButton": "Start",
+        "Status": "Status"
+    },
+    "genres": {
+        "description": "Let’s get a bit specific about the genres watched online by.",
+        "heading": "List view of 11 genres",
+        "text": "Please select all the genres  .",
+        "text2": "watches online, and the time of day they most likely watch them at. You may select multiple time options",
+        "backButton": "Back",
+        "SaveButton": "Save & Exit",
+        "continueButton": "Continue"
+    },
+    "changePassword": {
+        "title": "Change Password",
+        "description": "",
+        "tipsLabel": "Tips",
+        "tip1": "Your password must be between 8 and 20 characters long ",
+        "tip2": "Have one upper and one lower case letter ",
+        "tip3": "It must have both letters and numbers and not have spaces, special characters or emojis ",
+        "currentPassword": "Current Password",
+        "currentPasswordRequired": "Current password is required",
+        "newPassword": "New Password",
+        "newPasswordRequired": "Password is required",
+        "confirmNewPassword": "Confirm New Password",
+        "confirmNewPasswordRequired": " New Password is required",
+        "passwordValidationMessage": "Password should contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
+        "cancelButton": "Cancel",
+        "updateButton": "Update",
+        "passwordMatchText": "Password and Confirm Password must match."
+    },
+    "emailNotifications": {
+        "title": "Email Notifications",
+        "description": "Choose the type of emails you’d like to receive from us.",
+        "heading": "Select your preferences below",
+        "q1": "Keep me informed about new features and company-related news.",
+        "q2": "I’d like to receive promotional and special offers.",
+        "q3": "Notify me each time there’s a login into my account.",
+        "option1": "Yes",
+        "option2": "No",
+        "cancelButton": "Cancel",
+        "updateButton": "Update"
+    },
+    "thankYouTechSupport": {
+        "title": "Thank you",
+        "description": "Great! We received your note. We will email you our reply within 1 business day.",
+        "description2": "Your confirmation number is:",
+        "heading": "Ask another question",
+        "text1": "Looking to ask more questions? No worries,  we are here for your!",
+        "text2": "Ask another question!"
+
     }
 }

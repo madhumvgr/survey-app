@@ -29,7 +29,7 @@
             <div class="col-12">
                 <h1>{{memberName}}</h1>
                 <p>
-                    Let’s get a bit specific about the genres watched online by {{memberName}}.
+                   {{'genres.description' | translate}} {{memberName}}
                 </p>
             </div>
         </div>
@@ -43,9 +43,8 @@
 <section class="px-3 pb-5">
     <div class="container">
         <div class="row g-4">
-            <h2>List view of 11 genres<span class="h2-separator"></span></h2>
-            <p class="mt-2 mb-0">Please select all the genres {{memberName}} watches online, and the time of day they most
-                likely watch them at. You may select multiple time options.</p>
+            <h2>{{'genres.heading' | translate}}<span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0">{{'genres.text' | translate}} {{memberName}} {{'genres.text2' | translate}}</p>
 
             <!-- Genres wrapper-->
             <div class="accordion accordion-flush" id="genres-target">
@@ -141,9 +140,9 @@
 
             <!-- Action buttons -->
             <div class="col-xs-6 d-grid gap-2 d-md-block">
-                <button type="button" class="btn btn-dark" (click)="backAction()">Back</button>
-                <button type="button" (click)="openModal()" class="btn btn-secondary ms-md-3">Save & Exit</button>
-                <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Continue</button>
+                <button type="button" class="btn btn-dark" (click)="backAction()">{{'genres.backButton' | translate}}</button>
+                <button type="button" (click)="openModal()" class="btn btn-secondary ms-md-3">{{'genres.SaveButton' | translate}}</button>
+                <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{'genres.continueButton' | translate}}</button>
                 <!-- <ng-template #submit1>
                     <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit
                     </button>

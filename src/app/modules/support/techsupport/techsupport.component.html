@@ -17,7 +17,7 @@
             <div class="col-12">
                 <h1>{{ 'techSupportPage.title' | translate }}</h1>
                 <p>
-                    Have a question? Run into a problem? No sweat! Try searching the FAQ section for an answer and If that doesn’t work, drop us a line. 
+                    {{ 'techSupportPage.description' | translate }}
                 </p>
             </div><!--end col-->
         </div><!--end Row-->
@@ -32,9 +32,9 @@
             <div class="col-md-4">
                 <div class="card shadow-sm rounded border-0">
                     <div class="card-body">
-                    <h5 class="card-title">FAQs</h5>
-                    <p class="card-text">Search answers to frequently asked questions.</p>
-                    <a href="#" class="btn btn-light" [routerLink]="['/support/faqs']">Explore</a>
+                    <h5 class="card-title"> {{ 'faq.title' | translate }}</h5>
+                    <p class="card-text">{{ 'faq.description' | translate }}</p>
+                    <a href="#" class="btn btn-light" [routerLink]="['/support/faqs']">{{ 'faq.faqButton' | translate }}</a>
                     </div>
                 </div>
             </div>
@@ -42,9 +42,9 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body shadow-sm rounded border-0">
-                    <h5 class="card-title">Connect with Numeris</h5>
-                    <p class="card-text">Drop us a line and we’ll look into it for you.</p>
-                    <a href="#" class="btn btn-light" [routerLink]="['/support/connect']">Connect</a>
+                    <h5 class="card-title">{{ 'connectNumeris.title' | translate }}</h5>
+                    <p class="card-text">{{ 'connectNumeris.description' | translate }}</p>
+                    <a href="#" class="btn btn-light" [routerLink]="['/support/connect']">{{ 'connectNumeris.button' | translate }}</a>
                     </div>
                 </div>
             </div>

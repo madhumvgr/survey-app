@@ -13,9 +13,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Contact Us</h1>
+                <h1>{{'contactUs.title' | translate}}</h1>
                 <p>
-                    Send us a message or call us at our Montreal or Richmond office locations.  
+                    {{'contactUs.description' | translate}} 
                 </p>
             </div><!--end col-->
         </div><!--end Row-->
@@ -25,20 +25,20 @@
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row pb-4">
-            <h2>Send us a message<span class="h2-separator"></span></h2>
-            <p>Just send us a message below with any questions you have, and we will get back to you</p>
+            <h2>{{'contactUs.heading' | translate}}<span class="h2-separator"></span></h2>
+            <p>{{'contactUs.description1' | translate}}</p>
             <div class="col-12 mt-3">
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
                     <form>
                         <div class="mb-4 col-md-6">
-                            <label for="subject" class="form-label">Subject</label>
+                            <label for="subject" class="form-label">{{'contactUs.subject' | translate}}</label>
                             <input type="email" class="form-control" id="subject" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-4 col-md-12">
-                            <label for="validationTextarea" class="form-label">Your message </label>
+                            <label for="validationTextarea" class="form-label">{{'contactUs.message' | translate}}</label>
                             <textarea style="border-style:solid; border-width: 2px; border-color: black;" cols="50" rows="10" class="form-control" id="validationTextarea" placeholder="Start typing"></textarea>
                         </div>
-                        <button type="button" class="btn btn-primary ms-md-3" [routerLink]="['/support/thankyou']">Send</button>
+                        <button type="button" class="btn btn-primary ms-md-3" [routerLink]="['/support/thankyou']">{{'contactUs.sendButton' | translate}}</button>
                     </form>
                 </div>
             </div><!--end Col-->

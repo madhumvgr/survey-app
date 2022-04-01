@@ -14,6 +14,8 @@ import { LoginHomeComponent } from './components/login-home/login-home.component
 import { ConnectComponent } from '../support/connect/connect.component';
 import { ContactComponent } from '../support/contact/contact.component';
 import { FinishPasswordResetComponent } from '../account-setting/components/account-settings/finish-password-reset/finish-password-reset.component';
+import { PasswordResetSuccessComponent } from './components/password-reset-success/password-reset-success.component';
+import { PasswordResetRequestComponent } from './components/password-reset-request/password-reset-request.component';
 
 const routes: Routes = [
   {
@@ -34,8 +36,11 @@ const routes: Routes = [
       { path: 'registerkey', component: RegisterkeyComponent },
       { path: 'registersuccess', component: RegisterSuccessComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: 'reset/finish',component: FinishPasswordResetComponent},
       { path: 'keyhelp', component: ContactComponent },
+      { path: 'forgot-password', component: ForgotPasswordComponent },
+      {path: 'reset/finish', component: FinishPasswordResetComponent},
+      {path: 'reset/init', component: PasswordResetRequestComponent},
+      {path: 'reset/success', component: PasswordResetSuccessComponent},
       { path: 'privacy-policy', component: PrivacyPolicyComponent, canActivate: [AuthGuard] },
 
       { path: '', pathMatch: 'full', redirectTo: 'registerkey' }

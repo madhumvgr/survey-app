@@ -1,9 +1,9 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['/account-settings/account-settings']">Account settings</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Privacy policy</li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/account-settings/account-settings']">{{'accountSettings.title' | translate}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{'accountSettings.privacyPolicyTitle' | translate}}</li>
         </ol>
     </div>
 </nav>

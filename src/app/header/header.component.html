@@ -35,31 +35,31 @@
               <mat-icon aria-hidden="false" aria-label="Cancel icon">cancel</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem [routerLink]="['/welcome']">Home
+            <button ngbDropdownItem [routerLink]="['/welcome']">{{'Home.title' | translate}}
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem [routerLink]="['/notification/messages']">Message Center
+            <button ngbDropdownItem [routerLink]="['/notification/messages']">{{'messageCenter.title' | translate}}
               &nbsp; &nbsp; &nbsp;
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem [routerLink]="['/survey/survey']">Survey Hub
+            <button ngbDropdownItem [routerLink]="['/survey/survey']">{{'surveyHub.title' | translate}}
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem [routerLink]="['/account-settings/account-settings']">Account Settings
+            <button ngbDropdownItem [routerLink]="['/account-settings/account-settings']">{{'accountSettings.title' | translate}}
               &nbsp; &nbsp; &nbsp;
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button [routerLink]="['/support/techsupport']" ngbDropdownItem>FAQs/Tech Support
+            <button [routerLink]="['/support/techsupport']" ngbDropdownItem>{{'techSupportPage.title' | translate}}
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button [routerLink]="['/support/contact']" ngbDropdownItem>Contact Us
+            <button [routerLink]="['/support/contact']" ngbDropdownItem>{{'contactUs.title' | translate}}
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
@@ -88,7 +88,7 @@
             </div>
           </i>
           <div class="ps-3">
-            <a class="text-white notification-bar-link" (click)="openNotification()">{{displayContent}}</a>
+            <a class="text-white notification-bar-link" (click)="openNotification()">{{"welcomePage.header1" | translate}}{{this.messages?.actions?.length}}{{"welcomePage.action" | translate}}{{this.messages?.messages?.length}}{{"welcomePage.message" | translate}}</a>
           </div>
         </div>
       </div>

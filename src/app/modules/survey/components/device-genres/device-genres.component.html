@@ -3,15 +3,15 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
             <ng-container *ngIf="isTvGenere else device">
-                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">Television Usage</a>
+                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">{{'householdDevices.televisionUsage' | translate}}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
             </ng-container>
             <ng-template #device>
-                <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">Household devices</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">{{'householdDevices.title' | translate}}</a></li>
                 <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceStatus}}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
@@ -133,7 +133,7 @@
 
                     ------------------------------------------>
                     <div *ngIf="!isValid" style="color:red">
-                            Atlease one check box should be selected. 
+                            At least one check box should be selected. 
                     </div>
             </div>
             <!--end Ganres-->

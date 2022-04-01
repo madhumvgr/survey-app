@@ -189,14 +189,14 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     let isValid = true;
     this.stationForm.forEach( form => {
       if(!form.value.weekDays || form.value.weekDays==''|| form.value.weekDays=='1'){
-      //  if(!form.value.weekEnds || form.value.weekEnds==''|| form.value.weekEnds=='1'){
         const formControl = <FormControl>form.get('weekDays');
         formControl.setErrors({'required':true});
           isValid= false;
-        // }else{
-        //   form.setErrors(null);
-        // }
-      }else{
+      } if(!form.value.weekEnds || form.value.weekEnds==''|| form.value.weekEnds=='1'){
+          const formControl = <FormControl>form.get('weekEnds');
+          formControl.setErrors({'required':true});
+            isValid= false;
+        }else{
         form.setErrors(null);
       }
     });

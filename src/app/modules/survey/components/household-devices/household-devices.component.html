@@ -1,9 +1,9 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['../survey']">Survey hub</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Household devices</li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['../survey']">{{'surveyHub.title' | translate}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{'householdDevices.title' | translate}}</li>
         </ol>
     </div>
 </nav>
@@ -31,9 +31,7 @@
     <div class="container">
         <div class="row g-4">
             <h2>{{'householdDevices.householdDevicesActionsTitle' | translate}} <span class="h2-separator"></span></h2>
-            <p class="mt-2 mb-0">New devices shows surveys for devices that have been recently added to your home
-                network. This is a good place to begin. Devices in progress shows surveys for devices that you’ve begun
-                but have still to complete. </p>
+            <p class="mt-2 mb-0">{{"householdDevices.newDescription" | translate}} {{"householdDevices.progressDescription" | translate}}</p>
             <!-- New Devices -->
             <a [routerLink]="['../deviceList/New']" class="col-md-6">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">

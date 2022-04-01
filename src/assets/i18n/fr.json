@@ -1,20 +1,38 @@
 {
     "loginPage": {
         "title": "Connexion",
-        "text": "Bienvenue! Vous êtes sur le point de façonner l'avenir de la radiodiffusion canadienne. Nous utilisons des cookies pour améliorer votre expérience ! En poursuivant, vous acceptez notre"
+        "text": "Bienvenue! Vous êtes sur le point de façonner l'avenir de la radiodiffusion canadienne. Nous utilisons des cookies pour améliorer votre expérience ! En poursuivant, vous acceptez notre",
+        "browserUpdateText": "Pour une meilleure expérience utilisateur, veuillez mettre à jour votre navigateur",
+        "email": "Courriel",
+        "emailRequiredText": "L'e-mail est requis",
+        "password": "Mot de passe",
+        "passwordRequiredText": "Nouveau mot de passe est requis",
+        "loginButton": "Se connecter",
+        "emailWarningText": "entrez une adresse e-mail valide",
+        "userNamePasswordMatchText": "Le nom d'utilisateur ou le mot de passe ne correspondent pas, veuillez réessayer.",
+        "userNameOrPasswordIncoorectText": "Nom d'utilisateur / mot de passe invalide.",
+        "forgotPassword": "Mot de passe oublié?"
+    },
+    "Home": {
+        "title": "domicile"
     },
     "welcomePage": {
         "title": "Bienvenu",
         "text": "Nous sommes enchantés de vous accueillir! Vous avez maintenant le pouvoir de façonner la configuration de l'industrie de la radiodiffusion canadienne! En prenant part à nos sondages, vous aidez les télédiffuseurs à comprendre le genre de divertissement qui intéresse les Canadiens. Veuillez être assuré que vos données",
         "Link": "personnelles et votre sphère privée",
         "text1": " seront toujours protégées. Nous espérons que vous apprécierez votre temps avec nous.",
-        "surveyhubLabel": "Sondages",
+        "surveyhubLabel": "Répertoire des sondages",
         "surveyhubText": "Tous les sondages en un seul endroit.",
         "surveyhubButton": "Démarrer",
-        "techSupportLabel": "Soutien tech",
+        "techSupportLabel": "Soutien technique",
         "techSupportText": "Nous sommes ici pour vous aider. Demandez! Voir plus",
-        "techSupportButton": "Voir plus",
-        "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/"
+        "techSupportButton": "En savoir plus",
+        "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/",
+        "quickStart": "Début rapide",
+        "header1": "Vous avez ",
+        "action": " nouvelle(s) actions(s) ",
+        "header2": " et ",
+        "message": " nouveau(x) message(s)."
     },
     "messageCenter": {
         "title": "Centre de Messagerie",
@@ -56,7 +74,8 @@
         "demographicCardTitle": "Données démographiques",
         "demographicCardDescription": "Questions de base concernant les membres de votre ménage.",
         "televisionCardTitle": "Télévision",
-        "televisionCardDescription": "Enquêtes sur votre utilisation de la télévision par câble et antenne."
+        "televisionCardDescription": "Enquêtes sur votre utilisation de la télévision par câble et antenne.",
+        "televisionUsage": "utilisation de la télévision"
     },
     "accountSettings": {
         "title": "Paramètres du compte",
@@ -82,7 +101,9 @@
         "householdDevicesHistoryTitle": "Historique",
         "householdDevicesHistoryDescription": "",
         "householdDevicesHistoryLabel1": "Complétés",
-        "householdDevicesHistoryLabel2": "Non utilisés"
+        "householdDevicesHistoryLabel2": "Non utilisés",
+        "newDescription": "Nouveaux indique le nombre de sondages concernant les appareils récemment ajoutés à votre réseau domestique. Nous vous recommandons de commencer avec ces sondages.",
+        "progressDescription":" En cours indique le nombre de sondages que vous avez commencés mais devant être complétés."
     },
     "faqPage": {
         "title1": "FAQ",
@@ -101,7 +122,8 @@
         "description1": "Donnez-nous plus de détails sur le problème auquel vous êtes confronté.",
         "cancelButton": "Annuler",
         "sendButton": "Envoyer",
-        "subjectRequired": "Le sujet est requis"
+        "subjectRequired": "Le sujet est requis",
+        "type": "Tapez ici"
     },
     "contactUs": {
         "title": "Nous contacter",
@@ -115,7 +137,7 @@
     "forgotPassword": {
         "title": "Mot de passe oublié",
         "description": "Nous vous enverrons un e-mail avec des instructions sur la façon de réinitialiser votre mot de passe.",
-        "Email": "E-mail",
+        "Email": "Courriel",
         "emailRequired": "L'e-mail est requis",
         "requestButtonLabel": "Demande",
         "signIn": "Retour à la connexion"
@@ -127,7 +149,7 @@
         "keyRequired": "La clé est requise",
         "keyRequiredText": "La clé doit comporter au moins 6 caractères",
         "otpText": "Saisissez un OTP valide.",
-        "continueButtonLabel": "Continuez",
+        "continueButtonLabel": "Continuer",
         "keyHelpText": "Besoin d’aide avec votre mot de passe à usage unique?"
     },
     "newDevices": {
@@ -234,6 +256,66 @@
         "heading": "D’autres questions?",
         "text1": "Vous cherchez à poser plus de questions ? Pas de soucis, nous sommes là pour vous !",
         "text2": "Posez-nous une autre question."
-
+    },
+    "menu": {
+        "home": "Maison",
+        "messageCenter": "Centre de Messagerie",
+        "surveyHub": "Répertoire des sondages",
+        "accountSettings": "Paramètres du compte",
+        "fAQs/TechSupport": "FAQs/Soutien Technique",
+        "contactUs": "Nous contacter",
+        "logout": "Se déconnecter"
+    },
+    "notifications": {
+        "text1": "Vous avez",
+        "text2": "nouvelle(s) action(s) et",
+        "text3": "nouveaux message(s)"
+    },
+    "thankYou": {
+        "title": "Merci",
+        "text1": "Nous avons enregistré votre enquête dans le",
+        "text2": "section. Vous pouvez toujours y revenir et le compléter.",
+        "bcHome": "Maison",
+        "bcThankyou": "Merci",
+        "exitButtonLabel": "Quitter"
+    },
+    "faqPageVam": {
+        "q1": "J'ai débranché mon audimètre central par accident. Que dois-je faire? ",
+        "q2": "Est-ce que le routeur et l’audimètre central doivent demeurer branchés au cours de la nuit?  ",
+        "q3": "Quel volume de données utilisera l’audimètre central?  ",
+        "q4": "Combien cela coûte-t-il en électricité de faire fonctionner l’audimètre central? ",
+        "q5": "Si je change de fournisseur (Internet ou télévision) ou encore les appareils à domicile, dois-je vous en informer?  ",
+        "q6": "Que signifient les différentes couleurs du témoin lumineux de l’audimètre central?  ",
+        "q7": "Comment redémarrer l’audimètre central si le témoin lumineux ne reste pas vert? ",
+        "q8": "Comment redémarrer l’audimètre central si le témoin lumineux ne reste pas vert?  ",
+        "q9": "Comment désinstaller l’audimètre central? "
+    },
+    "faqPageVamAnswers": {
+        "a1": ". Nul besoin de s'inquiéter. Il suffit de le rebrancher ! Lorsque vous voyez que le témoin lumineux reste vert, votre audimètre central fonctionne. S'il ne reste pas vert, veuillez communiquer avec nous (voir nos coordonnées à l'arrière de ce guide).",
+        "a2": "Oui. Laissez votre routeur et votre audimètre central branchés en tout temps, même durant la nuit et lorsque vous vous absentez de votre domicile. L’audimètre central pourra ainsi transmettre les données correctement. Aussi, puisque nos systèmes nous avisent en cas de problème avec l'audimètre central, vous ne recevrez pas de coup de fil de notre part pour résoudre le problème. ",
+        "a3": "L’audimètre central utilise très peu de données, soit moins de 5 mégaoctets (Mo) par jour. ",
+        "a4": "Le coût est minime. Chaque audimètre consomme environ 4 watts, ce qui revient à quelques cents par jour.",
+        "a5": "Tout a fait! Merci de nous aviser s'il y a des changements concernant votre routeur Wi-Fi, vos fournisseurs d’accès Internet ou de service de télévision ou l’un de vos appareil à domicile. ",
+        "a6": "Vert : L’audimètre central fonctionne correctement. Rouge clignotant : Si vous avez récemment changé votre routeur WiFi et que vous voyez un témoin rouge clignotant, veuillez nous contacter et nous fournir le modèle de votre nouveau routeur afin que nous puissions établir la connexion. Rouge fixe : L’audimètre a des problèmes techniques. Veuillez communiquer avec nous (voir nos coordonnées à l’arrière de ce guide). Toute autre couleur (que le témoin clignote ou non) : Il peut y avoir un problème technique avec l’audimètre central. Veuillez communiquer avec nous (voir nos coordonnées à l'arrière de ce guide). ",
+        "a7": "Si vous remarquez un problème avec l’audimètre central ou si vous voyez que le témoin lumineux ne reste pas vert, il suffit de débrancher le cordon d'alimentation et d'attendre 30 secondes avant de le rebrancher. Par la suite, veuillez envoyer un courriel à votre équipe d'administration de panel. Celle-ci s'assurera que votre audimètre central fonctionne correctement. Vous n'avez pas à vous inscrire de nouveau. ",
+        "a8": "Vous devez en premier lieu informer votre équipe d'administration de panel que vous voulez désinstaller l’audimètre central. Ensuite, il suffit de débrancher le câble réseau et le cordon d'alimentation. ",
+        "a9": "Replacez l’audimètre central, le câble réseau et le cordon d'alimentation dans la boîte qui les contenait au départ et assurez-vous de fixer le bordereau de retour sur la boîte. Vous pouvez apporter la boîte vous-même à un point d’expédition Purolator ou à un magasin Bureau en Gros/Staples; nous pouvons également planifier une cueillette de Purolator directement chez vous pour ramasser la boîte. Veuillez nous appeler ou nous envoyer un courriel pour nous laisser savoir ce que vous préférez."
+    },
+    "registrationForm": {
+        "description": "Entrer son code d’utilisateur et son mot de passe.",
+        "tips": "Astuces",
+        "tip1": "Doit contenir entre 8 et 20 caractères ",
+        "tip2": "Doit contenir à la fois des lettres et des chiffres",
+        "tip3": "Have one upper and one lower case letter",
+        "tip4": "Ne doit pas contenir d’espace, de caractères spéciaux ni d’emojis",
+        "userName": "Email",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmez votre mot de passe",
+        "registerButton": "Inscrire"
+    },
+    "registerSuccess": {
+        "tittle": "Bravo! Votre compte est créé!",
+        "description1": "Nous sommes ravis de vous compter parmi nous! Pour vos dossiers, nous vous avons envoyé par courriel un avis de confirmation contenant vosdétails de connexion.",
+        "description3": "Vous êtes prêt à démarrer! Veuillez vous connecter."
     }
 }

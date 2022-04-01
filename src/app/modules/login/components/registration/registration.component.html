@@ -7,18 +7,16 @@
 
         <p class="x">Register/Create Profile</p>
         <div><h1 class="y">Create Profile</h1></div>
-        <div><p>Enter your username and password below</p></div>
-        <div><b>Tips</b></div>
-        
+        <div><p>{{"registrationForm.description" | translate}}</p></div>
+        <div><b>{{"registrationForm.tips" | translate}}</b></div>
         <div>
-        
-        <li> Be between 8 and 20 characters long
+        <li> {{"registrationForm.tip1" | translate}}
             <span class="check"> &#10003;</span></li>
-        <li> Have both letters and numbers
+        <li> {{"registrationForm.tip2" | translate}}
             <span class="check"> &#10003;</span></li>
-            <li> Have one upper and one lower case letter
+            <li> {{"registrationForm.tip3" | translate}}
                 <span class="check"> &#10003;</span></li>
-        <li>Not have spaces, special characters or emojis
+        <li>{{"registrationForm.tip4" | translate}}
             <span class="check"> &#10003;</span></li>
         </div>
         <section class="px-3 pb-4">
@@ -31,7 +29,7 @@
         <form class="col-md-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="bg-white shadow-sm rounded p-4">
                 <div class="mb-3">
-                    <label for="inputEmail" class="form-label">Email</label>
+                    <label for="inputEmail" class="form-label">{{"registrationForm.userName" | translate}}</label>
                     <input type="email" class="form-control" id="inputEmail" formControlName="email"
                         aria-describedby="emailHelp">
                     <span class="text-danger"
@@ -46,7 +44,7 @@
                 <div class="mb-3">
                     <div class="search-wrapper cf">
                         
-                    <label for="inputPass" class="form-label">Password</label>
+                    <label for="inputPass" class="form-label">{{"registrationForm.password" | translate}}</label>
                     <input style="padding-left: 50px" matInput [type]="show ? 'password' : 'text'" type="password" class="form-control" formControlName="password" id="inputPass">
                     <button type="button" mat-icon-button matSuffix (click)="show = !show" [attr.aria-label]="'Show password'" [attr.aria-pressed]="show" class="eye-hide">
                         <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -58,13 +56,12 @@
                     </span>
                     <span class="text-danger"
                         *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.invalidPassword">
-                        Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
-                        letter and 1 number
+                        Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number
                     </span>
                 </div>
                 <div class="mb-3">
                     <div class="search-wrapper cf">
-                    <label for="inputPass" class="form-label">Confirm Password</label>
+                    <label for="inputPass" class="form-label">{{"registrationForm.confirmPassword" | translate}}</label>
                     
                     <input style="padding-left: 50px" matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" formControlName="confirmPassword" id="confirmPass">
          
@@ -77,8 +74,7 @@
                         Confirm password is required
                     </span>
                     <span class="text-danger" *ngIf="registerFormControl.confirmPassword.errors?.mustMatch && registerFormControl.confirmPassword.touched">Password and
-                        Confirm Password
-                        must match.
+                        Confirm Password must match.
                     </span>
                     <div *ngIf="showError" class = "text-danger">
                         {{errorMessage}}
@@ -95,7 +91,7 @@
             <div class="px-3 pb-4 form-group mb-3">
                 <div class="container">
                 <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary">{{"registrationForm.registerButton" | translate}}</button>
            </form>
         </div>
     </div>

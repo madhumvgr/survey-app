@@ -4,9 +4,9 @@
     <nav class="px-3 mt-4">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
                 
-                <li class="breadcrumb-item active" aria-current="page">Thankyou  </li>
+                <li class="breadcrumb-item active" aria-current="page">{{'thankYouTechSupport.title' | translate}}</li>
             </ol>
         </div>
     </nav>
@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>Thank you</h1>
+                    <h1>{{'thankYouTechSupport.title' | translate}}</h1>
                     <p> 
                         {{message}}
                     </p>
@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>Thank you</h1>
+                    <h1>{{'thankYouTechSupport.title' | translate}}</h1>
                     <p> 
                         "We have saved your survey in the <a [routerLink] = "['/survey/deviceList/'+state?.previousState]"> {{state?.previousState}} </a> section. You can always go back to it and complete it."
                     </p>
@@ -45,7 +45,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-20">
-                 <button type="submit" class="btn btn-primary px-3 ms-3" [routerLink]="['/welcome']">Exit</button>
+                 <button type="submit" class="btn btn-primary px-3 ms-3" [routerLink]="['/welcome']">{{'thankYou.exitButtonLabel' | translate}}</button>
                </div>
                </div>
             </div><!--end Container-->

@@ -2,9 +2,9 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">Survey hub</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">Household devices</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">{{'householdDevices.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceStatus}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
             <!--has to reflect devices name here-->

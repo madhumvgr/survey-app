@@ -4,8 +4,8 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Tech support</li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ 'techSupportPage.title' | translate }}</li>
         </ol>
     </div>
 </nav>

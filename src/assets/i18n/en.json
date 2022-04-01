@@ -1,7 +1,20 @@
 {
     "loginPage": {
         "title": "Login",
-        "text": "Welcome! You’re about to shape the future of Canadian broadcasting. We use cookies to improve your experience! By continuing, you accept our"
+        "text": "Welcome! You’re about to shape the future of Canadian broadcasting. We use cookies to improve your experience! By continuing, you accept our",
+        "browserUpdateText": "For better user experience please update your browser.",
+        "email": "Email",
+        "emailRequiredText": "Email is required",
+        "password": "Password",
+        "passwordRequiredText": "Password is required",
+        "loginButton": "Log In",
+        "emailWarningText": " Enter a valid email address",
+        "userNamePasswordNotMatchText": "The username or Password do not match, please try again.",
+        "userNameOrPasswordIncoorectText": "Invalid UserName/Password.",
+        "forgotPassword": "Forgot Password?"
+    },
+    "Home": {
+        "title": "Home"
     },
     "welcomePage": {
         "title": "Welcome",
@@ -14,7 +27,13 @@
         "techSupportLabel": "Tech Support",
         "techSupportText": "We are here to help. Just ask!",
         "techSupportButton": "Learn More",
-        "privacyPolicyUrl": "https://numeris.ca/privacy-policy/"
+        "privacyPolicyUrl": "https://numeris.ca/privacy-policy/",
+        "quickStart": "Quick start",
+        "header1": "You have ",
+        "action": " new action(s) ",
+        "header2": " and ",
+        "message": " new message(s)."
+
     },
     "messageCenter": {
         "title": "Messaging Center",
@@ -56,7 +75,8 @@
         "demographicCardTitle": "Demographics",
         "demographicCardDescription": "Basic questions about members in your household.",
         "televisionCardTitle": "Television",
-        "televisionCardDescription": "Surveys about your cable and antena television usage."
+        "televisionCardDescription": "Surveys about your cable and antena television usage.",
+        "televisionUsage": "Television Usage"
     },
     "accountSettings": {
         "title": "Account settings",
@@ -82,12 +102,15 @@
         "householdDevicesHistoryTitle": "History",
         "householdDevicesHistoryDescription": "",
         "householdDevicesHistoryLabel1": "Completed",
-        "householdDevicesHistoryLabel2": "Not in use"
+        "householdDevicesHistoryLabel2": "Not in use",
+        "televisionUsage": "Television Usage",
+        "newDescription": "New shows surveys for devices that were newly added to your home network. We recommend you start with these surveys.",
+        "progressDescription":"In Progress shows device surveys you began but are still to complete."
     },
     "faqPage": {
         "title1": "FAQ’s",
         "description1": "Have a question? Browse through the most frequently asked questions below.",
-        "heading2": "Most subjectpopular questions and answers",
+        "heading2": "Frequently asked questions and answers",
         "title2": "I did not find my answer",
         "description2": "We’re here for you. Simply",
         "link": "connect with our team",
@@ -101,7 +124,8 @@
         "description1": "Give us some more details about the issue you’re facing.",
         "cancelButton": "Cancel",
         "sendButton": "Send",
-        "subjectRequired": "Subject is required"
+        "subjectRequired": "Subject is required",
+        "type": "Type here"
     },
     "contactUs": {
         "title": "Contact Us",
@@ -234,6 +258,67 @@
         "heading": "Ask another question",
         "text1": "Looking to ask more questions? No worries,  we are here for your!",
         "text2": "Ask another question!"
-
+    },
+    "menu": {
+        "home": "Home",
+        "messageCenter": "Message Center",
+        "surveyHub": "Survey Hub",
+        "accountSettings": "Account Settings",
+        "fAQs/TechSupport": "FAQs/Tech Support",
+        "contactUs": "Contact Us",
+        "logout": "Logout"
+    },
+    "notifications": {
+        "text1": "You have",
+        "text2": "new action(s) and ",
+        "text3": "new message(s)"
+    },
+    "thankYou": {
+        "title": "Thank you",
+        "text1": "We have saved your survey in the",
+        "text2": "section. You can always go back to it and complete it.",
+        "bcHome": "Home",
+        "bcThankyou": "Thankyou",
+        "exitButtonLabel": "Exit"
+    },
+    "faqPageVam": {
+        "q1": "I accidentally unplugged the FocalMeter. What should I do?",
+        "q2": "Do I need to keep my router and the FocalMeter plugged in overnight? ",
+        "q3": "How much of my data plan will the FocalMeter use? ",
+        "q4": "How much does it cost in electricity to run the FocalMeter?",
+        "q5": "If I change my internet or TV providers or change the devices in my household, do I need to tell you? ",
+        "q6": "What do the different lights on the FocalMeter mean? ",
+        "q7": "How do I reboot the FocalMeter if the light is not a Solid Green Colour? ",
+        "q8": "How do I uninstall the FocalMeter? ",
+        "q9": "How do I return the equipment? "
+    },
+    "faqPageVamAnswers": {
+        "a1": "Don't worry, just plug it back in! When you see a solid green light, you know it's working. If you don't see a solid green light, please contact us via the contact information on the back of this guide.",
+        "a2": "Yes, please. Leave your router and the FocalMeter plugged in all the time, including overnight and when you are away from home. This allows the FocalMeter to share the data properly. Also, because our systems will notify us if it sees a problem with the meter, you won`t receive a phone call from us to troubleshoot the problem.",
+        "a3": "The FocalMeter uses a small amount of data, less than 5MB per day.",
+        "a4": "The cost is minimal. Each meter uses about 4 watts which translates to just a few pennies per day. ",
+        "a5": "Yes, please let us know if there are any changes to your providers, router, or any of the devices in your household. ",
+        "a6": "Solid Green: The FocalMeter is working correctly. Flashing red: If you recently changed your WiFi router and see a flashing red light on the meter, please contact us to provide the model of your new router so that we can approve the connection. Solid red: The FocalMeter is having technical issues. Please contact us using the information on the back of this guide. Any other colour (solid or flashing): There may be a technical problem with your meter, please contact us via the contact information on the back of this guide.",
+        "a7": "If you notice a problem with the FocalMeter, or if you see that the solid green light has disappeared, simply disconnect the power cord, wait 30 seconds and reconnect the power cord. Then, send a short email to regional Panel Administration team. They will make sure the FocalMeter is still working properly. You won't need to register again. ",
+        "a8": "To uninstall the FocalMeter, first notify the Panel Administration team that you would like to uninstall the FocalMeter. Next, unplug the network cable and the power cord. ",
+        "a9": "Pack up the FocalMeter, network cable, and power cord in the original box and ensure that the return waybill is affixed to the outside of the box. You can then either drop it off yourself at any Purolator location or Staples store, or we can schedule Purolator to come directly to your home and pick up the package. Please notify us by phone or email that you are returning the equipment and/or if you would like us to schedule a pick up. "
+    }, 
+    "registrationForm": {
+        "description": "Enter your username and password.",
+        "tips": "Tips",
+        "tip1": "Be between 8 and 20 characters long",
+        "tip2": "Have both letters and numbers",
+        "tip3": "Have one upper and one lower case letter",
+        "tip4": "Not  have spaces, special characters or emojis",
+        "userName": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "registerButton": "Register"
+    },
+    "registerSuccess": {
+        "tittle": "Success! Your account is created!",
+        "description1": "We are thrilled to have you! For your records, we have emailed you a details.",
+        "description3": "You’re good to go! Please login when ready."
     }
+
 }

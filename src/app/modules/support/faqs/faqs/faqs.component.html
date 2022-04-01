@@ -2,9 +2,9 @@
 <nav class="px-3 mt-4">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['/support/techsupport']">Tech support</a></li>
-            <li class="breadcrumb-item active" aria-current="page">FAQ's</li>
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/support/techsupport']">{{ 'techSupportPage.title' | translate }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{'faqPage.title1' | translate}}</li>
         </ol>
     </div>
 </nav>
@@ -31,6 +31,7 @@
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
                     
                     <h2 style="color:cornflowerblue">Contents</h2>
+                    <h2 style="color:cornflowerblue">SSP</h2>
                     <h3 (click)="scrollInView('q1')">1. What is the Numeris Multimedia Ratings Panel?</h3>
                     <h3 (click)="scrollInView('q2')">2. How do the Meters work?</h3>
                     <h3 (click)="scrollInView('q3')">3. What do panel members receive for being a part of the ratings panel?</h3>
@@ -386,6 +387,46 @@
                     Email : meterpanelwest@numeris.ca				 
                     <br>
                     Toll-free : 1-866-730-7960
+
+
+                    <h2 style="color:cornflowerblue">VAM</h2>
+                    <h3 >1. {{'faqPageVam.q1' | translate}} </h3>
+                    <h3 >2. {{'faqPageVam.q2' | translate}} </h3>
+                    <h3 >3. {{'faqPageVam.q3' | translate}} </h3>
+                    <h3 >4. {{'faqPageVam.q4' | translate}} </h3>
+                    <h3 >5. {{'faqPageVam.q5' | translate}} </h3>
+                    <h3 >6. {{'faqPageVam.q6' | translate}} </h3>
+                    <h3 >7. {{'faqPageVam.q7' | translate}} </h3>
+                    <h3 >8. {{'faqPageVam.q8' | translate}} </h3>
+                    <h3 >9. {{'faqPageVam.q9' | translate}} </h3>
+                    <br>
+                    <br>
+                    <h3 >1. {{'faqPageVam.q1' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a1' | translate}}</p>
+
+                    <h3 >2. {{'faqPageVam.q2' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a2' | translate}}</p>
+
+                    <h3 >3. {{'faqPageVam.q3' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a3' | translate}}</p>
+
+                    <h3 >4. {{'faqPageVam.q4' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a4' | translate}}</p>
+
+                    <h3 >5. {{'faqPageVam.q5' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a5' | translate}}</p>
+
+                    <h3 >6. {{'faqPageVam.q6' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a6' | translate}}</p>
+
+                    <h3 >7. {{'faqPageVam.q7' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a7' | translate}}</p>
+
+                    <h3 >8. {{'faqPageVam.q8' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a8' | translate}}</p>
+
+                    <h3 >9. {{'faqPageVam.q9' | translate}} </h3>
+                    <p>A. {{'faqPageVamAnswers.a9' | translate}}</p>
 
                 </div>
             </div><!--end Col-->

@@ -23,6 +23,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { PasswordResetSuccessComponent } from './components/password-reset-success/password-reset-success.component';
+import { PasswordResetRequestComponent } from './components/password-reset-request/password-reset-request.component';
 
 @NgModule({
   declarations: [  RegistrationComponent,
@@ -37,6 +39,8 @@ import { MatInputModule } from '@angular/material/input';
    
     PrivacyPolicyComponent,
     LoginHomeComponent,
+    PasswordResetSuccessComponent,
+    PasswordResetRequestComponent,
   ],
   imports: [
     CommonModule,

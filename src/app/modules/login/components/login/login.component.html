@@ -9,7 +9,7 @@
                     </i>
                     <div class="ps-3">
                         <a class="text-white" href="https://support.google.com/googleone/answer/9891898?hl=en"
-                            target="_blank">For better user experience please update your browser.</a>
+                            target="_blank">{{ 'loginPage.browserUpdateText' | translate }}</a>
                     </div>
                 </div>
             </div>
@@ -39,21 +39,21 @@
                 <form class="col-md-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="bg-white shadow-sm rounded p-4">
                         <div class="mb-3">
-                            <label for="inputEmail" class="form-label">Email</label>
+                            <label for="inputEmail" class="form-label">{{ 'loginPage.email' | translate }}</label>
                             <input type="email" class="form-control" id="inputEmail" formControlName="email"
                                 aria-describedby="emailHelp">
                             <span class="text-danger"
                                 *ngIf="(loginFormControl.email.touched || submitted) && loginFormControl.email.errors?.required">
-                                Email is required
+                                {{ 'loginPage.emailRequiredText' | translate }}
                             </span>
                             <span class="text-danger"
                                 *ngIf="loginFormControl.email.touched && loginFormControl.email.errors?.email">
-                                Enter a valid email address
+                                {{ 'loginPage.emailWarningText' | translate }}
                             </span>
                         </div>
                         <div class="mb-3">
                             <div class="search-wrapper cf">
-                                <label for="inputPass" class="form-label">Password</label>
+                                <label for="inputPass" class="form-label">{{ 'loginPage.password' | translate }}</label>
 
                                 <input style="padding-left: 50px" matInput [type]="show ? 'password' : 'text'"
                                     type="password" class="form-control" formControlName="password" id="inputPass"
@@ -66,16 +66,16 @@
 
                             <span class="text-danger"
                                 *ngIf="(loginFormControl.password.touched || submitted) && loginFormControl.password.errors?.required">
-                                Password is required
+                                {{ 'loginPage.passwordRequiredText' | translate }}
                             </span>
                             <span class="text-danger"
                                 *ngIf="loginFormControl.password.touched && loginFormControl.password.errors?.invalidPassword">
                                 <!--Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
                                 letter and 1 number-->
-                                The username or Password do not match, please try again.
+                                {{ 'loginPage.userNamePasswordNotMatchText' | translate }}
                             </span>
                             <div *ngIf="showError" class="error">
-                                The username or Password do not match, please try again.
+                                {{ 'loginPage.userNamePasswordNotMatchText' | translate }}
                             </div>
                         </div>
 
@@ -89,15 +89,15 @@
     <div class="container">
         <form class="col-md-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="px-3 mb-3">
-                <button type="submit" class="btn btn-primary">Log In</button>
+                <button type="submit" class="btn btn-primary">{{ 'loginPage.loginButton' | translate }}</button>
                 <span *ngIf="showInvalidError" class="text-danger">
-                    Invalid UserName/Password.
+                    {{ 'loginPage.userNameOrPasswordIncoorectText' | translate }}
                 </span>
 
             </div>
             <div class="px-3">
                 <a [routerLink]="['/login/forgot-password']" class="font-size: small"
-                    style="text-decoration: underline">Forgot Password?</a>
+                    style="text-decoration: underline">{{ 'loginPage.forgotPassword' | translate }}</a>
             </div>
 
 

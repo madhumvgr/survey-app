@@ -185,7 +185,9 @@
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
-        "ownerText": "Select device owner"
+        "ownerText": "Select device owner",
+        "success":"You have successfully update ",
+        "successTrail":" device state"
     },
     "multipleUsers": {
         "title": "Multiple Users",

@@ -6,6 +6,7 @@ import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
+import { TranslateService } from '@ngx-translate/core';
 export interface Owner {
   memberName: string;
   memberNo: string;
@@ -40,7 +41,8 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   private modalComponent!: ModalComponent;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute,
-    private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService) {
+    private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService,
+    private translate: TranslateService) {
       super();
      }
 
@@ -120,7 +122,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
 
   nextPage() {
     if(this.notUsed) {
-      const message ="You have successfully updated " +this.deviceName+ " device state";
+      const message =this.translate.instant('deviceOwner.success') +this.deviceName+ this.translate.instant('deviceOwner.successTrail');
        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
      }else if(this.singleMemeber) {
        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);

@@ -86,8 +86,11 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   }
 
   continueNavigate() {
-    console.log(this.deviceInfoForm);
-    this.router.navigateByUrl('survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
+    if(this.deviceInfoForm.invalid){
+
+    }else{
+      this.router.navigateByUrl('survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
+    }
   }
 
   setNotInuse() {

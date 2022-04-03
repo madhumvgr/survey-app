@@ -11,8 +11,11 @@ export class AppComponent {
   title = 'project';
 
   constructor(private translate: TranslateService, private localStorageService:LocalStorageService) {
-    translate.setDefaultLang('en');
-    if(!this.localStorageService.getItem(StorageItem.LANG))
-    this.localStorageService.setLanguageItem("en");
+    if(!this.localStorageService.getItem(StorageItem.LANG)){
+      this.localStorageService.setLanguageItem("en");
+      translate.setDefaultLang('en');
+    }else{
+      translate.setDefaultLang(''+this.localStorageService.getItem(StorageItem.LANG));
+    }
   }
 }

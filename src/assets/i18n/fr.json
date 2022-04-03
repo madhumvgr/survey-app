@@ -212,7 +212,9 @@
         "SaveButton": "Sauvegarder & quitter",
         "continueButton": "Continuer",
         "startButton": "Démarrer",
-        "Status": "Statut"
+        "Status": "Statut", 
+        "resubmitSuccess": "Vous nous avez soumis les informations concernant le ",
+        "resubmitSuccess2": "ravec succès."    
     },
     "genres": {
         "description": "Nous cherchons à obtenir plus de détails à propos des catégories regardées en ligne par.",
@@ -221,7 +223,8 @@
         "text2": "regarde en ligne, et l’heure durant la journée ou il ou elle est plus susceptible de le faire. Vous pouvez sélectionner plusieurs options de temps.",
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
-        "continueButton": "Continuer"
+        "continueButton": "Continuer",
+        "message": "Vous nous avez soumis les informations sur avec succès. "
     },
     "changePassword": {
         "title": "Changer son mot de passe",
@@ -359,6 +362,14 @@
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
-        "resumitButton": "Re-Submit"
+        "resumitButton": "Re-Submit",
+        "success": "Vous nous avez soumis les informations sur ",
+        "success2": "avec succès"
+    },
+    "modalWindow": {
+        "modalTitle": "Sauvegarder et quitter",
+        "content": "Votre travail jusqu’ici a été enregistré. Vous pouvez toujours y revenir pour le finir plus tard. ",
+        "dismissButtonLabel":"Retour",
+        "closeButtonLabel": "Quitter"
     }
 }

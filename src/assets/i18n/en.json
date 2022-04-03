@@ -186,7 +186,7 @@
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "ownerText": "Select device owner",
-        "success":"You have successfully update ",
+        "success":"You have successfully updated ",
         "successTrail":" device state"
     },
     "multipleUsers": {
@@ -216,7 +216,9 @@
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "startButton": "Start",
-        "Status": "Status"
+        "Status": "Status",
+        "resubmitSuccess": "You have successfully re-submitted ",
+        "resubmitSuccess2": "resubmitSuccess."
     },
     "genres": {
         "description": "Let’s get a bit specific about the genres watched online by.",
@@ -225,7 +227,8 @@
         "text2": "watches online, and the time of day they most likely watch them at. You may select multiple time options",
         "backButton": "Back",
         "SaveButton": "Save & Exit",
-        "continueButton": "Continue"
+        "continueButton": "Continue",
+        "message": "You have successfully submitted information to us."
     },
     "changePassword": {
         "title": "Change Password",
@@ -364,9 +367,16 @@
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
-        "resumitButton": "Re-Submit"
-        
-
+        "resumitButton": "Re-Submit",
+        "success": "You have successfully submitted",
+        "success2": "device information to us",
+        "resubmit": "Thank you for updating your info page!"
+    },
+    "modalWindow": {
+        "modalTitle": "Save and Exit",
+        "content": "Your work is saved! You can always finish the rest of it later.",
+        "dismissButtonLabel":"Cancel",
+        "closeButtonLabel": "Exit"
     }
 
 }

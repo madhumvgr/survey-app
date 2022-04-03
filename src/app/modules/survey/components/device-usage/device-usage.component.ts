@@ -5,6 +5,7 @@ import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-device-usage',
@@ -25,7 +26,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   deviceStatus: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
-  constructor(private Activatedroute:ActivatedRoute, private localStorageService:LocalStorageService, private router: Router,private deviceService: DeviceService) { 
+  constructor(private Activatedroute:ActivatedRoute, private localStorageService:LocalStorageService, private router: Router,private deviceService: DeviceService, private translate: TranslateService) { 
     super();
   }
   ngAfterViewInit(){
@@ -67,10 +68,10 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
 
   submit() {
     let message: any;  
-    if(this.deviceState == "Completed") {
-     message ="You have successfully Re-submitted " +this.deviceName+ " device information to us";
+    if(this.deviceState == "Completed") { 
+     message = this.translate.instant('deviceUsage.resubmitSuccess') +this.deviceName+ this.translate.instant('deviceUsage.resubmitSuccess2');
     } else {
-      message ="You have successfully submitted " +this.deviceName+ " device information to us";
+      message = this.translate.instant('deviceInformation.success') + this.deviceName+ this.translate.instant('deviceInformation.success2');
     }
     this.deviceService.updateHomeSurvey(this.deviceId).subscribe(
       res => {console.log(res);
@@ -79,7 +80,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   }
 
   resubmitForm() {
-    const message ="Thank you for updating your info page! ";
+    const message =this.translate.instant('deviceInformation.resubmit');
   this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 
@@ -92,7 +93,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   }
 
   exitEvent(isBackAction:boolean) {
-    const message ="You have successfully submitted " +this.deviceName+ " device information to us";
+    const message = this.translate.instant('deviceInformation.success'); +this.deviceName+ this.translate.instant('deviceInformation.success2');;
      this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
    }
 

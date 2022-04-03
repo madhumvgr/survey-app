@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
@@ -102,7 +103,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
     private televisionService: TelevisionService,
-    private localStorageService: LocalStorageService) {
+    private localStorageService: LocalStorageService, private translate: TranslateService) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
     if (url == "tv-channels") {
@@ -161,8 +162,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   submit() {
 
     if(this.isFormValid()){
-      let message = "You have successfully submitted information to us";
-
+      let message = this.translate.instant('genres.message');
       if (this.stationForm.filter(e => !e.valid).length === 0 || this.isTvGenere) {
   
         this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
@@ -241,10 +241,10 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
 
   exitEvent(isBackAction: boolean) {
     if (this.isTvGenere) {
-      const message = "You have successfully submitted information to us";
+      const message = this.translate.instant('genres.message');
       this.router.navigate(['television/thankyou'], { state: { message: message } });
     } else {
-      const message = "You have successfully submitted " + this.deviceName + " device information to us";
+      const message = this.translate.instant('deviceInformation.success') + this.deviceName + this.translate.instant('deviceInformation.success2');
       this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
 
     }

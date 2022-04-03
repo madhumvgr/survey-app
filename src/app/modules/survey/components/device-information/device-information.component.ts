@@ -110,7 +110,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   }
 
 exitEvent(isBackAction:boolean) {
- const message ="You have successfully submitted " +this.deviceName+ " device information to us";
+  const message =this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success2');
   this.updateForm();
   this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
 }

@@ -6,6 +6,7 @@ import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface Member {
   deviceId: string;
@@ -41,7 +42,7 @@ export class MultiUserListComponent extends BaseComponent implements OnInit {
   private modalComponent!: ModalComponent;
 
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService,  private localStorageService:LocalStorageService,) {
+    private deviceService: DeviceService,  private localStorageService:LocalStorageService, private translate: TranslateService) {
       super();
      }
      ngAfterViewInit(){
@@ -177,12 +178,12 @@ export class MultiUserListComponent extends BaseComponent implements OnInit {
   }
 
   exitEvent(isBackAction:boolean) {
-    const message ="You have successfully submitted " +this.deviceName+ " device information to us";
+    const message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success2') ;
      this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
    }
 
    resubmitForm() {
-    const message ="Thank you for updating your info page! ";
+    const message = this.translate.instant('deviceInformation.resubmit');
   this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 }

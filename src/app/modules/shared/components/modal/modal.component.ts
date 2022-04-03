@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Injectable, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core'
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'modal',
@@ -19,7 +20,7 @@ export class ModalComponent implements OnInit {
   @ViewChild('modal') private modalContent: TemplateRef<ModalComponent> | undefined
   private modalRef!: NgbModalRef
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private translate: TranslateService) { }
 
   ngOnInit(): void { }
 

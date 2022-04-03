@@ -122,7 +122,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
 
   nextPage() {
     if(this.notUsed) {
-      const message =this.translate.instant('deviceOwner.success') +this.deviceName+ this.translate.instant('deviceOwner.successTrail');
+      const message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success');
        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
      }else if(this.singleMemeber) {
        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
@@ -135,13 +135,13 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   }
 
   exitEvent(isBackAction:boolean) {
-    const message ="You have successfully submitted " +this.deviceName+ " device information to us";
+    const message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success2');
      this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
    }
 
    resubmitForm() {
-    const message ="Thank you for updating your info page! ";
-  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+    const message = this.translate.instant('deviceInformation.resubmit');
+    this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 
 }

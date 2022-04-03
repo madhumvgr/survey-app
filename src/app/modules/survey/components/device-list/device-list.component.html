@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12" >
-                <h1>{{deviceStatus}} Devices</h1>
+                <h1>{{deviceStatus}} {{'newDevices.devicesText' | translate}}</h1>
                 <p *ngIf="deviceStatus == 'New'">
                     {{'newDevices.description' | translate}} <a  href='javascript:void(0);' (click)="showWindow()">{{'newDevices.Link' | translate}}</a> {{'newDevices.description1' | translate}}
                 </p>
@@ -36,18 +36,18 @@
 <section class="px-3 pb-5">
     <div class="container">
         <div class="row g-4">
-            <h2>{{deviceStatus}} devices detected: {{deviceCount}}<span class="h2-separator"></span></h2>
+            <h2>{{deviceStatus}} {{'newDevices.devicesDetected'| translate}}: {{deviceCount}}<span class="h2-separator"></span></h2>
             <p class="mt-2 mb-0" *ngIf="deviceStatus == 'New'">{{'newDevices.devicesDetectedDescription' | translate}}</p>
 
              <!-- Newly Detected Device (Smart TV) -->
-             <a *ngFor="let device of devicesList" (click) ="navigateTo(device)">
+             <a *ngFor="let device of devicesList" (click) ="navigateTo(device)" href='javascript:void(0);'>
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons p-3 new-devices-icon d-flex icon-red align-items-center h-100">
                         <div class="h1 mb-0">{{device?.iconDescription}}</div>
                     </i>
                     <div class="ps-3 description">
                         <h3 class="text-truncate">{{device.deviceName}}</h3>
-                        <p class="text-truncate">Mac Address: <span>{{device.macAddress}}</span>
+                        <p class="text-truncate">{{'inProgressDevices.macAddress' | translate}}: <span>{{device.macAddress}}</span>
                         </p>   
                     </div>
                     <i class="material-icons ms-auto pe-3">  

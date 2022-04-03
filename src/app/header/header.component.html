@@ -7,10 +7,10 @@
       <img class="img-fluid" src="./assets/logo.png" alt="">
     </a>
     <ng-container *ngIf="!isFrance else english">
-      <a (click)="changeLanguage('fr')" class="lang-taggle">français</a>
+      <a (click)="changeLanguage('fr')" class="lang-taggle" href='javascript:void(0);'>français</a>
     </ng-container>
     <ng-template #english>
-      <a (click)="changeLanguage('en')" class="lang-taggle">English</a>
+      <a (click)="changeLanguage('en')" class="lang-taggle" href='javascript:void(0);'>English</a>
     </ng-template>
 
     <div class="row" *ngIf="isMenu">
@@ -55,7 +55,7 @@
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button [routerLink]="['/support/techsupport']" ngbDropdownItem>{{'techSupportPage.title' | translate}}
+            <button [routerLink]="['/support/techsupport']" ngbDropdownItem>{{'menu.fAQs/TechSupport' | translate}}
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
@@ -64,7 +64,7 @@
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem (click)="doLogout()">Logout
+            <button ngbDropdownItem (click)="doLogout()">{{"menu.logout" | translate}}
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
 

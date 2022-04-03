@@ -120,7 +120,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
 
   nextPage() {
     if(this.notUsed) {
-      const message ="You have successfully update " +this.deviceName+ " device state";
+      const message ="You have successfully updated " +this.deviceName+ " device state";
        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
      }else if(this.singleMemeber) {
        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);

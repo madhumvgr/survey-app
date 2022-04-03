@@ -25,11 +25,7 @@
                     <!--Select Devices-->{{deviceName}}
                 </h1>
                 <p>
-                    Let’s talk a bit about your <span>
-                        <!--Select Devices-->{{deviceName}}
-                    </span>. It helps us understand how it’s being used. <a href='javascript:void(0);' (click)="showWindow()">Privacy Policy</a> be assured
-                    that your privacy is our top concern and we check your device for specific
-                    data only
+                    {{"deviceInformation.description" | translate }} {{deviceName}}. {{"deviceInformation.descriptionPart2" | translate }} <a href='javascript:void(0);' (click)="showWindow()">Privacy Policy</a> {{"deviceInformation.descriptionPart3" | translate }}
                 </p>
             </div>
             <!--end col-->
@@ -50,7 +46,7 @@
                     <div class="h4 m-0">feed</div>
                 </i>
                 <div class="ps-3 description">
-                    <p><strong>Device platform</strong></p>
+                    <p><strong>{{"deviceInformation.devicePlatform" | translate }}:</strong></p>
                     <span>{{deviceInformation?.devicePlatform}}</span>
                 </div>
             </div>
@@ -60,7 +56,7 @@
                     <div class="h4 m-0">feed</div>
                 </i>
                 <div class="ps-3 description">
-                    <p><strong>Operation system:</strong></p>
+                    <p><strong>{{"deviceInformation.operationSystem" | translate }}:</strong></p>
                     <span>{{deviceInformation?.os}}</span>
                 </div>
             </div>
@@ -70,7 +66,7 @@
                     <div class="h4 m-0">feed</div>
                 </i>
                 <div class="ps-3 description">
-                    <p><strong>MAC address:</strong></p>
+                    <p><strong>{{"deviceInformation.address" | translate }}:</strong></p>
                     <span>{{deviceInformation?.macAddress}}</span>
                 </div>
             </div>
@@ -85,85 +81,47 @@
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row pb-4">
-            <h2>Device Information<span class="h2-separator"></span></h2>
+            <h2>{{"deviceInformation.heading" | translate }}<span class="h2-separator"></span></h2>
             <div class="col-12 mt-3">
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
                     <form [formGroup]="deviceInfoForm">
                         <!-- Question 1 -->
-                        <h4>Naming this device makes it easy for you to identify it in the future. Your focal meter says
-                            this
-                            device is called “Yoda”. Continue using this name or enter a different one below.</h4>
+                        <h4>{{"deviceInformation.description2" | translate }}</h4>
                         <div class="mb-4">
                             <label for="question1" class="form-label">Enter different device name </label>
                             <input type="input" class="form-control" id="question1" formControlName="deviceNickName" name ="deviceNickName" (focus) ="updateForm()" (change)="updateForm()" >
                         </div>
                         <!-- Question 2 -->
                         <div class="mb-4">
-                            <h4>How many household members use this device?</h4>
+                            <h4>{{"deviceInformation.q1" | translate }}</h4>
                             <div class="form-check mb-2">
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio1" value=0>
-                                <label class="form-check-label" for="Radio1">1</label>
+                                <label class="form-check-label" for="Radio1">{{"deviceInformation.q1Option1" | translate }}</label>
                             </div>
                             <div class="form-check mb-2">
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio2" value=1>
-                                <label class="form-check-label" for="Radio2">2 to 10</label>
+                                <label class="form-check-label" for="Radio2">{{"deviceInformation.q1Option2" | translate }}</label>
                             </div>
                             <div class="form-check mb-2">
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio3" value=2>
-                                <label class="form-check-label" for="Radio3">11 to 20</label>
+                                <label class="form-check-label" for="Radio3">{{"deviceInformation.q1Option3" | translate }}</label>
                             </div>
                             <div class="form-check mb-2">
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio4" value=3>
-                                <label class="form-check-label" for="Radio4">More than 20</label>
+                                <label class="form-check-label" for="Radio4">{{"deviceInformation.q1Option4" | translate }}</label>
                             </div>
                             <div class="form-check">
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="setNotInuse()" name="numberOfUsers" id="Radio5" value=4>
-                                <label class="form-check-label" for="Radio5">This device no longer in use</label>
-                            </div>
-                        </div>
-                        <!-- Question 3 -->
-                        <div class="mb-4" [hidden]="isDeviceNoLonger === true">
-                            <h4>How often do you or your household members watch something on this device?</h4>
-                            <div class="form-check mb-2">
-                                <input formControlName="oftenUsed" class="form-check-input" type="radio" (change)="updateForm()" name="oftenUsed" id="Radio6" value=0>
-                                <label class="form-check-label" for="Radio6">Daily</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input formControlName="oftenUsed" class="form-check-input" type="radio" (change)="updateForm()" name="oftenUsed" id="Radio7" value=1>
-                                <label class="form-check-label" for="Radio7">A few times each week</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input formControlName="oftenUsed" class="form-check-input" type="radio" (change)="updateForm()" name="oftenUsed" id="Radio8" value=2>
-                                <label class="form-check-label" for="Radio8">A few times each month</label>
-                            </div>
-                        </div>
-                        <!-- Question 4-->
-                        <div class="mb-4" [hidden]="isDeviceNoLonger === true">
-                            <h4>How long do you plan on using this device?</h4>
-                            <div class="form-check mb-2">
-                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio6" value=0>
-                                <label class="form-check-label" for="Radio6">For less than 6 months</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio7" value=1>
-                                <label class="form-check-label" for="Radio7">More than 6 months</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio8" value=2>
-                                <label class="form-check-label" for="Radio8">More than 1 year</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input formControlName="planToUseDuration" class="form-check-input" type="radio" (change)="updateForm()" name="planToUseDuration" id="Radio8" value=3>
-                                <label class="form-check-label" for="Radio8">As long as it lasts!</label>
+                                <label class="form-check-label" for="Radio5">{{"deviceInformation.q1Option5" | translate }}</label>
                             </div>
                         </div>
                     </form>
                 </div>
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">Back</button>
-                    <button type="button" (click)="openModal()"  class="btn btn-secondary ms-md-3">Save & Exit</button>
-                    <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">Continue</button>
+                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">{{"deviceInformation.backButton" | translate }}</button>
+                    <button type="button" (click)="openModal()"  class="btn btn-secondary ms-md-3">{{"deviceInformation.SaveButton" | translate }}</button>
+                    <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{"deviceInformation.continueButton" | translate }}</button>
                     <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
                 </div>
 

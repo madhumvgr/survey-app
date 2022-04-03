@@ -103,7 +103,8 @@
         "householdDevicesHistoryLabel1": "Complétés",
         "householdDevicesHistoryLabel2": "Non utilisés",
         "newDescription": "Nouveaux indique le nombre de sondages concernant les appareils récemment ajoutés à votre réseau domestique. Nous vous recommandons de commencer avec ces sondages.",
-        "progressDescription":" En cours indique le nombre de sondages que vous avez commencés mais devant être complétés."
+        "progressDescription": " En cours indique le nombre de sondages que vous avez commencés mais devant être complétés.",
+        "historyDescription": "Complétés indique le nombre de sondages concernant les appareils que vous avez complétés. Vous pouvez les passer en revue, modifier vos réponses et les renvoyer, le cas échéant.Non utilisés concerne les appareils que vous identifiés comme n’étant pas utilisés. Si jamais vous les utilisez de nouveau, veuillez sélectionner cette fiche pour mettre à jour leur statut."
     },
     "faqPage": {
         "title1": "FAQ",
@@ -159,11 +160,14 @@
         "Link": "personnelles et votre sphère privée",
         "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/",
         "devicesDetectedTitle": "",
-        "devicesDetectedDescription": "Sélectionnez un appareil pour commencer un sondage."
+        "devicesDetectedDescription": "Sélectionnez un appareil pour commencer un sondage.",
+        "devicesText": "Appareils",
+        "devicesDetected": "appareil détectés "
     },
     "inProgressDevices": {
         "title": "En cours",
-        "description": "Cette page énumère les sondages pour les appareils média que vous avez commencés, devant être complétés. Chaque sondage contient des questions de base concernant l’utilisation d’un appareil. Sélectionnez un appareil pour terminer le sondage qui lui est destiné."
+        "description": "Cette page énumère les sondages pour les appareils média que vous avez commencés, devant être complétés. Chaque sondage contient des questions de base concernant l’utilisation d’un appareil. Sélectionnez un appareil pour terminer le sondage qui lui est destiné.",
+        "macAddress": "Adresse Mac"
     },
     "completedDevices": {
         "title": "",
@@ -216,7 +220,7 @@
         "text": "Veuillez sélectionner toutes les catégories que.",
         "text2": "regarde en ligne, et l’heure durant la journée ou il ou elle est plus susceptible de le faire. Vous pouvez sélectionner plusieurs options de temps.",
         "backButton": "Retour",
-        "SaveButton": "Sauvegarder & quitter",
+        "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer"
     },
     "changePassword": {
@@ -255,7 +259,9 @@
         "description2": "Votre numéro de confirmation est ",
         "heading": "D’autres questions?",
         "text1": "Vous cherchez à poser plus de questions ? Pas de soucis, nous sommes là pour vous !",
-        "text2": "Posez-nous une autre question."
+        "text2": "Posez-nous une autre question.",
+        "text3": "Nous avons sauvegardé le sondage incomplet dans la ",
+        "text4": "section. Vous pouvez toujours y revenir pour le compléter plus tard. "
     },
     "menu": {
         "home": "Maison",
@@ -274,7 +280,7 @@
     "thankYou": {
         "title": "Merci",
         "text1": "Nous avons enregistré votre enquête dans le",
-        "text2": "section. Vous pouvez toujours y revenir et le compléter.",
+        "text2": "section.Vous pouvez toujours y revenir pour le compléter plus tard. ",
         "bcHome": "Maison",
         "bcThankyou": "Merci",
         "exitButtonLabel": "Quitter"
@@ -306,7 +312,7 @@
         "tips": "Astuces",
         "tip1": "Doit contenir entre 8 et 20 caractères ",
         "tip2": "Doit contenir à la fois des lettres et des chiffres",
-        "tip3": "Have one upper and one lower case letter",
+        "tip3": "Avoir une majuscule et une minuscule",
         "tip4": "Ne doit pas contenir d’espace, de caractères spéciaux ni d’emojis",
         "userName": "Email",
         "password": "Mot de passe",
@@ -317,5 +323,42 @@
         "tittle": "Bravo! Votre compte est créé!",
         "description1": "Nous sommes ravis de vous compter parmi nous! Pour vos dossiers, nous vous avons envoyé par courriel un avis de confirmation contenant vosdétails de connexion.",
         "description3": "Vous êtes prêt à démarrer! Veuillez vous connecter."
+    },
+    "passwordReset": {
+        "title": "Mot de passe Réinitialiser",
+        "tips": "Astuces",
+        "tip1": "Doit contenir entre 8 et 20 caractères ",
+        "tip2": "Doit contenir à la fois des lettres et des chiffres",
+        "tip3": "Avoir une majuscule et une minuscule",
+        "tip4": "Ne doit pas contenir d’espace, de caractères spéciaux ni d’emojis",
+        "password": "Mot de passe",
+        "passwordRequired": "Nouveau mot de passe est requis",
+        "confirmPassword": "Confirmez votre mot de passe",
+        "confirmPasswordRequired": "Confirmez votre nouveau mot de passe est requis",
+        "updateButtonLabel": "Mise à jour",
+        "passwordValidation": "Le mot de passe doit contenir au moins 8 caractères, au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre",
+        "passwotdNotMatchText": "Le mot de passe et la confirmation du mot de passe doivent correspondre."
+    },
+    "deviceInformation": {
+        "title": "",
+        "description": "Parlons un peu de votre ",
+        "descriptionPart2": "Nous voulons avoir une meilleure idée de la façon dont il est utilisé. ",
+        "descriptionPart3": "Soyez assuré que votre vie privée demeurera notre principale préoccupation et que les informations sur votre appareil sont exclusivement spécifiques.",
+        "descriptionPart4": "",
+        "devicePlatform": "plateforme de l’appareil",
+        "operationSystem": "Système d’exploitation ",
+        "address": "Adresse Mac",
+        "heading": "Informations concernant l’appareil",
+        "description2": "En nommant cet appareil, il vous sera plus facile de l’identifier par après. Votre audimètre central l’identifie comme Yoda. Vous pouvez continuer d’utiliser ce nom ou entrer un nouveau nom ci-après. ",
+        "q1": "bien de membres de votre ménage utilisent cet appareil?",
+        "q1Option1": "1",
+        "q1Option2": "2 à 10",
+        "q1Option3": "11 à 20",
+        "q1Option4": "Plus de 20",
+        "q1Option5": "Cet appareil n’est plus utilisé",
+        "backButton": "Retour",
+        "SaveButton": "Sauvegarder et quitter",
+        "continueButton": "Continuer",
+        "resumitButton": "Re-Submit"
     }
 }

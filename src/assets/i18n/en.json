@@ -105,7 +105,8 @@
         "householdDevicesHistoryLabel2": "Not in use",
         "televisionUsage": "Television Usage",
         "newDescription": "New shows surveys for devices that were newly added to your home network. We recommend you start with these surveys.",
-        "progressDescription":"In Progress shows device surveys you began but are still to complete."
+        "progressDescription":"In Progress shows device surveys you began but are still to complete.",
+        "historyDescription": "Completed devices show surveys that you have completed. You can review, change and resubmit any of these surveys. Devices that are not in use shows surveys for devices you marked not in use. If you ever put them to use again, please tap to update their status."
     },
     "faqPage": {
         "title1": "FAQ’s",
@@ -161,11 +162,14 @@
         "Link": "data and privacy",
         "privacyPolicyUrl": "https://numeris.ca/privacy-policy/",
         "devicesDetectedTitle": "",
-        "devicesDetectedDescription": "Select a device to start a survey."
+        "devicesDetectedDescription": "Select a device to start a survey.",
+        "devicesText": "Devices",
+        "devicesDetected": "devices detected"    
     },
     "inProgressDevices": {
         "title": "In Progress Devices",
-        "description": "This page lists surveys for media devices that you started but are yet to complete. Each survey has basic questions about a device’s usage. Select a device to complete its survey."
+        "description": "This page lists surveys for media devices that you started but are yet to complete. Each survey has basic questions about a device’s usage. Select a device to complete its survey.",
+        "macAddress": "Mac Address"
     },
     "completedDevices": {
         "title": "",
@@ -256,8 +260,10 @@
         "description": "Great! We received your note. We will email you our reply within 1 business day.",
         "description2": "Your confirmation number is:",
         "heading": "Ask another question",
-        "text1": "Looking to ask more questions? No worries,  we are here for your!",
-        "text2": "Ask another question!"
+        "text1": "Looking to ask more questions? No worries,  we are here for you!",
+        "text2": "Ask another question!",
+        "text3": "We have saved the incomplete survey in the ",
+        "text4": "section. You can always go back to it and complete it later."
     },
     "menu": {
         "home": "Home",
@@ -319,6 +325,46 @@
         "tittle": "Success! Your account is created!",
         "description1": "We are thrilled to have you! For your records, we have emailed you a details.",
         "description3": "You’re good to go! Please login when ready."
+    },
+    "passwordReset": {
+        "title": "Password Reset",
+        "tips": "Tips",
+        "tip1": "Be between 8 and 20 characters long",
+        "tip2": "Have both letters and numbers",
+        "tip3": "Have one upper and one lower case letter",
+        "tip4": "Not  have spaces, special characters or emojis",
+        "password": "Password",
+        "passwordRequired": "Password is required",
+        "confirmPassword": "Confirm Password",
+        "confirmPasswordRequired": "Confirm Password is required",
+        "updateButtonLabel": "Update",
+        "passwordValidation": "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
+        "passwotdNotMatchText": "Password and Confirm Password must match."
+    },
+    "deviceInformation": {
+        "title": "",
+        "description": "Let’s talk a bit about your ",
+        "descriptionPart2": "It helps us understand how it's being used.",
+        "descriptionPart3": "Be assured that your privacy is our top concern and we check your device for specific data only.",
+        "descriptionPart4": "",
+        "devicePlatform": "Device Platform ",
+        "operationSystem": "Operational system ",
+        "address": "Mac address",
+        "heading": "Device Information",
+        "description2": "Naming this device makes it easy for you to identify it in the future. Your focal meter says this device is called “Yoda”. Continue using this name or enter a different one below.",
+        "heading2": "",
+        "q1": "How many household members use this device?",
+        "q1Option1": "1",
+        "q1Option2": "2 to 10",
+        "q1Option3": "11 to 20",
+        "q1Option4": "More than 20",
+        "q1Option5": "This device is no longer in use",
+        "backButton": "Back",
+        "SaveButton": "Save & Exit",
+        "continueButton": "Continue",
+        "resumitButton": "Re-Submit"
+        
+
     }
 
 }

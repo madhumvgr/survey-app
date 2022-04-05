@@ -33,7 +33,6 @@
         "action": " new action(s) ",
         "header2": " and ",
         "message": " new message(s)."
-
     },
     "messageCenter": {
         "title": "Messaging Center",
@@ -105,7 +104,7 @@
         "householdDevicesHistoryLabel2": "Not in use",
         "televisionUsage": "Television Usage",
         "newDescription": "New shows surveys for devices that were newly added to your home network. We recommend you start with these surveys.",
-        "progressDescription":"In Progress shows device surveys you began but are still to complete.",
+        "progressDescription": "In Progress shows device surveys you began but are still to complete.",
         "historyDescription": "Completed devices show surveys that you have completed. You can review, change and resubmit any of these surveys. Devices that are not in use shows surveys for devices you marked not in use. If you ever put them to use again, please tap to update their status."
     },
     "faqPage": {
@@ -164,7 +163,7 @@
         "devicesDetectedTitle": "",
         "devicesDetectedDescription": "Select a device to start a survey.",
         "devicesText": "Devices",
-        "devicesDetected": "devices detected"    
+        "devicesDetected": "devices detected"
     },
     "inProgressDevices": {
         "title": "In Progress Devices",
@@ -186,8 +185,8 @@
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "ownerText": "Select device owner",
-        "success":"You have successfully updated ",
-        "successTrail":" device state"
+        "success": "You have successfully updated ",
+        "successTrail": " device state"
     },
     "multipleUsers": {
         "title": "Multiple Users",
@@ -313,7 +312,7 @@
         "a7": "If you notice a problem with the FocalMeter, or if you see that the solid green light has disappeared, simply disconnect the power cord, wait 30 seconds and reconnect the power cord. Then, send a short email to regional Panel Administration team. They will make sure the FocalMeter is still working properly. You won't need to register again. ",
         "a8": "To uninstall the FocalMeter, first notify the Panel Administration team that you would like to uninstall the FocalMeter. Next, unplug the network cable and the power cord. ",
         "a9": "Pack up the FocalMeter, network cable, and power cord in the original box and ensure that the return waybill is affixed to the outside of the box. You can then either drop it off yourself at any Purolator location or Staples store, or we can schedule Purolator to come directly to your home and pick up the package. Please notify us by phone or email that you are returning the equipment and/or if you would like us to schedule a pick up. "
-    }, 
+    },
     "registrationForm": {
         "description": "Enter your username and password.",
         "tips": "Tips",
@@ -367,16 +366,112 @@
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
-        "resumitButton": "Re-Submit",
-        "success": "You have successfully submitted",
-        "success2": "device information to us",
-        "resubmit": "Thank you for updating your info page!"
+        "resumitButton": "Re-Submit"
+    },
+    "faqSSPQuestions": {
+        "content": "Contents",
+        "q1": "What is the Numeris Multimedia Ratings Panel?",
+        "q2": "How do the Meters work?",
+        "q3": "What do panel members receive for being a part of the ratings panel?",
+        "q4": "How do the draws work?",
+        "q5": "Do I have to listen to the radio or watch TV or online videos to be eligible for monthly rewards or draws?",
+        "q6": "Do I have to report the incentives or draw winnings that I receive from Numeris in my annual taxes to the government?",
+        "q7": "Why do we need complete questionnaires?",
+        "q8": "Why do I have to sign the Consent and Confidentiality Agreement?",
+        "q9": "What household or technology changes do we need to inform you of,  and why?",
+        "q10": "What if we take a vacation or travel?",
+        "q11": "Can I plug in my Meters as soon as I receive them?",
+        "q12": "What are the beacons meant for and do they need to remain plugged in?",
+        "q13": "Why do I need to let you know when I am changing addresses?",
+        "q14": "What if someone in the family listens to radio or watches TV using headphones?",
+        "q15": "Do I need to charge my PersonalMeter every night?",
+        "q16": "Do I have to carry the PersonalMeter in the summer months and during the holiday season?",
+        "q17": "I have a large family and it is hard to keep track of the PersonalMeters.  Can you provide some tips?",
+        "q18": "How do I make carrying the PersonalMeters fun and easy to remember for the family?",
+        "q19": "What do I do if I lose my Meter or if it doesn’t work anymore?",
+        "q20": "Am I the only person allowed to wear my PersonalMeter?",
+        "q21": "Will the time on my PersonalMeter automatically adjust to daylight saving time?",
+        "q22": "How does the FocalMeter exclude web traffic that is not on the Inclusion list?",
+        "q23": "Will someone need to visit my home to hook up the equipment?",
+        "q24": "Do I need to push any buttons on my Meters, or do anything special, to participate?",
+        "q25": "How long do the PersonalMeter and FocalMeter installations take?",
+        "q26": "Will the FocalMeter interfere with my Internet service or other networked devices?",
+        "q27": "Why was my household chosen?",
+        "q28": "How did you get my name and telephone number?",
+        "q29": "How will my Panel Administrator contact me?",
+        "q30": "Once I have joined, how long do I stay on the panel?",
+        "q31": "What should I tell people that ask about my FocalMeter or PersonalMeter?",
+        "q32": "What are the Numeris office hours and how do I contact Numeris?"
+    },
+    "faqSSPAnswers": {
+        "a1": "The Numeris Multimedia Ratings Panel consists of many types of households across Canada, such as yours. Each household has been carefully selected to represent the region in which they live.  These households provide important information about radio listening and television and video viewing. Numeris uses this information to create what are often called ratings. Broadcasters use the ratings to make important decisions about programming.  By participating in the panel, Canadians can let broadcasters know which programs they enjoy online, on TV and on the radio.",
+        "a2.1": "Two types of equipment are used in the panel: The FocalMeter and the PersonalMeter. Each one measures different types of programming.",
+        "a2.2": "The FocalMeter is a small box that connects to your internet router. It detects only a specific set of websites or streaming services that are used to watch TV online. You can find the list of websites it measures at",
+        "a2.3": "Each member of your household will be given their own PersonalMeter to keep with them. It picks up a silent broadcast signal that tells us the radio stations that they are listening to and the television programs that they are watching. Since the PersonalMeter uses cellular technology, please call us right away if you have been advised by a medical professional not to use a cellular telephone.",
+        "a2.4": "The information from the Meters is combined with the information from other panel  households to produce the ratings.",
+        "a3.1": "As a token of appreciation, each panelist will receive a cash reward every month, for the previous month’s participation. Panelists receive $1.25 per week for participating in the ratings panel, and a bonus amount for each week that they earn enough reward points from carrying the PersonalMeter (500 points or more for ages 12 and above, and 300 points or more for children aged 11 and under).",
+        "a3.2": "Panelists are also eligible for gift cards that are sent annually as well as weekly, monthly and special draws.",
+        "a4": "Numeris holds regional draws every week and month with each prize valued at $100. For weekly draws, a date is randomly selected and a winner is also randomly selected from all panelists who accumulated at least 50 reward points for that day. For monthly draws, only panelists who accumulate 60 reward points every Saturday and Sunday of the month are eligible. We also hold draws on the following holidays: Family day, Easter, Victoria Day, St-Jean, Canada Day, Civic holiday, Labor Day, Thanks Giving, Remembrance Day, the Winter Holiday Season and we also have monthly Summer draws.",
+        "a5": "Regardless of the amount of radio and video you consume, as long as you’re carrying your PersonalMeter with you and your FocalMeter is plugged in, you’re eligible for draws and will receive your monthly rewards. Watching or listening more will not increase your rewards.",
+        "a6": "The monthly incentives that you receive, or draws that you may win, are gifts to you for participating in the panel.  You do not have to report them in your taxes.",
+        "a7": "Numeris asks all panelists to complete a set of questionnaires when they first join the panel, and at every yearly anniversary. Since we only report on groups of people, and never on individuals, this information helps us to group each panelist correctly. It also helps improve the quality of the ratings we produce. We realize they take time to answer, but they are a very important part of the ratings data. Kindly complete your questionnaires in a timely manner. If you need assistance, please give us a call and we will be happy to help you.",
+        "a8": "All Numeris panelists are asked to sign the Consent and Confidentiality Agreements This document outlines the commitments of both Numeris and panelists with respect to confidentiality. We at Numeris are committed to maintaining the privacy and anonymity of our panelists. We want to ensure that you are fully aware of the information that we are gathering and how it is being used. We also expect that you will keep your participation in the panel confidential and not reveal your identity to any radio or television broadcasters, or media or advertising agencies; including via social networking. These steps are very important to protect your information as well as the quality of the ratings that we produce.",
+        "a9.1": "It is very important for us to know about changes to any of the following, so that we can accurately collect and report your viewing and listening preferences to broadcasters. This is so important to us that we will send you a token of appreciation when you notify us of these changes.",
+        "a9.2": "TV reception or Internet changes:",
+        "a9.3": "If you change your TV or internet service, and any of the following are applicable to you, give us a call:",
+        "a9.4": "You currently use an antenna for TV service (rabbit ears with no cable or satellite TV subscriptions), and decide to sign on with a cable or satellite provider;",
+        "a9.5": "You already subscribe to cable TV, but change the type of service you receive (analog cable to digital cable, digital cable to analog cable, or from cable to antenna or satellite);",
+        "a9.6": "You currently subscribe to satellite TV, but change the type of service you receive (you get cable, or move to antenna only).",
+        "a9.7": "If you cancel all TV reception.",
+        "a9.8": "If you are change your internet provider, internet service or cancel your internet service completely.",
+        "a9.9": "Please note that it’s not necessary to contact us if you get additional digital cable or satellite receivers, you keep the same type of reception but change providers, or you change the number of channels to which you subscribe.",
+        "a9.10": "Household composition changes:",
+        "a9.11": "Please let us know if your household gains or loses a member. That is, if someone moves in or out, a baby is born, or someone passes away.",
+        "a9.12": "TV equipment changes:",
+        "a9.13": "Please let us know if you purchase or rent a PVR. If you already have a PVR and get additional ones, it is not necessary to inform us.",
+        "a9.14": "Device changes:",
+        "a9.15": "Please let us know if you add or remove devices from your household. These include TV sets, computers and mobile devices. ",
+        "a10": "If you are planning to be away from your home for any reason, let your Panel Administrator know when you're leaving and when you'll be back.",
+        "a11": "When receiving new equipment, please allow it to come to room temperature before plugging it in, ideally for 24 hours.",
+        "a12": "Panel households should have two beacons installed at all times, with the light on. They should also be as far apart from each other as possible, or on different floors. These beacons transmit a silent signal detected by your PersonalMeter when it is within your house and allows us to accurately know when your media consumption is within your home or outside of your home. Please leave the beacons installed at all times, and let us know if the light ever goes out, or if you do not have two of them.",
+        "a13": "If you’re moving into a new home, please don’t forget to advise Numeris as soon as you know the new address (and phone number, if applicable) so we have the most current information on file.",
+        "a14": "Your PersonalMeter cannot pick up the codes if you use headphones or earbuds with your television, radio, computer or other device. Please use the provided headphone adapter and all your tuning will be included in the ratings. If you do not have the adapter, please contact us so we can send you one. Please note the headphone adapters may not be compatible with all devices.",
+        "a15": "Charging your PersonalMeter with the provided charger at night is just as important as wearing your Meter during the day. This will provide enough time for your Meter's battery to fully recharge and last throughout the day. It will mean that your Meter is always able to transfer your data to Numeris, capture your media exposure and collect your points. So please remember to charge your Meter every night!",
+        "a16": "Yes, being part of the panel requires that you carry your PersonalMeter all year round. We realize normal habits change during the summer months and the holiday season. It is very important for you to carry your PersonalMeter all year round because Numeris produces the ratings all year round. As usual, please let us know if you go away on vacation by calling us or emailing us. Also, please remember that we have special holiday season draws for December and January, and monthly summer draws in June, July and August. If you would like some tips on ways to help you carry the PersonalMeter every day, please give us a call and our panel administration staff will provide guidance.",
+        "a17": "Some large households have found that charging all the PersonalMeters in one central spot in the home, and finding a unique way to identify each person’s PersonalMeter helpful. Panelists have used different coloured Post-Its with special messages to help family members easily identify their PersonalMeter each day.",
+        "a18": "Turn it into a game! Adding a competitive element to wearing the PersonalMeter can change the whole dynamic. Suddenly, it is not just remembering the PersonalMeter in the morning and charging it at night. It’s about WINNING!",
+        "a19": "Let us know if you have misplaced your PersonalMeter in or around your home. We may be able to use the Meter finder feature to make it beep, to help you find it. Please let us know right away, as we cannot use this feature if we have lost your PersonalMeter’s signal. Also, let us know as soon as possible, if you do not know where the Meter is lost or if it is damaged, so we can replace it. You are not responsible for any loss or damage. Please note the metering equipment you have in your home belongs to Numeris and we reserve the right to ask for its return at our discretion.",
+        "a20": "Yes, you are the only person allowed to wear your PersonalMeter. Everybody must wear their own Meter.  Otherwise, it falsifies the data and can result in your removal from the panel.",
+        "a21": "Yes, the PersonalMeter will display the correct time when it is daylight saving time.",
+        "a22.1": "The FocalMeter ONLY tracks web traffic based on a pre-determined inclusion list ",
+        "a22.2": "The inclusion list is a list of approved websites where the FocalMeter is allowed to monitor video viewing. Any website not on the inclusion list will not have any data logged by the FocalMeter. It DOES NOT monitor any secure traffic on your network, or any traffic on banking or e-commerce sites. It does not track any passwords or monitor any emails or IM chats.",
+        "a22.3": "Even on inclusion list sites, the FocalMeter only monitors a small fraction of content from these sites via tags. Tags are specific URLs identifying the pages navigated or the videos played within an inclusion list website. Apart from this, the FocalMeter collects the Mac Address of the home router and information on the local home network, Model, Name, OS, MAC Address and local IP address of devices seen in the home network.",
+        "a23": "No. We have enclosed complete instructions when we sent you your equipment. We will also enclose a telephone number you can call if you need help. Our Panel Administration Team can assist you over the phone with your installation.",
+        "a24.1": "Using your Meters is very easy. All you need to do is connect your FocalMeter to your home Internet connection. Then, follow the online registration process to register your FocalMeter with our panel. That’s all that is required and there are no buttons to push.",
+        "a24.2": "The PersonalMeter must be with you all day but there are no buttons to push or anything special that is needed. There may be places where you need to turn off the cellular system in your PersonalMeter the same way you would for your cellular phone, such as on an airplane or in a hospital. It is important to keep your PersonalMeter with you during these times so that you continue to earn points. The button located on the front of your PersonalMeter has two functions: it activates the display’s backlight, and it can be used to turn the PersonalMeter’s cellular system on and off. To turn off the PersonalMeter’s internal cellular system, hold down the button on the front of the PersonalMeter for about 5 seconds until the symbol appears on the display screen. This symbol means that the cellular system is turned off. To turn the cellular system back on, simply hold the button down again for a few seconds until the symbol no longer appears on the display screen. In order to include your radio listening and TV viewing in the ratings, please make sure that you turn your PersonalMeter back on as soon as you are able to do so.",
+        "a25": "Connecting the FocalMeter to your network will take less than 10 minutes. After connecting the network cable between your FocalMeter and home router and powering the FocalMeter, there is an online device registration process. The PersonalMeters only take a few minutes to install and including plugging in the PersonalMeters and the beacons.",
+        "a26": "No, in most cases the equipment will not interfere with your Internet service or other devices in any way. In rare cases, panelists have experienced intermittent connectivity issues with some networked devices. If you experience any technical issues, please unplug the FocalMeter and contact your Panel Administration Team.",
+        "a27": "Recently, you completed a telephone survey with Numeris. Based on the information you gave us, your household was chosen to represent similar households in your area. Your participation in our panel is very important and it will help ensure that our ratings reflect the opinions of all Canadians.",
+        "a28": "We obtain contact information in two ways. The phone numbers, names and address details we use are randomly selected from telephone book listings, including cell phone listings. In addition, we use a computer program to randomly generate new numbers in order to reach unlisted phone numbers.",
+        "a29": "Your Panel Administrator will contact you by telephone, email or text.",
+        "a30": "While we would like you to remain on our panel for an extended period, you may leave whenever you wish. In some situations, due to our panel needs, we may remove households from the panel. Please keep the box that your equipment arrived in so that you can ship it back to us. If you wish to leave the panel, please contact your Panel Administration Team.",
+        "a31": "To ensure the integrity of Numeris ratings, it is important that your participation remain confidential. If someone asks about your FocalMeter or PersonalMeter, simply let them know that you are participating in a special research study. Please do not tell anyone you do not know, or anyone working in the media industry, that your household participates in the Numeris panel.",
+        "a32": "Montreal Office (for panelists in ON, QC and Atlantic region—Eastern Time):"
+    },
+    "answerLabel": {
+        "A": "A"
     },
     "modalWindow": {
         "modalTitle": "Save and Exit",
         "content": "Your work is saved! You can always finish the rest of it later.",
-        "dismissButtonLabel":"Cancel",
+        "dismissButtonLabel": "Cancel",
         "closeButtonLabel": "Exit"
-    }
+    },
+    
+    "resumitButton": "Re-Submit",
+    "success": "You have successfully submitted",
+    "success2": "device information to us",
+    "resubmit": "Thank you for updating your info page!"
+
 
 }

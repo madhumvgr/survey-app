@@ -69,7 +69,7 @@
                     <ng-container *ngIf="isCompleted">
                         <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">Submit</button>
                     </ng-container>
-                    <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
+                    <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
 
                 </div>
 

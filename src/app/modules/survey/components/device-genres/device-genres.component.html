@@ -6,7 +6,7 @@
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
             <ng-container *ngIf="isTvGenere else device">
-                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">{{'householdDevices.televisionUsage' | translate}}</a>
+                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">{{'houseHold.televisionUsage' | translate}}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
             </ng-container>

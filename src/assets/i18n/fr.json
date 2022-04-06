@@ -214,7 +214,8 @@
         "startButton": "Démarrer",
         "Status": "Statut",
         "resubmitSuccess": "Vous nous avez soumis les informations concernant le ",
-        "resubmitSuccess2": "ravec succès."
+        "resubmitSuccess2": "ravec succès.",
+        "resubmit":""
     },
     "genres": {
         "description": "Nous cherchons à obtenir plus de détails à propos des catégories regardées en ligne par.",
@@ -362,7 +363,9 @@
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
-        "resumitButton": "Re-Submit"
+        "resumitButton": "Re-Submit",
+        "success": "Vous nous avez soumis les informations sur ",
+        "success2": "avec succès"
     },
     "faqSSPQuestions": {
         "content": "Table des matières",

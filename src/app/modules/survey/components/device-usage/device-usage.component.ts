@@ -69,7 +69,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   submit() {
     let message: any;  
     if(this.deviceState == "Completed") { 
-     message = this.translate.instant('deviceUsage.resubmitSuccess') +this.deviceName+ this.translate.instant('deviceUsage.resubmitSuccess2');
+     message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success2');
     } else {
       message = this.translate.instant('deviceInformation.success') + this.deviceName+ this.translate.instant('deviceInformation.success2');
     }

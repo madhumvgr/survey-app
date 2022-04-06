@@ -260,7 +260,7 @@
         "updateButton": "Update"
     },
     "thankYouTechSupport": {
-        "title": "Thank you",
+        "title": "Thankyou",
         "description": "Great! We received your note. We will email you our reply within 1 business day.",
         "description2": "Your confirmation number is:",
         "heading": "Ask another question",
@@ -286,7 +286,7 @@
     "thankYou": {
         "title": "Thank you",
         "text1": "We have saved your survey in the",
-        "text2": "section. You can always go back to it and complete it.",
+        "text2": "section.",
         "bcHome": "Home",
         "bcThankyou": "Thankyou",
         "exitButtonLabel": "Exit"
@@ -366,7 +366,10 @@
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
-        "resumitButton": "Re-Submit"
+        "resumitButton": "Re-Submit",
+        "success": "You have successfully submitted",
+        "success2": "device information to us",
+        "resubmit": "Thank you for updating your information!"
     },
     "faqSSPQuestions": {
         "content": "Contents",

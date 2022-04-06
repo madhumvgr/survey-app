@@ -79,12 +79,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     },
     {
       "usageTimelineId": "1",
-      "label": "9AM-12PM",
+      "label": "9AM-1PM",
       "addNew": false
     },
     {
       "usageTimelineId": "2",
-      "label": "12PM-4PM",
+      "label": "1PM-4PM",
       "addNew": false
     },
     {
@@ -94,24 +94,19 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     },
     {
       "usageTimelineId": "4",
-      "label": "7PM-9PM",
+      "label": "7PM-10PM",
       "addNew": false
     },
     {
       "usageTimelineId": "5",
-      "label": "9PM-11PM",
+      "label": "10PM-2AM",
       "addNew": false
     },
     {
       "usageTimelineId": "6",
-      "label": "11PM-1AM",
+      "label": "2AM-6AM",
       "addNew": false
-    },
-    {
-      "usageTimelineId": "7",
-      "label": "1AM-6AM",
-      "addNew": false
-    },
+    }
   ];
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,

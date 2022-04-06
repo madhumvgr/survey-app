@@ -1,54 +1,69 @@
+<!-- Breadcrumbs -->
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
 
-    
-    <!-- Breadcrumbs -->
-    <nav class="px-3 mt-4">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
-                
-                <li class="breadcrumb-item active" aria-current="page">{{'thankYouTechSupport.title' | translate}}</li>
-            </ol>
-        </div>
-    </nav>
+            <li class="breadcrumb-item active" aria-current="page">{{'thankYouTechSupport.title' | translate}}</li>
+        </ol>
+    </div>
+</nav>
 
-    <!-- SURVEY HUB PAGE -->
-   <body>
+<!-- SURVEY HUB PAGE -->
+
+<body>
     <!--h1 Intro Section-->
-    <section class="px-3 pb-4" *ngIf ="state?.inputRoute != 'notUsed'">
+    <section class="px-3 pb-4" *ngIf="state?.inputRoute != 'notUsed'">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <h1>{{'thankYouTechSupport.title' | translate}}</h1>
-                    <p> 
+                    <p>
                         {{message}}
                     </p>
                 </div>
-                
-            </div><!--end Row-->
-        </div><!--end Container-->
-    </section><!--end Section-->
-    <section class="px-3 pb-4" *ngIf ="state?.inputRoute == 'notUsed'">
+
+            </div>
+            <!--end Row-->
+        </div>
+        <!--end Container-->
+    </section>
+    <!--end Section-->
+    <section class="px-3 pb-4" *ngIf="state?.inputRoute == 'notUsed'">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <h1>{{'thankYouTechSupport.title' | translate}}</h1>
-                    <p> 
-                        {{'thankYouTechSupport.title' | translate}} <a [routerLink] = "['/survey/deviceList/'+state?.previousState]"> {{state?.previousState}} </a> {{'thankYouTechSupport.title' | translate}}
+                    <p>
+                        {{'thankYouTechSupport.title' | translate}} <a
+                            [routerLink]="['/survey/deviceList/'+state?.previousState]"> {{state?.previousState}} </a>
+                        {{'thankYouTechSupport.title' | translate}}
                     </p>
                 </div>
-                
-            </div><!--end Row-->
-        </div><!--end Container-->
-    </section><!--end Section-->
+
+            </div>
+            <!--end Row-->
+        </div>
+        <!--end Container-->
+    </section>
+    <!--end Section-->
 
     <section class="px-3 pb-4">
         <div class="container">
-            <div class="row">
+            <div class="row" *ngIf="state?.inputRoute == 'television'">
                 <div class="col-20">
-                 <button type="submit" class="btn btn-primary px-3 ms-3" [routerLink]="['/welcome']">{{'thankYou.exitButtonLabel' | translate}}</button>
-               </div>
-               </div>
-            </div><!--end Container-->
-        </section><!--end Section-->    
-        </body> 
-               
+                    <button type="submit" class="btn btn-primary px-3 ms-3"
+                        [routerLink]="['/survey/survey']">{{'thankYou.exitButtonLabel' | translate}}</button>
+                </div>
+            </div>
+            <div class="row" *ngIf="state?.inputRoute != 'television'">
+                <div class="col-20">
+                    <button type="submit" class="btn btn-primary px-3 ms-3"
+                        [routerLink]="['/welcome']">{{'thankYou.exitButtonLabel' | translate}}</button>
+                </div>
+            </div>
+        </div>
+        <!--end Container-->
+    </section>
+    <!--end Section-->
+</body>

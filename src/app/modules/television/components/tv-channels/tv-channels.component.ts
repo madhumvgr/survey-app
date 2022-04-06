@@ -168,7 +168,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
         this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
           res => {
             this.router.navigateByUrl('');
-            this.router.navigate(['television/thankyou'], { state: { message: message } });
+            this.router.navigate(['television/thankyou'], { state: { message: message, inputRoute: "television" } });
           });
   
       } else {

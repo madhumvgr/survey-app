@@ -22,7 +22,7 @@
 
             <h2>{{messages?.actions?.length}} Action(s) required<span class="h2-separator"></span></h2>
 
-             <a *ngFor="let action of messages?.actions" (click)="navToMessageDetail(action)">
+             <a *ngFor="let action of messages?.actions" (click)="navToMessageDetail(action)" href='javascript:void(0);'>
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons p-3 icon-action-required  d-flex icon-red align-items-center h-100">
                         <div class="h1">warning_amber</div>
@@ -47,7 +47,7 @@
 
             <h2 >{{messages?.messages.length}} New message(s)<span class="h2-separator"></span></h2>
             <p *ngIf="messages?.messages.length == 0">Currently you have no new messages</p>
-            <a  *ngFor="let message of messages?.messages" (click)="navToMessageDetail(message)">
+            <a  *ngFor="let message of messages?.messages" (click)="navToMessageDetail(message)" href='javascript:void(0);'>
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons-outlined p-3 icon-new-message d-flex icon-red align-items-center h-100">
                         <ng-container *ngIf="message.isRead else unread">

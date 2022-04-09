@@ -55,7 +55,9 @@ export class HeaderComponent implements OnInit {
   }
 
   public doLogout() {
-    this.authService.doLogout();
+    if (confirm('Are you sure you want to logout.')) {
+      this.authService.doLogout();
+    } 
   }
 
   changeLanguage(lang: string){

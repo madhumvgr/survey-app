@@ -64,10 +64,9 @@
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem (click)="doLogout()">{{"menu.logout" | translate}}
+            <button ngbDropdownItem (click)="openModal()">{{"menu.logout" | translate}}
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
-
             </button>
           </div>
         </div>
@@ -98,3 +97,6 @@
   <!--end Container-->
 </section>
 <!--end Section-->
+<modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)" [logOut] = true>
+  <!--  body of the modal  -->
+</modal>

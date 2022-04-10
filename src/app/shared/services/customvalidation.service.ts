@@ -1,11 +1,26 @@
 import { Injectable } from '@angular/core';
-import { ValidatorFn, AbstractControl } from '@angular/forms';
+import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomvalidationService {
+
+  patternValidatorFn(regex: RegExp, error: ValidationErrors): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (!control.value) {
+        // if control is empty return no error
+        return {};
+      }
+
+      // test the value of the control against the regexp supplied
+      const valid = regex.test(control.value);
+
+      // if true, return no error (no error), else return error passed in the second parameter
+      return valid ? {} : error;
+    };
+  }
 
   patternValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
@@ -18,9 +33,11 @@ export class CustomvalidationService {
     };
   }
 
+
+
   // custom validator to check that two fields match
- MustMatch(controlName: string, matchingControlName: string) {
-  return (formGroup: FormGroup) => {
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
 
@@ -31,12 +48,12 @@ export class CustomvalidationService {
 
       // set error on matchingControl if validation fails
       if (control.value !== matchingControl.value) {
-          matchingControl.setErrors({ mustMatch: true });
+        matchingControl.setErrors({ mustMatch: true });
       } else {
-          matchingControl.setErrors(null);
+        matchingControl.setErrors(null);
       }
+    }
   }
-}
 
   // MatchPassword(password: string, confirmPassword: string) {
   //   return (formGroup: FormGroup) => {

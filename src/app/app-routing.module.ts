@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: '**', component: PageNotfoundComponent }
 ]
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration:'enabled'})],
   exports: [RouterModule,MatIconModule] //,
 })
 export class AppRoutingModule { }

@@ -79,7 +79,7 @@
                             </div>
                             <!--end Multi User Card-->
                             <div class="error text-danger" *ngIf="showPercentageError">
-                                Member Percentage always equals to 100%.
+                                {{'multipleUsers.memberError' | translate}}
                              </div>
                         </form>
                     </div>
@@ -106,7 +106,7 @@
                                         <div class="h4 m-0">person</div>
                                     </i>
                                     <p class="ps-2 mb-0 description">
-                                        <strong>Single Memeber</strong>
+                                        <strong>{{'multipleUsers.singleMember' | translate}}</strong>
                                     </p>
                                 </div>
     
@@ -128,7 +128,7 @@
                                     <div class="h4 m-0">person</div>
                                 </i>
                                 <p class="ps-2 mb-0 description">
-                                    <strong>Multiple Members</strong>
+                                    <strong>{{'multipleUsers.multipleMembers' | translate}}</strong>
                                 </p>
                             </div>
     
@@ -145,7 +145,7 @@
                         </div>
                             <!--end Multi User Card-->
                             <div class="error text-danger" *ngIf="showCoviewerPercentageError">
-                               Coviewer Percentage always equals to 100%.
+                                {{'multipleUsers.multipleMembersError' | translate}}
                             </div>
                         </form>
                     </div>

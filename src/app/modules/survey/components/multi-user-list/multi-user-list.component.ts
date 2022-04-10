@@ -182,8 +182,8 @@ export class MultiUserListComponent extends BaseComponent implements OnInit {
      this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
    }
 
-   resubmitForm() {
-    const message = this.translate.instant('deviceInformation.resubmit');
-  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+  resubmitForm() {
+    const message = 'deviceInformation.resubmit';
+    this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 }

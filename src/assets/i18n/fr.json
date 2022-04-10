@@ -9,7 +9,7 @@
         "passwordRequiredText": "Nouveau mot de passe est requis",
         "loginButton": "Se connecter",
         "emailWarningText": "entrez une adresse e-mail valide",
-        "userNamePasswordMatchText": "Le nom d'utilisateur ou le mot de passe ne correspondent pas, veuillez réessayer.",
+        "userNamePasswordNotMatchText": "Le nom d'utilisateur ou le mot de passe ne correspondent pas, veuillez réessayer.",
         "userNameOrPasswordIncoorectText": "Nom d'utilisateur / mot de passe invalide.",
         "forgotPassword": "Mot de passe oublié?"
     },
@@ -51,6 +51,7 @@
         "title": "Communiquez avec Numeris",
         "description": "Écrivez-nous et nous allons examiner le problème.",
         "button": "Continuer"
+    
     },
     "panelistRegistration ": {
         "title": "Prêt? Créons votre compte.",
@@ -124,7 +125,8 @@
         "cancelButton": "Annuler",
         "sendButton": "Envoyer",
         "subjectRequired": "Le sujet est requis",
-        "type": "Tapez ici"
+        "type": "Tapez ici",
+        "descriptionRequired": "la description est obligatoire"
     },
     "contactUs": {
         "title": "Nous contacter",
@@ -133,7 +135,27 @@
         "description1": "Envoyez-nous simplement un message ci-dessous avec toutes vos questions, et nous vous répondrons",
         "subject": "Sujet",
         "message": "Votre message",
-        "sendButton": "Envoyer"
+        "sendButton": "Envoyer",
+        "montrealOffice": "Bureau de Montréal",
+        "montrealDescription": "Pour les panelistes en ON, QC et régions Atlantique – heure de l’Est.",
+        "montrealdays": "Lundi au Vendredi",
+        "montrealWeekdays":"Jours de semaine",
+        "montrealTimes":"10h00 à 18h00",
+        "montrealEmail":"Courriel",
+        "montrealEmailValue": "meterpaneleast@numeris.ca",
+        "tollFree":"Numéro gratuit",
+        "montrealPhone": "1-866-548-8991",
+        "richmondOffice": "Bureau de Richmond",
+        "richmondDescription": "Pour les panelistes en MB, SK, AB et BC – heure du Pacifique",
+        "richmondDays": "Lundi au Vendredi",
+        "richmondTimes":"9h00 à 18h00",
+        "richmondSaturday":"Samedis",
+        "richmondSaturdayTime": "10h00 à 18h00",
+        "richmondSunday":"Dimanche",
+        "richmondSundayTime": "10h00 à 17h00",
+        "richmondEmail":"Courriel",
+        "richmondEmailValue": "meterpanelwest@numeris.ca",
+        "richmondPhone": "1-866-730-7960"
     },
     "forgotPassword": {
         "title": "Mot de passe oublié",
@@ -141,7 +163,11 @@
         "Email": "Courriel",
         "emailRequired": "L'e-mail est requis",
         "requestButtonLabel": "Demande",
-        "signIn": "Retour à la connexion"
+        "signIn": "Retour à la connexion",
+        "passwordRequest": "Votre demande de réinitialisation de mot de passe est en cours.",
+        "passwordReqBody": "Vous recevrez un courriel comportant un lien pour réinitialiser votre mot de passe.",
+        "passwordUpdatedTittle":"Succès! Votre mot de passe a été mis à jour!.",
+        "passwordUpdatedDescription":"Vous pouvez y aller! Merci de vous connecter quand vous êtes prêts."
     },
     "newAccount": {
         "title": "Prêt? Créons votre compte.",
@@ -183,7 +209,8 @@
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
-        "ownerText": "Sélectionner le propriétaire de l’appareil"
+        "ownerText": "Sélectionner le propriétaire de l’appareil",
+        "error": "Veuillez sélectionner le propriétaire de l’appareil à partir de la liste"
     },
     "multipleUsers": {
         "title": "Utilisateurs multiples",
@@ -198,7 +225,11 @@
         "text2": "Sélectionnez la durée d'utilisation de cet appareil par un seul ou plusieurs membres à la fois",
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
-        "continueButton": "Continuer"
+        "continueButton": "Continuer",
+        "singleMember": "Un seul membre",
+        "multipleMembers": "Plusieurs membres",
+        "memberError": "Le pourcentage des membres doit toujours être égal à 100 %.",
+        "multipleMembersError":"Le pourcentage des co-téléspectateurs doit toujours être égal à 100 %. "
     },
     "deviceUsage": {
         "title": "Utilisation de l’appareil",
@@ -212,6 +243,7 @@
         "SaveButton": "Sauvegarder & quitter",
         "continueButton": "Continuer",
         "startButton": "Démarrer",
+        "completedButton": "Éditer",
         "Status": "Statut",
         "resubmitSuccess": "Vous nous avez soumis les informations concernant le ",
         "resubmitSuccess2": "ravec succès.",
@@ -225,7 +257,8 @@
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
-        "message": "Vous nous avez soumis les informations sur avec succès. "
+        "message": "Vous nous avez soumis les informations sur avec succès. ",
+        "error": "Au moins une des cases doit être sélectionnée."
     },
     "changePassword": {
         "title": "Changer son mot de passe",
@@ -321,7 +354,15 @@
         "userName": "Email",
         "password": "Mot de passe",
         "confirmPassword": "Confirmez votre mot de passe",
-        "registerButton": "Inscrire"
+        "registerButton": "Inscrire",
+        "passwordRequired": "Mot de passe requis",
+        "passwordError": "Le mot de passe doit contenir au moins 8 caractères, 1 lettre en majuscule, 1 lettre en minuscule et 1 chiffre",
+        "ConfirmPasswordRequired": "Confirmation du mot de passe requise",
+        "ConfirmPasswordError": "Le mot de passe confirmé doit correspondre au mot de passe nouvellement créé", 
+        "tittle": "Inscrire/Création du profil",
+        "emailRequired":"Adresse électronique requise",
+        "emailError":"Entrez une adresse électronique valide",
+        "header": "Création du profil"
     },
     "registerSuccess": {
         "tittle": "Bravo! Votre compte est créé!",
@@ -354,6 +395,7 @@
         "address": "Adresse Mac",
         "heading": "Informations concernant l’appareil",
         "description2": "En nommant cet appareil, il vous sera plus facile de l’identifier par après. Votre audimètre central l’identifie comme Yoda. Vous pouvez continuer d’utiliser ce nom ou entrer un nouveau nom ci-après. ",
+        "heading2": "Entrer un nom d’appareil différent ",
         "q1": "bien de membres de votre ménage utilisent cet appareil?",
         "q1Option1": "1",
         "q1Option2": "2 à 10",
@@ -363,9 +405,11 @@
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
-        "resumitButton": "Re-Submit",
+        "resumitButton": "Réacheminer",
         "success": "Vous nous avez soumis les informations sur ",
-        "success2": "avec succès"
+        "success2": "avec succès",
+        "resubmit": "Merci d'avoir mis à jour vos informations! ",
+        "error":"Merci de choisir une de ces options."
     },
     "faqSSPQuestions": {
         "content": "Table des matières",
@@ -464,7 +508,22 @@
         "modalTitle": "Sauvegarder et quitter",
         "content": "Votre travail jusqu’ici a été enregistré. Vous pouvez toujours y revenir pour le finir plus tard. ",
         "dismissButtonLabel": "Retour",
-        "closeButtonLabel": "Quitter"
+        "closeButtonLabel": "Quitter",
+        "confirmTittle": "Avertissement",
+        "confirmationDescription": "Voulez-vous vraiment quitter cette page?"
+    },
+    "televisionMembers": {
+        "tittle":"Usage de la Télévision",
+        "description":"Cette section comporte des enquêtes pour chacun des membres du ménage qui regarde des chaînes sur un téléviseur relié à une boîte de câblodistribution, à un satellite ou à une antenne.",
+        "header":"Liste de membres individuels ",
+        "subDescription":"Complétez l’enquête qui comprends votre nom. Vous pouvez aussi compléter l’enquête au nom d’un autre membre.",
+        "statusLabel": "Statut"
+    },
+    "televisionChannels": {
+        "description": "Merci d’indiquer combien de temps le membre du ménage passe à regarder les programmes TV utilisant le câble ou l’antenne pour chaque chaîne suivante en moyenne par jour?.",
+        "heading":"Liste des 7 chaines",
+        "subText": "Sélectionner votre réponse pour chaque chaîne",
+        "error": "Cette colonne est obligatoire"
     },
     "resumitButton": "Re-Submit",
     "success": "Vous nous avez soumis les informations sur ",

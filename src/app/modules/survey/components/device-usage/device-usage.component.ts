@@ -80,8 +80,8 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   }
 
   resubmitForm() {
-    const message =this.translate.instant('deviceInformation.resubmit');
-  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+    const message = 'deviceInformation.resubmit';
+    this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 
   backButton() {

@@ -80,7 +80,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     },
     {
       "id": "2",
-      "label": "I don't watch this channel"
+      "label": "None"
     },
     {
       "id": "3",
@@ -88,7 +88,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     },
     {
       "id": "4",
-      "label": "More than 30 minutes up to 1 hr"
+      "label": "More than 30 minutes up to 1 hour"
     },
     {
       "id": "5",
@@ -97,6 +97,10 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     {
       "id": "6",
       "label": "More than 2 hours up to 3 hours"
+    },
+    {
+      "id": "7",
+      "label": "More than 3 hours"
     }
 
   ]

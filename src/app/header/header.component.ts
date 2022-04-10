@@ -1,19 +1,21 @@
-import { Component, Input, NgZone, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, NgZone, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Block } from '@material-ui/icons';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { NotificationService } from '../modules/notification/service/notification.service';
+import { ModalComponent, ModalConfig } from '../modules/shared/components/modal/modal.component';
 import { AuthService } from '../shared/services/auth.service';
 import { LocalStorageService, StorageItem } from '../shared/services/local-storage.service';
 import { SharedService } from '../shared/services/shared.service';
+import { BaseComponent } from '../shared/util/base.util';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent extends BaseComponent implements OnInit {
 
   @Input() isMenu = true;
   @Input() isNotification = true;
@@ -24,14 +26,20 @@ export class HeaderComponent implements OnInit {
   notify = false;
   showOnlyMenu="none";
   fullName: any;
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
   constructor(public authService:AuthService,private translate: TranslateService,
      private localStorageService:LocalStorageService,
      private zone: NgZone, 
      private notifService: NotificationService,
      private sharedService: SharedService,
-     private router: Router) { 
+     private router: Router, private Activatedroute: ActivatedRoute) { 
+      super();
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     this.fullName = this.localStorageService.getItem(StorageItem.FULLNAME);
+  }
+  ngAfterViewInit(){
+    super.afterViewInit(this.modalComponent);
   }
 
   ngOnInit(): void {
@@ -78,5 +86,9 @@ export class HeaderComponent implements OnInit {
   onMenuOpen(isOpen:Boolean){
     this.showOnlyMenu = isOpen? "block":"none";
   }
+
+  exitEvent(isBackAction:boolean) {
+    this.authService.doLogout();
+   }
 
 }

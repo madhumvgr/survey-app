@@ -13,6 +13,8 @@ export class ModalComponent implements OnInit {
   public modalConfig!: ModalConfig;
   @Output() 
   public cancelEvent= new EventEmitter();
+  @Input()
+  public logOut: ModalConfig["logOut"];
 
   @Output() 
   public exitEvent= new EventEmitter();
@@ -61,4 +63,5 @@ export interface ModalConfig {
   disableDismissButton?(): boolean
   hideCloseButton?(): boolean
   hideDismissButton?(): boolean
+  logOut?: boolean;
 }

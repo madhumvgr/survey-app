@@ -1,10 +1,14 @@
 <ng-template #modal>
     <div class="modal-header">
-      <h5 class="modal-title">{{"modalWindow.modalTitle" | translate }}</h5>
+      <h5 class="modal-title" *ngIf ="logOut">{{"modalWindow.confirmTittle" | translate }}</h5>
+      <h5 class="modal-title" *ngIf ="!logOut">{{"modalWindow.modalTitle" | translate }}</h5>
     </div>
-    <div class="modal-body">
-       {{"modalWindow.content" | translate}}
+    <div class="modal-body"  *ngIf ="logOut">
+      {{"modalWindow.confirmationDescription" | translate }}
     </div>
+    <div class="modal-body" *ngIf ="!logOut">
+      {{"modalWindow.content" | translate}}
+   </div>
     <div class="modal-footer justify-content-start">
       <button type="button"
               class=" btn btn-secondary"

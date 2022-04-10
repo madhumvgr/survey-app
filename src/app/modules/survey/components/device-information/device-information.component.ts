@@ -21,6 +21,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   resubmit: boolean = false;
   deviceStatus: any;
   isDeviceNoLonger: any;
+  error: boolean = false;
 
   deviceName: any;
   @ViewChild('modal')
@@ -86,9 +87,11 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   }
 
   continueNavigate() {
-    if(this.deviceInfoForm.invalid){
+    if(this.deviceInfoForm.controls.numberOfUsers.value == "null"){
+      this.error = true;
 
     }else{
+      this.error = false;
       this.router.navigateByUrl('survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
     }
   }
@@ -117,6 +120,7 @@ exitEvent(isBackAction:boolean) {
 
   updateForm() {
     this.isDeviceNoLonger = false;
+    this.error = false;
     // send API to submit device information. 
     this.deviceInfoForm.patchValue({
       deviceId: this.deviceId
@@ -125,7 +129,7 @@ exitEvent(isBackAction:boolean) {
       console.log(res));
   }
   resubmitForm() {
-    const message ="Thank you for updating your info page! ";
+  const message = 'deviceInformation.resubmit';
   this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 

@@ -64,7 +64,8 @@
                                     aria-labelledby="open-one" data-bs-parent="#genres-target">
                                     <form [formGroup]="timeLinesForm[generId+1]">
                                         <div class="accordion-body">
-                                            <h4>Content watched is same as for </h4>
+                                            <!-- content copy feature is hided as per the client requirement !-->
+                                            <!-- <h4>Content watched is same as for </h4>
                                             <select class="form-select mb-4" aria-label="content select"
                                                 (change)="copyValues(generId,$event)">
                                                 <option selected>Select Content</option>
@@ -78,18 +79,17 @@
                                                 <option value="8">Documentaries</option>
                                                 <option value="9">Hobbies & Leisure</option>
                                                 <option value="10">Other</option>
-                                            </select>
+                                            </select> -->
                                             <h4>Select weekday time slots</h4>
                                             <div formArrayName="weekDays" class="w-75">
                                                 <div *ngFor="let item of getWeekDayControl(genere.id).controls; let i = index;"
                                                     [formGroupName]="i"
                                                     class="check-input-bg p-2 mb-3 rounded form-check-inline">
                                                     <!-- *ngIf="item.value?.usageTimelineId" -->
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                        <input formControlName="addNew" class="form-check-input"
-                                                            type="checkbox" (change)="updateTimeLine(item)"/>
-                                                        
+                                                    <div class=" form-group form-check">
+                                                        <label class="form-check-label" for="item{{i}}">
+                                                            <input formControlName="addNew" class="form-check-input"
+                                                            type="checkbox" (change)="updateTimeLine(item)" id="item{{i}}" role="button">
                                                             {{item.value.label}}
                                                         </label>
                                                     </div>
@@ -102,10 +102,10 @@
                                                     [formGroupName]="i"
                                                     class="check-input-bg p-2 mb-3 rounded form-check-inline">
                                                     <!-- *ngIf="item.value?.usageTimelineId" -->
-                                                    <div class="form-check">
+                                                    <div class="form-check" href='javascript:void(0);'>
                                                         <label class="form-check-label">
-                                                        <input formControlName="addNew" class="form-check-input"
-                                                            type="checkbox" (change)="updateTimeLine(item)"/>
+                                                            <input formControlName="addNew" class="form-check-input"
+                                                            type="checkbox" (change)="updateTimeLine(item)" role="button">
                                                             {{item.value.label}}
                                                         </label>
                                                     </div>
@@ -134,7 +134,7 @@
 
                     ------------------------------------------>
                     <div *ngIf="!isValid" style="color:red">
-                            At least one check box should be selected. 
+                        {{"genres.error" | translate }} 
                     </div>
             </div>
             <!--end Ganres-->

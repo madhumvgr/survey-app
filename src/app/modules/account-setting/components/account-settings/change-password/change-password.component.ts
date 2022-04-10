@@ -15,34 +15,69 @@ import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-
 })
 export class ChangePasswordComponent implements OnInit {
   model: any = {};
-  hide= false;
+  hide = false;
   password: any;
   showRegistraion = true;
   showError = false;
   changePasswordForm: FormGroup = this.fb.group({});
   showInvalidError = false;
   submitted = false;
-  show=false;
-  view=false;
-  visible=false;
-  
-  
+  show = false;
+  view = false;
+  visible = false;
+
+
   showPassword!: boolean;
+  isFocused = false;
   //showInvalidError = false;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
-    private localStorageService:LocalStorageService,
-    private router: Router, public userService:UserService) {
+    private localStorageService: LocalStorageService,
+    private router: Router, public userService: UserService) {
   }
   ngOnInit(): void {
-    this.visible=true;
-    this.view=true;
-    this.show=true;
+    this.visible = true;
+    this.view = true;
+    this.show = true;
     this.hide = false;
     this.changePasswordForm = this.fb.group({
       currentPassword: ['', [Validators.required, this.customValidator.patternValidator()]],
-      newPassword: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
-      confirmPassword: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
+      newPassword: ['',
+        Validators.compose([
+          Validators.required,
+          // check whether the entered password has a number
+          this.customValidator.patternValidatorFn(/\d/, {
+            hasNumber: true
+          }),
+          // check whether the entered password has upper case letter
+          this.customValidator.patternValidatorFn(/[A-Z]/, {
+            hasCapitalCase: true
+          }),
+          // check whether the entered password has a lower case letter
+          this.customValidator.patternValidatorFn(/[a-z]/, {
+            hasSmallCase: true
+          }),
+          Validators.minLength(8),
+          Validators.maxLength(20)
+        ])],
+      confirmPassword: ['',
+        Validators.compose([
+          Validators.required,
+          // check whether the entered password has a number
+          this.customValidator.patternValidatorFn(/\d/, {
+            hasNumber: true
+          }),
+          // check whether the entered password has upper case letter
+          this.customValidator.patternValidatorFn(/[A-Z]/, {
+            hasCapitalCase: true
+          }),
+          // check whether the entered password has a lower case letter
+          this.customValidator.patternValidatorFn(/[a-z]/, {
+            hasSmallCase: true
+          }),
+          Validators.minLength(8),
+          Validators.maxLength(20)
+        ])],
     }, {
       validator: this.customValidator.MustMatch('newPassword', 'confirmPassword')
     }
@@ -51,18 +86,37 @@ export class ChangePasswordComponent implements OnInit {
   navigateTo() {
     this.hide = true;
   }
+
+  // Only AlphaNumeric
+  keyPressAlphaNumeric(event: any) {
+
+    var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z0-9]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
+  onFocusEvent(event: any) {
+    this.isFocused = true;
+  }
+
   // convenience getter for easy access to form fields
-  get changePasswordFormControl() { 
-    return this.changePasswordForm.controls; }
+  get changePasswordFormControl() {
+    return this.changePasswordForm.controls;
+  }
 
   onSubmit() {
-   
+
     this.submitted = true;
     // stop here if form is invalid
     if (this.changePasswordForm.valid) {
       console.table(this.changePasswordForm.value);
-      this.router.navigate(['/account-settings/thankyou/Change password'],{state: {message: "You have successfully updated Change Password"}});
-      
+      this.router.navigate(['/account-settings/thankyou/Change password'], { state: { message: "You have successfully updated Change Password" } });
+
       // update password in local storage.
       let username = this.localStorageService.getItem(StorageItem.USERNAME);
       if (username) {
@@ -79,16 +133,16 @@ export class ChangePasswordComponent implements OnInit {
             this.localStorageService.setUserName(this.changePasswordFormControl.email.value);
             //this.router.navigate(['/welcome']);
           }
-         
-        
-        }, err => this.showError = true,
-        () => this.showError = true);
 
-       
+
+        }, err => this.showError = true,
+          () => this.showError = true);
+
+
       }
     }
   }
- 
+
 }
 
 

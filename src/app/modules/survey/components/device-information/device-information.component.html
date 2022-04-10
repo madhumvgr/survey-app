@@ -25,7 +25,7 @@
                     <!--Select Devices-->{{deviceName}}
                 </h1>
                 <p>
-                    {{"deviceInformation.description" | translate }} {{deviceName}}. {{"deviceInformation.descriptionPart2" | translate }} <a href='javascript:void(0);' (click)="showWindow()">Privacy Policy</a> {{"deviceInformation.descriptionPart3" | translate }}
+                    {{"deviceInformation.description" | translate }} {{deviceName}}. {{"deviceInformation.descriptionPart2" | translate }} <a href='javascript:void(0);' (click)="showWindow()">{{"accountSettings.privacyPolicyTitle" | translate}}</a> {{"deviceInformation.descriptionPart3" | translate }}
                 </p>
             </div>
             <!--end col-->
@@ -88,7 +88,7 @@
                         <!-- Question 1 -->
                         <h4>{{"deviceInformation.description2" | translate }}</h4>
                         <div class="mb-4">
-                            <label for="question1" class="form-label">Enter different device name </label>
+                            <label for="question1" class="form-label">{{"deviceInformation.heading2" | translate }}</label>
                             <input type="input" class="form-control" id="question1" formControlName="deviceNickName" name ="deviceNickName" (focus) ="updateForm()" (change)="updateForm()" >
                         </div>
                         <!-- Question 2 -->
@@ -114,8 +114,8 @@
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="setNotInuse()" name="numberOfUsers" id="Radio5" value=4>
                                 <label class="form-check-label" for="Radio5">{{"deviceInformation.q1Option5" | translate }}</label>
                             </div>
-                            <div *ngIf="this.deviceInfoFormControl?.numberOfUsers?.errors">
-                                Please choose one of the option. 
+                            <div *ngIf="error" class="text-danger mt-4">
+                                {{"deviceInformation.error" | translate }} 
                             </div>
                         </div>
                     </form>
@@ -125,7 +125,7 @@
                     <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">{{"deviceInformation.backButton" | translate }}</button>
                     <button type="button" (click)="openModal()"  class="btn btn-secondary ms-md-3">{{"deviceInformation.SaveButton" | translate }}</button>
                     <button type="submit" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{"deviceInformation.continueButton" | translate }}</button>
-                    <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
+                    <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">{{"deviceInformation.resumitButton" | translate }}</button>
                 </div>
 
             </div>

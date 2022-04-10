@@ -36,6 +36,8 @@ export class ActionComponent implements OnInit {
     const obj: any = this.notifService.displaymessage();
     if(obj?.id) {
       this.displayAction = obj
+    }else if(this.actionType=='PrivacyPolicyUpdate') {
+      this.displayAction = this.privacyMessage;
     }
   }
 

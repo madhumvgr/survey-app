@@ -121,7 +121,10 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   }
 
   nextPage() {
-    if(this.notUsed) {
+    let selectedOwner = this.deviceInfoFormControl["selectedOwner"];
+    if (selectedOwner.value == '') {
+      this.error = true;
+    }else if(this.notUsed) {
       const message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success');
        this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
      }else if(this.singleMemeber) {
@@ -140,7 +143,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
    }
 
    resubmitForm() {
-    const message = this.translate.instant('deviceInformation.resubmit');
+    const message = 'deviceInformation.resubmit';
     this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
   }
 

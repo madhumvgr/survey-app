@@ -12,6 +12,7 @@ export class ConnectComponent implements OnInit {
   subject:any;
   description:any;
   techSupport: TechSupport={};
+  error: boolean = false;
   constructor(private deviceService: DeviceService, private router: Router) { 
     this.subject;
     this.description;
@@ -28,9 +29,12 @@ export class ConnectComponent implements OnInit {
     }
     
     if(this.subject!=null){
+      this.error = false;
       this.deviceService.updateTechSupport(this.techSupport).subscribe( res => {
         this.router.navigate(['/support/thankyou'],{state: {message: res.id}});
       });
+    } else {
+      this.error = true;
     }
   }
 }

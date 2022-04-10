@@ -125,7 +125,8 @@
         "cancelButton": "Cancel",
         "sendButton": "Send",
         "subjectRequired": "Subject is required",
-        "type": "Type here"
+        "type": "Type here",
+        "descriptionRequired": "Description is required"
     },
     "contactUs": {
         "title": "Contact Us",
@@ -134,7 +135,27 @@
         "description1": "Just send us a message below with any questions you have, and we will get back to you.",
         "subject": "Subject",
         "message": "Your message",
-        "sendButton": "Send"
+        "sendButton": "Send",
+        "montrealOffice": "Montreal office",
+        "montrealDescription": "For panelist in ON, QC and Atlantic region - Eastern time",
+        "montrealdays": "Monday to Friday",
+        "montrealWeekdays":"Weekdays",
+        "montrealTimes":"10:00am to 6:00pm",
+        "montrealEmail":"Email",
+        "montrealEmailValue": "meterpaneleast@numeris.ca",
+        "tollFree":"Toll Free",
+        "montrealPhone": "1-866-548-8991",
+        "richmondOffice": "Richmond office",
+        "richmondDescription": "For panelist in MB, SK, AB and BC - Pacific time",
+        "richmondDays": "Monday to Friday",
+        "richmondTimes":"9:00am to 6:00pm",
+        "richmondSaturday":"Saturdays",
+        "richmondSaturdayTime": "10:00am to 6:00pm",
+        "richmondSunday":"Sundays",
+        "richmondSundayTime": "10:00am to 5:00pm",
+        "richmondEmail":"Email",
+        "richmondEmailValue": "meterpanelwest@numeris.ca",
+        "richmondPhone": "1-866-730-7960"
     },
     "forgotPassword": {
         "title": "Forgot password",
@@ -142,7 +163,11 @@
         "Email": "Email",
         "emailRequired": "Email is required",
         "requestButtonLabel": "Request",
-        "signIn": "Back to sign in"
+        "signIn": "Back to sign in",
+        "passwordRequest": "Your request for password rest has been initiated.",
+        "passwordReqBody": "Please check your email for link to reset your password.",
+        "passwordUpdatedTittle":"Sucess! Your password is updated!",
+        "passwordUpdatedDescription": "You're good to go! Please login when you are ready."
     },
     "newAccount": {
         "title": "Ready ? Let`s create your account.",
@@ -185,8 +210,7 @@
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "ownerText": "Select device owner",
-        "success": "You have successfully updated ",
-        "successTrail": " device state"
+        "error": "Please select device owner from the list"
     },
     "multipleUsers": {
         "title": "Multiple Users",
@@ -201,7 +225,11 @@
         "text2": "Select how long this device is used by single vs multiple member at one time",
         "backButton": "Back",
         "SaveButton": "Save & Exit",
-        "continueButton": "Continue"
+        "continueButton": "Continue",
+        "singleMember": "Single Memeber",
+        "multipleMembers": "Multiple Members",
+        "memberError": "Member Percentage always equals to 100%.",
+        "multipleMembersError":"Coviewer Percentage always equals to 100%."
     },
     "deviceUsage": {
         "title": "Device Usage",
@@ -215,6 +243,7 @@
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "startButton": "Start",
+        "completedButton": "Edit",
         "Status": "Status",
         "resubmitSuccess": "You have successfully re-submitted ",
         "resubmitSuccess2": "resubmitSuccess."
@@ -227,7 +256,8 @@
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
-        "message": "You have successfully submitted information to us."
+        "message": "You have successfully submitted information to us.",
+        "error": "At least one check box should be selected."
     },
     "changePassword": {
         "title": "Change Password",
@@ -260,7 +290,7 @@
         "updateButton": "Update"
     },
     "thankYouTechSupport": {
-        "title": "Thankyou",
+        "title": "Thank you",
         "description": "Great! We received your note. We will email you our reply within 1 business day.",
         "description2": "Your confirmation number is:",
         "heading": "Ask another question",
@@ -288,7 +318,7 @@
         "text1": "We have saved your survey in the",
         "text2": "section.",
         "bcHome": "Home",
-        "bcThankyou": "Thankyou",
+        "bcThankyou": "Thank you",
         "exitButtonLabel": "Exit"
     },
     "faqPageVam": {
@@ -323,7 +353,16 @@
         "userName": "Email",
         "password": "Password",
         "confirmPassword": "Confirm Password",
-        "registerButton": "Register"
+        "registerButton": "Register",
+        "passwordRequired": "Password is required",
+        "passwordError": "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
+        "ConfirmPasswordRequired": "Confirm password is required",
+        "ConfirmPasswordError": "Confirm Password must match",
+        "tittle": "Register/Create Profile",
+        "emailRequired":"Email is required",
+        "emailError":"Enter a valid email address",
+        "header": "Create Profile"
+
     },
     "registerSuccess": {
         "tittle": "Success! Your account is created!",
@@ -356,7 +395,7 @@
         "address": "Mac address",
         "heading": "Device Information",
         "description2": "Naming this device makes it easy for you to identify it in the future. Your focal meter says this device is called “Yoda”. Continue using this name or enter a different one below.",
-        "heading2": "",
+        "heading2": "Enter different device name",
         "q1": "How many household members use this device?",
         "q1Option1": "1",
         "q1Option2": "2 to 10",
@@ -369,7 +408,8 @@
         "resumitButton": "Re-Submit",
         "success": "You have successfully submitted",
         "success2": "device information to us",
-        "resubmit": "Thank you for updating your information!"
+        "resubmit": "Thank you for updating your information!",
+        "error":"Please choose one of the options."
     },
     "faqSSPQuestions": {
         "content": "Contents",
@@ -468,13 +508,29 @@
         "modalTitle": "Save and Exit",
         "content": "Your work is saved! You can always finish the rest of it later.",
         "dismissButtonLabel": "Cancel",
-        "closeButtonLabel": "Exit"
+        "closeButtonLabel": "Exit",
+        "confirmTittle": "Warning",
+        "confirmationDescription": "Are you sure you want to leave this page?"
     },
-    
+    "televisionMembers": {
+        "tittle":"Television Usage",
+        "description":"This section has surveys for each household members who viewing channels on a TV set connected to a cable box, satellite or antenna.",
+        "header":"List of individual members",
+        "subDescription":"Complete the survey that has your name. You may also fill a survey on behalf of another household member.",
+        "statusLabel": "Status"
+    },
+    "televisionChannels": {
+        "description": "Please indicate how much time the household member spends watching TV programs using cableor antenna on each of the following TV channels on an average day?.",
+        "heading":"List view of 7 channels",
+        "subText": "Select answers for each channel below",
+        "error": "This column is required"
+    },
     "resumitButton": "Re-Submit",
     "success": "You have successfully submitted",
     "success2": "device information to us",
     "resubmit": "Thank you for updating your info page!"
+
+
 
 
 }

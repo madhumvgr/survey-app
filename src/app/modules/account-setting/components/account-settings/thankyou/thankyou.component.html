@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <h1>{{'thankYouTechSupport.title' | translate}}</h1>
                     <p>
-                        {{message}}
+                        {{message | translate}}
                     </p>
                 </div>
 
@@ -53,7 +53,7 @@
             <div class="row" *ngIf="state?.inputRoute == 'television'">
                 <div class="col-20">
                     <button type="submit" class="btn btn-primary px-3 ms-3"
-                        [routerLink]="['/survey/survey']">{{'thankYou.exitButtonLabel' | translate}}</button>
+                        [routerLink]="['/television/household-members']">{{'thankYou.exitButtonLabel' | translate}}</button>
                 </div>
             </div>
             <div class="row" *ngIf="state?.inputRoute != 'television'">

@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row">
 
-        <p class="x">Register/Create Profile</p>
-        <div><h1 class="y">Create Profile</h1></div>
+        <p class="x">{{"registrationForm.tittle" | translate}}</p>
+        <div><h1 class="y">{{"registrationForm.header" | translate}}</h1></div>
         <div><p>{{"registrationForm.description" | translate}}</p></div>
         <div><b>{{"registrationForm.tips" | translate}}</b></div>
         <div>
@@ -34,11 +34,11 @@
                         aria-describedby="emailHelp">
                     <span class="text-danger"
                         *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
-                        Email is required
+                        {{"registrationForm.emailRequired" | translate}}
                     </span>
                     <span class="text-danger"
                         *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
-                        Enter a valid email address
+                        {{"registrationForm.emailError" | translate}}
                     </span>
                 </div>
                 <div class="mb-3">
@@ -52,12 +52,11 @@
               </div>
                     <span class="text-danger"
                         *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
-                        Password is required
+                        {{"registrationForm.passwordRequired" | translate}}
                     </span>
                     <span class="text-danger"
                         *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.invalidPassword">
-                        Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number
-                    </span>
+                        {{"registrationForm.passwordError" | translate}}                    </span>
                 </div>
                 <div class="mb-3">
                     <div class="search-wrapper cf">
@@ -71,10 +70,10 @@
               </div>
                     <span class="text-danger"
                         *ngIf="(registerFormControl.confirmPassword.touched || submitted) && registerFormControl.password.errors?.required">
-                        Confirm password is required
+                        {{"registrationForm.ConfirmPasswordRequired" | translate}}
                     </span>
-                    <span class="text-danger" *ngIf="registerFormControl.confirmPassword.errors?.mustMatch && registerFormControl.confirmPassword.touched">Password and
-                        Confirm Password must match.
+                    <span class="text-danger" *ngIf="registerFormControl.confirmPassword.errors?.mustMatch && registerFormControl.confirmPassword.touched">
+                        {{"registrationForm.ConfirmPasswordError" | translate}}
                     </span>
                     <div *ngIf="showError" class = "text-danger">
                         {{errorMessage}}

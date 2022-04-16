@@ -24,6 +24,7 @@ export class QuestionarieComponent implements OnInit {
   memberNo: any;
   memberName: any;
   houseHold: boolean = false;
+  panelistType: any;
   constructor(public questionaireService: QuestionaireService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
     this.config = {
@@ -42,15 +43,20 @@ export class QuestionarieComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
 
     if (this.houseHold) {
       this.questionaireService.customRead(QuestionConstants.houseHoldQuestions).subscribe(list => {
         this.questionList = list;
       })
-    } else {
+    } else if(this.panelistType != "VAM") {
       this.questionaireService.list().subscribe(response => {
         this.questionList = response;
       });
+    } else{
+      this.questionaireService.customRead(QuestionConstants.vam_questionaire).subscribe(list => {
+        this.questionList = list;
+      })
     }
   }
 

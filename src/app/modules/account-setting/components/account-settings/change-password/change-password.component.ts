@@ -92,7 +92,7 @@ export class ChangePasswordComponent implements OnInit {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/[a-zA-Z0-9]/.test(inp)) {
+    if (/[a-zA-Z0-9!@#$%^&*_+=()-]/.test(inp)) {
       return true;
     } else {
       event.preventDefault();

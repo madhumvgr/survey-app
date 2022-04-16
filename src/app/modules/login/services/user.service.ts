@@ -46,6 +46,11 @@ export class UserService extends ResourceService<User> {
       .pipe(map(data => data));
 
     }
+    public getExistingHomes(): Observable<any>{
+      return this.httpClient
+      .get(`${environment.host}${UrlConstants.getExistingHomes}`)
+      .pipe(map(data => data));
 
+    }
     
   }

@@ -55,9 +55,8 @@ export class FinishPasswordResetComponent implements OnInit {
     } else {
       if (this.resetKey) {
         let user: User = {
-          resetKey: this.resetKey,
-          newPassword: this.registerFormControl.password.value,
-          confirmPassword:this.registerFormControl.password.value
+          key: this.resetKey,
+          newPassword: this.registerFormControl.password.value
         };
         this.userService.finishResetPassword(user).subscribe((response: any) => {
           if (response) {

@@ -6,6 +6,7 @@ export class UrlConstants {
     public static finishForgotPassword = "api/account/reset-password/finish"
     public static registerUser = "api/register";
     public static registerKeyForOtp = "api/portal-user-otps"
+    public static getExistingHomes = "api/prod-homes"
 }
 
 export class DeviceConstants {
@@ -58,8 +59,10 @@ export class TelevisionConstants {
 }
 
 export class QuestionConstants {
-    public static questionaire ="api/survey-questions-individual";
+    public static questionaire ="api/survey-questions-individual";    
+    public static vam_questionaire ="api/vam-survey-questions-individual";
     public static answers ="api/survey-answers";
+    public static vam_answers ="api/vam-survey-answers";
     public static memberIndividualList = "api/memberListOfDemoSurvey";
     public static markSurveyCompleted = "api/survey-answers-completed/";
 

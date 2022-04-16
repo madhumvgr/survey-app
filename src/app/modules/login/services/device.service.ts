@@ -13,6 +13,8 @@ import { User } from "../model/user.model";
 })
 export class DeviceService extends ResourceService<User> {
     [x: string]: any;
+    existingHomes: any;
+
     constructor( public httpClient: HttpClient) {
       super(
         httpClient,
@@ -73,4 +75,12 @@ export class DeviceService extends ResourceService<User> {
     public updateTechSupport(data:TechSupport){
       return this.customCreate(data,DeviceConstants.techSupport);
     }
+
+    public getExistingHomes(): Observable<any>{
+      return this.httpClient
+      .get(`${environment.host}${UrlConstants.getExistingHomes}`)
+      .pipe(map(data => data));
+
+    }
+
   }

@@ -47,6 +47,10 @@ export class LocalStorageService {
     return localStorage.getItem(name);
   }
 
+  setPanellistType(value:string){
+    this.setItem(StorageItem.PANELLISTTYPE,value);
+  }
+
   removeAllItem() {
     localStorage.clear();
   }
@@ -60,5 +64,6 @@ export enum StorageItem{
   DEVICENAME='deviceName',
   MEMBERNAME='memberName',
   FULLNAME='fullName',
-  INDIVIDUALNAME='individualName'
+  INDIVIDUALNAME='individualName',
+  PANELLISTTYPE = 'panellistType'
 }

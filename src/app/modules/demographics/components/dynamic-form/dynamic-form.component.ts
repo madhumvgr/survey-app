@@ -31,6 +31,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
   parentForm!: FormGroup;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
+  panelListType: any = "VAM";
   
   constructor(public questionaireService: QuestionaireService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder) {
@@ -97,8 +98,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
       this.questionaireService.customCreate(obj,QuestionConstants.houseHoldAnswers).subscribe( data => {
         console.log(data);
       });
-    }else{
+    }else if(this.panelListType != "VAM"){
       this.questionaireService.customCreate(obj,QuestionConstants.answers).subscribe( data => {
+        console.log(data);
+      });
+    } else{
+      this.questionaireService.customCreate(obj,QuestionConstants.vam_answers).subscribe( data => {
         console.log(data);
       });
     }

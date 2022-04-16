@@ -8,7 +8,7 @@ export interface User {
     currentPassword?: String;
     newPassword?: String;
     confirmPassword?:String;
-    resetKey?: String;
+    key?: String;
 }
 
 export interface ForgotPassword {

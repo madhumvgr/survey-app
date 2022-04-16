@@ -31,44 +31,44 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   generes: Array<any> = [{
     "id": '1',
-    "name": "News & Analysis"
+    "name": "genres.news"
   },
   {
     "id": '2',
-    "name": "Sports"
+    "name": "genres.sports"
   },
   {
     "id": '3',
-    "name": "Entertainment"
+    "name": "genres.entertainment"
   },
   {
     "id": '4',
-    "name": "Movies"
+    "name": "genres.movies"
   },
   {
     "id": '5',
-    "name": "Drama"
+    "name": "genres.drama"
   },
   {
     "id": '6',
-    "name": "Kids Programming"
+    "name": "genres.kidsProgram"
   },
   {
     "id": '7',
-    "name": "Comedy"
+    "name":  "genres.comedy"
   },
 
   {
     "id": '8',
-    "name": "Documentaries"
+    "name": "genres.documentaries"
   },
   {
     "id": '9',
-    "name": "Hobbies & Leisure"
+    "name": "genres.hobbies"
   },
   {
     "id": '10',
-    "name": "Other"
+    "name": "genres.other"
   }
   ]
   timeLines: Array<DeviceTimeSlot> = [

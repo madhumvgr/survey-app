@@ -43,6 +43,21 @@
     stroke-width: 15;
     transition: all 100ms ease-in-out;
   }
-  .faq-section h3 {
+  .faq-section h4 {
     cursor: pointer;
-  }                       
+  }
+  
+  #leftbox {
+    float:left; 
+    width:50%;
+  }
+
+  #rightbox{
+    float:right;
+    width:50%;
+  }
+
+  .clear {
+    clear: both;
+  }
+

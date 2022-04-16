@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -34,6 +34,8 @@ export function createPasswordStrengthValidator(): ValidatorFn {
   styleUrls: ['./tv-channels.component.css']
 })
 export class TvChannelsComponent extends BaseComponent implements OnInit {
+  @ViewChildren("inputMessage", { read: ElementRef })
+  renderedUsers!: QueryList<ElementRef>;
   stationForm: FormGroup[] = []
   memberNo: any;
   memberName: any;
@@ -186,8 +188,15 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
             }
           });
       }
+    } else {
+  setTimeout(() => {
+    const userToScrollOn = this.renderedUsers.toArray();
+    userToScrollOn[0].nativeElement.scrollIntoView({
+      behavior: 'smooth'
+    });
+   }, 100);
     }
-  }
+  } 
 
   isFormValid(){
     let isValid = true;

@@ -12,8 +12,12 @@
             </ng-container>
             <ng-template #device>
                 <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">{{'householdDevices.title' | translate}}</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceStatus}}</a>
-                </li>
+                <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">
+                    <span *ngIf="this.deviceState =='Inprogress'">{{'householdDevices.householdDevicesActionsLabel2' | translate}}</span>
+                    <span *ngIf="this.deviceState =='Completed'">{{'householdDevices.householdDevicesHistoryLabel1' | translate}}</span>
+                    <span *ngIf="this.deviceState =='New'">{{'householdDevices.householdDevicesActionsLabel1' | translate}}</span>
+                    <span *ngIf="this.deviceState =='Notused'">{{'householdDevices.householdDevicesHistoryLabel2' | translate}}</span>
+                </a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
             </ng-template>
         </ol>
@@ -57,7 +61,7 @@
                                         aria-expanded="false" [attr.aria-controls]="'collapse-one'+(generId+1)">
                                         <i class="material-icons p-3 me-3 genres-icon">
                                             <div class="h3 mb-0">movie_filter</div>
-                                        </i> {{genere?.name}}
+                                        </i> {{genere?.name | translate}}
                                     </button>
                                 </h3>
                                 <div [id]="'collapse-one'+(generId+1)" class="accordion-collapse collapse"
@@ -80,14 +84,14 @@
                                                 <option value="9">Hobbies & Leisure</option>
                                                 <option value="10">Other</option>
                                             </select> -->
-                                            <h4>Select weekday time slots</h4>
+                                            <h4>{{"genres.weekdayTittle" | translate}}</h4>
                                             <div formArrayName="weekDays" class="w-75">
                                                 <div *ngFor="let item of getWeekDayControl(genere.id).controls; let i = index;"
                                                     [formGroupName]="i"
                                                     class="check-input-bg p-2 mb-3 rounded form-check-inline">
                                                     <!-- *ngIf="item.value?.usageTimelineId" -->
-                                                    <div class=" form-group form-check">
-                                                        <label class="form-check-label" for="item{{i}}">
+                                                    <div class="form-check" href='javascript:void(0);'>
+                                                        <label class="form-check-label">
                                                             <input formControlName="addNew" class="form-check-input"
                                                             type="checkbox" (change)="updateTimeLine(item)" id="item{{i}}" role="button">
                                                             {{item.value.label}}
@@ -96,7 +100,7 @@
                                                 </div>
                                             </div>
 
-                                            <h4>Select weekend time slots</h4>
+                                            <h4>{{"genres.weekendTittle" | translate}}</h4>
                                             <div formArrayName="weekEnds" class="w-75">
                                                 <div *ngFor="let item of getWeekEndControl(genere.id).controls; let i = index;"
                                                     [formGroupName]="i"

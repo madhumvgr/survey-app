@@ -51,7 +51,6 @@
         "title": "Communiquez avec Numeris",
         "description": "Écrivez-nous et nous allons examiner le problème.",
         "button": "Continuer"
-    
     },
     "panelistRegistration ": {
         "title": "Prêt? Créons votre compte.",
@@ -139,21 +138,21 @@
         "montrealOffice": "Bureau de Montréal",
         "montrealDescription": "Pour les panelistes en ON, QC et régions Atlantique – heure de l’Est.",
         "montrealdays": "Lundi au Vendredi",
-        "montrealWeekdays":"Jours de semaine",
-        "montrealTimes":"10h00 à 18h00",
-        "montrealEmail":"Courriel",
+        "montrealWeekdays": "Jours de semaine",
+        "montrealTimes": "10h00 à 18h00",
+        "montrealEmail": "Courriel",
         "montrealEmailValue": "meterpaneleast@numeris.ca",
-        "tollFree":"Numéro gratuit",
+        "tollFree": "Numéro gratuit",
         "montrealPhone": "1-866-548-8991",
         "richmondOffice": "Bureau de Richmond",
         "richmondDescription": "Pour les panelistes en MB, SK, AB et BC – heure du Pacifique",
         "richmondDays": "Lundi au Vendredi",
-        "richmondTimes":"9h00 à 18h00",
-        "richmondSaturday":"Samedis",
+        "richmondTimes": "9h00 à 18h00",
+        "richmondSaturday": "Samedis",
         "richmondSaturdayTime": "10h00 à 18h00",
-        "richmondSunday":"Dimanche",
+        "richmondSunday": "Dimanche",
         "richmondSundayTime": "10h00 à 17h00",
-        "richmondEmail":"Courriel",
+        "richmondEmail": "Courriel",
         "richmondEmailValue": "meterpanelwest@numeris.ca",
         "richmondPhone": "1-866-730-7960"
     },
@@ -166,8 +165,8 @@
         "signIn": "Retour à la connexion",
         "passwordRequest": "Votre demande de réinitialisation de mot de passe est en cours.",
         "passwordReqBody": "Vous recevrez un courriel comportant un lien pour réinitialiser votre mot de passe.",
-        "passwordUpdatedTittle":"Succès! Votre mot de passe a été mis à jour!.",
-        "passwordUpdatedDescription":"Vous pouvez y aller! Merci de vous connecter quand vous êtes prêts."
+        "passwordUpdatedTittle": "Succès! Votre mot de passe a été mis à jour!.",
+        "passwordUpdatedDescription": "Vous pouvez y aller! Merci de vous connecter quand vous êtes prêts."
     },
     "newAccount": {
         "title": "Prêt? Créons votre compte.",
@@ -196,8 +195,10 @@
         "macAddress": "Adresse Mac"
     },
     "completedDevices": {
-        "title": "",
-        "description": "Cette page affiche les appareils média pour lesquels vous avez complété des sondages. Vous êtes bien parti! Vous pouvez passer en revue un sondage complété, le modifier puis le renvoyer. "
+        "title": "Complétés",
+        "description": "Cette page affiche les appareils média pour lesquels vous avez complété des sondages. Vous êtes bien parti! Vous pouvez passer en revue un sondage complété, le modifier puis le renvoyer. ",
+        "description2": "You are about to edit a survey that you completed earlier for the device above. Please select the section that you’d like to edit from the list below.",
+        "deviceName": "nom d’appareil"  
     },
     "notInUse": {
         "title": "",
@@ -229,7 +230,7 @@
         "singleMember": "Un seul membre",
         "multipleMembers": "Plusieurs membres",
         "memberError": "Le pourcentage des membres doit toujours être égal à 100 %.",
-        "multipleMembersError":"Le pourcentage des co-téléspectateurs doit toujours être égal à 100 %. "
+        "multipleMembersError": "Le pourcentage des co-téléspectateurs doit toujours être égal à 100 %. "
     },
     "deviceUsage": {
         "title": "Utilisation de l’appareil",
@@ -247,7 +248,10 @@
         "Status": "Statut",
         "resubmitSuccess": "Vous nous avez soumis les informations concernant le ",
         "resubmitSuccess2": "ravec succès.",
-        "resubmit":""
+        "resubmit": "",
+        "notStarted": "non Commencé",
+        "inProgress": "Dans Progrès",
+        "completed": "Terminé"
     },
     "genres": {
         "description": "Nous cherchons à obtenir plus de détails à propos des catégories regardées en ligne par.",
@@ -258,7 +262,19 @@
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
         "message": "Vous nous avez soumis les informations sur avec succès. ",
-        "error": "Au moins une des cases doit être sélectionnée."
+        "error": "Au moins une des cases doit être sélectionnée.",
+        "news": "Nouvelles et analyse",
+        "kidsProgram": "Émissions pour enfants",
+        "hobbies": "Passe-temps et loisirs",
+        "sports": "Sports",
+        "drama": "Drames",
+        "movies": "Films",
+        "comedy": "Comédies",
+        "entertainment": "Divertissement",
+        "documentaries": "Documentaires",
+        "other" : "Autres",
+        "weekdayTittle" : "sélectionner des plages horaires pendant la semaine",
+        "weekendTittle" : "sélectionner des créneaux horaires pendant le week-end"
     },
     "changePassword": {
         "title": "Changer son mot de passe",
@@ -266,7 +282,7 @@
         "tipsLabel": "Astuces",
         "tip1": "Doit contenir entre 8 et 20 caractères ",
         "tip2": "Doit contenir à la fois des lettres et des chiffres",
-        "tip3": "Ne doit pas contenir d’espace, de caractères spéciaux ni d’emojis",
+        "tip3": "Il doit contenir à la fois des lettres et des chiffres et ne pas avoir d'espaces ou d'emojis",
         "currentPassword": "Mot de passe ",
         "currentPasswordRequired": "Mot de passe est requis",
         "newPassword": "Nouveau mot de passe",
@@ -358,10 +374,10 @@
         "passwordRequired": "Mot de passe requis",
         "passwordError": "Le mot de passe doit contenir au moins 8 caractères, 1 lettre en majuscule, 1 lettre en minuscule et 1 chiffre",
         "ConfirmPasswordRequired": "Confirmation du mot de passe requise",
-        "ConfirmPasswordError": "Le mot de passe confirmé doit correspondre au mot de passe nouvellement créé", 
+        "ConfirmPasswordError": "Le mot de passe confirmé doit correspondre au mot de passe nouvellement créé",
         "tittle": "Inscrire/Création du profil",
-        "emailRequired":"Adresse électronique requise",
-        "emailError":"Entrez une adresse électronique valide",
+        "emailRequired": "Adresse électronique requise",
+        "emailError": "Entrez une adresse électronique valide",
         "header": "Création du profil"
     },
     "registerSuccess": {
@@ -409,7 +425,7 @@
         "success": "Vous nous avez soumis les informations sur ",
         "success2": "avec succès",
         "resubmit": "Merci d'avoir mis à jour vos informations! ",
-        "error":"Merci de choisir une de ces options."
+        "error": "Merci de choisir une de ces options."
     },
     "faqSSPQuestions": {
         "content": "Table des matières",
@@ -444,7 +460,9 @@
         "q29": "De quelle façon serais-je contacté par mon administrateur-trice de panel?",
         "q30": "Une fois inscrit, pendant combien de temps dois-je rester dans le panel?",
         "q31": "Quoi dire aux personnes qui me questionnent au sujet de l’audimètre central ou de l’audimètre personnel?",
-        "q32": "Quelles sont les heures d’ouverture des bureaux de Numeris et comment puis-communiquer avec vous?"
+        "q32": "Quel est le rôle du voyant sur mon audimètre personnel?",
+        "q33": "Que signifient les messages sur mon audimètre personnel?",
+        "q34": "Quelles sont les heures d’ouverture des bureaux de Numeris et comment puis-communiquer avec vous?"
     },
     "faqSSPAnswers": {
         "a1": "Le panel de cotes d’écoute multimédia de Numeris est composé de nombreux types de foyers à l’échelle du Canada, tel que le vôtre. Chaque ménage a été soigneusement sélectionné pour représenter la région dans laquelle il réside. Ces ménages fournissent des informations importantes quant à l’écoute de la radio et de la télévision et au visionnement vidéo lesquelles sont utilisées par Numeris pour produire ce qu’on appelle fréquemment les cotes d’écoute. Ces dernières aideront les radiodiffuseurs à prendre des décisions importantes au sujet de leur programmation.  En participant au panel, les Canadiens font savoir aux radiodiffuseurs quelles sont les émissions qu’ils aiment écouter ou regarder en ligne, à la télévision et à la radio.",
@@ -499,7 +517,35 @@
         "a29": "Il ou elle vous contactera par téléphone, courriel ou texto.",
         "a30": "Bien que nous aimerions que vous restiez dans notre panel pendant longtemps, vous pouvez le quitter quand bon vous semble. Il peut arriver que certains ménages doivent en être retirés au vu des besoins du panel. Nous vous demandons de garder la boîte de votre équipement afin de pouvoir le renvoyer, le cas échéant. Si vous désirez quitter le panel, n’hésitez pas à contacter votre équipe d’administration de panel.",
         "a31": "Afin d’assurer l’intégrité des cotes d’écoute de Numeris, il est important que votre participation demeure confidentielle. Si l’on vous pose des questions au sujet de l’audimètre central ou de l’audimètre personnel, répondez-leur que vous participez à une étude de recherche spéciale. Veuillez ne pas dire à une personne que vous ne connaissez pas ou qui travaille dans l’industrie des médias que votre ménage participe au panel de Numeris.",
-        "a32": "Bureaux de Montréal (pour les membres du panel en Ontario, au Québec et dans les régions de "
+        "a32": "Le voyant sur le dessus de votre audimètre personnel vous indique le moment où vous cumulez des points. Lorsque vous portez votre appareil, le voyant reste allumé. Si vous cessez de porter votre audimètre, le voyant s’éteindra peu après. Si vous ne le ramassez pas ni le portez, le voyant se mettra à clignoter puis s’éteindra. Le voyant s’allumera de nouveau lorsque vous ramasserez et porterez votre appareil.",
+        "a33": "L’écran de votre audimètre personnel vous donne le comptage de vos points et des informations sur l’appareil. Lorsque vous portez votre audimètre personnel, vous y verrez votre nom et l’heure. Lorsque vous chargez l’appareil, l’écran pourrait afficher les messages suivants :",
+        "a33.2": "Voici certains messages de base et ce qu’ils signifient :",
+        "a33.3": "Contenu du message :",
+        "m1": "Bonjour (VOTRE NOM)",
+        "m2": "Merci (VOTRE NOM)",
+        "m3": "Aujourd’hui/Hier (POINTS)",
+        "m4": "Semaine actuelle/précédente (POINTS)",
+        "m5": "Pile faible",
+        "m6": "Symbole d’un téléphone cellulaire rayé :",
+        "a33.4": "Ce qu’il signifie :",
+        "m1Means": "L’audimètre procède à son chargement.",
+        "m2Means": "L’audimètre comptabilise les points que vous avez cumulés en le portant. ",
+        "m3Means": "Le nombre total de points cumulés jusqu’alors le jour même ainsi que ceux cumulés lors de la journée précédente.",
+        "m4Means": "Le nombre total de points cumulés jusqu’alors durant la semaine actuelle ainsi que ceux cumulés lors de semaine précédente.",
+        "m5Means": "La pile doit être rechargée pour un minimum de quatre (4) heures dès que possible.",
+        "m6Means": "Le système cellulaire est désactivé. Pour le réactiver, il suffit de maintenir le bouton devant appuyé pour quelques secondes jusqu’à ce que ce symbole disparaisse.",
+        "text": "Votre audimètre pourrait également afficher l’un des messages suivants lorsque vous le portez.",
+        "montrealoffice": "Bureaux de Montréal (pour les membres du panel en Ontario, au Québec et dans les régions de l’Atlantique – Heure de l’Est) :",
+        "mtf": "Lundi au vendredi : 10 h à 18 h",
+        "weekends": "Fin de semaine : 10 h à 18 h",
+        "email": "Courriel : meterpaneleast@numeris.ca",
+        "tollFree": "Numéro sans frais: 1-866-548-8991",
+        "richmondOffice": "Bureaux de Richmond (pour les membres du panel au Manitoba, en Saskatchewan, en Alberta et en Colombie-Britannique – Heure du Pacifique) :",
+        "rmtf": "Lundi au vendredi : 9 h à 18 h",
+        "saturday": "Samedi : 10 h à 18 h",
+        "sunday": "Dimanche : 9 h à 17 h",
+        "rEmail": "Courriel : meterpanelwest@numeris.ca",
+        "rTollfree": "Numéro sans frais : 1-866-730-7960"
     },
     "answerLabel": {
         "A": "R"
@@ -513,17 +559,26 @@
         "confirmationDescription": "Voulez-vous vraiment quitter cette page?"
     },
     "televisionMembers": {
-        "tittle":"Usage de la Télévision",
-        "description":"Cette section comporte des enquêtes pour chacun des membres du ménage qui regarde des chaînes sur un téléviseur relié à une boîte de câblodistribution, à un satellite ou à une antenne.",
-        "header":"Liste de membres individuels ",
-        "subDescription":"Complétez l’enquête qui comprends votre nom. Vous pouvez aussi compléter l’enquête au nom d’un autre membre.",
+        "tittle": "Usage de la Télévision",
+        "description": "Cette section comporte des enquêtes pour chacun des membres du ménage qui regarde des chaînes sur un téléviseur relié à une boîte de câblodistribution, à un satellite ou à une antenne.",
+        "header": "Liste de membres individuels ",
+        "subDescription": "Complétez l’enquête qui comprends votre nom. Vous pouvez aussi compléter l’enquête au nom d’un autre membre.",
         "statusLabel": "Statut"
     },
     "televisionChannels": {
         "description": "Merci d’indiquer combien de temps le membre du ménage passe à regarder les programmes TV utilisant le câble ou l’antenne pour chaque chaîne suivante en moyenne par jour?.",
         "heading":"Liste des 7 chaines",
         "subText": "Sélectionner votre réponse pour chaque chaîne",
-        "error": "Cette colonne est obligatoire"
+        "error": "Cette colonne est obligatoire",
+        "defaultOption": "Sélectionnez la réponse",
+        "option1": "0 minutes",
+        "option2": "Jusqu'à 30 minutes",
+        "option3": "Plus de 30 minutes jusqu'à 1 heure",
+        "option4": "Plus d'1 heure jusqu'à 2 heures",
+        "option5": "Plus de 2 heures jusqu'à 3 heures",
+        "option6": "Plus de 3 heures",
+        "weekdayTittle":"jour de la semaine",
+        "weekendTittle":"fins de semaine"
     },
     "resumitButton": "Re-Submit",
     "success": "Vous nous avez soumis les informations sur ",

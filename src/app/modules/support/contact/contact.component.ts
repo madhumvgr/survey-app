@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DeviceService } from '../../login/services/device.service';
+import { TechSupport } from '../connect/connect.component';
 
 @Component({
   selector: 'app-contact',
@@ -8,12 +10,32 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private activatedroute: ActivatedRoute) {
-    let url = this.activatedroute.snapshot.url[0].path;
-    console.log(url);
-   }
+  subject:any;
+  description:any;
+  techSupport: TechSupport={};
+  error: boolean = false;
+  constructor(private deviceService: DeviceService, private router: Router) { 
+    this.subject;
+    this.description;
+   
+  }
 
   ngOnInit(): void {
   }
 
+  submit(){
+    this.techSupport= {
+      subject:this.subject,
+      description: this.description
+    }
+    
+    if(this.subject!=null){
+      this.error = false;
+      this.deviceService.updateTechSupport(this.techSupport).subscribe( res => {
+        this.router.navigate(['/support/thankyou'],{state: {message: res.id}});
+      });
+    } else {
+      this.error = true;
+    }
+  }
 }

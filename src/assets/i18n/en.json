@@ -139,21 +139,21 @@
         "montrealOffice": "Montreal office",
         "montrealDescription": "For panelist in ON, QC and Atlantic region - Eastern time",
         "montrealdays": "Monday to Friday",
-        "montrealWeekdays":"Weekdays",
-        "montrealTimes":"10:00am to 6:00pm",
-        "montrealEmail":"Email",
+        "montrealWeekdays": "Weekdays",
+        "montrealTimes": "10:00am to 6:00pm",
+        "montrealEmail": "Email",
         "montrealEmailValue": "meterpaneleast@numeris.ca",
-        "tollFree":"Toll Free",
+        "tollFree": "Toll Free",
         "montrealPhone": "1-866-548-8991",
         "richmondOffice": "Richmond office",
         "richmondDescription": "For panelist in MB, SK, AB and BC - Pacific time",
         "richmondDays": "Monday to Friday",
-        "richmondTimes":"9:00am to 6:00pm",
-        "richmondSaturday":"Saturdays",
+        "richmondTimes": "9:00am to 6:00pm",
+        "richmondSaturday": "Saturdays",
         "richmondSaturdayTime": "10:00am to 6:00pm",
-        "richmondSunday":"Sundays",
+        "richmondSunday": "Sundays",
         "richmondSundayTime": "10:00am to 5:00pm",
-        "richmondEmail":"Email",
+        "richmondEmail": "Email",
         "richmondEmailValue": "meterpanelwest@numeris.ca",
         "richmondPhone": "1-866-730-7960"
     },
@@ -166,7 +166,7 @@
         "signIn": "Back to sign in",
         "passwordRequest": "Your request for password rest has been initiated.",
         "passwordReqBody": "Please check your email for link to reset your password.",
-        "passwordUpdatedTittle":"Sucess! Your password is updated!",
+        "passwordUpdatedTittle": "Sucess! Your password is updated!",
         "passwordUpdatedDescription": "You're good to go! Please login when you are ready."
     },
     "newAccount": {
@@ -196,8 +196,10 @@
         "macAddress": "Mac Address"
     },
     "completedDevices": {
-        "title": "",
-        "description": "This page shows media devices for which you’ve completed surveys. Nice going! You can review, edit and resubmit a completed survey."
+        "title": "Completed",
+        "description": "This page shows media devices for which you’ve completed surveys. Nice going! You can review, edit and resubmit a completed survey.",
+        "description2": "You are about to edit a survey that you completed earlier for the device above. Please select the section that you’d like to edit from the list below.",
+        "deviceName": "Device Name"
     },
     "notInUse": {
         "title": "",
@@ -229,7 +231,7 @@
         "singleMember": "Single Memeber",
         "multipleMembers": "Multiple Members",
         "memberError": "Member Percentage always equals to 100%.",
-        "multipleMembersError":"Coviewer Percentage always equals to 100%."
+        "multipleMembersError": "Coviewer Percentage always equals to 100%."
     },
     "deviceUsage": {
         "title": "Device Usage",
@@ -246,7 +248,10 @@
         "completedButton": "Edit",
         "Status": "Status",
         "resubmitSuccess": "You have successfully re-submitted ",
-        "resubmitSuccess2": "resubmitSuccess."
+        "resubmitSuccess2": "resubmitSuccess.",
+        "notStarted": "Not Started",
+        "inProgress": "In Progress",
+        "completed": "Completed"
     },
     "genres": {
         "description": "Let’s get a bit specific about the genres watched online by.",
@@ -257,15 +262,28 @@
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "message": "You have successfully submitted information to us.",
-        "error": "At least one check box should be selected."
+        "error": "At least one check box should be selected.",
+        "news": "News & Analysis",
+        "kidsProgram": "Kids Programming",
+        "hobbies": "Hobbies & Leisure",
+        "sports": "Sports",
+        "drama": "Drama",
+        "movies": "Movies",
+        "comedy": "Comedy",
+        "entertainment": "Entertainment",
+        "documentaries": "Documentaries",
+        "other" : "Other",
+        "weekdayTittle" : "Select weekday time slots",
+        "weekendTittle" : "Select weekend time slots"
     },
+
     "changePassword": {
         "title": "Change Password",
         "description": "",
         "tipsLabel": "Tips",
         "tip1": "Your password must be between 8 and 20 characters long ",
         "tip2": "Have one upper and one lower case letter ",
-        "tip3": "It must have both letters and numbers and not have spaces, special characters or emojis ",
+        "tip3": "It must have both letters and numbers and not have spaces or emojis",
         "currentPassword": "Current Password",
         "currentPasswordRequired": "Current password is required",
         "newPassword": "New Password",
@@ -359,10 +377,9 @@
         "ConfirmPasswordRequired": "Confirm password is required",
         "ConfirmPasswordError": "Confirm Password must match",
         "tittle": "Register/Create Profile",
-        "emailRequired":"Email is required",
-        "emailError":"Enter a valid email address",
+        "emailRequired": "Email is required",
+        "emailError": "Enter a valid email address",
         "header": "Create Profile"
-
     },
     "registerSuccess": {
         "tittle": "Success! Your account is created!",
@@ -409,7 +426,7 @@
         "success": "You have successfully submitted",
         "success2": "device information to us",
         "resubmit": "Thank you for updating your information!",
-        "error":"Please choose one of the options."
+        "error": "Please choose one of the options."
     },
     "faqSSPQuestions": {
         "content": "Contents",
@@ -444,7 +461,9 @@
         "q29": "How will my Panel Administrator contact me?",
         "q30": "Once I have joined, how long do I stay on the panel?",
         "q31": "What should I tell people that ask about my FocalMeter or PersonalMeter?",
-        "q32": "What are the Numeris office hours and how do I contact Numeris?"
+        "q32": "What do the indicator lights on my PersonalMeter mean?",
+        "q33": "What do the messages on my PersonalMeter mean?",
+        "q34": "What are the Numeris office hours and how do I contact Numeris?"
     },
     "faqSSPAnswers": {
         "a1": "The Numeris Multimedia Ratings Panel consists of many types of households across Canada, such as yours. Each household has been carefully selected to represent the region in which they live.  These households provide important information about radio listening and television and video viewing. Numeris uses this information to create what are often called ratings. Broadcasters use the ratings to make important decisions about programming.  By participating in the panel, Canadians can let broadcasters know which programs they enjoy online, on TV and on the radio.",
@@ -499,7 +518,35 @@
         "a29": "Your Panel Administrator will contact you by telephone, email or text.",
         "a30": "While we would like you to remain on our panel for an extended period, you may leave whenever you wish. In some situations, due to our panel needs, we may remove households from the panel. Please keep the box that your equipment arrived in so that you can ship it back to us. If you wish to leave the panel, please contact your Panel Administration Team.",
         "a31": "To ensure the integrity of Numeris ratings, it is important that your participation remain confidential. If someone asks about your FocalMeter or PersonalMeter, simply let them know that you are participating in a special research study. Please do not tell anyone you do not know, or anyone working in the media industry, that your household participates in the Numeris panel.",
-        "a32": "Montreal Office (for panelists in ON, QC and Atlantic region—Eastern Time):"
+        "a32": "The indicator light on the top of your PersonalMeter tells you when you are earning points. When you wear your PersonalMeter, the indicator light will stay on. If you put your PersonalMeter down, the light will turn off after a short while. If you do not pick up or move your PersonalMeter, the light will start flashing and then turn off. The light will come back on when you wear or pick up your PersonalMeter.",
+        "a33": "Your PersonalMeter has a display screen to tell you about your points and give you information about the Meter. When you are wearing your PersonalMeter, the display will show your name and the time. When you charge your PersonalMeter, the display will show a series of messages once.",
+        "a33.2": "Below is a list of some basic messages and what they mean:",
+        "a33.3": "When the message says:",
+        "m1": "Hello (YOUR NAME) ",
+        "m2": "Thank you (YOUR NAME) ",
+        "m3": "Today/Yesterday (POINTS) ",
+        "m4": "This week/Last week (POINTS) ",
+        "m5": "Battery Low",
+        "m6": "Symbol of a cell phone with a line across it:",
+        "a33.4": "It means:",
+        "m1Means": "The Meter recognizes that it is recharging. ",
+        "m2Means": "The Meter is adding up the points you have earned by wearing it.",
+        "m3Means": "This is the total number of points you have earned so far today and the number of points you earned on the previous day.",
+        "m4Means": "This is the number of points you have earned so far this week and how many points you earned last week.",
+        "m5Means": "The Meter’s battery needs to be charged for a minimum of 4 hours as soon as possible.",
+        "m6Means": "To turn the cellular system back on, please hold down the button on the front of the Meter for a few seconds until this symbol is no longer displayed on the screen.",
+        "text": "Your Meter may also display one of the following messages while you are wearing it.",
+        "montrealoffice": "Montreal Office (for panelists in ON, QC and Atlantic region-Eastern Time):",
+        "mtf": "Monday to Friday: 10:00 am to 6:00 pm",
+        "weekends": "Weekends: 10:00 am to 6:00 pm",
+        "email": "Email: meterpaneleast@numeris.ca",
+        "tollFree": "Toll-free: 1-866-548-8991",
+        "richmondOffice": "Richmond Office (for panelists in MB, SK, AB and BC—Pacific Time):",
+        "rmtf": "Monday to Friday: 9:00 am to 6:00 pm",
+        "saturday": "Saturday: 10:00 am to 6:00 pm",
+        "sunday": "Sunday: 9:00 am - 5:00 pm",
+        "rEmail": "Email : meterpanelwest@numeris.ca",
+        "rTollfree": "Toll-free : 1-866-730-7960"
     },
     "answerLabel": {
         "A": "A"
@@ -513,24 +560,29 @@
         "confirmationDescription": "Are you sure you want to leave this page?"
     },
     "televisionMembers": {
-        "tittle":"Television Usage",
-        "description":"This section has surveys for each household members who viewing channels on a TV set connected to a cable box, satellite or antenna.",
-        "header":"List of individual members",
-        "subDescription":"Complete the survey that has your name. You may also fill a survey on behalf of another household member.",
+        "tittle": "Television Usage",
+        "description": "This section has surveys for each household members who viewing channels on a TV set connected to a cable box, satellite or antenna.",
+        "header": "List of individual members",
+        "subDescription": "Complete the survey that has your name. You may also fill a survey on behalf of another household member.",
         "statusLabel": "Status"
     },
     "televisionChannels": {
         "description": "Please indicate how much time the household member spends watching TV programs using cableor antenna on each of the following TV channels on an average day?.",
         "heading":"List view of 7 channels",
         "subText": "Select answers for each channel below",
-        "error": "This column is required"
+        "error": "This column is required",
+        "defaultOption": "Select answer",
+        "option1": "None",
+        "option2": "Up to 30 minutes",
+        "option3": "More than 30 minutes up to 1 hour",
+        "option4": "More than 1 hour up to 2 hours",
+        "option5": "More than 2 hours up to 3 hours",
+        "option6": "More than 3 hours",
+        "weekdayTittle":"Weekdays",
+        "weekendTittle":"Weekends"
     },
     "resumitButton": "Re-Submit",
     "success": "You have successfully submitted",
     "success2": "device information to us",
     "resubmit": "Thank you for updating your info page!"
-
-
-
-
 }

@@ -9,7 +9,6 @@
                <span *ngIf="this.deviceState =='Completed'">{{'completedDevices.title' | translate}}</span>
                <span *ngIf="this.deviceState =='Notused'">{{'notInUse.title' | translate}}</span>
                <span *ngIf="this.deviceState =='New'">{{'newDevices.title' | translate}}</span>
-
             </li>
         </ol>
     </div>
@@ -21,7 +20,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12" >
-                <h1>{{deviceStatus}} {{'newDevices.devicesText' | translate}}</h1>
+                <h1>
+                    <span *ngIf="this.deviceState =='Inprogress'">{{'householdDevices.householdDevicesActionsLabel2' | translate}}</span>
+                    <span *ngIf="this.deviceState =='Completed'">{{'householdDevices.householdDevicesHistoryLabel1' | translate}}</span>
+                    <span *ngIf="this.deviceState =='New'">{{'householdDevices.householdDevicesActionsLabel1' | translate}}</span>
+                    <span *ngIf="this.deviceState =='Notused'">{{'householdDevices.householdDevicesHistoryLabel2' | translate}}</span>
+                    {{'newDevices.devicesText' | translate}}
+                </h1>
                 <p *ngIf="deviceStatus == 'New'">
                     {{'newDevices.description' | translate}} <a  href='javascript:void(0);' (click)="showWindow()">{{'newDevices.Link' | translate}}</a> {{'newDevices.description1' | translate}}
                 </p>
@@ -42,7 +47,12 @@
 <section class="px-3 pb-5">
     <div class="container">
         <div class="row g-4">
-            <h2>{{deviceStatus}} {{'newDevices.devicesDetected'| translate}}: {{deviceCount}}<span class="h2-separator"></span></h2>
+            <h2>
+                <span *ngIf="this.deviceState =='Inprogress'">{{'householdDevices.householdDevicesActionsLabel2' | translate}}</span>
+                <span *ngIf="this.deviceState =='Completed'">{{'householdDevices.householdDevicesHistoryLabel1' | translate}}</span>
+                <span *ngIf="this.deviceState =='New'">{{'householdDevices.householdDevicesActionsLabel1' | translate}}</span>
+                <span *ngIf="this.deviceState =='Notused'">{{'householdDevices.householdDevicesHistoryLabel2' | translate}}</span>
+                {{'newDevices.devicesDetected'| translate}}: {{deviceCount}}<span class="h2-separator"></span></h2>
             <p class="mt-2 mb-0" *ngIf="deviceStatus == 'New'">{{'newDevices.devicesDetectedDescription' | translate}}</p>
 
              <!-- Newly Detected Device (Smart TV) -->

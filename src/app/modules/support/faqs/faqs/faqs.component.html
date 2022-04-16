@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <H1>{{'faqPage.title1' | translate}}</H1>
+                <h1>{{'faqPage.title1' | translate}}</h1>
                 <p>
                     {{'faqPage.description1' | translate}}
                 </p>
@@ -34,227 +34,375 @@
             <h2> {{'faqPage.heading2' | translate}}<span class="h2-separator"></span></h2>
             <div class="col-12 mt-3">
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
-                    <h3 style="color:cornflowerblue">{{'faqSSPQuestions.content' | translate}}</h3>
-                    <h2 style="color:cornflowerblue">SSP</h2>
-                    <h3 (click)="scrollInView('q1')">1. {{'faqSSPQuestions.q1' | translate}}</h3>
-                    <h3 (click)="scrollInView('q2')">2. {{'faqSSPQuestions.q2' | translate}}</h3>
-                    <h3 (click)="scrollInView('q3')">3. {{'faqSSPQuestions.q3' | translate}}</h3>
-                    <h3 (click)="scrollInView('q4')">4. {{'faqSSPQuestions.q4' | translate}}</h3>
-                    <h3 (click)="scrollInView('q5')">5. {{'faqSSPQuestions.q5' | translate}}</h3>
-                    <h3 (click)="scrollInView('q6')">6. {{'faqSSPQuestions.q6' | translate}}</h3>
-                    <h3 (click)="scrollInView('q7')">7. {{'faqSSPQuestions.q7' | translate}}</h3>
-                    <h3 (click)="scrollInView('q8')">8. {{'faqSSPQuestions.q8' | translate}}</h3>
-                    <h3 (click)="scrollInView('q9')">9. {{'faqSSPQuestions.q9' | translate}}</h3>
-                    <h3 (click)="scrollInView('q10')">10. {{'faqSSPQuestions.q10' | translate}}</h3>
-                    <h3 (click)="scrollInView('q11')">11. {{'faqSSPQuestions.q11' | translate}}</h3>
-                    <h3 (click)="scrollInView('q12')">12. {{'faqSSPQuestions.q12' | translate}}</h3>
-                    <h3 (click)="scrollInView('q13')">13. {{'faqSSPQuestions.q13' | translate}}</h3>
-                    <h3 (click)="scrollInView('q14')">14. {{'faqSSPQuestions.q14' | translate}}</h3>
-                    <h3 (click)="scrollInView('q15')">15. {{'faqSSPQuestions.q15' | translate}}</h3>
-                    <h3 (click)="scrollInView('q16')">16. {{'faqSSPQuestions.q16' | translate}}</h3>
-                    <h3 (click)="scrollInView('q17')">17. {{'faqSSPQuestions.q17' | translate}}</h3>
-                    <h3 (click)="scrollInView('q18')">18. {{'faqSSPQuestions.q18' | translate}}</h3>
-                    <h3 (click)="scrollInView('q19')">19. {{'faqSSPQuestions.q19' | translate}}</h3>
-                    <h3 (click)="scrollInView('q20')">20. {{'faqSSPQuestions.q20' | translate}}</h3>
-                    <h3 (click)="scrollInView('q21')">21. {{'faqSSPQuestions.q21' | translate}}</h3>
-                    <h3 (click)="scrollInView('q22')">22. {{'faqSSPQuestions.q22' | translate}}</h3>
-                    <h3 (click)="scrollInView('q23')">23. {{'faqSSPQuestions.q23' | translate}}</h3>
-                    <h3 (click)="scrollInView('q24')">24. {{'faqSSPQuestions.q24' | translate}}</h3>
-                    <h3 (click)="scrollInView('q25')">25. {{'faqSSPQuestions.q25' | translate}}</h3>
-                    <h3 (click)="scrollInView('q26')">26. {{'faqSSPQuestions.q26' | translate}}</h3>
-                    <h3 (click)="scrollInView('q27')">27. {{'faqSSPQuestions.q27' | translate}}</h3>
-                    <h3 (click)="scrollInView('q28')">28. {{'faqSSPQuestions.q28' | translate}}</h3>
-                    <h3 (click)="scrollInView('q29')">29. {{'faqSSPQuestions.q29' | translate}}</h3>
-                    <h3 (click)="scrollInView('q30')">30. {{'faqSSPQuestions.q30' | translate}} </h3>
-                    <h3 (click)="scrollInView('q31')">31. {{'faqSSPQuestions.q31' | translate}}</h3>
-                    <h3 (click)="scrollInView('q32')">32. {{'faqSSPQuestions.q32' | translate}}</h3>
+
+                    <ng-container *ngIf="isSSP">
+                        <ul>
+
+                            <li>
+                                <h4 (click)="scrollInView('q1')">{{'faqSSPQuestions.q1' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q2')">{{'faqSSPQuestions.q2' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q3')">{{'faqSSPQuestions.q3' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q4')">{{'faqSSPQuestions.q4' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q5')">{{'faqSSPQuestions.q5' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q6')">{{'faqSSPQuestions.q6' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q7')">{{'faqSSPQuestions.q7' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q8')">{{'faqSSPQuestions.q8' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q9')">{{'faqSSPQuestions.q9' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q10')">{{'faqSSPQuestions.q10' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q11')">{{'faqSSPQuestions.q11' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q12')">{{'faqSSPQuestions.q12' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q13')">{{'faqSSPQuestions.q13' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q14')">{{'faqSSPQuestions.q14' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q15')">{{'faqSSPQuestions.q15' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q16')">{{'faqSSPQuestions.q16' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q17')">{{'faqSSPQuestions.q17' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q18')">{{'faqSSPQuestions.q18' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q19')">{{'faqSSPQuestions.q19' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q20')">{{'faqSSPQuestions.q20' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q21')">{{'faqSSPQuestions.q21' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q22')">{{'faqSSPQuestions.q22' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q23')">{{'faqSSPQuestions.q23' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q24')">{{'faqSSPQuestions.q24' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q25')">{{'faqSSPQuestions.q25' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q26')">{{'faqSSPQuestions.q26' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q27')">{{'faqSSPQuestions.q27' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q28')">{{'faqSSPQuestions.q28' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q29')">{{'faqSSPQuestions.q29' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q30')">{{'faqSSPQuestions.q30' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q31')">{{'faqSSPQuestions.q31' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q32')">{{'faqSSPQuestions.q32' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q33')">{{'faqSSPQuestions.q33' | translate}}</h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('q34')">{{'faqSSPQuestions.q34' | translate}}</h4>
+                            </li>
+                        </ul>
 
 
-            
 
+                        <br>
+                        <h4 id="q1">1. {{'faqSSPQuestions.q1' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a1' | translate}}</p>
+
+                        <h4 id="q2">2. {{'faqSSPQuestions.q2' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a2.1' | translate}}</p>
+                        <p>{{'faqSSPAnswers.a2.2' | translate}}<a href="https://numeris.ca/inclusionlist/"
+                                target="_blank">(www.numeris.ca/inclusionlist).</a></p>
+                        <p>{{'faqSSPAnswers.a2.3' | translate}} </p>
+                        <p>{{'faqSSPAnswers.a2.4' | translate}}</p>
+
+                        <h4 id="q3">3. {{'faqSSPQuestions.q3' | translate}}</h4>
+                        <p><b> {{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a3.1' | translate}}</p>
+                        <p>{{'faqSSPAnswers.a3.2' | translate}}</p>
+
+                        <h4 id="q4">4. {{'faqSSPQuestions.q4' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a4' | translate}}</p>
+
+                        <h4 id="q5">5. {{'faqSSPQuestions.q5' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a5' | translate}}</p>
+
+                        <h4 id="q6">6. {{'faqSSPQuestions.q6' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b>{{'faqSSPAnswers.a6' | translate}}</p>
+
+                        <h4 id="q7">7. {{'faqSSPQuestions.q7' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b>{{'faqSSPAnswers.a7' | translate}}</p>
+
+                        <h4 id="q8">8. {{'faqSSPQuestions.q8' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a8' | translate}}</p>
+
+                        <h4 id="q9">9. {{'faqSSPQuestions.q9' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a9.1' | translate}}</p>
+                        <p style="display:inline"><u>{{'faqSSPAnswers.a9.2' | translate}}</u></p>
+                        <p>{{'faqSSPAnswers.a9.3' | translate}}</p>
+                        <ul>
+                            <li>{{'faqSSPAnswers.a9.4' | translate}}</li>
+                            <li>{{'faqSSPAnswers.a9.5' | translate}}</li>
+                            <li>{{'faqSSPAnswers.a9.6' | translate}}</li>
+                            <li>{{'faqSSPAnswers.a9.7' | translate}}</li>
+                            <li>{{'faqSSPAnswers.a9.8' | translate}}</li>
+                        </ul>
+                        <p>{{'faqSSPAnswers.a9.9' | translate}}</p>
+                        <p style="display:inline"><u>{{'faqSSPAnswers.a9.10' | translate}}</u></p>
+                        <p>{{'faqSSPAnswers.a9.11' | translate}}</p>
+                        <p style="display:inline"><u>{{'faqSSPAnswers.a9.12' | translate}}</u></p>
+                        <p>{{'faqSSPAnswers.a9.13' | translate}}</p>
+                        <p style="display:inline"><u>{{'faqSSPAnswers.a9.14' | translate}}</u></p>
+                        <p>{{'faqSSPAnswers.a9.15' | translate}}</p>
+
+
+                        <h4 id="q10">10. {{'faqSSPQuestions.q10' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a10' | translate}}</p>
+
+                        <h4 id="q11">11. {{'faqSSPQuestions.q11' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a11' | translate}}</p>
+
+                        <h4 id="q12">12. {{'faqSSPQuestions.q12' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a12' | translate}}</p>
+
+                        <h4 id="q13">13. {{'faqSSPQuestions.q13' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a13' | translate}}</p>
+
+                        <h4 id="q14">14. {{'faqSSPQuestions.q14' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a14' | translate}}</p>
+
+                        <h4 id="q15">15. {{'faqSSPQuestions.q15' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a15' | translate}}</p>
+
+                        <h4 id="q16">16. {{'faqSSPQuestions.q16' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a16' | translate}}</p>
+
+                        <h4 id="q17">17. {{'faqSSPQuestions.q17' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a17' | translate}}</p>
+
+                        <h4 id="q18">18. {{'faqSSPQuestions.q18' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a18' | translate}}</p>
+
+                        <h4 id="q19">19. {{'faqSSPQuestions.q19' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a19' | translate}}</p>
+
+                        <h4 id="q20">20. {{'faqSSPQuestions.q20' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b>{{'faqSSPAnswers.a20' | translate}}</p>
+
+                        <h4 id="q21">21. {{'faqSSPQuestions.q21' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b>{{'faqSSPAnswers.a21' | translate}}</p>
+
+                        <h4 id="q22">22. {{'faqSSPQuestions.q22' | translate}}</h4>
+                        <p style="display:inline"><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a22.1' |
+                            translate}}<a href="https://numeris.ca/inclusionlist/"
+                                target="_blank">(www.numeris.ca/inclusionlist).</a></p>
+                        <p>{{'faqSSPAnswers.a22.2' | translate}}</p>
+                        <p>{{'faqSSPAnswers.a22.3' | translate}}</p>
+
+                        <h4 id="q23">23. {{'faqSSPQuestions.q23' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a23' | translate}}</p>
+
+                        <h4 id="q24">24. {{'faqSSPQuestions.q24' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a24.1' | translate}}</p>
+                        <p>{{'faqSSPAnswers.a24.2' | translate}}</p>
+
+                        <h4 id="q25">25. {{'faqSSPQuestions.q25' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a25' | translate}}</p>
+
+                        <h4 id="q26">26. {{'faqSSPQuestions.q26' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a26' | translate}}</p>
+
+                        <h4 id="q27">27. {{'faqSSPQuestions.q27' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a27' | translate}}</p>
+
+                        <h4 id="q28">28. {{'faqSSPQuestions.q28' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a28' | translate}}</p>
+
+                        <h4 id="q29">29. {{'faqSSPQuestions.q29' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a29' | translate}}</p>
+
+                        <h4 id="q30">30. {{'faqSSPQuestions.q30' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a30' | translate}}</p>
+
+                        <h4 id="q31">31. {{'faqSSPQuestions.q31' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a31' | translate}}</p>
+
+                        <h4 id="q32">32. {{'faqSSPQuestions.q32' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a32' | translate}}</p>
+
+                        <h4 id="q33">33. {{'faqSSPQuestions.q33' | translate}}</h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a33' | translate}}</p>
+                        <p>{{'faqSSPAnswers.a33.2' | translate}}</p>
+
+                        <div id="leftbox">
+                            <p><b>{{'faqSSPAnswers.a33.3' | translate}}</b></p>
+                        </div>
+                        <div id="rightbox">
+                            <p><b>{{'faqSSPAnswers.a33.4' | translate}}</b></p>
+                        </div>
+
+                        <div id="leftbox" class="clear">
+                            <p>{{'faqSSPAnswers.m1' | translate}}</p>
+                        </div>
+                        <div id="rightbox">
+                            <p>{{'faqSSPAnswers.m1Means' | translate}}</p>
+                        </div>
+
+                        <div id="leftbox">
+                            <p>{{'faqSSPAnswers.m2' | translate}}</p>
+                        </div>
+                        <div id="rightbox">
+                            <p>{{'faqSSPAnswers.m2Means' | translate}}</p>
+                        </div>
+                        <br class="clear">
+                        <div id="leftbox">
+                            <p>{{'faqSSPAnswers.m3' | translate}}</p>
+                        </div>
+                        <div id="rightbox">
+                            <p>{{'faqSSPAnswers.m3Means' | translate}}</p>
+                        </div>
+                        <br class="clear">
+
+                        <div id="leftbox">
+                            <p>{{'faqSSPAnswers.m4' | translate}}</p>
+                        </div>
+                        <div id="rightbox">
+                            <p>{{'faqSSPAnswers.m4Means' | translate}}</p>
+                        </div>
+
+                        <p class="clear">{{'faqSSPAnswers.text' | translate}}</p>
+
+                        <div id="leftbox">
+                            <p>{{'faqSSPAnswers.m5' | translate}}</p>
+                        </div>
+                        <div id="rightbox">
+                            <p>{{'faqSSPAnswers.m5Means' | translate}}</p>
+                        </div>
+                        <br class="clear">
+                        <div id="leftbox">
+                            <p>{{'faqSSPAnswers.m6' | translate}}</p>
+                        </div>
+                        <div id="rightbox">
+                            <p>{{'faqSSPAnswers.m6Means' | translate}}</p>
+                        </div>
+
+                        <h4 id="q34" class="clear">34. {{'faqSSPQuestions.q34' | translate}}</h4>
+
+
+                        <p>{{'faqSSPAnswers.montrealoffice' | translate}}</p>
+                        <p>{{'faqSSPAnswers.mtf' | translate}}</p>
+                        <p>{{'faqSSPAnswers.weekends' | translate}}</p>
+                        <p>{{'faqSSPAnswers.email' | translate}}</p>
+                        <p>{{'faqSSPAnswers.tollFree' | translate}}</p>
+                        <br>
+                        <p>{{'faqSSPAnswers.richmondOffice' | translate}}</p>
+                        <p>{{'faqSSPAnswers.rmtf' | translate}}</p>
+                        <p>{{'faqSSPAnswers.saturday' | translate}}</p>
+                        <p>{{'faqSSPAnswers.sunday' | translate}}</p>
+                        <p>{{'faqSSPAnswers.rEmail' | translate}}</p>
+                        <p>{{'faqSSPAnswers.rTollfree' | translate}}</p>
+
+                    </ng-container>
                     <br>
-                    <h3 id="q1">1. {{'faqSSPQuestions.q1' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a1' | translate}}</p>
-
-                    <h3 id="q2">2. {{'faqSSPQuestions.q2' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a2.1' | translate}}</p>
-                    <p>{{'faqSSPAnswers.a2.2' | translate}}<a href="https://numeris.ca/inclusionlist/" target="_blank">(www.numeris.ca/inclusionlist).</a></p>
-                    <p>{{'faqSSPAnswers.a2.3' | translate}} </p>
-                    <p>{{'faqSSPAnswers.a2.4' | translate}}</p>
-
-                     <h3 id="q3">3. {{'faqSSPQuestions.q3' | translate}}</h3>
-                    <p><b> {{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a3.1' | translate}}</p>
-                    <p>{{'faqSSPAnswers.a3.2' | translate}}</p>
-
-                    <h3 id="q4">4. {{'faqSSPQuestions.q4' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a4' | translate}}</p>
-
-                    <h3 id="q5">5. {{'faqSSPQuestions.q5' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a5' | translate}}</p>
-
-                    <h3 id="q6">6. {{'faqSSPQuestions.q6' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b>{{'faqSSPAnswers.a6' | translate}}</p>
-                    
-                    <h3 id="q7">7. {{'faqSSPQuestions.q7' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b>{{'faqSSPAnswers.a7' | translate}}</p>
-
-                    <h3 id="q8">8. {{'faqSSPQuestions.q8' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a8' | translate}}</p>
-
-                    <h3 id="q9">9. {{'faqSSPQuestions.q9' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a9.1' | translate}}</p>
-                    <p style="display:inline"><u>{{'faqSSPAnswers.a9.2' | translate}}</u></p>
-                    <p >{{'faqSSPAnswers.a9.3' | translate}}</p>
-                    <ul>
-                        <li>{{'faqSSPAnswers.a9.4' | translate}}</li>
-                        <li>{{'faqSSPAnswers.a9.5' | translate}}</li>
-                        <li>{{'faqSSPAnswers.a9.6' | translate}}</li>
-                        <li>{{'faqSSPAnswers.a9.7' | translate}}</li>
-                        <li>{{'faqSSPAnswers.a9.8' | translate}}</li>
-                    </ul>
-                    <p>{{'faqSSPAnswers.a9.9' | translate}}</p>
-                    <p style="display:inline"><u>{{'faqSSPAnswers.a9.10' | translate}}</u></p>
-                    <p>{{'faqSSPAnswers.a9.11' | translate}}</p>
-                    <p style="display:inline"><u>{{'faqSSPAnswers.a9.12' | translate}}</u></p>
-                    <p>{{'faqSSPAnswers.a9.13' | translate}}</p>
-                    <p style="display:inline"><u>{{'faqSSPAnswers.a9.14' | translate}}</u></p>
-                    <p>{{'faqSSPAnswers.a9.15' | translate}}</p>
-                    
-
-                    <h3 id="q10">10. {{'faqSSPQuestions.q10' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a10' | translate}}</p>
-
-                    <h3 id="q11">11. {{'faqSSPQuestions.q11' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a11' | translate}}</p>
-
-                    <h3 id="q12">12. {{'faqSSPQuestions.q12' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a12' | translate}}</p>
-
-                    <h3 id="q13">13. {{'faqSSPQuestions.q13' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a13' | translate}}</p>
-
-                    <h3 id="q14">14. {{'faqSSPQuestions.q14' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a14' | translate}}</p>
-
-                    <h3 id="q15">15. {{'faqSSPQuestions.q15' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a15' | translate}}</p>
-
-                    <h3 id="q16">16. {{'faqSSPQuestions.q16' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a16' | translate}}</p>
-
-                    <h3 id="q17">17. {{'faqSSPQuestions.q17' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a17' | translate}}</p>
-
-                    <h3 id="q18">18. {{'faqSSPQuestions.q18' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a18' | translate}}</p>
-
-                    <h3 id="q19">19. {{'faqSSPQuestions.q19' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a19' | translate}}</p>
-
-                    <h3 id="q20">20. {{'faqSSPQuestions.q20' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b>{{'faqSSPAnswers.a20' | translate}}</p>
-
-                    <h3 id="q21">21. {{'faqSSPQuestions.q21' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b>{{'faqSSPAnswers.a21' | translate}}</p>
-
-                    <h3 id="q22">22. {{'faqSSPQuestions.q22' | translate}}</h3>
-                    <p style="display:inline"><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a22.1' | translate}}<a href="https://numeris.ca/inclusionlist/" target="_blank">(www.numeris.ca/inclusionlist).</a></p>
-                    <p >{{'faqSSPAnswers.a22.2' | translate}}</p>
-                    <p>{{'faqSSPAnswers.a22.3' | translate}}</p>
-
-                    <h3 id="q23">23. {{'faqSSPQuestions.q23' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a23' | translate}}</p>
-
-                    <h3 id="q24">24. {{'faqSSPQuestions.q24' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a24.1' | translate}}</p>
-                    <p>{{'faqSSPAnswers.a24.2' | translate}}</p>
-
-                    <h3 id="q25">25. {{'faqSSPQuestions.q25' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a25' | translate}}</p>
-
-                    <h3 id="q26">26. {{'faqSSPQuestions.q26' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a26' | translate}}</p>
-
-                    <h3 id="q27">27. {{'faqSSPQuestions.q27' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a27' | translate}}</p>
-
-                    <h3 id="q28">28. {{'faqSSPQuestions.q28' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a28' | translate}}</p>
-
-                    <h3 id="q29">29. {{'faqSSPQuestions.q29' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a29' | translate}}</p>
-
-                    <h3 id="q30">30. {{'faqSSPQuestions.q30' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a30' | translate}}</p>
-
-                    <h3 id="q31">31. {{'faqSSPQuestions.q31' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a31' | translate}}</p>
-
-                    <h3 id="q32">32. {{'faqSSPQuestions.q32' | translate}}</h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a32' | translate}}</p> 
-                    
-                    Monday to Friday: 10:00 am to 6:00 pm
                     <br>
-                    Weekends: 10:00 am to 6:00 pm
-                    <br>
-                    Email: meterpaneleast@numeris.ca
-                    <br>
-                    Toll-free: 1-866-548-8991
-                    <br><br>
+                    <ng-container *ngIf="isVAM">
+                        <ul>
+                            <li>
+                                <h4 (click)="scrollInView('vq1')">{{'faqPageVam.q1' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('vq2')">{{'faqPageVam.q2' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('vq3')">{{'faqPageVam.q3' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('vq4')">{{'faqPageVam.q4' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('vq5')">{{'faqPageVam.q5' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('vq6')">{{'faqPageVam.q6' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('vq7')">{{'faqPageVam.q7' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('vq8')">{{'faqPageVam.q8' | translate}} </h4>
+                            </li>
+                            <li>
+                                <h4 (click)="scrollInView('vq9')">{{'faqPageVam.q9' | translate}} </h4>
+                            </li>
+                        </ul>
+                        <br>
+                        <br>
+                        <h4 id="vq1">1. {{'faqPageVam.q1' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a1' | translate}}</p>
 
+                        <h4 id="vq2">2. {{'faqPageVam.q2' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a2' | translate}}</p>
 
-                    Richmond Office (for panelists in MB, SK, AB and BC—Pacific Time):
-                    <br>
-                    Monday to Friday: 9:00 am to 6:00 pm
-                    <br>
-                    Saturday: 10:00 am to 6:00 pm
-                    <br>
-                    Sunday: 9:00 am - 5:00 pm
-                    <br>
-                    Email : meterpanelwest@numeris.ca
-                    <br>
-                    Toll-free : 1-866-730-7960
-                    <br>
-                    <br>
+                        <h4 id="vq3">3. {{'faqPageVam.q3' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a3' | translate}}</p>
 
-                    <h2 style="color:cornflowerblue">VAM</h2>
-                    <h3 (click)="scrollInView('vq1')">1. {{'faqPageVam.q1' | translate}} </h3>
-                    <h3 (click)="scrollInView('vq2')">2. {{'faqPageVam.q2' | translate}} </h3>
-                    <h3 (click)="scrollInView('vq3')">3. {{'faqPageVam.q3' | translate}} </h3>
-                    <h3 (click)="scrollInView('vq4')">4. {{'faqPageVam.q4' | translate}} </h3>
-                    <h3 (click)="scrollInView('vq5')">5. {{'faqPageVam.q5' | translate}} </h3>
-                    <h3 (click)="scrollInView('vq6')">6. {{'faqPageVam.q6' | translate}} </h3>
-                    <h3 (click)="scrollInView('vq7')">7. {{'faqPageVam.q7' | translate}} </h3>
-                    <h3 (click)="scrollInView('vq8')">8. {{'faqPageVam.q8' | translate}} </h3>
-                    <h3 (click)="scrollInView('vq9')">9. {{'faqPageVam.q9' | translate}} </h3>
-                    <br>
-                    <br>
-                    <h3 id="vq1">1. {{'faqPageVam.q1' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a1' | translate}}</p>
+                        <h4 id="vq4">4. {{'faqPageVam.q4' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a4' | translate}}</p>
 
-                    <h3 id="vq2">2. {{'faqPageVam.q2' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a2' | translate}}</p>
+                        <h4 id="vq5">5. {{'faqPageVam.q5' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a5' | translate}}</p>
 
-                    <h3 id="vq3">3. {{'faqPageVam.q3' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a3' | translate}}</p>
+                        <h4 id="vq6">6. {{'faqPageVam.q6' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a6' | translate}}</p>
 
-                    <h3 id="vq4">4. {{'faqPageVam.q4' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a4' | translate}}</p>
+                        <h4 id="vq7">7. {{'faqPageVam.q7' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a7' | translate}}</p>
 
-                    <h3 id="vq5">5. {{'faqPageVam.q5' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a5' | translate}}</p>
+                        <h4 id="vq8">8. {{'faqPageVam.q8' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a8' | translate}}</p>
 
-                    <h3 id="vq6">6. {{'faqPageVam.q6' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a6' | translate}}</p>
+                        <h4 id="vq9">9. {{'faqPageVam.q9' | translate}} </h4>
+                        <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a9' | translate}}</p>
 
-                    <h3 id="vq7">7. {{'faqPageVam.q7' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a7' | translate}}</p>
-
-                    <h3 id="vq8">8. {{'faqPageVam.q8' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a8' | translate}}</p>
-
-                    <h3 id="vq9">9. {{'faqPageVam.q9' | translate}} </h3>
-                    <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqPageVamAnswers.a9' | translate}}</p>
+                    </ng-container>
 
                 </div>
             </div>

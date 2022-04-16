@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from '../../services/user.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { DeviceService } from '../../services/device.service';
 
 
 
@@ -27,12 +28,13 @@ export class LoginComponent implements OnInit {
   showError = false;
   signin: any;  
   isIE = false;
+  panelistType: any;
 
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private userService: UserService,
     private localStorageService: LocalStorageService,
-    private router: Router) { }
+    private router: Router, private deviceService: DeviceService) { }
 
     
 
@@ -72,10 +74,26 @@ export class LoginComponent implements OnInit {
     
       this.userService.signIn(user).subscribe(response => {
         if (response) {
-          this.showError = false;
+          this.showError = false; 
           // After successful sign in, we have to set username into localstorage
           this.localStorageService.setIdToken( response['id_token']);
           this.localStorageService.setUserName(this.loginFormControl.email.value);
+          this.deviceService.getExistingHomes().subscribe(existingHomes => { 
+            if (existingHomes && existingHomes.panels) {
+              const panelIds = existingHomes.panels.map((obj: any) => obj.id);
+              console.log(panelIds);
+              const filteredArray = panelIds.filter((value:any) => ['620','621','630','631'].includes(value));
+              const check = filteredArray.length ? true : false;
+              let panel: any;
+              if(check){
+                   panel ="VAM";
+                   this.localStorageService.setPanellistType(panel);
+              }
+                   panel ="SSP";
+                   this.localStorageService.setPanellistType(panel);
+            }
+            });
+
           this.router.navigate(['/welcome']);
         }
       }, err => this.showError = true,

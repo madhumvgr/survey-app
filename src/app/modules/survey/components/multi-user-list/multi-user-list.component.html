@@ -5,7 +5,13 @@
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/household-devices']">{{'householdDevices.title' | translate}}</a></li>
-            <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">{{deviceState}}</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/survey/deviceList/'+deviceState]">
+
+                <span *ngIf="this.deviceState =='Inprogress'">{{'householdDevices.householdDevicesActionsLabel2' | translate}}</span>
+                <span *ngIf="this.deviceState =='Completed'">{{'householdDevices.householdDevicesHistoryLabel1' | translate}}</span>
+                <span *ngIf="this.deviceState =='New'">{{'householdDevices.householdDevicesActionsLabel1' | translate}}</span>
+                <span *ngIf="this.deviceState =='Notused'">{{'householdDevices.householdDevicesHistoryLabel2' | translate}}</span>
+            </a></li>
             <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
             <!--has to reflect devices name here-->
         </ol>

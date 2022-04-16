@@ -29,19 +29,26 @@
             <p>{{'contactUs.description1' | translate}}</p>
             <div class="col-12 mt-3">
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
-                    <form>
+                    <div>
                         <div class="mb-4 col-md-6">
-                            <label for="subject" class="form-label">{{'contactUs.subject' | translate}}</label>
-                            <input type="email" class="form-control" id="subject" aria-describedby="emailHelp">
+                            <label for="subject" class="form-label">{{'helpNumeris.subject' | translate}}</label>
+                            <input [(ngModel)]="subject" required name="subject" #subjectdata="ngModel" type="input" class="form-control"  placeholder="{{'helpNumeris.type' | translate}}">
+                            <small *ngIf="error" class="text-danger">{{'helpNumeris.subjectRequired' | translate}}</small>
                         </div>
+                        
                         <div class="mb-4 col-md-12">
-                            <label for="validationTextarea" class="form-label">{{'contactUs.message' | translate}}</label>
-                            <textarea style="border-style:solid; border-width: 2px; border-color: black;" cols="50" rows="10" class="form-control" id="validationTextarea" placeholder="Start typing"></textarea>
+                            <label for="validationTextarea" class="form-label">{{'helpNumeris.description1' | translate}} </label>
+                            <textarea [(ngModel)]="description" style="border-style:solid; border-width: 2px; border-color: black;" cols="50" rows="10" class="form-control" id="validationTextarea" placeholder="{{'helpNumeris.type' | translate}}"></textarea>
+                            <small *ngIf="error" class="text-danger">{{'helpNumeris.descriptionRequired' | translate}}</small>
                         </div>
-                        <button type="button" class="btn btn-primary ms-md-3" [routerLink]="['/support/thankyou']">{{'contactUs.sendButton' | translate}}</button>
-                    </form>
+                    </div>
+                     <!-- Action buttons -->
+                <div class="col-xs-6 d-grid gap-2 d-md-block">
+                    <button type="button" class="btn btn-primary ms-md-3" (click)="submit()">{{'helpNumeris.sendButton' | translate}}</button>
                 </div>
-            </div><!--end Col-->
+                </div>
+               
+            </div><!--end Col--><!--end Col-->
             <h2>{{'contactUs.montrealOffice' | translate}} <span class="h2-separator"></span></h2>
             <p>{{'contactUs.montrealDescription' | translate}}</p>
             <div class="col-12 mb-4">

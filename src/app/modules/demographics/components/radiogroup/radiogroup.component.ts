@@ -17,7 +17,11 @@ export class RadiogroupComponent implements OnChanges {
   isFrance: any = false;
   @Input() question!: Question ;
   @Input() houseHold:any;
-  constructor(  private localStorageService:LocalStorageService) { }
+  constructor(  private localStorageService:LocalStorageService) {
+    this.localStorageService.getLanguageSubject().subscribe( val => {
+      this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
+    });
+   }
   @Output()
   public changeEvent1 = new EventEmitter();
   ngOnInit(): void {

@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class LocalStorageService {
+  languageSubject$ =new Subject();
   constructor() {
   }
 
+  getLanguageSubject(){
+    return this.languageSubject$;
+  }
   setLanguageItem(value: string) {
     this.setItem(StorageItem.LANG,value);
+    this.languageSubject$.next(value);
   }
 
   setIdToken(value: string) {

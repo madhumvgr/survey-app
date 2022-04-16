@@ -1,6 +1,6 @@
 <br />
-<ng-container>
-    <h3>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.frTitle: question?.title}}</h3>
+<ng-container> 
+    <h3>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h3>
     <div [formGroup]="childFormGroup">
         <div class="container" *ngFor="let row of question?.row;let i=index"
             [style.background-color]="i%2 == 1 ? '#888' : ''">

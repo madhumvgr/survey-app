@@ -9,6 +9,7 @@ export class Question extends Resource {
   name? : string;
   title? : string;
   description? : string;
+  descriptionFr?: string;
   column? : any[];
   row? : any[] = [];
   answer?: any;
@@ -17,7 +18,7 @@ export class Question extends Resource {
   questionLevel1Id?:any;
   questionLevel2Id?:any;
   selected?:any[] =[];
-  frTitle?: string;
+  titleFr?: string;
   hhQueNo?:string;
   }
 

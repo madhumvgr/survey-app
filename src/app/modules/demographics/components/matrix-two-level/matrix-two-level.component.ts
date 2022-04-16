@@ -18,7 +18,11 @@ export class MatrixTwoLevelComponent implements OnChanges {
   @Input() questionId:any;
   cols: Column[] = [];
   isFrance: any = false;
-  constructor(  private localStorageService:LocalStorageService) { }
+  constructor(  private localStorageService:LocalStorageService) { 
+    this.localStorageService.getLanguageSubject().subscribe( val => {
+      this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
+    });
+  }
   @Output()
   public changeEvent1 = new EventEmitter();
 

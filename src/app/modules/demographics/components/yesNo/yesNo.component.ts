@@ -20,7 +20,11 @@ export class YesNoComponent implements OnInit, OnChanges {
   @Output()
   public changeEvent1 = new EventEmitter();
   isFrance: any = false;
-  constructor(  private localStorageService:LocalStorageService) { }
+  constructor(  private localStorageService:LocalStorageService) { 
+    this.localStorageService.getLanguageSubject().subscribe( val => {
+      this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.houseHold){

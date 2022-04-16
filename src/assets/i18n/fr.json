@@ -580,6 +580,24 @@
         "weekdayTittle":"jour de la semaine",
         "weekendTittle":"fins de semaine"
     },
+    "demographics": {
+        "tittle": "Données démographiques du ménage",
+        "description1": "Les sondages de cette section posent des questions de base sur les membres du ménage et leur consommation média au moyen de divers appareils. Soyez assuré que vos données et votre vie privée ",
+        "description2": " demeurent toujours protégées.",
+        "card1": "Membres individuels",
+        "card1Description": "Sondage auprès de chaque membre du ménage.",
+        "card2": "Chef du ménage",
+        "card2Description": "Sondage auprès de la personne à la tête du ménage.",
+        "continueButton": "Continuer",
+        "individualDescription": "Cette section comprend des sondages pour chaque membre du ménage. Il s’agit de 32 questions de base concernant les noms, l’âge, les langues parlées, le niveau de scolarité et l’occupation, y compris des questions axées sur le comportement. Chaque sondage prend 10 à 15 minutes à remplir.",
+        "individualSubText":"Liste de membres individuels: ",
+        "individualSubDescription": "Complétez le sondage identifié avec votre nom. Vous pouvez également remplir le sondage au nom d’un autre membre du ménage.",
+        "statusLabel": "Statut",
+        "startButton": "Démarrer",
+        "completedButton": "Éditer",
+        "questinarieDescription": "Passons rapidement le tout en revue! Pour modifier quoique ce soit, utilisez le bouton RETOUR. Si tout semble correct, sélectionnez CONTINUER."
+
+    },
     "resumitButton": "Re-Submit",
     "success": "Vous nous avez soumis les informations sur ",
     "success2": "avec succès"

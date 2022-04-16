@@ -581,6 +581,23 @@
         "weekdayTittle":"Weekdays",
         "weekendTittle":"Weekends"
     },
+"demographics": {
+    "tittle": "Household Demographics",
+    "description1": "Surveys in this section ask basic questions about household members and how they consume media on devices. Be assured that your ",
+    "description2": " are always protected",
+    "card1": "Individual Members",
+    "card1Description": "Survey for each member in your household.",
+    "card2": "Household Owner",
+    "card2Description": "Survey for the head of the house.",
+    "continueButton": "Continue",
+    "individualDescription": "This section has surveys for each household member. It has 32 basic questions related to name, age, languages spoken, education and occupation – including some behavioural questions. Each survey takes 10 to 15 minutes to complete.",
+    "individualSubText":"List of individual members:",
+    "individualSubDescription": "Complete the survey that has your name. You may also fill a survey on behalf of another household member.",
+    "statusLabel": "Status",
+    "startButton": "Start",
+    "completedButton": "Edit",
+    "questinarieDescription": "Let’s quickly review! To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE."
+},
     "resumitButton": "Re-Submit",
     "success": "You have successfully submitted",
     "success2": "device information to us",

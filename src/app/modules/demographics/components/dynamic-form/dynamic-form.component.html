@@ -1,4 +1,5 @@
 <div [formGroup]="parentForm" class="shadow-sm rounded bg-white p-4 mb-4">
+    <ng-container  *ngIf="!isReview">
     <div *ngFor="let question of questionList | paginate: config">
         <ng-container [ngSwitch]="question.queType">
             <div *ngSwitchCase="'RB'">
@@ -38,6 +39,16 @@
                 Default type
             </div>
         </ng-container>
+    </div>
+    </ng-container>
+    <div  *ngIf="isReview">
+        <div *ngFor="let question of finalQuestionLIst">
+            <div>
+            <h3>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h3>
+            <span>{{question.anuswer.text}}</span>
+
+        </div>
+        </div>
     </div>
     <br>
     <!-- Action buttons -->
@@ -79,7 +90,9 @@
                 </div>
                 <!--*ngIf="p.isLastPage()"-->
                 <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()">Save & Exit</button>
-                <button *ngIf="p.isLastPage()" type="submit" (click)="submit()"
+                <button *ngIf="p.isLastPage() && !isReview" type="submit" (click)="review()"
+                    class="btn btn-secondary ms-md-3">Review</button>
+                    <button *ngIf="isReview" type="submit" (click)="submit()"
                     class="btn btn-secondary ms-md-3">Submit</button>
                 <div class="pagination-next" [class.disabled]="p.isLastPage()">
                     <span *ngIf="!p.isLastPage()" (click)="p.next()">

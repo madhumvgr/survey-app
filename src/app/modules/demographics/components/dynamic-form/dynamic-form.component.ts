@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { QuestionConstants } from 'src/app/shared/models/url-constants';
 import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
@@ -31,10 +32,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
   parentForm!: FormGroup;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
-  panelListType: any = "VAM";
+  panelListType: any;
+  isReview!: boolean;
+  finalQuestionLIst:any = [];
   
   constructor(public questionaireService: QuestionaireService,
-    private route: ActivatedRoute, private router: Router, public fb: FormBuilder) {
+    private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
       super();
     this.config = {
       currentPage: 1,
@@ -49,6 +52,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
   }
 
   ngOnInit(): void {
+    this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
   }
 
   
@@ -58,6 +62,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
 
 
   pageChange(newPage: any) {
+    if(this.parentForm.valid){
     this.config.currentPage = newPage;
     //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
     if(this.houseHold){
@@ -69,6 +74,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
         window.location.reload();
       });
     }
+  }
    
     
     //  localStorage.setItem('currentPage', newPage);
@@ -94,19 +100,23 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
     obj ['memberNo'] = this.memberNo;
     obj ['maxLevel'] = question.maxLevel;
 
-    if(this.houseHold){
+    if(this.houseHold && this.panelListType != "VAM"){
       this.questionaireService.customCreate(obj,QuestionConstants.houseHoldAnswers).subscribe( data => {
         console.log(data);
       });
-    }else if(this.panelListType != "VAM"){
+    }else if( this.houseHold == undefined && this.panelListType != "VAM"){
       this.questionaireService.customCreate(obj,QuestionConstants.answers).subscribe( data => {
         console.log(data);
       });
-    } else{
+    } else if(this.houseHold == undefined && this.panelListType == "VAM"){
       this.questionaireService.customCreate(obj,QuestionConstants.vam_answers).subscribe( data => {
         console.log(data);
       });
-    }
+    } else {
+        this.questionaireService.customCreate(obj,QuestionConstants.vam_houseHoldAnswers).subscribe( data => {
+          console.log(data);
+        });
+      }
   }
 
   toFormGroup(questions: any[] ) {
@@ -123,11 +133,25 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
   }
 
   submit(){
-    this.markCompleteEvent.emit(null);
-    this.router.navigateByUrl('demographics/Thankyou/');
+    this.markCompleteEvent.emit(true);
+   this.router.navigateByUrl('demographics/Thankyou/');
   } 
+
+  review() {
+    this.markCompleteEvent.emit(false);
+    this.finalQuestionLIst = [];
+    this.isReview =true;
+    this.questionList.map((q: any)=>{
+      if(q.selected.length) {   
+        const obj:any = {hhQueNo:q.hhQueNo, queNo:q.queNo, title:q.title, titleFr: q.titleFr, anuswer: {}};
+        obj['anuswer'] = q.row.find((r: { value: any; }) => r.value == q.selected[0].rowValue);
+        this.finalQuestionLIst.push(obj);
+      }
+    })
+  }
+
   exitEvent(isBackAction: boolean) {
     const message = "You have successfully saved the survey";
-      this.router.navigate(['demographics/Thankyou/'], { state: { message: message } });
+      this.router.navigate(['demographics/demographics-individual-members/'], { state: { message: message } });
   }
 }

@@ -36,9 +36,11 @@
    <section class="px-3 pb-4">
       <div class="container">
          <div class="row pb-4">
-            <h2>Confirmation<span class="h2-separator"></span></h2>
+            <h2 *ngIf="!isReviewPage">Page {{pageNo}} of {{totalNoPages}}<span class="h2-separator"></span></h2>
+            <h2 *ngIf="isReviewPage">Confirmation<span class="h2-separator"></span></h2>
             <div class="col-12 mt-3">
-               <app-dynamic-form [homeNo]="homeNo" [houseHold]="houseHold" [memberNo]="memberNo" (markCompleteEvent)="markCompleteEvent($event)" [questionList]="questionList"></app-dynamic-form>
+               <app-dynamic-form [homeNo]="homeNo" [houseHold]="houseHold" [memberNo]="memberNo"
+                (markCompleteEvent)="markCompleteEvent($event)" [questionList]="questionList"></app-dynamic-form>
             </div>
             <!--end Col-->
          </div>

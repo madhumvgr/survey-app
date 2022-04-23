@@ -553,7 +553,7 @@
     },
     "modalWindow": {
         "modalTitle": "Save and Exit",
-        "content": "Your work is saved! You can always finish the rest of it later.",
+        "content": "Don't have time to submit your survey? No worries, you can come back later and continue from where you left",
         "dismissButtonLabel": "Cancel",
         "closeButtonLabel": "Exit",
         "confirmTittle": "Warning",

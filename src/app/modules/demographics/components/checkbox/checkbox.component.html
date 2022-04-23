@@ -23,7 +23,7 @@
     <h3>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h3>
     <div class="container" formArrayName="checkboxes" *ngFor="let row  of question?.row; let i = index"
         [style.background-color]="i%2 == 1 ? '#888' : ''">
-        <div class="top-left">{{row?.text}}</div>
+        <div class="top-left">{{isFrance? row?.frText: row?.text}}</div>
         <div class="top-right">
             <input type="checkbox" [formControlName]="i" class="form-check-input" (change)="changeEvent($event)" 
             [value] ="row?.value">

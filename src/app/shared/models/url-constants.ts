@@ -69,7 +69,9 @@ export class QuestionConstants {
     // public static questionaire ="api/survey-questions-individual";
     // public static answers ="api/survey-answers";
     public static houseHoldQuestions = "api/survey-questions-household";
+    public static vam_houseHoldQuestions = "api/vam-survey-questions-household";
     public static houseHoldAnswers = "api/household-survey-answers";
+    public static vam_houseHoldAnswers ="api/vam-household-survey-answers";
     public static memberHouseHoldList = "api/householdStatusOfDemoSurvey";
     public static markHouseHold = "api/household-survey-answers-completed/";
 

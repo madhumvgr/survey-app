@@ -27,6 +27,7 @@ export class DeviceListComponent implements OnInit {
 
   deviceCount: number = 0;
   deviceStatus: any;
+  userType = "SSP";
 
   constructor(private Activatedroute: ActivatedRoute, 
     private localStorageService: LocalStorageService,
@@ -43,7 +44,7 @@ export class DeviceListComponent implements OnInit {
     } else {
       this.deviceStatus = this.deviceState;
     }
-    this.deviceService.getCustomRequest(DeviceConstants.deviceListByStatus + this.deviceState).subscribe(response => {
+    this.deviceService.getCustomRequest(DeviceConstants.deviceListByStatus + this.deviceState + '?userType=' + this.userType).subscribe(response => {
       if (response) {
         this.devicesList = response;
         this.deviceCount = this.devicesList.length;

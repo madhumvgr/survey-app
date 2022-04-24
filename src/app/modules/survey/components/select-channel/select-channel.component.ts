@@ -3,9 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
-import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
-import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
-import { DeviceConstants, TelevisionConstants } from 'src/app/shared/models/url-constants';
+import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
+import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 
@@ -23,6 +22,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
   deviceStatus: any;
   userCount: any;
   isTvGenere: boolean = false;
+  showError:boolean = false;
   isValid: boolean = true;
   timeLinesForm: FormGroup = this.fb.group({});
   @ViewChild('modal')
@@ -99,35 +99,17 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
 
     this.timeLinesForm = this.fb.group({
       genere: new FormArray([]),
-      dont: new FormControl("1")
+      dont: new FormControl(false)
     });
 
     this.addCheckboxes();
     this.deviceService.getCustomRequest(DeviceConstants.selectChannelGetUrl + this.memberNo + '/' + this.deviceId).
       subscribe(response => {
-        // currently seting values. 
-        const response1=[
-          {
-            "homeNo": "0000001",
-            "deviceId": "003",
-            "memberNo": "01",
-            "stationId": 3    
-        },
-        {
-          "homeNo": "0000001",
-          "deviceId": "003",
-          "memberNo": "01",
-          "stationId": 4
-  
-      }  
-        ];
         const val= this.generes.map( obj => obj.selected);
-        response1.forEach( (obj:any,index)=> {
+        response.forEach( (obj:any)=> {
         val[obj.stationId]= true;
-        })
-        
+        });
         this.timeLinesForm.get('genere')?.setValue(val);
-        //this.setPreviousValues(response1);
       });
   }
 
@@ -140,13 +122,14 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
   }
   
 
-  updateTimeLine(event:Event,i:any) {
+  updateTimeLine(event:any,i:any) {
     this.timeLinesForm.get('dont')?.setValue(true);
-    console.log(event);
+    console.log(event?.target?.checked);
     let item = {
       deviceId: '',
       memberNo: '',
-      genreId: 0
+      genreId: 0,
+      addNew: event?.target?.checked
     }
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
@@ -168,6 +151,10 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       .map((checked:any, i:any) => checked ? this.generes[i].id : null)
       .filter( (v:any) => v !== null);
 
+      if(selectedOrderIds.length ==0 && !this.timeLinesForm.get('dont')?.value){
+        this.showError =true;
+        return;
+      }
       if(selectedOrderIds.length== 0){
         const message ="from tv channels";
         this.deviceService.updateHomeSurvey(this.deviceId).subscribe();

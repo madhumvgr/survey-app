@@ -74,14 +74,15 @@
                         </div>
                     </ng-container>
 
-                    <div *ngIf="!isValid" style="color:red">
-                        {{"genres.error" | translate }}
-                    </div>
+                   
                 </div>
                 <div>
                     <input type="radio" value=false (change)="unCheck()" formControlName="dont" name="dont" /> I don't watch any of the above TV
                     networks
                 </div>
+                <div *ngIf="!isValid || showError" style="color:red">
+                    {{"genres.error" | translate }}
+                    </div>
                 <!--end Ganres-->
 
                 <!-- Action buttons -->

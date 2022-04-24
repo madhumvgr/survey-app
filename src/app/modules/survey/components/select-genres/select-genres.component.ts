@@ -24,6 +24,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
   userCount: any;
   isTvGenere: boolean = false;
   isValid: boolean = true;
+  showError:boolean = false;
   timeLinesForm: FormGroup = this.fb.group({});
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
@@ -115,34 +116,18 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
 
     this.timeLinesForm = this.fb.group({
       genere: new FormArray([]),
-      dont: new FormControl("1")
+      dont: new FormControl(false)
     });
 
     this.addCheckboxes();
     this.deviceService.getCustomRequest(DeviceConstants.selectGenersGetUrl + this.memberNo + '/' + this.deviceId).
       subscribe(response => {
         // currently seting values. 
-        const response1=[
-          {
-            "homeNo": "0000001",
-            "deviceId": "003",
-            "memberNo": "01",
-            "genreId": 2
-        },
-        {
-          "homeNo": "0000001",
-          "deviceId": "003",
-          "memberNo": "01",
-          "genreId": 3
-      }  
-        ];
         const val= this.generes.map( obj => obj.selected);
-        response1.forEach( (obj:any,index)=> {
-        val[obj]= true;
-        })
-        
+        response.forEach( (obj:any)=> {
+        val[obj.genreId]= true;
+        });
         this.timeLinesForm.get('genere')?.setValue(val);
-        //this.setPreviousValues(response1);
       });
   }
 
@@ -155,13 +140,14 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
   }
   
 
-  updateTimeLine(event:Event,i:any) {
+  updateTimeLine(event:any,i:any) {
     this.timeLinesForm.get('dont')?.setValue(true);
     console.log(event);
     let item = {
       deviceId: '',
       memberNo: '',
-      genreId: 0
+      genreId: 0,
+      addNew: event?.target?.checked
     }
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
@@ -182,14 +168,16 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
     const selectedOrderIds = this.timeLinesForm.value.genere
       .map((checked:any, i:any) => checked ? this.generes[i].id : null)
       .filter( (v:any) => v !== null);
-
+      if(selectedOrderIds.length ==0 && !this.timeLinesForm.get('dont')?.value){
+        this.showError =true;
+        return;
+      }
       if(selectedOrderIds.length== 0){
         this.router.navigateByUrl('survey/selectChannel/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);         
       }else{
         this.deviceService.saveGenreIds(selectedOrderIds);
         this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+this.memberNo+'/'+this.deviceId], { state: { selectedOrderIds: selectedOrderIds } });
       }
-      console.log(selectedOrderIds);
   }
 
   backAction() {

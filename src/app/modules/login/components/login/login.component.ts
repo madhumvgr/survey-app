@@ -88,11 +88,12 @@ export class LoginComponent implements OnInit {
               if(check){
                    panel ="VAM";
                    this.localStorageService.setPanellistType(panel);
-              }
+              } else {
                    panel ="SSP";
                    this.localStorageService.setPanellistType(panel);
+              }
             }
-            });
+            }, err => this.localStorageService.setPanellistType("VAM"));
 
           this.router.navigate(['/welcome']);
         }

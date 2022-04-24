@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import * as Survey from 'survey-angular';
 
 @Component({
@@ -8,10 +9,15 @@ import * as Survey from 'survey-angular';
 })
 export class DemographicOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit(): void {
 
   }
+
+  showWindow(){
+    window.open(this.translate.instant('welcomePage.privacyPolicyUrl'),'name','width=600,height=400,top=200');
+  }
+
 
 }

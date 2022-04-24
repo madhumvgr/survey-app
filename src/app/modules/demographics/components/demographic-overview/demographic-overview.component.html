@@ -9,9 +9,9 @@
     <nav class="px-3 mt-4">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a [routerLink]="['/welcome']">Home</a></li>
-                <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">Survey hub</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Household demographics</li>
+                <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
+                <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{"demographics.tittle" | translate}}</li>
             </ol>
         </div>
     </nav>
@@ -21,9 +21,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>Household Demographic</h1>
+                    <h1>{{"demographics.tittle" | translate}}</h1>
                     <p>
-                        This section has surveys that gather basic information about household members, and how they consume media on the devices they own. Be assured that  your <a href="#">data and privacy</a> are always protected.
+                        {{"demographics.description1" | translate}}<a href='javascript:void(0);' (click)="showWindow()" style="text-decoration: underline;">{{'welcomePage.Link' | translate}}</a>{{"demographics.description2" | translate}}.
                     </p>
                 </div><!--end col-->
             </div><!--end Row-->
@@ -38,9 +38,9 @@
                 <div class="col-md-4">
                     <div class="card shadow-sm rounded border-0">
                         <div class="card-body">
-                        <h5 class="card-title">Individual Member</h5>
-                        <p class="card-text">Survey for each member in your household.</p>
-                        <a [routerLink] = "['/demographics/demographics-individual-members']" class="btn btn-light">Continue</a>
+                        <h5 class="card-title">{{"demographics.card1" | translate}}</h5>
+                        <p class="card-text">{{"demographics.card1Description" | translate}}</p>
+                        <a [routerLink] = "['/demographics/demographics-individual-members']" class="btn btn-light">{{"demographics.continueButton" | translate}}</a>
                         </div>
                     </div>
                 </div>
@@ -48,9 +48,9 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body shadow-sm rounded border-0">
-                        <h5 class="card-title">Household Owner</h5>
-                        <p class="card-text">Survey for the head of the house.</p>
-                        <a [routerLink] = "['/demographics/demographics-owner']" class="btn btn-light">Continue</a>
+                        <h5 class="card-title">{{"demographics.card2" | translate}}</h5>
+                        <p class="card-text">{{"demographics.card2Description" | translate}}</p>
+                        <a [routerLink] = "['/demographics/demographics-owner']" class="btn btn-light">{{"demographics.continueButton" | translate}}</a>
                         </div>
                     </div>
                 </div>

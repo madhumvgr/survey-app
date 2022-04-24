@@ -25,6 +25,10 @@ export class QuestionarieComponent implements OnInit {
   memberName: any;
   houseHold: boolean = false;
   panelistType: any;
+  totalNoPages: any;
+  pageNo: any;
+  isReviewPage: boolean = false;
+
   constructor(public questionaireService: QuestionaireService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
     this.config = {
@@ -37,6 +41,7 @@ export class QuestionarieComponent implements OnInit {
 
     });
     this.memberNo = this.route.snapshot.params['memberNo'];
+    this.pageNo = this.route.snapshot.params['pageNo'];
     this.homeNo = this.route.snapshot.params['homeNo'];
     this.houseHold = this.route.snapshot.params['houseHold'];
     
@@ -46,21 +51,33 @@ export class QuestionarieComponent implements OnInit {
     this.panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
 
     if (this.houseHold) {
+      if(this.panelistType != "VAM") {
       this.questionaireService.customRead(QuestionConstants.houseHoldQuestions).subscribe(list => {
         this.questionList = list;
+        this.totalNoPages = Math.ceil((this.questionList.length)/2)
       })
-    } else if(this.panelistType != "VAM") {
+    }
+      else{
+        this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions).subscribe(list => {
+          this.questionList = list;
+          this.totalNoPages = Math.ceil((this.questionList.length)/2)
+        })
+      }
+    } else if( this.houseHold == undefined && this.panelistType != "VAM") {
       this.questionaireService.list().subscribe(response => {
         this.questionList = response;
+        this.totalNoPages = Math.ceil((this.questionList.length)/2)
       });
-    } else{
+    } else {
       this.questionaireService.customRead(QuestionConstants.vam_questionaire).subscribe(list => {
         this.questionList = list;
+        this.totalNoPages = Math.ceil((this.questionList.length)/2)
       })
     }
   }
 
   markCompleteEvent(event: any) {
+    if(event) {
     if(this.houseHold){
       this.questionaireService.customCreate({}, QuestionConstants.markHouseHold + this.memberNo).subscribe(result => {
         this.router.navigate(['/account-settings/thankyou/questionarie'], { state: { message: "You have successfully submitted  survey. " } });
@@ -70,5 +87,9 @@ export class QuestionarieComponent implements OnInit {
         this.router.navigate(['/account-settings/thankyou/questionarie'], { state: { message: "You have successfully submitted  survey. " } });
       });
     }
+  } else {
+    this.isReviewPage = true;
   }
+  }
+
 }

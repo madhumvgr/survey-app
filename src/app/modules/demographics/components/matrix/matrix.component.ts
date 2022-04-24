@@ -17,7 +17,11 @@ export class MatrixComponent implements OnChanges {
 
   cols: any[] = [];
   isFrance: any = false;
-  constructor(  private localStorageService:LocalStorageService) { }
+  constructor(  private localStorageService:LocalStorageService) {
+    this.localStorageService.getLanguageSubject().subscribe( val => {
+      this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
+    });
+   }
   @Output()
   public changeEvent1 = new EventEmitter();
   @Input() houseHold:any;

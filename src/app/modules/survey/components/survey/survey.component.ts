@@ -21,6 +21,7 @@ export class SurveyComponent implements OnInit {
   ngOnInit(): void {
 
     this.panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+    console.log(this.panelistType);
     // this.deviceService.getCustomRequest(DeviceConstants.deviceDetails).subscribe(response => {
     //   if (response) {
     //     this.showError = false;

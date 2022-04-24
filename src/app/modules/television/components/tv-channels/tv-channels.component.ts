@@ -46,6 +46,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   userCount: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
+  newStationsId : Array<any> = [];
   stations: Array<any> = [{
     "id": '1',
     "name": "CTV"
@@ -111,6 +112,13 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     private televisionService: TelevisionService,
     private localStorageService: LocalStorageService, private translate: TranslateService) {
     super();
+    const genreIds = this.deviceService.getGenreIds();
+    this.newStationsId = this.stations.filter(  (e1: any) =>
+    {
+      return genreIds.some((f) => {
+        return f === e1.id;
+      });
+    })
     let url = this.activatedroute.snapshot.url[0].path;
     if (url == "tv-channels") {
       this.isTvGenere = true;
@@ -248,7 +256,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     if (this.isTvGenere) {
       this.router.navigateByUrl('/television/tv-genres/' + this.memberNo);
     } else {
-      this.router.navigateByUrl('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId);
+      this.router.navigateByUrl('survey/selectGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId);
     }
   }
 

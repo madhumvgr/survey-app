@@ -46,7 +46,7 @@
         <div class="row g-4">
             <h2>{{'televisionChannels.heading' | translate}}<span class="h2-separator"></span></h2>
             <p class="mt-2 mb-0">{{'televisionChannels.subText' | translate}}</p>
-            <ng-container *ngFor="let station of stations; let generId = index">
+            <ng-container *ngFor="let station of newStationsId; let generId = index">
                 <!-- Channel  -->
                 <div class="bg-white shadow-sm rounded p-3 mb-4">
                     <h3 class="pt-1 pb-0 px-3">{{station.name}}</h3>

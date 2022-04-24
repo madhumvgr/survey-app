@@ -28,7 +28,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   timeLinesForm: FormGroup[] = []
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
-
+  newGenreIds: Array<any> =[];
   generes: Array<any> = [{
     "id": '1',
     "name": "genres.news"
@@ -114,6 +114,15 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     private televisionService: TelevisionService, private translate: TranslateService) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
+    const genreIds = this.deviceService.getGenreIds();
+    this.newGenreIds = this.generes.filter(  (e1: any) =>
+    {
+      return genreIds.some((f) => {
+        return f === e1.id;
+      });
+    })
+    console.log(this.newGenreIds);
+
     if (url == "tv-genres") {
       this.isTvGenere = true;
     }

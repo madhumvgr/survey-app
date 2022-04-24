@@ -15,6 +15,8 @@ import { DeviceUsageComponent } from './components/device-usage/device-usage.com
 import { DeviceGenresComponent } from './components/device-genres/device-genres.component';
 import { CompletedDevicesViewComponent } from './components/completed-devices-view/completed-devices-view.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { SelectGenresComponent } from './components/select-genres/select-genres.component';
+import { SelectChannelComponent } from './components/select-channel/select-channel.component';
 @NgModule({
   declarations: [  SurveyComponent,
     HouseholdDevicesComponent,
@@ -27,6 +29,8 @@ import { TranslateModule } from '@ngx-translate/core';
     DeviceUsageComponent,
     DeviceGenresComponent,
     CompletedDevicesViewComponent,
+    SelectGenresComponent,
+    SelectChannelComponent,
   ],
   imports: [
     SurveyRoutingModule,

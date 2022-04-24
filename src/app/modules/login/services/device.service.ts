@@ -14,12 +14,21 @@ import { User } from "../model/user.model";
 export class DeviceService extends ResourceService<User> {
     [x: string]: any;
     existingHomes: any;
+    genreIds: Array<Number> =[];
 
     constructor( public httpClient: HttpClient) {
       super(
         httpClient,
         environment.host,
         'api/deviceInfo');
+    }
+
+    public saveGenreIds(genreIds:any){
+      this.genreIds = genreIds;
+    }
+
+    public getGenreIds(){
+      return this.genreIds;
     }
 
     public getCustomRequest(url:any): Observable<any>{
@@ -54,6 +63,14 @@ export class DeviceService extends ResourceService<User> {
     
     public updateDeviceTimeLine(item:any){
       return this.customCreate(item,DeviceConstants.deviceGenersPostUrl);
+    }
+
+    public updateSelectGenres(item:any){
+      return this.customCreate(item,DeviceConstants.selectGenersPostUrl);
+    }
+
+    public updateSelectChannel(item:any){
+      return this.customCreate(item,DeviceConstants.selectChannelPostUrl);
     }
 
     public updateMemberSurvey(deviceId:string,memberNo:string){

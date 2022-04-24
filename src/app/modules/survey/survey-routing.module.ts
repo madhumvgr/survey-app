@@ -12,6 +12,8 @@ import { DeviceUsageComponent } from './components/device-usage/device-usage.com
 import { HouseholdDevicesComponent } from './components/household-devices/household-devices.component';
 import { NotInUseDevicesComponent } from './components/household-devices/not-in-use-devices/not-in-use-devices.component';
 import { MultiUserListComponent } from './components/multi-user-list/multi-user-list.component';
+import { SelectChannelComponent } from './components/select-channel/select-channel.component';
+import { SelectGenresComponent } from './components/select-genres/select-genres.component';
 import { SurveyHomeComponent } from './components/survey-home/survey-home.component';
 import { SurveyComponent } from './components/survey/survey.component';
 
@@ -29,6 +31,8 @@ const routes: Routes = [
       { path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent },
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
       { path: 'deviceGeneres/:state/:memberNo/:deviceId', component: DeviceGenresComponent },
+      { path: 'selectGeneres/:state/:memberNo/:deviceId', component: SelectGenresComponent },
+      { path: 'selectChannel/:state/:memberNo/:deviceId', component: SelectChannelComponent },
       { path: 'deviceChannels/:state/:memberNo/:deviceId', component: TvChannelsComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },
       { path: 'not-in-use-devices/:state/:deviceId', component: NotInUseDevicesComponent },

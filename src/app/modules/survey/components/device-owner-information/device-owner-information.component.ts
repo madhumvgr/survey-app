@@ -130,7 +130,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
      }else if(this.singleMemeber) {
        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
      } else if(this.singleUserFlow) {
-       this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+this.memeberNo+'/'+this.deviceId], { state: { memberName: this.memberName } });
+       this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+this.memeberNo+'/'+this.deviceId], { state: { memberName: this.memberName } });
      }
      else {
        this.router.navigateByUrl('survey/multiUserList/' + this.deviceState + '/' + this.deviceId);

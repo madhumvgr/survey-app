@@ -29,6 +29,12 @@ export class DeviceConstants {
     public static deviceGenersGetUrl ="api/portal-genres/";
     public static deviceGenersPostUrl ="api/portal-genres";
 
+    public static selectGenersGetUrl ="api/device-genres-mapping/";
+    public static selectGenersPostUrl ="api/device-genres-mapping";
+
+    public static selectChannelGetUrl ="api/device-channel-mapping/";
+    public static selectChannelPostUrl ="api/device-channel-mapping";
+
     public static deviceHouseHoldSurveyPostUrl = "api/portal-survey-trackers/householdSurvey/";
     public static memberHouseHoldSurveyPostUrl = "api/portal-survey-trackers/memberSurvey/";
     

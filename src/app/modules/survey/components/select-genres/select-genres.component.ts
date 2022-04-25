@@ -125,7 +125,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
         // currently seting values. 
         const val= this.generes.map( obj => obj.selected);
         response.forEach( (obj:any)=> {
-        val[obj.genreId]= true;
+        val[obj.genreId-1]= true;
         });
         this.timeLinesForm.get('genere')?.setValue(val);
       });

@@ -107,7 +107,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       subscribe(response => {
         const val= this.generes.map( obj => obj.selected);
         response.forEach( (obj:any)=> {
-        val[obj.stationId]= true;
+        val[obj.stationId - 1]= true;
         });
         this.timeLinesForm.get('genere')?.setValue(val);
       });

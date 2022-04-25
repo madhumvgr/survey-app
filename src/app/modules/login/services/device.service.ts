@@ -24,12 +24,17 @@ export class DeviceService extends ResourceService<User> {
     }
 
     public saveGenreIds(genreIds:any){
-      this.genreIds = genreIds;
+      localStorage.setItem("GENREIDS",JSON.stringify(genreIds));
+      //this.genreIds = genreIds;
     }
 
     public getGenreIds(){
-      return this.genreIds;
+      const ids= localStorage.getItem("GENREIDS");
+      if(ids){
+        return JSON.parse(ids);
+      }
     }
+    
 
     public getCustomRequest(url:any): Observable<any>{
       return this.httpClient

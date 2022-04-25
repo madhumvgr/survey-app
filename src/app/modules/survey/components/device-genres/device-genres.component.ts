@@ -117,7 +117,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     const genreIds = this.deviceService.getGenreIds();
     this.newGenreIds = this.generes.filter(  (e1: any) =>
     {
-      return genreIds.some((f) => {
+      return genreIds.some((f:any) => {
         return f === e1.id;
       });
     })
@@ -193,11 +193,15 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     });
   }
 
-  updateTimeLine(control: any) {
+  updateTimeLine(control: any,event?:any) {
+
+    console.log(event);
     let item = control.value;
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
-
+    if(event){
+      item['addNew']= event.target.checked;
+    }
     if (this.isTvGenere) {
       this.televisionService.updateDeviceTimeLine(item).
         subscribe((response: any) => {

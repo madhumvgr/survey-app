@@ -115,7 +115,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     const genreIds = this.deviceService.getGenreIds();
     this.newStationsId = this.stations.filter(  (e1: any) =>
     {
-      return genreIds.some((f) => {
+      return genreIds.some((f:any) => {
         return f === e1.id;
       });
     })

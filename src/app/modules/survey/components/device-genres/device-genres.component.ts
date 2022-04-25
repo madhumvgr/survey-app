@@ -148,7 +148,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       this.deviceStatus = this.deviceState;
     }
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
-    this.generes.forEach((genere, i) => {
+    this.newGenreIds.forEach((genere, i) => {
       this.createForm(genere.id);
       for (let d of this.timeLines) {
         this.addMore(d, parseInt(genere.id));
@@ -174,7 +174,11 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   setPreviousValues(genereList: any) {
-    genereList.forEach((element: any) => {
+  
+    const res = genereList.filter((item:any) => this.newGenreIds.some( (f)=> f.id == parseInt(item.id)));
+
+console.log(res);
+    res.forEach((element: any) => {
       if (element.listGenresTimeline && (element.id!=11 && element.id!=12)) {
         element.listGenresTimeline.forEach((timeLine: any) => {
           if (timeLine.dayOfWeek && timeLine.dayOfWeek == 1) {

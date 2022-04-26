@@ -50,12 +50,12 @@
                 <!-- Channel  -->
                 <div class="bg-white shadow-sm rounded p-3 mb-4">
                     <h3 class="pt-1 pb-0 px-3">{{station.name}}</h3>
-                    <form [formGroup]="stationForm[generId+1]" >
+                    <form [formGroup]="stationForm[station.id]" >
 
                     <div class="d-md-flex align-items-center">
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>{{"televisionChannels.weekdayTittle" | translate}}</h4>
-                            <select formControlName="weekDays" class="form-select" aria-label="Select household member" (change)="updateTimeLine(generId+1)">
+                            <select formControlName="weekDays" class="form-select" aria-label="Select household member" (change)="updateTimeLine(station.id)">
                                 <option value="1" selected>{{"televisionChannels.defaultOption" | translate}}</option>
                                 <option value="2">{{"televisionChannels.option1" | translate}}</option>
                                 <option value="3">{{"televisionChannels.option2" | translate}}</option>
@@ -64,11 +64,11 @@
                                 <option value="6">{{"televisionChannels.option5" | translate}}</option>
                                 <option value="7">{{"televisionChannels.option6" | translate}}</option>
                             </select>
-                            <span *ngIf="stationForm[generId+1]?.get('weekDays')?.hasError('required')"  #inputMessage class="text-danger">{{'televisionChannels.error' | translate}}</span>
+                            <span *ngIf="stationForm[station.id]?.get('weekDays')?.hasError('required')"  #inputMessage class="text-danger">{{'televisionChannels.error' | translate}}</span>
                         </div>
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>{{"televisionChannels.weekendTittle" | translate}}</h4>
-                            <select formControlName="weekEnds" class="form-select" aria-label="Select household member" (change)="updateTimeLine(generId+1)">
+                            <select formControlName="weekEnds" class="form-select" aria-label="Select household member" (change)="updateTimeLine(station.id)">
                                 <option value="1" selected>{{"televisionChannels.defaultOption" | translate}}</option>
                                 <option value="2">{{"televisionChannels.option1" | translate}}</option>
                                 <option value="3">{{"televisionChannels.option2" | translate}}</option>
@@ -77,7 +77,7 @@
                                 <option value="6">{{"televisionChannels.option5" | translate}}</option>
                                 <option value="7">{{"televisionChannels.option6" | translate}}</option>
                             </select>
-                            <span *ngIf="stationForm[generId+1]?.get('weekEnds')?.hasError('required')"  #inputMessage class="text-danger">{{'televisionChannels.error' | translate}}</span>
+                            <span *ngIf="stationForm[station.id]?.get('weekEnds')?.hasError('required')"  #inputMessage class="text-danger">{{'televisionChannels.error' | translate}}</span>
                         </div>
                     </div>
                     </form>

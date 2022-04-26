@@ -174,10 +174,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   setPreviousValues(genereList: any) {
-  
     const res = genereList.filter((item:any) => this.newGenreIds.some( (f)=> f.id == parseInt(item.id)));
-
-console.log(res);
     res.forEach((element: any) => {
       if (element.listGenresTimeline && (element.id!=11 && element.id!=12)) {
         element.listGenresTimeline.forEach((timeLine: any) => {

@@ -123,11 +123,16 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
     this.deviceService.getCustomRequest(DeviceConstants.selectGenersGetUrl + this.memberNo + '/' + this.deviceId).
       subscribe(response => {
         // currently seting values. 
+        var notSelected = true;
         const val= this.generes.map( obj => obj.selected);
         response.forEach( (obj:any)=> {
         val[obj.genreId-1]= true;
+        if(obj.notSelected){
+          notSelected = false;
+        }
         });
         this.timeLinesForm.get('genere')?.setValue(val);
+        this.timeLinesForm.get('dont')?.setValue(notSelected);
       });
   }
 
@@ -147,7 +152,8 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
       deviceId: '',
       memberNo: '',
       genreId: 0,
-      addNew: event?.target?.checked
+      addNew: event?.target?.checked,
+      notSelected:false
     }
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
@@ -160,6 +166,19 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
   }
 
   unCheck(){
+    let item = {
+      deviceId: '',
+      memberNo: '',
+      genreId: null,
+      addNew: null,
+      notSelected:true
+    }
+    item['deviceId'] = this.deviceId;
+    item['memberNo'] = this.memberNo;
+    this.deviceService.updateSelectGenres(item).
+      subscribe((response: any) => {
+        console.log("Update record");
+      });
     this.timeLinesForm.get('genere')?.setValue(
         this.timeLinesForm.controls['genere'].value.map((value: boolean) => false)
     );

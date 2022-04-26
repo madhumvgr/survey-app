@@ -138,7 +138,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     this.deviceState = this.activatedroute.snapshot.params['state'];
     this.userCount = this.activatedroute.snapshot.params['userCount'];
 
-    this.stations.forEach((station, i) => {
+    this.newStationsId.forEach((station, i) => {
       this.createForm(station.id);
     });
     if (this.deviceId !== "none") {
@@ -162,8 +162,11 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     });
   }
 
+  
   setPreviousValues(genereList: any) {
-    genereList.forEach((element: any) => {
+      const res = genereList.filter((item:any) => this.newStationsId.some( (f)=> f.id == parseInt(item.stationId)));
+
+    res.forEach((element: any) => {
       if (element.portalTvStationUsageDTO) {
         this.stationForm[element.stationId]?.patchValue({
           weekDays: element.portalTvStationUsageDTO.avgWeekdayUsa ? '' + element.portalTvStationUsageDTO.avgWeekdayUsa : '1',

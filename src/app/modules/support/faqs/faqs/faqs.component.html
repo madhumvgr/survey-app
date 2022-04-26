@@ -35,7 +35,7 @@
             <div class="col-12 mt-3">
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
 
-                    <ng-container *ngIf="isSSP">
+                    <ng-container *ngIf="panelistType =='SSP'">
                         <ul>
 
                             <li>
@@ -343,7 +343,7 @@
                     </ng-container>
                     <br>
                     <br>
-                    <ng-container *ngIf="isVAM">
+                    <ng-container *ngIf="panelistType =='VAM'">
                         <ul>
                             <li>
                                 <h4 (click)="scrollInView('vq1')">{{'faqPageVam.q1' | translate}} </h4>

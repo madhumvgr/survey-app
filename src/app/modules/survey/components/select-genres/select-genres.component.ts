@@ -192,10 +192,10 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
         return;
       }
       if(selectedOrderIds.length== 0){
-        this.router.navigateByUrl('survey/selectChannel/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo);         
+        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo],{ state: { memberName: this.memberName }} );         
       }else{
         this.deviceService.saveGenreIds(selectedOrderIds);
-        this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+this.memberNo+'/'+this.deviceId], { state: { selectedOrderIds: selectedOrderIds } });
+        this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+this.memberNo+'/'+this.deviceId], { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName  } });
       }
   }
 

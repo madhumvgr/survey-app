@@ -278,7 +278,8 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
         this.router.navigateByUrl('television/tv-channels/' + this.memberNo + '/' + deviceId);
       }
       else {
-         this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount);
+        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' +this.memberNo + '/' + this.deviceId],{ state: { memberName: this.memberName } });         
+        // this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount);
       }
     }
   }
@@ -289,11 +290,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       url = "television/household-members";
     } else if(this.userCount == 0){ 
       url = "survey/deviceOwnerInformation/" + this.deviceState + '/' + this.deviceId;
+      this.router.navigateByUrl(url);
     }
     else{
-      url = "/survey/deviceUsage/" + this.deviceState + "/" + this.deviceId;
+      this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo+ '/' + this.deviceId], {state: {memberName: this.memberName}});
     }
-    this.router.navigateByUrl(url);
+    
   }
   copyValues(target: number, sourceNode: any) {
     let selectedWeekEndIds: string[] = [];

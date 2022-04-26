@@ -37,10 +37,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Member Name:{{memberName}}</h1>
+                <h1>{{memberName}}</h1>
                 <p>
                     <!-- {{'selectgenres.description' | translate}} -->
-                    Please indicate which TV channels below {{memberName} spends watching using internet?
+                    Please indicate which genres below {{memberName}} spends watching using internet?
                 </p>
             </div>
         </div>
@@ -55,15 +55,12 @@
     <div class="container">
         <div class="row g-4">
             <!-- <h2>{{'genres.heading' | translate}}<span class="h2-separator"></span></h2> -->
-            <h2> Select channels</h2>
-            <p class="mt-2 mb-0">{{'genres.text' | translate}} {{memberName}} {{'genres.text2' | translate}}</p>
-
-
+            <h2> Select genres</h2>
             <form [formGroup]="timeLinesForm" (ngSubmit)="submit()">
                 <!-- Genres wrapper-->
                 <div class="accordion accordion-flush" id="genres-target">
                     <!-- Accoridian Genre Tab 1 -->
-                    <p>Please select all the TV channels {{memberName}} spends watches online</p>
+                    <p>Please select all the genres {{memberName}} spends watches online</p>
                     <ng-container *ngFor="let genere of genreFormArray.controls; let i = index">
                         <div class="form-check">
                             <label formArrayName="genere" class="form-check-label">

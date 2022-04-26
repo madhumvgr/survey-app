@@ -95,7 +95,10 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       this.deviceStatus = this.deviceState;
     }
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
-    
+    this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
+      this.userCount = res.numberOfUsers;
+      console.log(this.userCount);
+    });
 
     this.timeLinesForm = this.fb.group({
       genere: new FormArray([]),
@@ -161,7 +164,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
             this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });;
       }else{
         this.deviceService.saveGenreIds(selectedOrderIds);
-        this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount);
+        this.router.navigate(['survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount], { state: { memberName: this.memberName }} );
       }
   }
 
@@ -171,11 +174,12 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       url = "television/household-members";
     } else if (this.userCount == 0) {
       url = "survey/deviceOwnerInformation/" + this.deviceState + '/' + this.deviceId;
+      this.router.navigateByUrl(url);
     }
     else {
-      url = "/survey/deviceUsage/" + this.deviceState + "/" + this.deviceId;
+      this.router.navigate(['/survey/deviceGeneres/' + this.deviceState + '/' +this.memberNo +'/' + this.deviceId],{ state: { memberName: this.memberName } });
     }
-    this.router.navigateByUrl(url);
+    
   }
   
   cancelEvent(isBackAction: boolean) {

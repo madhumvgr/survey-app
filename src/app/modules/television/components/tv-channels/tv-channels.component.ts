@@ -123,6 +123,11 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     if (url == "tv-channels") {
       this.isTvGenere = true;
     }
+    if (this.isTvGenere) {
+      this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
+    } else {
+      this.memberName = this.router.getCurrentNavigation()?.extras?.state?.memberName;
+    }
   }
 
   ngAfterViewInit(){
@@ -132,7 +137,6 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
-    this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.activatedroute.snapshot.params['state'];
@@ -255,8 +259,8 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   backRoute() {
     if (this.isTvGenere) {
       this.router.navigateByUrl('/television/tv-genres/' + this.memberNo);
-    } else {
-      this.router.navigateByUrl('survey/selectGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId);
+    } else {  
+      this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId] , { state: { memberName: this.memberName } });
     }
   }
 

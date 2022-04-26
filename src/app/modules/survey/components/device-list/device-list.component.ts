@@ -27,7 +27,7 @@ export class DeviceListComponent implements OnInit {
 
   deviceCount: number = 0;
   deviceStatus: any;
-  userType = "SSP";
+  userType = localStorage.panellistType;
 
   constructor(private Activatedroute: ActivatedRoute, 
     private localStorageService: LocalStorageService,

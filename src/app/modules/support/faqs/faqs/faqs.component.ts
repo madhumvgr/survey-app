@@ -9,27 +9,11 @@ import { DeviceService } from 'src/app/modules/login/services/device.service';
 export class FaqsComponent implements OnInit {
 
   isScrollTop!: boolean;
-  isSSP: boolean = false;
-  isVAM: boolean = false;
+  panelistType = localStorage.panellistType;
 
   constructor(private deviceService: DeviceService) { }
 
   ngOnInit(): void {
-    this.deviceService.getExistingHomes().subscribe(existingHomes => { 
-      if (existingHomes && existingHomes.panels) {
-        const panelIds = existingHomes.panels.map((obj: any) => obj.id);
-        console.log(panelIds);
-        const filteredArray = panelIds.filter((value:any) => ['620','621','630','631'].includes(value));
-        if(!filteredArray.length) {
-          const filteredArray = panelIds.filter((value:any) => ['001','010','020','021','030','031','041','050','060','070'].includes(value));
-           this.isSSP = filteredArray.length ? true : false;
-           
-        } else {
-          this.isVAM = true;
-        }
-      
-      }
-      });
   }
 
   scrollInView(id:string){

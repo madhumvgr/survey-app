@@ -106,14 +106,14 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
     });
 
     this.addCheckboxes();
-    let notSelected = false;
+    let notSelected = '0';
     this.deviceService.getCustomRequest(DeviceConstants.selectChannelGetUrl + this.memberNo + '/' + this.deviceId).
       subscribe(response => {
         const val= this.generes.map( obj => obj.selected);
         response.forEach( (obj:any)=> {
         val[obj.stationId - 1]= true;
         if(obj.notSelected){
-          notSelected = true;
+          notSelected = '1';
         }
         });
         
@@ -132,7 +132,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
   
 
   updateTimeLine(event:any,i:any) {
-    this.timeLinesForm.get('dont')?.setValue(true);
+    this.timeLinesForm.get('dont')?.setValue('0');
     console.log(event?.target?.checked);
     let item = {
       deviceId: '',

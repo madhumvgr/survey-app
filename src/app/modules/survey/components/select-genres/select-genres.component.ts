@@ -116,19 +116,19 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
 
     this.timeLinesForm = this.fb.group({
       genere: new FormArray([]),
-      dont: new FormControl(false)
+      dont: new FormControl()
     });
 
     this.addCheckboxes();
     this.deviceService.getCustomRequest(DeviceConstants.selectGenersGetUrl + this.memberNo + '/' + this.deviceId).
       subscribe(response => {
         // currently seting values. 
-        var notSelected = true;
+        var notSelected = '0';
         const val= this.generes.map( obj => obj.selected);
         response.forEach( (obj:any)=> {
         val[obj.genreId-1]= true;
         if(obj.notSelected){
-          notSelected = false;
+          notSelected = '1';
         }
         });
         this.timeLinesForm.get('genere')?.setValue(val);
@@ -146,7 +146,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
   
 
   updateTimeLine(event:any,i:any) {
-    this.timeLinesForm.get('dont')?.setValue(true);
+    this.timeLinesForm.get('dont')?.setValue('0');
     console.log(event);
     let item = {
       deviceId: '',

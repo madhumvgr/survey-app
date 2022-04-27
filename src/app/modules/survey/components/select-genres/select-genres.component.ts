@@ -187,7 +187,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
     const selectedOrderIds = this.timeLinesForm.value.genere
       .map((checked:any, i:any) => checked ? this.generes[i].id : null)
       .filter( (v:any) => v !== null);
-      if(selectedOrderIds.length ==0 && !this.timeLinesForm.get('dont')?.value){
+      if(selectedOrderIds.length ==0 && this.timeLinesForm.get('dont')?.value!=1){
         this.showError =true;
         return;
       }

@@ -176,7 +176,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       .map((checked:any, i:any) => checked ? this.generes[i].id : null)
       .filter( (v:any) => v !== null);
 
-      if(selectedOrderIds.length ==0 && !this.timeLinesForm.get('dont')?.value){
+      if(selectedOrderIds.length ==0 && this.timeLinesForm.get('dont')?.value!=1){
         this.showError =true;
         return;
       }

@@ -72,7 +72,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
     private translate: TranslateService, private televisionService: TelevisionService) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
-    if (url == "selectChannel") {
+    if (url == "tv-selectChannel") {
       this.isTvGenere = true;
     }
     if (this.isTvGenere) {
@@ -235,19 +235,30 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
         if(this.isTvGenere){
           this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
             res => {
+              this.televisionService.updateMemberSurvey(this.memberNo).subscribe();
               this.router.navigate(['television/thankyou'], { state: { message: message, inputRoute: "television" } });
             });
         } else {
-          this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
-          res => {
+          setTimeout(() => {
+           
+            // Call the setDelay function again with the remaining times
             if(this.userCount != 0) {
-              this.router.navigate(['survey/device/Thankyou/'+this.deviceName+'/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "devices"} });
-           }else {
-            this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
-            this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
-            }
-          });
+              console.log("test");
+            this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
+              res => {
+                this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
+                this.router.navigate(['survey/device/Thankyou/'+this.deviceName+'/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "devices"} });
+              });
+            }else {
+               this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
+               res => {
+                this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
+               this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
+               this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
+             });
           }
+        }, 200); 
+        }
         }else{
         this.deviceService.saveGenreIds(selectedOrderIds);
         if(this.isTvGenere){

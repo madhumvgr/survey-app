@@ -31,7 +31,7 @@ export class HouseholdMembersComponent implements OnInit {
   continueNavigate(memberId:any,memberName:any){
     this.localStorageService.setMemberName(memberName);
   //  this.router.navigateByUrl('/television/tv-genres/'+memberId); 
-    this.router.navigateByUrl('/television/selectGeneres/'+memberId);
+    this.router.navigateByUrl('/television/tv-selectGeneres/'+memberId);
   }
 }
 

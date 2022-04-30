@@ -294,7 +294,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     }
     if(this.isValid){
       if (this.isTvGenere) {
-        this.router.navigateByUrl('television/selectChannel/' + this.memberNo);
+        this.router.navigateByUrl('television/tv-selectChannel/' + this.memberNo);
       }
       else {
         this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' +this.memberNo + '/' + this.deviceId+ '/' +false],{ state: { memberName: this.memberName } });         

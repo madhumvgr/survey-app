@@ -191,6 +191,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
         this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
           res => {
             this.router.navigateByUrl('');
+            this.televisionService.updateMemberSurvey(this.memberNo).subscribe();
             this.router.navigate(['television/thankyou'], { state: { message: message, inputRoute: "television" } });
           });
   
@@ -198,8 +199,10 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
         this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
           res => {
             if(this.userCount != 0) {
+              this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
               this.router.navigate(['survey/device/Thankyou/'+this.deviceName+'/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "devices"} });
            }else {
+            this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
             this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
             this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
             }

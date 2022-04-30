@@ -17,9 +17,9 @@ const routes: Routes = [
       { path: 'household-members', component: HouseholdMembersComponent },
       { path: 'tv-genres/:memberNo', component: DeviceGenresComponent },
       { path: 'tv-channels/:memberNo/:deviceId', component: TvChannelsComponent },
-      { path: 'selectGeneres/:memberNo', component: SelectGenresComponent },
-      { path: 'selectChannel/:memberNo', component: SelectChannelComponent },
-      { path: 'selectChannel/:memberNo/:list', component: SelectChannelComponent },
+      { path: 'tv-selectGeneres/:memberNo', component: SelectGenresComponent },
+      { path: 'tv-selectChannel/:memberNo', component: SelectChannelComponent },
+      { path: 'tv-selectChannel/:memberNo/:list', component: SelectChannelComponent },
       { path: 'thankyou', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

@@ -87,7 +87,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
     private translate: TranslateService) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
-    if (url == "selectGeneres") {
+    if (url == "tv-selectGeneres") {
       this.isTvGenere = true;
     }
     if (this.isTvGenere) {
@@ -249,7 +249,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
       }
       if(selectedOrderIds.length== 0){
         if(this.isTvGenere){
-          this.router.navigateByUrl('/television/selectChannel/'+this.memberNo+ '/' +true); 
+          this.router.navigateByUrl('/television/tv-selectChannel/'+this.memberNo+ '/' +true); 
         }else{
        // this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo],{ state: { memberName: this.memberName }} );         
         this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' +this.memberNo + '/' + this.deviceId+ '/' +true],{ state: { memberName: this.memberName } });         

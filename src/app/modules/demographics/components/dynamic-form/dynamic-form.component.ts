@@ -139,6 +139,38 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
 
   review() {
     this.markCompleteEvent.emit(false);
+    const panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+
+    if (this.houseHold) {
+      if(panelistType != "VAM") {
+      this.questionaireService.customRead(QuestionConstants.houseHoldQuestions).subscribe(list => {
+        this.questionList = list;
+        this.transForm();
+
+      })
+    }
+      else{
+        this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions).subscribe(list => {
+        this.questionList = list;        
+        this.transForm();
+        })
+      }
+    } else if( this.houseHold == undefined && panelistType != "VAM") {
+      this.questionaireService.list().subscribe(response => {
+        this.questionList = response;
+        this.transForm();
+
+      });
+    } else {
+      this.questionaireService.customRead(QuestionConstants.vam_questionaire).subscribe(list => {
+        this.questionList = list;
+        this.transForm();
+      })
+    }
+    
+  }
+
+  transForm() {
     this.finalQuestionLIst = [];
     this.isReview =true;
     this.questionList.map((q: any)=>{
@@ -152,6 +184,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
 
   exitEvent(isBackAction: boolean) {
     const message = "You have successfully saved the survey";
-      this.router.navigate(['demographics/demographics-individual-members/'], { state: { message: message } });
+      if(this.houseHold){
+        this.router.navigate(['demographics/demographics-owner/'], { state: { message: message } });
+      }
+      else{
+        this.router.navigate(['demographics/demographics-individual-members/'], { state: { message: message } });
+      }
+      
   }
 }

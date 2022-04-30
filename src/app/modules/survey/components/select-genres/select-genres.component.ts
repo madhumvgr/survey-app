@@ -94,6 +94,9 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
       this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
     } else {
       this.memberName = this.router.getCurrentNavigation()?.extras?.state?.memberName;
+      if(!this.memberName){
+        this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
+      }
     }
 
   }

@@ -3,8 +3,8 @@
         "title": "Login",
         "text": "Welcome! You’re about to shape the future of Canadian broadcasting. We use cookies to improve your experience! By continuing, you accept our",
         "browserUpdateText": "For better user experience please update your browser.",
-        "email": "Email",
-        "emailRequiredText": "Email is required",
+        "email": "User Id",
+        "emailRequiredText": "User Id is required",
         "password": "Password",
         "passwordRequiredText": "Password is required",
         "loginButton": "Log In",
@@ -160,8 +160,8 @@
     "forgotPassword": {
         "title": "Forgot password",
         "description": "We will send you an email with instructions on how to reset your password.",
-        "Email": "Email",
-        "emailRequired": "Email is required",
+        "Email": "User Id",
+        "emailRequired": "User Id is required",
         "requestButtonLabel": "Request",
         "signIn": "Back to sign in",
         "passwordRequest": "Your request for password rest has been initiated.",
@@ -255,8 +255,9 @@
     },
     "genres": {
         "description": "Let’s get a bit specific about the genres watched online by.",
-        "heading": "List view of 11 genres",
-        "text": "Please select all the genres  .",
+        "heading": "List view of ",
+        "heading2": "genres",
+        "heading3": "genre",
         "text2": "watches online, and the time of day they most likely watch them at. You may select multiple time options",
         "backButton": "Back",
         "SaveButton": "Save & Exit",
@@ -555,9 +556,11 @@
         "modalTitle": "Save and Exit",
         "content": "Don't have time to submit your survey? No worries, you can come back later and continue from where you left",
         "dismissButtonLabel": "Cancel",
-        "closeButtonLabel": "Exit",
+        "closeButtonLabel": "Save & Exit",
+        "closeButtonLabelLogout": "Exit",
         "confirmTittle": "Warning",
-        "confirmationDescription": "Are you sure you want to leave this page?"
+        "confirmationDescription": "Are you sure you want to leave this page?",
+        "errorMSg": "membership type could not be determined, please contact the system administrator."
     },
     "televisionMembers": {
         "tittle": "Television Usage",

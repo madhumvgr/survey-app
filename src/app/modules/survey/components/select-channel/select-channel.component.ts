@@ -3,8 +3,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
+import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
 import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
-import { DeviceConstants } from 'src/app/shared/models/url-constants';
+import { DeviceConstants, TelevisionConstants } from 'src/app/shared/models/url-constants';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 
@@ -19,6 +20,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
   memberNo: any;
   memberName: any;
   deviceName: any;
+  list: any
   deviceStatus: any;
   userCount: any;
   isTvGenere: boolean = false;
@@ -67,10 +69,10 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
-    private translate: TranslateService) {
+    private translate: TranslateService, private televisionService: TelevisionService) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
-    if (url == "tv-genres") {
+    if (url == "selectChannel") {
       this.isTvGenere = true;
     }
     if (this.isTvGenere) {
@@ -89,17 +91,19 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.activatedroute.snapshot.params['state'];
+    this.list = this.activatedroute.snapshot.params['list'];
     if (this.deviceState == "Inprogress") {
       this.deviceStatus = "In Progress"
     } else {
       this.deviceStatus = this.deviceState;
     }
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
+    if(!this.isTvGenere){
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
       this.userCount = res.numberOfUsers;
       console.log(this.userCount);
     });
-
+  }
     this.timeLinesForm = this.fb.group({
       genere: new FormArray([]),
       dont: new FormControl(false)
@@ -107,6 +111,21 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
 
     this.addCheckboxes();
     let notSelected = '0';
+    if(this.isTvGenere){
+      this.deviceService.getCustomRequest(TelevisionConstants.selectTvChannelGetUrl + this.memberNo).
+      subscribe(response => {
+        const val= this.generes.map( obj => obj.selected);
+        response.forEach( (obj:any)=> {
+        val[obj.stationId - 1]= true;
+        if(obj.notSelected){
+          notSelected = '1';
+        }
+        });
+        this.timeLinesForm.get('genere')?.setValue(val);
+        this.timeLinesForm.get('dont')?.setValue(notSelected);
+      });
+
+    } else{
     this.deviceService.getCustomRequest(DeviceConstants.selectChannelGetUrl + this.memberNo + '/' + this.deviceId).
       subscribe(response => {
         const val= this.generes.map( obj => obj.selected);
@@ -116,10 +135,11 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
           notSelected = '1';
         }
         });
-        
         this.timeLinesForm.get('genere')?.setValue(val);
         this.timeLinesForm.get('dont')?.setValue(notSelected);
       });
+    }
+
   }
 
   get genreFormArray() {
@@ -134,6 +154,22 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
   updateTimeLine(event:any,i:any) {
     this.timeLinesForm.get('dont')?.setValue('0');
     console.log(event?.target?.checked);
+    if(this.isTvGenere) {
+      let item = {
+        memberNo: '',
+        genreId: 0,
+        addNew: event?.target?.checked,
+        notSelected: false
+      }
+      item['memberNo'] = this.memberNo;
+      item['genreId'] = parseInt(this.generes[i].id);
+      
+      this.deviceService.updateTvSelectChannel(item).
+        subscribe((response: any) => {
+          console.log("Update record");
+        });
+  
+    }else{
     let item = {
       deviceId: '',
       memberNo: '',
@@ -149,10 +185,24 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       subscribe((response: any) => {
         console.log("Update record");
       });
-
+    }
   }
 
   unCheck(){
+    if(this.isTvGenere){
+      let item = {
+        memberNo: '',
+        genreId: 0,
+        notSelected: true
+      }
+      item['memberNo'] = this.memberNo;
+      
+      this.deviceService.updateTvSelectChannel(item).
+        subscribe((response: any) => {
+          console.log("Update record");
+        });
+    } else 
+    { 
     let item = {
       deviceId: '',
       memberNo: '',
@@ -166,7 +216,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       subscribe((response: any) => {
         console.log("Update record");
       });
-
+    }
     this.timeLinesForm.get('genere')?.setValue(
         this.timeLinesForm.controls['genere'].value.map((value: boolean) => false)
     );
@@ -182,26 +232,51 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       }
       if(selectedOrderIds.length== 0){
         const message ="from tv channels";
-        this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
-            this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });;
-      }else{
+        if(this.isTvGenere){
+          this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
+            res => {
+              this.router.navigate(['television/thankyou'], { state: { message: message, inputRoute: "television" } });
+            });
+        } else {
+          this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
+          res => {
+            if(this.userCount != 0) {
+              this.router.navigate(['survey/device/Thankyou/'+this.deviceName+'/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "devices"} });
+           }else {
+            this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
+            this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
+            }
+          });
+          }
+        }else{
         this.deviceService.saveGenreIds(selectedOrderIds);
-        this.router.navigate(['survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount], { state: { memberName: this.memberName }} );
-      }
+        if(this.isTvGenere){
+          const device = "none";
+          this.router.navigate(['television/tv-channels/'  +this.memberNo+ '/'+device], { state: { memberName: this.memberName }} );
+
+        }else{
+      //  this.deviceService.saveGenreIds(selectedOrderIds);
+        this.router.navigate(['survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount+ '/'+this.list], { state: { memberName: this.memberName }} );
+       }
+       }
   }
 
   backAction() {
     let url;
     if (this.isTvGenere) {
+      if(this.list == "true") {
+        this.router.navigate(['/television/selectGeneres/' + this.memberNo], {state: {memberName: this.memberName}});
+      } else {
+        this.router.navigateByUrl('/television/tv-genres/'+this.memberNo);
+      }
       url = "television/household-members";
-    } else if (this.userCount == 0) {
-      url = "survey/deviceOwnerInformation/" + this.deviceState + '/' + this.deviceId;
-      this.router.navigateByUrl(url);
-    }
-    else {
+    } else{
+     if(this.list == "true") {
+      this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo+ '/' + this.deviceId], {state: {memberName: this.memberName}});
+   }else{
       this.router.navigate(['/survey/deviceGeneres/' + this.deviceState + '/' +this.memberNo +'/' + this.deviceId],{ state: { memberName: this.memberName } });
     }
-    
+  }
   }
   
   cancelEvent(isBackAction: boolean) {

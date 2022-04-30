@@ -25,6 +25,7 @@ import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { TelevisionModule } from './modules/television/television.module';
 import { DemographicsModule } from './modules/demographics/demographics.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     Page401Component,
     Page403Component,
     PageNotfoundComponent,
-    HomeComponent
+    HomeComponent,
+    MaintenanceComponent
   ],
   imports: [
     BrowserModule,

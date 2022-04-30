@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -44,6 +45,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   deviceId: any;
   deviceState: any;
   userCount: any;
+  list:any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   newStationsId : Array<any> = [];
@@ -141,7 +143,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     this.deviceId = this.activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.activatedroute.snapshot.params['state'];
     this.userCount = this.activatedroute.snapshot.params['userCount'];
-
+    this.list = this.activatedroute.snapshot.params['list'];
     this.newStationsId.forEach((station, i) => {
       this.createForm(station.id);
     });
@@ -196,10 +198,10 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
         this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
           res => {
             if(this.userCount != 0) {
-              this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+              this.router.navigate(['survey/device/Thankyou/'+this.deviceName+'/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "devices"} });
            }else {
             this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
-            this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });;
+            this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
             }
           });
       }
@@ -263,7 +265,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     if (this.isTvGenere) {
       this.router.navigateByUrl('/television/tv-genres/' + this.memberNo);
     } else {  
-      this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId] , { state: { memberName: this.memberName } });
+      this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName } });
     }
   }
 

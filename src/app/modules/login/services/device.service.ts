@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { DeviceConstants, UrlConstants } from "src/app/shared/models/url-constants";
+import { DeviceConstants, TelevisionConstants, UrlConstants } from "src/app/shared/models/url-constants";
 import { ResourceService } from "src/app/shared/services/http-resource.service";
 import { environment } from "src/environments/environment";
 import { TechSupport } from "../../support/connect/connect.component";
@@ -74,8 +74,14 @@ export class DeviceService extends ResourceService<User> {
       return this.customCreate(item,DeviceConstants.selectGenersPostUrl);
     }
 
+    public updateTvSelectGenres(item:any){
+      return this.customCreate(item,TelevisionConstants.selectTvGenersPostUrl);
+    }
     public updateSelectChannel(item:any){
       return this.customCreate(item,DeviceConstants.selectChannelPostUrl);
+    }
+    public updateTvSelectChannel(item:any){
+      return this.customCreate(item,TelevisionConstants.selectTvChannelPostUrl);
     }
 
     public updateMemberSurvey(deviceId:string,memberNo:string){

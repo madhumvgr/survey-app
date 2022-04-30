@@ -1,53 +1,53 @@
 <div [formGroup]="parentForm" class="shadow-sm rounded bg-white p-4 mb-4">
-    <ng-container  *ngIf="!isReview">
-    <div *ngFor="let question of questionList | paginate: config">
-        <ng-container [ngSwitch]="question.queType">
-            <div *ngSwitchCase="'RB'">
-                <app-radiogroup *ngIf="question.maxLevel==1" [houseHold]="houseHold" [parentForm]="parentForm"
-                    (changeEvent1)="changeEvent($event)" [question]="question"></app-radiogroup>
+    <ng-container *ngIf="!isReview">
+        <div *ngFor="let question of questionList | paginate: config">
+            <ng-container [ngSwitch]="question.queType">
+                <div *ngSwitchCase="'RB'">
+                    <app-radiogroup *ngIf="question.maxLevel==1" [houseHold]="houseHold" [parentForm]="parentForm"
+                        (changeEvent1)="changeEvent($event)" [question]="question"></app-radiogroup>
 
                     <app-matrix-rb *ngIf="question.maxLevel==2" [houseHold]="houseHold" [parentForm]="parentForm"
-                    (changeEvent1)="changeEvent($event)" [question]="question"></app-matrix-rb>
-            </div>
-            <div *ngSwitchCase="'YES-NO'">
-                <ng-container [ngSwitch]="question.maxLevel">
-                    <ng-container *ngSwitchCase="0">
-                        <app-yesNo [houseHold]="houseHold" [parentForm]="parentForm"
-                            (changeEvent1)="changeEvent($event)" [question]="question">
-                        </app-yesNo>
-                    </ng-container>
+                        (changeEvent1)="changeEvent($event)" [question]="question"></app-matrix-rb>
+                </div>
+                <div *ngSwitchCase="'YES-NO'">
+                    <ng-container [ngSwitch]="question.maxLevel">
+                        <ng-container *ngSwitchCase="0">
+                            <app-yesNo [houseHold]="houseHold" [parentForm]="parentForm"
+                                (changeEvent1)="changeEvent($event)" [question]="question">
+                            </app-yesNo>
+                        </ng-container>
 
-                    <ng-container *ngSwitchCase="1">
-                        <app-matrix [houseHold]="houseHold" [parentForm]="parentForm"
-                            (changeEvent1)="changeEvent($event)" [question]="question">
-                        </app-matrix>
-                    </ng-container>
+                        <ng-container *ngSwitchCase="1">
+                            <app-matrix [houseHold]="houseHold" [parentForm]="parentForm"
+                                (changeEvent1)="changeEvent($event)" [question]="question">
+                            </app-matrix>
+                        </ng-container>
 
-                    <ng-container *ngSwitchCase="2">
-                        <app-matrix-two-level [houseHold]="houseHold" [parentForm]="parentForm"
-                            (changeEvent1)="changeEvent($event)" [question]="question">
-                        </app-matrix-two-level>
+                        <ng-container *ngSwitchCase="2">
+                            <app-matrix-two-level [houseHold]="houseHold" [parentForm]="parentForm"
+                                (changeEvent1)="changeEvent($event)" [question]="question">
+                            </app-matrix-two-level>
+                        </ng-container>
                     </ng-container>
-                </ng-container>
-            </div>
-            <div *ngSwitchCase="'CB'">
-                <app-checkbox [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
-                    [question]="question">
-                </app-checkbox>
-            </div>
-            <div *ngSwitchDefault>
-                Default type
-            </div>
-        </ng-container>
-    </div>
+                </div>
+                <div *ngSwitchCase="'CB'">
+                    <app-checkbox [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
+                        [question]="question">
+                    </app-checkbox>
+                </div>
+                <div *ngSwitchDefault>
+                    Default type
+                </div>
+            </ng-container>
+        </div>
     </ng-container>
-    <div  *ngIf="isReview">
+    <div *ngIf="isReview">
         <div *ngFor="let question of finalQuestionLIst">
             <div>
-            <h3>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h3>
-            <span>{{question.anuswer.text}}</span>
+                <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h4>
+                <p>{{question.anuswer.text}}</p>
 
-        </div>
+            </div>
         </div>
     </div>
     <br>
@@ -62,49 +62,47 @@
     </div> -->
 
     <!-- app.component.html -->
+
     <div style="text-align:center">
 
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="pageChange($event)">
 
 
-            <div class="custom-pagination">
-                <div class="pagination-previous" [class.disabled]="p.isFirstPage()" *ngIf = "!houseHold">
-                    <span *ngIf="p.isFirstPage()">
-                        <button type="button" class="btn btn-dark"
-                            [routerLink]="['/demographics/demographics-individual-members']">Back</button>
-                    </span>
+            <div class="custom-pagination" class="col-xs-6 d-grid gap-2 d-md-block">
 
-                    <span *ngIf="!p.isFirstPage()" (click)="p.previous()">
-                        <button type="button" class="btn btn-dark">Back</button>
-                    </span>
-                </div>
-                <div class="pagination-previous" [class.disabled]="p.isFirstPage()" *ngIf = "houseHold">
-                    <span *ngIf="p.isFirstPage()">
-                        <button type="button" class="btn btn-dark"
-                            [routerLink]="['/demographics/demographics-owner']">Back</button>
-                    </span>
+                <ng-container *ngIf="!houseHold">
+                    <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage()"
+                        [routerLink]="['/demographics/demographics-individual-members']">Back</button>
 
-                    <span *ngIf="!p.isFirstPage()" (click)="p.previous()">
-                        <button type="button" class="btn btn-dark">Back</button>
-                    </span>
-                </div>
-                <!--*ngIf="p.isLastPage()"-->
+                    <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage()"
+                        (click)="p.previous()">Back</button>
+                </ng-container>
+
+                <ng-container *ngIf="houseHold">
+                    <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage()"
+                        [routerLink]="['/demographics/demographics-owner']">Back</button>
+
+                    <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage()"
+                        (click)="p.previous()">Back</button>
+                </ng-container>
+
+
                 <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()">Save & Exit</button>
+
+                <button (click)="p.next()" *ngIf="!p.isLastPage()" type="button"
+                    class="btn btn-primary ms-md-3">Continue</button>
+
                 <button *ngIf="p.isLastPage() && !isReview" type="submit" (click)="review()"
                     class="btn btn-secondary ms-md-3">Review</button>
-                    <button *ngIf="isReview" type="submit" (click)="submit()"
-                    class="btn btn-secondary ms-md-3">Submit</button>
-                <div class="pagination-next" [class.disabled]="p.isLastPage()">
-                    <span *ngIf="!p.isLastPage()" (click)="p.next()">
-                        <button type="button" class="btn btn-primary ms-md-3">Continue</button>
-                    </span>
 
-                </div>
+                <button *ngIf="isReview" type="submit" (click)="submit()"
+                    class="btn btn-secondary ms-md-3">Submit</button>
+
             </div>
         </pagination-template>
 
     </div>
 </div>
 <modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
-    <!--  body of the modal  -->
+    
 </modal>

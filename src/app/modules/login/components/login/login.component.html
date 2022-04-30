@@ -46,10 +46,10 @@
                                 *ngIf="(loginFormControl.email.touched || submitted) && loginFormControl.email.errors?.required">
                                 {{ 'loginPage.emailRequiredText' | translate }}
                             </span>
-                            <span class="text-danger"
+                            <!-- <span class="text-danger"
                                 *ngIf="loginFormControl.email.touched && loginFormControl.email.errors?.email">
                                 {{ 'loginPage.emailWarningText' | translate }}
-                            </span>
+                            </span> -->
                         </div>
                         <div class="mb-3">
                             <div class="search-wrapper cf">
@@ -68,6 +68,7 @@
                                 *ngIf="(loginFormControl.password.touched || submitted) && loginFormControl.password.errors?.required">
                                 {{ 'loginPage.passwordRequiredText' | translate }}
                             </span>
+                            
                             <span class="text-danger"
                                 *ngIf="loginFormControl.password.touched && loginFormControl.password.errors?.invalidPassword">
                                 <!--Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
@@ -105,3 +106,7 @@
         </form>
     </div>
 </section>
+
+<modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)" [IsFromLogin]="true">
+    
+</modal>

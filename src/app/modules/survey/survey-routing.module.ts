@@ -32,13 +32,14 @@ const routes: Routes = [
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
       { path: 'deviceGeneres/:state/:memberNo/:deviceId', component: DeviceGenresComponent },
       { path: 'selectGeneres/:state/:memberNo/:deviceId', component: SelectGenresComponent },
-      { path: 'selectChannel/:state/:memberNo/:deviceId', component: SelectChannelComponent },
+      { path: 'selectChannel/:state/:memberNo/:deviceId/:list', component: SelectChannelComponent },
       { path: 'deviceChannels/:state/:memberNo/:deviceId', component: TvChannelsComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },
       { path: 'not-in-use-devices/:state/:deviceId', component: NotInUseDevicesComponent },
       { path: 'completed-devices/:state/:deviceId', component: CompletedDevicesViewComponent},
-      {path:  'tv-Channels/:state/:deviceId/:memberNo/:userCount', component: TvChannelsComponent },
+      {path:  'tv-Channels/:state/:deviceId/:memberNo/:userCount/:list', component: TvChannelsComponent },
       { path: 'Thankyou/:deviceName', component: ThankyouComponent },
+      { path: 'device/Thankyou/:deviceName/:state/:deviceId', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
     component: SurveyHomeComponent

@@ -122,7 +122,13 @@
                                 </div>
                                 <!--end-accoriding-collapse-->
                             </div>
+                            <ng-container *ngIf="genere.isError">
+                                <div style="color:red">
+                                    please select atleast one checkbox. 
+                                </div>
+                            </ng-container>
                 </ng-container>
+               
                 <!--End Accoridian Genre Tab -->
 
 

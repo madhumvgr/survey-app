@@ -31,44 +31,54 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   newGenreIds: Array<any> =[];
   generes: Array<any> = [{
     "id": '1',
-    "name": "genres.news"
+    "name": "genres.news",
+    "isError": false
   },
   {
     "id": '2',
-    "name": "genres.sports"
+    "name": "genres.sports",
+    "isError": false
   },
   {
     "id": '3',
-    "name": "genres.entertainment"
+    "name": "genres.entertainment",
+    "isError": false
   },
   {
     "id": '4',
-    "name": "genres.movies"
+    "name": "genres.movies",
+    "isError": false
   },
   {
     "id": '5',
-    "name": "genres.drama"
+    "name": "genres.drama",
+    "isError": false
   },
   {
     "id": '6',
-    "name": "genres.kidsProgram"
+    "name": "genres.kidsProgram",
+    "isError": false
   },
   {
     "id": '7',
-    "name":  "genres.comedy"
+    "name":  "genres.comedy",
+    "isError": false
   },
 
   {
     "id": '8',
-    "name": "genres.documentaries"
+    "name": "genres.documentaries",
+    "isError": false
   },
   {
     "id": '9',
-    "name": "genres.hobbies"
+    "name": "genres.hobbies",
+    "isError": false
   },
   {
     "id": '10',
-    "name": "genres.other"
+    "name": "genres.other",
+    "isError": false
   }
   ]
   timeLines: Array<DeviceTimeSlot> = [
@@ -260,17 +270,25 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     let deviceId = this.deviceId ? this.deviceId : 'none';
      this.isValid= true;
      let errorCount=1;
-    this.timeLinesForm.forEach( form => {
+     
+    this.timeLinesForm.forEach( (form,index) => {
       let hasWeekDay = form.value.weekDays.some( (weekDay:any) => weekDay['addNew'] === true );
       let hasWeekEnd = form.value.weekDays.some( (weekDay:any) => weekDay['addNew'] === true );
 
       if(!hasWeekDay && !hasWeekEnd)
       {
+        this.generes[index-1].isError= true;
         errorCount++;
       }
       
     });
-    if(errorCount === this.timeLinesForm.length){
+    let timeLineError = false;
+    this.generes.forEach( gen => {
+      if(gen.isError){
+        timeLineError = gen.isError;
+      }
+    });
+    if(errorCount === this.timeLinesForm.length || timeLineError){
       this.isValid= false;
     }
     if(this.isValid){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
@@ -7,6 +7,9 @@ import { User } from 'src/app/shared/models/user.model';
 import { UserService } from '../../services/user.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { DeviceService } from '../../services/device.service';
+import { BaseComponent } from 'src/app/shared/util/base.util';
+import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
+import { Panels } from "src/app/shared/models/url-constants";
 
 
 
@@ -17,7 +20,7 @@ import { DeviceService } from '../../services/device.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  extends BaseComponent implements OnInit {
 
  
   hide = false;
@@ -29,12 +32,15 @@ export class LoginComponent implements OnInit {
   signin: any;  
   isIE = false;
   panelistType: any;
-
+  
+  @ViewChild('modal')
+  private modalComponent!: ModalComponent;
+  
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private userService: UserService,
     private localStorageService: LocalStorageService,
-    private router: Router, private deviceService: DeviceService) { }
+    private router: Router, private deviceService: DeviceService) {super() }
 
     
 
@@ -48,6 +54,10 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
     }
     );
+  }
+
+  ngAfterViewInit(){
+    super.afterViewInit(this.modalComponent);
   }
 
 
@@ -78,24 +88,36 @@ export class LoginComponent implements OnInit {
           // After successful sign in, we have to set username into localstorage
           this.localStorageService.setIdToken( response['id_token']);
           this.localStorageService.setUserName(this.loginFormControl.email.value);
+
           this.deviceService.getExistingHomes().subscribe(existingHomes => { 
             if (existingHomes && existingHomes.panels) {
               const panelIds = existingHomes.panels.map((obj: any) => obj.id);
-              console.log(panelIds);
-              const filteredArray = panelIds.filter((value:any) => ['620','621','630','631'].includes(value));
-              const check = filteredArray.length ? true : false;
+              const vamArray = panelIds.filter((value:any) => Panels.vamPanelIds.includes(value));
+              const isVAM = vamArray.length ? true : false;
               let panel: any;
-              if(check){
+              if(isVAM){
                    panel ="VAM";
                    this.localStorageService.setPanellistType(panel);
+                   this.router.navigate(['/welcome']);
               } else {
+                const sspArray = panelIds.filter((value:any) => Panels.sspPanelIds.includes(value));
+                const isSSP = sspArray.length ? true : false;
+                if(isSSP) {
                    panel ="SSP";
                    this.localStorageService.setPanellistType(panel);
+                   this.router.navigate(['/welcome']);
+                } else {
+                    //this.openModal();
+                    this.router.navigate(['/maintenance']);
+                }
               }
+            } else {
+              //this.openModal();
+              this.router.navigate(['/maintenance']);
             }
-            }, err => this.localStorageService.setPanellistType("VAM"));
+            }, err =>  this.router.navigate(['/maintenance']));
 
-          this.router.navigate(['/welcome']);
+         
         }
       }, err => this.showError = true,
         () => this.showError = true);

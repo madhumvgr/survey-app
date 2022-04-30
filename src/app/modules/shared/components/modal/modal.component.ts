@@ -16,6 +16,9 @@ export class ModalComponent implements OnInit {
   @Input()
   public logOut: ModalConfig["logOut"];
 
+  @Input()
+  public IsFromLogin: ModalConfig["logOut"];
+
   @Output() 
   public exitEvent= new EventEmitter();
     

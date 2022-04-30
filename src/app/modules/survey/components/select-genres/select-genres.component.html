@@ -60,7 +60,7 @@
                 <!-- Genres wrapper-->
                 <div class="accordion accordion-flush" id="genres-target">
                     <!-- Accoridian Genre Tab 1 -->
-                    <p>Please select all the genres {{memberName}} spends watches online</p>
+                    <p>Please select all the genres {{memberName}} watches online</p>
                     <ng-container *ngFor="let genere of genreFormArray.controls; let i = index">
                         <div class="form-check">
                             <label formArrayName="genere" class="form-check-label">
@@ -74,8 +74,7 @@
                  
                 </div>
                 <div>
-                    <input type="radio" value=1 (change)="unCheck()" formControlName="dont" name="dont" /> I don't watch any of the above TV
-                    networks
+                    <input type="radio" value=1 (change)="unCheck()" formControlName="dont" name="dont" /> I don't watch any of the above genres
                 </div>
                 <div *ngIf="!isValid || showError" style="color:red">
                     {{"genres.error" | translate }}

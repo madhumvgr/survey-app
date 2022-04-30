@@ -87,7 +87,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
     private translate: TranslateService) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
-    if (url == "tv-genres") {
+    if (url == "selectGeneres") {
       this.isTvGenere = true;
     }
     if (this.isTvGenere) {
@@ -112,15 +112,20 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
       this.deviceStatus = this.deviceState;
     }
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
-    
-
+    if(!this.isTvGenere){
+    this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
+      this.userCount = res.numberOfUsers;
+      console.log(this.userCount);
+    });
+  }
     this.timeLinesForm = this.fb.group({
       genere: new FormArray([]),
       dont: new FormControl()
     });
 
     this.addCheckboxes();
-    this.deviceService.getCustomRequest(DeviceConstants.selectGenersGetUrl + this.memberNo + '/' + this.deviceId).
+    if (!this.isTvGenere){
+      this.deviceService.getCustomRequest(DeviceConstants.selectGenersGetUrl + this.memberNo + '/' + this.deviceId).
       subscribe(response => {
         // currently seting values. 
         var notSelected = '0';
@@ -134,6 +139,23 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
         this.timeLinesForm.get('genere')?.setValue(val);
         this.timeLinesForm.get('dont')?.setValue(notSelected);
       });
+
+    } else{
+    this.deviceService.getCustomRequest(TelevisionConstants.selectTvGenersGetUrl + this.memberNo).
+      subscribe(response => {
+        // currently seting values. 
+        var notSelected = '0';
+        const val= this.generes.map( obj => obj.selected);
+        response.forEach( (obj:any)=> {
+        val[obj.genreId-1]= true;
+        if(obj.notSelected){
+          notSelected = '1';
+        }
+        });
+        this.timeLinesForm.get('genere')?.setValue(val);
+        this.timeLinesForm.get('dont')?.setValue(notSelected);
+      });
+    }
   }
 
   get genreFormArray() {
@@ -148,6 +170,20 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
   updateTimeLine(event:any,i:any) {
     this.timeLinesForm.get('dont')?.setValue('0');
     console.log(event);
+    if(this.isTvGenere) {
+      let item = {
+        memberNo: '',
+        genreId: 0,
+        addNew: event?.target?.checked,
+        notSelected:false
+      }
+      item['memberNo'] = this.memberNo;
+      item['genreId'] = parseInt(this.generes[i].id);
+      this.deviceService.updateTvSelectGenres(item).
+      subscribe((response: any) => {
+        console.log("Update record");
+      });
+    } else{
     let item = {
       deviceId: '',
       memberNo: '',
@@ -162,11 +198,26 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
       subscribe((response: any) => {
         console.log("Update record");
       });
-
+      
+    }
   }
 
   unCheck(){
-    let item = {
+    if(this.isTvGenere){
+      let item = {
+        memberNo: '',
+        genreId: null,
+        addNew: null,
+        notSelected:true
+      }
+      item['memberNo'] = this.memberNo;
+      this.deviceService.updateTvSelectGenres(item).
+        subscribe((response: any) => {
+          console.log("Update record");
+        });
+
+    } else{
+      let item = {
       deviceId: '',
       memberNo: '',
       genreId: null,
@@ -179,9 +230,11 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
       subscribe((response: any) => {
         console.log("Update record");
       });
+     }
     this.timeLinesForm.get('genere')?.setValue(
         this.timeLinesForm.controls['genere'].value.map((value: boolean) => false)
     );
+
   }
   submit() {
     const selectedOrderIds = this.timeLinesForm.value.genere
@@ -192,11 +245,20 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
         return;
       }
       if(selectedOrderIds.length== 0){
-        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo],{ state: { memberName: this.memberName }} );         
-      }else{
+        if(this.isTvGenere){
+          this.router.navigateByUrl('/television/selectChannel/'+this.memberNo+ '/' +true); 
+        }else{
+       // this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo],{ state: { memberName: this.memberName }} );         
+        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' +this.memberNo + '/' + this.deviceId+ '/' +true],{ state: { memberName: this.memberName } });         
+       }
+      } else{
         this.deviceService.saveGenreIds(selectedOrderIds);
+        if(this.isTvGenere){
+          this.router.navigateByUrl('/television/tv-genres/'+this.memberNo); 
+        }else{
         this.router.navigate(['survey/deviceGeneres/'+this.deviceState+'/'+this.memberNo+'/'+this.deviceId], { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName  } });
       }
+    }
   }
 
   backAction() {

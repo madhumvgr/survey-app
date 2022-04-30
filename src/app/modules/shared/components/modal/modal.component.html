@@ -1,28 +1,36 @@
 <ng-template #modal>
-    <div class="modal-header">
-      <h5 class="modal-title" *ngIf ="logOut">{{"modalWindow.confirmTittle" | translate }}</h5>
-      <h5 class="modal-title" *ngIf ="!logOut">{{"modalWindow.modalTitle" | translate }}</h5>
-    </div>
-    <div class="modal-body"  *ngIf ="logOut">
-      {{"modalWindow.confirmationDescription" | translate }}
-    </div>
-    <div class="modal-body" *ngIf ="!logOut">
-      {{"modalWindow.content" | translate}}
-   </div>
-    <div class="modal-footer justify-content-start">
-      <button type="button"
-              class=" btn btn-secondary"
-              (click)="cancel()"
-              *ngIf="modalConfig.hideDismissButton === undefined || !modalConfig.hideDismissButton()"
-              [disabled]="modalConfig.disableDismissButton !== undefined && modalConfig.disableDismissButton()">
-        {{ "modalWindow.dismissButtonLabel" | translate }}
-      </button>
-      <button type="button"
-              class="btn btn-primary"
-              (click)="exit()"
-              *ngIf="modalConfig.hideCloseButton === undefined || !modalConfig.hideCloseButton()"
-              [disabled]="modalConfig.disableCloseButton !== undefined && modalConfig.disableCloseButton()">
+  <div class="modal-header">
+    <h5 class="modal-title" *ngIf="logOut || IsFromLogin">{{"modalWindow.confirmTittle" | translate }}</h5>
+    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin">{{"modalWindow.modalTitle" | translate }}</h5>
+  </div>
+  <div class="modal-body" *ngIf="logOut && !IsFromLogin">
+    {{"modalWindow.confirmationDescription" | translate }}
+  </div>
+  <div class="modal-body" *ngIf="!logOut && !IsFromLogin">
+    {{"modalWindow.content" | translate }}
+  </div>
+  <div class="modal-body" *ngIf="!logOut && IsFromLogin">
+    {{"modalWindow.errorMSg" | translate }}
+  </div>
+  <div class="modal-footer justify-content-start">
+    <button type="button" class=" btn btn-secondary" (click)="cancel()"
+      *ngIf="modalConfig.hideDismissButton === undefined || !modalConfig.hideDismissButton()"
+      [disabled]="modalConfig.disableDismissButton !== undefined && modalConfig.disableDismissButton()">
+      {{ "modalWindow.dismissButtonLabel" | translate }}
+    </button>
+    <ng-container *ngIf="!logOut && !IsFromLogin">
+      <button type="button" class="btn btn-primary" (click)="exit()"
+        *ngIf="modalConfig.hideCloseButton === undefined || !modalConfig.hideCloseButton()"
+        [disabled]="modalConfig.disableCloseButton !== undefined && modalConfig.disableCloseButton()">
         {{ "modalWindow.closeButtonLabel" | translate }}
       </button>
-    </div>
-  </ng-template>
+    </ng-container>
+    <ng-container *ngIf="logOut || IsFromLogin">
+      <button type="button" class="btn btn-primary" (click)="exit()"
+        *ngIf="modalConfig.hideCloseButton === undefined || !modalConfig.hideCloseButton()"
+        [disabled]="modalConfig.disableCloseButton !== undefined && modalConfig.disableCloseButton()">
+        {{ "modalWindow.closeButtonLabelLogout" | translate }}
+      </button>
+    </ng-container>
+  </div>
+</ng-template>

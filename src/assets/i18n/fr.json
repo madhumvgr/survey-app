@@ -3,8 +3,8 @@
         "title": "Connexion",
         "text": "Bienvenue! Vous êtes sur le point de façonner l'avenir de la radiodiffusion canadienne. Nous utilisons des cookies pour améliorer votre expérience ! En poursuivant, vous acceptez notre",
         "browserUpdateText": "Pour une meilleure expérience utilisateur, veuillez mettre à jour votre navigateur",
-        "email": "Courriel",
-        "emailRequiredText": "L'e-mail est requis",
+        "email": "User Id",
+        "emailRequiredText": "User Id is required",
         "password": "Mot de passe",
         "passwordRequiredText": "Nouveau mot de passe est requis",
         "loginButton": "Se connecter",
@@ -159,8 +159,8 @@
     "forgotPassword": {
         "title": "Mot de passe oublié",
         "description": "Nous vous enverrons un e-mail avec des instructions sur la façon de réinitialiser votre mot de passe.",
-        "Email": "Courriel",
-        "emailRequired": "L'e-mail est requis",
+        "Email": "User Id",
+        "emailRequired": "User Id is required",
         "requestButtonLabel": "Demande",
         "signIn": "Retour à la connexion",
         "passwordRequest": "Votre demande de réinitialisation de mot de passe est en cours.",
@@ -255,7 +255,9 @@
     },
     "genres": {
         "description": "Nous cherchons à obtenir plus de détails à propos des catégories regardées en ligne par.",
-        "heading": "Liste de toutes les 11 catégories",
+        "heading": "Liste de toutes les",
+        "heading2": "catégories",
+        "heading3": "Catégorie",
         "text": "Veuillez sélectionner toutes les catégories que.",
         "text2": "regarde en ligne, et l’heure durant la journée ou il ou elle est plus susceptible de le faire. Vous pouvez sélectionner plusieurs options de temps.",
         "backButton": "Retour",
@@ -554,9 +556,10 @@
         "modalTitle": "Sauvegarder et quitter",
         "content": "Votre travail jusqu’ici a été enregistré. Vous pouvez toujours y revenir pour le finir plus tard. ",
         "dismissButtonLabel": "Retour",
-        "closeButtonLabel": "Quitter",
+        "closeButtonLabel": "Sauvegarder & quitter",
         "confirmTittle": "Avertissement",
-        "confirmationDescription": "Voulez-vous vraiment quitter cette page?"
+        "confirmationDescription": "Voulez-vous vraiment quitter cette page?",
+        "errorMSg": "membership type could not be determined, please contact the system administrator."
     },
     "televisionMembers": {
         "tittle": "Usage de la Télévision",

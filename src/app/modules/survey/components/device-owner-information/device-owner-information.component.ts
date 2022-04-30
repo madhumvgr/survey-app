@@ -87,9 +87,16 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
         this.deviceService.getCustomRequest(DeviceConstants.deviceOwnerByDeviceId + this.deviceId).subscribe(response => {
           if (response) {
               this.selectedOwner = response;
+              this.ownerList.forEach(owner => {
+              if(owner.memberNo == this.selectedOwner.memberNo){
+                this.memberName = owner.memberName;
+                this.memeberNo = owner.memberNo;
+              }
+              })
               this.deviceOwnerInfoForm.get('selectedOwner')?.setValue(this.selectedOwner['memberNo']); 
           }
         });
+
       }
     });
   }

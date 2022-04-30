@@ -7,6 +7,7 @@ import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { AuthGuard } from './shared/services/auth.guard';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MatIconModule } from '@angular/material/icon'
+import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 const routes: Routes = [
   { 
@@ -36,7 +37,13 @@ const routes: Routes = [
     path: '403page',
     component: Page403Component
   },
-  { path: '**', component: PageNotfoundComponent }
+  { path: 'maintenance', 
+    component: MaintenanceComponent 
+  },
+  { path: '**', 
+    component: PageNotfoundComponent 
+  }
+  
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes,{scrollPositionRestoration:'enabled'})],

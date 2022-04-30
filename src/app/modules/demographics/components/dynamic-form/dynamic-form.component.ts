@@ -62,7 +62,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit,OnChan
 
 
   pageChange(newPage: any) {
-    if(this.parentForm.valid){
+    if(this.parentForm.valid || (newPage < this.config.currentPage)){
     this.config.currentPage = newPage;
     //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
     if(this.houseHold){

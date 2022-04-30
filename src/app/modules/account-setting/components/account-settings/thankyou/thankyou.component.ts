@@ -9,10 +9,11 @@ import { map } from 'rxjs/operators';
 })
 export class ThankyouComponent implements OnInit {
   newValue: any;
-  //deviceState: any;
+  deviceState: any;
   data: any;
   message: any;
   state:any;
+  deviceId:any;
 
   
   constructor(private Activatedroute: ActivatedRoute, private router: Router) { 
@@ -22,7 +23,11 @@ export class ThankyouComponent implements OnInit {
 
   ngOnInit(): void {
     this.newValue = this.Activatedroute.snapshot.params['value'];
-    //this.deviceState = this.Activatedroute.snapshot.params['state'];
+    this.deviceState = this.Activatedroute.snapshot.params['state'];
+    this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
   }
+submit() {
+  this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+}
 
 }

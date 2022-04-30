@@ -62,6 +62,13 @@ export class TelevisionConstants {
     public static getStationsWithDeviceId= "api/portal-tv-stations/";
     public static updateStationsWithDeviceId= "api/portal-tv-claim-stations";
 
+    //pre-selection page
+    public static selectTvGenersGetUrl ="api/television-genres-mapping/";
+    public static selectTvGenersPostUrl ="api/television-genres-mapping";
+
+    public static selectTvChannelGetUrl ="api/television-channel-mapping/";
+    public static selectTvChannelPostUrl ="api/television-channel-mapping";
+
 }
 
 export class QuestionConstants {
@@ -81,4 +88,9 @@ export class QuestionConstants {
     public static memberHouseHoldList = "api/householdStatusOfDemoSurvey";
     public static markHouseHold = "api/household-survey-answers-completed/";
 
+}
+
+export class Panels {
+    public static vamPanelIds = ["620","621","630","631"];
+    public static sspPanelIds = ["001","010","020","021","030","041","050","060","070"];
 }

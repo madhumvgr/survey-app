@@ -5,6 +5,8 @@ import { TvChannelsComponent } from './components/tv-channels/tv-channels.compon
 import { TelevisionComponent } from './television.component';
 import { DeviceGenresComponent } from '../survey/components/device-genres/device-genres.component';
 import { ThankyouComponent } from '../account-setting/components/account-settings/thankyou/thankyou.component';
+import { SelectGenresComponent } from '../survey/components/select-genres/select-genres.component';
+import { SelectChannelComponent } from '../survey/components/select-channel/select-channel.component';
 
 
 
@@ -15,6 +17,9 @@ const routes: Routes = [
       { path: 'household-members', component: HouseholdMembersComponent },
       { path: 'tv-genres/:memberNo', component: DeviceGenresComponent },
       { path: 'tv-channels/:memberNo/:deviceId', component: TvChannelsComponent },
+      { path: 'selectGeneres/:memberNo', component: SelectGenresComponent },
+      { path: 'selectChannel/:memberNo', component: SelectChannelComponent },
+      { path: 'selectChannel/:memberNo/:list', component: SelectChannelComponent },
       { path: 'thankyou', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

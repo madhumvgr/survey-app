@@ -57,7 +57,13 @@
                         [routerLink]="['/television/household-members']">{{'thankYou.exitButtonLabel' | translate}}</button>
                 </div>
             </div>
-            <div class="row" *ngIf="state?.inputRoute != 'television'">
+            <div class="row" *ngIf="state?.inputRoute == 'devices'">
+                <div class="col-20">
+                    <button type="submit" class="btn btn-primary px-3 ms-3"
+                        (click) ="submit()">{{'thankYou.exitButtonLabel' | translate}}</button>
+                </div>
+            </div>
+            <div class="row" *ngIf="state?.inputRoute == undefined">
                 <div class="col-20">
                     <button type="submit" class="btn btn-primary px-3 ms-3"
                         [routerLink]="['/welcome']">{{'thankYou.exitButtonLabel' | translate}}</button>

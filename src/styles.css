@@ -316,9 +316,9 @@ input, textarea {
 
 /* Primary CTA */
 .btn-primary {
-  background-color: #002e62;
-  border:#002e62;
+  background-color: #0a2e5f;
   font-weight: 600;
+  color: white;
 }
 .btn-primary:hover {
   background-color: #004ca4;
@@ -327,13 +327,13 @@ input, textarea {
 /* Secondary CTA */
 
 .btn-secondary {
-  background-color: #343A40;
+  background-color: #6d757c;
   color:white;
   font-weight: 600;
 }
 
 .btn-secondary:hover {
-  background-color: #727272;
+  background-color: #343A40;
   color: white;
 }
 

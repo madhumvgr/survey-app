@@ -180,7 +180,7 @@
         "keyHelpText": "Need Help with your Key ?"
     },
     "newDevices": {
-        "title": "Devices",
+        "title": "New Devices",
         "description": "This page shows all media devices that are New connected to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your privacy policy.",
         "description1": "are always protected.",
         "Link": "data and privacy",

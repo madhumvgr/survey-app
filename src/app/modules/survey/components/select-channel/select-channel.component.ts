@@ -254,10 +254,10 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
                res => {
                 this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
                this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
-               this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
+               this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
              });
           }
-        }, 200); 
+        }, 20); 
         }
         }else{
         this.deviceService.saveGenreIds(selectedOrderIds);
@@ -276,7 +276,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
     let url;
     if (this.isTvGenere) {
       if(this.list == "true") {
-        this.router.navigate(['/television/selectGeneres/' + this.memberNo], {state: {memberName: this.memberName}});
+        this.router.navigate(['/television/tv-selectGeneres/' + this.memberNo+'/' +true], {state: {memberName: this.memberName}});
       } else {
         this.router.navigateByUrl('/television/tv-genres/'+this.memberNo);
       }

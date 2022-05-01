@@ -40,6 +40,7 @@ const routes: Routes = [
       {path:  'tv-Channels/:state/:deviceId/:memberNo/:userCount/:list', component: TvChannelsComponent },
       { path: 'Thankyou/:deviceName', component: ThankyouComponent },
       { path: 'device/Thankyou/:deviceName/:state/:deviceId', component: ThankyouComponent },
+      { path: 'Thankyou/deviceList/:state', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],
     component: SurveyHomeComponent

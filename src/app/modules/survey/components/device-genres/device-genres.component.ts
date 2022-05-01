@@ -306,7 +306,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   backAction() {
     let url;
     if (this.isTvGenere) {
-      this.router.navigateByUrl('/television/selectGeneres/'+this.memberNo);
+      this.router.navigateByUrl('/television/tv-selectGeneres/'+this.memberNo);
     }else{
       this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo+ '/' + this.deviceId], {state: {memberName: this.memberName}});
     }

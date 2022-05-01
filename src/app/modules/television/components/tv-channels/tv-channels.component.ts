@@ -266,7 +266,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
 
   backRoute() {
     if (this.isTvGenere) {
-      this.router.navigateByUrl('/television/tv-genres/' + this.memberNo);
+      this.router.navigateByUrl('/television/tv-selectChannel/' + this.memberNo);
     } else {  
       this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName } });
     }

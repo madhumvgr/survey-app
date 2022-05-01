@@ -20,6 +20,7 @@ const routes: Routes = [
       { path: 'tv-selectGeneres/:memberNo', component: SelectGenresComponent },
       { path: 'tv-selectChannel/:memberNo', component: SelectChannelComponent },
       { path: 'tv-selectChannel/:memberNo/:list', component: SelectChannelComponent },
+      { path: 'tv-selectGeneres/:memberNo/:list', component: SelectGenresComponent },
       { path: 'thankyou', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

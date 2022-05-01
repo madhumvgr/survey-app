@@ -63,9 +63,7 @@
 
     <!-- app.component.html -->
 
-    <div style="text-align:center">
-
-        <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="pageChange($event)">
+         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="pageChange($event)">
 
 
             <div class="custom-pagination" class="col-xs-6 d-grid gap-2 d-md-block">
@@ -101,7 +99,6 @@
             </div>
         </pagination-template>
 
-    </div>
 </div>
 <modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
     

@@ -94,7 +94,7 @@
                                                     <div class="form-check" href='javascript:void(0);'>
                                                         <label class="form-check-label">
                                                             <input formControlName="addNew" class="form-check-input"
-                                                            type="checkbox" (change)="updateTimeLine(item,$event)" id="item{{i}}" role="button">
+                                                            type="checkbox" (change)="updateTimeLine(item,$event,genere.id)" id="item{{i}}" role="button">
                                                             {{item.value.label}}
                                                         </label>
                                                     </div>
@@ -110,7 +110,7 @@
                                                     <div class="form-check" href='javascript:void(0);'>
                                                         <label class="form-check-label">
                                                             <input formControlName="addNew" class="form-check-input"
-                                                            type="checkbox" (change)="updateTimeLine(item,$event)">
+                                                            type="checkbox" (change)="updateTimeLine(item,$event,genere.id)">
                                                             {{item.value.label}}
                                                         </label>
                                                     </div>

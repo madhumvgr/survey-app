@@ -188,6 +188,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     const res = genereList.filter((item:any) => this.newGenreIds.some( (f)=> f.id == parseInt(item.id)));
     res.forEach((element: any) => {
       if (element.listGenresTimeline && (element.id!=11 && element.id!=12)) {
+        console.log(element.id);
         element.listGenresTimeline.forEach((timeLine: any) => {
           if (timeLine.dayOfWeek && timeLine.dayOfWeek == 1) {
             let innerControl = this.getWeekDayControl(element.id).controls[parseInt(timeLine.usageTimelineId)];
@@ -205,12 +206,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     });
   }
 
-  updateTimeLine(control: any,event?:any) {
+  updateTimeLine(control: any,event?:any,index?:any) {
 
     console.log(event);
     let item = control.value;
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
+
+    if(event && event.target.checked){
+      this.generes[index-1].isError = false;
+    }
     if(event){
       item['addNew']= event.target.checked;
     }

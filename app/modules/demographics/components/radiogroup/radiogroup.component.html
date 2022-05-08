@@ -1,0 +1,20 @@
+<div class="mb-4">
+
+    <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h4>
+    <div [formGroup]="childFormGroup">
+        <div class="form-check mb-2" *ngFor="let row of question?.row; let i=index">
+            <input class="form-check-input" id="row{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}"
+                (change)="changeEvent(row?.value,$event)" [formControlName]="question?.queNo ||  question?.queId ||''"
+                type="radio" [value]="row?.value">
+            <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}">{{isFrance?
+                row?.frText: row?.text}}</label>
+        </div>
+        <ng-container *ngIf="ShowInput">
+            <!-- <label for="inputEmail" class="form-label">test</label> -->
+            <input type="text" class="form-control"  formControlName="desc" >
+        </ng-container>
+        <span class="danger" *ngIf="radioFormControl.errors?.required && buttonClicked">
+            Please select the field.
+        </span>
+    </div>
+</div>

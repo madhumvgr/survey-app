@@ -40,7 +40,7 @@ export class RadiogroupComponent implements OnChanges {
       });
       //set selected value into childForm
       let selected = this.question.selected;
-      let prevValue ={rowValue:'', otherDesc: ''}
+      let prevValue ={rowValue:''}
       if(selected){
          prevValue= selected[selected.length -1];
       }
@@ -55,7 +55,7 @@ export class RadiogroupComponent implements OnChanges {
       } else {
           this.childFormGroup.addControl('' + questionNo, new FormControl(''));
       }
-      this.childFormGroup.addControl('otherDescription', new FormControl(prevValue?prevValue?.otherDesc: ''));
+      this.childFormGroup.addControl('otherDescription', new FormControl(''));
       const selectedRow = this.question.row?.find((r:any)=> r.value == prevValue?.rowValue);
       this.ShowInput = selectedRow && selectedRow.flag ? true: false;
       this.parentForm.addControl(''+questionNo,this.childFormGroup);

@@ -50,9 +50,9 @@ export class QuestionarieComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
-   this.panelistType = "SSP";
-
+    this.panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+    // household owner 
+    //SSP
     if (this.houseHold) {
       if(this.panelistType != "VAM") {
       this.questionaireService.customRead(QuestionConstants.houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
@@ -60,19 +60,25 @@ export class QuestionarieComponent implements OnInit {
         this.totalNoPages = Math.ceil((this.questionList.length)/2)
       })
     }
+      //household owner
+      //VAM
       else{
         this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
           this.questionList = list;
           this.totalNoPages = Math.ceil((this.questionList.length)/2)
         })
       }
+      //individual 
+      //SSP
     } else if( this.houseHold == undefined && this.panelistType != "VAM") {
-      this.questionaireService.list().subscribe(response => {
-        this.questionList = response;
+      this.questionaireService.customRead(QuestionConstants.questionaire + '/' + this.memberNo).subscribe(list => {
+        this.questionList = list;
         this.totalNoPages = Math.ceil((this.questionList.length)/2)
       });
+      //individual
+      //vam
     } else {
-      this.questionaireService.customRead(QuestionConstants.vam_questionaire+'/'+ this.memberNo).subscribe(list => {
+      this.questionaireService.customRead(QuestionConstants.vam_questionaire +'/'+ this.memberNo).subscribe(list => {
         this.questionList = list;
         this.totalNoPages = Math.ceil((this.questionList.length)/2)
       })

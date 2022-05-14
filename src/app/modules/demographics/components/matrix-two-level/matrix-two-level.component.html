@@ -1,6 +1,6 @@
-<br />
+
 <ng-container>
-    <h3>{{question.hhQueNo}}.{{ isFrance? question?.titleFr: question?.title}}</h3>
+    <h3>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h3>
     <div class="container">
         <div class="top-left"></div>
         <div class="top-right">

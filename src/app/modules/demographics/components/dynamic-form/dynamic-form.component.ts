@@ -95,7 +95,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     console.log(question);
     let obj: any = {
     }
-    if(this.panelListType != "VAM" ) {
+    if(this.houseHold && this.panelListType != "VAM") {
       obj['questionId'] = question.queId;
       obj['queType'] = question.queType;
       obj['questionLevel1Id'] = question.questionLevel1Id;

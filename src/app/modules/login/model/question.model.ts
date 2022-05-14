@@ -13,6 +13,7 @@ export class Question extends Resource {
   column? : any[];
   row? : any[] = [];
   answer?: any;
+  maxLevel?:any;
   required?:any;
   mandatory?:any;
   questionLevel1Id?:any;
@@ -21,6 +22,9 @@ export class Question extends Resource {
   titleFr?: string;
   hhQueNo?:string;
   otherDescription?:string;
+  condition?: any;
+  subQuestions?: Question[]=[];
+  subSurveyQueAnsDTO?: Question[]=[];
   }
 
 export class QuestionSerializer {

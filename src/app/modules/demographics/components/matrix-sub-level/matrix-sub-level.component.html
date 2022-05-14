@@ -1,0 +1,54 @@
+<br />
+<ng-container [formGroup]="childFormGroup">
+    <h3>{{question?.hhQueNo}}.{{ isFrance? question?.titleFr: question?.title}}</h3>
+    <ng-container *ngFor="let subQuestion of question.subSurveyQueAnsDTO">
+        <h3>{{subQuestion?.hhQueNo}}.{{ isFrance? subQuestion?.titleFr: subQuestion?.title}}</h3>
+        
+        <div>
+            <div class="top-left">Yes</div>
+            <div class="top-right">
+                <input class="form-check-input" type="radio"
+                   value="Y" />
+            </div>
+        </div>
+        <div>
+            <div class="top-left">No</div>
+            <div class="top-right">
+                <input class="form-check-input" type="radio"  
+                   value="N" />
+            </div>
+        </div>
+        <!-- <span class="danger" *ngIf="yesNoFormControl.errors?.required">
+            Please select the field. 
+        </span>  -->
+        <!-- <span class="danger" *ngIf="yesNoFormControl.errors?.required">
+            Please select the field. 
+        </span> -->
+        <div *ngFor="let subQ of subQuestion.subSurveyQueAnsDTO">
+            <div *ngIf="subQ.queType =='TEXT'" >
+                <h3>{{ isFrance? subQ?.titleFr: subQ?.title}}</h3>
+                <input type="text"/>
+            </div>
+            <div *ngIf="subQ.queType =='RB'" >
+                <h3>{{subQ?.hhQueNo}}.{{ isFrance? subQ?.titleFr: subQ?.title}}</h3>
+                <div class="form-check mb-2" *ngFor="let row of subQ?.row; let i=index">
+                    <input class="form-check-input"
+                        type="radio">
+                    <label class="form-check-label">{{isFrance?
+                        row?.frText: row?.text}}</label>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <!-- <div [formGroup]="childFormGroup" class="container" *ngFor="let row of question?.row;let i=index"
+        [style.background-color]="i%2 == 1 ? '#888' : ''">
+        <div class="top-left">{{row?.text}}</div>
+        <div class="top-right">
+            <ng-container *ngFor="let column of cols;let j=index">
+                <input (change)="changeEvent(row?.value,column?.value)"
+                    [formControlName]="question?.queNo+''+row?.value" class="form-check-input" type="radio"
+                    [value]="column?.value" />
+            </ng-container>
+        </div>
+    </div> -->
+</ng-container>

@@ -44,7 +44,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     super();
     this.config = {
       currentPage: 1,
-      itemsPerPage: 2
+      itemsPerPage: 6
     };
 
     this.config.currentPage = +this.route.snapshot.params['pageNo'];

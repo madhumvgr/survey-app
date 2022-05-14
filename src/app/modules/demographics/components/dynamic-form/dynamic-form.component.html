@@ -30,13 +30,27 @@
                         </ng-container>
                     </ng-container>
                 </div>
+                <div *ngSwitchCase="'matrix-yes-no'">
+                    <app-matrix-sub-level>
+                        
+                    </app-matrix-sub-level>
+                </div>
+                
                 <div *ngSwitchCase="'CB'">
                     <app-checkbox [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
                         [question]="question">
                     </app-checkbox>
                 </div>
+
+                <div *ngSwitchCase="''">
+                    <app-matrix-sub-level  [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
+                    [question]="question">
+                            
+                    </app-matrix-sub-level>
+                </div>
+            
                 <div *ngSwitchDefault>
-                    Default type
+                  Default type, need to handle. 
                 </div>
             </ng-container>
         </div>

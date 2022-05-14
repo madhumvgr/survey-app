@@ -37,6 +37,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   isReview!: boolean;
   finalQuestionLIst: any = [];
   userType = localStorage.panellistType;
+  currentPage: any;
 
   constructor(public questionaireService: QuestionaireService, private translate: TranslateService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
@@ -46,7 +47,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       itemsPerPage: 2
     };
 
-    this.config.currentPage = this.route.snapshot.params['pageNo'];
+    this.config.currentPage = +this.route.snapshot.params['pageNo'];
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -54,7 +55,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   ngOnInit(): void {
-    this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+    // this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+    this.panelListType = "SSP";
   }
 
 
@@ -64,24 +66,25 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
 
   pageChange(newPage: any) {
-    this.questionaireService.SetQuestionValid(true)
-    if (this.parentForm.valid || (newPage < this.config.currentPage)) {     
-      this.config.currentPage = newPage;
-      //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
-      if (this.houseHold) {
-        this.router.navigate(['/demographics/questionaire/true/' + this.memberNo + '/' + newPage + '/true']).then(() => {
-          window.location.reload();
-        });
-      } else {
-        this.router.navigate(['/demographics/questionaire/' + this.memberNo + '/' + this.homeNo + '/' + newPage]).then(() => {
-          window.location.reload();
-        });
-      }
+    this.currentPage = newPage;
+    this.questionaireService.SetQuestionValid(true);
+    if( (newPage < this.config.currentPage)) {
+      this. redirect();
     }
-
-
-    //  localStorage.setItem('currentPage', newPage);
-    //this.config.currentPage = newPage;
+    else if (this.parentForm.valid) {
+      Object.keys(this.parentForm.controls).forEach(key => {
+        const questionControl = this.parentForm.controls[key];
+        if(questionControl.valid) {
+          const keys = Object.keys(questionControl.value);
+          const selectedQuestion = this.questionList.find(q=> q.queNo == keys[0] || q.queId == keys[0]);
+          if(selectedQuestion) {
+          selectedQuestion.questionLevel1Id = questionControl.value[keys[0]];
+          selectedQuestion.otherDescription = questionControl.value[keys[1]];
+          this.changeEvent(selectedQuestion);
+          }
+        }
+      });
+    }
   }
 
   createQuestion(): FormGroup {
@@ -106,21 +109,36 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
     if (this.houseHold && this.panelListType != "VAM") {
       this.questionaireService.customCreate(obj, QuestionConstants.houseHoldAnswers).subscribe(data => {
-        console.log(data);
+        this.redirect();
       });
     } else if (this.houseHold == undefined && this.panelListType != "VAM") {
       this.questionaireService.customCreate(obj, QuestionConstants.answers).subscribe(data => {
-        console.log(data);
+        this.redirect();
       });
     } else if (this.houseHold == undefined && this.panelListType == "VAM") {
       this.questionaireService.customCreate(obj, QuestionConstants.vam_answers).subscribe(data => {
-        console.log(data);
+        this.redirect();
       });
     } else {
       this.questionaireService.customCreate(obj, QuestionConstants.vam_houseHoldAnswers).subscribe(data => {
-        console.log(data);
+        this.redirect();
       });
     }
+  }
+
+  redirect() {
+    if(this.config.currentPage != this.currentPage) {   
+    this.config.currentPage = this.currentPage;
+    if (this.houseHold) {
+      this.router.navigate(['/demographics/questionaire/true/' + this.memberNo + '/' + this.currentPage + '/true']).then(() => {
+        window.location.reload();
+      });
+    } else {
+      this.router.navigate(['/demographics/questionaire/' + this.memberNo + '/' + this.homeNo + '/' + this.currentPage]).then(() => {
+        window.location.reload();
+      });
+    }
+  }
   }
 
   toFormGroup(questions: any[]) {
@@ -141,21 +159,23 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   review() {
+    this.pageChange(this.config.currentPage);
     this.questionaireService.SetQuestionValid(true)
     this.markCompleteEvent.emit({ isBack: false });
     if(this.parentForm.valid) {
+      
     const panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
 
     if (this.houseHold) {
       if (panelistType != "VAM") {
-        this.questionaireService.customRead(QuestionConstants.houseHoldQuestions).subscribe(list => {
+        this.questionaireService.customRead(QuestionConstants.houseHoldQuestions+ '/' + this.memberNo).subscribe(list => {
           this.questionList = list;
           this.transForm();
 
         })
       }
       else {
-        this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions).subscribe(list => {
+        this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
           this.questionList = list;
           this.transForm();
         })
@@ -181,9 +201,15 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     this.isReview = true;
     this.questionList.map((q: any) => {
       if (q.selected.length) {
-        const obj: any = { hhQueNo: q.hhQueNo, queNo: q.queNo, title: q.title, titleFr: q.titleFr, anuswer: {} };
-        obj['anuswer'] = q.row.find((r: { value: any; }) => r.value == q.selected[0].rowValue);
+        const obj: any = { hhQueNo: q.hhQueNo, queNo: q.queNo, title: q.title, titleFr: q.titleFr, answer: {} };
+        if(q.selected[0].otherDesc) {
+          obj['answer'] = {text : q.selected[0].otherDesc}
+        } else {
+        obj['answer'] = q.row.find((r: { value: any; }) => r.value == q.selected[0].rowValue);
+        }
+        if(obj['answer']) {
         this.finalQuestionLIst.push(obj);
+        }
       }
     })
   }

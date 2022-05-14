@@ -133,7 +133,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       this.error = true;
     }else if(this.notUsed) {
       const message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success');
-       this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+       this.router.navigate(['survey/Thankyou'], {state: {message: message}});
      }else if(this.singleMemeber) {
        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
      } else if(this.singleUserFlow) {
@@ -151,12 +151,12 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     } else{
        message =this.translate.instant('deviceInformation.success');
     }
-         this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+         this.router.navigate(['survey/Thankyou'], {state: {message: message}});
    }
 
    resubmitForm() {
     const message = 'deviceInformation.resubmit';
-    this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+    this.router.navigate(['survey/Thankyou'], {state: {message: message}});
   }
 
 }

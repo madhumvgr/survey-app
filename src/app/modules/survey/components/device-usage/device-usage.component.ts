@@ -101,7 +101,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     } else{
        message =this.translate.instant('deviceInformation.success');
     }
-         this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+         this.router.navigate(['survey/Thankyou'], {state: {message: message}});
    }
 
 }

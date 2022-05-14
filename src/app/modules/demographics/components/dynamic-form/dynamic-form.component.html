@@ -4,7 +4,7 @@
             <ng-container [ngSwitch]="question.queType">
                 <div *ngSwitchCase="'RB'">
                     <app-radiogroup *ngIf="question.maxLevel==1" [houseHold]="houseHold" [parentForm]="parentForm"
-                        (changeEvent1)="changeEvent($event)" [question]="question"></app-radiogroup>
+                        [question]="question"></app-radiogroup>
 
                     <app-matrix-rb *ngIf="question.maxLevel==2" [houseHold]="houseHold" [parentForm]="parentForm"
                         (changeEvent1)="changeEvent($event)" [question]="question"></app-matrix-rb>
@@ -45,7 +45,7 @@
         <div *ngFor="let question of finalQuestionLIst">
             <div>
                 <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h4>
-                <p>{{question.anuswer.text}}</p>
+                <p>{{question.answer.text}}</p>
 
             </div>
         </div>

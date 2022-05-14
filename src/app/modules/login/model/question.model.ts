@@ -20,6 +20,7 @@ export class Question extends Resource {
   selected?:any[] =[];
   titleFr?: string;
   hhQueNo?:string;
+  otherDescription?:string;
   }
 
 export class QuestionSerializer {

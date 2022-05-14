@@ -55,13 +55,13 @@ export class QuestionarieComponent implements OnInit {
 
     if (this.houseHold) {
       if(this.panelistType != "VAM") {
-      this.questionaireService.customRead(QuestionConstants.houseHoldQuestions).subscribe(list => {
+      this.questionaireService.customRead(QuestionConstants.houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
         this.questionList = list;
         this.totalNoPages = Math.ceil((this.questionList.length)/2)
       })
     }
       else{
-        this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions).subscribe(list => {
+        this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
           this.questionList = list;
           this.totalNoPages = Math.ceil((this.questionList.length)/2)
         })

@@ -52,8 +52,11 @@
                         <div *ngIf="member?.memberSurveyStatus === 'Not Started'">
                             <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">{{"demographics.startButton" | translate}}</button>
                         </div>
-                        <div *ngIf="member?.memberSurveyStatus === 'In Progress'">
+                        <div *ngIf="member?.memberSurveyStatus === 'In Progress'"> 
                             <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">{{"demographics.continueButton" | translate}}</button>
+                        </div>
+                        <div *ngIf="member?.memberSurveyStatus === 'Completed'"> 
+                            <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">{{'deviceUsage.completedButton' | translate}}</button>
                         </div>
                           </div>
 

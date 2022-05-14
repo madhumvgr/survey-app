@@ -38,8 +38,8 @@ const routes: Routes = [
       { path: 'not-in-use-devices/:state/:deviceId', component: NotInUseDevicesComponent },
       { path: 'completed-devices/:state/:deviceId', component: CompletedDevicesViewComponent},
       {path:  'tv-Channels/:state/:deviceId/:memberNo/:userCount/:list', component: TvChannelsComponent },
-      { path: 'Thankyou/:deviceName', component: ThankyouComponent },
-      { path: 'device/Thankyou/:deviceName/:state/:deviceId', component: ThankyouComponent },
+      { path: 'Thankyou', component: ThankyouComponent },
+      { path: 'device/Thankyou/:state/:deviceId', component: ThankyouComponent },
       { path: 'Thankyou/deviceList/:state', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

@@ -247,7 +247,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
             this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
               res => {
                 this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
-                this.router.navigate(['survey/device/Thankyou/'+this.deviceName+'/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "devices"} });
+                this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "devices"} });
               });
             }else {
                this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
@@ -303,7 +303,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
          message =this.translate.instant('deviceInformation.success2');
       } else{
          message =this.translate.instant('deviceInformation.success');
-      }      this.router.navigate(['survey/Thankyou/' + this.deviceName], { state: { message: message } });
+      }      this.router.navigate(['survey/Thankyou'], { state: { message: message } });
 
     }
   }

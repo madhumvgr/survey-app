@@ -120,7 +120,7 @@ exitEvent(isBackAction:boolean) {
      message =this.translate.instant('deviceInformation.success');
   }
   this.updateForm();
-  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+  this.router.navigate(['survey/Thankyou'], {state: {message: message}});
 }
 
   updateForm() {
@@ -135,7 +135,7 @@ exitEvent(isBackAction:boolean) {
   }
   resubmitForm() {
   const message = 'deviceInformation.resubmit';
-  this.router.navigate(['survey/Thankyou/'+this.deviceName], {state: {message: message}});
+  this.router.navigate(['survey/Thankyou'], {state: {message: message}});
   }
 
   showWindow(){

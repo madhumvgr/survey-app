@@ -3,19 +3,19 @@
     <h3>{{question?.hhQueNo}}.{{ isFrance? question?.titleFr: question?.title}}</h3>
     <ng-container *ngFor="let subQuestion of question.subSurveyQueAnsDTO">
         <h3>{{subQuestion?.hhQueNo}}.{{ isFrance? subQuestion?.titleFr: subQuestion?.title}}</h3>
-        
+
         <div>
             <div class="top-left">Yes</div>
             <div class="top-right">
-                <input class="form-check-input" type="radio"
-                   value="Y" />
+                <input class="form-check-input" type="radio" [formControlName]="subQuestion?.queId || ''"
+                    (change)="changeEvent('Y',false,false, true)" value="Y" />
             </div>
         </div>
         <div>
             <div class="top-left">No</div>
             <div class="top-right">
-                <input class="form-check-input" type="radio"  
-                   value="N" />
+                <input class="form-check-input" type="radio" [formControlName]="subQuestion?.queId|| ''"
+                    (change)="changeEvent('N',false,false, true)" value="N" />
             </div>
         </div>
         <!-- <span class="danger" *ngIf="yesNoFormControl.errors?.required">
@@ -24,21 +24,27 @@
         <!-- <span class="danger" *ngIf="yesNoFormControl.errors?.required">
             Please select the field. 
         </span> -->
-        <div *ngFor="let subQ of subQuestion.subSurveyQueAnsDTO">
-            <div *ngIf="subQ.queType =='TEXT'" >
-                <h3>{{ isFrance? subQ?.titleFr: subQ?.title}}</h3>
-                <input type="text"/>
-            </div>
-            <div *ngIf="subQ.queType =='RB'" >
-                <h3>{{subQ?.hhQueNo}}.{{ isFrance? subQ?.titleFr: subQ?.title}}</h3>
-                <div class="form-check mb-2" *ngFor="let row of subQ?.row; let i=index">
-                    <input class="form-check-input"
-                        type="radio">
-                    <label class="form-check-label">{{isFrance?
-                        row?.frText: row?.text}}</label>
+        <ng-container *ngIf="subQuestion?.queId">
+            <ng-container *ngIf="childFormControl(subQuestion?.queId).value=='Y'">
+                <div *ngFor="let subQ of subQuestion.subSurveyQueAnsDTO">
+                    <div *ngIf="subQ.queType =='TEXT'">
+                        <h3>{{ isFrance? subQ?.titleFr: subQ?.title}}</h3>
+                        <input type="text" (focusOut)="changeEvent('',true,false,false)"
+                            [formControlName]="subQuestion?.queId+''+subQ?.queId|| ''" />
+                    </div>
+                    <div *ngIf="subQ.queType =='RB'">
+                        <h3>{{subQ?.hhQueNo}}.{{ isFrance? subQ?.titleFr: subQ?.title}}</h3>
+                        <div class="form-check mb-2" *ngFor="let row of subQ?.row; let i=index">
+                            <input class="form-check-input" (change)="changeEvent(''+row?.value,false,true,false)"
+                                type="radio" [formControlName]="subQuestion?.queId+''+subQ?.queId|| ''"
+                                [value]="row?.value">
+                            <label class="form-check-label">{{isFrance?
+                                row?.frText: row?.text}}</label>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </ng-container>
+        </ng-container>
     </ng-container>
     <!-- <div [formGroup]="childFormGroup" class="container" *ngFor="let row of question?.row;let i=index"
         [style.background-color]="i%2 == 1 ? '#888' : ''">

@@ -18,11 +18,11 @@ export class MatrixSubLevelComponent implements OnChanges {
   onlyOnce = false;
   //@Input() question!: Question;
   @Input() houseHold: any;
-  @Input() questionId:any;
+  @Input() questionId: any;
   cols: Column[] = [];
   isFrance: any = false;
-  constructor(  private localStorageService:LocalStorageService) { 
-    this.localStorageService.getLanguageSubject().subscribe( val => {
+  constructor(private localStorageService: LocalStorageService) {
+    this.localStorageService.getLanguageSubject().subscribe(val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     });
   }
@@ -32,46 +32,62 @@ export class MatrixSubLevelComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     var groupedCols = this.groupBy(this.question.column);
-      if (groupedCols) {
-        this.cols = groupedCols[Object.keys(groupedCols)[0]];
-      }
+    if (groupedCols) {
+      this.cols = groupedCols[Object.keys(groupedCols)[0]];
+    }
 
     if (!this.onlyOnce && this.question) {
       this.childFormGroup = new FormGroup({
       });
       //set selected value into childForm
       // let selected = this.question.selected;
-      let prevValue = { rowValue: '', colValue: '', answer:'' }
+      let prevValue = { rowValue: '', colValue: '', answer: '' }
       // if (selected) {
       //   prevValue = selected[selected.length-1];
       // }
-      if (this.question?.row && this.question.selected) {
-        let rows = this.question.row;
-        rows.forEach(row => {
-          // getprevious value for the row. 
-          this.cols.forEach ( col => {
-            prevValue = this.getPrevSelectedValue(this.question.selected, row.value, col.value);
-            if (this.question?.mandatory && prevValue) {
-              this.childFormGroup.addControl('' + this.question?.queId + row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer, Validators.required));
-            } else {
-              if (prevValue && prevValue.colValue)
-                this.childFormGroup.addControl('' + this.question?.queId +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer));
-              else {
-                this.childFormGroup.addControl('' + this.question?.queId + row.value+col.value, new FormControl(''))
+      if (this.question?.row && this.question.subSurveyQueAnsDTO) {
+
+        this.question.subSurveyQueAnsDTO.forEach(subQues => {
+          if (subQues.selected && subQues.selected.length != 0) {
+            let value = subQues.selected[0].answer;
+            this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value, Validators.required));
+          }
+          else {
+            this.childFormGroup.addControl('' + subQues?.queId, new FormControl('', Validators.required));
+          }
+          if (subQues.subSurveyQueAnsDTO) {
+            let sub2LevQues = subQues.subSurveyQueAnsDTO;
+            sub2LevQues.forEach(sub2Lev => {
+              if (sub2Lev.selected && sub2Lev.selected.length != 0) {
+                let sub2LevAns = sub2Lev.selected[0].answer;
+                if (sub2Lev.queType == 'TEXT') {
+                  sub2LevAns = sub2Lev.selected[0].otherDesc;
+                } else {
+                  sub2LevAns = sub2Lev.selected[0].answer;
+                }
+
+                this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(sub2LevAns))
+              } else {
+                this.childFormGroup.addControl('' + subQues?.queId + sub2Lev.queId, new FormControl())
               }
-            }
-          });
-        });
+            })
+          }
+
+
+        })
       }
-      
       this.parentForm.addControl('' + this.question?.queId, this.childFormGroup);
       this.onlyOnce = true;
     }
   }
-  getPrevSelectedValue(selected: any[] | undefined, value: any, colValue : any) {
+  getPrevSelectedValue(selected: any[] | undefined, value: any, colValue: any) {
     if (selected) {
       return selected.find(sel => sel.rowValue === value && sel.colValue === colValue);
     }
+  }
+
+  childFormControl(queId:any) {
+    return this.childFormGroup.controls[queId];
   }
 
   groupBy(objectArray: any) {
@@ -85,96 +101,43 @@ export class MatrixSubLevelComponent implements OnChanges {
     }, {});
   }
 
-  changeEvent(value: any, colSeq: any,answer?:any) {
-    this.parentForm.get('' + this.question?.queId)?.get('' + this.question.queId)?.setValue(value+answer);
-    this.question.answer = answer;
-    this.question.questionLevel1Id = value;
-    this.question.questionLevel2Id = colSeq;
+  changeEvent(value: any,isText:boolean,isLevel1:boolean, isLevel:boolean) {
+    let questionNo;
+    if(this.question?.queNo){
+      questionNo= this.question?.queNo;
+    }else{
+      questionNo= this.question?.queId;
+    }
+    if(isLevel){
+      this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
+      this.question.condQuestionId= parseInt(questionNo || "1");   
+      this.question.condQuestionLevel1Id=null; 
+      this.question.condQuestionLevel2Id=null; 
+      this.question.condAnswer=value; 
+      this.question.condQueType="";
+      this.question.condMaxLevel="1";
+      this.question.condOtherDescription="";
+    }else if(isLevel1){
+      this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
+      this.question.condQuestionId= parseInt(questionNo || "1");   
+      this.question.condQuestionLevel1Id=value; 
+      this.question.condQuestionLevel2Id=null; 
+      this.question.condAnswer=value; 
+      this.question.condQueType="";
+      this.question.condMaxLevel="1";
+      this.question.condOtherDescription="";
+    }else if(isText){
+      this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
+      this.question.condQuestionId= parseInt(questionNo || "1");   
+      this.question.condQuestionLevel1Id=null; 
+      this.question.condQuestionLevel2Id=null; 
+      this.question.condAnswer="Y"; 
+      this.question.condQueType="TEXT";
+      this.question.condMaxLevel="1";
+      this.question.condOtherDescription=value;
+    }
     this.changeEvent1.emit(this.question);
   }
-  
-  // question: Question = {
-  //   "id":6,
-  //   "queId": "6",
-  //   "queNo": "",
-  //   "hhQueNo": "6",
-  //   "type": "matrix-yes-no",
-  //   "queType": "",
-  //   "name": "householdSurvey",
-  //   "title": "Matrix sub level question english",
-  //   "description": "Which of the following do you have attached to any TV in your household (check all that apply)?",
-  //   "titleFr": "Matrix sub level question france",
-  //   "descriptionFr": "Lequel des appareils suivants est relié à l’un ou l’autre des téléviseurs présents dans votre domicile ? ",
-  //   "mandatory": true,
-  //   "maxLevel": "1",
-  //   "subQuestions": [
-  //     {
-  //       "id": 6,
-  //       "queId": "6a",
-  //       "queNo": "",
-  //       "hhQueNo": "6",
-  //       "type": "yes-no",
-  //       "queType": "",
-  //       "name": "householdSurvey",
-  //       "title": "",
-  //       "description": "Which of the following do you have attached to any TV in your household (check all that apply)?",
-  //       "titleFr": "",
-  //       "descriptionFr": "Lequel des appareils suivants est relié à l’un ou l’autre des téléviseurs présents dans votre domicile ? ",
-  //       "mandatory": true,
-  //       "maxLevel": 1,
-  //       "subQuestions": [
-  //         {
-  //           "id":6,
-  //           "condition": 1,
-  //           "queId": "6ai",
-  //           "queNo": "",
-  //           "hhQueNo": "6ai",
-  //           "type": "label",
-  //           "queType": "label",
-  //           "name": "householdSurvey",
-  //           "title": "",
-  //           "description": "Which of the following do you have attached to any TV in your household (check all that apply)?",
-  //           "titleFr": "",
-  //           "descriptionFr": "Lequel des appareils suivants est relié à l’un ou l’autre des téléviseurs présents dans votre domicile ? ",
-  //           "mandatory": true,
-  //           "maxLevel": 1
-  //         },
-  //         {
-  //           "id":6,
-  //           "condition": 1,
-  //           "queId": "6aii",
-  //           "queNo": "",
-  //           "hhQueNo": "6aii",
-  //           "type": "label",
-  //           "queType": "yes-no",
-  //           "name": "householdSurvey",
-  //           "title": "",
-  //           "description": "Which of the following do you have attached to any TV in your household (check all that apply)?",
-  //           "titleFr": "",
-  //           "descriptionFr": "Lequel des appareils suivants est relié à l’un ou l’autre des téléviseurs présents dans votre domicile ? ",
-  //           "mandatory": true,
-  //           "maxLevel": 1
-  //         },
-  //         {
-  //           "id":6,
-  //           "condition": 0,
-  //           "queId": "6ai",
-  //           "queNo": "",
-  //           "hhQueNo": "6ai",
-  //           "type": "label",
-  //           "queType": "yes-no",
-  //           "name": "householdSurvey",
-  //           "title": "",
-  //           "description": "Which of the following do you have attached to any TV in your household (check all that apply)?",
-  //           "titleFr": "",
-  //           "descriptionFr": "Lequel des appareils suivants est relié à l’un ou l’autre des téléviseurs présents dans votre domicile ? ",
-  //           "mandatory": true,
-  //           "maxLevel": 1
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
 }
 export class Column {
   value!: number;

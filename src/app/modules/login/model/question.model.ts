@@ -24,6 +24,13 @@ export class Question extends Resource {
   condition?: any;
   subQuestions?: Question[]=[];
   subSurveyQueAnsDTO?: Question[]=[];
+  condQuestionId?: number;
+  condQuestionLevel1Id?: null;
+  condQuestionLevel2Id?: null;
+  condAnswer?: string;
+  condQueType?: string;
+  condMaxLevel?: string;
+  condOtherDescription?: string;
   }
 
 export class QuestionSerializer {

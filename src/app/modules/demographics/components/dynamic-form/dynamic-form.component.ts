@@ -104,12 +104,13 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['memberNo'] = this.memberNo;
       obj['maxLevel'] = question.maxLevel;
       obj['otherDescription'] = question.otherDescription;
-      obj['condQuestionId'] = null,
-      obj['condQuestionLevel2Id'] = null,
-      obj['condAnswer'] = null,
-      obj['condQueType'] = null,
-      obj['condMaxLevel'] = null,
-      obj['condOtherDescription'] = null
+      obj['condQuestionId'] = question.condQuestionId;
+      obj['condQuestionLevel1Id'] = question.condQuestionLevel1Id;
+      obj['condQuestionLevel2Id'] = question.condQuestionLevel2Id;
+      obj['condAnswer'] = question.condAnswer;
+      obj['condQueType'] = question.condQueType;
+      obj['condMaxLevel'] = question.condMaxLevel;
+      obj['condOtherDescription'] = question.condOtherDescription;
     } else {
     obj['questionId'] = question.queId;
     obj['queType'] = question.queType;
@@ -119,6 +120,13 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     obj['memberNo'] = this.memberNo;
     obj['maxLevel'] = question.maxLevel;
     obj['otherDescription'] = question.otherDescription;
+    obj['condQuestionId'] = question.condQuestionId;
+    obj['condQuestionLevel1Id'] = question.condQuestionLevel1Id;
+      obj['condQuestionLevel2Id'] = question.condQuestionLevel2Id;
+      obj['condAnswer'] = question.condAnswer;
+      obj['condQueType'] = question.condQueType;
+      obj['condMaxLevel'] = question.condMaxLevel;
+      obj['condOtherDescription'] = question.condOtherDescription;
   }
 
     if (this.houseHold && this.panelListType != "VAM") {

@@ -30,8 +30,7 @@
             <div class="bg-white shadow-sm rounded p-4">
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">{{"registrationForm.userName" | translate}}</label>
-                    <input type="email" class="form-control" id="inputEmail" formControlName="email"
-                        aria-describedby="emailHelp">
+                    <input type="text" class="form-control" id="inputEmail" formControlName="email">
                     <span class="text-danger"
                         *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
                         {{"registrationForm.emailRequired" | translate}}

@@ -50,6 +50,9 @@ export class QuestionarieComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params=>{
+      this.pageNo = params['pageNo'];
+    })
     this.panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
     // household owner 
     //SSP

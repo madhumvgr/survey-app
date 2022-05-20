@@ -50,8 +50,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this.show = true;
     this.hide = false;
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
+      email: ['', [Validators.required]],
+      password: ['', Validators.compose([Validators.required])],
     }
     );
   }
@@ -70,7 +70,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.showError = false;
     this.submitted = true;
     if (this.loginForm.valid) {
       console.table(this.loginForm.value);
@@ -116,9 +116,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
 
         }
-      }, err => this.showError = true,
-        () => this.showError = true);
+      }, err => this.showError = true);
 
+    } else{
+      this.showError = true
     }
   }
 }

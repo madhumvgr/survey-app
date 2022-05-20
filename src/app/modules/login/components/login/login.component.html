@@ -29,7 +29,7 @@
                 <p>
                     {{ 'loginPage.text' | translate }}
                     <a (click)="navigateTo()" style="text-decoration: underline"
-                        [routerLink]="['/login/cookies']">Cookie Policy</a>
+                        [routerLink]="['/login/cookies']">{{ 'loginPage.cookie' | translate }}</a>{{ 'loginPage.sub-text' | translate }}
                 </p>
             </div>
             <!--end Row-->
@@ -40,8 +40,7 @@
                     <div class="bg-white shadow-sm rounded p-4">
                         <div class="mb-3">
                             <label for="inputEmail" class="form-label">{{ 'loginPage.email' | translate }}</label>
-                            <input type="email" class="form-control" id="inputEmail" formControlName="email"
-                                aria-describedby="emailHelp">
+                            <input type="text" class="form-control" id="inputEmail" formControlName="email">
                             <span class="text-danger"
                                 *ngIf="(loginFormControl.email.touched || submitted) && loginFormControl.email.errors?.required">
                                 {{ 'loginPage.emailRequiredText' | translate }}
@@ -68,16 +67,20 @@
                                 *ngIf="(loginFormControl.password.touched || submitted) && loginFormControl.password.errors?.required">
                                 {{ 'loginPage.passwordRequiredText' | translate }}
                             </span>
+                            <div *ngIf="showError">
+                                <span  class="text-danger">
+                                    {{ 'loginPage.userNameOrPasswordIncoorectText' | translate }}
+                                </span>
+                            </div>
                             
-                            <span class="text-danger"
+                            <!-- <span class="text-danger"
                                 *ngIf="loginFormControl.password.touched && loginFormControl.password.errors?.invalidPassword">
-                                <!--Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
-                                letter and 1 number-->
+                               
                                 {{ 'loginPage.userNamePasswordNotMatchText' | translate }}
                             </span>
                             <div *ngIf="showError" class=" text-danger error">
                                 {{ 'loginPage.userNamePasswordNotMatchText' | translate }}
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -91,11 +94,8 @@
         <form class="col-md-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="px-3 mb-3">
                 <button type="submit" class="btn btn-primary">{{ 'loginPage.loginButton' | translate }}</button>
-                <span *ngIf="showInvalidError" class="text-danger">
-                    {{ 'loginPage.userNameOrPasswordIncoorectText' | translate }}
-                </span>
-
             </div>
+           
             <div class="px-3">
                 <a [routerLink]="['/login/forgot-password']" class="font-size: small"
                     style="text-decoration: underline">{{ 'loginPage.forgotPassword' | translate }}</a>

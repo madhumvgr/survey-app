@@ -28,6 +28,7 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
 import { MatrixTwoLevelComponent } from './components/matrix-two-level/matrix-two-level.component';
 import { MatrixRbComponent } from './components/matrix-rb/matrix-rb.component';
 import { MatrixSubLevelComponent } from './components/matrix-sub-level/matrix-sub-level.component';
+import { TextComponent } from './components/text/text.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MatrixSubLevelComponent } from './components/matrix-sub-level/matrix-su
     DynamicFormComponent,
     MatrixTwoLevelComponent,
     MatrixRbComponent,
-    MatrixSubLevelComponent
+    MatrixSubLevelComponent,
+    TextComponent
   ],
   imports: [
 

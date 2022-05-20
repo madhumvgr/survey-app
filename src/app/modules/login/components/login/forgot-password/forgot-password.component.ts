@@ -13,17 +13,18 @@ import { UserService } from '../../../services/user.service';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  forgotForm: FormGroup =this.fb.group({});
+  forgotForm: FormGroup = this.fb.group({});
   submitted = false;
-  showInvalidError =false;
+  showInvalidError = false;
   showError = false;
-  
+  language: any;
+
   constructor(private fb: FormBuilder,
     private userService: UserService, private router: Router) { }
   ngOnInit(): void {
     this.forgotForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-       }
+      email: ['', [Validators.required]],
+    }
     );
   }
 
@@ -33,20 +34,25 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.language = localStorage.lang;
+
     if (this.forgotForm.valid) {
       console.table(this.forgotForm.value);
       //this.router.navigate(['/login/login']);
-      
-      let forgotPassword = this.forgotFormControl.email.value;
-    
-    
+
+      let forgotPassword = {
+        mail: this.forgotFormControl.email.value,
+        lang: this.language
+      }
+
+
       this.userService.initiateForgotPassword(forgotPassword).subscribe(response => {
         if (response) {
           this.showError = false;
-         
+
         }
         this.router.navigate(['/login/reset/init']);
-        
+
       }, err => this.showError = true,
         () => this.showError = true)
     }

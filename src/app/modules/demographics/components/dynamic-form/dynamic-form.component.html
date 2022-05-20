@@ -32,10 +32,10 @@
                 </div>
                 <div *ngSwitchCase="'matrix-yes-no'">
                     <app-matrix-sub-level>
-                        
+
                     </app-matrix-sub-level>
                 </div>
-                
+
                 <div *ngSwitchCase="'CB'">
                     <app-checkbox [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
                         [question]="question">
@@ -43,28 +43,62 @@
                 </div>
 
                 <div *ngSwitchCase="''">
-                    <app-matrix-sub-level  [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
-                    [question]="question">
-                            
+                    <app-matrix-sub-level [houseHold]="houseHold" [parentForm]="parentForm"
+                        (changeEvent1)="changeEvent($event)" [question]="question">
+
                     </app-matrix-sub-level>
                 </div>
-            
+
+                <div *ngSwitchCase="'TEXT'">
+                    <app-text [houseHold]="houseHold" [parentForm]="parentForm" (changeEvent1)="changeEvent($event)"
+                        [question]="question">
+                    </app-text>
+                </div>
+
                 <div *ngSwitchDefault>
                     Default type
-                  Default type, need to handle. 
+                    Default type, need to handle.
                 </div>
             </ng-container>
         </div>
     </ng-container>
+
     <div *ngIf="isReview">
         <div *ngFor="let question of finalQuestionLIst">
             <div>
                 <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h4>
-                <p>{{question.anuswer.text}}</p>
+                <!-- <h4 *ngIf="question.type =='matrix-subquestion'">{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h4> -->
+                <ng-container *ngIf='question.type !== "matrix-subquestion"'>
+                    <p *ngIf="question?.answer?.text">{{question?.answer?.text}}</p>
+                    <div *ngIf="!question?.answer?.text">
+                        <div *ngFor="let q of question.answer">
+                            <p id="leftbox">{{q.text}}</p>
+                            <p id="centerbox">{{q.test1}}</p>
+                            <p id="rightbox">{{q.answer}}</p>
+                        </div>
+                    </div>
+                </ng-container>
 
+                <ng-container *ngIf='question.type == "matrix-subquestion"'>
+                    <div *ngFor="let q of question.subSurveyQueAnsDTO">
+                        <h5>{{houseHold? q?.hhQueNo : q?.queNo }}.{{ q?.title}}</h5>
+                        <p *ngIf="q?.answer == 'No'">{{q?.answer}}</p>
+                        <p *ngIf="q?.answer == 'Yes' && !q.subSurveyQueAnsDTO.length">{{q?.answer}}</p>
+                        <div *ngIf="q?.answer == 'Yes' && q.subSurveyQueAnsDTO.length">
+                            <div *ngIf="q.subSurveyQueAnsDTO.subQuestions.length">
+                                <div *ngFor="let sub of q.subSurveyQueAnsDTO.subQuestions">
+                                    <p id="leftbox">{{sub.title}}</p>
+                                    <p id="rightbox">{{sub.answer}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- <p *ngIf="isQuestion">{{question?.anuswer}}</p> -->
             </div>
         </div>
     </div>
+
     <br>
     <!-- Action buttons -->
     <!-- <div class="col-xs- d-grid gap-2 d-md-block"> -->
@@ -78,49 +112,47 @@
 
     <!-- app.component.html -->
 
-         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="pageChange($event)">
+    <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="pageChange($event)">
 
 
-            <div class="custom-pagination" class="col-xs-6 d-grid gap-2 d-md-block">
+        <div class="custom-pagination" class="col-xs-6 d-grid gap-2 d-md-block">
 
-                <ng-container *ngIf="!houseHold">
-                    <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage()"
-                        [routerLink]="['/demographics/demographics-individual-members']">Back</button>
+            <ng-container *ngIf="!houseHold">
+                <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage()"
+                    [routerLink]="['/demographics/demographics-individual-members']">Back</button>
 
-                    <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage() && !isReview"
-                        (click)="p.previous()">Back</button>
+                <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage() && !isReview"
+                    (click)="p.previous()">Back</button>
 
-                    <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage() && isReview" 
-                        (click)="goToLastPage()">Back</button>
-                </ng-container>
+                <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage() && isReview"
+                    (click)="goToLastPage()">Back</button>
+            </ng-container>
 
-                <ng-container *ngIf="houseHold">
-                    <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage() && !isReview"
-                        [routerLink]="['/demographics/demographics-owner']">Back</button>
+            <ng-container *ngIf="houseHold">
+                <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage() && !isReview"
+                    [routerLink]="['/demographics/demographics-owner']">Back</button>
 
-                    <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage() && isReview"
-                        (click)="goToLastPage()">Back</button>
+                <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage() && isReview"
+                    (click)="goToLastPage()">Back</button>
 
-                    <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage()"
-                        (click)="p.previous()">Back</button>
-                </ng-container>
+                <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage()" (click)="p.previous()">Back</button>
+            </ng-container>
 
 
-                <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()">Save & Exit</button>
+            <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()">Save & Exit</button>
 
-                <button (click)="p.next()" *ngIf="!p.isLastPage()" type="button"
-                    class="btn btn-primary ms-md-3">Continue</button>
+            <button (click)="p.next()" *ngIf="!p.isLastPage()" type="button"
+                class="btn btn-primary ms-md-3">Continue</button>
 
-                <button *ngIf="p.isLastPage() && !isReview" type="submit" (click)="review()"
-                    class="btn btn-primary ms-md-3">Review</button>
+            <button *ngIf="p.isLastPage() && !isReview" type="submit" (click)="review()"
+                class="btn btn-primary ms-md-3">Review</button>
 
-                <button *ngIf="isReview" type="submit" (click)="submit()"
-                    class="btn btn-primary ms-md-3">Submit</button>
+            <button *ngIf="isReview" type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit</button>
 
-            </div>
-        </pagination-template>
+        </div>
+    </pagination-template>
 
 </div>
 <modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
-    
+
 </modal>

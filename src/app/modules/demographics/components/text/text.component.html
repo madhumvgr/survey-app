@@ -1,0 +1,20 @@
+<div class="mb-4">
+
+    <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h4>
+
+    <div [formGroup]="childFormGroup">
+
+        <div class="form-check mb-2">
+
+            <input id="row{{houseHold? question?.hhQueNo : question?.queNo}}"
+                 [formControlName]="question?.queNo ||  question?.queId ||''"
+                type="text" class="form-control" (focusout)="focusOut($event)">           
+        </div>
+        
+
+        <span class="danger" *ngIf="textFormControl.errors?.required && buttonClicked">
+            Please select the field.
+        </span>
+
+    </div>
+</div>

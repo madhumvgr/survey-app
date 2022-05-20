@@ -1,21 +1,20 @@
 <br />
 <ng-container [formGroup]="childFormGroup">
-    <h3>{{question?.hhQueNo}}.{{ isFrance? question?.titleFr: question?.title}}</h3>
+    <h4>{{question?.hhQueNo}}.{{ isFrance? question?.titleFr: question?.title}}</h4>
     <ng-container *ngFor="let subQuestion of question.subSurveyQueAnsDTO">
-        <h3>{{subQuestion?.hhQueNo}}.{{ isFrance? subQuestion?.titleFr: subQuestion?.title}}</h3>
-
-        <div>
+        <h4>{{subQuestion?.hhQueNo}}.{{ isFrance? subQuestion?.titleFr: subQuestion?.title}}</h4>
+        <div class ="border">
             <div class="top-left">Yes</div>
             <div class="top-right">
-                <input class="form-check-input" type="radio" [formControlName]="subQuestion?.queId || ''"
-                    (change)="changeEvent('Y',false,false, true)" value="Y" />
+                <input class="form-check-input mb-2" type="radio" [formControlName]="subQuestion?.queId || ''"
+                    (change)="changeEvent('Y',false,false, true, subQuestion?.queId)" value="Y" />
             </div>
         </div>
-        <div>
+        <div class ="border1 mb-2">
             <div class="top-left">No</div>
             <div class="top-right">
-                <input class="form-check-input" type="radio" [formControlName]="subQuestion?.queId|| ''"
-                    (change)="changeEvent('N',false,false, true)" value="N" />
+                <input class="form-check-input mb-2" type="radio" [formControlName]="subQuestion?.queId|| ''"
+                    (change)="changeEvent('N',false,false, true, subQuestion?.queId)" value="N" />
             </div>
         </div>
         <!-- <span class="danger" *ngIf="yesNoFormControl.errors?.required">
@@ -26,16 +25,16 @@
         </span> -->
         <ng-container *ngIf="subQuestion?.queId">
             <ng-container *ngIf="childFormControl(subQuestion?.queId).value=='Y'">
-                <div *ngFor="let subQ of subQuestion.subSurveyQueAnsDTO">
-                    <div *ngIf="subQ.queType =='TEXT'">
-                        <h3>{{ isFrance? subQ?.titleFr: subQ?.title}}</h3>
-                        <input type="text" (focusOut)="changeEvent('',true,false,false)"
-                            [formControlName]="subQuestion?.queId+''+subQ?.queId|| ''" />
+                <div *ngFor="let subQ of subQuestion.subSurveyQueAnsDTO" style="margin-left: 20px !important; margin-bottom: 15px !important;">
+                    <div *ngIf="subQ.queType =='TEXT'" class ="mb-2"> 
+                        <h4>{{ isFrance? subQ?.titleFr: subQ?.title}}</h4>
+                        <input type="text" class ="form-control" (focusOut)="changeEvent($event,true,false,false, subQ?.mainQueId, subQ?.queId)" (change)="changeEvent($event,true,false,false, subQ?.mainQueId, subQ?.queId)"
+                            [formControlName]="subQuestion?.queId+''+subQ?.queId|| ''">
                     </div>
-                    <div *ngIf="subQ.queType =='RB'">
-                        <h3>{{subQ?.hhQueNo}}.{{ isFrance? subQ?.titleFr: subQ?.title}}</h3>
+                    <div *ngIf="subQ.queType =='RB'" class="mb-2">
+                        <h4>{{subQ?.hhQueNo}}.{{ isFrance? subQ?.titleFr: subQ?.title}}</h4>
                         <div class="form-check mb-2" *ngFor="let row of subQ?.row; let i=index">
-                            <input class="form-check-input" (change)="changeEvent(''+row?.value,false,true,false)"
+                            <input class="form-check-input" (change)="changeEvent(''+row?.value,false,true,false, subQ?.mainQueId, subQ?.queId)"
                                 type="radio" [formControlName]="subQuestion?.queId+''+subQ?.queId|| ''"
                                 [value]="row?.value">
                             <label class="form-check-label">{{isFrance?

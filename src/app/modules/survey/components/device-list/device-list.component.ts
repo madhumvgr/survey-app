@@ -72,7 +72,7 @@ export class DeviceListComponent implements OnInit {
 
   getMatIconDescription(deviceType: any) {
     switch (deviceType) {
-      case "TV":
+      case "Smart TV":
         return "personal_video";
       case "Laptop":
         return "laptop";
@@ -82,14 +82,14 @@ export class DeviceListComponent implements OnInit {
         return "videogame_asset";
       case "Devices Other":
         return "devices_other";    
-      case "iMac":
+      case "PC/MAC":
         return "desktop_mac";  
       case "PC Desktop":
         return "desktop_windows";
-      case "Android":
+      case "SMARTPHONE":
         return "smartphone";
       default:
-        return "";
+        return "devices_other";
     }
   }
   showWindow(){

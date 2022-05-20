@@ -27,3 +27,20 @@
     display: inline-block;
     font-weight: bold;
 }
+#leftbox {
+    float:left; 
+    width:50%;
+  }
+
+#rightbox{
+    float:right;
+    width:50%;
+  }
+#centerbox{
+    float:center;
+    width:50%;
+  }
+
+.clear {
+    clear: both;
+  }

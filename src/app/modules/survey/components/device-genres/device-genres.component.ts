@@ -282,7 +282,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
      
     this.timeLinesForm.forEach( (form,index) => {
       let hasWeekDay = form.value.weekDays.some( (weekDay:any) => weekDay['addNew'] === true );
-      let hasWeekEnd = form.value.weekDays.some( (weekDay:any) => weekDay['addNew'] === true );
+      let hasWeekEnd = form.value.weekEnds.some( (weekDay:any) => weekDay['addNew'] === true );
 
       if(!hasWeekDay && !hasWeekEnd)
       {

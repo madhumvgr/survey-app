@@ -60,7 +60,7 @@ export class MatrixComponent implements OnChanges {
           // getprevious value for the row. 
           prevValue = this.getPrevSelectedValue(this.question.selected, row.value);
           console.log(prevValue);
-          if (this.question?.mandatory && prevValue) {
+          if (this.question?.mandatory) {
             this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.answer, Validators.required));
           } else {
             if (prevValue && prevValue.answer)
@@ -92,7 +92,19 @@ export class MatrixComponent implements OnChanges {
     this.question.questionLevel2Id = null;
     this.changeEvent1.emit(this.question);
   }
+
+  get formControl() {
+    let questionNo;
+    if(this.question?.queNo){
+      questionNo= this.question?.queNo;
+    }else{
+      questionNo= this.question?.queId;
+    }
+    return this.childFormGroup.controls[''+questionNo];
+  }
 }
+
+
 export class Column {
   value!: number;
   description!: string;

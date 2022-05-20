@@ -48,7 +48,7 @@ export class MatrixTwoLevelComponent implements OnChanges {
           // getprevious value for the row. 
           this.cols.forEach ( col => {
             prevValue = this.getPrevSelectedValue(this.question.selected, row.value, col.value);
-            if (this.question?.mandatory && prevValue) {
+            if (this.question?.mandatory) {
               this.childFormGroup.addControl('' + this.question?.queId + row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer, Validators.required));
             } else {
               if (prevValue && prevValue.colValue)
@@ -88,6 +88,16 @@ export class MatrixTwoLevelComponent implements OnChanges {
     this.question.questionLevel1Id = value;
     this.question.questionLevel2Id = colSeq;
     this.changeEvent1.emit(this.question);
+  }
+
+  get formControlMatrixTwo() {
+    let questionNo;
+    if(this.question?.queNo){
+      questionNo= this.question?.queNo;
+    }else{
+      questionNo= this.question?.queId;
+    }
+    return this.childFormGroup.controls[''+questionNo];
   }
 }
 export class Column {

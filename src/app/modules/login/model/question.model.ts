@@ -16,6 +16,7 @@ export class Question extends Resource {
   maxLevel?:any;
   required?:any;
   mandatory?:any;
+  mainQueId?: any;
   questionLevel1Id?:any;
   questionLevel2Id?:any;
   selected?:any[] =[];

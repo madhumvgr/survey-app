@@ -11,7 +11,7 @@
         </div>
         <ng-container *ngIf="ShowInput">
             <!-- <label for="inputEmail" class="form-label">test</label> -->
-            <input type="text" class="form-control"  formControlName="desc" >
+            <input type="text" class="form-control"  formControlName="otherDescription" (mouseleave)="focusOut($event)">
         </ng-container>
         <span class="danger" *ngIf="radioFormControl.errors?.required && buttonClicked">
             Please select the field.

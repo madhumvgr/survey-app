@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid blue;
+  }
+  
+  .top-left {
+    width: 80%;
+  }
+  
+  .top-right {
+    margin-left: auto;
+  }

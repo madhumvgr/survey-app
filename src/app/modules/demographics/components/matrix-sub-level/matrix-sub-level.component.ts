@@ -63,7 +63,7 @@ export class MatrixSubLevelComponent implements OnChanges {
                 if (sub2Lev.queType == 'TEXT') {
                   sub2LevAns = sub2Lev.selected[0].otherDesc;
                 } else {
-                  sub2LevAns = sub2Lev.selected[0].answer;
+                  sub2LevAns = sub2Lev.selected[0].rowValue;
                 }
 
                 this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(sub2LevAns))
@@ -101,40 +101,54 @@ export class MatrixSubLevelComponent implements OnChanges {
     }, {});
   }
 
-  changeEvent(value: any,isText:boolean,isLevel1:boolean, isLevel:boolean) {
+  changeEvent(value: any,isText:boolean,isLevel1:boolean, isLevel:boolean, subQuesId: any, condId?: any) {
     let questionNo;
     if(this.question?.queNo){
       questionNo= this.question?.queNo;
     }else{
       questionNo= this.question?.queId;
     }
+    
+    
+    console.log(subQuesId);
+
     if(isLevel){
       this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
-      this.question.condQuestionId= parseInt(questionNo || "1");   
+      this.question.queId = subQuesId;
+      this.question.condQuestionId= parseInt("");   
+      this.question.queType = "";
+      this.question.answer = value;
       this.question.condQuestionLevel1Id=null; 
       this.question.condQuestionLevel2Id=null; 
-      this.question.condAnswer=value; 
+      this.question.condAnswer= ""; 
       this.question.condQueType="";
       this.question.condMaxLevel="1";
       this.question.condOtherDescription="";
     }else if(isLevel1){
       this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
-      this.question.condQuestionId= parseInt(questionNo || "1");   
+      this.question.queId = subQuesId;
+      
+      this.question.condQuestionId= condId; 
+      this.question.queType = ""
       this.question.condQuestionLevel1Id=value; 
       this.question.condQuestionLevel2Id=null; 
-      this.question.condAnswer=value; 
-      this.question.condQueType="";
+      this.question.answer = "Y";
+      this.question.condAnswer="Y"; 
+      this.question.condQueType="RB";
       this.question.condMaxLevel="1";
       this.question.condOtherDescription="";
     }else if(isText){
       this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
-      this.question.condQuestionId= parseInt(questionNo || "1");   
+      this.question.queId = subQuesId;
+      this.question.condQuestionId= condId;  
+      this.question.queType = "" 
+      this.question.answer = "Y";
       this.question.condQuestionLevel1Id=null; 
       this.question.condQuestionLevel2Id=null; 
       this.question.condAnswer="Y"; 
       this.question.condQueType="TEXT";
       this.question.condMaxLevel="1";
-      this.question.condOtherDescription=value;
+      this.question.condOtherDescription= value.target.value;
     }
     this.changeEvent1.emit(this.question);
   }

@@ -42,7 +42,7 @@ export class MatrixRbComponent implements OnChanges {
           // getprevious value for the row. 
           prevValue = this.getPrevSelectedValue(this.question.selected, row.value);
           console.log(prevValue);
-          if (this.question?.mandatory && prevValue) {
+          if (this.question?.mandatory) {
             this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
           } else {
             if (prevValue && prevValue.colValue)
@@ -84,6 +84,16 @@ export class MatrixRbComponent implements OnChanges {
     this.question.questionLevel1Id = value;
     this.question.questionLevel2Id = colSeq;
     this.changeEvent1.emit(this.question);
+  }
+
+  get formControlMatrixRb() {
+    let questionNo;
+    if(this.question?.queNo){
+      questionNo= this.question?.queNo;
+    }else{
+      questionNo= this.question?.queId;
+    }
+    return this.childFormGroup.controls[''+questionNo];
   }
 }
 export class Column {

@@ -229,6 +229,10 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
           const formControl = <FormControl>form.get('weekEnds');
           formControl.setErrors({'required':true});
             isValid= false;
+        }else if(form.value.weekDays =='2'&& form.value.weekEnds=='2'){
+          const formControl = <FormControl>form.get('weekEnds');
+          formControl.setErrors({'required':true});
+            isValid= false;
         }else{
         form.setErrors(null);
       }
@@ -247,6 +251,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
       "memberNo": this.memberNo,
       "stationId": generId
     }
+   
     if (this.deviceId !== "none") {
       updateItem['deviceNo'] = this.deviceId;
       this.televisionService.updateStationsWithDeviceId(updateItem).

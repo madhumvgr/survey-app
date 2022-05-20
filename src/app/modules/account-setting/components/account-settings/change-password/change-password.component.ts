@@ -41,7 +41,7 @@ export class ChangePasswordComponent implements OnInit {
     this.show = true;
     this.hide = false;
     this.changePasswordForm = this.fb.group({
-      currentPassword: ['', [Validators.required, this.customValidator.patternValidator()]],
+      currentPassword: ['', [Validators.required]],
       newPassword: ['',
         Validators.compose([
           Validators.required,
@@ -115,8 +115,7 @@ export class ChangePasswordComponent implements OnInit {
     // stop here if form is invalid
     if (this.changePasswordForm.valid) {
       console.table(this.changePasswordForm.value);
-      this.router.navigate(['/account-settings/thankyou/Change password'], { state: { message: "You have successfully updated Change Password" } });
-
+     
       // update password in local storage.
       let username = this.localStorageService.getItem(StorageItem.USERNAME);
       if (username) {
@@ -131,7 +130,11 @@ export class ChangePasswordComponent implements OnInit {
             // After successful sign in, we have to set username into localstorage
             this.localStorageService.setIdToken(response['id_token']);
             this.localStorageService.setUserName(this.changePasswordFormControl.email.value);
+            this.router.navigate(['/account-settings/thankyou/Change password'], { state: { message: "You have successfully updated Change Password" } });
+
             //this.router.navigate(['/welcome']);
+          } else {
+            this.showError = true
           }
 
 

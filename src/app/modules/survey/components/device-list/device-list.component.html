@@ -58,7 +58,16 @@
              <!-- Newly Detected Device (Smart TV) -->
              <a *ngFor="let device of devicesList" (click) ="navigateTo(device)" href='javascript:void(0);'>
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
-                    <i class="material-icons p-3 new-devices-icon d-flex icon-red align-items-center h-100">
+                    <i class="material-icons p-3 new-devices-icon d-flex icon-red align-items-center h-100" *ngIf="deviceState == 'New'">
+                        <div class="h1 mb-0">{{device?.iconDescription}}</div>
+                    </i>
+                    <i class="material-icons p-3 in-progress-icon d-flex icon-red align-items-center h-100" *ngIf="deviceState == 'Inprogress'">
+                        <div class="h1 mb-0">{{device?.iconDescription}}</div>
+                    </i>
+                    <i class="material-icons p-3 completed-devices-icon d-flex icon-red align-items-center h-100" *ngIf="this.deviceState =='Completed'">
+                        <div class="h1 mb-0">{{device?.iconDescription}}</div>
+                    </i>
+                    <i class="material-icons p-3 not-in-use-icon d-flex icon-red align-items-center h-100" *ngIf="this.deviceState =='Notused'">
                         <div class="h1 mb-0">{{device?.iconDescription}}</div>
                     </i>
                     <div class="ps-3 description">

@@ -63,11 +63,14 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-6 d-grid gap-2 d-md-block mt-4">
+            <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">Back</button>
+        </div>
     </div><!--end Container-->
 </section><!--end Section-->
           
 <!-- Sections Overview -->
-<section class="px-3 pb-5">
+<!-- <section class="px-3 pb-5">
     <div class="container">
         <div class="row g-4">
             <h2>Devices current status<span class="h2-separator"></span></h2>
@@ -88,11 +91,11 @@
                     </div>
                 </div>
             </div>
-            <!-- Action buttons -->
+            
             <div class="col-xs-6 d-grid gap-2 d-md-block">
                 <button type="submit" class="btn btn-secondary">Cancel</button>
                 <button type="button" [disabled]="question1=='false'" class="btn btn-primary ms-md-3" (click)="updateForm()">Update</button>
             </div>
-        </div><!--end Row-->
-    </div><!--end Container-->
-</section><!--end Section-->
+        </div>
+    </div>
+</section> -->

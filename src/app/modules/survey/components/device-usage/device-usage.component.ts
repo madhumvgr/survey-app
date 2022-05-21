@@ -6,6 +6,7 @@ import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/m
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 import { TranslateService } from '@ngx-translate/core';
+import { Owner } from '../device-owner-information/device-owner-information.component';
 
 @Component({
   selector: 'app-device-usage',
@@ -24,6 +25,7 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   isCompleted= false;
   resubmit: boolean = false;
   deviceStatus: any;
+  users: Owner[] =[];
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   constructor(private Activatedroute:ActivatedRoute, private localStorageService:LocalStorageService, private router: Router,private deviceService: DeviceService, private translate: TranslateService) { 
@@ -51,12 +53,16 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
         this.memberList = response;
         this.totalMembers = this.memberList.length;
         let count=0;
-         this.memberList.forEach( (element1:any) => {
+         this.memberList.forEach( (element1: any )=> {
+           if(element1.usePercentage) {
+           this.users.push(element1);
            if(element1.memberSurveyStatusId == 1){
               count++;
            }
+          }
          });
-         if( count== this.memberList.length){
+         console.log(this.users);
+         if( count== this.users.length){
           this.isCompleted = true;
          }
       }
@@ -101,7 +107,8 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     } else{
        message =this.translate.instant('deviceInformation.success');
     }
-         this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+    this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+
    }
 
 }

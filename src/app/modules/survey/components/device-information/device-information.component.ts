@@ -120,7 +120,8 @@ exitEvent(isBackAction:boolean) {
      message =this.translate.instant('deviceInformation.success');
   }
   this.updateForm();
-  this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+  this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+
 }
 
   updateForm() {

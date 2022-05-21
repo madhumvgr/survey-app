@@ -51,7 +51,7 @@
             <div class="col-12 mt-3">
 
                 <!-- House Hold Member -->
-                <div *ngFor="let mem of memberList; let i = index"
+                <div *ngFor="let mem of users; let i = index"
                     class="message-card d-flex align-items-center bg-white shadow-sm rounded mb-3">
                     <i class="material-icons p-3 device-usage-icon d-flex icon-red align-items-center h-100">
                         <div class="h1 mb-0">person</div>
@@ -77,7 +77,7 @@
                     <button type="submit" class="btn btn-dark" (click) = "backButton()">{{'deviceUsage.backButton' | translate}}</button>
                     <button type="button" class="btn btn-secondary ms-md-3" (click)="openModal()" >{{'deviceUsage.SaveButton' | translate}}</button>
                     <ng-container *ngIf="isCompleted">
-                        <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">Submit</button>
+                        <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{'deviceUsage.submit' | translate}}</button>
                     </ng-container>
                     <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
 

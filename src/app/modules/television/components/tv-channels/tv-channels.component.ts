@@ -163,8 +163,8 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
 
   createForm(genereId: number) {
     this.stationForm[genereId] = this.fb.group({
-      weekDays: new FormControl(null, [createPasswordStrengthValidator()]),
-      weekEnds: new FormControl(null, [createPasswordStrengthValidator()]),
+      weekDays: new FormControl('', [createPasswordStrengthValidator()]),
+      weekEnds: new FormControl('', [createPasswordStrengthValidator()]),
     });
   }
 

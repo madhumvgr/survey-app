@@ -26,6 +26,7 @@ import { TelevisionModule } from './modules/television/television.module';
 import { DemographicsModule } from './modules/demographics/demographics.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { PendingChangesGuard } from './shared/services/pending-changes.guard';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
       multi: true
     },
     AuthGuard,
+    PendingChangesGuard,
     {provide: LocationStrategy,
       useClass: HashLocationStrategy}
   ],

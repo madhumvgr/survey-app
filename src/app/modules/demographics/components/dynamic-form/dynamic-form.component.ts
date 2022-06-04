@@ -71,43 +71,43 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
       if (this.houseHold) {
         this.router.navigate(['/demographics/questionaire/true/' + this.memberNo + '/' + newPage + '/true']).then(() => {
-          this.reload();
+          window.location.reload();
         });
       } else {
         this.router.navigate(['/demographics/questionaire/' + this.memberNo + '/' + this.homeNo + '/' + newPage]).then(() => {
-          this.reload();
+          window.location.reload();
       
         });
       }
     }
   }
 
-  reload() {
-    if (this.parentForm.valid ) {
-      const panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
-      if (this.houseHold) {
-        if (panelistType != "VAM") {
-          this.questionaireService.customRead(QuestionConstants.houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
-            this.questionList = list;
-          })
-        }
-        else {
-          this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
-            this.questionList = list;
-          })
-        }
-      } else if (this.houseHold == undefined && panelistType != "VAM") {
-        this.questionaireService.customRead(QuestionConstants.questionaire + '/' + this.memberNo).subscribe(list => {
-          this.questionList = list;
+  // reload() {
+  //   if (this.parentForm.valid ) {
+  //     const panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+  //     if (this.houseHold) {
+  //       if (panelistType != "VAM") {
+  //         this.questionaireService.customRead(QuestionConstants.houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
+  //           this.questionList = list;
+  //         })
+  //       }
+  //       else {
+  //         this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
+  //           this.questionList = list;
+  //         })
+  //       }
+  //     } else if (this.houseHold == undefined && panelistType != "VAM") {
+  //       this.questionaireService.customRead(QuestionConstants.questionaire + '/' + this.memberNo).subscribe(list => {
+  //         this.questionList = list;
 
-        });
-      } else {
-        this.questionaireService.customRead(QuestionConstants.vam_questionaire + '/' + this.memberNo).subscribe(list => {
-          this.questionList = list;
-        })
-      }
-    }
-  }
+  //       });
+  //     } else {
+  //       this.questionaireService.customRead(QuestionConstants.vam_questionaire + '/' + this.memberNo).subscribe(list => {
+  //         this.questionList = list;
+  //       })
+  //     }
+  //   }
+  // }
 
   createQuestion(): FormGroup {
 

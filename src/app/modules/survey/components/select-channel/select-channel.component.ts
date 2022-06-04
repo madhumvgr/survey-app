@@ -232,11 +232,13 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       }
       if(selectedOrderIds.length== 0){
         let message = this.translate.instant('genres.message');
+        let tvMessage = this.translate.instant('televisionChannels.message');
+        let deviceMessage = this.translate.instant('genres.device-message');
         if(this.isTvGenere){
           this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
             res => {
               this.televisionService.updateMemberSurvey(this.memberNo).subscribe();
-              this.router.navigate(['television/thankyou'], { state: { message: message, inputRoute: "television" } });
+              this.router.navigate(['television/thankyou'], { state: { message: tvMessage, inputRoute: "television" } });
             });
         } else {
           setTimeout(() => {
@@ -247,7 +249,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
             this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
               res => {
                 this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
-                this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "devices"} });
+                this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: deviceMessage, inputRoute: "devices"} });
               });
             }else {
                this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(

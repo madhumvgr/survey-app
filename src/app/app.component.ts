@@ -10,15 +10,6 @@ import { LocalStorageService, StorageItem } from './shared/services/local-storag
 export class AppComponent {
   title = 'project';
 
-//   /**
-//  * Browser's default confirmation dialog box.
-//  */
-//    @HostListener('window:beforeunload')
-//    defaultConfirmation(): boolean {
-//      if (!DIRTY_FORM_CHECK) return true;
-//      else return false;
-//    }
-   
   constructor(private translate: TranslateService, private localStorageService:LocalStorageService) {
     if(!this.localStorageService.getItem(StorageItem.LANG)){
       this.localStorageService.setLanguageItem("en");

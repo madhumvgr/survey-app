@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Outpu
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { QuestionaireService } from '../../quersionarie.service';
 
 @Component({
   selector: 'app-matrix-two-level',
@@ -18,7 +19,8 @@ export class MatrixTwoLevelComponent implements OnChanges {
   @Input() questionId:any;
   cols: Column[] = [];
   isFrance: any = false;
-  constructor(  private localStorageService:LocalStorageService) { 
+  buttonClicked: any = false;
+  constructor(  private localStorageService:LocalStorageService, public questionaireService: QuestionaireService) { 
     this.localStorageService.getLanguageSubject().subscribe( val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     });
@@ -49,11 +51,15 @@ export class MatrixTwoLevelComponent implements OnChanges {
           this.cols.forEach ( col => {
             prevValue = this.getPrevSelectedValue(this.question.selected, row.value, col.value);
             if (this.question?.mandatory) {
-              this.childFormGroup.addControl('' + this.question?.queId + row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer, Validators.required));
+              let temp = '';
+             if(prevValue){
+               temp = prevValue?.colValue+prevValue?.rowValue+prevValue?.answer;
+             }
+              this.childFormGroup.addControl('' + this.question?.queId + row.value+ col.value, new FormControl(temp, Validators.required));
             } else {
-              if (prevValue && prevValue.colValue)
+              if (prevValue && prevValue.colValue) {
                 this.childFormGroup.addControl('' + this.question?.queId +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer));
-              else {
+              }else {
                 this.childFormGroup.addControl('' + this.question?.queId + row.value+col.value, new FormControl(''))
               }
             }
@@ -64,6 +70,11 @@ export class MatrixTwoLevelComponent implements OnChanges {
       this.parentForm.addControl('' + this.question?.queId, this.childFormGroup);
       this.onlyOnce = true;
     }
+  }
+  ngOnInit(): void {
+    this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
+      this.buttonClicked = res
+    })
   }
   getPrevSelectedValue(selected: any[] | undefined, value: any, colValue : any) {
     if (selected) {

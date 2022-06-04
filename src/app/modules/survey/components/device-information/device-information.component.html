@@ -30,7 +30,7 @@
                     <!--Select Devices-->{{deviceName}}
                 </h1>
                 <p>
-                    {{"deviceInformation.description" | translate }} {{deviceName}}. {{"deviceInformation.descriptionPart2" | translate }} <a href='javascript:void(0);' (click)="showWindow()">{{"accountSettings.privacyPolicyTitle" | translate}}</a> {{"deviceInformation.descriptionPart3" | translate }}
+                    {{"deviceInformation.description" | translate }} {{deviceName}}
                 </p>
             </div>
             <!--end col-->
@@ -101,11 +101,11 @@
                             <h4>{{"deviceInformation.q1" | translate }}</h4>
                             <div class="form-check mb-2">
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio1" value=0>
-                                <label class="form-check-label" for="Radio1">{{"multipleUsers.singleMember" | translate }}</label>
+                                <label class="form-check-label" for="Radio1">{{"deviceInformation.q1Option1" | translate }}</label>
                             </div>
                             <div class="form-check mb-2">
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="updateForm()" name="numberOfUsers" id="Radio2" value=1>
-                                <label class="form-check-label" for="Radio2">{{"multipleUsers.multipleMembers" | translate }}</label>
+                                <label class="form-check-label" for="Radio2">{{"deviceInformation.q1Option2" | translate }}</label>
                             </div>
                             <div class="form-check">
                                 <input formControlName="numberOfUsers" class="form-check-input" type="radio" (change)="setNotInuse()" name="numberOfUsers" id="Radio5" value=4>

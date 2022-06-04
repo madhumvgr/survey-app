@@ -86,7 +86,7 @@ export class MatrixSubLevelComponent implements OnChanges {
     }
   }
 
-  childFormControl(queId:any) {
+  childFormControl(queId: any) {
     return this.childFormGroup.controls[queId];
   }
 
@@ -101,54 +101,92 @@ export class MatrixSubLevelComponent implements OnChanges {
     }, {});
   }
 
-  changeEvent(value: any,isText:boolean,isLevel1:boolean, isLevel:boolean, subQuesId: any, condId?: any) {
+  changeEvent(value: any, isText: boolean, isLevel1: boolean, isLevel: boolean, subQuesId: any, condId?: any) {
     let questionNo;
-    if(this.question?.queNo){
-      questionNo= this.question?.queNo;
-    }else{
-      questionNo= this.question?.queId;
+    if (this.question?.queNo) {
+      questionNo = this.question?.queNo;
+    } else {
+      questionNo = this.question?.queId;
     }
-    
-    
-    console.log(subQuesId);
-
-    if(isLevel){
-      this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
+    const firstControl = this.childFormGroup.controls[subQuesId + '1'];
+    const secoundControl = this.childFormGroup.get(subQuesId + '2');
+    if (this.childFormGroup.controls[subQuesId].value == 'Y') {
+      if (firstControl) {
+        firstControl?.setValidators([Validators.required]);
+        firstControl?.updateValueAndValidity()
+      }
+      if (secoundControl) {
+        secoundControl?.setValidators([Validators.required]);
+        secoundControl?.updateValueAndValidity()
+      }
+    } else if (this.childFormGroup.controls[subQuesId].value == 'N') {
+      if (firstControl) {
+        firstControl?.setValidators([]);
+        firstControl?.updateValueAndValidity()
+      }
+      if (secoundControl) {
+        secoundControl?.setValidators([]);
+        secoundControl?.updateValueAndValidity()
+      }
+    }
+    if (isLevel) {
+      this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
       this.question.queId = subQuesId;
-      this.question.condQuestionId= parseInt("");   
+
+      this.question.condQuestionId = parseInt("");
       this.question.queType = "";
       this.question.answer = value;
-      this.question.condQuestionLevel1Id=null; 
-      this.question.condQuestionLevel2Id=null; 
-      this.question.condAnswer= ""; 
-      this.question.condQueType="";
-      this.question.condMaxLevel="1";
-      this.question.condOtherDescription="";
-    }else if(isLevel1){
-      this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
+      this.question.condQuestionLevel1Id = null;
+      this.question.condQuestionLevel2Id = null;
+      this.question.condAnswer = "";
+      this.question.condQueType = "";
+      this.question.condMaxLevel = "1";
+      this.question.condOtherDescription = "";
+    } else if (isLevel1) {
+      this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
       this.question.queId = subQuesId;
-      
-      this.question.condQuestionId= condId; 
+      // const firstControl = this.childFormGroup.get(subQuesId+1);
+      // const secoundControl = this.childFormGroup.get(subQuesId+2);
+      // if(value == 'Y') {
+      //   if(firstControl) {
+      //   firstControl?.setValidators([Validators.required]);
+      //   firstControl?.updateValueAndValidity()
+      //   }
+      //   if(secoundControl) {
+      //   secoundControl?.setValidators([Validators.required]);
+      //   secoundControl?.updateValueAndValidity()
+      //   }
+      // } else {
+      //   if(firstControl) {
+      //   firstControl?.setValidators([]);
+      //   firstControl?.updateValueAndValidity()
+      // }
+      // if(secoundControl) {
+      //   secoundControl?.setValidators([]);
+      //   secoundControl?.updateValueAndValidity()
+      // }
+      // }
+      this.question.condQuestionId = condId;
       this.question.queType = ""
-      this.question.condQuestionLevel1Id=value; 
-      this.question.condQuestionLevel2Id=null; 
+      this.question.condQuestionLevel1Id = value;
+      this.question.condQuestionLevel2Id = null;
       this.question.answer = "Y";
-      this.question.condAnswer="Y"; 
-      this.question.condQueType="RB";
-      this.question.condMaxLevel="1";
-      this.question.condOtherDescription="";
-    }else if(isText){
-      this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
+      this.question.condAnswer = "Y";
+      this.question.condQueType = "RB";
+      this.question.condMaxLevel = "1";
+      this.question.condOtherDescription = "";
+    } else if (isText) {
+      this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
       this.question.queId = subQuesId;
-      this.question.condQuestionId= condId;  
-      this.question.queType = "" 
+      this.question.condQuestionId = condId;
+      this.question.queType = ""
       this.question.answer = "Y";
-      this.question.condQuestionLevel1Id=null; 
-      this.question.condQuestionLevel2Id=null; 
-      this.question.condAnswer="Y"; 
-      this.question.condQueType="TEXT";
-      this.question.condMaxLevel="1";
-      this.question.condOtherDescription= value.target.value;
+      this.question.condQuestionLevel1Id = null;
+      this.question.condQuestionLevel2Id = null;
+      this.question.condAnswer = "Y";
+      this.question.condQueType = "TEXT";
+      this.question.condMaxLevel = "1";
+      this.question.condOtherDescription = value.target.value;
     }
     this.changeEvent1.emit(this.question);
   }

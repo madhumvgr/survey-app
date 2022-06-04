@@ -29,9 +29,12 @@
         <div class="row">
             <div class="col-12">
                 <h1>{{memberName}}</h1>
-                <p>
+                <p *ngIf="!isTvGenere">
                    {{'televisionChannels.description' | translate}}
                 </p>
+                <p *ngIf="isTvGenere">
+                    {{'televisionChannels.tv-description' | translate}}
+                 </p>
             </div>
         </div>
         <!--end Row-->
@@ -44,7 +47,7 @@
 <section class="px-3 pb-5 customPadd">
     <div class="container">
         <div class="row g-4">
-            <h2>{{'televisionChannels.heading' | translate}}<span class="h2-separator"></span></h2>
+            
             <p class="mt-2 mb-0">{{'televisionChannels.subText' | translate}}</p>
             <ng-container *ngFor="let station of newStationsId; let generId = index">
                 <!-- Channel  -->

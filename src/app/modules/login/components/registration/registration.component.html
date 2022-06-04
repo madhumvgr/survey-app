@@ -1,98 +1,165 @@
-
-
 <!-- Registration form with OTP-->
 <section class="px-3 pb-4">
     <div class="container">
         <div class="row">
+            <div class ="mt-4">
+                <h3>{{"registrationForm.tittle" | translate}}</h3>
+            </div>
+            <div>
+                <h1 class="y">{{"registrationForm.header" | translate}}</h1>
+            </div>
+            <div>
+                <p>{{"registrationForm.description" | translate}}</p>
+            </div>
+            <div><b>{{"registrationForm.tips" | translate}}</b></div>
+            <div>
+                <li> {{"registrationForm.tip1" | translate}}
+                    <span class="check"> &#10003;</span>
+                </li>
+                <li> {{"registrationForm.tip2" | translate}}
+                    <span class="check"> &#10003;</span>
+                </li>
+                <li> {{"registrationForm.tip3" | translate}}
+                    <span class="check"> &#10003;</span>
+                </li>
+                <li>{{"registrationForm.tip4" | translate}}
+                    <span class="check"> &#10003;</span>
+                </li>
+            </div>
+            <section class="px-3 pb-4">
+                <div *ngIf="!showRegistraion" class="container">
 
-        <p class="x">{{"registrationForm.tittle" | translate}}</p>
-        <div><h1 class="y">{{"registrationForm.header" | translate}}</h1></div>
-        <div><p>{{"registrationForm.description" | translate}}</p></div>
-        <div><b>{{"registrationForm.tips" | translate}}</b></div>
-        <div>
-        <li> {{"registrationForm.tip1" | translate}}
-            <span class="check"> &#10003;</span></li>
-        <li> {{"registrationForm.tip2" | translate}}
-            <span class="check"> &#10003;</span></li>
-            <li> {{"registrationForm.tip3" | translate}}
-                <span class="check"> &#10003;</span></li>
-        <li>{{"registrationForm.tip4" | translate}}
-            <span class="check"> &#10003;</span></li>
-        </div>
-        <section class="px-3 pb-4">
-    <div *ngIf="!showRegistraion" class="container">
 
-    
-    </div>
-    </section>
-    <div *ngIf="showRegistraion">
-        <form class="col-md-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="bg-white shadow-sm rounded p-4">
-                <div class="mb-3">
-                    <label for="inputEmail" class="form-label">{{"registrationForm.userName" | translate}}</label>
-                    <input type="text" class="form-control" id="inputEmail" formControlName="email">
-                    <span class="text-danger"
-                        *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
-                        {{"registrationForm.emailRequired" | translate}}
-                    </span>
-                    <span class="text-danger"
-                        *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
-                        {{"registrationForm.emailError" | translate}}
-                    </span>
                 </div>
-                <div class="mb-3">
-                    <div class="search-wrapper cf">
-                        
-                    <label for="inputPass" class="form-label">{{"registrationForm.password" | translate}}</label>
-                    <input style="padding-left: 50px" matInput [type]="show ? 'password' : 'text'" type="password" class="form-control" formControlName="password" id="inputPass">
-                    <button type="button" mat-icon-button matSuffix (click)="show = !show" [attr.aria-label]="'Show password'" [attr.aria-pressed]="show" class="eye-hide">
-                        <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
-                       </button>
-              </div>
-                    <span class="text-danger"
-                        *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
-                        {{"registrationForm.passwordRequired" | translate}}
-                    </span>
-                    <span class="text-danger"
-                        *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.invalidPassword">
-                        {{"registrationForm.passwordError" | translate}}                    </span>
-                </div>
-                <div class="mb-3">
-                    <div class="search-wrapper cf">
-                    <label for="inputPass" class="form-label">{{"registrationForm.confirmPassword" | translate}}</label>
-                    
-                    <input style="padding-left: 50px" matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" formControlName="confirmPassword" id="confirmPass">
-         
-                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Show password1'" [attr.aria-pressed]="hide" class="eye-hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                       </button>
-              </div>
-                    <span class="text-danger"
-                        *ngIf="(registerFormControl.confirmPassword.touched || submitted) && registerFormControl.password.errors?.required">
-                        {{"registrationForm.ConfirmPasswordRequired" | translate}}
-                    </span>
-                    <span class="text-danger" *ngIf="registerFormControl.confirmPassword.errors?.mustMatch && registerFormControl.confirmPassword.touched">
-                        {{"registrationForm.ConfirmPasswordError" | translate}}
-                    </span>
-                    <div *ngIf="showError" class = "text-danger">
-                        {{errorMessage}}
+            </section>
+            <div *ngIf="showRegistraion">
+                <form class="col-md-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="bg-white shadow-sm rounded p-4">
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">{{"registrationForm.userName" |
+                                translate}}</label>
+                            <input type="text" class="form-control" id="inputEmail" formControlName="email">
+                            <span class="text-danger"
+                                *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
+                                {{"registrationForm.emailRequired" | translate}}
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
+                                {{"registrationForm.emailError" | translate}}
+                            </span>
+                        </div>
+                    <!--Paassword-->
+                    <div class="mb-3">
+                        <div class="search-wrapper cf">
+                            <label for="newPass" class="form-label"> {{'registrationForm.password' |
+                                translate}}</label>
+
+                            <input style="padding-left: 50px" matInput [type]="view ? 'password' : 'text'"
+                                type="password" class="form-control" id="newPass" formControlName="password"
+                                aria-describedby="" (keypress)="keyPressAlphaNumeric($event)"
+                                (focus)="onFocusEvent($event)" minlength="8" maxlength="20">
+                            <button type="button" mat-icon-button matSuffix (click)="view = !view"
+                                [attr.aria-label]="'Show password'" [attr.aria-pressed]="view" class="eye-hide">
+                                <mat-icon>{{view ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </div>
+                        <span class="text-danger"
+                            *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
+                            {{'changePassword.newPasswordRequired' | translate}}
+                        </span>
+                        <span class="text-danger"
+                            *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.invalidPassword">
+                            {{'changePassword.passwordValidationMessage' | translate}}
+                        </span>
+                        <ng-container *ngIf="isFocused">
+                            <div class="col"
+                                [ngClass]="registerForm.controls['password'].hasError('required') || registerForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                                <i class="material-icons">{{
+                                    registerForm.controls['password'].hasError('required') ||
+                                    registerForm.controls['password'].hasError('minlength') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                Must be at least 8 characters!
+                            </div>
+                            <div class="col"
+                                [ngClass]="registerForm.controls['password'].hasError('required') ||
+                                registerForm.controls['password'].hasError('maxLength')  ? 'text-danger' : 'text-success'">
+                                <i class="material-icons">{{
+                                    registerForm.controls['password'].hasError('required') ||
+                                    registerForm.controls['password'].hasError('maxLength') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                Maximum 20 characters long!
+                            </div>
+                            <div class="col"
+                                [ngClass]="registerForm.controls['password'].hasError('required') ||
+                                registerForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                                <i class="material-icons">{{
+                                    registerForm.controls['password'].hasError('required') ||
+                                    registerForm.controls['password'].hasError('hasNumber') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                Must contain at least 1 number!
+                            </div>
+                            <div class="col"
+                                [ngClass]="registerForm.controls['password'].hasError('required') ||
+                                registerForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                                <i class="material-icons">{{
+                                    registerForm.controls['password'].hasError('required') ||
+                                    registerForm.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                Must contain at least 1 Letter in Small Case!
+                            </div>
+                            <div class="col"
+                                [ngClass]="registerForm.controls['password'].hasError('required') ||
+                                registerForm.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                                <i class="material-icons">{{
+                                    registerForm.controls['password'].hasError('required') ||
+                                    registerForm.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                Must contain at least 1 Letter in Capital Case!
+                            </div>
+                        </ng-container>
                     </div>
-                </div>
+                    <!--Confirm Paassword-->
+                        <div class="mb-3">
+                            <div class="search-wrapper cf">
+                                <label for="inputPass" class="form-label">{{"registrationForm.confirmPassword" |
+                                    translate}}</label>
+
+                                <input style="padding-left: 50px" matInput [type]="hide ? 'password' : 'text'"
+                                    type="password" class="form-control" formControlName="confirmPassword"
+                                    id="confirmPass">
+
+                                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Show password1'" [attr.aria-pressed]="hide" class="eye-hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </div>
+                            <span class="text-danger"
+                                *ngIf="(registerFormControl.confirmPassword.touched || submitted) && registerFormControl.password.errors?.required">
+                                {{"registrationForm.ConfirmPasswordRequired" | translate}}
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="registerFormControl.confirmPassword.errors?.mustMatch && registerFormControl.confirmPassword.touched">
+                                {{"registrationForm.ConfirmPasswordError" | translate}}
+                            </span>
+                            <div *ngIf="showError" class="text-danger">
+                                {{errorMessage}}
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            </form>
-            </div>
-        </div>
-         </div>
-        </section>
-            
-        <section class="px-3 pb-4">
-            <div class="px-3 pb-4 form-group mb-3">
-                <div class="container">
-                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
-            <button type="submit" class="btn btn-primary">{{"registrationForm.registerButton" | translate}}</button>
-           </form>
         </div>
     </div>
-    </section>
-        
-    <router-outlet></router-outlet>
+</section>
+
+<section class="px-3 pb-4">
+    <div class="px-3 pb-4 form-group mb-3">
+        <div class="container">
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+                <button type="submit" class="btn btn-primary">{{"registrationForm.registerButton" | translate}}</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<router-outlet></router-outlet>

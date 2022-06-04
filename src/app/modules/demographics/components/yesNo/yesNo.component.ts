@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Outpu
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { QuestionaireService } from '../../quersionarie.service';
 
 @Component({
   selector: 'app-yesNo',
@@ -20,7 +21,8 @@ export class YesNoComponent implements OnInit, OnChanges {
   @Output()
   public changeEvent1 = new EventEmitter();
   isFrance: any = false;
-  constructor(  private localStorageService:LocalStorageService) { 
+  buttonClicked: any = false;
+  constructor(  private localStorageService:LocalStorageService, public questionaireService: QuestionaireService) { 
     this.localStorageService.getLanguageSubject().subscribe( val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     });
@@ -53,6 +55,9 @@ export class YesNoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
+      this.buttonClicked = res
+    })
   }
 
   get yesNoFormControl() {

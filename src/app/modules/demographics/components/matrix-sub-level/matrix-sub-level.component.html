@@ -17,9 +17,9 @@
                     (change)="changeEvent('N',false,false, true, subQuestion?.queId)" value="N" />
             </div>
         </div>
-        <!-- <span class="danger" *ngIf="yesNoFormControl.errors?.required">
+        <span class="danger" *ngIf="childFormControl(subQuestion?.queId).invalid">
             Please select the field. 
-        </span>  -->
+        </span> 
         <!-- <span class="danger" *ngIf="yesNoFormControl.errors?.required">
             Please select the field. 
         </span> -->
@@ -41,6 +41,9 @@
                                 row?.frText: row?.text}}</label>
                         </div>
                     </div>
+                    <span class="danger" *ngIf="childFormControl(subQuestion?.queId+''+subQ?.queId).invalid">
+                        Please select the field. 
+                    </span>  
                 </div>
             </ng-container>
         </ng-container>

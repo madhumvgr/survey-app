@@ -25,7 +25,7 @@
             </ng-container>
         </div>
     </div>
-    <span class="danger" *ngIf= "childFormGroup?.invalid">
+    <span class="danger" *ngIf="childFormGroup.invalid && buttonClicked">
         Please select all the fields. 
     </span> 
 </ng-container>

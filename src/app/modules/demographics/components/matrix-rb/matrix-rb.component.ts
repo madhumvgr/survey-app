@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Outpu
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { QuestionaireService } from '../../quersionarie.service';
 
 @Component({
   selector: 'app-matrix-rb',
@@ -17,7 +18,8 @@ export class MatrixRbComponent implements OnChanges {
 
   cols: Column[] = [];
   isFrance: any = false;
-  constructor(  private localStorageService:LocalStorageService) { 
+  buttonClicked: any = false;
+  constructor(  private localStorageService:LocalStorageService, public questionaireService: QuestionaireService) { 
     this.localStorageService.getLanguageSubject().subscribe( val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     });
@@ -60,6 +62,11 @@ export class MatrixRbComponent implements OnChanges {
       this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
       this.onlyOnce = true;
     }
+  }
+  ngOnInit(): void {
+    this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
+      this.buttonClicked = res
+    })
   }
   getPrevSelectedValue(selected: any[] | undefined, value: any) {
     if (selected) {

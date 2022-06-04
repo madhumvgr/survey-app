@@ -32,9 +32,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>{{memberName}}</h1>
-                <p>
-                   {{'genres.description' | translate}} {{memberName}}
-                </p>
+
             </div>
         </div>
         <!--end Row-->
@@ -47,9 +45,10 @@
 <section class="px-3 pb-5">
     <div class="container">
         <div class="row g-4">
-            <h2 *ngIf = "newGenreIds.length != 1">{{'genres.heading' | translate}} {{newGenreIds.length}} {{'genres.heading2' | translate}}<span class="h2-separator"></span></h2>
-            <h2 *ngIf = "newGenreIds.length == 1">{{'genres.heading' | translate}} {{newGenreIds.length}} {{'genres.heading3' | translate}}<span class="h2-separator"></span></h2>
-            <p class="mt-2 mb-0">{{'genres.text' | translate}} {{memberName}} {{'genres.text2' | translate}}</p>
+            <h2 *ngIf = "newGenreIds.length != 1">{{'genres.heading2' | translate}}<span class="h2-separator"></span></h2>
+            <h2 *ngIf = "newGenreIds.length == 1">{{'genres.heading3' | translate}}<span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0" *ngIf="!isTvGenere">{{'genres.text' | translate}} {{deviceName}}</p>
+            <p class="mt-2 mb-0" *ngIf="isTvGenere">{{'genres.text3' | translate}} {{memberName}} {{'genres.text4' | translate}}</p>
 
             <!-- Genres wrapper-->
             <div class="accordion accordion-flush" id="genres-target">

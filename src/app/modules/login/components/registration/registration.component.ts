@@ -22,6 +22,9 @@ export class RegistrationComponent implements OnInit {
   showInvalidError = false;
   showError= false;
   errorMessage: any;
+  view = false;
+  visible = false;
+  isFocused = false;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private localStorageService: LocalStorageService,
@@ -30,16 +33,72 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.show=true;
-    this.hide=true;
+    this.visible = true;
+    this.view = true;
+    this.show = true;
+    this.hide = false;
     this.registerForm = this.fb.group({
       email: ['', [Validators.required]],
-      password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
-      confirmPassword: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
+      password: ['',
+        Validators.compose([
+          Validators.required,
+          // check whether the entered password has a number
+          this.customValidator.patternValidatorFn(/\d/, {
+            hasNumber: true
+          }),
+          // check whether the entered password has upper case letter
+          this.customValidator.patternValidatorFn(/[A-Z]/, {
+            hasCapitalCase: true
+          }),
+          // check whether the entered password has a lower case letter
+          this.customValidator.patternValidatorFn(/[a-z]/, {
+            hasSmallCase: true
+          }),
+          Validators.minLength(8),
+          Validators.maxLength(20)
+        ])],
+      confirmPassword: ['',
+        Validators.compose([
+          Validators.required,
+          // check whether the entered password has a number
+          this.customValidator.patternValidatorFn(/\d/, {
+            hasNumber: true
+          }),
+          // check whether the entered password has upper case letter
+          this.customValidator.patternValidatorFn(/[A-Z]/, {
+            hasCapitalCase: true
+          }),
+          // check whether the entered password has a lower case letter
+          this.customValidator.patternValidatorFn(/[a-z]/, {
+            hasSmallCase: true
+          }),
+          Validators.minLength(8),
+          Validators.maxLength(20)
+        ])],
     }, {
       validator: this.customValidator.MustMatch('password', 'confirmPassword')
     }
     );
+  }
+  navigateTo() {
+    this.hide = true;
+  }
+
+  // Only AlphaNumeric
+  keyPressAlphaNumeric(event: any) {
+
+    var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z0-9!@#$%^&*_+=()-]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
+  onFocusEvent(event: any) {
+    this.isFocused = true;
   }
 
   // convenience getter for easy access to form fields

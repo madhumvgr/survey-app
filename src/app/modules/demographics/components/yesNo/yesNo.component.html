@@ -16,7 +16,7 @@
                    value="N" />
             </div>
         </div>
-        <span class="danger" *ngIf="yesNoFormControl.errors?.required">
+        <span class="danger" *ngIf="yesNoFormControl.errors?.required && buttonClicked">
             Please select the field. 
         </span> 
     </div>

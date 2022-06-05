@@ -11,6 +11,7 @@ import { DeviceConstants, TelevisionConstants } from 'src/app/shared/models/url-
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { ComponentCanDeactivate } from 'src/app/shared/services/pending-changes.guard';
 import { BaseComponent } from 'src/app/shared/util/base.util';
+import { ConfirmationDialogService } from './confirm-dialog.service';
 
 @Component({
   selector: 'app-select-genres',
@@ -33,14 +34,20 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
   private modalComponent!: ModalComponent;
 
   // @HostListener allows us to also guard against browser refresh, close, etc.
-  @HostListener('window:beforeunload')
-  canDeactivate(): Observable<boolean> | boolean {
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
     // insert logic to check if there are pending changes here;
     // returning true will navigate without confirmation
     // returning false will show a confirm dialog before navigating away
-    return false;
-  }
+    if(this.isNotAutoSave){
+      var isYes = true;
+       this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => isYes= !confirmed)
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+      return this.confirmationDialogService.navigateAwaySelection$;
 
+    }
+    return true;
+  }
   generes: Array<any> = [{
     "id": '1',
     "name": "genres.news",
@@ -93,20 +100,15 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
     "selected": false
   }
   ]
-  isNotAutoSave$: Observable<any>;
+  isNotAutoSave$: Observable<any>=new Observable();
   isNotAutoSave = false;
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
     private translate: TranslateService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private confirmationDialogService: ConfirmationDialogService) {
     super();
-    this.isNotAutoSave$ = this.route.queryParamMap.pipe(
-      map((params: ParamMap) => params.get('isNotAutoSave')),
-    );
-    this.isNotAutoSave$.subscribe(param => {
-      this.isNotAutoSave = param;
-      console.log(this.isNotAutoSave);
-    });
+
 
     let url = this.activatedroute.snapshot.url[0].path;
     if (url == "tv-selectGeneres") {
@@ -133,6 +135,15 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
     if (this.deviceState == "Inprogress") {
       this.deviceStatus = "In Progress"
     } else {
+      if (this.deviceState == "Completed") {
+        this.isNotAutoSave$ = this.route.queryParamMap.pipe(
+          map((params: ParamMap) => params.get('isNotAutoSave')),
+        );
+        this.isNotAutoSave$.subscribe(param => {
+          this.isNotAutoSave = param;
+          console.log(this.isNotAutoSave);
+        });
+      }
       this.deviceStatus = this.deviceState;
     }
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
@@ -191,41 +202,41 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
   }
 
   updateTimeLine(event: any, i: any) {
-    
-      this.timeLinesForm.get('dont')?.setValue('0');
-      console.log(event);
-      if (this.isTvGenere) {
-        let item = {
-          memberNo: '',
-          genreId: 0,
-          addNew: event?.target?.checked,
-          notSelected: false
-        }
-        item['memberNo'] = this.memberNo;
-        item['genreId'] = parseInt(this.generes[i].id);
-        this.deviceService.updateTvSelectGenres(item).
-          subscribe((response: any) => {
-            console.log("Update record");
-          });
-      } else {
-        let item = {
-          deviceId: '',
-          memberNo: '',
-          genreId: 0,
-          addNew: event?.target?.checked,
-          notSelected: false
-        }
-        item['deviceId'] = this.deviceId;
-        item['memberNo'] = this.memberNo;
-        item['genreId'] = parseInt(this.generes[i].id);
-        if (this.isNotAutoSave) {
-          this.deviceService.updateSelectGenres(item).
-          subscribe((response: any) => {
-            console.log("Update record");
-          });
-        }
+
+    this.timeLinesForm.get('dont')?.setValue('0');
+    console.log(event);
+    if (this.isTvGenere) {
+      let item = {
+        memberNo: '',
+        genreId: 0,
+        addNew: event?.target?.checked,
+        notSelected: false
       }
-    
+      item['memberNo'] = this.memberNo;
+      item['genreId'] = parseInt(this.generes[i].id);
+      this.deviceService.updateTvSelectGenres(item).
+        subscribe((response: any) => {
+          console.log("Update record");
+        });
+    } else {
+      let item = {
+        deviceId: '',
+        memberNo: '',
+        genreId: 0,
+        addNew: event?.target?.checked,
+        notSelected: false
+      }
+      item['deviceId'] = this.deviceId;
+      item['memberNo'] = this.memberNo;
+      item['genreId'] = parseInt(this.generes[i].id);
+      if (this.isNotAutoSave) {
+        this.deviceService.updateSelectGenres(item).
+          subscribe((response: any) => {
+            console.log("Update record");
+          });
+      }
+    }
+
   }
 
   unCheck() {
@@ -310,12 +321,12 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
       this.router.navigate(['television/thankyou'], { state: { message: message } });
     } else {
       let message: any;
-      if( this.deviceState == "Completed") {
-         message =this.translate.instant('deviceInformation.success2');
-      } else{
-         message =this.translate.instant('deviceInformation.success');
+      if (this.deviceState == "Completed") {
+        message = this.translate.instant('deviceInformation.success2');
+      } else {
+        message = this.translate.instant('deviceInformation.success');
       }
-        this.router.navigate(['survey/Thankyou'], { state: { message: message } });
+      this.router.navigate(['survey/Thankyou'], { state: { message: message } });
 
     }
   }

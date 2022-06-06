@@ -33,21 +33,6 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
 
-  // @HostListener allows us to also guard against browser refresh, close, etc.
-  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    // insert logic to check if there are pending changes here;
-    // returning true will navigate without confirmation
-    // returning false will show a confirm dialog before navigating away
-    if(this.isNotAutoSave){
-      var isYes = true;
-       this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
-      .then((confirmed) => isYes= !confirmed)
-      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-      return this.confirmationDialogService.navigateAwaySelection$;
-
-    }
-    return true;
-  }
   generes: Array<any> = [{
     "id": '1',
     "name": "genres.news",
@@ -102,6 +87,10 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
   ]
   isNotAutoSave$: Observable<any>=new Observable();
   isNotAutoSave = false;
+
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+   return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+  }
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
     private translate: TranslateService,
@@ -229,7 +218,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
       item['deviceId'] = this.deviceId;
       item['memberNo'] = this.memberNo;
       item['genreId'] = parseInt(this.generes[i].id);
-      if (this.isNotAutoSave) {
+      if (!this.isNotAutoSave) {
         this.deviceService.updateSelectGenres(item).
           subscribe((response: any) => {
             console.log("Update record");

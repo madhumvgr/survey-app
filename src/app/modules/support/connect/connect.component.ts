@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeviceService } from '../../login/services/device.service';
 
@@ -13,7 +13,7 @@ export class ConnectComponent implements OnInit {
   description:any;
   techSupport: TechSupport={};
   error: boolean = false;
-  constructor(private deviceService: DeviceService, private router: Router) { 
+  constructor(private deviceService: DeviceService, private router: Router, private el: ElementRef) { 
     this.subject;
     this.description;
    
@@ -35,6 +35,12 @@ export class ConnectComponent implements OnInit {
       });
     } else {
       this.error = true;
+       // scroll to first error. 
+       const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+        ".form-control"
+      );
+  
+      firstInvalidControl.focus(); //without smooth behavior
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -121,7 +121,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
-    private televisionService: TelevisionService, private translate: TranslateService) {
+    private televisionService: TelevisionService, private translate: TranslateService,private el: ElementRef) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
     const genreIds = this.deviceService.getGenreIds();
@@ -299,6 +299,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     });
     if(errorCount === this.timeLinesForm.length || timeLineError){
       this.isValid= false;
+        // scroll to error.
+        const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+          ".errorClass"
+        );
+    
+        firstInvalidControl.scrollIntoView(); //without smooth behavior
     }
     if(this.isValid){
       if (this.isTvGenere) {

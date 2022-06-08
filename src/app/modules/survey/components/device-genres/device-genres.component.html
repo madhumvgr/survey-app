@@ -122,11 +122,13 @@
                                 </div>
                                 <!--end-accoriding-collapse-->
                             </div>
+                            <div class="errorClass">
                             <ng-container *ngIf="genere.isError">
-                                <div style="color:red">
+                                <div class="text-danger">
                                     {{"genres.error" | translate }}
                                 </div>
                             </ng-container>
+                        </div>
                 </ng-container>
                
                 <!--End Accoridian Genre Tab -->

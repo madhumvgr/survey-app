@@ -76,9 +76,12 @@
                 <div>
                     <input type="radio" value=1 (change)="unCheck()" formControlName="dont" name="dont" /> I don't watch any of the above genres
                 </div>
-                <div *ngIf="!isValid || showError" style="color:red">
-                    {{"genres.error" | translate }}
-                    </div>
+                <div class="errorClass">
+                    <div *ngIf="!isValid || showError" class="text-danger">
+                        {{"genres.error" | translate }}
+                        </div>
+                </div>
+               
                 <!--end Ganres-->
 
                 <!-- Action buttons -->

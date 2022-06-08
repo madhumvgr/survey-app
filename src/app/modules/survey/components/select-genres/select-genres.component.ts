@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -95,7 +95,8 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
     private translate: TranslateService,
     private route: ActivatedRoute,
-    private confirmationDialogService: ConfirmationDialogService) {
+    private confirmationDialogService: ConfirmationDialogService,
+    private el: ElementRef) {
     super();
 
 
@@ -269,6 +270,12 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
       .filter((v: any) => v !== null);
     if (selectedOrderIds.length == 0 && this.timeLinesForm.get('dont')?.value != 1) {
       this.showError = true;
+      // scroll to error.
+      const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+        ".errorClass"
+      );
+  
+      firstInvalidControl.scrollIntoView(); //without smooth behavior
       return;
     }
     if (selectedOrderIds.length == 0) {

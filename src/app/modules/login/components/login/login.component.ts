@@ -5,11 +5,12 @@ import { CustomvalidationService } from 'src/app/shared/services/customvalidatio
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from '../../services/user.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { DeviceService } from '../../services/device.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
 import { DeviceConstants } from "src/app/shared/models/url-constants";
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -32,6 +33,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
   signin: any;
   isIE = false;
   panelistType: any;
+  showCookies = false;
+  lang: any;
 
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
@@ -39,7 +42,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private userService: UserService,
-    private localStorageService: LocalStorageService,
+    private localStorageService: LocalStorageService, private cookieService: CookieService,
     private router: Router, private deviceService: DeviceService) { super() }
 
 
@@ -49,6 +52,12 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this.isIE = /*@cc_on!@*/false || !!document['documentMode'];
     this.show = true;
     this.hide = false;
+    this.lang = this.localStorageService.getItem(StorageItem.LANG)
+    const cookieValue = this.cookieService.get('hideCookie');
+    if(!cookieValue) {
+      this.showCookies =true;
+    }
+    console.log(this.showCookies);
     this.loginForm = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', Validators.compose([Validators.required])],
@@ -60,6 +69,11 @@ export class LoginComponent extends BaseComponent implements OnInit {
     super.afterViewInit(this.modalComponent);
   }
 
+  setCookie(value: string) {
+    this.showCookies = false;
+    this.cookieService.set('hideCookie', value);
+    this.cookieService.set('LANG', this.lang);
+  }
 
   navigateTo() {
     this.hide = true;

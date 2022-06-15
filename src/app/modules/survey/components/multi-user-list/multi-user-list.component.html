@@ -72,7 +72,7 @@
                                     </p>
                                 </div>
 
-                                <div [formGroupName]="i" class="col-6 d-flex justify-content-end pe-3">
+                                <div [formGroupName]="i" class="col-6 d-flex justify-content-end pe-3 select-percentage">
                                     <select class="form-select multi-user-select" formControlName="usePercentage"
                                         aria-label="Select percentage"  (change)="updateMemberDevice(i)">
                                         <option selected value="0">0%</option>
@@ -120,7 +120,7 @@
                                     </p>
                                 </div>
     
-                                <div class="col-6 d-flex justify-content-end pe-3">
+                                <div class="col-6 d-flex justify-content-end pe-3 select-percentage">
                                     <select formControlName="singleViewerPe" class="form-select multi-user-select" (change)="updateCoviewerDevice()"
                                         aria-label="Select percentage">
                                         <option selected value="0">0%</option>
@@ -147,7 +147,7 @@
                                 </p>
                             </div>
     
-                            <div class="col-6 d-flex justify-content-end pe-3">
+                            <div class="col-6 d-flex justify-content-end pe-3 select-percentage">
                                 <select class="form-select multi-user-select" (change)="updateCoviewerDevice()" formControlName="coViewerPerce"
                                     aria-label="Select percentage">
                                     <option selected value="0">0%</option>

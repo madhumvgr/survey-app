@@ -7,7 +7,7 @@
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
             <ng-container *ngIf="isTvGenere else device">
                 <li class="breadcrumb-item"><a
-                        [routerLink]="['/television/household-members']">{{'houseHold.televisionUsage' | translate}}</a>
+                        [routerLink]="['/television/household-members']">{{'houseHold.televisionCardTitle' | translate}}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
             </ng-container>
@@ -38,9 +38,13 @@
         <div class="row">
             <div class="col-12">
                 <h1>{{memberName}}</h1>
-                <p>
+                <p *ngIf="isTvGenere">
                     <!-- {{'selectgenres.description' | translate}} -->
-                    {{"select-channels.heading1" | translate }}{{memberName}}{{"select-channels.heading2" | translate }}
+                    {{"select-channels.heading1" | translate }}
+                </p>
+                <p *ngIf="!isTvGenere">
+                    <!-- {{'selectgenres.description' | translate}} -->
+                    {{"select-channels.heading2" | translate }}{{deviceName}}.{{"select-channels.heading3" | translate }}
                 </p>
             </div>
         </div>
@@ -60,7 +64,6 @@
                 <!-- Genres wrapper-->
                 <div class="accordion accordion-flush" id="genres-target">
                     <!-- Accoridian Genre Tab 1 -->
-                    <p>{{"select-channels.text" | translate }}{{memberName}}{{"select-channels.text1" | translate }}</p>
                     <ng-container *ngFor="let genere of genreFormArray.controls; let i = index">
                         <div class="form-check">
                             <label formArrayName="genere" class="form-check-label">
@@ -74,8 +77,8 @@
                    
                 </div>
                 <div>
-                    <input type="radio" value=1 (change)="unCheck()" formControlName="dont" name="dont" /> I don't watch any of the above TV
-                    networks
+                    <input type="radio" value=1 (change)="unCheck()" formControlName="dont" name="dont" /> {{"televisionChannels.dontWatch" | translate }}
+                    
                 </div>
                 <div *ngIf="!isValid || showError" style="color:red">
                     {{"genres.error" | translate }}

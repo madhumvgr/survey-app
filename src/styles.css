@@ -38,6 +38,61 @@ body {
   z-index: 2;
   cursor: pointer; 
 }
+/*Quick fixes for menu  */
+.dropdown-toggle:after {
+  display:none!important;
+}
+
+.dropdown-menu {
+  width: 263px !important;
+  left: -123px !important;
+  top: 0px !important;
+}
+
+.mat-icon {
+  float: right !important;
+}
+.close-menu-button {
+  position: relative !important;
+  left: -19px !important;
+  font-size: 30px !important;
+  height: 30px !important;
+  color: #002e62 !important;
+}
+  
+.menu-user-name {
+  display: block;
+  margin: inherit;
+  padding-top: 20px;
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+.close-menu-button {
+  position: relative !important;
+  left: -19px !important;
+  font-size: 30px !important;
+  height: 30px !important;
+  color: #002e62 !important;
+}  
+
+.fullName{
+  width: 240px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  display: block !important;
+  text-overflow: ellipsis !important;
+  font-weight: bold !important;
+}
+  
+.dropdown-item {
+    font-weight: 500 !important;
+    color: #002e62 !important;
+    line-height: 2 !important;
+}
+    
+
+
 .eye-hide {
 position:relative;
 bottom:33px;
@@ -163,6 +218,13 @@ h4 {
   font-size: 18px;
   color: #000;
   font-weight: 600;
+}
+
+h5 {
+  font-size: 18px;
+  color: #000;
+  font-weight: regular;
+  text-decoration: underline;
 }
 
 p, b {
@@ -418,6 +480,23 @@ footer p {
   .lang-taggle {
     display: none;
   }
+  .dropdown-menu {
+    left: -181px !important;
+  }
+  .multiple-users-card { 
+    display:block!important;
+  }
+  .select-percentage {
+    display: block!important;
+    padding: 10px 20px;
+  }
+  .description {
+    white-space: inherit;
+  }
+
+  /* Santosh Test Code for PAn-68*/
+  
+
 }
 
 .danger{

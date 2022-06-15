@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PendingChangesGuard } from 'src/app/shared/services/pending-changes.guard';
 import { ThankyouComponent } from '../account-setting/components/account-settings/thankyou/thankyou.component';
 import { PrivacyPolicyComponent } from '../login/components/login/forgot-password/privacy-policy/privacy-policy.component';
 import { TvChannelsComponent } from '../television/components/tv-channels/tv-channels.component';
@@ -32,8 +31,8 @@ const routes: Routes = [
       { path: 'multiUserList/:state/:deviceId', component: MultiUserListComponent },
       { path: 'deviceUsage/:state/:deviceId', component: DeviceUsageComponent },
       { path: 'deviceGeneres/:state/:memberNo/:deviceId', component: DeviceGenresComponent },
+      { path: 'selectGeneres/:state/:memberNo/:deviceId', component: SelectGenresComponent },
       { path: 'selectChannel/:state/:memberNo/:deviceId/:list', component: SelectChannelComponent },
-      { path: 'selectGeneres/:state/:memberNo/:deviceId', component: SelectGenresComponent, canDeactivate: [PendingChangesGuard] },
       { path: 'deviceChannels/:state/:memberNo/:deviceId', component: TvChannelsComponent },
       { path: 'household-devices', component: HouseholdDevicesComponent },
       { path: 'not-in-use-devices/:state/:deviceId', component: NotInUseDevicesComponent },

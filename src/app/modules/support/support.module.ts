@@ -10,7 +10,7 @@ import { ConnectComponent } from './connect/connect.component';
 import { ContactComponent } from './contact/contact.component';
 import { ExitComponent } from './exit/exit.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 
@@ -32,7 +32,8 @@ import { TranslateModule } from '@ngx-translate/core';
     SupportRoutingModule,
     SharedModule,
     FormsModule,
-    TranslateModule
+    TranslateModule,
+    ReactiveFormsModule
   ]
  
 })

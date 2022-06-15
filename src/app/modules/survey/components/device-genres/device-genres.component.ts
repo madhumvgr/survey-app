@@ -121,7 +121,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
-    private televisionService: TelevisionService, private translate: TranslateService,private el: ElementRef) {
+    private televisionService: TelevisionService, private translate: TranslateService, private el: ElementRef) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
     const genreIds = this.deviceService.getGenreIds();
@@ -299,12 +299,11 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     });
     if(errorCount === this.timeLinesForm.length || timeLineError){
       this.isValid= false;
-        // scroll to error.
-        const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
-          ".errorClass"
-        );
-    
-        firstInvalidControl.scrollIntoView(); //without smooth behavior
+      const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+        ".errorClass"
+      );
+  
+      firstInvalidControl.scrollIntoView(); //without smooth behavior
     }
     if(this.isValid){
       if (this.isTvGenere) {

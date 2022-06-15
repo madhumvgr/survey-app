@@ -1,6 +1,6 @@
 <div class="mb-4">
 
-    <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h4>
+    <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
 
     <div [formGroup]="childFormGroup">
 

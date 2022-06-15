@@ -46,14 +46,18 @@ export class MatrixSubLevelComponent implements OnChanges {
       //   prevValue = selected[selected.length-1];
       // }
       if (this.question?.row && this.question.subSurveyQueAnsDTO) {
-
         this.question.subSurveyQueAnsDTO.forEach(subQues => {
           if (subQues.selected && subQues.selected.length != 0) {
-            let value = subQues.selected[0].answer;
-            this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value, Validators.required));
+            if( subQues?.queType != "RB") {
+              let value = subQues.selected[0].answer;
+              this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value));
+            } else{
+              this.childFormGroup.addControl('' + subQues?.queId, new FormControl(subQues.selected[0].rowValue));
+            }
+            
           }
           else {
-            this.childFormGroup.addControl('' + subQues?.queId, new FormControl('', Validators.required));
+            this.childFormGroup.addControl('' + subQues?.queId, new FormControl(''));
           }
           if (subQues.subSurveyQueAnsDTO) {
             let sub2LevQues = subQues.subSurveyQueAnsDTO;
@@ -101,7 +105,7 @@ export class MatrixSubLevelComponent implements OnChanges {
     }, {});
   }
 
-  changeEvent(value: any, isText: boolean, isLevel1: boolean, isLevel: boolean, subQuesId: any, condId?: any) {
+  changeEvent(value: any, isText: boolean, isLevel1: boolean, isLevel: boolean, subQuesId: any, condId?: any, type?: any) {
     let questionNo;
     if (this.question?.queNo) {
       questionNo = this.question?.queNo;
@@ -132,40 +136,26 @@ export class MatrixSubLevelComponent implements OnChanges {
     if (isLevel) {
       this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
       this.question.queId = subQuesId;
+      if(type == "YES-NO-CY") {
+        this.question.answer = value;
+        this.question.questionLevel1Id = null;
+      } else {
+        this.question.answer = "Y";
+        this.question.questionLevel1Id = value;
+      }
 
       this.question.condQuestionId = parseInt("");
       this.question.queType = "";
-      this.question.answer = value;
       this.question.condQuestionLevel1Id = null;
       this.question.condQuestionLevel2Id = null;
       this.question.condAnswer = "";
       this.question.condQueType = "";
       this.question.condMaxLevel = "1";
       this.question.condOtherDescription = "";
+      this.question.extraCond = type;
     } else if (isLevel1) {
       this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
       this.question.queId = subQuesId;
-      // const firstControl = this.childFormGroup.get(subQuesId+1);
-      // const secoundControl = this.childFormGroup.get(subQuesId+2);
-      // if(value == 'Y') {
-      //   if(firstControl) {
-      //   firstControl?.setValidators([Validators.required]);
-      //   firstControl?.updateValueAndValidity()
-      //   }
-      //   if(secoundControl) {
-      //   secoundControl?.setValidators([Validators.required]);
-      //   secoundControl?.updateValueAndValidity()
-      //   }
-      // } else {
-      //   if(firstControl) {
-      //   firstControl?.setValidators([]);
-      //   firstControl?.updateValueAndValidity()
-      // }
-      // if(secoundControl) {
-      //   secoundControl?.setValidators([]);
-      //   secoundControl?.updateValueAndValidity()
-      // }
-      // }
       this.question.condQuestionId = condId;
       this.question.queType = ""
       this.question.condQuestionLevel1Id = value;
@@ -175,6 +165,7 @@ export class MatrixSubLevelComponent implements OnChanges {
       this.question.condQueType = "RB";
       this.question.condMaxLevel = "1";
       this.question.condOtherDescription = "";
+      this.question.extraCond = type;
     } else if (isText) {
       this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
       this.question.queId = subQuesId;
@@ -187,6 +178,7 @@ export class MatrixSubLevelComponent implements OnChanges {
       this.question.condQueType = "TEXT";
       this.question.condMaxLevel = "1";
       this.question.condOtherDescription = value.target.value;
+      this.question.extraCond = "YES-NO-CY";
     }
     this.changeEvent1.emit(this.question);
   }

@@ -6,7 +6,7 @@
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
             <ng-container *ngIf="isTvGenere else device">
-                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">{{'houseHold.televisionUsage' | translate}}</a>
+                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">{{'houseHold.televisionCardTitle' | translate}}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
             </ng-container>
@@ -47,13 +47,14 @@
         <div class="row g-4">
             <h2 *ngIf = "newGenreIds.length != 1">{{'genres.heading2' | translate}}<span class="h2-separator"></span></h2>
             <h2 *ngIf = "newGenreIds.length == 1">{{'genres.heading3' | translate}}<span class="h2-separator"></span></h2>
-            <p class="mt-2 mb-0" *ngIf="!isTvGenere">{{'genres.text' | translate}} {{deviceName}}</p>
-            <p class="mt-2 mb-0" *ngIf="isTvGenere">{{'genres.text3' | translate}} {{memberName}} {{'genres.text4' | translate}}</p>
+            <p class="mt-2 mb-0" *ngIf="!isTvGenere">{{'genres.deviceGenre' | translate}}{{deviceName}}</p>
+            <p class="mt-2 mb-0" *ngIf="isTvGenere">{{'genres.text3' | translate}}</p>
 
             <!-- Genres wrapper-->
             <div class="accordion accordion-flush" id="genres-target">
                 <!-- Accoridian Genre Tab 1 -->
                 <ng-container *ngFor="let genere of newGenreIds; let generId = index">
+                    <div class="errorClass">
                             <div class="accordion-item shadow-sm rounded mb-3">
                                 <h3 class="accordion-header" id="open-one">
                                     <button class="py-0 ps-0 pe-3 accordion-button collapsed" type="button"
@@ -122,7 +123,6 @@
                                 </div>
                                 <!--end-accoriding-collapse-->
                             </div>
-                            <div class="errorClass">
                             <ng-container *ngIf="genere.isError">
                                 <div class="text-danger">
                                     {{"genres.error" | translate }}

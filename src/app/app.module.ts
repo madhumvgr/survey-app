@@ -26,7 +26,7 @@ import { TelevisionModule } from './modules/television/television.module';
 import { DemographicsModule } from './modules/demographics/demographics.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
-import { PendingChangesGuard } from './shared/services/pending-changes.guard';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -66,12 +66,12 @@ import { PendingChangesGuard } from './shared/services/pending-changes.guard';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
     AuthGuard,
-    PendingChangesGuard,
     {provide: LocationStrategy,
-      useClass: HashLocationStrategy}
+      useClass: HashLocationStrategy},
+    CookieService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]

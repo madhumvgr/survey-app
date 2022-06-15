@@ -1,4 +1,4 @@
-<br />
+<!-- <br />
 <ng-container>
     <h3>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h3>
     <div class="container">
@@ -23,4 +23,27 @@
     <span class="danger" *ngIf= "childFormGroup?.invalid && buttonClicked">
         Please select all the fields. 
     </span> 
+</ng-container> -->
+
+<ng-container>
+    <div class="mb-4">
+        <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
+        <div [formGroup]="childFormGroup" *ngFor="let row of question?.row;let i=index">
+
+            <h5 class="pt-2"><u>{{row?.text}}</u></h5>
+            <ng-container *ngFor="let column of cols;let j=index">
+                <div class="form-check mb-3">
+                    <input (change)="changeEvent(row?.value,column?.value)"
+                        [formControlName]="question?.queNo+''+row?.value" class="form-check-input" type="radio"
+                        id="row{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}{{j}}" [value]="column?.value">
+                    <label class="form-check-label"
+                        for="row{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}{{j}}">{{column?.text}}
+                    </label>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <span class="danger" *ngIf="childFormGroup?.invalid && buttonClicked">
+        Please select all the fields.
+    </span>
 </ng-container>

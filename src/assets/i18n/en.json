@@ -1,7 +1,9 @@
 {
     "loginPage": {
         "title": "Login",
-        "text": "Welcome! You’re about to shape the future of Canadian broadcasting. We use cookies to improve your experience! By continuing, you accept our",
+        "text": "We are using cookies to store your language preference ",
+        "acceptButton": "Accept",
+        "refuseButton": "Refuse",
         "browserUpdateText": "For better user experience please update your browser.",
         "email": "User Id",
         "emailRequiredText": "User Id is required",
@@ -18,13 +20,13 @@
     },
     "welcomePage": {
         "title": "Welcome",
-        "text": "We're happy to have you! You now have the power to shape Canada's broadcasting industry! By taking part in our surveys, you help broadcasters understand the kind of entertainment Canadians care about. Be assured that your ",
+        "text": "Thank you for your participation in the Numeris Online TV Panel. We would like to know a little bit about the devices in your household and how they are used by different household members. Be assured that your ",
         "Link": "data and privacy",
-        "text1": " are always protected. We hope you enjoy time with us.",
+        "text1": " are always protected. To begin, click “Get Started” to go to the Survey Hub section below.",
         "surveyhubLabel": "Survey Hub",
         "surveyhubText": "All surveys organized in one place for you.",
         "surveyhubButton": "Get Started",
-        "techSupportLabel": "Tech Support",
+        "techSupportLabel": "Support",
         "techSupportText": "We are here to help. Just ask!",
         "techSupportButton": "Learn More",
         "privacyPolicyUrl": "https://numeris.ca/privacy-policy/",
@@ -39,18 +41,18 @@
         "description": "Welcome to the messaging center where you can access messages and take actions."
     },
     "techSupportPage": {
-        "title": "Tech Support",
-        "description": "Have a question? Run into a problem? No sweat! Try searching the FAQ section for an answer. If that doesn’t work, drop us a line."
+        "title": "Support",
+        "description": "Have a question? Run into a problem? No sweat! Try searching the FAQ section for an answer. If you can’t find what you are looking for, please contact us."
     },
     "faq": {
         "title": "FAQs",
         "description": "Search answers to frequently asked questions.",
-        "faqButton": "Search"
+        "faqButton": "Explore"
     },
     "connectNumeris": {
         "title": "Connect with Numeris",
-        "description": "Drop us a line and we’ll look into it for you.",
-        "button": "Continue"
+        "description": "Contact us and we’ll look into the issue for you",
+        "button": "Connect"
     },
     "panelistRegistration ": {
         "title": "Ready? Let’s create your account.",
@@ -69,12 +71,12 @@
         "title": "Household",
         "description": "This section collects basic information about household members and the media devices they use.",
         "devicesCardTitle": "Devices",
-        "devicesCardDescription": "Surveys about media devices you have at home.",
+        "devicesCardDescription": "Questions about the media devices in your household.",
         "button": "Continue",
-        "demographicCardTitle": "Demographics",
-        "demographicCardDescription": "Basic questions about members in your household.",
-        "televisionCardTitle": "Television",
-        "televisionCardDescription": "Surveys about your cable and antena television usage.",
+        "demographicCardTitle": "Your Household",
+        "demographicCardDescription": "Questions about  members in your household.",
+        "televisionCardTitle": "Television Viewing ",
+        "televisionCardDescription": "Questions about viewing on your television. ",
         "televisionUsage": "Television Usage"
     },
     "accountSettings": {
@@ -103,9 +105,9 @@
         "householdDevicesHistoryLabel1": "Completed",
         "householdDevicesHistoryLabel2": "Not in use",
         "televisionUsage": "Television Usage",
-        "newDescription": "New shows surveys for devices that were newly added to your home network. We recommend you start with these surveys.",
-        "progressDescription": "In Progress shows device surveys you began but are still to complete.",
-        "historyDescription": "Completed devices show surveys that you have completed. You can review, change and resubmit any of these surveys. Devices that are not in use shows surveys for devices you marked not in use. If you ever put them to use again, please tap to update their status."
+        "newDescription": "Questions for devices that haven’t been started or that have been recently added to your home network appear under the New section. This is a good place to begin. ",
+        "progressDescription": " In Progress shows surveys for devices that you’ve begun but still have to complete.",
+        "historyDescription": "Completed shows surveys for devices that you have completed. You can review, change and resubmit any of these surveys at any time.  Not in Use shows surveys for devices you marked 'not in use'. If you ever put them to use again, please update their status by updating the relevant survey for that device. "
     },
     "faqPage": {
         "title1": "FAQ’s",
@@ -137,7 +139,7 @@
         "message": "Your message",
         "sendButton": "Send",
         "montrealOffice": "Montreal office",
-        "montrealDescription": "For panelist in ON, QC and Atlantic region - Eastern time",
+        "montrealDescription": "For panelists in ON, QC and Atlantic region - Eastern time",
         "montrealdays": "Monday to Friday",
         "montrealWeekdays": "Weekdays",
         "montrealTimes": "10:00am to 6:00pm",
@@ -146,7 +148,7 @@
         "tollFree": "Toll Free",
         "montrealPhone": "1-866-548-8991",
         "richmondOffice": "Richmond office",
-        "richmondDescription": "For panelist in MB, SK, AB and BC - Pacific time",
+        "richmondDescription": "For panelists in MB, SK, AB and BC - Pacific time",
         "richmondDays": "Monday to Friday",
         "richmondTimes": "9:00am to 6:00pm",
         "richmondSaturday": "Saturdays",
@@ -171,7 +173,7 @@
     },
     "newAccount": {
         "title": "Ready ? Let`s create your account.",
-        "description": "Please enter the one-time password(OTP) we emailed you.",
+        "description": "Please enter the one-time password (OTP) you received via text message.",
         "key": "Key",
         "keyRequired": "Key is required",
         "keyRequiredText": "Key must be at least 6 characters",
@@ -181,33 +183,36 @@
     },
     "newDevices": {
         "title": "New Devices",
-        "description": "This page shows all media devices that are New connected to your home network. Surveys in this section will ask you basic questions about each device’s use. Be assured that your privacy policy.",
+        "description": "This page shows all media devices that have not been started and are connected to your home network. This section will ask you basic questions about the use of each device.",
         "description1": "are always protected.",
         "Link": "data and privacy",
         "privacyPolicyUrl": "https://numeris.ca/privacy-policy/",
         "devicesDetectedTitle": "",
         "devicesDetectedDescription": "Select a device to start a survey.",
         "devicesText": "Devices",
-        "devicesDetected": "devices detected"
+        "devicesDetected": "New devices detected"
     },
     "inProgressDevices": {
         "title": "In Progress Devices",
-        "description": "This page lists surveys for media devices that you started but are yet to complete. Each survey has basic questions about a device’s usage. Select a device to complete its survey.",
-        "macAddress": "Mac Address"
+        "description": "This page shows all media devices that are In Progress and connected to your home network. Surveys in this section will ask you basic questions about the use of each device.",
+        "macAddress": "Mac Address",
+        "deviceDetected": "In Progress devices detected"
     },
     "completedDevices": {
-        "title": "Completed",
-        "description": "This page shows media devices for which you’ve completed surveys. Nice going! You can review, edit and resubmit a completed survey.",
+        "title": "Completed Devices",
+        "description": "This page shows all media devices that are Completed and connected to your home network. You can review, change and resubmit any of these surveys at any time.",
         "description2": "You are about to edit a survey that you completed earlier for the device above. Please select the section that you’d like to edit from the list below.",
-        "deviceName": "Device Name"
+        "deviceName": "Device Name",
+        "deviceDetected": "Completed devices detected"
     },
     "notInUse": {
-        "title": "",
-        "description": "This page shows media devices that you marked as “not in use”. If you’re using them again, please update its status by selecting a card below."
+        "title": "Not in Use Devices",
+        "description": "This page shows all media devices that have been marked as Not in Use and are connected to your home network. If you ever put them to use again, please update their status by updating the relevant survey for that device.",
+        "deviceDetected": "Not in Use devices detected"
     },
     "deviceOwner": {
         "title": "Device Owner Information",
-        "description": "Please select the name of the household member who owns this device.",
+        "description": "Please select the name of the household member who owns ",
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
@@ -216,15 +221,18 @@
     },
     "multipleUsers": {
         "title": "Multiple Users",
-        "description1": "In this section, we wish to understand the approximate share (expressed in percentages) each household member has in watching this TV every month.",
-        "description2": "Let’s consider an example. Three household members – a parent and 2 children – share a Smart TV. So, their shared device usage can be entered as: Parent=30%, Child 1 = 50%, Child 2 = 20%.",
+        "description":"Since",
+        "description1": "is shared, please indicate the percentage of time each household member uses the device. Please only include household members who use the device to watch TV/Video content at least monthly. ",
+        "description2": "Let’s consider an example. Three household members – a parent and 2 children – share a Smart TV. Their shared device usage can be entered as: Parent=30%, Child 1 = 50%, Child 2 = 20%.",
         "heading": "Shared device usage",
-        "text1": "Select how long each household member uses this device",
+        "text1": "Select the percentage of time that each household member uses this device.",
         "tipsLabel": "Tips",
         "tip1": "Enter an approximate percentage value for each member.",
         "tip2": "If a member hasn’t viewed the device at all in the past month, enter 0% against their name.",
-        "tip3": "The total for all members should add up to 100.",
-        "text2": "Select how long this device is used by single vs multiple member at one time",
+        "tip3": "The total for all members should add up to 100%.",
+        "tip4":"Enter an approximate percentage value for use by one member and by multiple members.",
+        "tip5": "The total for single and multiple members should add up to 100%.",
+        "text2": "We want to understand how often members of your household view videos together on this device. Select the percentage of time that only one person uses this device vs multiple members at the same time.",
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
@@ -235,12 +243,12 @@
     },
     "deviceUsage": {
         "title": "Device Usage",
-        "description": "This section has surveys that help us understand the media genres that each household member watches on this Smart TV.",
+        "description": "This section has surveys that help us understand the media genres that each household member watches on .",
         "tipsLabel": "Tips",
         "tip1": "This survey lists 13 genres in all. Choose all that apply.",
         "tip2": "You may complete the surveys in any order you wish.",
         "heading": "Household member list",
-        "text": "Select the survey under your name. You may also select and complete a survey on behalf of a household member. Only after the status for ALL members shows “COMPLETE”, tap the SUMBIT button to continue.",
+        "text": "Select the survey under your name. You may also select and complete a survey on behalf of another household member. Only after the status for ALL members shows as “COMPLETE”, use the SUMBIT button to continue. ",
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
@@ -251,21 +259,26 @@
         "resubmitSuccess2": "resubmitSuccess.",
         "notStarted": "Not Started",
         "inProgress": "In Progress",
-        "completed": "Completed"
+        "completed": "Completed",
+        "submit": "Submit"
     },
     "genres": {
         "description": "Let’s get a bit specific about the genres watched online by.",
-        "heading": "List view of ",
-        "heading2": "genres",
-        "heading3": "genre",
-        "text": "please select all the genres",
+        "heading": "Select Genres",
+        "heading2": "Genres Watched",
+        "heading3": "Genre Watched",
+        "text": "From the genres listed below, please select all the genres that you normally watch online on ",
         "text1": "watches online.",
-        "text2": "watches online, and the time of day they most likely watch them at. You may select multiple time options",
+        "text2": "For each genre, please indicate the time slots that you normally watch online video on ",
+        "text3":"Click on each genre to indicate the time that you normally watch it on television through cable box, satellite or antenna. You may select multiple options. ",
+        "text4":"normally watches it on television through cable box, satellite or antenna. You may select multiple options. If they do not watch that genre, please select “Do not watch this content”. ",
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "message": "You have successfully submitted information to us.",
-        "error": "At least one check box should be selected.",
+        "device-message": "You have successfully updated the device information.",
+        "tv-message":"You have successfully submitted your Television Usage survey to us",
+        "error": "Must select at least one option.",
         "news": "News & Analysis",
         "kidsProgram": "Kids Programming",
         "hobbies": "Hobbies & Leisure",
@@ -276,8 +289,11 @@
         "entertainment": "Entertainment",
         "documentaries": "Documentaries",
         "other" : "Other",
+        "dontWatch": "I don't watch any of the above genres",
         "weekdayTittle" : "Select weekday time slots",
-        "weekendTittle" : "Select weekend time slots"
+        "weekendTittle" : "Select weekend time slots",
+        "error1": "Should select atleast one value",
+        "deviceGenre": " For each genre, please indicate the time slots that you normally watch online video on  "
     },
 
     "changePassword": {
@@ -285,8 +301,8 @@
         "description": "",
         "tipsLabel": "Tips",
         "tip1": "Your password must be between 8 and 20 characters long ",
-        "tip2": "Have one upper and one lower case letter ",
-        "tip3": "It must have both letters and numbers and not have spaces or emojis",
+        "tip2": "It must have both letters and numbers and not have spaces or emojis ",
+        "tip3": "Must include at least one uppercase and one lowercase letter ",
         "currentPassword": "Current Password",
         "currentPasswordRequired": "Current password is required",
         "newPassword": "New Password",
@@ -296,7 +312,8 @@
         "passwordValidationMessage": "Password should contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
         "cancelButton": "Cancel",
         "updateButton": "Update",
-        "passwordMatchText": "Password and Confirm Password must match."
+        "passwordMatchText": "Password and Confirm Password must match.",
+        "passwordError": "Incorrect password"
     },
     "emailNotifications": {
         "title": "Email Notifications",
@@ -365,13 +382,13 @@
         "a9": "Pack up the FocalMeter, network cable, and power cord in the original box and ensure that the return waybill is affixed to the outside of the box. You can then either drop it off yourself at any Purolator location or Staples store, or we can schedule Purolator to come directly to your home and pick up the package. Please notify us by phone or email that you are returning the equipment and/or if you would like us to schedule a pick up. "
     },
     "registrationForm": {
-        "description": "Enter your username and password.",
-        "tips": "Tips",
-        "tip1": "Be between 8 and 20 characters long",
+        "description": "Enter your username and password below",
+        "tips": "Password Tips",
+        "tip1": "Must be between 8 and 20 characters long",
         "tip2": "Have both letters and numbers",
-        "tip3": "Have one upper and one lower case letter",
-        "tip4": "Not  have spaces, special characters or emojis",
-        "userName": "Email",
+        "tip3": "Must include at least one uppercase and one lowercase letter",
+        "tip4": "No spaces or emojis",
+        "userName": "Username",
         "password": "Password",
         "confirmPassword": "Confirm Password",
         "registerButton": "Register",
@@ -380,14 +397,14 @@
         "ConfirmPasswordRequired": "Confirm password is required",
         "ConfirmPasswordError": "Confirm Password must match",
         "tittle": "Register/Create Profile",
-        "emailRequired": "Email is required",
+        "emailRequired": "User id is required",
         "emailError": "Enter a valid email address",
         "header": "Create Profile"
     },
     "registerSuccess": {
-        "tittle": "Success! Your account is created!",
-        "description1": "We are thrilled to have you! For your records, we have emailed you a details.",
-        "description3": "You’re good to go! Please login when ready."
+        "tittle": "Success! Your account has been created!",
+        "description1": "We have sent you a confirmation email with the link to the Numeris Panelist Portal for future reference.",
+        "description3": "Please login when you are ready."
     },
     "passwordReset": {
         "title": "Password Reset",
@@ -406,7 +423,7 @@
     },
     "deviceInformation": {
         "title": "",
-        "description": "Let’s talk a bit about your ",
+        "description": "Tell us a bit about your device,",
         "descriptionPart2": "It helps us understand how it's being used.",
         "descriptionPart3": "Be assured that your privacy is our top concern and we check your device for specific data only.",
         "descriptionPart4": "",
@@ -417,8 +434,8 @@
         "description2": "Naming this device makes it easy for you to identify it in the future. Your focal meter says this device is called “Yoda”. Continue using this name or enter a different one below.",
         "heading2": "Enter different device name",
         "q1": "How many household members use this device?",
-        "q1Option1": "1",
-        "q1Option2": "2 to 10",
+        "q1Option1": "One Member ",
+        "q1Option2": "Multiple Members",
         "q1Option3": "11 to 20",
         "q1Option4": "More than 20",
         "q1Option5": "This device is no longer in use",
@@ -558,24 +575,25 @@
         "modalTitle": "Save and Exit",
         "content": "Don't have time to submit your survey? No worries, you can come back later and continue from where you left",
         "dismissButtonLabel": "Cancel",
-        "closeButtonLabel": "Save & Exit",
+        "closeButtonLabel": "Continue",
         "closeButtonLabelLogout": "Exit",
         "confirmTittle": "Warning",
         "confirmationDescription": "Are you sure you want to leave this page?",
         "errorMSg": "membership type could not be determined, please contact the system administrator."
     },
     "televisionMembers": {
-        "tittle": "Television Usage",
-        "description": "This section has surveys for each household members who viewing channels on a TV set connected to a cable box, satellite or antenna.",
+        "tittle": "Television Viewing",
+        "description": " For this set of questions, please think about your TV viewing that is not done online. This would include viewing on a TV set connected to a cable box, satellite or antenna.",
         "header": "List of individual members",
-        "subDescription": "Complete the survey that has your name. You may also fill a survey on behalf of another household member.",
+        "subDescription": "Complete the survey  for each household member.",
         "statusLabel": "Status"
     },
     "televisionChannels": {
-        "description": "Please indicate how much time the household member spends watching TV programs using cableor antenna on each of the following TV channels on an average day?.",
+        "description": "Please indicate how much time the household member spends watching videos online from each of the following networks on an average day.",
+        "tv-description": "Please indicate how much time the household member spends watching TV programs using a cable box, satellite or antenna on each of the following TV networks on an average day.",
         "heading":"List view of 7 channels",
-        "subText": "Select answers for each channel below",
-        "error": "This column is required",
+        "subText": "Select answers for each network below",
+        "error": "Must select at least one option.",
         "defaultOption": "Select answer",
         "option1": "None",
         "option2": "Up to 30 minutes",
@@ -583,39 +601,58 @@
         "option4": "More than 1 hour up to 2 hours",
         "option5": "More than 2 hours up to 3 hours",
         "option6": "More than 3 hours",
+        "message": "You have successfully submitted your Television Usage survey to us.",
         "weekdayTittle":"Weekdays",
-        "weekendTittle":"Weekends"
+        "weekendTittle":"Weekends",
+        "dontWatch": "I don't watch any of the above TV networks"
     },
 "demographics": {
-    "tittle": "Household Demographics",
-    "description1": "Surveys in this section ask basic questions about household members and how they consume media on devices. Be assured that your ",
+    "tittle": "Your Household",
+    "description1": "Surveys in this section ask basic questions about your household and household members.",
     "description2": " are always protected",
-    "card1": "Individual Members",
-    "card1Description": "Survey for each member in your household.",
-    "card2": "Household Owner",
-    "card2Description": "Survey for the head of the house.",
+    "card1": "Individual Member Surveys",
+    "card1Description": "Surveys for each member of your household.",
+    "card2": "Household Survey",
+    "card2Description": "A survey for your household.",
     "continueButton": "Continue",
-    "individualDescription": "This section has surveys for each household member. It has 32 basic questions related to name, age, languages spoken, education and occupation – including some behavioural questions. Each survey takes 10 to 15 minutes to complete.",
+    "individualDescription": "Please have each household member complete their individual survey below. Please ensure that each household member clicks the link next to their own name to complete the survey. An adult in the home may help complete the survey for household members who need assistance.",
     "individualSubText":"List of individual members:",
     "individualSubDescription": "Complete the survey that has your name. You may also fill a survey on behalf of another household member.",
     "statusLabel": "Status",
     "startButton": "Start",
     "completedButton": "Edit",
-    "questinarieDescription": "Let’s quickly review! To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE."
+    "questinarieDescription": "Please complete these questions to tell us a bit more about yourself. These questions will only be used in order to report your viewing in the correct group. To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE.",
+    "questinarieDescription2": "To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE.",
+    "houseHoldDescription":"Please complete the brief household demographic survey through the link below. This survey only needs to be completed once for the household.",
+    "householdquestionariedesc": "Please answer the next two questions about your household. These questions only need to be answered once by one member of your household. Please rest assured that your responses will be kept completely confidential. These questions are only asked to group together similar households for research purposes and will not be used for any other purpose."
 },
 "select-genres":{
-    "heading1": "Please indicate which genres below ",
-    "heading2":" spends watching using internet?",
-    "sub-heading":"Select Genres",
+    "heading1": "From the genres listed below, please select all the genres that you normally watch on television through cable box, satellite or antenna. You may select multiple options.",
+    "heading2":"From the genres listed below, please select all the genres that you normally watch online on ",
+    "sub-heading":"Genres Watched",
     "text": "Please select all the genres ",
     "text1": " watches online."
 },
 "select-channels":{
-    "heading1": "Please indicate which TV channels below ",
-    "heading2":" spends watching using internet?",
-    "sub-heading":"Select Channels",
+    "heading1": "From the TV networks listed below, please select all the networks that you normally watch through cable box, satellite or antenna. You may select multiple options. ",
+    "heading2":"From the TV networks listed below, please select all the networks that you normally watch online on ",
+    "heading3": "",
+    "sub-heading":"Select Networks",
     "text": "Please select all the TV channels ",
     "text1": " watches online."
+},
+
+"login-cookies":{
+    "tittle" : "Cookie Policy",
+    "sub-tittle-personal":"Your Personal Information",
+    "personal-desc":"In this questionnaire, Numeris will be gathering personal information about you including: your name, age, sex, marital status, languages spoken, education, occupation and certain behavioural questions (i.e., shopping behaviour). Numeris will use this information only for the purpose of measuring TV and radio audiences. We combine your viewing, listening and personal information with that of other panel members to produce ratings about groups of people only, not individuals. The information from all our panelists is combined and all personally identifiable information is removed. In addition, the information you provide is confidential. ",
+    "personal-desc2": "We never disclose names, addresses or phone numbers of panel members, nor will we ever sell your personal information to a third party, provide it to our members and licensees or include it in our rating service. ",
+    "personal-desc3": "We may employ other companies to provide services such as the delivery of our mailings or data processing. They may have limited access to your information only to perform these services and are bound by a contract to Numeris not to disclose or use it for any other purposes and must comply with our Privacy Policies.",
+    "personal-desc4": "By completing this questionnaire, you consent to the collection of your personal information by Numeris as described above. Please note that you are free to stop participation at any time. You may also choose not to complete the questionnaire, although that will disqualify you from participating in the Numeris Panel.",
+    "sub-tittle-privacy": "Confidentiality",
+    "privacy-desc":"We expect that you will keep your participation in the ratings panel confidential and not reveal your identity to any radio or television broadcasters or media/advertising agencies, including via social network sites. ",
+    "sub-tittle-Query":"Enquiries",
+    "enquiry-desc":"If you have any questions or concerns about how your privacy is protected at Numeris, please go to our website at www.numeris.ca or contact our Privacy Officer by mail at the following address: Privacy Officer, Numeris, 1500 Don Mills Road, 3rd Floor, Toronto, Ontario, M3B 3L7. "
 },
 
     "resumitButton": "Re-Submit",

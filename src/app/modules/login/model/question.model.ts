@@ -32,6 +32,7 @@ export class Question extends Resource {
   condQueType?: string;
   condMaxLevel?: string;
   condOtherDescription?: string;
+  extraCond?: string;
   }
 
 export class QuestionSerializer {

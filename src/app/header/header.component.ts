@@ -36,13 +36,14 @@ export class HeaderComponent extends BaseComponent implements OnInit {
      private router: Router, private Activatedroute: ActivatedRoute) { 
       super();
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
-    this.fullName = this.localStorageService.getItem(StorageItem.FULLNAME);
+ //   this.fullName = this.localStorageService.getItem(StorageItem.FULLNAME);
   }
   ngAfterViewInit(){
     super.afterViewInit(this.modalComponent);
   }
 
   ngOnInit(): void {
+    this.fullName = this.localStorageService.getItem(StorageItem.FULLNAME);
     if(this.isMenu){
       this.notifService.getMessageList();
       this.subscription.add(this.sharedService.getMessagesObservable().subscribe((data:any) => {

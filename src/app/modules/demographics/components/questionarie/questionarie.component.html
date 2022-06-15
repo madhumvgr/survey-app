@@ -10,7 +10,9 @@
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink] = "['/demographics/demographics-overview']">{{'demographics.tittle' | translate}}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{"demographics.card1" | translate}}</li>
+            <li class="breadcrumb-item" *ngIf ="houseHold" ><a [routerLink] = "['/demographics/demographics-owner']">{{"demographics.card2" | translate}}</a></li>
+            <li class="breadcrumb-item" *ngIf ="!houseHold" ><a [routerLink] = "['/demographics/demographics-individual-members']">{{"demographics.card1" | translate}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
          </ol>
       </div>
    </nav>
@@ -23,7 +25,9 @@
                <h1>
                  {{memberName}}
                </h1>
-               <p>{{"demographics.questinarieDescription" | translate}}</p>
+               <p *ngIf ="this.pageNo == 1 && !(houseHold)">{{"demographics.questinarieDescription" | translate}}</p>
+               <p *ngIf ="this.pageNo != 1 && !(houseHold)">{{"demographics.questinarieDescription2" | translate}}</p>
+               <p *ngIf ="houseHold">{{"demographics.householdquestionariedesc" | translate}}</p>
             </div>
             <!--end col-->
          </div>

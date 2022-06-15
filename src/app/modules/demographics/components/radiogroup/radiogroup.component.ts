@@ -42,6 +42,7 @@ export class RadiogroupComponent implements OnChanges {
       let selected = this.question.selected;
       let prevValue ={rowValue:'',otherDesc:''}
       if(selected && selected.length){
+        console.log(this.question);
          prevValue= selected[selected.length -1];
       }
       let questionNo;
@@ -58,7 +59,7 @@ export class RadiogroupComponent implements OnChanges {
          this.ShowInput = otherRow && otherRow.flag ? true: false;
         }
       } else {
-          this.childFormGroup.addControl('' + questionNo, new FormControl());
+          this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
       }
       this.childFormGroup.addControl('otherDescription', new FormControl(prevValue?prevValue?.otherDesc:''));
       this.parentForm.addControl(''+questionNo,this.childFormGroup);

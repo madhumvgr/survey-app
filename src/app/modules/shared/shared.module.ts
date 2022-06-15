@@ -10,14 +10,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ModalComponent } from './components/modal/modal.component';
-import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ModalComponent,
-    ConfirmModalComponent
+    ModalComponent
   ],
   imports: [
     CommonModule,

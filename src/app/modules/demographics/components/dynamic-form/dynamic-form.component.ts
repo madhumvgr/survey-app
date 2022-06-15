@@ -123,12 +123,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     }
     if (this.houseHold && this.panelListType != "VAM") {
       if (!question.queType) {
-        obj['queType'] = "YES-NO-CY";
+        obj['queType'] = question?.extraCond;
       } else {
         obj['queType'] = question.queType;
       }
       obj['questionId'] = question.queId;
-      obj['questionLevel1Id'] = question.questionLevel1Id;
+      obj['questionLevel1Id'] = question?.questionLevel1Id;
       obj['questionLevel2Id'] = question.questionLevel2Id;
       obj['answer'] = question?.answer;
       obj['memberNo'] = this.memberNo;

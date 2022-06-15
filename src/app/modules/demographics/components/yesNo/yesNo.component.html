@@ -1,5 +1,5 @@
 <br />
-<ng-container>
+<!-- <ng-container>
     <h3>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h3>
     <div [formGroup]="childFormGroup">
         <div class="border">
@@ -20,4 +20,18 @@
             Please select the field. 
         </span> 
     </div>
-</ng-container>
+</ng-container> -->
+<div [formGroup]="childFormGroup" class="mb-4">
+    <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
+    <div class="form-check mb-2">
+        <input class="form-check-input" type="radio"  [formControlName]=" this.questionNo" (change)="changeEvent('Y')"  
+        value="Y" id="row{{houseHold? question?.hhQueNo : question?.queNo}}">
+        <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}">Yes</label>
+    </div>
+    <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" [formControlName]=" this.questionNo" (change)="changeEvent('N')"
+        value="N" id="row{{houseHold? question?.hhQueNo : question?.queNo}}+'1'">
+        <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}+'1'">No</label>
+        
+    </div>
+</div>

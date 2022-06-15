@@ -4,7 +4,7 @@
             <li class="breadcrumb-item"><a [routerLink]="['/welcome']">{{'Home.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
             <ng-container *ngIf="isTvGenere else device">
-                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">{{'houseHold.televisionUsage' | translate}}</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/television/household-members']">{{'houseHold.televisionCardTitle' | translate}}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{memberName}}</li>
               </ng-container>
               <ng-template #device>
@@ -51,6 +51,7 @@
             <p class="mt-2 mb-0">{{'televisionChannels.subText' | translate}}</p>
             <ng-container *ngFor="let station of newStationsId; let generId = index">
                 <!-- Channel  -->
+                <div class="errorClass">
                 <div class="bg-white shadow-sm rounded p-3 mb-4">
                     <h3 class="pt-1 pb-0 px-3">{{station.name}}</h3>
                     <form [formGroup]="stationForm[station.id]" >
@@ -86,6 +87,7 @@
                     </div>
                     </form>
                 </div>
+            </div>
                 <!--End Channel-->
             </ng-container>
             

@@ -112,7 +112,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
     private televisionService: TelevisionService,
-    private localStorageService: LocalStorageService, private translate: TranslateService) {
+    private localStorageService: LocalStorageService, private translate: TranslateService, private el: ElementRef) {
     super();
     const genreIds = this.deviceService.getGenreIds();
     this.newStationsId = this.stations.filter(  (e1: any) =>
@@ -212,10 +212,14 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
       }
     } else {
   setTimeout(() => {
-    const userToScrollOn = this.renderedUsers.toArray();
-    userToScrollOn[0].nativeElement.scrollIntoView({
-      behavior: 'smooth'
-    });
+    // const userToScrollOn = this.renderedUsers.toArray();
+    // userToScrollOn[0].nativeElement.scrollIntoView({
+    //   behavior: 'smooth'
+    // });
+    const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+      ".errorClass"
+    );
+    firstInvalidControl.scrollIntoView();
    }, 100);
     }
   } 

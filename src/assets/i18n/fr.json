@@ -1,7 +1,9 @@
 {
     "loginPage": {
         "title": "Connexion",
-        "text": "Bienvenue! Vous êtes sur le point de façonner l'avenir de la radiodiffusion canadienne. Nous utilisons des cookies pour améliorer votre expérience ! En poursuivant, vous acceptez notre",
+        "text": "Les témoins sont utilisés pour enregistrer votre langue de préférence",
+        "acceptButton": "Accepter",
+        "refuseButton": "Refuser",
         "browserUpdateText": "Pour une meilleure expérience utilisateur, veuillez mettre à jour votre navigateur",
         "email": "User Id",
         "emailRequiredText": "User Id is required",
@@ -18,17 +20,17 @@
     },
     "welcomePage": {
         "title": "Bienvenu",
-        "text": "Nous sommes enchantés de vous accueillir! Vous avez maintenant le pouvoir de façonner la configuration de l'industrie de la radiodiffusion canadienne! En prenant part à nos sondages, vous aidez les télédiffuseurs à comprendre le genre de divertissement qui intéresse les Canadiens. Veuillez être assuré que vos données",
-        "Link": "personnelles et votre sphère privée",
-        "text1": " seront toujours protégées. Nous espérons que vous apprécierez votre temps avec nous.",
-        "surveyhubLabel": "Répertoire des sondages",
+        "text": "Merci d’avoir accepté de participer au panel de la télévision en ligne de Numeris. Nous voulons en savoir un peu plus sur vos appareils à domicile, notamment la façon dont ils sont utilisés par les divers membres de votre ménage. Soyez assuré que vos ",
+        "Link": "données et votre vie privée",
+        "text1": " seront toujours protégées. Pour commencer, cliquez sur « Commencer » pour vous rendre au Registre des sondages ci-après.",
+        "surveyhubLabel": "Registre des sondages",
         "surveyhubText": "Tous les sondages en un seul endroit.",
-        "surveyhubButton": "Démarrer",
-        "techSupportLabel": "Soutien technique",
-        "techSupportText": "Nous sommes ici pour vous aider. Demandez! Voir plus",
+        "surveyhubButton": "Commencer",
+        "techSupportLabel": "Soutien",
+        "techSupportText": "Nous sommes prêts à vous aider. Il suffit de nous consulter!",
         "techSupportButton": "En savoir plus",
         "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/",
-        "quickStart": "Début rapide",
+        "quickStart": "Démarrage rapide",
         "header1": "Vous avez ",
         "action": " nouvelle(s) actions(s) ",
         "header2": " et ",
@@ -39,18 +41,18 @@
         "description": "Bienvenue au centre de messagerie, où vous pouvez accéder aux messages et effectuer d'autres tâches."
     },
     "techSupportPage": {
-        "title": "Soutien technique",
-        "description": "Vous avez une question? Un problème? Aucun souci! Parcourez la section FAQ pour trouver la réponse à votre question. Si elle ne s’y trouve pas, n’hésitez pas à nous écrire"
+        "title": "Soutien",
+        "description": "Vous avez une question? Un problème? Aucun souci! Consultez la Foire aux questions pour obtenir une solution. Si vous n’obtenez réponse à votre question, n’hésitez pas à nous contacter. "
     },
     "faq": {
-        "title": "FAQs",
-        "description": "Trouvez les réponses aux questions les plus fréquemment posées.",
-        "faqButton": "Recherche"
+        "title": "Foire aux questions",
+        "description": "Réponses aux questions les plus fréquemment posées.",
+        "faqButton": "Explorer"
     },
     "connectNumeris": {
-        "title": "Communiquez avec Numeris",
-        "description": "Écrivez-nous et nous allons examiner le problème.",
-        "button": "Continuer"
+        "title": "Prendre contact avec Numeris",
+        "description": "N’hésitez pas à nous contacter et nous examinerons le problème.",
+        "button": "Se connecter"
     },
     "panelistRegistration ": {
         "title": "Prêt? Créons votre compte.",
@@ -59,7 +61,7 @@
         "link": "Besoin d’aide avec votre mot de passe à usage unique?"
     },
     "surveyHub": {
-        "title": "Répertoire des sondages",
+        "title": "Registre des sondages",
         "description": "Bienvenue au répertoire des sondages! Les sondages sont faciles et rapides à faire. Nous posons seulement des questions de base afin de bien comprendre le type d’émissions de divertissement que vous aimez ainsi que les appareils que vous préférez utiliser pour les regarder.Soyez assuré que vos données et votre vie privée",
         "description1": "demeurent toujours protégées.",
         "Link": "personnelles et votre sphère privée",
@@ -69,12 +71,12 @@
         "title": "Ménage",
         "description": "Cette section nous permet de recueillir des informations de base au sujet des membres de votre ménage et des appareils média qu’ils utilisent.",
         "devicesCardTitle": "Appareils",
-        "devicesCardDescription": "Sondages concernant les appareils média dont vous disposez à domicile.",
+        "devicesCardDescription": "Questions concernant les appareils médias dans votre domicile.",
         "button": "Continuer",
-        "demographicCardTitle": "Données démographiques",
-        "demographicCardDescription": "Questions de base concernant les membres de votre ménage.",
-        "televisionCardTitle": "Télévision",
-        "televisionCardDescription": "Enquêtes sur votre utilisation de la télévision par câble et antenne.",
+        "demographicCardTitle": "Votre ménage",
+        "demographicCardDescription": "Questions concernant les membres de votre ménage.",
+        "televisionCardTitle": "Écoute télévisuelle",
+        "televisionCardDescription": "Questions concernant l’écoute télévisuelle au moyen de votre téléviseur.",
         "televisionUsage": "utilisation de la télévision"
     },
     "accountSettings": {
@@ -91,20 +93,20 @@
         "privacyPolicyButton": "En apprendre davantage"
     },
     "householdDevices": {
-        "title": "Appareils à domicile",
-        "description": "Cette section affiche les sondages concernant tous les appareils média connectés à votre Internet à la maison.",
+        "title": "Appareils du ménage",
+        "description": "Cette section contient les sondages pour tous les appareils médias connectés à votre Internet domestique.",
         "householdDevicesActionsTitle": "Action requise",
         "householdDevicesActionsDescription": "",
         "householdDevicesActionsLabel1": "Nouveaux",
-        "householdDevicesStatus": "Présentement ",
+        "householdDevicesStatus": "Actuellement  ",
         "householdDevicesActionsLabel2": "En cours",
         "householdDevicesHistoryTitle": "Historique",
         "householdDevicesHistoryDescription": "",
         "householdDevicesHistoryLabel1": "Complétés",
         "householdDevicesHistoryLabel2": "Non utilisés",
-        "newDescription": "Nouveaux indique le nombre de sondages concernant les appareils récemment ajoutés à votre réseau domestique. Nous vous recommandons de commencer avec ces sondages.",
-        "progressDescription": " En cours indique le nombre de sondages que vous avez commencés mais devant être complétés.",
-        "historyDescription": "Complétés indique le nombre de sondages concernant les appareils que vous avez complétés. Vous pouvez les passer en revue, modifier vos réponses et les renvoyer, le cas échéant.Non utilisés concerne les appareils que vous identifiés comme n’étant pas utilisés. Si jamais vous les utilisez de nouveau, veuillez sélectionner cette fiche pour mettre à jour leur statut."
+        "newDescription": "La section Nouveaux affiche les sondages qui n’ont pas encore été commencés (concernant les appareils non connectés) ou concernant les appareils qui viennent d’être récemment connectés à votre réseau domestique s’affichent sous la section Nouveau. Il s’agit d’un excellent point de départ.",
+        "progressDescription": " La section En cours contient les sondages déjà commencés à compléter.",
+        "historyDescription": "La section Complétés affiche les sondages que vous avez complétés. Vous pouvez les passer en revue, les modifier puis les renvoyer à tout moment. La section Non utilisés contient les sondages concernant les appareils que vous avez identifiés comme étant « non utilisés ». Si vous en utilisez un de nouveau, n’oubliez pas de mettre à jour le statut de l’appareil en question en l’inscrivant au sondage approprié."
     },
     "faqPage": {
         "title1": "FAQ",
@@ -170,7 +172,7 @@
     },
     "newAccount": {
         "title": "Prêt? Créons votre compte.",
-        "description": "Veuillez entrer votre mot de passe à usage unique que vous avez reçu par courriel.",
+        "description": "Veuillez entrer votre mot de passe à usage unique que vous avez reçu par texto.",
         "key": "Clé",
         "keyRequired": "La clé est requise",
         "keyRequiredText": "La clé doit comporter au moins 6 caractères",
@@ -179,34 +181,37 @@
         "keyHelpText": "Besoin d’aide avec votre mot de passe à usage unique?"
     },
     "newDevices": {
-        "title": "Nouveau appareils",
-        "description": "Cette page indique le nombre de tous les appareils média nouvellement ajoutés à votre réseau domestique. Les sondages de cette section comportent des questions de base sur l’utilisation de chaque appareil. Soyez assuré que vos données et votre vie privée.",
+        "title": "Nouveaux",
+        "description": "Cette page affiche tous les appareils médias qui ne sont pas actionnés mais qui sont connectés à votre réseau domestique. Vous aurez à répondre à des questions de base à propos de l’utilisation de chaque appareil.",
         "description1": "demeurent toujours protégées.",
         "Link": "personnelles et votre sphère privée",
         "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/",
         "devicesDetectedTitle": "",
         "devicesDetectedDescription": "Sélectionnez un appareil pour commencer un sondage.",
-        "devicesText": "Appareils",
+        "devicesText": "",
         "devicesDetected": "appareil détectés "
     },
     "inProgressDevices": {
-        "title": "En cours",
-        "description": "Cette page énumère les sondages pour les appareils média que vous avez commencés, devant être complétés. Chaque sondage contient des questions de base concernant l’utilisation d’un appareil. Sélectionnez un appareil pour terminer le sondage qui lui est destiné.",
-        "macAddress": "Adresse Mac"
+        "title": "Appareils “en cours” ",
+        "description": "Cette page affiche tous les appareils médias sous la rubrique en « cours » et qui sont connectés à votre réseau domestique. Les sondages de cette section contiennent des questions de base à propos de l’utilisation de chaque appareil.",
+        "macAddress": "Adresse Mac",
+        "deviceDetected": "Appareils en cours détectés"
     },
     "completedDevices": {
         "title": "Complétés",
-        "description": "Cette page affiche les appareils média pour lesquels vous avez complété des sondages. Vous êtes bien parti! Vous pouvez passer en revue un sondage complété, le modifier puis le renvoyer. ",
+        "description": "Cette page affiche tous les appareils médias sous la rubrique Complétés et connectés à votre réseau domestique. Vous pouvez les passer en revue, les modifier puis les renvoyer à tout moment. ",
         "description2": "You are about to edit a survey that you completed earlier for the device above. Please select the section that you’d like to edit from the list below.",
-        "deviceName": "nom d’appareil"  
+        "deviceName": "nom d’appareil"  ,
+        "deviceDetected": "Appareils complétés détectés"
     },
     "notInUse": {
-        "title": "",
-        "description": "Cette page affiche les appareils média, identifiés comme étant « non utilisés ». Si vous les utilisez de nouveau, veuillez mettre à jour leur statut en sélectionnant la fiche ci-après. "
+        "title": "Appareils non utilisés",
+        "description": "Cette page porte sur tous les appareils médias que vous avez identifiés comme étant non utilisés mais qui sont connectés à votre réseau domestique. Si vous en utilisez un de nouveau, n’oubliez pas de mettre à jour son statut en l’inscrivant au sondage approprié. ",
+        "deviceDetected": "Appareils non utilisés détectés"
     },
     "deviceOwner": {
         "title": "Information sur le propriétaire de l’appareil",
-        "description": "Veuillez sélectionner le nom du membre du ménage à qui appartient cet appareil. ",
+        "description": "Veuillez sélectionner le nom du membre du ménage à qui appartient l’appareil suivant. ",
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
@@ -215,15 +220,18 @@
     },
     "multipleUsers": {
         "title": "Utilisateurs multiples",
-        "description1": "Dans cette section, nous voulons obtenir la part approximative (exprimée en pourcentage) d’utilisation partagée de ce  de chaque membre du ménage par mois.",
-        "description2": "En voici un exemple. Trois membres du ménage, soit un parent et deux enfants partagent l’utilisation d’un téléviseur intelligent. L’utilisation partagée de l’appareil peut se résumer comme suit : Parent=30 %, Enfant no 1 = 50 %, Enfant no 2 = 20 %. ",
+        "description": "Vu que l’appareil ",
+        "description1": "est partagé, veuillez indiquer le pourcentage du temps de son utilisation par chaque membre du ménage. N’inclure que les membres du ménage qui utilisent cet appareil pour regarder/visionner du contenu télévisuel ou vidéo au moins une fois par mois.",
+        "description2": "Voici un exemple d’un ménage composé de trois membres – un parent et deux (2) enfants qui partagent l’utilisation d’un téléviseur intelligent. Le pourcentage d’utilisation de chacun d’eux peut se lire comme suit : Parent = 30 %, Enfant no 1 = 50 %, Enfant no 2 = 20 %. ",
         "heading": "Utilisation partagée de l’appareil",
-        "text1": "Sélectionnez la durée d'utilisation de cet appareil par chaque membre du foyer",
+        "text1": "Sélectionnez le pourcentage de temps d’utilisation de l’appareil par chaque membre du ménage",
         "tipsLabel": "Astuces ",
-        "tip1": "Entrez une valeur en pourcentage approximative pour chaque membre. ",
-        "tip2": "Si l’un des membres n’a pas du tout utilisé cet appareil au cours du dernier mois, entrez 0 % à côté de son nom.",
-        "tip3": "Le total pour tous les membres doit donner 100 %.",
-        "text2": "Sélectionnez la durée d'utilisation de cet appareil par un seul ou plusieurs membres à la fois",
+        "tip1": "Entrez un pourcentage approximatif pour chaque membre. ",
+        "tip2": "Si un des membres n’a pas du tout utilisé l’appareil au cours du dernier mois, entrez 0 % sous son nom.",
+        "tip3": "Le total des pourcentages devrait arriver à 100 %.",
+        "tip4": "Entrez un pourcentage approximatif d’utilisation (que ce soin un seul ou plusieurs membres).",
+        "tip5": "Le total des pourcentages d’utilisation (un seul et plusieurs membres) devrait arriver à 100 %.",
+        "text2": "Nous voulons savoir à quelle fréquence les membres de votre ménage visionnent des vidéos ensemble au moyen de cet appareil. Sélectionnez le pourcentage de temps d’utilisation de cet appareil d’une personne seulement ainsi que le pourcentage d’utilisation de plusieurs personnes en même temps.",
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
@@ -234,12 +242,12 @@
     },
     "deviceUsage": {
         "title": "Utilisation de l’appareil",
-        "description": "Les sondages de cette section nous aident à avoir un aperçu des catégories média que chaque membre du ménage regarde sur ce ",
+        "description": "Cette section contient des sondages qui nous aident à connaître les catégories médias visionnées par chaque membre du ménage au moyen de l’appareil suivant ",
         "tipsLabel": "Astuces ",
         "tip1": "Sélectionnez toutes les catégories regardées.",
         "tip2": "Complétez les sondages selon l’ordre que vous voulez.",
         "heading": "Liste des membres du ménage",
-        "text": "Sélectionnez le sondage identifié avec votre nom. Vous pouvez également compléter un sondage au nom d’un autre membre de votre ménage. Une fois que le statut de TOUS les membres affiche COMPLÉTÉ, sélectionnez SOUMETTRE pour continuer. ",
+        "text": "Sélectionnez le sondage sous votre nom. Vous pouvez également sélectionner et compléter le sondage d’un autre membre du ménage. Vous devez sélectionner SOUMETTRE pour continuer seulement après que le statut de TOUS les membres affiche COMPLÉTÉ.",
         "backButton": "Retour",
         "SaveButton": "Sauvegarder & quitter",
         "continueButton": "Continuer",
@@ -251,33 +259,41 @@
         "resubmit": "",
         "notStarted": "non Commencé",
         "inProgress": "Dans Progrès",
-        "completed": "Terminé"
+        "completed": "Terminé",
+        "submit": "Soumettre"
     },
     "genres": {
         "description": "Nous cherchons à obtenir plus de détails à propos des catégories regardées en ligne par.",
         "heading": "Liste de toutes les",
-        "heading2": "catégories",
-        "heading3": "Catégorie",
-        "text": "Veuillez sélectionner toutes les catégories que",
+        "heading2": "Catégories visionnées",
+        "heading3": "Catégorie visionnées",
+        "text": "À partir de la liste des catégories suivantes, veuillez sélectionner toutes celles que vous visionnez habituellement au moyen de l’appareil suivant ",
         "text1":"regarde en ligne",
         "text2": "regarde en ligne, et l’heure durant la journée ou il ou elle est plus susceptible de le faire. Vous pouvez sélectionner plusieurs options de temps.",
+        "text3":"Cliquez sur chaque genre pour indiquer l’heure à laquelle vous le regardez normalement à la télévision par l’intermédiaire du câble, du satellite ou de l’antenne. Vous pouvez sélectionner plusieurs options.",
+        "text4":"Public le regarde habituellement au moyen d’un téléviseur connecté à un câble, un satellite ou une antenne. Vous pouvez sélectionner plusieurs options. S’il ou elle ne regarde pas ce type de contenu, veuillez sélectionner « Ne regarde pas ce type de contenu ».",
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
         "message": "Vous nous avez soumis les informations sur avec succès. ",
+        "device-message": "Vous avez réussi à mettre à jour les renseignements concernant l’appareil",
+        "tv-message":"You have successfully submitted your Television Usage survey to us",
         "error": "Au moins une des cases doit être sélectionnée.",
         "news": "Nouvelles et analyse",
-        "kidsProgram": "Émissions pour enfants",
+        "kidsProgram": "Programmation pour enfants",
         "hobbies": "Passe-temps et loisirs",
         "sports": "Sports",
-        "drama": "Drames",
+        "drama": "Séries dramatiques",
         "movies": "Films",
         "comedy": "Comédies",
         "entertainment": "Divertissement",
         "documentaries": "Documentaires",
         "other" : "Autres",
+        "dontWatch": "Je ne regarde aucun des genres ci-dessus",
+        "deviceGenre": " Pour chaque catégorie, veuillez indiquer le (s) bloc (s) horaire (s) durant lequel (lesquels) vous visionnez habituellement du contenu vidéo en ligne au moyen de l’appareil suivant ",
         "weekdayTittle" : "sélectionner des plages horaires pendant la semaine",
-        "weekendTittle" : "sélectionner des créneaux horaires pendant le week-end"
+        "weekendTittle" : "sélectionner des créneaux horaires pendant le week-end",
+        "error1": "Should select atleast one value"
     },
     "changePassword": {
         "title": "Changer son mot de passe",
@@ -285,7 +301,7 @@
         "tipsLabel": "Astuces",
         "tip1": "Doit contenir entre 8 et 20 caractères ",
         "tip2": "Doit contenir à la fois des lettres et des chiffres",
-        "tip3": "Il doit contenir à la fois des lettres et des chiffres et ne pas avoir d'espaces ou d'emojis",
+        "tip3": "Doit contenir au moins une lettre majuscule et une lettre minuscule. Ne doit pas contenir d’espaceni d’emoji",
         "currentPassword": "Mot de passe ",
         "currentPasswordRequired": "Mot de passe est requis",
         "newPassword": "Nouveau mot de passe",
@@ -295,7 +311,8 @@
         "passwordValidationMessage": "Le mot de passe doit contenir au moins 8 caractères, au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre",
         "cancelButton": "Annuler",
         "updateButton": "Mettre à jour",
-        "passwordMatchText": "Le mot de passe et la confirmation du mot de passe doivent correspondre."
+        "passwordMatchText": "Le mot de passe et la confirmation du mot de passe doivent correspondre.",
+        "passwordError": "Mot de passe incorrect"
     },
     "emailNotifications": {
         "title": "Avis par courriel",
@@ -364,13 +381,13 @@
         "a9": "Replacez l’audimètre central, le câble réseau et le cordon d'alimentation dans la boîte qui les contenait au départ et assurez-vous de fixer le bordereau de retour sur la boîte. Vous pouvez apporter la boîte vous-même à un point d’expédition Purolator ou à un magasin Bureau en Gros/Staples; nous pouvons également planifier une cueillette de Purolator directement chez vous pour ramasser la boîte. Veuillez nous appeler ou nous envoyer un courriel pour nous laisser savoir ce que vous préférez."
     },
     "registrationForm": {
-        "description": "Entrer son code d’utilisateur et son mot de passe.",
-        "tips": "Astuces",
-        "tip1": "Doit contenir entre 8 et 20 caractères ",
-        "tip2": "Doit contenir à la fois des lettres et des chiffres",
-        "tip3": "Avoir une majuscule et une minuscule",
-        "tip4": "Ne doit pas contenir d’espace, de caractères spéciaux ni d’emojis",
-        "userName": "Email",
+        "description": "Entrez votre code d’utilisateur et votre mot de passe ci-après.",
+        "tips": "Règles de base concernant le mot de passe",
+        "tip1": "Doit contenir au minimum huit (8) caractères et au maximum 20 caractères",
+        "tip2": "Doit contenir des lettres et des chiffres",
+        "tip3": "Doit contenir au moins une lettre majuscule et une lettre minuscule",
+        "tip4": "Ne doit contenir aucun espace ni émoji",
+        "userName": "User Id",
         "password": "Mot de passe",
         "confirmPassword": "Confirmez votre mot de passe",
         "registerButton": "Inscrire",
@@ -378,15 +395,15 @@
         "passwordError": "Le mot de passe doit contenir au moins 8 caractères, 1 lettre en majuscule, 1 lettre en minuscule et 1 chiffre",
         "ConfirmPasswordRequired": "Confirmation du mot de passe requise",
         "ConfirmPasswordError": "Le mot de passe confirmé doit correspondre au mot de passe nouvellement créé",
-        "tittle": "Inscrire/Création du profil",
-        "emailRequired": "Adresse électronique requise",
+        "tittle": "S’inscrire/créer un profil",
+        "emailRequired": "User id is required",
         "emailError": "Entrez une adresse électronique valide",
-        "header": "Création du profil"
+        "header": "Créer un profil"
     },
     "registerSuccess": {
-        "tittle": "Bravo! Votre compte est créé!",
-        "description1": "Nous sommes ravis de vous compter parmi nous! Pour vos dossiers, nous vous avons envoyé par courriel un avis de confirmation contenant vosdétails de connexion.",
-        "description3": "Vous êtes prêt à démarrer! Veuillez vous connecter."
+        "tittle": "Bravo! Votre compte a bel et bien été créé!",
+        "description1": "Nous vous avons envoyé une confirmation par courriel avec un lien donnant accès au portail des membres du panel de Numeris à titre de référence ultérieure.",
+        "description3": "Veuillez vous connecter dès que vous êtes prêt."
     },
     "passwordReset": {
         "title": "Mot de passe Réinitialiser",
@@ -405,7 +422,7 @@
     },
     "deviceInformation": {
         "title": "",
-        "description": "Parlons un peu de votre ",
+        "description": "Parlez-nous un peu de votre appareil, ",
         "descriptionPart2": "Nous voulons avoir une meilleure idée de la façon dont il est utilisé. ",
         "descriptionPart3": "Soyez assuré que votre vie privée demeurera notre principale préoccupation et que les informations sur votre appareil sont exclusivement spécifiques.",
         "descriptionPart4": "",
@@ -415,9 +432,9 @@
         "heading": "Informations concernant l’appareil",
         "description2": "En nommant cet appareil, il vous sera plus facile de l’identifier par après. Votre audimètre central l’identifie comme Yoda. Vous pouvez continuer d’utiliser ce nom ou entrer un nouveau nom ci-après. ",
         "heading2": "Entrer un nom d’appareil différent ",
-        "q1": "bien de membres de votre ménage utilisent cet appareil?",
-        "q1Option1": "1",
-        "q1Option2": "2 à 10",
+        "q1": "Combien de membres de votre foyer utilisent cet appareil?",
+        "q1Option1": "Un membre ",
+        "q1Option2": "Plusieurs membres ",
         "q1Option3": "11 à 20",
         "q1Option4": "Plus de 20",
         "q1Option5": "Cet appareil n’est plus utilisé",
@@ -557,23 +574,25 @@
         "modalTitle": "Sauvegarder et quitter",
         "content": "Votre travail jusqu’ici a été enregistré. Vous pouvez toujours y revenir pour le finir plus tard. ",
         "dismissButtonLabel": "Retour",
-        "closeButtonLabel": "Sauvegarder & quitter",
+        "closeButtonLabel": "Continuer",
+        "closeButtonLabelLogout": "Exit",
         "confirmTittle": "Avertissement",
         "confirmationDescription": "Voulez-vous vraiment quitter cette page?",
         "errorMSg": "membership type could not be determined, please contact the system administrator."
     },
     "televisionMembers": {
-        "tittle": "Usage de la Télévision",
-        "description": "Cette section comporte des enquêtes pour chacun des membres du ménage qui regarde des chaînes sur un téléviseur relié à une boîte de câblodistribution, à un satellite ou à une antenne.",
+        "tittle": "Écoute télévisuelle",
+        "description": "Ces questions concernent votre écoute télévisuelle qui n’est pas effectuée en ligne, notamment les émissions que vous regardez au moyen d’un téléviseur connecté à un câble, un satellite ou une antenne.",
         "header": "Liste de membres individuels ",
-        "subDescription": "Complétez l’enquête qui comprends votre nom. Vous pouvez aussi compléter l’enquête au nom d’un autre membre.",
+        "subDescription": "Complétez le sondage pour chacun des membres du ménage.",
         "statusLabel": "Statut"
     },
     "televisionChannels": {
-        "description": "Merci d’indiquer combien de temps le membre du ménage passe à regarder les programmes TV utilisant le câble ou l’antenne pour chaque chaîne suivante en moyenne par jour?.",
+        "description": "Veuillez indiquer combien de temps passe le membre du ménage à visionner des vidéos en ligne diffusés par chacun des réseaux suivants durant une journée typique.",
+        "tv-description": "Veuillez indiquer le temps que le membre du ménage consacre à regarder des émissions de télévision au moyen du câble, d’un récepteur satellite ou d’une antenne, diffusées par chacun des réseaux de télévision suivants durant une journée typique.",
         "heading":"Liste des 7 chaines",
-        "subText": "Sélectionner votre réponse pour chaque chaîne",
-        "error": "Cette colonne est obligatoire",
+        "subText": "Sélectionnez une réponse pour chacun des réseaux ci-après.",
+        "error": "Au moins une option doit être sélectionnée",
         "defaultOption": "Sélectionnez la réponse",
         "option1": "0 minutes",
         "option2": "Jusqu'à 30 minutes",
@@ -582,39 +601,59 @@
         "option5": "Plus de 2 heures jusqu'à 3 heures",
         "option6": "Plus de 3 heures",
         "weekdayTittle":"jour de la semaine",
-        "weekendTittle":"fins de semaine"
+        "weekendTittle":"fins de semaine",
+        "message": "Votre sondage concernant l’utilisation des téléviseurs nous a été acheminé avec succès.",
+        "dontWatch": "Je ne regarde aucune de ces chaînes TV"
     },
     "demographics": {
-        "tittle": "Données démographiques du ménage",
-        "description1": "Les sondages de cette section posent des questions de base sur les membres du ménage et leur consommation média au moyen de divers appareils. Soyez assuré que vos données et votre vie privée ",
+        "tittle": "Votre ménage",
+        "description1": "Cette section contient des questions de base sur votre ménage et les personnes qui le composent. ",
         "description2": " demeurent toujours protégées.",
-        "card1": "Membres individuels",
-        "card1Description": "Sondage auprès de chaque membre du ménage.",
-        "card2": "Chef du ménage",
-        "card2Description": "Sondage auprès de la personne à la tête du ménage.",
+        "card1": "Sondages auprès des membres",
+        "card1Description": "Sondages destinés à chaque membre de votre ménage.",
+        "card2": "Enquête auprès des ménages",
+        "card2Description": "Un sondage concernant spécifiquement votre ménage.",
         "continueButton": "Continuer",
-        "individualDescription": "Cette section comprend des sondages pour chaque membre du ménage. Il s’agit de 32 questions de base concernant les noms, l’âge, les langues parlées, le niveau de scolarité et l’occupation, y compris des questions axées sur le comportement. Chaque sondage prend 10 à 15 minutes à remplir.",
+        "individualDescription": "Veuillez demander à chaque membre de votre ménage de bien vouloir compléter le sondage individuel ci-après. Pour ce faire, veuillez vous assurer qu’il ou elle clique sur le lien à côté de son nom. Un des membres qui a besoin d’aide peut solliciter l’aide d’un adulte.",
         "individualSubText":"Liste de membres individuels: ",
         "individualSubDescription": "Complétez le sondage identifié avec votre nom. Vous pouvez également remplir le sondage au nom d’un autre membre du ménage.",
         "statusLabel": "Statut",
         "startButton": "Démarrer",
         "completedButton": "Éditer",
-        "questinarieDescription": "Passons rapidement le tout en revue! Pour modifier quoique ce soit, utilisez le bouton RETOUR. Si tout semble correct, sélectionnez CONTINUER."
+        "questinarieDescription": "Veuillez répondre aux questions suivantes pour nous en dire un peu plus à votre sujet. Ces questions serviront exclusivement à rapporter votre écoute dans le bon groupe. Pour toute modification, il suffit de cliquer sur le bouton RETOUR ci-dessous. Si tout est correct, cliquez sur CONTINUER.",
+        "questinarieDescription2": "Pour toute modification, il suffit de cliquer sur le bouton RETOUR BACK ci-dessous. Si tout est correct, cliquez sur CONTINUER.",
+        "houseHoldDescription":"Veuillez compléter le court sondage démographique concernant votre ménage en cliquant sur le lien ci-après.  Il suffit de le faire une seule fois.",
+        "householdquestionariedesc": "Nous demandons à une personne de votre ménage de répondre aux deux prochaines questions. Il suffit de le faire une seule fois. Soyez assuré que vos réponses demeureront strictement confidentielles. Les réponses à ces questions ne servent qu’à rassembler les ménages comme le vôtre dans le bon groupe et ne seront être utilisées qu’à des fins de recherche."
+
 
     },
     "select-genres":{
-        "heading1": "Veuillez indiquer les genres ci-dessous ",
-        "heading2":" passe à regarder en utilisant Internet ?",
-        "sub-heading":"sélectionner les genres",
+        "heading1": "Parmi les genres énumérés ci-dessous, veuillez sélectionner tous les genres que vous regardez normalement à la télévision par l’entremise du câble, du satellite ou de l’antenne. Vous pouvez sélectionner plusieurs options.",
+        "heading2":"À partir de la liste des catégories suivantes, veuillez sélectionner toutes celles que vous visionnez habituellement au moyen de l’appareil suivant ",
+        "sub-heading":"Catégories visionnées",
         "text": "Veuillez sélectionner toutes les catégories que ",
         "text1":" regarde en ligne."
     },
     "select-channels":{
-        "heading1": "Veuillez indiquer les chaînes de télévision ci-dessous ",
-        "heading2":" passe à regarder en utilisant Internet ?",
+        "heading1": " À partir des réseaux de télévision énumérés ci-dessous, veuillez sélectionner tous les réseaux que vous regardez habituellement par l’intermédiaire du câble, du satellite ou de l’antenne. Vous pouvez sélectionner plusieurs options.",
+        "heading2":"Dans la liste des réseaux de télévision ci-dessous, veuillez sélectionner tous les réseaux que vous regardez normalement en ligne sur ",
+        "heading3": " Vous pouvez sélectionner plusieurs options.",
         "sub-heading":"Sélectionnez les chaînes",
         "text": "Veuillez sélectionner toutes les chaînes de télévision ",
         "text1": " regarde en ligne."
+        },
+
+        "login-cookies":{
+            "tittle" : "Cookie Policy",
+            "sub-tittle-personal":"Your Personal Information",
+            "personal-desc":"In this questionnaire, Numeris will be gathering personal information about you including: your name, age, sex, marital status, languages spoken, education, occupation and certain behavioural questions (i.e., shopping behaviour). Numeris will use this information only for the purpose of measuring TV and radio audiences. We combine your viewing, listening and personal information with that of other panel members to produce ratings about groups of people only, not individuals. The information from all our panelists is combined and all personally identifiable information is removed. In addition, the information you provide is confidential. ",
+            "personal-desc2": "We never disclose names, addresses or phone numbers of panel members, nor will we ever sell your personal information to a third party, provide it to our members and licensees or include it in our rating service. ",
+            "personal-desc3": "We may employ other companies to provide services such as the delivery of our mailings or data processing. They may have limited access to your information only to perform these services and are bound by a contract to Numeris not to disclose or use it for any other purposes and must comply with our Privacy Policies.",
+            "personal-desc4": "By completing this questionnaire, you consent to the collection of your personal information by Numeris as described above. Please note that you are free to stop participation at any time. You may also choose not to complete the questionnaire, although that will disqualify you from participating in the Numeris Panel.",
+            "sub-tittle-privacy": "Confidentiality",
+            "privacy-desc":"We expect that you will keep your participation in the ratings panel confidential and not reveal your identity to any radio or television broadcasters or media/advertising agencies, including via social network sites. ",
+            "sub-tittle-Query":"Enquiries",
+            "enquiry-desc":"If you have any questions or concerns about how your privacy is protected at Numeris, please go to our website at www.numeris.ca or contact our Privacy Officer by mail at the following address: Privacy Officer, Numeris, 1500 Don Mills Road, 3rd Floor, Toronto, Ontario, M3B 3L7. "
         },
 
     "resumitButton": "Re-Submit",

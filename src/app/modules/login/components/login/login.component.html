@@ -24,14 +24,17 @@
 <section class="px-3 pb-4" *ngIf="!hide">
     <div class="container">
         <div class="container">
-            <div class="row">
-                <h1>{{ 'loginPage.title' | translate }}</h1>
-                <p>
-                    {{ 'loginPage.text' | translate }}
-                    <a (click)="navigateTo()" style="text-decoration: underline"
-                        [routerLink]="['/login/cookies']">{{ 'loginPage.cookie' | translate }}</a>{{ 'loginPage.sub-text' | translate }}
-                </p>
+            <div _ngcontent-hgi-c94="" class="row">
+                <h1 _ngcontent-hgi-c94="">{{ 'loginPage.title' | translate }}</h1>
+                <div class="row pb-2" *ngIf ="showCookies">
+                    <p _ngcontent-hgi-c94="">{{ 'loginPage.text' | translate }}</p>
+                    <div class="col-md-6">
+                        <button class="btn btn-secondary" (click)="setCookie('false')">{{ 'loginPage.refuseButton' | translate }}</button>
+                        <button class="m-2 btn btn-primary" (click)="setCookie('true')">{{ 'loginPage.acceptButton' | translate }}</button>
+                    </div>
+                </div>
             </div>
+
             <!--end Row-->
         </div>
         <div class="px-3">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
+import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { DeviceInfo } from '../device-information/device-information.component';
 
@@ -14,8 +15,10 @@ export class CompletedDevicesViewComponent implements OnInit {
   deviceId: string  = '';
   deviceName: any;
   deviceInformation : DeviceInfo = new DeviceInfo();
+  userSize:any;
+  ownerInfo: any;
 
-  constructor(private Activatedroute: ActivatedRoute,  private deviceService: DeviceService, private localStorageService:LocalStorageService) { }
+  constructor(private Activatedroute: ActivatedRoute, private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
    // this.deviceState = "Completed";
@@ -29,6 +32,26 @@ export class CompletedDevicesViewComponent implements OnInit {
       this.deviceInformation.macAddress=res1['macAddress'];
       this.deviceInformation.deviceName=res1['deviceName']
      });
+     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
+      this.userSize = res.numberOfUsers;
+    });
+  
+    this.deviceService.getCustomRequest(DeviceConstants.deviceOwnerByDeviceId + this.deviceId).subscribe(response => {
+      if (response) {
+          this.ownerInfo  = response;
+      }
+    });
   }
 
+  
+
+preSelectPage(genres: boolean) {
+  if(genres){
+    this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+this.ownerInfo.memberNo+'/'+this.deviceId], { state: { memberName: this.ownerInfo.memberName }, queryParams: {isNotAutoSave: true} });
+  } else{
+    this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' +this.ownerInfo.memberNo + '/' + this.deviceId+ '/' +true],{ state: { memberName: this.ownerInfo.memberName }, queryParams: {isNotAutoSave: true} });         
+
+  }
+
+}
 }

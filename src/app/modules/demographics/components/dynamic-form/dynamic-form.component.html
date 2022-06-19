@@ -66,7 +66,7 @@
     <div *ngIf="isReview">
         <div *ngFor="let question of finalQuestionLIst">
             <div>
-                <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h4>
+                <h4>{{ question?.title}}</h4>
                 <!-- <h4 *ngIf="question.type =='matrix-subquestion'">{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h4> -->
                 <ng-container *ngIf='question.type !== "matrix-subquestion"'>
                     <p *ngIf="question?.answer?.text">{{question?.answer?.text}}</p>
@@ -80,7 +80,7 @@
 
                 <ng-container *ngIf='question.type == "matrix-subquestion"'>
                     <div *ngFor="let q of question.subSurveyQueAnsDTO">
-                        <h5>{{houseHold? q?.hhQueNo : q?.queNo }}.{{ q?.title}}</h5>
+                        <h5>{{ q?.title}}</h5>
                         <p *ngIf="q?.answer == 'No'">{{q?.answer}}</p>
                         <p *ngIf="q?.answer == 'Yes' && !q.subSurveyQueAnsDTO.length">{{q?.answer}}</p>
                         <div *ngIf="q?.answer == 'Yes' && q.subSurveyQueAnsDTO.length">
@@ -138,13 +138,13 @@
             </ng-container>
 
 
-            <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()">{{"deviceInformation.SaveButton" | translate }}</button>
+            <button type="submit" class="btn btn-secondary ms-md-3" (click)="saveContiune()">{{"deviceInformation.SaveButton" | translate }}</button>
 
             <button (click)="p.next()" *ngIf="!p.isLastPage()" type="button"
                 class="btn btn-primary ms-md-3">{{"deviceInformation.continueButton" | translate }}</button>
 
             <button *ngIf="p.isLastPage() && !isReview" type="submit" (click)="review()"
-                class="btn btn-primary ms-md-3">Review</button>
+                class="btn btn-primary ms-md-3">{{"demographics.reviewButton" | translate}}</button>
 
             <button *ngIf="isReview" type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{"deviceUsage.submit" | translate }}</button>
 
@@ -152,6 +152,12 @@
     </pagination-template>
 
 </div>
-<modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
-
+<ng-container>
+<modal #modal [modalConfig]="localmodalConfig"   [IsFromVam]="isVamOpenModal" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
 </modal>
+</ng-container>
+
+<!-- <ng-container>
+<modal #modal [modalConfig]="localmodalConfig" [IsFromVam]="true" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)">
+</modal>
+</ng-container> -->

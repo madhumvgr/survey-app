@@ -316,12 +316,19 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     }
   }
 
+  resubmitForm() {
+    const message = 'deviceInformation.resubmit';
+    this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+  }
+
   backAction() {
     let url;
     if (this.isTvGenere) {
       this.router.navigateByUrl('/television/tv-selectGeneres/'+this.memberNo);
-    }else{
+    }else if(this.deviceState != "Completed"){
       this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo+ '/' + this.deviceId], {state: {memberName: this.memberName}});
+    } else{
+      this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo+ '/' + this.deviceId], {state: {memberName: this.memberName}, queryParams: {isNotAutoSave: true}});
     }
     
   }

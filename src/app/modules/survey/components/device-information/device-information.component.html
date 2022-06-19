@@ -91,7 +91,7 @@
                 <div class="shadow-sm rounded bg-white p-4 mb-4">
                     <form [formGroup]="deviceInfoForm">
                         <!-- Question 1 -->
-                        <h4>{{"deviceInformation.description2" | translate }}</h4>
+                        <h4>{{"deviceInformation.description2" | translate }}{{deviceName}}{{"deviceInformation.description3" | translate }}</h4>
                         <div class="mb-4">
                             <label for="question1" class="form-label">{{"deviceInformation.heading2" | translate }}</label>
                             <input type="input" class="form-control" id="question1" formControlName="deviceNickName" name ="deviceNickName" (focus) ="updateForm()">
@@ -119,9 +119,10 @@
                 </div>
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">{{"deviceInformation.backButton" | translate }}</button>
-                    <button type="button" (click)="openModal()"  class="btn btn-secondary ms-md-3">{{"deviceInformation.SaveButton" | translate }}</button>
+                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]" *ngIf ="!resubmit">{{"deviceInformation.backButton" | translate }}</button>
+                    <button type="button" (click)="openModal()"  class="btn btn-secondary ms-md-3" *ngIf ="!resubmit">{{"deviceInformation.SaveButton" | translate }}</button>
                     <button type="submit" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{"deviceInformation.continueButton" | translate }}</button>
+                    <button type="button"  class="btn btn-dark"  [routerLink] = "['/survey/completed-devices/Completed/' +deviceId]" *ngIf ="resubmit">{{"deviceInformation.cancelButton" | translate }}</button>
                     <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">{{"deviceInformation.resumitButton" | translate }}</button>
                 </div>
 

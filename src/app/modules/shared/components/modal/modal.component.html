@@ -1,17 +1,23 @@
 <ng-template #modal>
   <div class="modal-header">
     <h5 class="modal-title" *ngIf="logOut || IsFromLogin">{{"modalWindow.confirmTittle" | translate }}</h5>
-    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin">{{"modalWindow.modalTitle" | translate }}</h5>
+    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && !IsFromVam">{{"modalWindow.modalTitle" | translate }}</h5>
+    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && IsFromVam">{{"modalWindow.confirmTittle" | translate }} </h5>
   </div>
+
   <div class="modal-body" *ngIf="logOut && !IsFromLogin">
     {{"modalWindow.confirmationDescription" | translate }}
   </div>
-  <div class="modal-body" *ngIf="!logOut && !IsFromLogin">
+  <div class="modal-body" *ngIf="!logOut && !IsFromLogin && !IsFromVam">
     {{"modalWindow.content" | translate }}
   </div>
   <div class="modal-body" *ngIf="!logOut && IsFromLogin">
     {{"modalWindow.errorMSg" | translate }}
   </div>
+  <div class="modal-body" *ngIf="!logOut && !IsFromLogin && IsFromVam">
+    {{"modalWindow.vamModalBody" | translate }}
+  </div>
+
   <div class="modal-footer justify-content-start">
     <button type="button" class=" btn btn-secondary" (click)="cancel()"
       *ngIf="modalConfig.hideDismissButton === undefined || !modalConfig.hideDismissButton()"

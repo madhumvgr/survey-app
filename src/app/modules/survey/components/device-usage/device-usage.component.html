@@ -69,12 +69,13 @@
 
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark" (click) = "backButton()">{{'deviceUsage.backButton' | translate}}</button>
-                    <button type="button" class="btn btn-secondary ms-md-3" (click)="openModal()" >{{'deviceUsage.SaveButton' | translate}}</button>
+                    <button type="submit" class="btn btn-dark" (click) = "backButton()" *ngIf ="!resubmit">{{'deviceUsage.backButton' | translate}}</button>
+                    <button type="button" class="btn btn-secondary ms-md-3" (click)="openModal()" *ngIf ="!resubmit">{{'deviceUsage.SaveButton' | translate}}</button>
+                    <button type="button"  class="btn btn-dark"  [routerLink] = "['/survey/completed-devices/Completed/' +deviceId]" *ngIf ="resubmit">{{"deviceInformation.cancelButton" | translate }}</button>
                     <ng-container *ngIf="isCompleted">
                         <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{'deviceUsage.submit' | translate}}</button>
+                        <!-- <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button> -->
                     </ng-container>
-                    <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
 
                 </div>
 

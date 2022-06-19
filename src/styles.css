@@ -223,8 +223,7 @@ h4 {
 h5 {
   font-size: 18px;
   color: #000;
-  font-weight: regular;
-  text-decoration: underline;
+  font-weight: 600;
 }
 
 p, b {

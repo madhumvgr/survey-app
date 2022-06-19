@@ -26,6 +26,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
   isTvGenere: boolean = false;
   showError:boolean = false;
   isValid: boolean = true;
+  reset = false;
   timeLinesForm: FormGroup = this.fb.group({});
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
@@ -166,6 +167,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       
       this.deviceService.updateTvSelectChannel(item).
         subscribe((response: any) => {
+          this.reset = false;
           console.log("Update record");
         });
   
@@ -199,6 +201,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       
       this.deviceService.updateTvSelectChannel(item).
         subscribe((response: any) => {
+          this.reset = true;
           console.log("Update record");
         });
     } else 
@@ -292,6 +295,17 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
   }
   }
   
+  completedBackurl() {
+    if (this.userCount == 0) {
+      this.router.navigate(['/survey/completed-devices/Completed' +'/' +this.deviceId], {queryParams: {isNotAutoSave: true} });
+    }
+    else  if(this.list == "true") {
+      this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo+ '/' + this.deviceId], {state: {memberName: this.memberName}, queryParams: {isNotAutoSave: true} });
+   }else{
+      this.router.navigate(['/survey/deviceGeneres/' + this.deviceState + '/' +this.memberNo +'/' + this.deviceId],{ state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true} });
+    }
+  }
+
   cancelEvent(isBackAction: boolean) {
     console.log(isBackAction);
   }

@@ -122,7 +122,7 @@
         "title": "Connect with Numeris",
         "description": "Problem with your account? Something not right? Use this form to tell us more about the issue. Within 1 business day, our team will reply to the email you’ve registered with us.",
         "heading": "How can we help?",
-        "subject": "Subject (E.g. Cant’ change my password)",
+        "subject": "Subject (E.g. Can’t change my password)",
         "description1": "Give us some more details about the issue you’re facing.",
         "cancelButton": "Cancel",
         "sendButton": "Send",
@@ -243,7 +243,7 @@
     },
     "deviceUsage": {
         "title": "Device Usage",
-        "description": "This section has surveys that help us understand the media genres that each household member watches on .",
+        "description": "This section has surveys that help us understand the media genres that each household member watches on ",
         "tipsLabel": "Tips",
         "tip1": "This survey lists 13 genres in all. Choose all that apply.",
         "tip2": "You may complete the surveys in any order you wish.",
@@ -431,7 +431,8 @@
         "operationSystem": "Operational system ",
         "address": "Mac address",
         "heading": "Device Information",
-        "description2": "Naming this device makes it easy for you to identify it in the future. Your focal meter says this device is called “Yoda”. Continue using this name or enter a different one below.",
+        "description2": "Naming this device makes it easy for you to identify it in the future. Your focal meter says this device is called  ",
+        "description3": ". Continue using this name or enter a different one below.",
         "heading2": "Enter different device name",
         "q1": "How many household members use this device?",
         "q1Option1": "One Member ",
@@ -443,6 +444,7 @@
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "resumitButton": "Re-Submit",
+        "cancelButton": "Cancel",
         "success": "Thank you, your progress has been saved, see you later.",
         "success2": "You have successfully submitted information to us.",
         "resubmit": "Thank you for updating your information!",
@@ -579,7 +581,8 @@
         "closeButtonLabelLogout": "Exit",
         "confirmTittle": "Warning",
         "confirmationDescription": "Are you sure you want to leave this page?",
-        "errorMSg": "membership type could not be determined, please contact the system administrator."
+        "errorMSg": "membership type could not be determined, please contact the system administrator.",
+        "vamModalBody": "An answer is required for this question so that you can be included in the correct group."
     },
     "televisionMembers": {
         "tittle": "Television Viewing",
@@ -589,7 +592,7 @@
         "statusLabel": "Status"
     },
     "televisionChannels": {
-        "description": "Please indicate how much time the household member spends watching videos online from each of the following networks on an average day.",
+        "description": "Please indicate how much time the household member spends watching videos  online from each of the following networks on an average day.",
         "tv-description": "Please indicate how much time the household member spends watching TV programs using a cable box, satellite or antenna on each of the following TV networks on an average day.",
         "heading":"List view of 7 channels",
         "subText": "Select answers for each network below",
@@ -614,6 +617,7 @@
     "card1Description": "Surveys for each member of your household.",
     "card2": "Household Survey",
     "card2Description": "A survey for your household.",
+    "owner-tittle": "List view",
     "continueButton": "Continue",
     "individualDescription": "Please have each household member complete their individual survey below. Please ensure that each household member clicks the link next to their own name to complete the survey. An adult in the home may help complete the survey for household members who need assistance.",
     "individualSubText":"List of individual members:",
@@ -621,6 +625,7 @@
     "statusLabel": "Status",
     "startButton": "Start",
     "completedButton": "Edit",
+    "reviewButton": "Review",
     "questinarieDescription": "Please complete these questions to tell us a bit more about yourself. These questions will only be used in order to report your viewing in the correct group. To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE.",
     "questinarieDescription2": "To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE.",
     "houseHoldDescription":"Please complete the brief household demographic survey through the link below. This survey only needs to be completed once for the household.",

@@ -34,4 +34,8 @@
         <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}+'1'">No</label>
         
     </div>
+    <span class="danger" *ngIf="yesNoFormControl.errors?.required && buttonClicked">
+        Please select the field. 
+    </span> 
+
 </div>

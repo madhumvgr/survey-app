@@ -86,17 +86,23 @@
                 <!--end Ganres-->
 
                 <!-- Action buttons -->
-                <div class="col-xs-6 d-grid gap-2 d-md-block">
+                <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState != 'Completed'">
                     <button type="button" class="btn btn-dark" (click)="backAction()">{{'genres.backButton' |
                         translate}}</button>
                     <button type="button" (click)="openModal()" class="btn btn-secondary ms-md-3">{{'genres.SaveButton'
                         | translate}}</button>
-                    <button type="submit"  class="btn btn-primary ms-md-3">{{'genres.continueButton' |
+                    <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="!reset">{{'genres.continueButton' |
                         translate}}</button>
+                        <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="reset">{{'deviceUsage.Submit' |
+                            translate}}</button>
                     <!-- <ng-template #submit1>
                     <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit
                     </button>
                 </ng-template> -->
+                </div>
+                <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState == 'Completed'">
+                    <button type="button" class="btn btn-dark" (click)="completedBackurl()">{{'deviceInformation.cancelButton' | translate}}</button>
+                    <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{'genres.continueButton' | translate}}</button>
                 </div>
             </form>
         </div>

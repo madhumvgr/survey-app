@@ -69,7 +69,12 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     });
   }
   continueNavigate(memberNo:any,memberName:any){ 
-    this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { state: { memberName: memberName } });
+    if(this.deviceState == "Completed") {
+      this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { state: { memberName: memberName },  queryParams: {isNotAutoSave: true}});
+    } else{
+      this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { state: { memberName: memberName }});
+
+    }
   }
 
   submit() {

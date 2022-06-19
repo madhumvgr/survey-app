@@ -152,7 +152,7 @@
             <!--end Ganres-->
 
             <!-- Action buttons -->
-            <div class="col-xs-6 d-grid gap-2 d-md-block">
+            <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState != 'Completed'">
                 <button type="button" class="btn btn-dark" (click)="backAction()">{{'genres.backButton' | translate}}</button>
                 <button type="button" (click)="openModal()" class="btn btn-secondary ms-md-3">{{'genres.SaveButton' | translate}}</button>
                 <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{'genres.continueButton' | translate}}</button>
@@ -161,7 +161,11 @@
                     </button>
                 </ng-template> -->
             </div>
-
+            <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState == 'Completed'">
+                <button type="button" class="btn btn-dark" (click)="backAction()">{{'deviceInformation.cancelButton' | translate}}</button>
+                <button type="submit" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf = "userCount == 0">{{'deviceInformation.resumitButton' | translate}}</button>
+                <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf = "userCount != 0">{{'genres.continueButton' | translate}}</button>
+            </div>
         </div>
         <!--end Row-->
     </div>

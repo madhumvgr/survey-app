@@ -19,6 +19,9 @@ export class ModalComponent implements OnInit {
   @Input()
   public IsFromLogin: ModalConfig["logOut"];
 
+  @Input()
+  public IsFromVam: ModalConfig["vam"];
+
   @Output() 
   public exitEvent= new EventEmitter();
     
@@ -67,4 +70,5 @@ export interface ModalConfig {
   hideCloseButton?(): boolean
   hideDismissButton?(): boolean
   logOut?: boolean;
+  vam?: boolean;
 }

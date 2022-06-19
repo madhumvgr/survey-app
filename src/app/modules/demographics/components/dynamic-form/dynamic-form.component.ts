@@ -38,6 +38,13 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   finalQuestionLIst: any = [];
   userType = localStorage.panellistType;
   isQuestion!: boolean;
+  isVamOpenModal = false;
+  isCancelClicked = false;
+
+  localmodalConfig = {
+  isBackAction: true  
+  }
+  newPage: any;
 
   constructor(public questionaireService: QuestionaireService, private translate: TranslateService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
@@ -65,16 +72,41 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
 
   pageChange(newPage: any) {
+    this.newPage =newPage;
+    if (this.panelListType == "VAM" && (this.newPage > this.config.currentPage)) {
+      let formNotTouched = false;
+      Object.keys(this.parentForm.controls).forEach(key => {
+        if(!this.parentForm.controls[key].value[key]){
+          formNotTouched = true
+        }
+      });
+      if(formNotTouched && !this.isCancelClicked) {
+        this.isVamOpenModal = true;
+        this.isCancelClicked = false;
+        this.openModal();
+       this.localmodalConfig = {
+          isBackAction: false
+          }
+      } else {
+        this.redirect();
+      }
+    } else {
+      this.redirect();
+    }
+   
+  }
+
+  redirect() {
     this.questionaireService.SetQuestionValid(true)
-    if (this.parentForm.valid || (newPage < this.config.currentPage)) {
-      this.config.currentPage = newPage;
+    if (this.parentForm.valid || (this.newPage < this.config.currentPage)) {
+      this.config.currentPage = this.newPage;
       //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
       if (this.houseHold) {
-        this.router.navigate(['/demographics/questionaire/true/' + this.memberNo + '/' + newPage + '/true']).then(() => {
+        this.router.navigate(['/demographics/questionaire/true/' + this.memberNo + '/' + this.newPage + '/true']).then(() => {
           window.location.reload();
         });
       } else {
-        this.router.navigate(['/demographics/questionaire/' + this.memberNo + '/' + this.homeNo + '/' + newPage]).then(() => {
+        this.router.navigate(['/demographics/questionaire/' + this.memberNo + '/' + this.homeNo + '/' + this.newPage]).then(() => {
           window.location.reload();
       
         });
@@ -188,6 +220,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   cancelEvent(isBackAction: boolean) {
+  this.isCancelClicked = true;
     console.log(isBackAction);
   }
 
@@ -240,10 +273,10 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
         
         if (q.queType == "RB") {
           if (q.maxLevel == '1') {
-            if (q.selected[0].otherDesc) {
-              obj['answer'] = { text: q.selected[0].otherDesc }
+            if (q.selected[0]?.otherDesc) {
+              obj['answer'] = { text: q.selected[0]?.otherDesc }
             } else {
-              obj['answer'] = q.row.find((r: { value: any; }) => r.value == q.selected[0].rowValue);
+              obj['answer'] = q.row.find((r: { value: any; }) => r.value == q.selected[0]?.rowValue);
             }
           }
           if (q.maxLevel == '2') {
@@ -312,6 +345,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   exitEvent(isBackAction: boolean) {
+    if(isBackAction) {
     const message = this.translate.instant('deviceInformation.success');
     if (this.houseHold) {
       this.router.navigate(['demographics/Thankyou'], { state: { message: message, inputRoute: "demographics-owner" } });
@@ -320,9 +354,20 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       this.router.navigate(['demographics/Thankyou'], { state: { message: message, inputRoute: "demographics-individual" } });
     }
   }
+  else {
+    this.redirect();
+  }
+  }
 
   goToLastPage() {
     this.isReview = false;
     this.markCompleteEvent.emit({ isBack: true });
+  }
+  saveContiune() {
+    this.isVamOpenModal = false;
+    this.openModal();
+    this.localmodalConfig = {
+      isBackAction: true
+      }
   }
 }

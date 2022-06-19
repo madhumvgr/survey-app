@@ -1,11 +1,15 @@
 import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { ComponentCanDeactivate } from 'src/app/shared/services/pending-changes.guard';
 import { BaseComponent } from 'src/app/shared/util/base.util';
+import { ConfirmationDialogService } from '../select-genres/confirm-dialog.service';
 
 @Component({
   selector: 'app-device-information',
@@ -13,7 +17,7 @@ import { BaseComponent } from 'src/app/shared/util/base.util';
   styleUrls: ['./device-information.component.css']
 })
 
-export class DeviceInformationComponent extends BaseComponent implements OnInit {
+export class DeviceInformationComponent extends BaseComponent implements OnInit, ComponentCanDeactivate {
   deviceId: any;
   deviceState: any;
   deviceInfoForm: FormGroup = this.fb.group({});
@@ -26,8 +30,16 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
   deviceName: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
+  isNotAutoSave$: Observable<any>=new Observable();
+  isNotAutoSave = false;
+
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+   return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+  }
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
+    private route: ActivatedRoute,
+    private confirmationDialogService: ConfirmationDialogService,
     private localStorageService: LocalStorageService, private translate: TranslateService) {
       super();
      }
@@ -44,6 +56,15 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     }else if(this.deviceState =="Notused") {
       this.deviceStatus = "Not in Use"
     } else {
+      if (this.deviceState == "Completed") {
+        this.isNotAutoSave$ = this.route.queryParamMap.pipe(
+          map((params: ParamMap) => params.get('isNotAutoSave')),
+        );
+        this.isNotAutoSave$.subscribe(param => {
+          this.isNotAutoSave = param;
+          console.log(this.isNotAutoSave);
+        });
+      }
       this.deviceStatus = this.deviceState;
     }
     if(this.deviceState == "Completed") {
@@ -131,8 +152,10 @@ exitEvent(isBackAction:boolean) {
     this.deviceInfoForm.patchValue({
       deviceId: this.deviceId
     })
-    this.deviceService.create(this.deviceInfoForm.value).subscribe(res =>
-      console.log(res));
+    if (!this.isNotAutoSave) {
+      this.deviceService.create(this.deviceInfoForm.value).subscribe(res =>
+        console.log(res));
+    }
   }
   resubmitForm() {
   const message = 'deviceInformation.resubmit';

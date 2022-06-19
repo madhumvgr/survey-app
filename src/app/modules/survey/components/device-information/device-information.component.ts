@@ -34,7 +34,12 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
   isNotAutoSave = false;
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-   return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    if(this.deviceInfoForm.dirty){
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave); 
+    }else{
+      return true;
+    }
+   
   }
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,

@@ -1,12 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { ConfirmationDialogService } from '../select-genres/confirm-dialog.service';
+import { ComponentCanDeactivate } from 'src/app/shared/services/pending-changes.guard';
+import { map } from 'rxjs/operators';
 
 export interface Member {
   deviceId: string;
@@ -23,7 +27,7 @@ export interface Member {
   templateUrl: './multi-user-list.component.html',
   styleUrls: ['./multi-user-list.component.css']
 })
-export class MultiUserListComponent extends BaseComponent implements OnInit {
+export class MultiUserListComponent extends BaseComponent implements OnInit, ComponentCanDeactivate {
 
   deviceId: any;
   deviceState: any;
@@ -40,9 +44,15 @@ export class MultiUserListComponent extends BaseComponent implements OnInit {
   resubmit: boolean = false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
+  isNotAutoSave$: Observable<any>=new Observable();
+  isNotAutoSave = false;
+
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+   return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+  }
 
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService,  private localStorageService:LocalStorageService, private translate: TranslateService) {
+    private deviceService: DeviceService, private confirmationDialogService: ConfirmationDialogService,  private localStorageService:LocalStorageService, private translate: TranslateService) {
       super();
      }
      ngAfterViewInit(){
@@ -54,6 +64,14 @@ export class MultiUserListComponent extends BaseComponent implements OnInit {
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     if(this.deviceState == "Completed") {
+      
+        this.isNotAutoSave$ = this.Activatedroute.queryParamMap.pipe(
+          map((params: ParamMap) => params.get('isNotAutoSave')),
+        );
+        this.isNotAutoSave$.subscribe(param => {
+          this.isNotAutoSave = param;
+          console.log(this.isNotAutoSave);
+        });
       this.resubmit = true;
     }
     this.multiUserListForm = this.fb.group({

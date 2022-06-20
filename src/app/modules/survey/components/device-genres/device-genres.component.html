@@ -55,8 +55,8 @@
                 <!-- Accoridian Genre Tab 1 -->
                 <ng-container *ngFor="let genere of newGenreIds; let generId = index">
                     <ng-container *ngIf="genere.isError">
-                    <div class="errorClass"> </div>
-                    </ng-container>
+                        <div class="errorClass"> </div>
+                        </ng-container>
                             <div class="accordion-item shadow-sm rounded mb-3">
                                 <h3 class="accordion-header" id="open-one">
                                     <button class="py-0 ps-0 pe-3 accordion-button collapsed" type="button"
@@ -130,7 +130,7 @@
                                     {{"genres.error" | translate }}
                                 </div>
                             </ng-container>
-            
+                      
                 </ng-container>
                
                 <!--End Accoridian Genre Tab -->

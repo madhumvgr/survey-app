@@ -58,6 +58,10 @@ export class DeviceService extends ResourceService<User> {
       return this.customCreate(item,DeviceConstants.deviceOwnerByDeviceId);
     }
 
+    public resetDevice(deviceId:any){
+      return this.customCreate("",DeviceConstants.resetDeviceByDeviceId+deviceId);
+    }
+
     public updateDeviceMemberWithPercentage(item:any[]){
       return this.customCreate(item,DeviceConstants.memberDeviceUsagePostUrl);
     }

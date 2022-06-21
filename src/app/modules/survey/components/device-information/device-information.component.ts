@@ -30,35 +30,35 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
   deviceName: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
-  isNotAutoSave$: Observable<any>=new Observable();
+  isNotAutoSave$: Observable<any> = new Observable();
   isNotAutoSave = false;
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if(this.deviceInfoForm.dirty){
-      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave); 
-    }else{
+    if (this.deviceInfoForm.dirty) {
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    } else {
       return true;
     }
-   
+
   }
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
     private route: ActivatedRoute,
     private confirmationDialogService: ConfirmationDialogService,
     private localStorageService: LocalStorageService, private translate: TranslateService) {
-      super();
-     }
-     ngAfterViewInit(){
-      super.afterViewInit(this.modalComponent);
-    }
+    super();
+  }
+  ngAfterViewInit() {
+    super.afterViewInit(this.modalComponent);
+  }
 
   ngOnInit(): void {
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
-    if(this.deviceState =="Inprogress") {
+    if (this.deviceState == "Inprogress") {
       this.deviceStatus = "In Progress"
-    }else if(this.deviceState =="Notused") {
+    } else if (this.deviceState == "Notused") {
       this.deviceStatus = "Not in Use"
     } else {
       if (this.deviceState == "Completed") {
@@ -72,14 +72,14 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
       }
       this.deviceStatus = this.deviceState;
     }
-    if(this.deviceState == "Completed") {
+    if (this.deviceState == "Completed") {
       this.resubmit = true;
     }
     this.deviceInfoForm = this.fb.group({
       //set to empty. 
-      numberOfUsers: ['',Validators.required],
-      oftenUsed: ['',Validators.required],
-      planToUseDuration: ['',Validators.required],
+      numberOfUsers: ['', Validators.required],
+      oftenUsed: ['', Validators.required],
+      planToUseDuration: ['', Validators.required],
       deviceNickName: [''],
       deviceId: [''],
       homeNo: ['']
@@ -87,14 +87,14 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
     );
     //get device information. 
     this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => {
-      this.deviceInfoFormControl.numberOfUsers.setValue(''+(res.numberOfUsers));
+      this.deviceInfoFormControl.numberOfUsers.setValue('' + (res.numberOfUsers));
       this.deviceInfoFormControl.oftenUsed.setValue('' + (res.oftenUsed));
       this.deviceInfoFormControl.planToUseDuration.setValue('' + (res.planToUseDuration));
-      this.deviceInfoFormControl.deviceNickName.setValue('' + res.deviceNickName?res.deviceNickName:'');
-      
-      if(res.numberOfUsers === 4) {
+      this.deviceInfoFormControl.deviceNickName.setValue('' + res.deviceNickName ? res.deviceNickName : '');
+
+      if (res.numberOfUsers === 4) {
         this.isDeviceNoLonger = true;
-      }else {
+      } else {
         this.isDeviceNoLonger = false;
       }
       // get device device internal details. 
@@ -113,10 +113,10 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
   }
 
   continueNavigate() {
-    if(this.deviceInfoForm.controls.numberOfUsers.value == "null"){
+    if (this.deviceInfoForm.controls.numberOfUsers.value == "null") {
       this.error = true;
 
-    }else{
+    } else {
       this.error = false;
       this.router.navigateByUrl('survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
     }
@@ -138,17 +138,17 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
     });
   }
 
-exitEvent(isBackAction:boolean) {
-  let message: any;
-  if( this.deviceState == "Completed") {
-     message =this.translate.instant('deviceInformation.success2');
-  } else{
-     message =this.translate.instant('deviceInformation.success');
-  }
-  this.updateForm();
-  this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+  exitEvent(isBackAction: boolean) {
+    let message: any;
+    if (this.deviceState == "Completed") {
+      message = this.translate.instant('deviceInformation.success2');
+    } else {
+      message = this.translate.instant('deviceInformation.success');
+    }
+    this.updateForm();
+    this.router.navigate(['survey/Thankyou/deviceList/' + this.deviceState], { state: { message: message, inputRoute: "deviceList" } });
 
-}
+  }
 
   updateForm() {
     this.isDeviceNoLonger = false;
@@ -163,12 +163,17 @@ exitEvent(isBackAction:boolean) {
     }
   }
   resubmitForm() {
-  const message = 'deviceInformation.resubmit';
-  this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+    const message = 'deviceInformation.resubmit';
+    // call reset api.
+    this.deviceService.resetDevice(this.deviceId).subscribe(response => {
+      console.log(response);
+      this.router.navigate(['survey/Thankyou'], { state: { message: message } });
+    });
+
   }
 
-  showWindow(){
-    window.open(this.translate.instant('welcomePage.privacyPolicyUrl'),'name','width=600,height=400,top=200');
+  showWindow() {
+    window.open(this.translate.instant('welcomePage.privacyPolicyUrl'), 'name', 'width=600,height=400,top=200');
   }
 
 }

@@ -30,6 +30,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
   isValid: boolean = true;
   showError: boolean = false;
   timeLinesForm: FormGroup = this.fb.group({});
+  submitCall: boolean = false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
 
@@ -89,7 +90,11 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
   isNotAutoSave = false;
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-   return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    if(this.submitCall){
+     return true;
+    }else{
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    }
   }
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
@@ -273,7 +278,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
 
   }
   submit() {
-    console.log(this.timeLinesForm.get('genere')?.value);
+    this.submitCall= true;
     const selectedOrderIds = this.timeLinesForm.value.genere
       .map((checked: any, i: any) => checked ? this.generes[i].id : null)
       .filter((v: any) => v !== null);
@@ -291,21 +296,31 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
       if (this.isTvGenere) {
         this.router.navigateByUrl('/television/tv-selectChannel/' + this.memberNo + '/' + true);
       } else if(this.deviceState != "Completed"){
-        // this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo],{ state: { memberName: this.memberName }} );         
-        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true], { state: { memberName: this.memberName } });
+        this.openConfirmDialog('survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + SVGComponentTransferFunctionElement,{ state: { memberName: this.memberName } });
+       
       } else{
-        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true], { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
+        this.openConfirmDialog('survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true, { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
       }
     } else {
       this.deviceService.saveGenreIds(selectedOrderIds);
       if (this.isTvGenere) {
         this.router.navigateByUrl('/television/tv-genres/' + this.memberNo);
       } else if(this.deviceState != "Completed") {
-        this.router.navigate(['survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName } });
+        this.openConfirmDialog('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId, { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName } });
       } else{
-        this.router.navigate(['survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
+        this.openConfirmDialog('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId, { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
       }
     }
+  }
+
+  openConfirmDialog(routeUrl:string, stateObject: Object){
+    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    .then((confirmed) => {
+      if(confirmed){
+        this.router.navigate([routeUrl],stateObject);
+      }
+    })
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
   backAction() {

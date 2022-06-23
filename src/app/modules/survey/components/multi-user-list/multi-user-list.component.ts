@@ -120,21 +120,30 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
 
   updateMemberDevice(index: any) {
     if (this.members) {
-      this.deviceService.updateDeviceMemberWithPercentage(this.controls[index].value).subscribe(
-        res => {
-          console.log("Updated Member device");
-        }
-      );
+      if(!this.isNotAutoSave){
+        this.deviceService.updateDeviceMemberWithPercentage(this.controls[index].value).subscribe(
+          res => {
+            console.log("Updated Member device");
+          }
+        );
+      }else{
+        //prepare array
+      }
+      
     }
   }
 
   updateCoviewerDevice() {
     if (this.members) {
-      this.deviceService.updateCoviewerWithPercentage(this.multiUserCoViewerForm.value).subscribe(
-        res => {
-          console.log("Updated Coviewer device");
-        }
-      );
+      if(!this.isNotAutoSave){
+        this.deviceService.updateCoviewerWithPercentage(this.multiUserCoViewerForm.value).subscribe(
+          res => {
+            console.log("Updated Coviewer device");
+          }
+        );
+      }else{
+
+      }
     }
   }
 
@@ -207,6 +216,55 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
 
   resubmitForm() {
     const message = 'deviceInformation.resubmit';
-    this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+    let arrayForm=this.multiUserListForm.controls['arr'] as FormArray;
+    let controls = arrayForm.controls;
+   // if(arrayForm instanceof FormArray){
+     let count=0;
+     let dirtyCount=0;
+     let multiForm= false;
+      for (let control of controls) {
+        if(control.dirty){
+          dirtyCount++;
+         let value=control.value;
+         this.deviceService.updateDeviceMemberWithPercentage(value).subscribe(
+          res => {
+            count++;
+            if(count== dirtyCount){
+              multiForm= true;
+              this.updateCoviewerDeviceForm();
+            }
+          }
+        );
+        }
+      }
+      if(dirtyCount ==0){
+        this.updateCoviewerDeviceForm();
+      }
+  }
+
+  updateCoviewerDeviceForm(){
+    const message = 'deviceInformation.resubmit';
+    let arrayForm1=this.multiUserListForm.controls['arr'] as FormArray;
+    let controls1 = arrayForm1.controls;
+   // if(arrayForm instanceof FormArray){
+     let count1=0;
+     let dirtyCount1=0;
+      for (let control1 of controls1) {
+        if(control1.dirty){
+          dirtyCount1++;
+         let value1=control1.value;
+         this.deviceService.updateDeviceMemberWithPercentage(value1).subscribe(
+          res => {
+            count1++;
+            if(count1== dirtyCount1){
+              this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+            }
+          }
+        );
+        }
+      }
+      if(dirtyCount1 ==0){
+        this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+      }
   }
 }

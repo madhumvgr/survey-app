@@ -279,8 +279,12 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
     if (this.isTvGenere) {
       this.router.navigateByUrl('/television/tv-selectChannel/' + this.memberNo);
     } else {  
+      if(this.deviceState == "Completed") {
+        this.router.navigate(['/survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true} });
+      } else {
       this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName } });
     }
+  }
   }
 
   exitEvent(isBackAction: boolean) {

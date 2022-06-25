@@ -272,7 +272,12 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
 
         }else{
       //  this.deviceService.saveGenreIds(selectedOrderIds);
+      if(this.deviceState == "Completed") {
+        this.router.navigate(['survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount+ '/'+this.list], { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}} );
+      } else{
         this.router.navigate(['survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount+ '/'+this.list], { state: { memberName: this.memberName }} );
+      }
+       // this.router.navigate(['survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount+ '/'+this.list], { state: { memberName: this.memberName }} );
        }
        }
   }

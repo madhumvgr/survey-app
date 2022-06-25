@@ -183,7 +183,7 @@
                     <button type="button"  (click)="openModal()" class="btn btn-secondary ms-md-3" *ngIf ="!resubmit">{{'multipleUsers.SaveButton' | translate}}</button>
                     <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{'multipleUsers.continueButton' | translate}}</button>
                     <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/completed-devices/Completed/' +deviceId]" *ngIf ="resubmit">{{'deviceInformation.cancelButton' | translate}}</button>
-                    <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
+                    <button type="button" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
 
                 </div>
 

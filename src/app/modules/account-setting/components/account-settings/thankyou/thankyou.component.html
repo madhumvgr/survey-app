@@ -37,7 +37,7 @@
                     <h1>{{'thankYouTechSupport.title' | translate}}</h1>
                     <p>
                         {{'thankYouTechSupport.title' | translate}} <a
-                            [routerLink]="['/survey/deviceList/'+state?.previousState]"> {{state?.previousState}} </a>
+                            [routerLink]="['/survey/deviceList/'+state?.previousState]"> {{'state?.previousState' | translate}} </a>
                         {{'thankYouTechSupport.title' | translate}}
                     </p>
                 </div>
@@ -87,6 +87,20 @@
                 <div class="col-20">
                     <button type="submit" class="btn btn-primary px-3 ms-3"
                         [routerLink]="['/survey/survey']">{{'thankYou.exitButtonLabel' | translate}}</button>
+                </div>
+            </div>
+            <div class="row" *ngIf="state?.inputRoute == 'Completed'">
+                <div class="col-20">
+                    
+                    <button type="submit" class="btn btn-primary px-3 ms-3"
+                        [routerLink]="['/survey/completed-devices/' +deviceState+ '/' +deviceId]">{{'thankYou.exitButtonLabel' | translate}}</button>
+                </div>
+            </div>
+            <div class="row" *ngIf="state?.inputRoute == 'Complete_Inprogress'">
+                <div class="col-20">
+                    
+                    <button type="submit" class="btn btn-primary px-3 ms-3"
+                        [routerLink]="['/survey/deviceList/'+deviceState]">{{'thankYou.exitButtonLabel' | translate}}</button>
                 </div>
             </div>
         </div>

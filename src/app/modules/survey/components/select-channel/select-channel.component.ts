@@ -234,9 +234,9 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
         return;
       }
       if(selectedOrderIds.length== 0){
-        let message = this.translate.instant('genres.message');
-        let tvMessage = this.translate.instant('televisionChannels.message');
-        let deviceMessage = this.translate.instant('genres.device-message');
+        let message = 'genres.message';
+        let tvMessage = 'televisionChannels.message';
+        let deviceMessage = 'genres.device-message';
         if(this.isTvGenere){
           this.televisionService.updateMemberSurvey(this.memberNo).subscribe(
             res => {

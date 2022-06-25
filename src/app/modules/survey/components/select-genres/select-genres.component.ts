@@ -90,7 +90,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
   isNotAutoSave = false;
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if(this.submitCall){
+    if(this.submitCall && !this.isNotAutoSave){
      return true;
     }else{
       return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
@@ -296,8 +296,8 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
       if (this.isTvGenere) {
         this.router.navigateByUrl('/television/tv-selectChannel/' + this.memberNo + '/' + true);
       } else if(this.deviceState != "Completed"){
-        this.openConfirmDialog('survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + SVGComponentTransferFunctionElement,{ state: { memberName: this.memberName } });
-       
+       // this.openConfirmDialog('survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + SVGComponentTransferFunctionElement,{ state: { memberName: this.memberName } });
+       this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true], { state: { memberName: this.memberName } });
       } else{
         this.openConfirmDialog('survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true, { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
       }
@@ -305,11 +305,14 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
       this.deviceService.saveGenreIds(selectedOrderIds);
       if (this.isTvGenere) {
         this.router.navigateByUrl('/television/tv-genres/' + this.memberNo);
-      } else if(this.deviceState != "Completed") {
-        this.openConfirmDialog('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId, { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName } });
+      } else {
+         if(this.deviceState != "Completed") {
+     //   this.router.navigate[('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId, { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName } })];
+        this.router.navigate(['survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName } });
       } else{
         this.openConfirmDialog('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId, { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
       }
+    }
     }
   }
 

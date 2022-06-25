@@ -46,9 +46,14 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
   private modalComponent!: ModalComponent;
   isNotAutoSave$: Observable<any>=new Observable();
   isNotAutoSave = false;
+  submitCall = false;
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-   return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    if (!this.isNotAutoSave$ && !this.submitCall) {
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    } else {
+      return true;
+    }
   }
 
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
@@ -157,7 +162,7 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
   //   }))
   //   this.singleViewerPe = member.singleViewerPe;
   // }
-
+ 
   saveAndExit() {
     if (this.isMemberPercentageMoreThanHundered()) {
       this.showPercentageError = true;
@@ -183,8 +188,11 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
     else{
       this.showCoviewerPercentageError= false;
     }
-    if(!this.showCoviewerPercentageError && !this.showPercentageError){
+    if(!this.showCoviewerPercentageError && !this.showPercentageError && !this.isNotAutoSave){
       this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
+    } 
+    if(!this.showCoviewerPercentageError && !this.showPercentageError && this.isNotAutoSave) {
+      this.openConfirmDialog();
     }
   }
 
@@ -267,4 +275,24 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
         this.router.navigate(['survey/Thankyou'], {state: {message: message}});
       }
   }
+
+  openConfirmDialog(){
+    this.submitCall = true;
+    this.confirmationDialogService.confirm('Please confirmv jgnbkrgn.', 'Do you really want to vhamrfanreijfnvjerv nvtnfivtt... ?')
+    .then((confirmed) => {
+      if(confirmed){
+        const message = 'deviceInformation.resubmit';
+        // this.deviceService.updateDeviceMember(this.memberChanged).subscribe(response => {
+        //   console.log(response);
+        //   this.memeberNo = this.memberChanged.memberNo;
+        //   this.memberName = this.memberChanged.memberName;
+        // });
+        this.resubmitForm();
+        this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" }});
+      }
+    })
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+
+
 }

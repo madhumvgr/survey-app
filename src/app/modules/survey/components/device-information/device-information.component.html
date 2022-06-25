@@ -94,7 +94,7 @@
                         <h4>{{"deviceInformation.description2" | translate }}{{deviceName}}{{"deviceInformation.description3" | translate }}</h4>
                         <div class="mb-4">
                             <label for="question1" class="form-label">{{"deviceInformation.heading2" | translate }}</label>
-                            <input type="input" class="form-control" id="question1" formControlName="deviceNickName" name ="deviceNickName" (focus) ="updateForm()">
+                            <input type="input" class="form-control" id="question1" formControlName="deviceNickName" name ="deviceNickName" (focus) ="updateForm()"  [readOnly] = "deviceState == 'Completed'">
                         </div>
                         <!-- Question 2 -->
                         <div class="mb-4">

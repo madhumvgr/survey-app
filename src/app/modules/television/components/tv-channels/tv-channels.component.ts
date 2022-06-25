@@ -185,9 +185,9 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   submit() {
 
     if(this.isFormValid()){
-      let message = this.translate.instant('genres.message');
-      let deviceMessage = this.translate.instant('genres.device-message');
-      let tvMessage = this.translate.instant('televisionChannels.message');
+      let message = 'genres.message';
+      let deviceMessage = 'genres.device-message';
+      let tvMessage = 'televisionChannels.message';
       if (this.stationForm.filter(e => !e.valid).length === 0 || this.isTvGenere) {
   
         this.televisionService.updateMemberSurvey(this.memberNo).subscribe(

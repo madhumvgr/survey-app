@@ -49,9 +49,15 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
 
   isNotAutoSave$: Observable<any>=new Observable();
   isNotAutoSave = false;
+  submitCall = false
+  memberChanged: any;
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-   return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    if (this.deviceOwnerInfoForm.dirty && !this.submitCall) {
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    } else {
+      return true;
+    }
   }
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private route: ActivatedRoute,
     private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService,
@@ -146,6 +152,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       "memberNo": selectedOwn["memberNo"],
       "memberName": selectedOwn["memberName"]
     }
+    this.memberChanged = device;
     if (!this.isNotAutoSave) {
     this.deviceService.updateDeviceMember(device).subscribe(response => {
       console.log(response);
@@ -191,9 +198,30 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
    }
 
-   resubmitForm() {
+resubmitForm() {
+  if(this.deviceOwnerInfoForm.dirty) {
+    this.openConfirmDialog();
+  } else {
     const message = 'deviceInformation.resubmit';
-    this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+    this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" } });
+  }
+}
+
+  openConfirmDialog(){
+    this.submitCall = true;
+    this.confirmationDialogService.confirm('Are you sure', 'Do you really want to update the device owner.?', 'IAM SURE', 'NO')
+    .then((confirmed) => {
+      if(confirmed){
+        const message = 'deviceInformation.resubmit';
+        this.deviceService.updateDeviceMember(this.memberChanged).subscribe(response => {
+          console.log(response);
+          this.memeberNo = this.memberChanged.memberNo;
+          this.memberName = this.memberChanged.memberName;
+        });
+        this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" } });
+      }
+    })
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
 }

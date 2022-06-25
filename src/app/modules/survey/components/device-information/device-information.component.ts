@@ -32,15 +32,44 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
   private modalComponent!: ModalComponent;
   isNotAutoSave$: Observable<any> = new Observable();
   isNotAutoSave = false;
+  submitCall = false;
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if (this.deviceInfoForm.dirty) {
+    if (this.deviceInfoForm.dirty && !this.submitCall) {
       return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
     } else {
       return true;
     }
-
   }
+
+  openConfirmDialog(){
+    let message: any;
+    if(this.deviceInfoForm.value.numberOfUsers == 0){
+      message = "All members that did submit their informations will be lost and you will need to start over with this device in the in progress section."
+    } else if(this.deviceInfoForm.value.numberOfUsers == 1) {
+      message = "All members that did submit their informations will be lost and  this device in the Not in use section."
+    }
+    this.confirmationDialogService.confirm('Are you sure?.', message, 'IAM SURE', 'NO')
+    .then((confirmed) => {
+      if(confirmed){
+        if(this.deviceInfoForm.value.numberOfUsers == 4) {
+          this.setNotInuse();
+          const message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success');
+          this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+
+        } else {
+        const message = "Thank you , please note that this device is now Available for you to complete on the 'IN PROGRESS DEVICE SECTION' to complete.";
+        // call reset api.
+        this.deviceService.resetDevice(this.deviceId).subscribe(response => {
+          console.log(response);
+          this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Complete_Inprogress" } });
+        });
+      }
+      }
+    })
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
     private route: ActivatedRoute,
@@ -163,12 +192,18 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
     }
   }
   resubmitForm() {
-    const message = 'deviceInformation.resubmit';
-    // call reset api.
-    this.deviceService.resetDevice(this.deviceId).subscribe(response => {
-      console.log(response);
-      this.router.navigate(['survey/Thankyou'], { state: { message: message } });
-    });
+    this.submitCall = true;
+    if(this.isNotAutoSave && this.deviceInfoForm.dirty)  {
+      this.openConfirmDialog();
+    }  else {
+       const message = 'deviceInformation.resubmit';
+       this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" } });
+
+    //  });
+  
+
+    }
+   
 
   }
 

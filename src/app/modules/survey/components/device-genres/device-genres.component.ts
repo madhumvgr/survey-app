@@ -26,23 +26,15 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   deviceStatus: any;
   userCount: any;
   isTvGenere: boolean = false;
-  isValid:boolean= true;
+  isValid: boolean = true;
   // timeLinesForm: FormGroup = this.fb.group({});
-  timeLinesForm: FormGroup[] = []
+  timeLinesForm: FormGroup[] = [];
+  isNotAutoSave$: Observable<any> = new Observable();
+  isNotAutoSave = false;
+  submitCall= false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
 
-  isNotAutoSave$: Observable<any> = new Observable();
-  isNotAutoSave = false;
-  submitCall = false;
-
-  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if (this.deviceState == "Completed" && !this.submitCall) {
-      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
-    } else {
-      return true;
-    }
-  }
   newGenreIds: Array<any> =[];
   generes: Array<any> = [{
     "id": '1',
@@ -76,7 +68,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   },
   {
     "id": '7',
-    "name":  "genres.comedy",
+    "name": "genres.comedy",
     "isError": false
   },
 
@@ -133,7 +125,13 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       "addNew": false
     }
   ];
-
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+    if (this.submitCall || !this.isNotAutoSave) {
+      return true;
+    } else {
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    }
+  }
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
     private confirmationDialogService: ConfirmationDialogService,
@@ -141,9 +139,8 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
     const genreIds = this.deviceService.getGenreIds();
-    this.newGenreIds = this.generes.filter(  (e1: any) =>
-    {
-      return genreIds.some((f:any) => {
+    this.newGenreIds = this.generes.filter((e1: any) => {
+      return genreIds.some((f: any) => {
         return f === e1.id;
       });
     })
@@ -156,7 +153,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
     } else {
       this.memberName = this.router.getCurrentNavigation()?.extras?.state?.memberName;
-      if(!this.memberName){
+      if (!this.memberName) {
         this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
       }
     }
@@ -191,12 +188,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
         this.addMore(d, parseInt(genere.id));
       }
     });
-    if(!this.isTvGenere){
-    this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => { 
-      this.userCount = res.numberOfUsers;
-      console.log(this.userCount);
-    });
-  }
+    if (!this.isTvGenere) {
+      this.deviceService.getDeviceInfo(this.deviceId).subscribe(res => {
+        this.userCount = res.numberOfUsers;
+        console.log(this.userCount);
+      });
+    }
     if (this.isTvGenere) {
       this.televisionService.getCustomRequest(TelevisionConstants.tvStationByMember + this.memberNo).
         subscribe(response => {
@@ -212,9 +209,9 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   setPreviousValues(genereList: any) {
-    const res = genereList.filter((item:any) => this.newGenreIds.some( (f)=> f.id == parseInt(item.id)));
+    const res = genereList.filter((item: any) => this.newGenreIds.some((f) => f.id == parseInt(item.id)));
     res.forEach((element: any) => {
-      if (element.listGenresTimeline && (element.id!=11 && element.id!=12)) {
+      if (element.listGenresTimeline && (element.id != 11 && element.id != 12)) {
         console.log(element.id);
         element.listGenresTimeline.forEach((timeLine: any) => {
           if (timeLine.dayOfWeek && timeLine.dayOfWeek == 1) {
@@ -233,18 +230,16 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     });
   }
 
-  updateTimeLine(control: any,event?:any,index?:any) {
-
-    console.log(event);
+  updateTimeLine(control: any, event?: any, index?: any) {
     let item = control.value;
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
 
-    if(event && event.target.checked){
-      this.generes[index-1].isError = false;
+    if (event && event.target.checked) {
+      this.generes[index - 1].isError = false;
     }
-    if(event){
-      item['addNew']= event.target.checked;
+    if (event) {
+      item['addNew'] = event.target.checked;
     }
     if (this.isTvGenere) {
       this.televisionService.updateDeviceTimeLine(item).
@@ -259,6 +254,36 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
         });
     }
   }
+
+  resubmitFormTimeLine(routeUrl: any, stateObject: any) {
+
+    for (let form of this.timeLinesForm) {
+      let weekDaysArray = form.get('weekDays') as FormArray;
+       let controls=weekDaysArray.controls;
+       for (let control of controls) {
+        if (control.dirty) {
+          let item = control.value;
+          item['deviceId'] = this.deviceId;
+          item['memberNo'] = this.memberNo;
+      
+          if (this.isTvGenere) {
+            this.televisionService.updateDeviceTimeLine(item).
+              subscribe((response: any) => {
+                console.log("Update record");
+              });
+          } else {
+            this.deviceService.updateDeviceTimeLine(item).
+              subscribe((response: any) => {
+                console.log("Update record");
+              });
+          }
+        }
+       }
+    }
+  }
+
+
+
   getWeekDayControl(generId: number) {
     return this.timeLinesForm[generId].get('weekDays') as FormArray;
   }
@@ -302,35 +327,34 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   submit() {
     // TODO: change device name to Smart TV. 
     let deviceId = this.deviceId ? this.deviceId : 'none';
-     this.isValid= true;
-     let errorCount=1;
-     
-    this.timeLinesForm.forEach( (form,index) => {
-      let hasWeekDay = form.value.weekDays.some( (weekDay:any) => weekDay['addNew'] === true );
-      let hasWeekEnd = form.value.weekEnds.some( (weekDay:any) => weekDay['addNew'] === true );
+    this.isValid = true;
+    let errorCount = 1;
 
-      if(!hasWeekDay && !hasWeekEnd)
-      {
-        this.generes[index-1].isError= true;
+    this.timeLinesForm.forEach((form, index) => {
+      let hasWeekDay = form.value.weekDays.some((weekDay: any) => weekDay['addNew'] === true);
+      let hasWeekEnd = form.value.weekEnds.some((weekDay: any) => weekDay['addNew'] === true);
+
+      if (!hasWeekDay && !hasWeekEnd) {
+        this.generes[index - 1].isError = true;
         errorCount++;
       }
-      
+
     });
     let timeLineError = false;
-    this.generes.forEach( gen => {
-      if(gen.isError){
+    this.generes.forEach(gen => {
+      if (gen.isError) {
         timeLineError = gen.isError;
       }
     });
-    if(errorCount === this.timeLinesForm.length || timeLineError){
-      this.isValid= false;
+    if (errorCount === this.timeLinesForm.length || timeLineError) {
+      this.isValid = false;
       const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
         ".errorClass"
       );
-  
+
       firstInvalidControl.scrollIntoView(); //without smooth behavior
     }
-    if(this.isValid){
+    if (this.isValid) {
       if (this.isTvGenere) {
         this.router.navigateByUrl('television/tv-selectChannel/' + this.memberNo);
       }
@@ -347,19 +371,20 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   resubmitForm() {
     const message = 'deviceInformation.resubmit';
-    this.router.navigate(['survey/Thankyou'], {state: {message: message}});
+    this.resubmitFormTimeLine('survey/Thankyou',{ state: { message: message } });
+   // this.router.navigate(['survey/Thankyou'], { state: { message: message } });
   }
 
   backAction() {
     let url;
     if (this.isTvGenere) {
-      this.router.navigateByUrl('/television/tv-selectGeneres/'+this.memberNo);
-    }else if(this.deviceState != "Completed"){
-      this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo+ '/' + this.deviceId], {state: {memberName: this.memberName}});
-    } else{
-      this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo+ '/' + this.deviceId], {state: {memberName: this.memberName}, queryParams: {isNotAutoSave: true}});
+      this.router.navigateByUrl('/television/tv-selectGeneres/' + this.memberNo);
+    } else if (this.deviceState != "Completed") {
+      this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { memberName: this.memberName } });
+    } else {
+      this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { memberName: this.memberName }, queryParams: { isNotAutoSave: true } });
     }
-    
+
   }
   copyValues(target: number, sourceNode: any) {
     let selectedWeekEndIds: string[] = [];
@@ -418,12 +443,12 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       this.router.navigate(['television/thankyou'], { state: { message: message } });
     } else {
       let message: any;
-      if( this.deviceState == "Completed") {
-         message =this.translate.instant('deviceInformation.success2');
-      } else{
-         message =this.translate.instant('deviceInformation.success');
+      if (this.deviceState == "Completed") {
+        message = this.translate.instant('deviceInformation.success2');
+      } else {
+        message = this.translate.instant('deviceInformation.success');
       }
-      this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+      this.router.navigate(['survey/Thankyou/deviceList/' + this.deviceState], { state: { message: message, inputRoute: "deviceList" } });
 
 
     }

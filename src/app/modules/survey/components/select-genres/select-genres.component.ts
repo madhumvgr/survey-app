@@ -86,13 +86,13 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
     "selected": false
   }
   ]
-  isNotAutoSave$: Observable<any>=new Observable();
+  isNotAutoSave$: Observable<any> = new Observable();
   isNotAutoSave = false;
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if(this.submitCall && !this.isNotAutoSave){
-     return true;
-    }else{
+    if (this.submitCall || !this.isNotAutoSave) {
+      return true;
+    } else {
       return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
     }
   }
@@ -199,31 +199,14 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
   updateTimeLine(event: any, i: any) {
 
     this.timeLinesForm.get('dont')?.setValue('0');
-    console.log(event);
     if (this.isTvGenere) {
-      let item = {
-        memberNo: '',
-        genreId: 0,
-        addNew: event?.target?.checked,
-        notSelected: false
-      }
-      item['memberNo'] = this.memberNo;
-      item['genreId'] = parseInt(this.generes[i].id);
+      let item = this.prepareItem(this.generes[i].id, event?.target?.checked, true);
       this.deviceService.updateTvSelectGenres(item).
         subscribe((response: any) => {
           console.log("Update record");
         });
     } else {
-      let item = {
-        deviceId: '',
-        memberNo: '',
-        genreId: 0,
-        addNew: event?.target?.checked,
-        notSelected: false
-      }
-      item['deviceId'] = this.deviceId;
-      item['memberNo'] = this.memberNo;
-      item['genreId'] = parseInt(this.generes[i].id);
+      let item = this.prepareItem(this.generes[i].id, event?.target?.checked, false);
       if (!this.isNotAutoSave) {
         this.deviceService.updateSelectGenres(item).
           subscribe((response: any) => {
@@ -234,12 +217,26 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
 
   }
 
+  prepareItem(id: any, checked: any, isTvChannel: any) {
+    let item = {
+      deviceId: '',
+      memberNo: '',
+      genreId: 0,
+      addNew: checked,
+      notSelected: false
+    }
+    if (!isTvChannel)
+      item['deviceId'] = this.deviceId;
+    item['memberNo'] = this.memberNo;
+    item['genreId'] = parseInt(id);
+    return item;
+  }
   completedBackurl() {
     if (this.userCount == 0) {
-      this.router.navigate(['/survey/completed-devices/Completed' +'/' +this.deviceId], {queryParams: {isNotAutoSave: true} });
+      this.router.navigate(['/survey/completed-devices/Completed' + '/' + this.deviceId], { queryParams: { isNotAutoSave: true } });
     }
     else {
-      this.router.navigate(['/survey/deviceUsage/Completed' +'/' + this.deviceId], {queryParams: {isNotAutoSave: true} });
+      this.router.navigate(['/survey/deviceUsage/Completed' + '/' + this.deviceId], { queryParams: { isNotAutoSave: true } });
     }
   }
 
@@ -278,7 +275,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
 
   }
   submit() {
-    this.submitCall= true;
+    this.submitCall = true;
     const selectedOrderIds = this.timeLinesForm.value.genere
       .map((checked: any, i: any) => checked ? this.generes[i].id : null)
       .filter((v: any) => v !== null);
@@ -288,7 +285,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
       const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
         ".errorClass"
       );
-  
+
       firstInvalidControl.scrollIntoView(); //without smooth behavior
       return;
     }
@@ -313,18 +310,58 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
         this.router.navigate(['survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
       }
     }
+  }
+}
+
+  openConfirmDialog(routeUrl: string, stateObject: Object) {
+    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          this.resubmitForm(routeUrl, stateObject);
+
+        }
+      })
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+
+  resubmitForm(routeUrl: any, stateObject: any) {
+    let controls = this.genreFormArray.controls;
+    // if(arrayForm instanceof FormArray){
+    let count = 0;
+    let dirtyCount = 0;
+    let index = 0;
+    this.timeLinesForm.get('dont')?.setValue('0');
+    for (let control of controls) {
+      if (control.dirty) {
+        dirtyCount++;
+        let value = control.value;
+        if (this.isTvGenere) {
+          let item = this.prepareItem(this.generes[index].id, value, true);
+          this.deviceService.updateTvSelectGenres(item).
+            subscribe((response: any) => {
+              count++;
+              if (dirtyCount == count) {
+                this.router.navigate([routeUrl], stateObject);
+              }
+            });
+        } else {
+          let item = this.prepareItem(this.generes[index].id, value, false);
+          this.deviceService.updateSelectGenres(item).
+            subscribe((response: any) => {
+              count++;
+              if (dirtyCount == count) {
+                this.router.navigate([routeUrl], stateObject);
+              }
+            });
+        }
+      }
+      index++;
+    }
+    if (dirtyCount == 0) {
+      this.router.navigate([routeUrl], stateObject);
     }
   }
 
-  openConfirmDialog(routeUrl:string, stateObject: Object){
-    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
-    .then((confirmed) => {
-      if(confirmed){
-        this.router.navigate([routeUrl],stateObject);
-      }
-    })
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-  }
 
   backAction() {
     let url;

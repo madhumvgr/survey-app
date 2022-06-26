@@ -274,8 +274,8 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     let dirtyCount=0;
     let weekDays= false;
 
-    for (let i=1; i<= this.timeLinesForm.length -1;i++) {
-      let form = this.timeLinesForm[i];
+    this.timeLinesForm.forEach( (form,i) => {
+  
       let weekDaysArray = form.get('weekDays') as FormArray;
       let controls = weekDaysArray.controls;
       for (let control of controls) {
@@ -305,7 +305,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
           }
         }
       }
-    }
+    })
     if(dirtyCount == 0)
     {
       this.updateWeekEndDaysForm(routeUrl,stateObject);
@@ -315,8 +315,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   updateWeekEndDaysForm(routeUrl:any,stateObject:any){
     let count=0;
     let dirtyCount=0;
-    for (let i=1; i<= this.timeLinesForm.length -1;i++) {
-      let form = this.timeLinesForm[i];
+    this.timeLinesForm.forEach( (form,i) => {
       let weekEndArray = form.get('weekEnds') as FormArray;
       let controls = weekEndArray.controls;
       for (let control1 of controls){
@@ -344,7 +343,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
           }
         }
       }
-    }
+    })
     if(dirtyCount == 0)
     {
       this.router.navigate([routeUrl],stateObject);

@@ -99,7 +99,7 @@
             </div>
             <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState == 'Completed'">
                 <button type="submit" class="btn btn-dark" (click) = backRoute()>Cancel</button>
-                <button type="button" class="btn btn-primary ms-md-3" >Resubmit</button>
+                <button type="button" class="btn btn-primary ms-md-3" (click)="submit()" >Resubmit</button>
             </div>
         </div>
         <!--end Col-->

@@ -298,7 +298,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       this.deviceService.saveGenreIds(selectedOrderIds);
       if (this.isTvGenere) {
         const device = "none";
-        this.openConfirmDialog('television/tv-channels/' + this.memberNo + '/' + device, { state: { memberName: this.memberName } });
+        this.openConfirmDialog('television/tv-channels/' + this.memberNo + '/' + device, { state: { memberName: this.memberName },  queryParams: {isNotAutoSave: true}} );
       } else {
         //  this.deviceService.saveGenreIds(selectedOrderIds);
         if (this.deviceState == "Completed") {
@@ -306,7 +306,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
           //this.router.navigate(['], , queryParams: {isNotAutoSave: true}} );
         } else {
           //this.openConfirmDialog('television/tv-channels/'+this.memberNo+ '/'+ device ,{ state: { memberName: this.memberName }});
-          this.openConfirmDialog('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' + this.memberNo + '/' + this.userCount + '/' + this.list, { state: { memberName: this.memberName } });
+          this.openConfirmDialog('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' + this.memberNo + '/' + this.userCount + '/' + this.list, { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}} );
         }
         // this.router.navigate(['survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount+ '/'+this.list], { state: { memberName: this.memberName }} );
       }

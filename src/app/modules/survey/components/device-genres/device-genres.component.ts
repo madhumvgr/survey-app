@@ -4,10 +4,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-<<<<<<< HEAD
-=======
-import { map } from 'rxjs/operators';
->>>>>>> ede998e4b48609dce71d6596320b091387e964ae
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
@@ -38,23 +34,8 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   submitCall= false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
-<<<<<<< HEAD
-  newGenreIds: Array<any> = [];
-=======
 
-  isNotAutoSave$: Observable<any> = new Observable();
-  isNotAutoSave = false;
-  submitCall = false;
-
-  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if (this.deviceState == "Completed" && !this.submitCall) {
-      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
-    } else {
-      return true;
-    }
-  }
   newGenreIds: Array<any> =[];
->>>>>>> ede998e4b48609dce71d6596320b091387e964ae
   generes: Array<any> = [{
     "id": '1',
     "name": "genres.news",

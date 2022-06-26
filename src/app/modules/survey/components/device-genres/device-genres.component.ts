@@ -335,9 +335,13 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
         this.router.navigateByUrl('television/tv-selectChannel/' + this.memberNo);
       }
       else {
+        if(this.deviceState == "Completed") {
+          this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true], { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
+        } else{
         this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' +this.memberNo + '/' + this.deviceId+ '/' +false],{ state: { memberName: this.memberName } });         
         // this.router.navigateByUrl('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' +this.memberNo + '/' +this.userCount);
       }
+    }
     }
   }
 

@@ -1,13 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
 import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
 import { DeviceConstants, TelevisionConstants } from 'src/app/shared/models/url-constants';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
+import { ConfirmationDialogService } from '../select-genres/confirm-dialog.service';
 
 @Component({
   selector: 'app-select-channel',
@@ -30,6 +33,17 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
   timeLinesForm: FormGroup = this.fb.group({});
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
+  submitCall: boolean = false;
+  isNotAutoSave$: Observable<any>=new Observable();
+  isNotAutoSave = false;
+
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+    if(this.submitCall && !this.isNotAutoSave){
+     return true;
+    }else{
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    }
+  }
 
   generes: Array<any> = [{
     "id": '1',
@@ -70,6 +84,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
+    private confirmationDialogService: ConfirmationDialogService,
     private translate: TranslateService, private televisionService: TelevisionService) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
@@ -96,6 +111,15 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
     if (this.deviceState == "Inprogress") {
       this.deviceStatus = "In Progress"
     } else {
+      if (this.deviceState == "Completed") {
+        this.isNotAutoSave$ = this.activatedroute.queryParamMap.pipe(
+          map((params: ParamMap) => params.get('isNotAutoSave')),
+        );
+        this.isNotAutoSave$.subscribe(param => {
+          this.isNotAutoSave = param;
+          console.log(this.isNotAutoSave);
+        });
+      }
       this.deviceStatus = this.deviceState;
     }
     this.memberNo = this.activatedroute.snapshot.params['memberNo'];
@@ -182,11 +206,12 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
     item['deviceId'] = this.deviceId;
     item['memberNo'] = this.memberNo;
     item['genreId'] = parseInt(this.generes[i].id);
-    
+    if(!this.isNotAutoSave) {
     this.deviceService.updateSelectChannel(item).
       subscribe((response: any) => {
         console.log("Update record");
       });
+    }
     }
   }
 

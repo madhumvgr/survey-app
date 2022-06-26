@@ -299,7 +299,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
        // this.openConfirmDialog('survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + SVGComponentTransferFunctionElement,{ state: { memberName: this.memberName } });
        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true], { state: { memberName: this.memberName } });
       } else{
-        this.openConfirmDialog('survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true, { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
+        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true], { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
       }
     } else {
       this.deviceService.saveGenreIds(selectedOrderIds);
@@ -310,7 +310,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
      //   this.router.navigate[('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId, { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName } })];
         this.router.navigate(['survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName } });
       } else{
-        this.openConfirmDialog('survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId, { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
+        this.router.navigate(['survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { selectedOrderIds: selectedOrderIds, memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
       }
     }
     }

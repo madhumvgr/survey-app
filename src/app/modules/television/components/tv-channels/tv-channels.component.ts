@@ -1,11 +1,14 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
+import { ConfirmationDialogService } from 'src/app/modules/survey/components/select-genres/confirm-dialog.service';
 import { DeviceConstants, TelevisionConstants } from 'src/app/shared/models/url-constants';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
@@ -48,6 +51,17 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   list:any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
+  isNotAutoSave$: Observable<any> = new Observable();
+  isNotAutoSave = false;
+  submitCall = false;
+
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+    if (this.isNotAutoSave && !this.submitCall) {
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    } else {
+      return true;
+    }
+  }
   newStationsId : Array<any> = [];
   stations: Array<any> = [{
     "id": '1',
@@ -111,7 +125,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   ]
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService,
-    private televisionService: TelevisionService,
+    private televisionService: TelevisionService, private confirmationDialogService: ConfirmationDialogService,
     private localStorageService: LocalStorageService, private translate: TranslateService, private el: ElementRef) {
     super();
     const genreIds = this.deviceService.getGenreIds();
@@ -148,6 +162,15 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
       this.createForm(station.id);
     });
     if (this.deviceId !== "none") {
+      if (this.deviceState == "Completed") {
+        this.isNotAutoSave$ = this.activatedroute.queryParamMap.pipe(
+          map((params: ParamMap) => params.get('isNotAutoSave')),
+        );
+        this.isNotAutoSave$.subscribe(param => {
+          this.isNotAutoSave = param;
+          console.log(this.isNotAutoSave);
+        });
+      }
       this.televisionService.getCustomRequest(TelevisionConstants.getStationsWithDeviceId + this.memberNo + '/' + this.deviceId).
         subscribe(response => {
           this.setPreviousValues(response);
@@ -260,10 +283,13 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
    
     if (this.deviceId !== "none") {
       updateItem['deviceNo'] = this.deviceId;
+      if(!this.isNotAutoSave) {
+        
       this.televisionService.updateStationsWithDeviceId(updateItem).
         subscribe((response: any) => {
           console.log("Update record");
         });
+      }
 
     } else {
       this.televisionService.updateTelevisionStation(updateItem).

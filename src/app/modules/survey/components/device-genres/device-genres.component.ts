@@ -1,13 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { TelevisionService } from 'src/app/modules/login/services/television-service.service';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { DeviceConstants, TelevisionConstants } from 'src/app/shared/models/url-constants';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
+import { ConfirmationDialogService } from '../select-genres/confirm-dialog.service';
 
 @Component({
   selector: 'app-device-genres',
@@ -28,6 +31,18 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   timeLinesForm: FormGroup[] = []
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
+
+  isNotAutoSave$: Observable<any> = new Observable();
+  isNotAutoSave = false;
+  submitCall = false;
+
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+    if (this.deviceState == "Completed" && !this.submitCall) {
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+    } else {
+      return true;
+    }
+  }
   newGenreIds: Array<any> =[];
   generes: Array<any> = [{
     "id": '1',
@@ -121,6 +136,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
     private deviceService: DeviceService, private localStorageService: LocalStorageService,
+    private confirmationDialogService: ConfirmationDialogService,
     private televisionService: TelevisionService, private translate: TranslateService, private el: ElementRef) {
     super();
     let url = this.activatedroute.snapshot.url[0].path;
@@ -157,6 +173,14 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     this.deviceState = this.activatedroute.snapshot.params['state'];
     if (this.deviceState == "Inprogress") {
       this.deviceStatus = "In Progress"
+    } else if (this.deviceState == "Completed") {
+      this.isNotAutoSave$ = this.activatedroute.queryParamMap.pipe(
+        map((params: ParamMap) => params.get('isNotAutoSave')),
+      );
+      this.isNotAutoSave$.subscribe(param => {
+        this.isNotAutoSave = param;
+        console.log(this.isNotAutoSave);
+      });
     } else {
       this.deviceStatus = this.deviceState;
     }
@@ -228,6 +252,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
           console.log("Update record");
         });
     } else {
+      if(!this.isNotAutoSave)
       this.deviceService.updateDeviceTimeLine(item).
         subscribe((response: any) => {
           console.log("Update record");

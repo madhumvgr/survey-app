@@ -56,15 +56,16 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   submitCall = false;
   ignoreCanDeactivate = false;
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if (this.isNotAutoSave && !this.submitCall) {
-      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
-    }else if(this.ignoreCanDeactivate) {
+    if (!this.submitCall && !this.isNotAutoSave) {
+      return true;
+    } else if(this.ignoreCanDeactivate) {
       return true;
     }
-     else {
-      return true;
+    else {
+      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
     }
   }
+
   newStationsId : Array<any> = [];
   stations: Array<any> = [{
     "id": '1',
@@ -225,20 +226,37 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
           });
   
       } else {
-        this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
-          res => {
-            if(this.userCount != 0) {
+        if(this.deviceState == "Completed") {
+          this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
+            res => {
+              if(this.userCount != 0) {
+                this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
+               // this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: deviceMessage, inputRoute: "devices", deviceName: this.deviceName} });
+               this.openConfirmDialog('survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId,{ state: { message: deviceMessage, inputRoute: "devices", deviceName: this.deviceName} });
+             }else {
               this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
-             // this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: deviceMessage, inputRoute: "devices", deviceName: this.deviceName} });
-             this.openConfirmDialog('survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId,{ state: { message: deviceMessage, inputRoute: "devices", deviceName: this.deviceName} });
-           }else {
-            this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
-            this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
-            //this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList", deviceName: this.deviceName } });
-            this.openConfirmDialog('survey/Thankyou/deviceList/' +this.deviceState, { state: { message: message, inputRoute:"deviceList", deviceName: this.deviceName } } );
-            }
-          });
+              this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
+              //this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList", deviceName: this.deviceName } });
+              this.openConfirmDialog('survey/Thankyou/deviceList/' +this.deviceState, { state: { message: message, inputRoute:"deviceList", deviceName: this.deviceName } } );
+              }
+            });
+        } else{
+          this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
+            res => {
+              if(this.userCount != 0) {
+                this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
+               // this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: deviceMessage, inputRoute: "devices", deviceName: this.deviceName} });
+               this.openConfirmDialog('survey/device/Thankyou/' + this.deviceState + '/' + this.deviceId, { state: { message: deviceMessage, inputRoute: "deviceList_completed" } });
+             }else {
+              this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
+              this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
+              //this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList", deviceName: this.deviceName } });
+              this.openConfirmDialog('survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId, { state: { message: message, inputRoute: "Completed" } });
+              }
+            });
+        }
       }
+        
     } else {
   setTimeout(() => {
     // const userToScrollOn = this.renderedUsers.toArray();
@@ -254,14 +272,32 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
   } 
 
   openConfirmDialog(routeUrl: string, stateObject: Object) {
-    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+
+    let count=0;
+    let dirtyCount=0;
+    let weekDays= false;
+
+    let weekDayStationValue, weekEndstationValue;
+    this.stationForm.forEach( (form,i) => {
+      weekDayStationValue = this.stationForm[i]?.get('weekDays');
+      weekEndstationValue = this.stationForm[i]?.get('weekEnds');
+
+      if(weekDayStationValue?.dirty || weekEndstationValue?.dirty ){
+        dirtyCount++;
+      }
+    });
+    if(dirtyCount > 0) {
+    this.confirmationDialogService.confirm('Are you sure', 'Do you really want to update the submitted answers.?', 'IAM SURE', 'NO')
       .then((confirmed) => {
         if (confirmed) {
           this.resubmitFormTimeLine(routeUrl, stateObject);
         }
       })
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  } else {
+    this.resubmitFormTimeLine(routeUrl, stateObject);
   }
+}
 
   resubmitFormTimeLine(routeUrl: any, stateObject: any) {
     this.ignoreCanDeactivate = true;

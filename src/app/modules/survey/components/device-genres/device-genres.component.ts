@@ -259,14 +259,34 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
   }
 
   openConfirmDialog(routeUrl: string, stateObject: Object) {
-    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    this.ignoreCanDeactivate = true;
+    let dirtyCount=0;
+
+    this.timeLinesForm.forEach( (form,i) => {
+  
+      let weekDaysArray = form.get('weekDays') as FormArray;
+      let controls = weekDaysArray.controls;
+      for (let control of controls) {
+        if (control.dirty) {
+          dirtyCount++
+        }
+      }
+      if(dirtyCount > 0) {
+        this.confirmationDialogService.confirm('Are you sure', 'Do you really want to update the submitted answers.?', 'IAM SURE', 'NO')
       .then((confirmed) => {
         if (confirmed) {
           this.resubmitFormTimeLine(routeUrl, stateObject);
         }
       })
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-  }
+
+      } else {
+        this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true], { state: { memberName: this.memberName }, queryParams: { isNotAutoSave: true } });
+      }
+
+    });
+
+   }
 
   resubmitFormTimeLine(routeUrl: any, stateObject: any) {
     this.ignoreCanDeactivate = true;

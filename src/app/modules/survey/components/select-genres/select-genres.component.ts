@@ -94,11 +94,16 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
     if (!this.submitCall && !this.isNotAutoSave) {
       return true;
     }
-    else if(this.ignoreCanDeactivate){
+    else if(this.ignoreCanDeactivate ){
       return true;
     }
     else {
-      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+      if(this.timeLinesForm.dirty){
+        return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+      } else {
+        return true;
+      }
+      
     }
   }
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
@@ -237,6 +242,7 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
     return item;
   }
   completedBackurl() {
+
     if (this.userCount == 0) {
       this.router.navigate(['/survey/completed-devices/Completed' + '/' + this.deviceId], { queryParams: { isNotAutoSave: true } });
     }
@@ -321,18 +327,47 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
 }
 
   openConfirmDialog(routeUrl: string, stateObject: Object) {
-    this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    let controls = this.genreFormArray.controls;
+    // if(arrayForm instanceof FormArray){
+    let count = 0;
+    let dirtyCount = 0;
+    let index = 0;
+    this.timeLinesForm.get('dont')?.setValue('0');
+    for (let control of controls) {
+      if (control.dirty) {
+        dirtyCount++;
+      }
+    }
+    if(dirtyCount > 0) {
+    this.confirmationDialogService.confirm('Are you sure', 'Do you really want to update the submitted answers.?', 'IAM SURE', 'NO')
       .then((confirmed) => {
         if (confirmed) {
           this.resubmitForm(routeUrl, stateObject);
-
         }
       })
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    } else { 
+      this.ignoreCanDeactivate = true;
+      this.verifyNextpage();
+    //  this.router.navigate(['survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: {memberName: this.memberName }, queryParams: {isNotAutoSave: true}});
+
+    }
+}
+
+verifyNextpage() {
+  const selectedOrderIds = this.timeLinesForm.value.genere
+  .map((checked: any, i: any) => checked ? this.generes[i].id : null)
+  .filter((v: any) => v !== null);
+
+  if(selectedOrderIds.length == 0){
+    this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId + '/' + true], { state: { memberName: this.memberName }, queryParams: { isNotAutoSave: true } });
+     } else {
+      this.router.navigate(['survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: {memberName: this.memberName }, queryParams: {isNotAutoSave: true} });
   }
+}
 
   resubmitForm(routeUrl: any, stateObject: any) {
-    this.ignoreCanDeactivate = true;
+   // this.ignoreCanDeactivate = true;
     let controls = this.genreFormArray.controls;
     // if(arrayForm instanceof FormArray){
     let count = 0;

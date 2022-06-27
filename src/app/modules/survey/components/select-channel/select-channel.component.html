@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState == 'Completed'">
                     <button type="button" class="btn btn-dark" (click)="completedBackurl()">{{'deviceInformation.cancelButton' | translate}}</button>
-                    <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{'genres.continueButton' | translate}}</button>
+                    <button type="button" (click)="submit()" class="btn btn-primary ms-md-3">{{'genres.continueButton' | translate}}</button>
                 </div>
             </form>
         </div>

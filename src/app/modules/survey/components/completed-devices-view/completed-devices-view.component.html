@@ -81,7 +81,7 @@
 </section><!--end Section-->
           
 <!-- Sections Overview -->
-<section class="px-3 pb-5">
+<section class="px-3 pb-5" *ngIf ="panelListType == 'VAM'">
     <div class="container">
         <div class="row g-4" *ngIf = "userSize != '0'">
             <h2>Completed sections<span class="h2-separator"></span></h2>
@@ -216,4 +216,45 @@
         </div><!--end Row-->
     </div><!--end Container-->
 </section><!--end Section-->
+<section *ngIf ="panelListType == 'SSP'">
+    <div class="container">
+        <div class="row g-4" *ngIf = "userSize != '0'">
+            <h2>Completed sections<span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0">Select section to review or make changes.</p>
+
+             <!-- Section-->
+             <a [routerLink] = "['/survey/deviceInformation/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                        <div class="h1 mb-0">segment</div>
+                    </i>
+                    <div class="ps-3">
+                        <h3 class="m-0">Device information</h3> 
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+             <!-- Section-->
+             <a [routerLink] = "['/survey/deviceOwnerInformation/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                        <div class="h1 mb-0">segment</div>
+                    </i>
+                    <div class="ps-3">
+                        <h3 class="m-0">Owner information</h3> 
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+</div>
+</div>
+
+
+</section>
 

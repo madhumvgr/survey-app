@@ -62,7 +62,22 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
       return true;
     }
     else {
-      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+      let dirtyCount=0;
+      let weekDayStationValue, weekEndstationValue;
+      this.stationForm.forEach( (form,i) => {
+        weekDayStationValue = this.stationForm[i]?.get('weekDays');
+        weekEndstationValue = this.stationForm[i]?.get('weekEnds');
+  
+        if(weekDayStationValue?.dirty || weekEndstationValue?.dirty ){
+          dirtyCount++;
+        }
+      });
+      if(dirtyCount > 0){
+        return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+      } else {
+        return true;
+      }
+      
     }
   }
 
@@ -221,8 +236,8 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
           res => {
             this.router.navigateByUrl('');
             this.televisionService.updateMemberSurvey(this.memberNo).subscribe();
-            this.openConfirmDialog('television/thankyou',{ state: { message: tvMessage, inputRoute: "television" } } );
-           // this.router.navigate(['television/thankyou'], { state: { message: tvMessage, inputRoute: "television" } });
+          //  this.openConfirmDialog('television/thankyou',{ state: { message: tvMessage, inputRoute: "television" } } );
+            this.router.navigate(['television/thankyou'], { state: { message: tvMessage, inputRoute: "television" } });
           });
   
       } else {
@@ -245,13 +260,13 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
             res => {
               if(this.userCount != 0) {
                 this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
-               // this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: deviceMessage, inputRoute: "devices", deviceName: this.deviceName} });
-               this.openConfirmDialog('survey/device/Thankyou/' + this.deviceState + '/' + this.deviceId, { state: { message: deviceMessage, inputRoute: "deviceList_completed" } });
+                this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: deviceMessage, inputRoute: "devices", deviceName: this.deviceName} });
+            //   this.openConfirmDialog('survey/device/Thankyou/' + this.deviceState + '/' + this.deviceId, { state: { message: deviceMessage, inputRoute: "deviceList_completed" } });
              }else {
               this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
               this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
-              //this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList", deviceName: this.deviceName } });
-              this.openConfirmDialog('survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId, { state: { message: message, inputRoute: "Completed" } });
+              this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList", deviceName: this.deviceName } });
+           //   this.openConfirmDialog('survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId, { state: { message: message, inputRoute: "Completed" } });
               }
             });
         }

@@ -132,7 +132,19 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
       return true;
     }
     else {
+      let isDirty = false;
+      this.timeLinesForm.forEach( (form, i) => {
+
+      if(form.dirty) {
+       isDirty =true
+      } 
+      });
+      if(isDirty) {
       return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+      } else{
+        return true;
+      }
+
     }
   }
   constructor(private fb: FormBuilder, private activatedroute: ActivatedRoute, private router: Router,
@@ -471,6 +483,7 @@ export class DeviceGenresComponent extends BaseComponent implements OnInit {
     } else if (this.deviceState != "Completed") {
       this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { memberName: this.memberName } });
     } else {
+      
       this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { memberName: this.memberName }, queryParams: { isNotAutoSave: true } });
     }
 

@@ -17,6 +17,7 @@ export class CompletedDevicesViewComponent implements OnInit {
   deviceInformation : DeviceInfo = new DeviceInfo();
   userSize:any;
   ownerInfo: any;
+  panelListType: any;
 
   constructor(private Activatedroute: ActivatedRoute, private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService) { }
 
@@ -25,6 +26,7 @@ export class CompletedDevicesViewComponent implements OnInit {
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
+    this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
 
     this.deviceService.getDeviceInnerInfo(this.deviceId).subscribe( res1 => {
       this.deviceInformation.devicePlatform=res1['devicePlatform'];

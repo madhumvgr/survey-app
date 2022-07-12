@@ -428,14 +428,14 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
 
   exitEvent(isBackAction: boolean) {
     if (this.isTvGenere) {
-      const message = this.translate.instant('deviceInformation.success');
+      const message = 'deviceInformation.success';
       this.router.navigate(['television/thankyou'], { state: { message: message } });
     } else {
       let message: any;
       if( this.deviceState == "Completed") {
-         message =this.translate.instant('deviceInformation.success2');
+         message ='deviceInformation.success2';
       } else{
-         message =this.translate.instant('deviceInformation.success');
+         message ='deviceInformation.success';
       }
       this.router.navigate(['survey/Thankyou'], { state: { message: message } });
 

@@ -167,6 +167,11 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
     });
   }
 
+  backAction(): void {
+    this.router.navigate(['/survey/deviceList/' + this.deviceState]);
+
+  }
+
   exitEvent(isBackAction: boolean) {
     let message: any;
     if (this.deviceState == "Completed") {

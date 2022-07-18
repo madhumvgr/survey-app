@@ -1,6 +1,7 @@
 <div class="mb-4">
 
     <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
+    <h4>{{isFrance? question?.descriptionFr: question?.description}}</h4>
 
     <div [formGroup]="childFormGroup">
 
@@ -13,7 +14,7 @@
         
 
         <span class="danger" *ngIf="textFormControl.errors?.required && buttonClicked">
-            Please select the field.
+            {{'required.select-answer' | translate}}
         </span>
 
     </div>

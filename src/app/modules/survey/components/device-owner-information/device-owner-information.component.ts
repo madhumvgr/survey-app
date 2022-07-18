@@ -1,16 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { ConfirmationDialogService } from '../select-genres/confirm-dialog.service';
-import { map } from 'rxjs/operators';
-import { ComponentCanDeactivate } from 'src/app/shared/services/pending-changes.guard';
 export interface Owner {
   memberName: string;
   memberNo: string;
@@ -26,7 +22,7 @@ export interface Owner {
   templateUrl: './device-owner-information.component.html',
   styleUrls: ['./device-owner-information.component.css']
 })
-export class DeviceOwnerInformationComponent extends BaseComponent implements OnInit, ComponentCanDeactivate {
+export class DeviceOwnerInformationComponent extends BaseComponent implements OnInit {
   deviceId: any;
   deviceName:any;
   deviceState: any;
@@ -46,22 +42,9 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
-
-  isNotAutoSave$: Observable<any>=new Observable();
-  isNotAutoSave = false;
-  submitCall = false
-  memberChanged: any;
-
-  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if (this.deviceOwnerInfoForm.dirty && !this.submitCall) {
-      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
-    } else {
-      return true;
-    }
-  }
-  constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private route: ActivatedRoute,
+  constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute,
     private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService,
-    private translate: TranslateService, private confirmationDialogService: ConfirmationDialogService,) {
+    private translate: TranslateService) {
       super();
      }
 
@@ -80,15 +63,6 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     if(this.deviceState =="Inprogress") {
       this.deviceStatus = "In Progress"
     }else {
-      if (this.deviceState == "Completed") {
-        this.isNotAutoSave$ = this.route.queryParamMap.pipe(
-          map((params: ParamMap) => params.get('isNotAutoSave')),
-        );
-        this.isNotAutoSave$.subscribe(param => {
-          this.isNotAutoSave = param;
-          console.log(this.isNotAutoSave);
-        });
-      }
       this.deviceStatus = this.deviceState;
     }
     if(this.deviceState == "Completed") {
@@ -152,14 +126,12 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       "memberNo": selectedOwn["memberNo"],
       "memberName": selectedOwn["memberName"]
     }
-    this.memberChanged = device;
-    if (!this.isNotAutoSave) {
+
     this.deviceService.updateDeviceMember(device).subscribe(response => {
       console.log(response);
       this.memeberNo =device.memberNo;
       this.memberName = device.memberName;
     });
-  }
   }
 
   nextPage() {
@@ -181,7 +153,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   surveySubmit() {
     this.deviceService.updateHomeSurvey(this.deviceId).subscribe(
       res => {console.log(res);
-      const message = this.translate.instant('deviceInformation.success') + this.deviceName+ this.translate.instant('deviceInformation.success2');
+      const message = 'deviceInformation.success' + this.deviceName+'.';
 
         this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
 
@@ -191,37 +163,16 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   exitEvent(isBackAction:boolean) {
     let message: any;
     if( this.deviceState == "Completed") {
-       message =this.translate.instant('deviceInformation.success2');
+       message ='deviceInformation.success';
     } else{
-       message =this.translate.instant('deviceInformation.success');
+       message ='deviceInformation.success';
     }
     this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
    }
 
-resubmitForm() {
-  if(this.deviceOwnerInfoForm.dirty) {
-    this.openConfirmDialog();
-  } else {
+   resubmitForm() {
     const message = 'deviceInformation.resubmit';
-    this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" } });
-  }
-}
-
-  openConfirmDialog(){
-    this.submitCall = true;
-    this.confirmationDialogService.confirm('Are you sure', 'Do you really want to update the device owner.?', 'IAM SURE', 'NO')
-    .then((confirmed) => {
-      if(confirmed){
-        const message = 'deviceInformation.resubmit';
-        this.deviceService.updateDeviceMember(this.memberChanged).subscribe(response => {
-          console.log(response);
-          this.memeberNo = this.memberChanged.memberNo;
-          this.memberName = this.memberChanged.memberName;
-        });
-        this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" } });
-      }
-    })
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    this.router.navigate(['survey/Thankyou'], {state: {message: message}});
   }
 
 }

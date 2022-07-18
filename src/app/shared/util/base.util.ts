@@ -1,6 +1,4 @@
-import { Observable } from "rxjs";
 import { ModalComponent } from "src/app/modules/shared/components/modal/modal.component";
-import { ConfirmationDialogService } from "src/app/modules/survey/components/select-genres/confirm-dialog.service";
 
 export class BaseComponent {
     private modalComponent1!: ModalComponent;
@@ -27,22 +25,6 @@ export class BaseComponent {
     exitEvent(event:boolean) {
 
     }
-
-     // @HostListener allows us to also guard against browser refresh, close, etc.
-  canDeactivate(confirmationDialogService: ConfirmationDialogService, isNotAutoSave: boolean): boolean | Observable<boolean> | Promise<boolean> {
-    // insert logic to check if there are pending changes here;
-    // returning true will navigate without confirmation
-    // returning false will show a confirm dialog before navigating away
-    if(isNotAutoSave){
-      var isYes = true;
-       confirmationDialogService.confirm('ARE YOU SURE ', 'Are you sure you want To Cancel? All the new changes will be unsaved!?', 'IAM SURE', 'NO')
-      .then((confirmed) => isYes= !confirmed)
-      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-      return confirmationDialogService.navigateAwaySelection$;
-
-    }
-    return true;
-  }
 
     backAction() {
         this.modalConfig = {

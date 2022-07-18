@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionConstants } from 'src/app/shared/models/url-constants';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { QuestionaireService } from '../../quersionarie.service';
 
 @Component({
@@ -11,6 +11,8 @@ import { QuestionaireService } from '../../quersionarie.service';
 })
 export class DemograpgicsOwnerComponent implements OnInit {
   member: any;
+  panelistType:any;
+  houseHold = false;
   constructor(public questionaireService: QuestionaireService,  private localStorageService: LocalStorageService,
     private router: Router) { }
 
@@ -18,6 +20,10 @@ export class DemograpgicsOwnerComponent implements OnInit {
     this.questionaireService.customRead(QuestionConstants.memberHouseHoldList).subscribe( list => {
       this.member = list;
       this.localStorageService.setIndividualName(this.member.memberName);
+      this.panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+      if(this.panelistType == "SSP"){
+          this.houseHold = true;
+      }
     })
   }
 

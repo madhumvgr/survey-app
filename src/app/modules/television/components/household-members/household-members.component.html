@@ -39,7 +39,11 @@
                         </i>
                         <div class="ps-3 description">
                             <h3 class="text-truncate"><!-- Name of the household memeber -->{{member.memberName}}</h3>
-                            <p class="text-truncate">{{'televisionMembers.statusLabel' | translate}}: <span>{{member.memberSurveyStatus}}</span></p>   
+                            <p class="text-truncate">{{'televisionMembers.statusLabel' | translate}}:
+                                 <span *ngIf = "member.memberSurveyStatus == 'Not Started'">{{'deviceUsage.notStarted' | translate}}</span>
+                                 <span *ngIf = "member.memberSurveyStatus == 'In Progress'">{{'deviceUsage.inProgress' | translate}}</span>
+                                 <span *ngIf = "member.memberSurveyStatus == 'Completed'">{{'deviceUsage.completed' | translate}}</span>
+                            </p>   
                         </div>
                         
                         <button type="button" class="btn btn-light me-3" *ngIf = "member.memberSurveyStatus == 'Not Started'" (click) = "continueNavigate(member.memberNo,member.memberName) ">{{'deviceUsage.startButton' | translate}}</button>

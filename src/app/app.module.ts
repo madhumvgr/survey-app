@@ -27,7 +27,6 @@ import { DemographicsModule } from './modules/demographics/demographics.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { CookieService } from 'ngx-cookie-service';
-import { PendingChangesGuard } from './shared/services/pending-changes.guard';
 
 @NgModule({
   declarations: [
@@ -70,7 +69,6 @@ import { PendingChangesGuard } from './shared/services/pending-changes.guard';
       multi: true,
     },
     AuthGuard,
-    PendingChangesGuard,
     {provide: LocationStrategy,
       useClass: HashLocationStrategy},
     CookieService

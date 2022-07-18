@@ -60,7 +60,7 @@
         <div class="row g-4">
             <!-- <h2>{{'genres.heading' | translate}}<span class="h2-separator"></span></h2> -->
             <h2>{{"select-genres.sub-heading" | translate }}</h2>
-            <form [formGroup]="timeLinesForm">
+            <form [formGroup]="timeLinesForm" (ngSubmit)="submit()">
                 <!-- Genres wrapper-->
                 <div class="accordion accordion-flush" id="genres-target">
                     <!-- Accoridian Genre Tab 1 -->
@@ -85,23 +85,15 @@
                 <!--end Ganres-->
 
                 <!-- Action buttons -->
-                <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState != 'Completed'">
+                <div class="col-xs-6 d-grid gap-2 d-md-block">
                     <button type="button" class="btn btn-dark" (click)="backAction()">{{'genres.backButton' |
                         translate}}</button>
                     <button type="button" (click)="openModal()" class="btn btn-secondary ms-md-3">{{'genres.SaveButton'
                         | translate}}</button>
-                    <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{'genres.continueButton' |
+                    <button type="submit" (click)="submit()" *ngIf="!submitted" class="btn btn-primary ms-md-3">{{'genres.continueButton' |
                         translate}}</button>
-                    <!-- <ng-template #submit1>
-                    <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit
-                    </button>
-                </ng-template> -->
-                </div>
-                <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState == 'Completed'">
-                    <button type="button" class="btn btn-dark" (click)="completedBackurl()">{{'deviceInformation.cancelButton' |
-                        translate}}</button>
-                    <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{'genres.continueButton' |
-                        translate}}</button>
+                        <button type="submit" (click)="submitSSP()" *ngIf="submitted" class="btn btn-primary ms-md-3">{{'deviceUsage.submit' | translate}}</button>
+
                     <!-- <ng-template #submit1>
                     <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit
                     </button>

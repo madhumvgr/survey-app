@@ -5,14 +5,14 @@
         "acceptButton": "Accepter",
         "refuseButton": "Refuser",
         "browserUpdateText": "Pour une meilleure expérience utilisateur, veuillez mettre à jour votre navigateur",
-        "email": "User Id",
-        "emailRequiredText": "User Id is required",
+        "email": "Nom d'utilisateur",
+        "emailRequiredText": "Code d’utilisateur requis",
         "password": "Mot de passe",
-        "passwordRequiredText": "Nouveau mot de passe est requis",
+        "passwordRequiredText": "Mot de passe requis",
         "loginButton": "Se connecter",
         "emailWarningText": "entrez une adresse e-mail valide",
         "userNamePasswordNotMatchText": "Le nom d'utilisateur ou le mot de passe ne correspondent pas, veuillez réessayer.",
-        "userNameOrPasswordIncoorectText": "Nom d'utilisateur / mot de passe invalide.",
+        "userNameOrPasswordIncoorectText": "Code d’utilisateur ou mot de passe invalide",
         "forgotPassword": "Mot de passe oublié?"
     },
     "Home": {
@@ -20,9 +20,9 @@
     },
     "welcomePage": {
         "title": "Bienvenu",
-        "text": "Merci d’avoir accepté de participer au panel de la télévision en ligne de Numeris. Nous voulons en savoir un peu plus sur vos appareils à domicile, notamment la façon dont ils sont utilisés par les divers membres de votre ménage. Soyez assuré que vos ",
+        "text": "Merci de votre participation au panel de Numeris. Nous voulons en savoir un peu plus sur vos appareils à domicile, notamment la façon dont ils sont utilisés par les divers membres de votre ménage. Soyez assuré que vos ",
         "Link": "données et votre vie privée",
-        "text1": " seront toujours protégées. Pour commencer, cliquez sur « Commencer » pour vous rendre au Registre des sondages ci-après.",
+        "text1": " seront toujours protégées. Pour « Commencer », cliquez sur “Commencer” pour vous rendre au Registre des sondages ci-après.",
         "surveyhubLabel": "Registre des sondages",
         "surveyhubText": "Tous les sondages en un seul endroit.",
         "surveyhubButton": "Commencer",
@@ -125,9 +125,9 @@
         "description1": "Donnez-nous plus de détails sur le problème auquel vous êtes confronté.",
         "cancelButton": "Annuler",
         "sendButton": "Envoyer",
-        "subjectRequired": "Le sujet est requis",
+        "subjectRequired": "Sujet requis",
         "type": "Tapez ici",
-        "descriptionRequired": "la description est obligatoire"
+        "descriptionRequired": "Description requise"
     },
     "contactUs": {
         "title": "Nous contacter",
@@ -161,13 +161,13 @@
     "forgotPassword": {
         "title": "Mot de passe oublié",
         "description": "Nous vous enverrons un e-mail avec des instructions sur la façon de réinitialiser votre mot de passe.",
-        "Email": "User Id",
-        "emailRequired": "User Id is required",
+        "Email": "Code d’utilisateur",
+        "emailRequired": "Code d’utilisateur requis",
         "requestButtonLabel": "Demande",
         "signIn": "Retour à la connexion",
         "passwordRequest": "Votre demande de réinitialisation de mot de passe est en cours.",
         "passwordReqBody": "Vous recevrez un courriel comportant un lien pour réinitialiser votre mot de passe.",
-        "passwordUpdatedTittle": "Succès! Votre mot de passe a été mis à jour!.",
+        "passwordUpdatedTittle": "Succès! Votre mot de passe a été mis à jour!",
         "passwordUpdatedDescription": "Vous pouvez y aller! Merci de vous connecter quand vous êtes prêts."
     },
     "newAccount": {
@@ -189,11 +189,11 @@
         "devicesDetectedTitle": "",
         "devicesDetectedDescription": "Sélectionnez un appareil pour commencer un sondage.",
         "devicesText": "",
-        "devicesDetected": "appareil détectés "
+        "devicesDetected": "Nouveaux appareil détectés "
     },
     "inProgressDevices": {
         "title": "Appareils “en cours” ",
-        "description": "Cette page affiche tous les appareils médias sous la rubrique en « cours » et qui sont connectés à votre réseau domestique. Les sondages de cette section contiennent des questions de base à propos de l’utilisation de chaque appareil.",
+        "description": "Cette page affiche tous les appareils médias sous la rubrique en << cours >> et qui sont connectés à votre réseau domestique. Les sondages de cette section contiennent des questions de base à propos de l’utilisation de chaque appareil.",
         "macAddress": "Adresse Mac",
         "deviceDetected": "Appareils en cours détectés"
     },
@@ -211,7 +211,7 @@
     },
     "deviceOwner": {
         "title": "Information sur le propriétaire de l’appareil",
-        "description": "Veuillez sélectionner le nom du membre du ménage à qui appartient l’appareil suivant. ",
+        "description": "Veuillez sélectionner le nom du membre du ménage à qui appartient l’appareil suivant ",
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
@@ -237,8 +237,8 @@
         "continueButton": "Continuer",
         "singleMember": "Un seul membre",
         "multipleMembers": "Plusieurs membres",
-        "memberError": "Le pourcentage des membres doit toujours être égal à 100 %.",
-        "multipleMembersError": "Le pourcentage des co-téléspectateurs doit toujours être égal à 100 %. "
+        "memberError": "Le total des membres du ménage doit égaliser 100%",
+        "multipleMembersError": "Le total des membres (unique ou plusieurs) doit égaliser 100%."
     },
     "deviceUsage": {
         "title": "Utilisation de l’appareil",
@@ -257,9 +257,9 @@
         "resubmitSuccess": "Vous nous avez soumis les informations concernant le ",
         "resubmitSuccess2": "ravec succès.",
         "resubmit": "",
-        "notStarted": "non Commencé",
-        "inProgress": "Dans Progrès",
-        "completed": "Terminé",
+        "notStarted": "Non Commencé",
+        "inProgress": "En Cours",
+        "completed": "Complété",
         "submit": "Soumettre"
     },
     "genres": {
@@ -278,7 +278,7 @@
         "message": "Vous nous avez soumis les informations sur avec succès. ",
         "device-message": "Vous avez réussi à mettre à jour les renseignements concernant l’appareil",
         "tv-message":"You have successfully submitted your Television Usage survey to us",
-        "error": "Au moins une des cases doit être sélectionnée.",
+        "error": "Vous devez sélectionner au moins une option",
         "news": "Nouvelles et analyse",
         "kidsProgram": "Programmation pour enfants",
         "hobbies": "Passe-temps et loisirs",
@@ -286,6 +286,13 @@
         "drama": "Séries dramatiques",
         "movies": "Films",
         "comedy": "Comédies",
+        "label0": "06:00-09:00",
+        "label1": "09:00-13:00",
+        "label2": "13:00-16:00",
+        "label3": "16:00-19:00",
+        "label4": "19:00-22:00",
+        "label5": "22:00-02:00",
+        "label6": "02:00-06:00",
         "entertainment": "Divertissement",
         "documentaries": "Documentaires",
         "other" : "Autres",
@@ -301,18 +308,26 @@
         "tipsLabel": "Astuces",
         "tip1": "Doit contenir entre 8 et 20 caractères ",
         "tip2": "Doit contenir à la fois des lettres et des chiffres",
-        "tip3": "Doit contenir au moins une lettre majuscule et une lettre minuscule. Ne doit pas contenir d’espaceni d’emoji",
+        "tip3": "Doit contenir au moins une lettre majuscule et une lettre minuscule",
+        "tip4": "Ne doit pas contenir d’espace ni d’emoji",
         "currentPassword": "Mot de passe ",
         "currentPasswordRequired": "Mot de passe est requis",
         "newPassword": "Nouveau mot de passe",
-        "newPasswordRequired": "Nouveau mot de passe est requis",
+        "newPasswordRequired": "nouveau mot de passe sont requis",
         "confirmNewPassword": "Confirmez votre nouveau mot de passe",
         "confirmNewPasswordRequired": "Confirmez votre nouveau mot de passe est requis",
         "passwordValidationMessage": "Le mot de passe doit contenir au moins 8 caractères, au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre",
         "cancelButton": "Annuler",
         "updateButton": "Mettre à jour",
-        "passwordMatchText": "Le mot de passe et la confirmation du mot de passe doivent correspondre.",
-        "passwordError": "Mot de passe incorrect"
+        "passwordMatchText": "Le nouveau mot de passe doit correspondre au nouveau mot de passe confirmé",
+        "passwordError": "Mot de passe actuel invalide",
+        "error1": "Doit contenir au moins 8 caractères!",
+        "error2": "Maximum de 20 caractères!",
+        "error3": "Doit contenir au moins 1 chiffre!",
+        "error4": "Doit contenir au moins 1 lettre minuscule!",
+        "error5": "Doit contenir au moins 1 lettre majuscule!",
+        "form_error":"Le formulaire est invalide",
+        "message": "Vous avez mis à jour avec succès Changer le mot de passe"
     },
     "emailNotifications": {
         "title": "Avis par courriel",
@@ -387,18 +402,23 @@
         "tip2": "Doit contenir des lettres et des chiffres",
         "tip3": "Doit contenir au moins une lettre majuscule et une lettre minuscule",
         "tip4": "Ne doit contenir aucun espace ni émoji",
-        "userName": "User Id",
+        "userName": "Code d’utilisateur",
         "password": "Mot de passe",
         "confirmPassword": "Confirmez votre mot de passe",
         "registerButton": "Inscrire",
         "passwordRequired": "Mot de passe requis",
         "passwordError": "Le mot de passe doit contenir au moins 8 caractères, 1 lettre en majuscule, 1 lettre en minuscule et 1 chiffre",
         "ConfirmPasswordRequired": "Confirmation du mot de passe requise",
-        "ConfirmPasswordError": "Le mot de passe confirmé doit correspondre au mot de passe nouvellement créé",
+        "ConfirmPasswordError": "Le mot de passe doit correspondre au mot de passe confirmé",
         "tittle": "S’inscrire/créer un profil",
-        "emailRequired": "User id is required",
+        "emailRequired": "Code d’utilisateur requis",
         "emailError": "Entrez une adresse électronique valide",
-        "header": "Créer un profil"
+        "header": "Créer un profil",
+        "error1": "Doit contenir au moins 8 caractères!",
+        "error2": "Maximum de 20 caractères!",
+        "error3": "Doit contenir au moins 1 chiffre!",
+        "error4": "Doit contenir au moins 1 lettre minuscule!",
+        "error5": "Doit contenir au moins 1 lettre majuscule!"
     },
     "registerSuccess": {
         "tittle": "Bravo! Votre compte a bel et bien été créé!",
@@ -443,8 +463,7 @@
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
         "resumitButton": "Réacheminer",
-        "cancelButton": "Cancel",
-        "success": "Vous nous avez soumis les informations sur ",
+        "success": "Vos progrès ont été enregistrés. Vous pouvez revenir à tout moment pour poursuivre le sondage.",
         "success2": "avec succès",
         "resubmit": "Merci d'avoir mis à jour vos informations! ",
         "error": "Merci de choisir une de ces options."
@@ -574,7 +593,7 @@
     },
     "modalWindow": {
         "modalTitle": "Sauvegarder et quitter",
-        "content": "Votre travail jusqu’ici a été enregistré. Vous pouvez toujours y revenir pour le finir plus tard. ",
+        "content": "Vous n’avez pas le temps de soumettre votre sondage? Pas de soucis - vous pouvez revenir plus tard et continuer là où vous vous êtes arrêté.",
         "dismissButtonLabel": "Retour",
         "closeButtonLabel": "Continuer",
         "closeButtonLabelLogout": "Quitter",
@@ -591,11 +610,11 @@
         "statusLabel": "Statut"
     },
     "televisionChannels": {
-        "description": "Veuillez indiquer combien de temps passe le membre du ménage à visionner des vidéos en ligne diffusés par chacun des réseaux suivants durant une journée typique.",
-        "tv-description": "Veuillez indiquer le temps que le membre du ménage consacre à regarder des émissions de télévision au moyen du câble, d’un récepteur satellite ou d’une antenne, diffusées par chacun des réseaux de télévision suivants durant une journée typique.",
+        "description": "Veuillez indiquer combien de temps vous passez à visionner des vidéos en ligne diffusés par chacun des réseaux suivants durant une journée typique.",
+        "tv-description": "Veuillez indiquer le temps que vous consacrez à regarder des émissions de télévision au moyen du câble, d’un récepteur satellite ou d’une antenne, diffusées par chacun des réseaux de télévision suivants durant une journée typique.",
         "heading":"Liste des 7 chaines",
         "subText": "Sélectionnez une réponse pour chacun des réseaux ci-après.",
-        "error": "Au moins une option doit être sélectionnée",
+        "error": "Vous devez sélectionner au moins une option",
         "defaultOption": "Sélectionnez la réponse",
         "option1": "0 minutes",
         "option2": "Jusqu'à 30 minutes",
@@ -619,16 +638,20 @@
         "owner-tittle": "Affichage en liste",
         "continueButton": "Continuer",
         "reviewButton": "Revoir mes réponses",
+        "page-of": "sur",
+        "panellist":"Enquête auprès des ménages",
         "individualDescription": "Veuillez demander à chaque membre de votre ménage de bien vouloir compléter le sondage individuel ci-après. Pour ce faire, veuillez vous assurer qu’il ou elle clique sur le lien à côté de son nom. Un des membres qui a besoin d’aide peut solliciter l’aide d’un adulte.",
         "individualSubText":"Liste de membres individuels: ",
         "individualSubDescription": "Complétez le sondage identifié avec votre nom. Vous pouvez également remplir le sondage au nom d’un autre membre du ménage.",
         "statusLabel": "Statut",
         "startButton": "Démarrer",
         "completedButton": "Éditer",
+        "option1": "Oui",
+        "option2": "Non",
         "questinarieDescription": "Veuillez répondre aux questions suivantes pour nous en dire un peu plus à votre sujet. Ces questions serviront exclusivement à rapporter votre écoute dans le bon groupe. Pour toute modification, il suffit de cliquer sur le bouton RETOUR ci-dessous. Si tout est correct, cliquez sur CONTINUER.",
-        "questinarieDescription2": "Pour toute modification, il suffit de cliquer sur le bouton RETOUR BACK ci-dessous. Si tout est correct, cliquez sur CONTINUER.",
+        "questinarieDescription2": "Pour toute modification, il suffit de cliquer sur le bouton RETOUR ci-dessous. Si tout est correct, cliquez sur CONTINUER.",
         "houseHoldDescription":"Veuillez compléter le court sondage démographique concernant votre ménage en cliquant sur le lien ci-après.  Il suffit de le faire une seule fois.",
-        "householdquestionariedesc": "Nous demandons à une personne de votre ménage de répondre aux deux prochaines questions. Il suffit de le faire une seule fois. Soyez assuré que vos réponses demeureront strictement confidentielles. Les réponses à ces questions ne servent qu’à rassembler les ménages comme le vôtre dans le bon groupe et ne seront être utilisées qu’à des fins de recherche."
+        "householdquestionariedesc": "Nous demandons à une personne de votre ménage de répondre aux prochaines questions. Il suffit de le faire une seule fois. Soyez assuré que vos réponses demeureront strictement confidentielles. Les réponses à ces questions ne servent qu’à rassembler les ménages comme le vôtre dans le bon groupe et ne seront être utilisées qu’à des fins de recherche."
 
 
     },
@@ -659,6 +682,11 @@
             "privacy-desc":"We expect that you will keep your participation in the ratings panel confidential and not reveal your identity to any radio or television broadcasters or media/advertising agencies, including via social network sites. ",
             "sub-tittle-Query":"Enquiries",
             "enquiry-desc":"If you have any questions or concerns about how your privacy is protected at Numeris, please go to our website at www.numeris.ca or contact our Privacy Officer by mail at the following address: Privacy Officer, Numeris, 1500 Don Mills Road, 3rd Floor, Toronto, Ontario, M3B 3L7. "
+        },
+
+        "required":{
+            "select-answer": "An answer is required for this question.",
+            "select -all-answers": "An answer is required for all questions above."
         },
 
     "resumitButton": "Re-Submit",

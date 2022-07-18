@@ -1,3 +1,8 @@
 .form-check-label{
     cursor: pointer;
-  }
+}
+
+.errorClass .focus {
+    border-color: red;
+
+}

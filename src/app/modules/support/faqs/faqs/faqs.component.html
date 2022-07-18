@@ -150,8 +150,10 @@
 
                         <h4 id="q2">2. {{'faqSSPQuestions.q2' | translate}}</h4>
                         <p><b>{{'answerLabel.A' | translate}}.</b> {{'faqSSPAnswers.a2.1' | translate}}</p>
-                        <p>{{'faqSSPAnswers.a2.2' | translate}}<a href="https://numeris.ca/inclusionlist/"
-                                target="_blank">(www.numeris.ca/inclusionlist).</a></p>
+                        <p>{{'faqSSPAnswers.a2.2' | translate}} <a *ngIf=" language== 'en'" href="https://numeris.ca/inclusionlist/"
+                                target="_blank">(www.numeris.ca/inclusionlist).</a>
+                                <a *ngIf=" language=='fr'" href="https://numeris.ca/listedinclusion/"
+                                target="_blank">(www.numeris.ca/listedinclusion).</a></p>
                         <p>{{'faqSSPAnswers.a2.3' | translate}} </p>
                         <p>{{'faqSSPAnswers.a2.4' | translate}}</p>
 

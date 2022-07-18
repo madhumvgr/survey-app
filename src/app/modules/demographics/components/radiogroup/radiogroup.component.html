@@ -2,6 +2,7 @@
 
     <!-- <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h4> -->
     <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
+    <h4>{{isFrance? question?.descriptionFr: question?.description}}</h4>
     <div [formGroup]="childFormGroup">
         <div class="form-check mb-2" *ngFor="let row of question?.row; let i=index">
             <input class="form-check-input" id="row{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}"
@@ -15,7 +16,7 @@
             <input type="text" class="form-control"  formControlName="otherDescription" (mouseleave)="focusOut($event)">
         </ng-container>
         <span class="danger" *ngIf="radioFormControl.errors?.required && buttonClicked">
-            Please select the field.
+            {{'required.select-answer' | translate}}
         </span>
     </div>
 </div>

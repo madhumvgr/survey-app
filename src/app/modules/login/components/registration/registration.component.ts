@@ -25,6 +25,7 @@ export class RegistrationComponent implements OnInit {
   view = false;
   visible = false;
   isFocused = false;
+  language: any;
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private localStorageService: LocalStorageService,
@@ -105,6 +106,7 @@ export class RegistrationComponent implements OnInit {
   get registerFormControl() { return this.registerForm.controls }
   onSubmit() {
     this.submitted = true;
+    this.language = localStorage.lang;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
@@ -115,7 +117,8 @@ export class RegistrationComponent implements OnInit {
       const registerUser= {
         profileId: profileId,
         login: this.registerFormControl.email.value,
-        password: this.registerFormControl.password.value
+        password: this.registerFormControl.password.value,
+        langKey: this.language
       }
      // console.log(registerUser);
       this.userService.create(registerUser).subscribe( response => {

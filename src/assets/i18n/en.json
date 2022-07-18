@@ -5,14 +5,14 @@
         "acceptButton": "Accept",
         "refuseButton": "Refuse",
         "browserUpdateText": "For better user experience please update your browser.",
-        "email": "User Id",
-        "emailRequiredText": "User Id is required",
+        "email": "Username",
+        "emailRequiredText": "Username is required",
         "password": "Password",
         "passwordRequiredText": "Password is required",
         "loginButton": "Log In",
         "emailWarningText": " Enter a valid email address",
         "userNamePasswordNotMatchText": "The username or Password do not match, please try again.",
-        "userNameOrPasswordIncoorectText": "Invalid UserName/Password.",
+        "userNameOrPasswordIncoorectText": "Invalid Username or Password.",
         "forgotPassword": "Forgot Password?"
     },
     "Home": {
@@ -20,7 +20,7 @@
     },
     "welcomePage": {
         "title": "Welcome",
-        "text": "Thank you for your participation in the Numeris Online TV Panel. We would like to know a little bit about the devices in your household and how they are used by different household members. Be assured that your ",
+        "text": "Thank you for your participation in the Numeris panel. We would like to know a little bit about the devices in your household and how they are used by different household members. Be assured that your ",
         "Link": "data and privacy",
         "text1": " are always protected. To begin, click “Get Started” to go to the Survey Hub section below.",
         "surveyhubLabel": "Survey Hub",
@@ -90,7 +90,8 @@
         "emailNotificationsButton": "Change",
         "privacyPolicyTitle": "Privacy policy",
         "privacyPolicyDescription": "Protecting your privacy is our top priority.",
-        "privacyPolicyButton": "Learn More"
+        "privacyPolicyButton": "Learn More",
+        "message": ""
     },
     "householdDevices": {
         "title": "Household Devices",
@@ -162,11 +163,11 @@
     "forgotPassword": {
         "title": "Forgot password",
         "description": "We will send you an email with instructions on how to reset your password.",
-        "Email": "User Id",
-        "emailRequired": "User Id is required",
+        "Email": "Username",
+        "emailRequired": "Username is required",
         "requestButtonLabel": "Request",
         "signIn": "Back to sign in",
-        "passwordRequest": "Your request for password rest has been initiated.",
+        "passwordRequest": "Your request for password reset has been initiated.",
         "passwordReqBody": "Please check your email for link to reset your password.",
         "passwordUpdatedTittle": "Sucess! Your password is updated!",
         "passwordUpdatedDescription": "You're good to go! Please login when you are ready."
@@ -223,7 +224,7 @@
         "title": "Multiple Users",
         "description":"Since",
         "description1": "is shared, please indicate the percentage of time each household member uses the device. Please only include household members who use the device to watch TV/Video content at least monthly. ",
-        "description2": "Let’s consider an example. Three household members – a parent and 2 children – share a Smart TV. Their shared device usage can be entered as: Parent=30%, Child 1 = 50%, Child 2 = 20%.",
+        "description2": "Let’s consider an example. Three household members – a parent and 2 children – share a Smart TV. Their shared device usage can be entered as: Parent = 30%, Child 1 = 50%, Child 2 = 20%.",
         "heading": "Shared device usage",
         "text1": "Select the percentage of time that each household member uses this device.",
         "tipsLabel": "Tips",
@@ -236,10 +237,10 @@
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
-        "singleMember": "Single Memeber",
+        "singleMember": "Single Member",
         "multipleMembers": "Multiple Members",
-        "memberError": "Member Percentage always equals to 100%.",
-        "multipleMembersError": "Coviewer Percentage always equals to 100%."
+        "memberError": "The total for all household members should equal 100%",
+        "multipleMembersError": "The total for single and multiple members should equal 100%."
     },
     "deviceUsage": {
         "title": "Device Usage",
@@ -248,7 +249,7 @@
         "tip1": "This survey lists 13 genres in all. Choose all that apply.",
         "tip2": "You may complete the surveys in any order you wish.",
         "heading": "Household member list",
-        "text": "Select the survey under your name. You may also select and complete a survey on behalf of another household member. Only after the status for ALL members shows as “COMPLETE”, use the SUMBIT button to continue. ",
+        "text": "Select the survey under your name. You may also select and complete a survey on behalf of another household member. Only after the status for ALL members shows as “COMPLETE”, use the SUBMIT button to continue. ",
         "backButton": "Back",
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
@@ -286,6 +287,13 @@
         "drama": "Drama",
         "movies": "Movies",
         "comedy": "Comedy",
+        "label0": "6AM-9AM",
+        "label1": "9AM-1PM",
+        "label2": "1PM-4PM",
+        "label3": "4PM-7PM",
+        "label4": "7PM-10PM",
+        "label5": "10PM-2AM",
+        "label6": "2AM-6AM",
         "entertainment": "Entertainment",
         "documentaries": "Documentaries",
         "other" : "Other",
@@ -303,17 +311,26 @@
         "tip1": "Your password must be between 8 and 20 characters long ",
         "tip2": "It must have both letters and numbers and not have spaces or emojis ",
         "tip3": "Must include at least one uppercase and one lowercase letter ",
-        "currentPassword": "Current Password",
-        "currentPasswordRequired": "Current password is required",
+        "tip4": "",
+        "currentPassword": "Confirm Password",
+        "currentPasswordRequired": "Confirm Password is required",
         "newPassword": "New Password",
-        "newPasswordRequired": "Password is required",
-        "confirmNewPassword": "Confirm New Password",
-        "confirmNewPasswordRequired": " New Password is required",
+        "newPasswordRequired": "New Password are required",
+        "confirmNewPassword": "Confirm New password ",
+        "confirmNewPasswordRequired": " confirmation of Password is required",
         "passwordValidationMessage": "Password should contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
         "cancelButton": "Cancel",
         "updateButton": "Update",
-        "passwordMatchText": "Password and Confirm Password must match.",
-        "passwordError": "Incorrect password"
+        "passwordMatchText": "New Password and Confirm New Password must match.",
+        "passwordError": "Current Password is incorrect",
+        "error1": "Must be at least 8 characters",
+        "error2": "Maximum 20 characters long",
+        "error3": "Must contain at least 1 number",
+        "error4": "Must contain at least 1 lowercase letter",
+        "error5": "Must contain at least 1 uppercase letter",
+        "form_error":"Form is invalid",
+        "message": "You have successfully updated Change Password"
+
     },
     "emailNotifications": {
         "title": "Email Notifications",
@@ -394,12 +411,18 @@
         "registerButton": "Register",
         "passwordRequired": "Password is required",
         "passwordError": "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
-        "ConfirmPasswordRequired": "Confirm password is required",
-        "ConfirmPasswordError": "Confirm Password must match",
+        "ConfirmPasswordRequired": "Confirmation of password is required",
+        "ConfirmPasswordError": "Password and Confirm Password must match",
         "tittle": "Register/Create Profile",
-        "emailRequired": "User id is required",
+        "emailRequired": "Username is required",
         "emailError": "Enter a valid email address",
-        "header": "Create Profile"
+        "header": "Create Profile",
+        "error1": "Must be at least 8 characters",
+        "error2": "Maximum 20 characters long",
+        "error3": "Must contain at least 1 number",
+        "error4": "Must contain at least 1 lowercase letter",
+        "error5": "Must contain at least 1 uppercase letter",
+        "error6": "Password and Confirm Password must match"
     },
     "registerSuccess": {
         "tittle": "Success! Your account has been created!",
@@ -444,9 +467,8 @@
         "SaveButton": "Save & Exit",
         "continueButton": "Continue",
         "resumitButton": "Re-Submit",
-        "cancelButton": "Cancel",
-        "success": "Thank you, your progress has been saved, see you later.",
-        "success2": "You have successfully submitted information to us.",
+        "success": "Your progress has been saved. You can return at any point to continue the survey.",
+        "success2": "You have successfully submitted information for ",
         "resubmit": "Thank you for updating your information!",
         "error": "Please choose one of the options."
     },
@@ -575,7 +597,7 @@
     },
     "modalWindow": {
         "modalTitle": "Save and Exit",
-        "content": "Don't have time to submit your survey? No worries, you can come back later and continue from where you left",
+        "content": "Don't have time to submit your survey? No worries -  you can come back later and continue from where you left off.",
         "dismissButtonLabel": "Cancel",
         "closeButtonLabel": "Continue",
         "closeButtonLabelLogout": "Exit",
@@ -592,8 +614,8 @@
         "statusLabel": "Status"
     },
     "televisionChannels": {
-        "description": "Please indicate how much time the household member spends watching videos  online from each of the following networks on an average day.",
-        "tv-description": "Please indicate how much time the household member spends watching TV programs using a cable box, satellite or antenna on each of the following TV networks on an average day.",
+        "description": "Please indicate how much time you spend watching videos online from each of the following networks on an average day.",
+        "tv-description": "Please indicate how much time you spend watching TV programs using a cable box, satellite or antenna on each of the following TV networks on an average day.",
         "heading":"List view of 7 channels",
         "subText": "Select answers for each network below",
         "error": "Must select at least one option.",
@@ -626,10 +648,14 @@
     "startButton": "Start",
     "completedButton": "Edit",
     "reviewButton": "Review",
+    "page-of": "of",
+    "panellist":"Household Survey",
+    "option1": "Yes",
+    "option2": "No",
     "questinarieDescription": "Please complete these questions to tell us a bit more about yourself. These questions will only be used in order to report your viewing in the correct group. To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE.",
     "questinarieDescription2": "To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE.",
     "houseHoldDescription":"Please complete the brief household demographic survey through the link below. This survey only needs to be completed once for the household.",
-    "householdquestionariedesc": "Please answer the next two questions about your household. These questions only need to be answered once by one member of your household. Please rest assured that your responses will be kept completely confidential. These questions are only asked to group together similar households for research purposes and will not be used for any other purpose."
+    "householdquestionariedesc": "Please answer the next questions about your household. These questions only need to be answered once by one member of your household. Please rest assured that your responses will be kept completely confidential. These questions are only asked to group together similar households for research purposes and will not be used for any other purpose."
 },
 "select-genres":{
     "heading1": "From the genres listed below, please select all the genres that you normally watch on television through cable box, satellite or antenna. You may select multiple options.",
@@ -658,6 +684,10 @@
     "privacy-desc":"We expect that you will keep your participation in the ratings panel confidential and not reveal your identity to any radio or television broadcasters or media/advertising agencies, including via social network sites. ",
     "sub-tittle-Query":"Enquiries",
     "enquiry-desc":"If you have any questions or concerns about how your privacy is protected at Numeris, please go to our website at www.numeris.ca or contact our Privacy Officer by mail at the following address: Privacy Officer, Numeris, 1500 Don Mills Road, 3rd Floor, Toronto, Ontario, M3B 3L7. "
+},
+"required":{
+    "select-answer": "An answer is required for this question.",
+    "select -all-answers": "An answer is required for all questions above."
 },
 
     "resumitButton": "Re-Submit",

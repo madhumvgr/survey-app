@@ -22,8 +22,11 @@
       <div class="container">
          <div class="row">
             <div class="col-12">
-               <h1>
+               <h1 *ngIf ="!houseHold">
                  {{memberName}}
+               </h1>
+               <h1 *ngIf ="houseHold">
+                  {{"demographics.panellist" | translate}}
                </h1>
                <p *ngIf ="this.pageNo == 1 && !(houseHold)">{{"demographics.questinarieDescription" | translate}}</p>
                <p *ngIf ="this.pageNo != 1 && !(houseHold)">{{"demographics.questinarieDescription2" | translate}}</p>
@@ -40,7 +43,7 @@
    <section class="px-3 pb-4">
       <div class="container">
          <div class="row pb-4">
-            <h2 *ngIf="!isReviewPage">Page {{pageNo}} of {{totalNoPages}}<span class="h2-separator"></span></h2>
+            <h2 *ngIf="!isReviewPage">Page {{pageNo}} {{"demographics.page-of" | translate}} {{totalNoPages}}<span class="h2-separator"></span></h2>
             <h2 *ngIf="isReviewPage">Confirmation<span class="h2-separator"></span></h2>
             <div class="col-12 mt-3">
                <app-dynamic-form [homeNo]="homeNo" [houseHold]="houseHold" [memberNo]="memberNo"

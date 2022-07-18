@@ -29,15 +29,16 @@
 <ng-container>
     <div [formGroup]="childFormGroup" class="mb-4">
         <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
+        <h4>{{ isFrance? question?.descriptionFr: question?.description}}</h4>
         <div *ngFor="let row of question?.row;let j=index">
-            <h5><u>{{row?.text}}</u></h5>
+            <h5><u>{{isFrance? row.frText:row?.text}}</u></h5>
 
             <div class="form-check mb-2">
                 <input (change)="changeEvent(row?.value,'Y')" value="Y" class="form-check-input" type="radio"
                     [formControlName]="question?.queNo+''+row?.value"
                     id="row{{houseHold? question?.hhQueNo : question?.queNo}}{{j}}">
 
-                <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}{{j}}">Yes
+                <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}{{j}}">{{'demographics.option1' | translate}}
                 </label>
             </div>
             <div class="form-check mb-2">
@@ -46,13 +47,13 @@
                     id="row{{houseHold? question?.hhQueNo : question?.queNo}}{{j+j}}{{j}}">
 
                 <label class="form-check-label"
-                    for="row{{houseHold? question?.hhQueNo : question?.queNo}}{{j+j}}{{j}}">No
+                    for="row{{houseHold? question?.hhQueNo : question?.queNo}}{{j+j}}{{j}}">{{'demographics.option2' | translate}}
                 </label>
             </div>
 
         </div>
     </div>
     <span class="danger" *ngIf="childFormGroup?.invalid && buttonClicked">
-        Please select all the fields.
+        {{'required.select -all-answers' | translate}}
     </span>
 </ng-container>

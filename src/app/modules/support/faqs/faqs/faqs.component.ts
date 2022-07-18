@@ -10,10 +10,12 @@ export class FaqsComponent implements OnInit {
 
   isScrollTop!: boolean;
   panelistType = localStorage.panellistType;
+  language: any;
 
   constructor(private deviceService: DeviceService) { }
 
   ngOnInit(): void {
+    this.language = localStorage.lang;
   }
 
   scrollInView(id:string){
@@ -28,6 +30,7 @@ export class FaqsComponent implements OnInit {
 }
   // When the user scrolls down 1000px from the top of the document, show the button
 scrollFunction() {
+  this.language = localStorage.lang;
   if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) 
   {
     this.isScrollTop = true;

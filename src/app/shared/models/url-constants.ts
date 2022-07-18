@@ -14,7 +14,6 @@ export class DeviceConstants {
     public static deviceCountWithStatus ="api/deviceCountWithStatus";
     public static deviceListByStatus ="api/deviceListByStatus/"; 
     public static deviceOwnerByDeviceId ="api/deviceOwnerByDeviceId/"; 
-    public static resetDeviceByDeviceId ="api/reset-device-survey/"; 
     public static memberListByDeviceId ="api/memberListByDeviceId/"; 
     public static memberDeviceUsagePostUrl= "api/memberDeviceUsage";
     public static memberDeviceUsageGetUrl= "api/memberListByDeviceId/"

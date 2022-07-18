@@ -14,6 +14,7 @@ export class ContactComponent implements OnInit {
   description:any;
   techSupport: TechSupport={};
   error: boolean = false;
+  language: any;
   constructor(private deviceService: DeviceService, private router: Router) { 
     this.subject;
     this.description;
@@ -24,9 +25,11 @@ export class ContactComponent implements OnInit {
   }
 
   submit(){
+    this.language=localStorage.lang;
     this.techSupport= {
       subject:this.subject,
-      description: this.description
+      description: this.description,
+      lang: this.language
     }
     
     if(this.subject!=null){

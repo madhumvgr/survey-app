@@ -1,16 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { ConfirmationDialogService } from '../select-genres/confirm-dialog.service';
-import { ComponentCanDeactivate } from 'src/app/shared/services/pending-changes.guard';
-import { map } from 'rxjs/operators';
 
 export interface Member {
   deviceId: string;
@@ -27,7 +23,7 @@ export interface Member {
   templateUrl: './multi-user-list.component.html',
   styleUrls: ['./multi-user-list.component.css']
 })
-export class MultiUserListComponent extends BaseComponent implements OnInit, ComponentCanDeactivate {
+export class MultiUserListComponent extends BaseComponent implements OnInit {
 
   deviceId: any;
   deviceState: any;
@@ -44,20 +40,9 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
   resubmit: boolean = false;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
-  isNotAutoSave$: Observable<any>=new Observable();
-  isNotAutoSave = false;
-  submitCall = false;
-
-  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
-    if (!this.isNotAutoSave$ && !this.submitCall) {
-      return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
-    } else {
-      return true;
-    }
-  }
 
   constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private router: Router,
-    private deviceService: DeviceService, private confirmationDialogService: ConfirmationDialogService,  private localStorageService:LocalStorageService, private translate: TranslateService) {
+    private deviceService: DeviceService,  private localStorageService:LocalStorageService, private translate: TranslateService) {
       super();
      }
      ngAfterViewInit(){
@@ -69,14 +54,6 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
     this.deviceId = this.Activatedroute.snapshot.params['deviceId'];
     this.deviceState = this.Activatedroute.snapshot.params['state'];
     if(this.deviceState == "Completed") {
-      
-        this.isNotAutoSave$ = this.Activatedroute.queryParamMap.pipe(
-          map((params: ParamMap) => params.get('isNotAutoSave')),
-        );
-        this.isNotAutoSave$.subscribe(param => {
-          this.isNotAutoSave = param;
-          console.log(this.isNotAutoSave);
-        });
       this.resubmit = true;
     }
     this.multiUserListForm = this.fb.group({
@@ -125,30 +102,21 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
 
   updateMemberDevice(index: any) {
     if (this.members) {
-      if(!this.isNotAutoSave){
-        this.deviceService.updateDeviceMemberWithPercentage(this.controls[index].value).subscribe(
-          res => {
-            console.log("Updated Member device");
-          }
-        );
-      }else{
-        //prepare array
-      }
-      
+      this.deviceService.updateDeviceMemberWithPercentage(this.controls[index].value).subscribe(
+        res => {
+          console.log("Updated Member device");
+        }
+      );
     }
   }
 
   updateCoviewerDevice() {
     if (this.members) {
-      if(!this.isNotAutoSave){
-        this.deviceService.updateCoviewerWithPercentage(this.multiUserCoViewerForm.value).subscribe(
-          res => {
-            console.log("Updated Coviewer device");
-          }
-        );
-      }else{
-
-      }
+      this.deviceService.updateCoviewerWithPercentage(this.multiUserCoViewerForm.value).subscribe(
+        res => {
+          console.log("Updated Coviewer device");
+        }
+      );
     }
   }
 
@@ -162,7 +130,7 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
   //   }))
   //   this.singleViewerPe = member.singleViewerPe;
   // }
- 
+
   saveAndExit() {
     if (this.isMemberPercentageMoreThanHundered()) {
       this.showPercentageError = true;
@@ -188,11 +156,8 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
     else{
       this.showCoviewerPercentageError= false;
     }
-    if(!this.showCoviewerPercentageError && !this.showPercentageError && !this.isNotAutoSave){
+    if(!this.showCoviewerPercentageError && !this.showPercentageError){
       this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
-    } 
-    if(!this.showCoviewerPercentageError && !this.showPercentageError && this.isNotAutoSave) {
-      this.openConfirmDialog();
     }
   }
 
@@ -215,84 +180,15 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
   exitEvent(isBackAction:boolean) {
     let message: any;
     if( this.deviceState == "Completed") {
-       message =this.translate.instant('deviceInformation.success2');
+       message ='deviceInformation.success';
     } else{
-       message =this.translate.instant('deviceInformation.success');
+       message ='deviceInformation.success';
     }
     this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
    }
 
   resubmitForm() {
     const message = 'deviceInformation.resubmit';
-    let arrayForm=this.multiUserListForm.controls['arr'] as FormArray;
-    let controls = arrayForm.controls;
-   // if(arrayForm instanceof FormArray){
-     let count=0;
-     let dirtyCount=0;
-     let multiForm= false;
-      for (let control of controls) {
-        if(control.dirty){
-          dirtyCount++;
-         let value=control.value;
-         this.deviceService.updateDeviceMemberWithPercentage(value).subscribe(
-          res => {
-            count++;
-            if(count== dirtyCount){
-              multiForm= true;
-              this.updateCoviewerDeviceForm();
-            }
-          }
-        );
-        }
-      }
-      if(dirtyCount ==0){
-        this.updateCoviewerDeviceForm();
-      }
+    this.router.navigate(['survey/Thankyou'], {state: {message: message}});
   }
-
-  updateCoviewerDeviceForm(){
-    const message = 'deviceInformation.resubmit';
-    let arrayForm1=this.multiUserListForm.controls['arr'] as FormArray;
-    let controls1 = arrayForm1.controls;
-   // if(arrayForm instanceof FormArray){
-     let count1=0;
-     let dirtyCount1=0;
-      for (let control1 of controls1) {
-        if(control1.dirty){
-          dirtyCount1++;
-         let value1=control1.value;
-         this.deviceService.updateDeviceMemberWithPercentage(value1).subscribe(
-          res => {
-            count1++;
-            if(count1== dirtyCount1){
-              this.router.navigate(['survey/Thankyou'], {state: {message: message}});
-            }
-          }
-        );
-        }
-      }
-      if(dirtyCount1 ==0){
-        this.router.navigate(['survey/Thankyou'], {state: {message: message}});
-      }
-  }
-
-  openConfirmDialog(){
-    this.submitCall = true;
-    this.confirmationDialogService.confirm('Please confirmv jgnbkrgn.', 'Do you really want to vhamrfanreijfnvjerv nvtnfivtt... ?')
-    .then((confirmed) => {
-      if(confirmed){
-        const message = 'deviceInformation.resubmit';
-        // this.deviceService.updateDeviceMember(this.memberChanged).subscribe(response => {
-        //   console.log(response);
-        //   this.memeberNo = this.memberChanged.memberNo;
-        //   this.memberName = this.memberChanged.memberName;
-        // });
-        this.resubmitForm();
-        this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" }});
-      }
-    })
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-  }
-
-
 }

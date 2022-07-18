@@ -65,7 +65,8 @@
                         </div>
                         <span class="text-danger"
                             *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
-                            {{'changePassword.newPasswordRequired' | translate}}
+                            {{"registrationForm.passwordRequired" | translate}}
+
                         </span>
                         <span class="text-danger"
                             *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.invalidPassword">
@@ -78,7 +79,7 @@
                                     registerForm.controls['password'].hasError('required') ||
                                     registerForm.controls['password'].hasError('minlength') ? 'cancel' :
                                     'check_circle' }}</i>
-                                Must be at least 8 characters!
+                                    {{"registrationForm.error1" | translate}}
                             </div>
                             <div class="col"
                                 [ngClass]="registerForm.controls['password'].hasError('required') ||
@@ -87,7 +88,7 @@
                                     registerForm.controls['password'].hasError('required') ||
                                     registerForm.controls['password'].hasError('maxLength') ? 'cancel' :
                                     'check_circle' }}</i>
-                                Maximum 20 characters long!
+                                    {{"registrationForm.error2" | translate}}
                             </div>
                             <div class="col"
                                 [ngClass]="registerForm.controls['password'].hasError('required') ||
@@ -96,7 +97,7 @@
                                     registerForm.controls['password'].hasError('required') ||
                                     registerForm.controls['password'].hasError('hasNumber') ? 'cancel' :
                                     'check_circle' }}</i>
-                                Must contain at least 1 number!
+                                    {{"registrationForm.error3" | translate}}
                             </div>
                             <div class="col"
                                 [ngClass]="registerForm.controls['password'].hasError('required') ||
@@ -105,7 +106,7 @@
                                     registerForm.controls['password'].hasError('required') ||
                                     registerForm.controls['password'].hasError('hasSmallCase') ? 'cancel' :
                                     'check_circle' }}</i>
-                                Must contain at least 1 Letter in Small Case!
+                                    {{"registrationForm.error4" | translate}}
                             </div>
                             <div class="col"
                                 [ngClass]="registerForm.controls['password'].hasError('required') ||
@@ -114,7 +115,7 @@
                                     registerForm.controls['password'].hasError('required') ||
                                     registerForm.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
                                     'check_circle' }}</i>
-                                Must contain at least 1 Letter in Capital Case!
+                                    {{"registrationForm.error5" | translate}}
                             </div>
                         </ng-container>
                     </div>

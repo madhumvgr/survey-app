@@ -66,27 +66,31 @@
     <div *ngIf="isReview">
         <div *ngFor="let question of finalQuestionLIst">
             <div>
-                <h4>{{ question?.title}}</h4>
+                <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
                 <!-- <h4 *ngIf="question.type =='matrix-subquestion'">{{houseHold? question?.hhQueNo : question?.queNo }}.{{ question?.title}}</h4> -->
                 <ng-container *ngIf='question.type !== "matrix-subquestion"'>
-                    <p *ngIf="question?.answer?.text">{{question?.answer?.text}}</p>
+                    <p *ngIf="question?.answer?.text == 'Yes'">{{'demographics.option1' | translate}}</p>
+                    <p *ngIf="question?.answer?.text == 'No'">{{'demographics.option2' | translate}}</p>
+                    <p *ngIf="question?.answer?.text">{{isFrance?question?.answer?.frText :question?.answer?.text}}</p>
                     <div *ngIf="!question?.answer?.text">
                         <div *ngFor="let q of question.answer">
-                            <h5><u>{{q.text}}&nbsp; &nbsp;{{q.test1}}</u></h5>
-                            <p>{{q.answer}}</p> 
+                            <h5><u>{{isFrance?q.frText:q.text}}{{isFrance?q.frTest1:q.test1}}</u></h5>
+                            <p *ngIf="q?.answer == 'Yes'">{{'demographics.option1' | translate}}</p>
+                            <p *ngIf="q?.answer == 'No'">{{'demographics.option2' | translate}}</p>
+                            <p>{{isFrance?q?.frAnswer:q?.answer}}</p>
                         </div>
                     </div>
                 </ng-container>
 
                 <ng-container *ngIf='question.type == "matrix-subquestion"'>
                     <div *ngFor="let q of question.subSurveyQueAnsDTO">
-                        <h5>{{ q?.title}}</h5>
-                        <p *ngIf="q?.answer == 'No'">{{q?.answer}}</p>
-                        <p *ngIf="q?.answer == 'Yes' && !q.subSurveyQueAnsDTO.length">{{q?.answer}}</p>
+                        <h5>{{isFrance? q?.titleFr:q?.title}}</h5>
+                        <p *ngIf="q?.answer == 'No'">{{'demographics.option2' | translate}}</p>
+                        <p *ngIf="q?.answer == 'Yes' && !q.subSurveyQueAnsDTO.length">{{'demographics.option1' | translate}}</p>
                         <div *ngIf="q?.answer == 'Yes' && q.subSurveyQueAnsDTO.length">
                             <div *ngIf="q.subSurveyQueAnsDTO.subQuestions.length">
                                 <div *ngFor="let sub of q.subSurveyQueAnsDTO.subQuestions">
-                                    <h5><u>{{sub.title}}</u></h5>
+                                    <h5><u>{{isFrance?sub.titleFr:sub.title}}</u></h5>
                                     <p>{{sub.answer}}</p> 
                                 </div>
                             </div>
@@ -95,6 +99,9 @@
                 </ng-container>
                 <!-- <p *ngIf="isQuestion">{{question?.anuswer}}</p> -->
             </div>
+        </div>
+        <div *ngIf="!finalQuestionLIst.length">
+            <p><b>No answers have been selected. If this is correct, click “SUBMIT”. If you want to change an answer, click “BACK”.</b></p>
         </div>
     </div>
 
@@ -143,10 +150,11 @@
             <button (click)="p.next()" *ngIf="!p.isLastPage()" type="button"
                 class="btn btn-primary ms-md-3">{{"deviceInformation.continueButton" | translate }}</button>
 
-            <button *ngIf="p.isLastPage() && !isReview" type="submit" (click)="review()"
+            <button *ngIf="p.isLastPage() && !isReview && !lastSubmit" type="submit" (click)="review()"
                 class="btn btn-primary ms-md-3">{{"demographics.reviewButton" | translate}}</button>
 
             <button *ngIf="isReview" type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{"deviceUsage.submit" | translate }}</button>
+            <button *ngIf="p.isLastPage() && lastSubmit" type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{"deviceUsage.submit" | translate }}</button>
 
         </div>
     </pagination-template>

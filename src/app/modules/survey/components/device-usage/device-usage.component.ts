@@ -62,27 +62,22 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
           }
          });
          console.log(this.users);
-         if( count== this.users.length){
+         if(count== this.users.length){
           this.isCompleted = true;
          }
       }
     });
   }
   continueNavigate(memberNo:any,memberName:any){ 
-    if(this.deviceState == "Completed") {
-      this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { state: { memberName: memberName },  queryParams: {isNotAutoSave: true}});
-    } else{
-      this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { state: { memberName: memberName }});
-
-    }
+    this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { state: { memberName: memberName } });
   }
 
   submit() {
     let message: any;  
     if(this.deviceState == "Completed") { 
-     message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success2');
+     message = 'deviceInformation.success2' +this.deviceName+'.';
     } else {
-      message = this.translate.instant('deviceInformation.success') + this.deviceName+ this.translate.instant('deviceInformation.success2');
+      message = 'deviceInformation.success';
     }
     this.deviceService.updateHomeSurvey(this.deviceId).subscribe(
       res => {console.log(res);
@@ -108,9 +103,9 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   exitEvent(isBackAction:boolean) {
     let message: any;
     if( this.deviceState == "Completed") {
-       message =this.translate.instant('deviceInformation.success2');
+       message ='deviceInformation.success';
     } else{
-       message =this.translate.instant('deviceInformation.success');
+       message ='deviceInformation.success';
     }
     this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
 

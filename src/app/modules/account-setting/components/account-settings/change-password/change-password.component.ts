@@ -25,6 +25,7 @@ export class ChangePasswordComponent implements OnInit {
   show = false;
   view = false;
   visible = false;
+  userobj: User = {};
 
 
   showPassword!: boolean;
@@ -110,40 +111,27 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   onSubmit() {
-
-    this.submitted = true;
-    // stop here if form is invalid
     if (this.changePasswordForm.valid) {
-      console.table(this.changePasswordForm.value);
-     
-      // update password in local storage.
-      let username = this.localStorageService.getItem(StorageItem.USERNAME);
-      if (username) {
-        let user: User = {
-          username: username,
+      let name = this.localStorageService.getItem(StorageItem.USERNAME);
+      if (name) {
+        this.userobj = {
+          username: name,
           currentPassword: this.changePasswordFormControl.currentPassword.value,
           newPassword: this.changePasswordFormControl.newPassword.value
-        };
-        this.userService.changePassword(user).subscribe((response: any) => {
-          if (response) {
-            this.showError = false;
-            // After successful sign in, we have to set username into localstorage
-            this.localStorageService.setIdToken(response['id_token']);
-            this.localStorageService.setUserName(this.changePasswordFormControl.email.value);
-            this.router.navigate(['/account-settings/thankyou/Change password'], { state: { message: "You have successfully updated Change Password" } });
-
-            //this.router.navigate(['/welcome']);
-          } else {
-            this.showError = true
-          }
-
-
-        }, err => this.showError = true,
-          () => this.showError = true);
-
-
+        }
       }
+      this.userService.changePassword(this.userobj).subscribe((response: string) => {
+        if (response) {
+          this.showError = false;
+        const message ='changePassword.message'
+          this.router.navigate(['/account-settings/thankyou/Change password'], { state: { message: message } });
+          //this.router.navigate(['/welcome']);
+        }
+      }, err => this.showError = true);
+    } else {
+      this.submitted = true;
     }
+
   }
 
 }

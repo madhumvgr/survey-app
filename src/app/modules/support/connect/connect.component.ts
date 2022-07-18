@@ -14,6 +14,7 @@ export class ConnectComponent implements OnInit {
   description:any;
   techSupport: TechSupport={};
   error: boolean = false;
+  language: any;
 
   techSupportInfo: TechSupport = new TechSupport();
   techSupportForm: FormGroup = this.fb.group({});
@@ -28,11 +29,13 @@ export class ConnectComponent implements OnInit {
     this.techSupportForm = this.fb.group({
       //set to empty. 
       subject: ['',Validators.required],
-      description: ['',Validators.required]
+      description: ['',Validators.required],
+      lang:[]
     });
 
     this.techSupportFormControl.subject.setValue('');
     this.techSupportFormControl.description.setValue('');
+    this.techSupportFormControl.lang.setValue('');
   }
 
   get techSupportFormControl() {
@@ -40,7 +43,10 @@ export class ConnectComponent implements OnInit {
   }
 
   submit(){
-    
+    this.language = localStorage.lang;
+    this.techSupportForm.controls.lang.setValue(this.language);
+    console.log(this.techSupportForm);
+
     if(this.techSupportForm.valid){
       this.error = false;
       this.deviceService.updateTechSupport(this.techSupportForm.value).subscribe( res => {
@@ -53,15 +59,29 @@ export class ConnectComponent implements OnInit {
       });
     } else {
       this.error = true;
-      const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
-        ".ng-invalid"
-      );
+      // const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+      //   ".ng-invalid"
+      // );
   
-      firstInvalidControl.scrollIntoView();
+      // firstInvalidControl.scrollIntoView();
+
+      for (const key of Object.keys(this.techSupportForm.controls)) {
+        if (this.techSupportForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+  }
+
+
+
+
+
     }
   }
 }
 export class TechSupport{
   subject?:string;
   description?:string;
+  lang?:string;
 }

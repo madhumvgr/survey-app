@@ -47,16 +47,14 @@
         <div class="row g-4">
             <h2 *ngIf = "newGenreIds.length != 1">{{'genres.heading2' | translate}}<span class="h2-separator"></span></h2>
             <h2 *ngIf = "newGenreIds.length == 1">{{'genres.heading3' | translate}}<span class="h2-separator"></span></h2>
-            <p class="mt-2 mb-0" *ngIf="!isTvGenere">{{'genres.deviceGenre' | translate}}{{deviceName}}</p>
+            <p class="mt-2 mb-0" *ngIf="!isTvGenere">{{'genres.deviceGenre' | translate}}{{deviceName}}.</p>
             <p class="mt-2 mb-0" *ngIf="isTvGenere">{{'genres.text3' | translate}}</p>
 
             <!-- Genres wrapper-->
             <div class="accordion accordion-flush" id="genres-target">
                 <!-- Accoridian Genre Tab 1 -->
                 <ng-container *ngFor="let genere of newGenreIds; let generId = index">
-                    <ng-container *ngIf="genere.isError">
-                        <div class="errorClass"> </div>
-                        </ng-container>
+                    <div class="errorClass">
                             <div class="accordion-item shadow-sm rounded mb-3">
                                 <h3 class="accordion-header" id="open-one">
                                     <button class="py-0 ps-0 pe-3 accordion-button collapsed" type="button"
@@ -97,7 +95,7 @@
                                                         <label class="form-check-label">
                                                             <input formControlName="addNew" class="form-check-input"
                                                             type="checkbox" (change)="updateTimeLine(item,$event,genere.id)" id="item{{i}}" role="button">
-                                                            {{item.value.label}}
+                                                            {{item.value.label | translate}}
                                                         </label>
                                                     </div>
                                                 </div>
@@ -113,7 +111,7 @@
                                                         <label class="form-check-label">
                                                             <input formControlName="addNew" class="form-check-input"
                                                             type="checkbox" (change)="updateTimeLine(item,$event,genere.id)">
-                                                            {{item.value.label}}
+                                                            {{item.value.label | translate}}
                                                         </label>
                                                     </div>
                                                 </div>
@@ -130,7 +128,7 @@
                                     {{"genres.error" | translate }}
                                 </div>
                             </ng-container>
-                      
+                        </div>
                 </ng-container>
                
                 <!--End Accoridian Genre Tab -->
@@ -154,20 +152,18 @@
             <!--end Ganres-->
 
             <!-- Action buttons -->
-            <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState != 'Completed'">
+            <div class="col-xs-6 d-grid gap-2 d-md-block">
                 <button type="button" class="btn btn-dark" (click)="backAction()">{{'genres.backButton' | translate}}</button>
                 <button type="button" (click)="openModal()" class="btn btn-secondary ms-md-3">{{'genres.SaveButton' | translate}}</button>
-                <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{'genres.continueButton' | translate}}</button>
+                <button type="submit" (click)="submit()" *ngIf="!submitted" class="btn btn-primary ms-md-3">{{'genres.continueButton' | translate}}</button>
+                <button type="submit" (click)="submitSSP()" *ngIf="submitted" class="btn btn-primary ms-md-3">{{'deviceUsage.submit' | translate}}</button>
+
                 <!-- <ng-template #submit1>
                     <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3">Submit
                     </button>
                 </ng-template> -->
             </div>
-            <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "deviceState == 'Completed'">
-                <button type="button" class="btn btn-dark" (click)="backAction()">{{'deviceInformation.cancelButton' | translate}}</button>
-                <button type="submit" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf = "userCount == 0">{{'deviceInformation.resumitButton' | translate}}</button>
-                <button type="submit" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf = "userCount != 0">{{'genres.continueButton' | translate}}</button>
-            </div>
+
         </div>
         <!--end Row-->
     </div>

@@ -90,7 +90,7 @@ export class QuestionarieComponent implements OnInit {
 
   markCompleteEvent(event: any) {
     if(event.isSubmit) {
-      let message = this.translate.instant('genres.message');
+      let message = 'genres.message';
     if(this.houseHold){
       console.log(this.houseHold);
       this.questionaireService.customCreate({}, QuestionConstants.markHouseHold + this.memberNo+ '?userType=' + this.userType).subscribe(result => {

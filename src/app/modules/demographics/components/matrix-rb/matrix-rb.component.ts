@@ -58,6 +58,7 @@ export class MatrixRbComponent implements OnChanges {
       var groupedCols = this.groupBy(this.question.column);
       if (groupedCols) {
         this.cols = groupedCols[Object.keys(groupedCols)[0]];
+        console.log(this.cols);
       }
       this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
       this.onlyOnce = true;

@@ -108,7 +108,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
           this.deviceService.getCustomRequest(DeviceConstants.deviceDetails).subscribe(response => {
             if (response) {
               this.showError = false;
-              this.panelistType = response['panelistType'];
+           //   this.panelistType = response['panelistType'];
+             this.panelistType = 'SSP';
               
               if (this.panelistType == "VAM") {
                 this.localStorageService.setPanellistType(this.panelistType);

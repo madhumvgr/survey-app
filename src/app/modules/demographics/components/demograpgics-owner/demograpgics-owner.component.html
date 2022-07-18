@@ -35,7 +35,7 @@
     <section class="px-3 pb-4">
         <div class="container">
             <div class="row pb-4">
-                <h2>{{"demographics.owner-tittle" | translate}}<span class="h2-separator"></span></h2>
+                <!-- <h2 *ngIf ="!houseHold">{{"demographics.owner-tittle" | translate}}<span class="h2-separator"></span></h2> -->
                 <div class="col-12 mt-3">
 
                     <!-- House Hold Member -->
@@ -44,8 +44,10 @@
                             <div class="h1 mb-0">person</div>
                         </i>
                         <div class="ps-3 description">
-                            <h3 class="text-truncate"><!-- Name of the household memeber -->{{member?.memberName}}</h3>
-                            <p class="text-truncate">{{"demographics.statusLabel" | translate}}: <span>{{member?.memberSurveyStatus}}</span></p>   
+                            <h3 class="text-truncate"><!-- Name of the household memeber -->{{"demographics.panellist" | translate}}</h3>
+                            <p class="text-truncate">{{"demographics.statusLabel" | translate}}: <span *ngIf = "member?.memberSurveyStatus == 'Not Started'">{{'deviceUsage.notStarted' | translate}}</span>
+                                <span *ngIf = "member?.memberSurveyStatus == 'In Progress'">{{'deviceUsage.inProgress' | translate}}</span>
+                                <span *ngIf = "member?.memberSurveyStatus == 'Completed'">{{'deviceUsage.completed' | translate}}</span></p>   
                         </div>
                         <div *ngIf="member?.memberSurveyStatus === 'Not Started'">
                             <button (click) = "continueNavigate(member.memberNo, member.homeNo, member.memberName )" type="button" class="btn btn-light me-3">{{"demographics.startButton" | translate}}</button>

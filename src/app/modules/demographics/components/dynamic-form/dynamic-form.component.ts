@@ -40,6 +40,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   isQuestion!: boolean;
   isVamOpenModal = false;
   isCancelClicked = false;
+  isFrance: any = false;
+  lastSubmit = false;
 
   localmodalConfig = {
   isBackAction: true  
@@ -53,16 +55,23 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       currentPage: 1,
       itemsPerPage: 2
     };
+    this.localStorageService.getLanguageSubject().subscribe( val => {
+      this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
+    });
 
     this.config.currentPage = this.route.snapshot.params['pageNo'];
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     this.parentForm = this.toFormGroup(this.questionList);
   }
 
   ngOnInit(): void {
     this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+    if(this.panelListType == "SSP"){
+      this.lastSubmit = true;
+    }
   }
 
 
@@ -266,7 +275,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
   transForm() {
     this.finalQuestionLIst = [];
-    this.isReview = true;
+      this.isReview = true;
     this.questionList.map((q: any) => {
       if (q.type != "matrix-subquestion") {
         const obj: any = { hhQueNo: q.hhQueNo, queNo: q.queNo, title: q.title, titleFr: q.titleFr, answer: {}, type:q.type };
@@ -284,7 +293,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
             q.selected.forEach((s: any) => {
               const row = q.row.find((r: any) => r.value == s.rowValue)
               const col = q.column.find((c: any) => c.value == s.colValue)
-              obj['answer'].push({ text: row.text, answer: col.text })
+              obj['answer'].push({ text: row.text,frText:row.frText, answer: col.text, frAnswer: col.frText })
             })
           }
         }
@@ -296,7 +305,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
             obj['answer'] = []
             q.selected.forEach((s: any) => {
               const row = q.row.find((r: any) => r.value == s.rowValue)
-              obj['answer'].push({ text: row.text, answer: s.answer == 'Y' ? 'Yes' : 'No' })
+              obj['answer'].push({ text: row.text, frText:row.frText, answer: s.answer == 'Y' ? 'Yes' : 'No' })
             })
           }
           if (q.maxLevel == '2') {
@@ -304,7 +313,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
             q.selected.forEach((s: any) => {
               const row = q.row.find((r: any) => r.value == s.rowValue)
               const col = q.column.find((c: any) => c.value == s.colValue)
-              obj['answer'].push({ text: row.text, test1: col.text, answer: s.answer == 'Y' ? 'Yes' : 'No' })
+              obj['answer'].push({ text: row.text, frText: row.frText, test1: col.text, frTest1: col.frText, answer: s.answer == 'Y' ? 'Yes' : 'No' })
             })
           }
         }
@@ -340,13 +349,14 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
              obj.subSurveyQueAnsDTO.push(obj1)
            });
            this.finalQuestionLIst.push(obj);
+           console.log(this.finalQuestionLIst);
       }
     })
   }
 
   exitEvent(isBackAction: boolean) {
     if(isBackAction) {
-    const message = this.translate.instant('deviceInformation.success');
+    const message = 'deviceInformation.success';
     if (this.houseHold) {
       this.router.navigate(['demographics/Thankyou'], { state: { message: message, inputRoute: "demographics-owner" } });
     }

@@ -42,6 +42,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   isCancelClicked = false;
   isFrance: any = false;
   lastSubmit = false;
+  skipQuestions:any = []  ;
 
   localmodalConfig = {
   isBackAction: true  
@@ -53,7 +54,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     super();
     this.config = {
       currentPage: 1,
-      itemsPerPage: 2
+      itemsPerPage: 4
     };
     this.localStorageService.getLanguageSubject().subscribe( val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
@@ -182,6 +183,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['condQueType'] = question.condQueType;
       obj['condMaxLevel'] = question.condMaxLevel;
       obj['condOtherDescription'] = question.condOtherDescription;
+      let skip= question.skip;
+      if(skip && skip!=''){
+        this.skipQuestions = skip.split(',').map(Number);
+      }else{
+        this.skipQuestions = [];
+      }
     } else {
       obj['questionId'] = question.queId;
       obj['queType'] = question.queType;
@@ -191,6 +198,15 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['memberNo'] = this.memberNo;
       obj['maxLevel'] = question.maxLevel;
       obj['otherDescription'] = question.otherDescription;
+      let skip= question.skip;
+      if(skip && skip!=''){
+        this.skipQuestions = skip.split(',').map(Number);
+      }else{
+        this.skipQuestions = [];
+      }
+      
+
+      
       // obj['condQuestionId'] = question.condQuestionId;
       // obj['condQuestionLevel1Id'] = question.condQuestionLevel1Id;
       //   obj['condQuestionLevel2Id'] = question.condQuestionLevel2Id;

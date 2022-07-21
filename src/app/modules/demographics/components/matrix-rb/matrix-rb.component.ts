@@ -16,7 +16,8 @@ export class MatrixRbComponent implements OnChanges {
   onlyOnce = false;
   @Input() question!: Question;
 
-  cols: Column[] = [];
+  //cols: Column[] = [];
+  groupedCols : any;
   isFrance: any = false;
   buttonClicked: any = false;
   constructor(  private localStorageService:LocalStorageService, public questionaireService: QuestionaireService) { 
@@ -55,11 +56,14 @@ export class MatrixRbComponent implements OnChanges {
           }
         });
       }
-      var groupedCols = this.groupBy(this.question.column);
-      if (groupedCols) {
-        this.cols = groupedCols[Object.keys(groupedCols)[0]];
-        console.log(this.cols);
-      }
+       this.groupedCols = this.groupBy(this.question.column);
+     
+     
+     
+      // if (groupedCols) {
+      //   this.cols = groupedCols[Object.keys(groupedCols)[0]];
+      //   console.log(this.cols);
+      // }
       this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
       this.onlyOnce = true;
     }

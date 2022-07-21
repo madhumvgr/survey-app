@@ -296,7 +296,8 @@ export class SelectGenresComponent extends BaseComponent implements OnInit {
          res => {
           this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
          this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
-         this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+         const message1 = 'deviceInformation.success2';
+         this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message1, inputRoute:"submit_device", deviceName: this.deviceName  } });
        });
     } 
     } else {

@@ -26,6 +26,7 @@ export class ChangePasswordComponent implements OnInit {
   view = false;
   visible = false;
   userobj: User = {};
+  confPass = false;
 
 
   showPassword!: boolean;
@@ -108,6 +109,14 @@ export class ChangePasswordComponent implements OnInit {
   // convenience getter for easy access to form fields
   get changePasswordFormControl() {
     return this.changePasswordForm.controls;
+  }
+
+  checkValidate(pass: any) {
+    if(!pass.target.value) {
+      this.confPass = true;;
+    } else{
+      this.confPass = false;
+    }
   }
 
   onSubmit() {

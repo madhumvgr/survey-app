@@ -6,6 +6,7 @@ import { DeviceService } from '../modules/login/services/device.service';
 import { NotificationService } from '../modules/notification/service/notification.service';
 import { DeviceConstants } from '../shared/models/url-constants';
 import { AuthService } from '../shared/services/auth.service';
+import { AutoLogoutService } from '../shared/services/auto-logout.service';
 import { LocalStorageService } from '../shared/services/local-storage.service';
 import { SharedService } from '../shared/services/shared.service';
 
@@ -27,7 +28,8 @@ export class WelcomeComponent implements OnInit {
     private sharedService: SharedService, 
     private router: Router,
     private deviceService: DeviceService, private translate: TranslateService,
-    private localStorageService:LocalStorageService) {
+    private localStorageService:LocalStorageService,
+    private autoLogoutService: AutoLogoutService) {
 
   }
 

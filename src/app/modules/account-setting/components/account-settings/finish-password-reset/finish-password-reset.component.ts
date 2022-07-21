@@ -120,7 +120,6 @@ export class FinishPasswordResetComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-      this.errorMessage = "Form is invalid."
       return;
     } else {
       if (this.resetKey) {
@@ -133,10 +132,10 @@ export class FinishPasswordResetComponent implements OnInit {
           this.router.navigate(['/login/reset/success'])
         },
           (error) => {
-            this.errorMessage = "Request failed, please reach admin."
+            this.errorMessage =  'passwordReset.error1';
           });
       } else {
-        this.errorMessage = "Key is empty."
+        this.errorMessage =  'passwordReset.error2';
       }
     }
   }

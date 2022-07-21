@@ -75,13 +75,13 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   submit() {
     let message: any;  
     if(this.deviceState == "Completed") { 
-     message = 'deviceInformation.success2' +this.deviceName+'.';
+     message = 'deviceInformation.success';
     } else {
-      message = 'deviceInformation.success';
+      message = 'deviceInformation.success2';
     }
     this.deviceService.updateHomeSurvey(this.deviceId).subscribe(
       res => {console.log(res);
-        this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+        this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"submit_device", deviceName: this.deviceName } });
 
       });
   }

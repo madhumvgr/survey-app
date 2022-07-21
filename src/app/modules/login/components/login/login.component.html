@@ -33,6 +33,9 @@
                         <button class="m-2 btn btn-primary" (click)="setCookie('true')">{{ 'loginPage.acceptButton' | translate }}</button>
                     </div>
                 </div>
+                <div class="row pb-2" *ngIf ="showAutologoutMsg">
+                    <p _ngcontent-hgi-c94="">{{ 'loginPage.autoLogoutMsg' | translate }}</p>
+                </div>
             </div>
 
             <!--end Row-->

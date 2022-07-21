@@ -77,7 +77,7 @@ export class RadiogroupComponent implements OnChanges {
     return this.childFormGroup.controls[''+questionNo];
   }
 
-  changeEvent(value: any,event:any, skip:any) {
+  changeEvent(value: any,event:any) {
     const selectedRow = this.question.row?.find((r:any)=> r.value == value);
     this.ShowInput = selectedRow.flag ? true: false;
     let questionNo;
@@ -92,7 +92,6 @@ export class RadiogroupComponent implements OnChanges {
     this.question.questionLevel1Id = value;
     this.question.questionLevel2Id = null;
     this.question['otherDescription'] = null;
-    this.question['skip']= skip;
     //this.question.queType ="YES-NO";
     if(!this.ShowInput) {
     this.childFormGroup.get('otherDescription')?.setValue(null);

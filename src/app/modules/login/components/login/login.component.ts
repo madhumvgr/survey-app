@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
@@ -35,6 +35,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   panelistType: any;
   showCookies = false;
   lang: any;
+  showAutologoutMsg = false;
 
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
@@ -43,7 +44,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private customValidator: CustomvalidationService,
     private userService: UserService,
     private localStorageService: LocalStorageService, private cookieService: CookieService,
-    private router: Router, private deviceService: DeviceService) { super() }
+    private router: Router, private deviceService: DeviceService, private activatedroute: ActivatedRoute) { super() }
 
 
 
@@ -56,6 +57,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
     const cookieValue = this.cookieService.get('hideCookie');
     if(!cookieValue) {
       this.showCookies =true;
+    }
+    const autoLogout = this.activatedroute.snapshot.queryParams['logout'];
+    if(autoLogout == 'autologout'){
+      this.showAutologoutMsg = true;
     }
     console.log(this.showCookies);
     this.loginForm = this.fb.group({
@@ -108,8 +113,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
           this.deviceService.getCustomRequest(DeviceConstants.deviceDetails).subscribe(response => {
             if (response) {
               this.showError = false;
-           //   this.panelistType = response['panelistType'];
-             this.panelistType = 'SSP';
+              this.panelistType = response['panelistType'];
+            // this.panelistType = 'SSP';
               
               if (this.panelistType == "VAM") {
                 this.localStorageService.setPanellistType(this.panelistType);

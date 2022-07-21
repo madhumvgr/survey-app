@@ -13,7 +13,8 @@
         "emailWarningText": " Enter a valid email address",
         "userNamePasswordNotMatchText": "The username or Password do not match, please try again.",
         "userNameOrPasswordIncoorectText": "Invalid Username or Password.",
-        "forgotPassword": "Forgot Password?"
+        "forgotPassword": "Forgot Password?",
+        "autoLogoutMsg": "Your session has expired due to inactivity. Please login to continue."
     },
     "Home": {
         "title": "Home"
@@ -208,8 +209,10 @@
     },
     "notInUse": {
         "title": "Not in Use Devices",
-        "description": "This page shows all media devices that have been marked as Not in Use and are connected to your home network. If you ever put them to use again, please update their status by updating the relevant survey for that device.",
-        "deviceDetected": "Not in Use devices detected"
+        "description": "This page shows all media devices that have been marked as Not in Use and are connected to your home network. If you ever put them to use again, please contact the Panel Administration team to update the device.",
+        "deviceDetected": "Not in Use devices detected",
+        "not_in_use_msg": "As requested, this device has been successfully marked as ‘not in use’. If the status of this device changes in the future, please contact the Panel Administration team to update this device."
+
     },
     "deviceOwner": {
         "title": "Device Owner Information",
@@ -317,7 +320,7 @@
         "newPassword": "New Password",
         "newPasswordRequired": "New Password are required",
         "confirmNewPassword": "Confirm New password ",
-        "confirmNewPasswordRequired": " confirmation of Password is required",
+        "confirmNewPasswordRequired": " Confirmation of Password is required",
         "passwordValidationMessage": "Password should contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
         "cancelButton": "Cancel",
         "updateButton": "Update",
@@ -329,7 +332,7 @@
         "error4": "Must contain at least 1 lowercase letter",
         "error5": "Must contain at least 1 uppercase letter",
         "form_error":"Form is invalid",
-        "message": "You have successfully updated Change Password"
+        "message": "You have successfully updated your password."
 
     },
     "emailNotifications": {
@@ -442,7 +445,9 @@
         "confirmPasswordRequired": "Confirm Password is required",
         "updateButtonLabel": "Update",
         "passwordValidation": "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
-        "passwotdNotMatchText": "Password and Confirm Password must match."
+        "passwotdNotMatchText": "Password and Confirm Password must match.",
+        "error1": "We are having technical issues. Please try again in a few minutes and contact the Panel Administration team if you are still having issues.",
+        "error2": "A field is empty."
     },
     "deviceInformation": {
         "title": "",
@@ -471,7 +476,7 @@
         "success2": "You have successfully submitted information for ",
         "resubmit": "Thank you for updating your information!",
         "error": "Please choose one of the options."
-    },
+        },
     "faqSSPQuestions": {
         "content": "Contents",
         "q1": "What is the Numeris Multimedia Ratings Panel?",

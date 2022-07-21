@@ -139,8 +139,9 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     if (selectedOwner.value == '') {
       this.error = true;
     }else if(this.notUsed) {
-      const message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success');
-      this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+      const message = 'deviceInformation.success';
+      const message1 = 'notInUse.not_in_use_msg';
+      this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message1, inputRoute:"deviceList" } });
      }else if(this.singleMemeber) {
        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
      } else if(this.singleUserFlow) {
@@ -151,11 +152,13 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
      }
   }
   surveySubmit() {
+    let message = 'deviceInformation.success2';
     this.deviceService.updateHomeSurvey(this.deviceId).subscribe(
       res => {console.log(res);
-      const message = 'deviceInformation.success' + this.deviceName+'.';
+   //   const message = "'deviceInformation.success' + this.deviceName+'.'";
+      console.log(message);
 
-        this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+        this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"submit_device", deviceName: this.deviceName } });
 
       });
   }

@@ -13,7 +13,7 @@
 
 <body>
     <!--h1 Intro Section-->
-    <section class="px-3 pb-4" *ngIf="state?.inputRoute != 'notUsed'">
+    <section class="px-3 pb-4" *ngIf="state?.inputRoute != 'notUsed' && state?.inputRoute != 'submit_device'">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -29,6 +29,24 @@
         </div>
         <!--end Container-->
     </section>
+
+    <section class="px-3 pb-4" *ngIf="state?.inputRoute == 'submit_device' && state?.inputRoute != 'notUsed' ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>{{'thankYouTechSupport.title' | translate}}</h1>
+                    <p>
+                        {{ message | translate}} {{deviceName }}
+
+                    </p>
+                </div>
+
+            </div>
+            <!--end Row-->
+        </div>
+        <!--end Container-->
+    </section>
+
     <!--end Section-->
     <section class="px-3 pb-4" *ngIf="state?.inputRoute == 'notUsed'">
         <div class="container">

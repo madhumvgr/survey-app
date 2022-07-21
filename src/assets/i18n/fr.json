@@ -13,7 +13,8 @@
         "emailWarningText": "entrez une adresse e-mail valide",
         "userNamePasswordNotMatchText": "Le nom d'utilisateur ou le mot de passe ne correspondent pas, veuillez réessayer.",
         "userNameOrPasswordIncoorectText": "Code d’utilisateur ou mot de passe invalide",
-        "forgotPassword": "Mot de passe oublié?"
+        "forgotPassword": "Mot de passe oublié?",
+        "autoLogoutMsg": "Votre session a expiré en raison de l’inactivité. Veuillez ouvrir une session pour continuer."
     },
     "Home": {
         "title": "domicile"
@@ -22,7 +23,7 @@
         "title": "Bienvenu",
         "text": "Merci de votre participation au panel de Numeris. Nous voulons en savoir un peu plus sur vos appareils à domicile, notamment la façon dont ils sont utilisés par les divers membres de votre ménage. Soyez assuré que vos ",
         "Link": "données et votre vie privée",
-        "text1": " seront toujours protégées. Pour « Commencer », cliquez sur “Commencer” pour vous rendre au Registre des sondages ci-après.",
+        "text1": " seront toujours protégées. Pour commencer, cliquez sur Commencer pour vous rendre au Registre des sondages ci-après.",
         "surveyhubLabel": "Registre des sondages",
         "surveyhubText": "Tous les sondages en un seul endroit.",
         "surveyhubButton": "Commencer",
@@ -106,7 +107,7 @@
         "householdDevicesHistoryLabel2": "Non utilisés",
         "newDescription": "La section Nouveaux affiche les sondages qui n’ont pas encore été commencés (concernant les appareils non connectés) ou concernant les appareils qui viennent d’être récemment connectés à votre réseau domestique s’affichent sous la section Nouveau. Il s’agit d’un excellent point de départ.",
         "progressDescription": " La section En cours contient les sondages déjà commencés à compléter.",
-        "historyDescription": "La section Complétés affiche les sondages que vous avez complétés. Vous pouvez les passer en revue, les modifier puis les renvoyer à tout moment. La section Non utilisés contient les sondages concernant les appareils que vous avez identifiés comme étant « non utilisés ». Si vous en utilisez un de nouveau, n’oubliez pas de mettre à jour le statut de l’appareil en question en l’inscrivant au sondage approprié."
+        "historyDescription": "La section Complétés affiche les sondages que vous avez complétés. Vous pouvez les passer en revue, les modifier puis les renvoyer à tout moment. La section Non utilisés contient les sondages concernant les appareils que vous avez identifiés comme étant Non utilisés. Si vous en utilisez un de nouveau, n’oubliez pas de mettre à jour le statut de l’appareil en question en l’inscrivant au sondage approprié."
     },
     "faqPage": {
         "title1": "FAQ",
@@ -206,8 +207,10 @@
     },
     "notInUse": {
         "title": "Appareils non utilisés",
-        "description": "Cette page porte sur tous les appareils médias que vous avez identifiés comme étant non utilisés mais qui sont connectés à votre réseau domestique. Si vous en utilisez un de nouveau, n’oubliez pas de mettre à jour son statut en l’inscrivant au sondage approprié. ",
-        "deviceDetected": "Appareils non utilisés détectés"
+        "description": "Cette page porte sur tous les appareils médias que vous avez identifiés comme étant non utilisés mais qui sont connectés à votre réseau domestique. Si vous en utilisez un de nouveau, veuillez contacter l’équipe d’administration du panel pour mettre à jour cet appareil. ",
+        "deviceDetected": "Appareils non utilisés détectés",
+        "not_in_use_msg": "Tel que demandé, cet appareil a été marqué avec succès comme Non utilisé. Si le statut de cet appareil change à l’avenir, veuillez contacter l’équipe d’administration du panel pour mettre à jour cet appareil."
+        
     },
     "deviceOwner": {
         "title": "Information sur le propriétaire de l’appareil",
@@ -222,7 +225,7 @@
         "title": "Utilisateurs multiples",
         "description": "Vu que l’appareil ",
         "description1": "est partagé, veuillez indiquer le pourcentage du temps de son utilisation par chaque membre du ménage. N’inclure que les membres du ménage qui utilisent cet appareil pour regarder/visionner du contenu télévisuel ou vidéo au moins une fois par mois.",
-        "description2": "Voici un exemple d’un ménage composé de trois membres – un parent et deux (2) enfants qui partagent l’utilisation d’un téléviseur intelligent. Le pourcentage d’utilisation de chacun d’eux peut se lire comme suit : Parent = 30 %, Enfant no 1 = 50 %, Enfant no 2 = 20 %. ",
+        "description2": "Voici un exemple d’un ménage composé de trois membres – un parent et deux (2) enfants qui partagent l’utilisation d’un téléviseur intelligent. Le pourcentage d’utilisation de chacun d’eux peut se lire comme suit : Parent = 30 %, Enfant numéro 1 = 50 %, Enfant numéro 2 = 20 %. ",
         "heading": "Utilisation partagée de l’appareil",
         "text1": "Sélectionnez le pourcentage de temps d’utilisation de l’appareil par chaque membre du ménage",
         "tipsLabel": "Astuces ",
@@ -438,7 +441,9 @@
         "confirmPasswordRequired": "Confirmez votre nouveau mot de passe est requis",
         "updateButtonLabel": "Mise à jour",
         "passwordValidation": "Le mot de passe doit contenir au moins 8 caractères, au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre",
-        "passwotdNotMatchText": "Le mot de passe et la confirmation du mot de passe doivent correspondre."
+        "passwotdNotMatchText": "Le mot de passe et la confirmation du mot de passe doivent correspondre.",
+        "error1": "Nous avons des problèmes techniques. Veuillez réessayer dans quelques minutes et contacter l’équipe d’administration du panel si vous avez encore des problèmes.",
+        "error2": "Un champ est vide."
     },
     "deviceInformation": {
         "title": "",

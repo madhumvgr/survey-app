@@ -50,7 +50,11 @@ export class MatrixSubLevelComponent implements OnChanges {
           if (subQues.selected && subQues.selected.length != 0) {
             if( subQues?.queType != "RB") {
               let value = subQues.selected[0].answer;
-              this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value));
+              if(subQues.mandatory){
+                this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value,Validators.required));
+              }else{
+                this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value));
+              }
             } else{
               this.childFormGroup.addControl('' + subQues?.queId, new FormControl(subQues.selected[0].rowValue));
             }

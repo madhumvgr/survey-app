@@ -82,6 +82,9 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
   pageChange(newPage: any) {
     this.newPage =newPage;
+    if(this.parentForm.status != "VALID"){
+      return;
+    }
     if (this.panelListType == "VAM" && (this.newPage > this.config.currentPage)) {
       let formNotTouched = false;
       Object.keys(this.parentForm.controls).forEach(key => {

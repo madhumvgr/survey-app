@@ -26,10 +26,14 @@
                 </div>
             </div> -->
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" [formControlName]=" subQuestion?.queId|| ''" (change)="changeEvent('N',false,false, true, subQuestion?.queId, '' , 'YES-NO-CY')"
+                <input class="form-check-input" type="radio" [formControlName]="subQuestion?.queId|| ''" (change)="changeEvent('N',false,false, true, subQuestion?.queId, '' , 'YES-NO-CY')"
                 value="N" id="{{subQuestion?.hhQueNo+'N'}}">
                 <label class="form-check-label" for="{{subQuestion?.hhQueNo+'N'}}">{{'demographics.option2' | translate}}</label>
             </div>
+            
+             <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required">
+            Please select the field. 
+        </span> 
         </div>
         <div *ngIf="subQuestion?.queType == 'RB' ">
             <div class="form-check mb-2" *ngFor="let row of subQuestion?.row; let i=index">

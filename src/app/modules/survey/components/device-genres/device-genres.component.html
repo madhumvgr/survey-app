@@ -55,7 +55,7 @@
                 <!-- Accoridian Genre Tab 1 -->
                 <ng-container *ngFor="let genere of newGenreIds; let generId = index">
                     <div class="errorClass">
-                            <div class="accordion-item shadow-sm rounded mb-3">
+                            <div class="accordion-item shadow-sm rounded mb-3" [ngStyle]="{'border': !genere.isError ? '' : '1px solid red' }">
                                 <h3 class="accordion-header" id="open-one">
                                     <button class="py-0 ps-0 pe-3 accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-one'+(generId + 1)"

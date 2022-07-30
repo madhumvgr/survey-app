@@ -237,6 +237,9 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   submit() {
+    if(this.parentForm.status != "VALID"){
+      return;
+    }
     this.markCompleteEvent.emit({ isSubmit: true });
   }
 

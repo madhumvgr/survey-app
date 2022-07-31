@@ -24,13 +24,12 @@
         Please select all the fields. 
     </span> 
 </ng-container> -->
-
 <ng-container>
     <div class="mb-4">
         <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
         <h4>{{ isFrance? question?.descriptionFr: question?.description}}</h4>
         <div [formGroup]="childFormGroup" *ngFor="let row of question?.row;let i=index">
-
+           
             <h5 class="pt-2"><u>{{isFrance? row.frText:row?.text}}</u></h5>
           
             <ng-container *ngFor="let column of groupedCols[row.value]; let j=index">
@@ -43,9 +42,14 @@
                     </label>
                 </div>
             </ng-container>
+            <span class="danger" *ngIf="childFormGroup.get('' + this.question?.queNo + row.value)?.errors?.required">
+                Please select the field. 
+            </span> 
         </div>
     </div>
     <span class="danger" *ngIf="childFormGroup?.invalid && buttonClicked">
         {{'required.select -all-answers' | translate}}
     </span>
+   
+    
 </ng-container>

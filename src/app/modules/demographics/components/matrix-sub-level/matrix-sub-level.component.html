@@ -30,7 +30,6 @@
                 value="N" id="{{subQuestion?.hhQueNo+'N'}}">
                 <label class="form-check-label" for="{{subQuestion?.hhQueNo+'N'}}">{{'demographics.option2' | translate}}</label>
             </div>
-            
              <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required">
             Please select the field. 
         </span> 
@@ -44,7 +43,9 @@
                     row?.frText: row?.text}}{{isFrance?
                         row?.frDescription: row?.description}}</label>
             </div>
-
+            <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required">
+                Please select the field. 
+            </span> 
         </div>
         <!-- <span class="danger" *ngIf="childFormControl(subQuestion?.queId).invalid">
             Please select the field. 

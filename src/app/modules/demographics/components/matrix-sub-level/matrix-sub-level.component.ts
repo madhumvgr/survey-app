@@ -61,7 +61,11 @@ export class MatrixSubLevelComponent implements OnChanges {
             
           }
           else {
-            this.childFormGroup.addControl('' + subQues?.queId, new FormControl(''));
+            if(subQues.mandatory){
+              this.childFormGroup.addControl('' + subQues?.queId, new FormControl('',Validators.required));
+            }else{
+              this.childFormGroup.addControl('' + subQues?.queId, new FormControl(''));
+            }
           }
           if (subQues.subSurveyQueAnsDTO) {
             let sub2LevQues = subQues.subSurveyQueAnsDTO;
@@ -74,9 +78,25 @@ export class MatrixSubLevelComponent implements OnChanges {
                   sub2LevAns = sub2Lev.selected[0].rowValue;
                 }
 
-                this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(sub2LevAns))
+                if(subQues.mandatory){
+                  this.childFormGroup.addControl('' + subQues?.queId, new FormControl('',));
+                }else{
+                  this.childFormGroup.addControl('' + subQues?.queId, new FormControl(''));
+                }
+
+                if(sub2Lev.mandatory){
+                  this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(sub2LevAns,Validators.required))
+                }else{
+                  this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(sub2LevAns))
+                }
+                
               } else {
-                this.childFormGroup.addControl('' + subQues?.queId + sub2Lev.queId, new FormControl())
+                
+                if(sub2Lev.mandatory){
+                  this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl('',Validators.required))
+                }else{
+                  this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(''))
+                }
               }
             })
           }

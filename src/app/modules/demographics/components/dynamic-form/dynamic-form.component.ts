@@ -82,6 +82,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
   pageChange(newPage: any) {
     this.newPage =newPage;
+  
+
     if(this.parentForm.status != "VALID"){
       return;
     }

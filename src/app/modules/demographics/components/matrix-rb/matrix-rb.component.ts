@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Rowing } from '@material-ui/icons';
 import { Question } from 'src/app/modules/login/model/question.model';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { QuestionaireService } from '../../quersionarie.service';
@@ -47,18 +48,22 @@ export class MatrixRbComponent implements OnChanges {
           console.log(prevValue);
           if (this.question?.mandatory) {
             this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
+          } else { 
+            if (prevValue && prevValue.colValue) {
+              if(this.question?.mandatory) {
+                this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
+              } else {
+              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue))
+            } 
           } else {
-            if (prevValue && prevValue.colValue)
-              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue));
-            else {
-              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(''))
-            }
+            this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(''))
           }
+          } 
         });
-      }
+       }  else {
+
+       }
        this.groupedCols = this.groupBy(this.question.column);
-     
-     
      
       // if (groupedCols) {
       //   this.cols = groupedCols[Object.keys(groupedCols)[0]];

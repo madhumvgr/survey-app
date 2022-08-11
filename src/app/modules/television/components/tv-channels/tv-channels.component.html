@@ -52,14 +52,14 @@
             <ng-container *ngFor="let station of newStationsId; let generId = index">
                 <!-- Channel  -->
                 <div class="errorClass">
-                <div class="bg-white shadow-sm rounded p-3 mb-4">
+                <div class="bg-white shadow-sm rounded p-3 mb-4"> 
                     <h3 class="pt-1 pb-0 px-3">{{station.name}}</h3>
                     <form [formGroup]="stationForm[station.id]" >
 
                     <div class="d-md-flex align-items-center">
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>{{"televisionChannels.weekdayTittle" | translate}}</h4>
-                            <select formControlName="weekDays" class="form-select" aria-label="Select household member" (change)="updateTimeLine(station.id)">
+                            <select formControlName="weekDays" class="form-select" aria-label="Select household member" (change)="updateTimeLine(station.id)" [ngStyle]="{'border': !stationForm[station.id]?.get('weekDays')?.hasError('required') ? '' : '1px solid red' }">
                                 <!-- <option selected>{{"televisionChannels.defaultOption" | translate}}</option> -->
                                 <option value="" disabled selected>{{"televisionChannels.defaultOption" | translate}}</option>
                                 <option value="2">{{"televisionChannels.option1" | translate}}</option>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-sm-12 col-md-6 p-3">
                             <h4>{{"televisionChannels.weekendTittle" | translate}}</h4>
-                            <select formControlName="weekEnds" class="form-select" aria-label="Select household member" (change)="updateTimeLine(station.id)">
+                            <select formControlName="weekEnds" class="form-select" aria-label="Select household member" (change)="updateTimeLine(station.id)" [ngStyle]="{'border': !stationForm[station.id]?.get('weekEnds')?.hasError('required') ? '' : '1px solid red' }">
                                 <option value="" disabled selected>{{"televisionChannels.defaultOption" | translate}}</option>
                                 <option value="2">{{"televisionChannels.option1" | translate}}</option>
                                 <option value="3">{{"televisionChannels.option2" | translate}}</option>

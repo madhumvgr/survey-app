@@ -5,7 +5,7 @@
             <li class="breadcrumb-item"><a [routerLink] = "['/welcome']">{{'Home.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink] = "['/survey/survey']">{{'surveyHub.title' | translate}}</a></li>
             <li class="breadcrumb-item"><a [routerLink] = "['/survey/household-devices']">{{'householdDevices.title' | translate}}</a></li>
-            <li class="breadcrumb-item"><a [routerLink] = "['/survey/deviceList/Notused']">Not in use</a></li>
+            <li class="breadcrumb-item"><a [routerLink] = "['/survey/deviceList/Notused']">{{'householdDevices.householdDevicesHistoryLabel2' | translate}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{deviceName}}</li>
         </ol>
     </div>
@@ -19,9 +19,9 @@
         <div class="row">
             <div class="col-12">
                 <h1>{{deviceName}}</h1>
-                <p>
+                <!-- <p>
                     You are about to edit a survey that you completed earlier for the device above. Please select the section that you’d like to edit from the list below. 
-                </p>
+                </p> -->
             </div>
         </div><!--end Row-->
     </div><!--end Container-->
@@ -38,7 +38,7 @@
                     <div class="h4 m-0">feed</div>
                 </i>
                 <div class="ps-3 description">
-                    <p><strong>Device platform</strong></p>
+                    <p><strong>{{"deviceInformation.devicePlatform" | translate }}:</strong></p>
                     <span>{{deviceInformation?.devicePlatform}}</span>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <div class="h4 m-0">feed</div>
                 </i>
                 <div class="ps-3 description">
-                    <p><strong>Operation system:</strong></p>
+                    <p><strong>{{"deviceInformation.operationSystem" | translate }}:</strong></p>
                     <span>{{deviceInformation?.os}}</span>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     <div class="h4 m-0">feed</div>
                 </i>
                 <div class="ps-3 description">
-                    <p><strong>MAC address:</strong></p>
+                    <p><strong>{{"deviceInformation.address" | translate }}:</strong></p>
                     <span>{{deviceInformation?.macAddress}}</span>
                 </div>
             </div>

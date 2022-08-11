@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-faqs',
@@ -12,10 +13,12 @@ export class FaqsComponent implements OnInit {
   panelistType = localStorage.panellistType;
   language: any;
 
-  constructor(private deviceService: DeviceService) { }
+  constructor(private deviceService: DeviceService, private localStorageService: LocalStorageService) {
+    this.language = this.localStorageService.getItem(StorageItem.LANG);
+   }
 
   ngOnInit(): void {
-    this.language = localStorage.lang;
+ 
   }
 
   scrollInView(id:string){

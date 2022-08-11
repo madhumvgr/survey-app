@@ -93,6 +93,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
 
     }else{
       this.error = false;
+      this.localStorageService.setDeviceName(this.deviceName);
       this.router.navigateByUrl('survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
     }
   }

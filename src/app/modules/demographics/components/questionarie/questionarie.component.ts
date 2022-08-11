@@ -59,7 +59,8 @@ export class QuestionarieComponent implements OnInit {
     if (this.houseHold) {
       if(this.panelistType != "VAM") {
       this.questionaireService.customRead(QuestionConstants.houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
-        this.questionList = list;
+        const questions = list;
+        this.questionList =  questions.filter( (item: any) =>item.disabled === false);
         this.totalNoPages = Math.ceil((this.questionList.length)/2)
       })
     }
@@ -67,7 +68,8 @@ export class QuestionarieComponent implements OnInit {
       //VAM
       else{
         this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
-          this.questionList = list;
+        const questions = list;
+        this.questionList =  questions.filter( (item: any) =>item.disabled === false);
           this.totalNoPages = Math.ceil((this.questionList.length)/2)
         })
       }
@@ -75,14 +77,16 @@ export class QuestionarieComponent implements OnInit {
       //SSP
     } else if( this.houseHold == undefined && this.panelistType != "VAM") {
       this.questionaireService.customRead(QuestionConstants.questionaire + '/' + this.memberNo).subscribe(list => {
-        this.questionList = list;
+        const questions = list;
+        this.questionList =  questions.filter( (item: any) =>item.disabled === false);
         this.totalNoPages = Math.ceil((this.questionList.length)/2)
       });
       //individual
       //vam
     } else {
       this.questionaireService.customRead(QuestionConstants.vam_questionaire +'/'+ this.memberNo).subscribe(list => {
-        this.questionList = list;
+        const questions = list;
+        this.questionList =  questions.filter( (item: any) =>item.disabled === false);
         this.totalNoPages = Math.ceil((this.questionList.length)/2)
       })
     }

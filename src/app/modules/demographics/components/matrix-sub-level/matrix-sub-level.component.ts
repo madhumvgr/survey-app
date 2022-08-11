@@ -51,10 +51,12 @@ export class MatrixSubLevelComponent implements OnChanges {
             if( subQues?.queType != "RB") {
               let value = subQues.selected[0].answer;
               if(subQues.mandatory){
-                this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value,Validators.required));
-              }else{
+                this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value, Validators.required));
+              }
+              else{
                 this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value));
               }
+             
             } else{
               this.childFormGroup.addControl('' + subQues?.queId, new FormControl(subQues.selected[0].rowValue));
             }
@@ -70,6 +72,7 @@ export class MatrixSubLevelComponent implements OnChanges {
           if (subQues.subSurveyQueAnsDTO) {
             let sub2LevQues = subQues.subSurveyQueAnsDTO;
             sub2LevQues.forEach(sub2Lev => {
+              
               if (sub2Lev.selected && sub2Lev.selected.length != 0) {
                 let sub2LevAns = sub2Lev.selected[0].answer;
                 if (sub2Lev.queType == 'TEXT') {
@@ -77,7 +80,6 @@ export class MatrixSubLevelComponent implements OnChanges {
                 } else {
                   sub2LevAns = sub2Lev.selected[0].rowValue;
                 }
-
                 if(subQues.mandatory){
                   this.childFormGroup.addControl('' + subQues?.queId, new FormControl('',));
                 }else{
@@ -91,7 +93,6 @@ export class MatrixSubLevelComponent implements OnChanges {
                 }
                 
               } else {
-                
                 if(sub2Lev.mandatory){
                   this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl('',Validators.required))
                 }else{
@@ -149,11 +150,11 @@ export class MatrixSubLevelComponent implements OnChanges {
       }
     } else if (this.childFormGroup.controls[subQuesId].value == 'N') {
       if (firstControl) {
-        firstControl?.setValidators([]);
+        firstControl?.setValidators([Validators.required]);
         firstControl?.updateValueAndValidity()
       }
       if (secoundControl) {
-        secoundControl?.setValidators([]);
+        secoundControl?.setValidators([Validators.required]);
         secoundControl?.updateValueAndValidity()
       }
     }

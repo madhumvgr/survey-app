@@ -6,7 +6,7 @@
     <div [formGroup]="childFormGroup">
         <div class="form-check mb-2" *ngFor="let row of question?.row; let i=index">
             <input class="form-check-input" id="row{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}"
-                (change)="changeEvent(row?.value,$event)" [formControlName]="question?.queNo ||  question?.queId ||''"
+                (change)="changeEvent(row?.value,$event, row?.skip)" [formControlName]="question?.queNo ||  question?.queId ||''"
                 type="radio" [value]="row?.value">
             <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}">{{isFrance?
                 row?.frText: row?.text}}</label>
@@ -16,7 +16,7 @@
             <input type="text" class="form-control"  formControlName="otherDescription" (mouseleave)="focusOut($event)">
         </ng-container>
         <span class="danger" *ngIf="radioFormControl.errors?.required && buttonClicked">
-            {{'required.select-answer' | translate}}
+            {{'required.select-all-answers' | translate}}
         </span>
     </div>
 </div>

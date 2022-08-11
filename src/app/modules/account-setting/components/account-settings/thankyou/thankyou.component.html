@@ -88,7 +88,7 @@
                 </div>
             </div>
 
-            <div class="row" *ngIf="state?.inputRoute == 'deviceList'">
+            <div class="row" *ngIf="state?.inputRoute == 'deviceList' || state?.inputRoute == 'submit_device'">
                 <div class="col-20">
                     <button type="submit" class="btn btn-primary px-3 ms-3"
                     [routerLink]="['/survey/deviceList/'+deviceState]">{{'thankYou.exitButtonLabel' | translate}}</button>

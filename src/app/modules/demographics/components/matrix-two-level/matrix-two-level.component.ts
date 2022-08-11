@@ -54,8 +54,12 @@ export class MatrixTwoLevelComponent implements OnChanges {
               let temp = '';
              if(prevValue){
                temp = prevValue?.colValue+prevValue?.rowValue+prevValue?.answer;
-             }
-              this.childFormGroup.addControl('' + this.question?.queId + row.value+ col.value, new FormControl(temp, Validators.required));
+              }
+              if (prevValue && prevValue.colValue) {
+                this.childFormGroup.addControl('' + this.question?.queId +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer, Validators.required));
+              }else {
+                this.childFormGroup.addControl('' + this.question?.queId + row.value+col.value, new FormControl('', Validators.required))
+              }
             } else {
               if (prevValue && prevValue.colValue) {
                 this.childFormGroup.addControl('' + this.question?.queId +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer));
@@ -117,4 +121,5 @@ export class Column {
   rowValue!: number;
   seqNo!: number;
   text!: string;
+  frText!: string;
 }

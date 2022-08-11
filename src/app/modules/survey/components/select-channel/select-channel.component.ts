@@ -257,6 +257,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
                 this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
                this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
                const message1 = 'deviceInformation.success2';
+               this.localStorageService.setSubmitDevice(this.deviceName);
                this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message1, inputRoute:"submit_device", deviceName: this.deviceName  } });
                });
           }

@@ -42,6 +42,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   isCancelClicked = false;
   isFrance: any = false;
   lastSubmit = false;
+  skipQuestions:any = []  ;
+  buttonClicked: any = false;
 
   localmodalConfig = {
   isBackAction: true  
@@ -68,6 +70,9 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   ngOnInit(): void {
+    this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
+      this.buttonClicked = res
+    })
     this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
     if(this.panelListType == "SSP"){
       this.lastSubmit = true;
@@ -76,17 +81,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
 
   ngAfterViewInit() {
-    super.afterViewInit(this.modalComponent);
+    super.afterViewInit(this.modalComponent);     
   }
 
 
-  pageChange(newPage: any) {
+    pageChange(newPage: any) {
     this.newPage =newPage;
-  
-
-    if(this.parentForm.status != "VALID"){
-      return;
-    }
     if (this.panelListType == "VAM" && (this.newPage > this.config.currentPage)) {
       let formNotTouched = false;
       Object.keys(this.parentForm.controls).forEach(key => {
@@ -125,6 +125,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       
         });
       }
+    } else {
+      this.parentForm.invalid;
     }
   }
 
@@ -187,6 +189,13 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['condQueType'] = question.condQueType;
       obj['condMaxLevel'] = question.condMaxLevel;
       obj['condOtherDescription'] = question.condOtherDescription;
+      let skip= question.skip;
+      if(skip && skip!=''){
+        this.skipQuestions = skip.split(',').map(Number);
+        console.log(this.skipQuestions);
+      }else{
+        this.skipQuestions = [];
+      }
     } else {
       obj['questionId'] = question.queId;
       obj['queType'] = question.queType;
@@ -196,6 +205,14 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['memberNo'] = this.memberNo;
       obj['maxLevel'] = question.maxLevel;
       obj['otherDescription'] = question.otherDescription;
+      let skip= question.skip;
+      if(skip && skip!=''){
+        this.skipQuestions = skip.split(',').map(Number);
+        console.log(this.skipQuestions);
+        window.location.reload();
+      }else{
+        this.skipQuestions = [];
+      }
       // obj['condQuestionId'] = question.condQuestionId;
       // obj['condQuestionLevel1Id'] = question.condQuestionLevel1Id;
       //   obj['condQuestionLevel2Id'] = question.condQuestionLevel2Id;
@@ -240,6 +257,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
   submit() {
     if(this.parentForm.status != "VALID"){
+      this.redirect();
       return;
     }
     this.markCompleteEvent.emit({ isSubmit: true });
@@ -257,7 +275,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
             this.questionList = list;
             this.transForm();
 
-          })
+          }) 
         }
         else {
           this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {

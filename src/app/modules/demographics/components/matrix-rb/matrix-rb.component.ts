@@ -40,17 +40,18 @@ export class MatrixRbComponent implements OnChanges {
       // if (selected) {
       //   prevValue = selected[selected.length-1];
       // }
+      this.groupedCols = this.groupBy(this.question.column);
       if (this.question?.row && this.question.selected) {
         let rows = this.question.row;
         rows.forEach(row => {
           // getprevious value for the row. 
           prevValue = this.getPrevSelectedValue(this.question.selected, row.value);
           console.log(prevValue);
-          if (this.question?.mandatory) {
+          if (this.question?.mandatory && this.groupedCols[row.value]) {
             this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
           } else { 
             if (prevValue && prevValue.colValue) {
-              if(this.question?.mandatory) {
+              if(this.question?.mandatory && this.groupedCols[row.value]) {
                 this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
               } else {
               this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue))
@@ -63,7 +64,7 @@ export class MatrixRbComponent implements OnChanges {
        }  else {
 
        }
-       this.groupedCols = this.groupBy(this.question.column);
+       
      
       // if (groupedCols) {
       //   this.cols = groupedCols[Object.keys(groupedCols)[0]];

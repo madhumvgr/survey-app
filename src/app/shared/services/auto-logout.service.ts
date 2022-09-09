@@ -18,7 +18,7 @@ import { LocalStorageService, StorageItem } from "./local-storage.service";
         // private snotifyService: SnotifyService,
         private ngZone: NgZone
     ) {
-        debugger
+
       if(this.isUserLoggedIn()){
         this.isLogin=true;
       }

@@ -13,10 +13,14 @@
         </div>
         <ng-container *ngIf="ShowInput">
             <!-- <label for="inputEmail" class="form-label">test</label> -->
-            <input type="text" class="form-control"  formControlName="otherDescription" (mouseleave)="focusOut($event)">
+            <div>{{'required.select-answer' | translate}}</div>
+            <input type="text" class="form-control"  formControlName="question?.queNo ||  question?.queId ||''" (mouseleave)="focusOut($event)">
+            <span class="danger" *ngIf="displayError && panelListType == 'SSP'">
+                {{'demographics.textfield-Label' | translate}}
+            </span>
         </ng-container>
         <span class="danger" *ngIf="radioFormControl.errors?.required && buttonClicked">
-            {{'required.select-all-answers' | translate}}
+            {{'required.select-answer' | translate}}
         </span>
     </div>
 </div>

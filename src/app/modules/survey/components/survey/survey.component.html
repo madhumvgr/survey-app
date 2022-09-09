@@ -25,11 +25,11 @@
     
             <!-- Devices Card -->
             <div class="card thumb-cards col-md-4 bg-transparent border-0">
-                <div class="shadow-sm rounded bg-white">
+                <div class="shadow-sm rounded bg-white" style="min-height: 302px">
                     <img class="img-fluid rounded-top" src="./assets/devices_thumb.jpg" alt="">
                     <div class="card-body">
                         <h5 class="card-title">{{ 'houseHold.devicesCardTitle' | translate }}</h5>
-                        <p class="card-text">{{ 'houseHold.devicesCardDescription' | translate }}</p>
+                        <p class="card-text" style="min-height: 78px;">{{ 'houseHold.devicesCardDescription' | translate }}</p>
                         <a [routerLink] = "['/survey/household-devices']" class="btn btn-primary">{{ 'houseHold.button' | translate }}</a>
                     </div>
                 </div>
@@ -39,11 +39,11 @@
 
             <!-- <div *ngIf="panelistType=='VAM'"  class="card welcome-card col-sm-6 bg-transparent border-0"> -->
             <div class="card thumb-cards col-md-4 bg-transparent border-0">
-                <div class="shadow-sm rounded bg-white">
+                <div class="shadow-sm rounded bg-white" style="min-height: 302px">
                     <img class="img-fluid rounded-top" src="./assets/demographics_thumb.jpg" alt="">
                     <div class="card-body">
                         <h5 class="card-title">{{ 'houseHold.demographicCardTitle' | translate }}</h5>
-                        <p class="card-text">{{ 'houseHold.demographicCardDescription' | translate }}</p>
+                        <p class="card-text" style="min-height: 78px;">{{ 'houseHold.demographicCardDescription' | translate }}</p>
                        <a [routerLink] = "['/demographics/demographics-overview']" class="btn btn-primary">{{ 'houseHold.button' | translate }}</a>
                         <!-- <a class="btn btn-primary">{{ 'houseHold.button' | translate }}</a> -->
                     </div>
@@ -52,11 +52,11 @@
             <!-- Television Card -->
             <!-- <div *ngIf="panelistType=='VAM'" class="card welcome-card col-sm-6 bg-transparent border-0"> -->
                 <div class="card thumb-cards col-md-4 bg-transparent border-0" *ngIf="panelistType =='VAM'">     
-                    <div class="shadow-sm rounded bg-white">               
+                    <div class="shadow-sm rounded bg-white" style="min-height: 302px">               
                         <img class="img-fluid rounded-top" src="./assets/tv-anthena_thumb.jpg" alt="">
                         <div class="card-body">
                             <h5 class="card-title">{{ 'houseHold.televisionCardTitle' | translate }}</h5>
-                            <p class="card-text">{{ 'houseHold.televisionCardDescription' | translate }}</p>
+                            <p class="card-text" style="min-height: 78px;">{{ 'houseHold.televisionCardDescription' | translate }}</p>
                             <a [routerLink] = "['/television/household-members']" class="btn btn-primary">{{ 'houseHold.button' | translate }}</a>
                         </div>
                     </div>

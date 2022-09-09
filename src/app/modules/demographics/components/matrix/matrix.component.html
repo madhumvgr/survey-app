@@ -34,7 +34,7 @@
             <h5><u>{{isFrance? row.frText:row?.text}}{{isFrance? row.frDescription:row?.description}}</u></h5>
 
             <div class="form-check mb-2">
-                <input (change)="changeEvent(row?.value,'Y')" value="Y" class="form-check-input" type="radio"
+                <input (change)="changeEvent(row?.value,'Y', row?.skip)" value="Y" class="form-check-input" type="radio"
                     [formControlName]="question?.queNo+''+row?.value"
                     id="row{{houseHold? question?.hhQueNo : question?.queNo}}{{j}}">
 
@@ -42,7 +42,7 @@
                 </label>
             </div>
             <div class="form-check mb-2">
-                <input (change)="changeEvent(row?.value,'N')" value="N" class="form-check-input" type="radio"
+                <input (change)="changeEvent(row?.value,'N', row?.skip)" value="N" class="form-check-input" type="radio"
                     [formControlName]="question?.queNo+''+row?.value"
                     id="row{{houseHold? question?.hhQueNo : question?.queNo}}{{j+j}}{{j}}">
 
@@ -51,7 +51,7 @@
                 </label>
             </div>
             <span class="danger" *ngIf="childFormGroup.get('' + this.question?.queNo + row?.value)?.errors?.required && buttonClicked">
-                {{'required.select-all-answers' | translate}}
+                {{'required.select-answer' | translate}}
             </span>
         </div>
     </div>

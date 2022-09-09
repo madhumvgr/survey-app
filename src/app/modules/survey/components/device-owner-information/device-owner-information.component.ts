@@ -46,6 +46,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService,
     private translate: TranslateService) {
       super();
+      this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
      }
 
      ngAfterViewInit(){

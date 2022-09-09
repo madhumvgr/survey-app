@@ -53,8 +53,9 @@ export class ForgotPasswordComponent implements OnInit {
         }
         this.router.navigate(['/login/reset/init']);
 
-      }, err => this.showError = true,
-        () => this.showError = true)
+      },(error) => {
+        this.showError = true;
+      });
     }
   }
 

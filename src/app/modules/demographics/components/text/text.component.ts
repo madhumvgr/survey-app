@@ -21,6 +21,10 @@ export class TextComponent implements OnChanges {
   @Input() question!: any ;
   @Input() houseHold:any;
   buttonClicked: any = false;
+  pattern: RegExp = /[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]/;
+
+  set: boolean = true;
+ // input: string;
   constructor(  private localStorageService:LocalStorageService, public questionaireService: QuestionaireService) {
     this.localStorageService.getLanguageSubject().subscribe( val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
@@ -90,5 +94,20 @@ export class TextComponent implements OnChanges {
     //this.question.queType ="YES-NO";
     this.changeEvent1.emit(this.question);
   }
+
+  setup(value: any) {
+    const val = value.target.value;
+    const sub1 = val.substring(0, 3);
+    const sub2 = val.substring(3, 6);
+    const postalCode = sub1 + ' ' + sub2;
+    if (!val.match(this.pattern)) {
+      this.set = false;
+    } else {
+      this.set = true;
+      value.target.value = postalCode;
+      this.focusOut(value);
+    }
+  }
+
 }
 

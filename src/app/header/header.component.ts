@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, NgZone, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Block } from '@material-ui/icons';
 import { TranslateService } from '@ngx-translate/core';
@@ -26,6 +26,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   notify = false;
   showOnlyMenu="none";
   fullName: any;
+  currentWindowWidth: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   constructor(public authService:AuthService,private translate: TranslateService,
@@ -43,6 +44,8 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentWindowWidth = window.innerWidth;
+
     this.fullName = this.localStorageService.getItem(StorageItem.FULLNAME);
     if(this.isMenu){
       this.notifService.getMessageList();
@@ -61,6 +64,11 @@ export class HeaderComponent extends BaseComponent implements OnInit {
         })
       }));
     }
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.currentWindowWidth = window.innerWidth
   }
 
   public doLogout() {

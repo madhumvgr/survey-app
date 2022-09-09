@@ -62,7 +62,7 @@
 
                                 <input style="padding-left: 50px" matInput [type]="show ? 'password' : 'text'"
                                     type="password" class="form-control" formControlName="password" id="inputPass"
-                                    required>
+                                    (keyup.enter)="onSubmit()" required>
                                 <button type="button" mat-icon-button matSuffix (click)="show = !show"
                                     [attr.aria-label]="'Show password'" [attr.aria-pressed]="show" class="eye-hide">
                                     <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>

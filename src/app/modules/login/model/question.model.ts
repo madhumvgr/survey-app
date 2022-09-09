@@ -12,6 +12,8 @@ export class Question extends Resource {
   descriptionFr?: string;
   column? : any[];
   row? : any[] = [];
+  noSkip?: string;
+  skip?: string
   answer?: any;
   maxLevel?:any;
   required?:any;
@@ -33,6 +35,7 @@ export class Question extends Resource {
   condMaxLevel?: string;
   condOtherDescription?: string;
   extraCond?: string;
+  disabled?: boolean;
   }
 
 export class QuestionSerializer {

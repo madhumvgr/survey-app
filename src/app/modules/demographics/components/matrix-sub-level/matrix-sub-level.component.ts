@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Outpu
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from 'src/app/modules/login/model/question.model';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
+import { QuestionaireService } from '../../quersionarie.service';
 
 
 @Component({
@@ -21,13 +22,20 @@ export class MatrixSubLevelComponent implements OnChanges {
   @Input() questionId: any;
   cols: Column[] = [];
   isFrance: any = false;
-  constructor(private localStorageService: LocalStorageService) {
+  buttonClicked: any = false;
+  constructor(private localStorageService: LocalStorageService,  public questionaireService: QuestionaireService) {
     this.localStorageService.getLanguageSubject().subscribe(val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     });
   }
   @Output()
   public changeEvent1 = new EventEmitter();
+
+  ngOnInit(): void {
+    this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
+      this.buttonClicked = res
+    })
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
@@ -130,7 +138,7 @@ export class MatrixSubLevelComponent implements OnChanges {
     }, {});
   }
 
-  changeEvent(value: any, isText: boolean, isLevel1: boolean, isLevel: boolean, subQuesId: any, condId?: any, type?: any) {
+  changeEvent(value: any, isText: boolean, isLevel1: boolean, isLevel: boolean, subQuesId: any, condId?: any, type?: any, skip?: string) {
     let questionNo;
     if (this.question?.queNo) {
       questionNo = this.question?.queNo;
@@ -164,6 +172,7 @@ export class MatrixSubLevelComponent implements OnChanges {
       if(type == "YES-NO-CY") {
         this.question.answer = value;
         this.question.questionLevel1Id = null;
+        this.question.skip= skip;
       } else {
         this.question.answer = "Y";
         this.question.questionLevel1Id = value;

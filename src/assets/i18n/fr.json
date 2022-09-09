@@ -17,11 +17,11 @@
         "autoLogoutMsg": "Votre session a expiré en raison de l’inactivité. Veuillez ouvrir une session pour continuer."
     },
     "Home": {
-        "title": "domicile"
+        "title": "Domicile"
     },
     "welcomePage": {
-        "title": "Bienvenu",
-        "text": "Merci de votre participation au panel de Numeris. Nous voulons en savoir un peu plus sur vos appareils à domicile, notamment la façon dont ils sont utilisés par les divers membres de votre ménage. Soyez assuré que vos ",
+        "title": "Bienvenue",
+        "text": "Merci de votre participation au panel de Numeris. Nous voulons en savoir un peu plus sur vos appareils à domicile, notamment la façon dont ils sont utilisés par les divers membres de votre foyer. Soyez assuré que vos ",
         "Link": "données et votre vie privée",
         "text1": " seront toujours protégées. Pour commencer, cliquez sur Commencer pour vous rendre au Registre des sondages ci-après.",
         "surveyhubLabel": "Registre des sondages",
@@ -70,12 +70,12 @@
     },
     "houseHold": {
         "title": "Ménage",
-        "description": "Cette section nous permet de recueillir des informations de base au sujet des membres de votre ménage et des appareils média qu’ils utilisent.",
+        "description": "Cette section nous permet de recueillir des informations de base au sujet des membres de votre foyer et des appareils média qu’ils utilisent.",
         "devicesCardTitle": "Appareils",
         "devicesCardDescription": "Questions concernant les appareils médias dans votre domicile.",
         "button": "Continuer",
-        "demographicCardTitle": "Votre ménage",
-        "demographicCardDescription": "Questions concernant les membres de votre ménage.",
+        "demographicCardTitle": "Votre foyer",
+        "demographicCardDescription": "Questions concernant les membres de votre foyer.",
         "televisionCardTitle": "Écoute télévisuelle",
         "televisionCardDescription": "Questions concernant l’écoute télévisuelle au moyen de votre téléviseur.",
         "televisionUsage": "utilisation de la télévision"
@@ -94,7 +94,7 @@
         "privacyPolicyButton": "En apprendre davantage"
     },
     "householdDevices": {
-        "title": "Appareils du ménage",
+        "title": "Appareils du foyer",
         "description": "Cette section contient les sondages pour tous les appareils médias connectés à votre Internet domestique.",
         "householdDevicesActionsTitle": "Action requise",
         "householdDevicesActionsDescription": "",
@@ -107,7 +107,7 @@
         "householdDevicesHistoryLabel2": "Non utilisés",
         "newDescription": "La section Nouveaux affiche les sondages qui n’ont pas encore été commencés (concernant les appareils non connectés) ou concernant les appareils qui viennent d’être récemment connectés à votre réseau domestique s’affichent sous la section Nouveau. Il s’agit d’un excellent point de départ.",
         "progressDescription": " La section En cours contient les sondages déjà commencés à compléter.",
-        "historyDescription": "La section Complétés affiche les sondages que vous avez complétés. Vous pouvez les passer en revue, les modifier puis les renvoyer à tout moment. La section Non utilisés contient les sondages concernant les appareils que vous avez identifiés comme étant Non utilisés. Si vous en utilisez un de nouveau, n’oubliez pas de mettre à jour le statut de l’appareil en question en l’inscrivant au sondage approprié."
+        "historyDescription": "La section Complétés affiche les sondages que vous avez complétés. Vous pouvez les passer en revue, les modifier puis les renvoyer à tout moment. La section Non utilisés contient les sondages concernant les appareils que vous avez identifiés comme étant Non utilisés. Si vous en utilisez un de nouveau, veuillez contacter l’équipe d’administration du panel pour mettre à jour cet appareil."
     },
     "faqPage": {
         "title1": "FAQ",
@@ -139,22 +139,22 @@
         "message": "Votre message",
         "sendButton": "Envoyer",
         "montrealOffice": "Bureau de Montréal",
-        "montrealDescription": "Pour les panelistes en ON, QC et régions Atlantique – heure de l’Est.",
-        "montrealdays": "Lundi au Vendredi",
-        "montrealWeekdays": "Jours de semaine",
-        "montrealTimes": "10h00 à 18h00",
+        "montrealDescription": "Pour les panèlistes du Quèbec, de l’Ontario, et des provinces de l’Atlantique – heure de l’Est.",
+        "montrealdays": "En semaine",
+        "montrealWeekdays": "Fin de semaine",
+        "montrealTimes": "10 h à 18 h",
         "montrealEmail": "Courriel",
-        "montrealEmailValue": "meterpaneleast@numeris.ca",
-        "tollFree": "Numéro gratuit",
-        "montrealPhone": "1-866-548-8991",
+        "montrealEmailValue": "meterpanelquebec@numeris.ca",
+        "tollFree": "Sans frais",
+        "montrealPhone": "1-866-226-7655",
         "richmondOffice": "Bureau de Richmond",
-        "richmondDescription": "Pour les panelistes en MB, SK, AB et BC – heure du Pacifique",
+        "richmondDescription": "Pour les panèlistes du Manitoba, de la Saskatchewan, de l’Alberta et de la Colombie-Britannique – heure du Pacifique",
         "richmondDays": "Lundi au Vendredi",
-        "richmondTimes": "9h00 à 18h00",
-        "richmondSaturday": "Samedis",
-        "richmondSaturdayTime": "10h00 à 18h00",
+        "richmondTimes": "9 h à 18 h",
+        "richmondSaturday": "Samedi",
+        "richmondSaturdayTime": "10 h à 18 h",
         "richmondSunday": "Dimanche",
-        "richmondSundayTime": "10h00 à 17h00",
+        "richmondSundayTime": "9 h à 17 h",
         "richmondEmail": "Courriel",
         "richmondEmailValue": "meterpanelwest@numeris.ca",
         "richmondPhone": "1-866-730-7960"
@@ -183,7 +183,7 @@
     },
     "newDevices": {
         "title": "Nouveaux",
-        "description": "Cette page affiche tous les appareils médias qui ne sont pas actionnés mais qui sont connectés à votre réseau domestique. Vous aurez à répondre à des questions de base à propos de l’utilisation de chaque appareil.",
+        "description": "Cette page affiche tous les appareils qui ne sont pas actionnés mais qui sont connectés à votre réseau domestique. Vous aurez à répondre à des questions de base à propos de l’utilisation de chaque appareil.",
         "description1": "demeurent toujours protégées.",
         "Link": "personnelles et votre sphère privée",
         "privacyPolicyUrl": "https://numeris.ca/politique-sur-la-vie-privee/",
@@ -194,20 +194,20 @@
     },
     "inProgressDevices": {
         "title": "Appareils “en cours” ",
-        "description": "Cette page affiche tous les appareils médias sous la rubrique en << cours >> et qui sont connectés à votre réseau domestique. Les sondages de cette section contiennent des questions de base à propos de l’utilisation de chaque appareil.",
+        "description": "Cette page affiche tous les appareils sous la rubrique en << cours >> et qui sont connectés à votre réseau domestique. Les sondages de cette section contiennent des questions de base à propos de l’utilisation de chaque appareil.",
         "macAddress": "Adresse Mac",
         "deviceDetected": "Appareils en cours détectés"
     },
     "completedDevices": {
         "title": "Complétés",
-        "description": "Cette page affiche tous les appareils médias sous la rubrique Complétés et connectés à votre réseau domestique. Vous pouvez les passer en revue, les modifier puis les renvoyer à tout moment. ",
+        "description": "Cette page affiche tous les appareils sous la rubrique Complétés et connectés à votre réseau domestique. Vous pouvez les passer en revue, les modifier puis les renvoyer à tout moment. ",
         "description2": "You are about to edit a survey that you completed earlier for the device above. Please select the section that you’d like to edit from the list below.",
         "deviceName": "nom d’appareil"  ,
         "deviceDetected": "Appareils complétés détectés"
     },
     "notInUse": {
         "title": "Appareils non utilisés",
-        "description": "Cette page porte sur tous les appareils médias que vous avez identifiés comme étant non utilisés mais qui sont connectés à votre réseau domestique. Si vous en utilisez un de nouveau, veuillez contacter l’équipe d’administration du panel pour mettre à jour cet appareil. ",
+        "description": "Cette page porte sur tous les appareils que vous avez identifiés comme étant non utilisés mais qui sont connectés à votre réseau domestique. Si vous en utilisez un de nouveau, veuillez contacter l’équipe d’administration du panel pour mettre à jour cet appareil.",
         "deviceDetected": "Appareils non utilisés détectés",
         "not_in_use_msg": "Tel que demandé, cet appareil a été marqué avec succès comme Non utilisé. Si le statut de cet appareil change à l’avenir, veuillez contacter l’équipe d’administration du panel pour mettre à jour cet appareil."
         
@@ -234,7 +234,7 @@
         "tip3": "Le total des pourcentages devrait arriver à 100 %.",
         "tip4": "Entrez un pourcentage approximatif d’utilisation (que ce soin un seul ou plusieurs membres).",
         "tip5": "Le total des pourcentages d’utilisation (un seul et plusieurs membres) devrait arriver à 100 %.",
-        "text2": "Nous voulons savoir à quelle fréquence les membres de votre ménage visionnent des vidéos ensemble au moyen de cet appareil. Sélectionnez le pourcentage de temps d’utilisation de cet appareil d’une personne seulement ainsi que le pourcentage d’utilisation de plusieurs personnes en même temps.",
+        "text2": "Nous voulons savoir à quelle fréquence les membres de votre foyer visionnent des vidéos ensemble au moyen de cet appareil. Sélectionnez le pourcentage de temps d’utilisation de cet appareil d’une personne seulement ainsi que le pourcentage d’utilisation de plusieurs personnes en même temps.",
         "backButton": "Retour",
         "SaveButton": "Sauvegarder et quitter",
         "continueButton": "Continuer",
@@ -316,7 +316,7 @@
         "currentPassword": "Mot de passe ",
         "currentPasswordRequired": "Mot de passe est requis",
         "newPassword": "Nouveau mot de passe",
-        "newPasswordRequired": "nouveau mot de passe sont requis",
+        "newPasswordRequired": "Nouveau mot de passe sont requis",
         "confirmNewPassword": "Confirmez votre nouveau mot de passe",
         "confirmNewPasswordRequired": "Confirmez votre nouveau mot de passe est requis",
         "passwordValidationMessage": "Le mot de passe doit contenir au moins 8 caractères, au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre",
@@ -330,7 +330,7 @@
         "error4": "Doit contenir au moins 1 lettre minuscule!",
         "error5": "Doit contenir au moins 1 lettre majuscule!",
         "form_error":"Le formulaire est invalide",
-        "message": "Vous avez mis à jour avec succès Changer le mot de passe"
+        "message": "Succès! Votre mot de passe a été mis à jour!."
     },
     "emailNotifications": {
         "title": "Avis par courriel",
@@ -421,7 +421,8 @@
         "error2": "Maximum de 20 caractères!",
         "error3": "Doit contenir au moins 1 chiffre!",
         "error4": "Doit contenir au moins 1 lettre minuscule!",
-        "error5": "Doit contenir au moins 1 lettre majuscule!"
+        "error5": "Doit contenir au moins 1 lettre majuscule!",
+        "errorMessage": "Nom d’utilisateur déjà utilisé"
     },
     "registerSuccess": {
         "tittle": "Bravo! Votre compte a bel et bien été créé!",
@@ -469,7 +470,7 @@
         "continueButton": "Continuer",
         "resumitButton": "Réacheminer",
         "success": "Vos progrès ont été enregistrés. Vous pouvez revenir à tout moment pour poursuivre le sondage.",
-        "success2": "avec succès",
+        "success2": "Vous avez soumis avec succès des informations pour",
         "resubmit": "Merci d'avoir mis à jour vos informations! ",
         "error": "Merci de choisir une de ces options."
     },
@@ -514,6 +515,7 @@
         "a1": "Le panel de cotes d’écoute multimédia de Numeris est composé de nombreux types de foyers à l’échelle du Canada, tel que le vôtre. Chaque ménage a été soigneusement sélectionné pour représenter la région dans laquelle il réside. Ces ménages fournissent des informations importantes quant à l’écoute de la radio et de la télévision et au visionnement vidéo lesquelles sont utilisées par Numeris pour produire ce qu’on appelle fréquemment les cotes d’écoute. Ces dernières aideront les radiodiffuseurs à prendre des décisions importantes au sujet de leur programmation.  En participant au panel, les Canadiens font savoir aux radiodiffuseurs quelles sont les émissions qu’ils aiment écouter ou regarder en ligne, à la télévision et à la radio.",
         "a2.1": "Deux types d’équipement sont utilisés dans le panel : l’audimètre central (FocalMeter) et l’audimètre personnel. Chacun d’eux mesure l’auditoire de divers types de programmation.",
         "a2.2": "L’audimètre central consiste en un petit appareil qui se branche à votre routeur Internet. Il détecte seulement le contenu d’une liste spécifique de sites Web ou des services de diffusion en continu (streaming) utilisés pour regarder la télévision en ligne. La liste de ces sites Web mesurés est mise en ligne sur le site ",
+        "a2.2.1" : "https://numeris.ca/listedinclusion/",
         "a2.3": "Chaque membre de votre ménage recevra son propre audimètre personnel qu’il ou elle aura à garder sur lui ou sur elle. Cet appareil capte un signal de diffusion silencieux qui nous informe des stations de radio ou des émissions de télévision écoutées ou regardées. Puisque l’audimètre personnel utilise la technologie cellulaire, veuillez nous appeler immédiatement si vous avez été avisé par un professionnel de la santé de ne pas utiliser un téléphone cellulaire.",
         "a2.4": "L’information fournie par les audimètres est combinée à celle des autres ménages du panel afin de produire les cotes d’écoute.",
         "a3.1": "En guise de remerciement, chaque membre du panel recevra une récompense monétaire chaque mois pour avoir participé lors du mois précédent. Il ou elle recevra 1,25 $ par semaine ainsi qu’un boni chaque semaine où il ou elle aura obtenu un nombre suffisant de points de récompense pour avoir porté son audimètre personnel (500 points ou plus pour les personnes âgées de 12 ans ou plus et 300 points ou plus pour les enfants de 11 ans ou moins).",
@@ -633,21 +635,21 @@
         "dontWatch": "Je ne regarde aucune de ces chaînes TV"
     },
     "demographics": {
-        "tittle": "Votre ménage",
-        "description1": "Cette section contient des questions de base sur votre ménage et les personnes qui le composent. ",
+        "tittle": "Votre foyer",
+        "description1": "Cette section contient des questions de base sur votre foyer et les personnes qui le composent. ",
         "description2": " demeurent toujours protégées.",
         "card1": "Sondages auprès des membres",
-        "card1Description": "Sondages destinés à chaque membre de votre ménage.",
-        "card2": "Enquête auprès des ménages",
-        "card2Description": "Un sondage concernant spécifiquement votre ménage.",
+        "card1Description": "Sondages destinés à chaque membre de votre foyer.",
+        "card2": "Enquête auprès des foyer",
+        "card2Description": "Un sondage concernant spécifiquement votre foyer.",
         "owner-tittle": "Affichage en liste",
         "continueButton": "Continuer",
         "reviewButton": "Revoir mes réponses",
         "page-of": "sur",
-        "panellist":"Enquête auprès des ménages",
-        "individualDescription": "Veuillez demander à chaque membre de votre ménage de bien vouloir compléter le sondage individuel ci-après. Pour ce faire, veuillez vous assurer qu’il ou elle clique sur le lien à côté de son nom. Un des membres qui a besoin d’aide peut solliciter l’aide d’un adulte.",
+        "panellist":"Enquête auprès des foyer",
+        "individualDescription": "Veuillez demander à chaque membre de votre foyer de bien vouloir compléter le sondage individuel ci-après. Pour ce faire, veuillez vous assurer qu’il ou elle clique sur le lien à côté de son nom. Un des membres qui a besoin d’aide peut solliciter l’aide d’un adulte.",
         "individualSubText":"Liste de membres individuels: ",
-        "individualSubDescription": "Complétez le sondage identifié avec votre nom. Vous pouvez également remplir le sondage au nom d’un autre membre du ménage.",
+        "individualSubDescription": "Complétez le sondage identifié avec votre nom. Vous pouvez également remplir le sondage au nom d’un autre membre du foyer.",
         "statusLabel": "Statut",
         "startButton": "Démarrer",
         "completedButton": "Éditer",
@@ -655,9 +657,10 @@
         "option2": "Non",
         "questinarieDescription": "Veuillez répondre aux questions suivantes pour nous en dire un peu plus à votre sujet. Ces questions serviront exclusivement à rapporter votre écoute dans le bon groupe. Pour toute modification, il suffit de cliquer sur le bouton RETOUR ci-dessous. Si tout est correct, cliquez sur CONTINUER.",
         "questinarieDescription2": "Pour toute modification, il suffit de cliquer sur le bouton RETOUR ci-dessous. Si tout est correct, cliquez sur CONTINUER.",
-        "houseHoldDescription":"Veuillez compléter le court sondage démographique concernant votre ménage en cliquant sur le lien ci-après.  Il suffit de le faire une seule fois.",
-        "householdquestionariedesc": "Nous demandons à une personne de votre ménage de répondre aux prochaines questions. Il suffit de le faire une seule fois. Soyez assuré que vos réponses demeureront strictement confidentielles. Les réponses à ces questions ne servent qu’à rassembler les ménages comme le vôtre dans le bon groupe et ne seront être utilisées qu’à des fins de recherche."
-
+        "houseHoldDescription":"Veuillez compléter le court sondage démographique concernant votre foyer en cliquant sur le lien ci-après.  Il suffit de le faire une seule fois.",
+        "householdquestionariedesc": "Nous demandons à une personne de votre foyer de répondre aux prochaines questions. Il suffit de le faire une seule fois. Soyez assuré que vos réponses demeureront strictement confidentielles. Les réponses à ces questions ne servent qu’à rassembler les ménages comme le vôtre dans le bon groupe et ne seront être utilisées qu’à des fins de recherche.",
+        "textfield-Label": "merci de préciser ci-dessous",
+        "review-error": "Aucune réponse n’a été sélectionnée. Si c’est le cas, cliquez sur « SOUMETTRE ». Si vous souhaitez modifier une réponse, cliquez sur « RETOUR »."
 
     },
     "select-genres":{
@@ -690,8 +693,9 @@
         },
 
         "required":{
-            "select-answer": "An answer is required for this question.",
-            "select -all-answers": "An answer is required for all questions above."
+            "select-answer": "Une réponse est requise pour la question ci-dessus.",
+            "select-all-answers": "Une réponse est exigée pour toutes les questions susmentionnées.",
+            "postal-error": "Le code postal doit respecter le format LnL nLn où L est une lettre et n est un chiffre."
         },
 
     "resumitButton": "Re-Submit",

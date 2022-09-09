@@ -109,7 +109,7 @@
         "televisionUsage": "Television Usage",
         "newDescription": "Questions for devices that haven’t been started or that have been recently added to your home network appear under the New section. This is a good place to begin. ",
         "progressDescription": " In Progress shows surveys for devices that you’ve begun but still have to complete.",
-        "historyDescription": "Completed shows surveys for devices that you have completed. You can review, change and resubmit any of these surveys at any time.  Not in Use shows surveys for devices you marked 'not in use'. If you ever put them to use again, please update their status by updating the relevant survey for that device. "
+        "historyDescription": "Completed shows surveys for devices that you have completed. You can review, change and resubmit any of these surveys at any time.  Not In Use shows surveys for devices you marked 'not in use'. If you ever put them to use again, please contact the Panel Administration team to update the device. "
     },
     "faqPage": {
         "title1": "FAQ’s",
@@ -156,7 +156,7 @@
         "richmondSaturday": "Saturdays",
         "richmondSaturdayTime": "10:00am to 6:00pm",
         "richmondSunday": "Sundays",
-        "richmondSundayTime": "10:00am to 5:00pm",
+        "richmondSundayTime": "9:00am to 5:00pm",
         "richmondEmail": "Email",
         "richmondEmailValue": "meterpanelwest@numeris.ca",
         "richmondPhone": "1-866-730-7960"
@@ -209,7 +209,7 @@
     },
     "notInUse": {
         "title": "Not in Use Devices",
-        "description": "This page shows all media devices that have been marked as Not in Use and are connected to your home network. If you ever put them to use again, please contact the Panel Administration team to update the device.",
+        "description": " This page shows all media devices that have been marked as Not in Use and are connected to your home network. If you ever put them to use again, please contact the Panel Administration team to update the device.",
         "deviceDetected": "Not in Use devices detected",
         "not_in_use_msg": "As requested, this device has been successfully marked as ‘not in use’. If the status of this device changes in the future, please contact the Panel Administration team to update this device."
 
@@ -318,7 +318,7 @@
         "currentPassword": "Confirm Password",
         "currentPasswordRequired": "Confirm Password is required",
         "newPassword": "New Password",
-        "newPasswordRequired": "New Password are required",
+        "newPasswordRequired": "New Password is required",
         "confirmNewPassword": "Confirm New password ",
         "confirmNewPasswordRequired": " Confirmation of Password is required",
         "passwordValidationMessage": "Password should contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
@@ -425,7 +425,8 @@
         "error3": "Must contain at least 1 number",
         "error4": "Must contain at least 1 lowercase letter",
         "error5": "Must contain at least 1 uppercase letter",
-        "error6": "Password and Confirm Password must match"
+        "error6": "Password and Confirm Password must match",
+        "errorMessage": "Username already used"
     },
     "registerSuccess": {
         "tittle": "Success! Your account has been created!",
@@ -517,7 +518,8 @@
     "faqSSPAnswers": {
         "a1": "The Numeris Multimedia Ratings Panel consists of many types of households across Canada, such as yours. Each household has been carefully selected to represent the region in which they live.  These households provide important information about radio listening and television and video viewing. Numeris uses this information to create what are often called ratings. Broadcasters use the ratings to make important decisions about programming.  By participating in the panel, Canadians can let broadcasters know which programs they enjoy online, on TV and on the radio.",
         "a2.1": "Two types of equipment are used in the panel: The FocalMeter and the PersonalMeter. Each one measures different types of programming.",
-        "a2.2": "The FocalMeter is a small box that connects to your internet router. It detects only a specific set of websites or streaming services that are used to watch TV online. You can find the list of websites it measures at",
+        "a2.2": "The FocalMeter is a small box that connects to your internet router. It detects only a specific set of websites or streaming services that are used to watch TV online. You can find the list of websites it measures at ",
+        "a2.2.1" : "https://numeris.ca/inclusionlist/",
         "a2.3": "Each member of your household will be given their own PersonalMeter to keep with them. It picks up a silent broadcast signal that tells us the radio stations that they are listening to and the television programs that they are watching. Since the PersonalMeter uses cellular technology, please call us right away if you have been advised by a medical professional not to use a cellular telephone.",
         "a2.4": "The information from the Meters is combined with the information from other panel  households to produce the ratings.",
         "a3.1": "As a token of appreciation, each panelist will receive a cash reward every month, for the previous month’s participation. Panelists receive $1.25 per week for participating in the ratings panel, and a bonus amount for each week that they earn enough reward points from carrying the PersonalMeter (500 points or more for ages 12 and above, and 300 points or more for children aged 11 and under).",
@@ -660,7 +662,9 @@
     "questinarieDescription": "Please complete these questions to tell us a bit more about yourself. These questions will only be used in order to report your viewing in the correct group. To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE.",
     "questinarieDescription2": "To change something, use the BACK button below to go back and change it. If everything looks ok, select CONTINUE.",
     "houseHoldDescription":"Please complete the brief household demographic survey through the link below. This survey only needs to be completed once for the household.",
-    "householdquestionariedesc": "Please answer the next questions about your household. These questions only need to be answered once by one member of your household. Please rest assured that your responses will be kept completely confidential. These questions are only asked to group together similar households for research purposes and will not be used for any other purpose."
+    "householdquestionariedesc": "Please answer the next questions about your household. These questions only need to be answered once by one member of your household. Please rest assured that your responses will be kept completely confidential. These questions are only asked to group together similar households for research purposes and will not be used for any other purpose.",
+    "textfield-Label": "Please specify below",
+    "review-error": "No answers have been selected. If this is correct, click “SUBMIT”. If you want to change an answer, click “BACK”."
 },
 "select-genres":{
     "heading1": "From the genres listed below, please select all the genres that you normally watch on television through cable box, satellite or antenna. You may select multiple options.",
@@ -691,8 +695,9 @@
     "enquiry-desc":"If you have any questions or concerns about how your privacy is protected at Numeris, please go to our website at www.numeris.ca or contact our Privacy Officer by mail at the following address: Privacy Officer, Numeris, 1500 Don Mills Road, 3rd Floor, Toronto, Ontario, M3B 3L7. "
 },
 "required":{
-    "select-answer": "An answer is required for this question.",
-    "select -all-answers": "An answer is required for all questions above."
+    "select-answer": "An answer is required for the question above.",
+    "select-all-answers": "An answer is required for all questions above.",
+    "postal-error": "Postal code must be in format LnL nLn, where L is a letter and n is a digit."
 },
 
     "resumitButton": "Re-Submit",

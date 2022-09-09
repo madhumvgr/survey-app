@@ -17,8 +17,10 @@ export class RadiogroupComponent implements OnChanges {
   onlyOnce = false;
   isFrance: any = false;
   ShowInput: boolean = false;
+  displayError: boolean = false;
   @Input() question!: any ;
   @Input() houseHold:any;
+  panelListType: any;
   buttonClicked: any = false;
   constructor(  private localStorageService:LocalStorageService, public questionaireService: QuestionaireService) {
     this.localStorageService.getLanguageSubject().subscribe( val => {
@@ -31,6 +33,7 @@ export class RadiogroupComponent implements OnChanges {
     this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
       this.buttonClicked = res
     })
+    this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -51,15 +54,34 @@ export class RadiogroupComponent implements OnChanges {
       }else{
         questionNo= this.question?.queId;
       }
+      const otherRow =  this.question.row[this.question.row.length-1];
       if (this.question?.mandatory) {
         this.childFormGroup.addControl('' +questionNo , new FormControl(prevValue?prevValue?.rowValue:'', Validators.required));
         if(prevValue.otherDesc) {
-         const otherRow =  this.question.row[this.question.row.length-1];
-         this.childFormGroup.addControl('' +questionNo , new FormControl(otherRow?otherRow?.value:'', Validators.required));
+         
+         this.childFormGroup.addControl('' +questionNo , new FormControl(otherRow?otherRow.value:'', Validators.required));
          this.ShowInput = otherRow && otherRow.flag ? true: false;
+        } else {
+          const lastRow = this.question.row.filter((x: any) => x.value == prevValue.rowValue)
+          if(lastRow[0].text == "Other") {
+
+            this.ShowInput = true;
+          } else {
+            this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
+          }
         }
       } else {
-          this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
+        const lastRow = this.question.row.filter((x: any) => x.value == prevValue.rowValue);
+       if(lastRow.length > 0) {
+        if(lastRow[0].text == "Other") {
+
+          this.ShowInput = true;
+        } 
+       }
+       
+       
+        this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
+         
       }
       this.childFormGroup.addControl('otherDescription', new FormControl(prevValue?prevValue?.otherDesc:''));
       this.parentForm.addControl(''+questionNo,this.childFormGroup);
@@ -75,9 +97,10 @@ export class RadiogroupComponent implements OnChanges {
       questionNo= this.question?.queId;
     }
     return this.childFormGroup.controls[''+questionNo];
+   
   }
 
-  changeEvent(value: any,event:any, skip:any) {
+  changeEvent(value: any,event:any, skip:any, desc?: string) {
     const selectedRow = this.question.row?.find((r:any)=> r.value == value);
     this.ShowInput = selectedRow.flag ? true: false;
     let questionNo;
@@ -91,18 +114,31 @@ export class RadiogroupComponent implements OnChanges {
     this.question.answer ="Y";
     this.question.questionLevel1Id = value;
     this.question.questionLevel2Id = null;
-    this.question['otherDescription'] = null;
+    this.question['otherDescription'] = desc;
     this.question['skip']= skip;
-    //this.question.queType ="YES-NO";
-    if(!this.ShowInput) {
-    this.childFormGroup.get('otherDescription')?.setValue(null);
     this.changeEvent1.emit(this.question);
-    }
+    //this.question.queType ="YES-NO";
+    // if(!this.ShowInput) {
+    // this.childFormGroup.get('otherDescription')?.setValue(null);
+    // this.changeEvent1.emit(this.question);
+    // }
   }
 
   focusOut(event: any) {
    // this.question.questionLevel1Id = null;
-    this.question['otherDescription'] = event.target.value;
-    this.changeEvent1.emit(this.question)
+   console.log(event);
+  //  this.childFormGroup.addControl('' +this.question.otherDesc , new FormControl(event.target.value?event.target.value:'', Validators.required));
+   const value = this.question.row[this.question.row.length-1].value;
+   console.log(value);
+   const skip = this.question.skip;
+    const desc = event.target.value;
+   if(desc) {
+    this.displayError = false;
+      this.changeEvent(value, event, skip, desc);
+   } else {
+    this.displayError = true;
+    this.childFormGroup.addControl('' +this.question.otherDesc , new FormControl(desc?desc:'', Validators.required));
+    this.changeEvent(value, event, skip, desc);
+    }
   }
 }

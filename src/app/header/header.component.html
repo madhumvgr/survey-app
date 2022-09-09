@@ -7,10 +7,12 @@
       <img class="img-fluid" src="./assets/logo.png" alt="">
     </a>
     <ng-container *ngIf="!isFrance else english">
-      <a (click)="changeLanguage('fr')" class="lang-taggle" href='javascript:void(0);'>français</a>
+      <a *ngIf="currentWindowWidth < 992" (click)="changeLanguage('fr')"  href='javascript:void(0);'>FR</a>
+      <a *ngIf="currentWindowWidth >= 992" (click)="changeLanguage('fr')"  href='javascript:void(0);'>Français</a>
     </ng-container>
     <ng-template #english>
-      <a (click)="changeLanguage('en')" class="lang-taggle" href='javascript:void(0);'>English</a>
+      <a *ngIf="currentWindowWidth < 992" (click)="changeLanguage('en')"  href='javascript:void(0);'>EN</a>
+      <a *ngIf="currentWindowWidth >= 992" (click)="changeLanguage('en')"  href='javascript:void(0);'>English</a>
     </ng-template>
 
     <div class="row" *ngIf="isMenu">

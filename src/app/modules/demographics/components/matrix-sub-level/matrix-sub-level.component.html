@@ -3,6 +3,7 @@
     <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
     <h4>{{isFrance? question?.descriptionFr: question?.description}}</h4>
     <ng-container *ngFor="let subQuestion of question.subSurveyQueAnsDTO">
+        <div *ngIf = "!subQuestion?.disabled">
         <h4>{{ isFrance? subQuestion?.titleFr: subQuestion?.title}}</h4>
         <h4>{{ isFrance? subQuestion?.descriptionFr: subQuestion?.description}}</h4>
         <div *ngIf="subQuestion?.queType != 'RB' ">
@@ -14,7 +15,7 @@
                 </div>
             </div> -->
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio"  [formControlName]=" subQuestion?.queId || ''" (change)="changeEvent('Y',false,false, true, subQuestion?.queId, '', 'YES-NO-CY')"  
+                <input class="form-check-input" type="radio"  [formControlName]=" subQuestion?.queId || ''" (change)="changeEvent('Y',false,false, true, subQuestion?.queId, '', 'YES-NO-CY', subQuestion?.noSkip)"  
                 value="Y" id="{{subQuestion?.hhQueNo+'Y'}}">
                 <label class="form-check-label" for="{{subQuestion?.hhQueNo+'Y'}}">{{'demographics.option1' | translate}}</label>
             </div>
@@ -26,7 +27,7 @@
                 </div>
             </div> -->
             <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" [formControlName]=" subQuestion?.queId|| ''" (change)="changeEvent('N',false,false, true, subQuestion?.queId, '' , 'YES-NO-CY')"
+                <input class="form-check-input" type="radio" [formControlName]=" subQuestion?.queId|| ''" (change)="changeEvent('N',false,false, true, subQuestion?.queId, '' , 'YES-NO-CY', subQuestion?.noSkip)"
                 value="N" id="{{subQuestion?.hhQueNo+'N'}}">
                 <label class="form-check-label" for="{{subQuestion?.hhQueNo+'N'}}">{{'demographics.option2' | translate}}</label>
             </div>
@@ -42,8 +43,8 @@
             </div>
 
         </div>
-        <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required">
-            Please select the field. 
+        <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required && buttonClicked ">
+          {{'required.select-answer' | translate}}
         </span> 
         <!-- <span class="danger" *ngIf="childFormControl(subQuestion?.queId).invalid">
             Please select the field. 
@@ -76,12 +77,13 @@
                                     row?.frDescription: row?.description}}</label>
                         </div>
                     </div>
-                    <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required">
-                        Please select the field. 
+                    <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required && buttonClicked">
+                        {{'required.select-answer' | translate}}
                     </span>  
                 </div>
             </ng-container>
         </ng-container>
+    </div>
     </ng-container>
     <!-- <div [formGroup]="childFormGroup" class="container" *ngFor="let row of question?.row;let i=index"
         [style.background-color]="i%2 == 1 ? '#888' : ''">

@@ -42,13 +42,14 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   isCancelClicked = false;
   isFrance: any = false;
   lastSubmit = false;
-  skipQuestions:any = []  ;
+  skipQuestions: any = [];
   buttonClicked: any = false;
 
   localmodalConfig = {
-  isBackAction: true  
+    isBackAction: true
   }
   newPage: any;
+  reviewSurvey: boolean = false;
 
   constructor(public questionaireService: QuestionaireService, private translate: TranslateService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
@@ -57,7 +58,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       currentPage: 1,
       itemsPerPage: 2
     };
-    this.localStorageService.getLanguageSubject().subscribe( val => {
+    this.localStorageService.getLanguageSubject().subscribe(val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     });
 
@@ -70,44 +71,44 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   ngOnInit(): void {
-    this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
+    this.questionaireService.quersionSubjectRecevier$$.subscribe((res: any) => {
       this.buttonClicked = res
     })
     this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
-    if(this.panelListType == "SSP"){
+    if (this.panelListType == "SSP") {
       this.lastSubmit = true;
     }
   }
 
 
   ngAfterViewInit() {
-    super.afterViewInit(this.modalComponent);     
+    super.afterViewInit(this.modalComponent);
   }
 
 
-    pageChange(newPage: any) {
-    this.newPage =newPage;
-    if (this.panelListType == "VAM" && (this.newPage > this.config.currentPage)) {
+  pageChange(newPage: any) {
+    this.newPage = newPage;
+    if (this.panelListType == "VAM" && (this.newPage >= this.config.currentPage)) {
       let formNotTouched = false;
       Object.keys(this.parentForm.controls).forEach(key => {
-        if(!this.parentForm.controls[key].value[key]){
+        if (!this.parentForm.controls[key].value[key]) {
           formNotTouched = true
         }
       });
-      if(formNotTouched && !this.isCancelClicked) {
+      if (formNotTouched && !this.isCancelClicked) {
         this.isVamOpenModal = true;
         this.isCancelClicked = false;
         this.openModal();
-       this.localmodalConfig = {
+        this.localmodalConfig = {
           isBackAction: false
-          }
+        }
       } else {
         this.redirect();
       }
     } else {
       this.redirect();
     }
-   
+
   }
 
   redirect() {
@@ -122,7 +123,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       } else {
         this.router.navigate(['/demographics/questionaire/' + this.memberNo + '/' + this.homeNo + '/' + this.newPage]).then(() => {
           window.location.reload();
-      
+
         });
       }
     } else {
@@ -189,11 +190,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['condQueType'] = question.condQueType;
       obj['condMaxLevel'] = question.condMaxLevel;
       obj['condOtherDescription'] = question.condOtherDescription;
-      let skip= question.skip;
-      if(skip && skip!=''){
+      let skip = question.skip;
+      if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-      }else{
+        window.location.reload();
+      } else {
         this.skipQuestions = [];
       }
     } else {
@@ -205,12 +207,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['memberNo'] = this.memberNo;
       obj['maxLevel'] = question.maxLevel;
       obj['otherDescription'] = question.otherDescription;
-      let skip= question.skip;
-      if(skip && skip!=''){
+      let skip = question.skip;
+      if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
         window.location.reload();
-      }else{
+      } else {
         this.skipQuestions = [];
       }
       // obj['condQuestionId'] = question.condQuestionId;
@@ -251,61 +253,78 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   cancelEvent(isBackAction: boolean) {
-  this.isCancelClicked = true;
+    this.isCancelClicked = true;
     console.log(isBackAction);
   }
 
   submit() {
-    if(this.parentForm.status != "VALID"){
+    if (this.parentForm.status != "VALID") {
       this.redirect();
       return;
     }
     this.markCompleteEvent.emit({ isSubmit: true });
   }
 
-  review() {
+  review(event: boolean) {
     this.questionaireService.SetQuestionValid(true)
     this.markCompleteEvent.emit({ isBack: false });
     if (this.parentForm.valid) {
       const panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
 
-      if (this.houseHold) {
-        if (panelistType != "VAM") {
-          this.questionaireService.customRead(QuestionConstants.houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
-            this.questionList = list;
-            this.transForm();
+      if (this.houseHold || event) {
+          let formNotTouched = false;
+          Object.keys(this.parentForm.controls).forEach(key => {
+            if (!this.parentForm.controls[key].value[key]) {
+              formNotTouched = true
+            }
+          });
+          if (formNotTouched && !this.isCancelClicked && !event) {
+            this.isVamOpenModal = true;
+            this.isCancelClicked = false;
+            this.openModal();
+            this.localmodalConfig = {
+              isBackAction: false
+            }
+          } else {
+            this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
+              this.questionList = list;
+              this.transForm();
+            })
+          }
+        } else {
 
-          }) 
-        }
-        else {
-          this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
-            this.questionList = list;
-            this.transForm();
-          })
-        }
-      } else if (this.houseHold == undefined && panelistType != "VAM") {
-        this.questionaireService.customRead(QuestionConstants.questionaire + '/' + this.memberNo).subscribe(list => {
-          this.questionList = list;
-          this.transForm();
-
+        let formNotTouched = false;
+        Object.keys(this.parentForm.controls).forEach(key => {
+          if (!this.parentForm.controls[key].value[key]) {
+            formNotTouched = true
+          }
         });
-      } else {
-        this.questionaireService.customRead(QuestionConstants.vam_questionaire + '/' + this.memberNo).subscribe(list => {
-          this.questionList = list;
-          this.transForm();
-        })
-      }
+        if (formNotTouched && !this.isCancelClicked) {
+          this.isVamOpenModal = true;
+          this.isCancelClicked = false;
+          this.openModal();
+          this.localmodalConfig = {
+            isBackAction: false
+          }
+        // } else {
+        //   this.questionaireService.customRead(QuestionConstants.vam_questionaire + '/' + this.memberNo).subscribe(list => {
+        //     this.questionList = list;
+        //     this.transForm();
+        //   })
+        // }
+        }
+    }
     }
 
   }
 
   transForm() {
     this.finalQuestionLIst = [];
-      this.isReview = true;
+    this.isReview = true;
     this.questionList.map((q: any) => {
       if (q.type != "matrix-subquestion") {
-        const obj: any = { hhQueNo: q.hhQueNo, queNo: q.queNo, title: q.title, titleFr: q.titleFr, answer: {}, type:q.type };
-        
+        const obj: any = { hhQueNo: q.hhQueNo, queNo: q.queNo, title: q.title, titleFr: q.titleFr, answer: {}, type: q.type };
+
         if (q.queType == "RB") {
           if (q.maxLevel == '1') {
             if (q.selected[0]?.otherDesc) {
@@ -319,7 +338,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
             q.selected.forEach((s: any) => {
               const row = q.row.find((r: any) => r.value == s.rowValue)
               const col = q.column.find((c: any) => c.value == s.colValue)
-              obj['answer'].push({ text: row.text,frText:row.frText, answer: col.text, frAnswer: col.frText })
+              obj['answer'].push({ text: row.text, frText: row.frText, answer: col.text, frAnswer: col.frText })
             })
           }
         }
@@ -331,7 +350,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
             obj['answer'] = []
             q.selected.forEach((s: any) => {
               const row = q.row.find((r: any) => r.value == s.rowValue)
-              obj['answer'].push({ text: row.text, frText:row.frText, answer: s.answer == 'Y' ? 'Yes' : 'No' })
+              obj['answer'].push({ text: row.text, frText: row.frText, answer: s.answer == 'Y' ? 'Yes' : 'No' })
             })
           }
           if (q.maxLevel == '2') {
@@ -354,56 +373,80 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
         }
       }
       if (q.type == "matrix-subquestion") {
-        const obj: any = { hhQueNo: q.hhQueNo, queNo: q.queNo, title: q.title,
-           titleFr: q.titleFr, answer: {}, type:q.type, subSurveyQueAnsDTO: [] };
-           
-           q.subSurveyQueAnsDTO.forEach((element:any) => {
-            const answer = element.selected[0].answer == 'N' ? 'No' : 'Yes';
-            const arr: { title: any; answer: any; }[] = [];
-            if(answer == 'Yes' &&  element.subSurveyQueAnsDTO.length) {
-              element.subSurveyQueAnsDTO.forEach((e:any) => {
-                if(e.selected.length) {
-                  const temp = e.queType == "TEXT" ? e.selected[0].otherDesc :
-                   e.row.find((r: any) => r.value == e.selected[0].rowValue).text;
-                  arr.push({title : e.title, answer : temp})
-                }
-              });
-            }
-            const obj1: any = {hhQueNo: element.hhQueNo, queNo: element.queNo, title: element.title,
-              titleFr: element.titleFr, answer: answer, subSurveyQueAnsDTO: element.subSurveyQueAnsDTO}
-              obj1.subSurveyQueAnsDTO['subQuestions'] =arr;
-             obj.subSurveyQueAnsDTO.push(obj1)
-           });
-           this.finalQuestionLIst.push(obj);
-           console.log(this.finalQuestionLIst);
+        const obj: any = {
+          hhQueNo: q.hhQueNo, queNo: q.queNo, title: q.title,
+          titleFr: q.titleFr, answer: {}, type: q.type, subSurveyQueAnsDTO: []
+        };
+
+        q.subSurveyQueAnsDTO.forEach((element: any) => {
+          const answer = element.selected[0].answer == 'N' ? 'No' : 'Yes';
+          const arr: { title: any; answer: any; }[] = [];
+          if (answer == 'Yes' && element.subSurveyQueAnsDTO.length) {
+            element.subSurveyQueAnsDTO.forEach((e: any) => {
+              if (e.selected.length) {
+                const temp = e.queType == "TEXT" ? e.selected[0].otherDesc :
+                  e.row.find((r: any) => r.value == e.selected[0].rowValue).text;
+                arr.push({ title: e.title, answer: temp })
+              }
+            });
+          }
+          const obj1: any = {
+            hhQueNo: element.hhQueNo, queNo: element.queNo, title: element.title,
+            titleFr: element.titleFr, answer: answer, subSurveyQueAnsDTO: element.subSurveyQueAnsDTO
+          }
+          obj1.subSurveyQueAnsDTO['subQuestions'] = arr;
+          obj.subSurveyQueAnsDTO.push(obj1)
+        });
+        this.finalQuestionLIst.push(obj);
+        console.log(this.finalQuestionLIst);
       }
     })
   }
 
   exitEvent(isBackAction: boolean) {
-    if(isBackAction) {
-    const message = 'deviceInformation.success';
-    if (this.houseHold) {
-      this.router.navigate(['demographics/Thankyou'], { state: { message: message, inputRoute: "demographics-owner" } });
+    if (isBackAction) {
+      const message = 'deviceInformation.success';
+      if (this.houseHold) {
+        this.router.navigate(['demographics/Thankyou'], { state: { message: message, inputRoute: "demographics-owner" } });
+      }
+      else {
+        this.router.navigate(['demographics/Thankyou'], { state: { message: message, inputRoute: "demographics-individual" } });
+      }
     }
     else {
-      this.router.navigate(['demographics/Thankyou'], { state: { message: message, inputRoute: "demographics-individual" } });
+      if (this.panelListType == "VAM" && this.houseHold) {
+        this.reviewSurvey = true;
+        this.review(this.reviewSurvey);
+        // this.questionaireService.customRead(QuestionConstants.vam_houseHoldQuestions + '/' + this.memberNo).subscribe(list => {
+        //   this.questionList = list;
+        //   this.transForm();
+        // })
+      } else if(this.panelListType == "VAM" && this.houseHold == undefined) {
+        if(this.config.currentPage < this.newPage) {
+          this.redirect();
+        } else{
+          this.questionaireService.customRead(QuestionConstants.vam_questionaire + '/' + this.memberNo).subscribe(list => {
+                this.questionList = list;
+                this.transForm();
+              })
+        }
+      } else{
+        this.redirect();
+      }
+
     }
-  }
-  else {
-    this.redirect();
-  }
   }
 
   goToLastPage() {
     this.isReview = false;
     this.markCompleteEvent.emit({ isBack: true });
+    window.location.reload();
   }
   saveContiune() {
     this.isVamOpenModal = false;
     this.openModal();
     this.localmodalConfig = {
       isBackAction: true
-      }
+    }
   }
 }

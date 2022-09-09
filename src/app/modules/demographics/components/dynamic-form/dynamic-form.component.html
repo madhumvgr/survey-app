@@ -102,7 +102,7 @@
             </div>
         </div>
         <div *ngIf="!finalQuestionLIst.length">
-            <p><b>No answers have been selected. If this is correct, click “SUBMIT”. If you want to change an answer, click “BACK”.</b></p>
+            <p><b>{{'demographics.review-error' | translate}}</b></p>
         </div>
     </div>
 
@@ -151,7 +151,7 @@
             <button (click)="p.next()" *ngIf="!p.isLastPage()" type="button"
                 class="btn btn-primary ms-md-3">{{"deviceInformation.continueButton" | translate }}</button>
 
-            <button *ngIf="p.isLastPage() && !isReview && !lastSubmit" type="submit" (click)="review()"
+            <button *ngIf="p.isLastPage() && !isReview && !lastSubmit" type="submit" (click)="review(false)"
                 class="btn btn-primary ms-md-3">{{"demographics.reviewButton" | translate}}</button>
 
             <button *ngIf="isReview" type="submit" (click)="submit()" class="btn btn-primary ms-md-3">{{"deviceUsage.submit" | translate }}</button>

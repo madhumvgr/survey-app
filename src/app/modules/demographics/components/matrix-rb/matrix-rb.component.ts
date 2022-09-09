@@ -51,7 +51,7 @@ export class MatrixRbComponent implements OnChanges {
             this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
           } else { 
             if (prevValue && prevValue.colValue) {
-              if(this.question?.mandatory && this.groupedCols[row.value]) {
+              if(this.question?.mandatory) {
                 this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue, Validators.required));
               } else {
               this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.colValue))
@@ -64,7 +64,7 @@ export class MatrixRbComponent implements OnChanges {
        }  else {
 
        }
-       
+       this.groupedCols = this.groupBy(this.question.column);
      
       // if (groupedCols) {
       //   this.cols = groupedCols[Object.keys(groupedCols)[0]];

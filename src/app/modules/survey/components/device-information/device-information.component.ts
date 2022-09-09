@@ -94,6 +94,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit 
     }else{
       this.error = false;
       this.localStorageService.setDeviceName(this.deviceName);
+      this.deviceState = 'Inprogress'
       this.router.navigateByUrl('survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
     }
   }
@@ -139,7 +140,10 @@ exitEvent(isBackAction:boolean) {
       deviceId: this.deviceId
     })
     this.deviceService.create(this.deviceInfoForm.value).subscribe(res => {
-    this.localStorageService.setDeviceName(this.nickName);
+      if(this.nickName) {
+        this.deviceName = this.nickName;
+        this.localStorageService.setDeviceName(this.nickName);
+      }
     })
   }
   resubmitForm() {

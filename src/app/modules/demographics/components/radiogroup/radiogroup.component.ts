@@ -63,9 +63,11 @@ export class RadiogroupComponent implements OnChanges {
          this.ShowInput = otherRow && otherRow.flag ? true: false;
         } else {
           const lastRow = this.question.row.filter((x: any) => x.value == prevValue.rowValue)
-          if(lastRow[0].text == "Other") {
-
-            this.ShowInput = true;
+          if(lastRow &&  lastRow[0] && lastRow[0].text ) {
+            if(lastRow[0].text == "Other"){
+              this.ShowInput = true;
+              this.childFormGroup.addControl('otherDescription', new FormControl(prevValue?prevValue?.otherDesc:'', Validators.required));
+            }
           } else {
             this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
           }
@@ -83,7 +85,7 @@ export class RadiogroupComponent implements OnChanges {
         this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
          
       }
-      this.childFormGroup.addControl('otherDescription', new FormControl(prevValue?prevValue?.otherDesc:''));
+      
       this.parentForm.addControl(''+questionNo,this.childFormGroup);
       this.onlyOnce = true;
     }

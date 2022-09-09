@@ -43,7 +43,7 @@ export class RadiogroupComponent implements OnChanges {
       });
       //set selected value into childForm
       let selected = this.question.selected;
-      let prevValue ={rowValue:'',otherDesc:''}
+      let prevValue ={rowValue:0,otherDesc:''}
       if(selected && selected.length){
         console.log(this.question);
          prevValue= selected[selected.length -1];
@@ -57,9 +57,9 @@ export class RadiogroupComponent implements OnChanges {
       const otherRow =  this.question.row[this.question.row.length-1];
       if (this.question?.mandatory) {
         this.childFormGroup.addControl('' +questionNo , new FormControl(prevValue?prevValue?.rowValue:'', Validators.required));
-        if(prevValue.otherDesc) {
+        if(prevValue.otherDesc || prevValue.rowValue == 32) {
          
-         this.childFormGroup.addControl('' +questionNo , new FormControl(otherRow?otherRow.value:'', Validators.required));
+         this.childFormGroup.addControl('otherDescription' , new FormControl(prevValue.otherDesc?prevValue.otherDesc:'', Validators.required));
          this.ShowInput = otherRow && otherRow.flag ? true: false;
         } else {
           const lastRow = this.question.row.filter((x: any) => x.value == prevValue.rowValue)

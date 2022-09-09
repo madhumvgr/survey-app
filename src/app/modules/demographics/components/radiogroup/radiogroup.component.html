@@ -15,7 +15,8 @@
             <!-- <label for="inputEmail" class="form-label">test</label> -->
             <div>{{'required.select-answer' | translate}}</div>
             <input type="text" class="form-control"  formControlName="otherDescription" (mouseleave)="focusOut($event)">
-            <span class="danger" *ngIf="this.childFormGroup.controls['otherDescription'] && panelListType == 'SSP'">
+            
+            <span class="danger" *ngIf="this.childFormGroup.controls['otherDescription'].errors?.required && panelListType == 'SSP'">
                 {{'demographics.textfield-Label' | translate}}
             </span>
         </ng-container>

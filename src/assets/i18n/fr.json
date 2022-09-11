@@ -196,6 +196,7 @@
         "title": "Appareils “en cours” ",
         "description": "Cette page affiche tous les appareils sous la rubrique en << cours >> et qui sont connectés à votre réseau domestique. Les sondages de cette section contiennent des questions de base à propos de l’utilisation de chaque appareil.",
         "macAddress": "Adresse Mac",
+        "manufacturer": "Nom du Fabricant",
         "deviceDetected": "Appareils en cours détectés"
     },
     "completedDevices": {
@@ -455,6 +456,7 @@
         "devicePlatform": "plateforme de l’appareil",
         "operationSystem": "Système d’exploitation ",
         "address": "Adresse Mac",
+        "manufacturer": "Nom du Fabricant",
         "heading": "Informations concernant l’appareil",
         "description2": "En nommant cet appareil, il vous sera plus facile de l’identifier par après. Votre audimètre central l’identifie comme ",
         "description3": ". Vous pouvez continuer d’utiliser ce nom ou entrer un nouveau nom ci-après. ",

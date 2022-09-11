@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ForgotPassword, User } from 'src/app/shared/models/user.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CustomvalidationService } from 'src/app/shared/services/customvalidation.service';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -17,13 +18,16 @@ export class ForgotPasswordComponent implements OnInit {
   submitted = false;
   showInvalidError = false;
   showError = false;
-  language: any;
+  lang: any;
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder, private localStorageService: LocalStorageService,
     private userService: UserService, private router: Router) { }
   ngOnInit(): void {
+    this.lang = this.localStorageService.getItem(StorageItem.LANG)
     this.forgotForm = this.fb.group({
       email: ['', [Validators.required]],
+      lang: [this.lang, [Validators.required] ]
+
     }
     );
   }
@@ -34,7 +38,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.language = localStorage.lang;
+    this.lang = localStorage.lang;
 
     if (this.forgotForm.valid) {
       console.table(this.forgotForm.value);
@@ -42,9 +46,8 @@ export class ForgotPasswordComponent implements OnInit {
 
       let forgotPassword = {
         mail: this.forgotFormControl.email.value,
-        lang: this.language
+        lang: this.lang
       }
-
 
       this.userService.initiateForgotPassword(forgotPassword).subscribe(response => {
         if (response) {

@@ -190,14 +190,14 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['condQueType'] = question.condQueType;
       obj['condMaxLevel'] = question.condMaxLevel;
       obj['condOtherDescription'] = question.condOtherDescription;
-      let skip = question.skip;
-      if (skip && skip != '') {
-        this.skipQuestions = skip.split(',').map(Number);
-        console.log(this.skipQuestions);
-        window.location.reload();
-      } else {
-        this.skipQuestions = [];
-      }
+      // let skip = question.skip;
+      // if (skip && skip != '') {
+      //   this.skipQuestions = skip.split(',').map(Number);
+      //   console.log(this.skipQuestions);
+      //   window.location.reload();
+      // } else {
+      //   this.skipQuestions = [];
+      // }
     } else {
       obj['questionId'] = question.queId;
       obj['queType'] = question.queType;
@@ -207,14 +207,14 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['memberNo'] = this.memberNo;
       obj['maxLevel'] = question.maxLevel;
       obj['otherDescription'] = question.otherDescription;
-      let skip = question.skip;
-      if (skip && skip != '') {
-        this.skipQuestions = skip.split(',').map(Number);
-        console.log(this.skipQuestions);
-        window.location.reload();
-      } else {
-        this.skipQuestions = [];
-      }
+      // let skip = question.skip;
+      // if (skip && skip != '') {
+      //   this.skipQuestions = skip.split(',').map(Number);
+      //   console.log(this.skipQuestions);
+      //   window.location.reload();
+      // } else {
+      //   this.skipQuestions = [];
+      // }
       // obj['condQuestionId'] = question.condQuestionId;
       // obj['condQuestionLevel1Id'] = question.condQuestionLevel1Id;
       //   obj['condQuestionLevel2Id'] = question.condQuestionLevel2Id;
@@ -228,18 +228,50 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       this.questionaireService.customCreate(obj, QuestionConstants.houseHoldAnswers).subscribe(data => {
         console.log(data);
       });
+      let skip = question.skip;
+      if (skip && skip != '') {
+        this.skipQuestions = skip.split(',').map(Number);
+        console.log(this.skipQuestions);
+        window.location.reload();
+      } else {
+        this.skipQuestions = [];
+      }
     } else if (this.houseHold == undefined && this.panelListType != "VAM") {
       this.questionaireService.customCreate(obj, QuestionConstants.answers).subscribe(data => {
         console.log(data);
       });
+      let skip = question.skip;
+      if (skip && skip != '') {
+        this.skipQuestions = skip.split(',').map(Number);
+        console.log(this.skipQuestions);
+        window.location.reload();
+      } else {
+        this.skipQuestions = [];
+      }
     } else if (this.houseHold == undefined && this.panelListType == "VAM") {
       this.questionaireService.customCreate(obj, QuestionConstants.vam_answers).subscribe(data => {
         console.log(data);
       });
+      let skip = question.skip;
+      if (skip && skip != '') {
+        this.skipQuestions = skip.split(',').map(Number);
+        console.log(this.skipQuestions);
+        window.location.reload();
+      } else {
+        this.skipQuestions = [];
+      }
     } else {
       this.questionaireService.customCreate(obj, QuestionConstants.vam_houseHoldAnswers).subscribe(data => {
         console.log(data);
       });
+      let skip = question.skip;
+      if (skip && skip != '') {
+        this.skipQuestions = skip.split(',').map(Number);
+        console.log(this.skipQuestions);
+        window.location.reload();
+      } else {
+        this.skipQuestions = [];
+      }
     }
   }
 

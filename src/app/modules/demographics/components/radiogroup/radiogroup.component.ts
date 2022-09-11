@@ -43,7 +43,7 @@ export class RadiogroupComponent implements OnChanges {
       });
       //set selected value into childForm
       let selected = this.question.selected;
-      let prevValue ={rowValue:0,otherDesc:''}
+      let prevValue ={rowValue:'',otherDesc:''}
       if(selected && selected.length){
         console.log(this.question);
          prevValue= selected[selected.length -1];
@@ -57,20 +57,24 @@ export class RadiogroupComponent implements OnChanges {
       const otherRow =  this.question.row[this.question.row.length-1];
       if (this.question?.mandatory) {
         this.childFormGroup.addControl('' +questionNo , new FormControl(prevValue?prevValue?.rowValue:'', Validators.required));
-        if(prevValue.otherDesc || prevValue.rowValue == 32) {
-         
-         this.childFormGroup.addControl('otherDescription' , new FormControl(prevValue.otherDesc?prevValue.otherDesc:'', Validators.required));
+        if(prevValue.otherDesc) {
+         const otherRow =  this.question.row[this.question.row.length-1];
+         this.childFormGroup.addControl('otherDescription' , new FormControl(otherRow?otherRow?.value:'', Validators.required));
          this.ShowInput = otherRow && otherRow.flag ? true: false;
         } else {
           const lastRow = this.question.row.filter((x: any) => x.value == prevValue.rowValue)
           if(lastRow &&  lastRow[0] && lastRow[0].text ) {
-            if(lastRow[0].text == "Other"){
+            if(lastRow[0].text == "Other" || lastRow[0].text == "Other Occupation (Please specify)" || lastRow[0].text == "Other Industry (please specify)"){
               this.ShowInput = true;
+           //  this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
               this.childFormGroup.addControl('otherDescription', new FormControl(prevValue?prevValue?.otherDesc:'', Validators.required));
-            }
-          } else {
+            } else {
             this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
           }
+        } else {
+          this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
+
+        }
         }
       } else {
         const lastRow = this.question.row.filter((x: any) => x.value == prevValue.rowValue);
@@ -82,10 +86,9 @@ export class RadiogroupComponent implements OnChanges {
        }
        
        
-        this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
-         
+          this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
       }
-      
+      this.childFormGroup.addControl('otherDescription', new FormControl(prevValue?prevValue?.otherDesc:''));
       this.parentForm.addControl(''+questionNo,this.childFormGroup);
       this.onlyOnce = true;
     }
@@ -99,7 +102,6 @@ export class RadiogroupComponent implements OnChanges {
       questionNo= this.question?.queId;
     }
     return this.childFormGroup.controls[''+questionNo];
-   
   }
 
   changeEvent(value: any,event:any, skip:any, desc?: string) {
@@ -137,10 +139,12 @@ export class RadiogroupComponent implements OnChanges {
    if(desc) {
     this.displayError = false;
       this.changeEvent(value, event, skip, desc);
+   //   this.childFormGroup.addControl('otherDescription', new FormControl(desc?desc:''));
    } else {
     this.displayError = true;
-    this.childFormGroup.addControl('' +this.question.otherDesc , new FormControl(desc?desc:'', Validators.required));
+  //  this.childFormGroup.addControl('otherDescription' , new FormControl(desc?desc:'', Validators.required));
     this.changeEvent(value, event, skip, desc);
     }
   }
 }
+

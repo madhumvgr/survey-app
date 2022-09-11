@@ -198,6 +198,7 @@
         "title": "In Progress Devices",
         "description": "This page shows all media devices that are In Progress and connected to your home network. Surveys in this section will ask you basic questions about the use of each device.",
         "macAddress": "Mac Address",
+        "manufacturer": "Manufacturer Name",
         "deviceDetected": "In Progress devices detected"
     },
     "completedDevices": {
@@ -459,6 +460,7 @@
         "devicePlatform": "Device Platform ",
         "operationSystem": "Operational system ",
         "address": "Mac address",
+        "manufacturer": "Manufacturer Name",
         "heading": "Device Information",
         "description2": "Naming this device makes it easy for you to identify it in the future. Your focal meter says this device is called  ",
         "description3": ". Continue using this name or enter a different one below.",

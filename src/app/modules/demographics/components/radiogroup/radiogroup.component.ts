@@ -21,6 +21,7 @@ export class RadiogroupComponent implements OnChanges {
   @Input() question!: any;
   @Input() houseHold: any;
   panelListType: any;
+  lastRow: any;
   buttonClicked: any = false;
   constructor(private localStorageService: LocalStorageService, public questionaireService: QuestionaireService) {
     this.localStorageService.getLanguageSubject().subscribe(val => {
@@ -59,7 +60,7 @@ export class RadiogroupComponent implements OnChanges {
         this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue ? prevValue?.rowValue : '', Validators.required));
         if (prevValue.otherDesc) {
           const otherRow = this.question.row[this.question.row.length - 1];
-          this.childFormGroup.addControl('otherDescription', new FormControl(otherRow ? otherRow?.value : '', Validators.required));
+          this.childFormGroup.addControl('otherDescription', new FormControl(prevValue ? prevValue?.otherDesc : '', Validators.required));
           this.ShowInput = otherRow && otherRow.flag ? true : false;
         } else {
           const lastRow = this.question.row.filter((x: any) => x.value == prevValue.rowValue)
@@ -79,18 +80,25 @@ export class RadiogroupComponent implements OnChanges {
       } else {
         const lastRow = this.question.row.filter((x: any) => x.value == prevValue.rowValue);
         if (lastRow.length > 0) {
-          if (lastRow[0].text == "Other") {
+          if (lastRow[0].text == "Other" ||  lastRow[0].text == "Other (please specify)") {
 
             this.ShowInput = true;
+            this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue ? prevValue?.rowValue : ''));
+            this.childFormGroup.addControl('otherDescription', new FormControl(prevValue ? prevValue?.otherDesc : ''));
+
+          } else {
+            this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue ? prevValue?.rowValue: ''));
           }
-        }
+        } else{
         this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue ? prevValue?.rowValue : ''));
       }
-      if(this.question?.mandatory){
-        this.childFormGroup.addControl('otherDescription', new FormControl(prevValue ? prevValue?.otherDesc : '', Validators.required));
-      }else{
-        this.childFormGroup.addControl('otherDescription', new FormControl(prevValue ? prevValue?.otherDesc : ''));
-      }
+    }
+ //   this.childFormGroup.addControl('otherDescription', new FormControl(prevValue ? prevValue?.otherDesc : ''));
+      // if(this.question?.mandatory && this.ShowInput){
+      //   this.childFormGroup.addControl('otherDescription', new FormControl(prevValue ? prevValue?.otherDesc : '', Validators.required));
+      // }else{
+      //   this.childFormGroup.addControl('otherDescription', new FormControl(prevValue ? prevValue?.otherDesc : ''));
+      // }
       
       this.parentForm.addControl('' + questionNo, this.childFormGroup);
       this.onlyOnce = true;
@@ -116,6 +124,18 @@ export class RadiogroupComponent implements OnChanges {
     } else {
       questionNo = this.question?.queId;
     }
+     if(this.question?.mandatory && this.ShowInput && this.panelListType == 'SSP'){
+      this.displayError = true;
+      this.childFormGroup.addControl('otherDescription', new FormControl('', Validators.required));
+    }else{
+      this.displayError = false;
+      if(this.panelListType == 'SSP') {
+      this.childFormGroup.removeControl('otherDescription');
+      } else {
+        this.childFormGroup.addControl('' + questionNo, new FormControl(value ? value : ''));
+      }
+    }
+    
     this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
     //console.log( event.target.checked);
     this.question.answer = "Y";
@@ -142,10 +162,10 @@ export class RadiogroupComponent implements OnChanges {
     if (desc) {
       this.displayError = false;
       this.changeEvent(value, event, skip, desc);
-      //   this.childFormGroup.addControl('otherDescription', new FormControl(desc?desc:''));
+  //    this.childFormGroup.addControl('otherDescription', new FormControl(desc?desc:''));
     } else {
       this.displayError = true;
-      //  this.childFormGroup.addControl('otherDescription' , new FormControl(desc?desc:'', Validators.required));
+  //    this.childFormGroup.addControl('otherDescription' , new FormControl(desc?desc:'', Validators.required));
       this.changeEvent(value, event, skip, desc);
     }
   }

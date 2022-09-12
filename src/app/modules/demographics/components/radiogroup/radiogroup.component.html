@@ -20,8 +20,11 @@
                 {{'required.select-answer' | translate}}
             </span>
         </ng-container>
-        <span class="danger" *ngIf="radioFormControl.errors?.required && buttonClicked">
-            {{'required.select-answer' | translate}}
-        </span>
+       
+    </div>
+    <div *ngIf = "panelListType == 'SSP'">
+    <span class="danger" *ngIf="this.childFormGroup.controls['' + this.question?.queId].errors?.required && buttonClicked && panelListType == 'SSP' ">
+        {{'required.select-answer' | translate}}
+    </span>
     </div>
 </div>

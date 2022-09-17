@@ -37,7 +37,7 @@
 
             <div class="form-check mb-3">
                 <input (change)="changeEvent(row?.value,column?.value,'Y')" class="form-check-input"
-                    [formControlName]="question?.queId+''+row?.value+column?.value"
+                    [formControlName]="question?.queNo+''+row?.value+column?.value"
                     [value]="row?.value+column?.value+'Y'" type="radio"
                     id="row-Y{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}{{idx}}">
                 <label class="form-check-label"
@@ -47,7 +47,7 @@
 
             <div class="form-check mb-3">
                 <input (change)="changeEvent(row?.value,column?.value,'N')" class="form-check-input"
-                    [formControlName]="question?.queId+''+row?.value+column?.value"
+                    [formControlName]="question?.queNo+''+row?.value+column?.value"
                     [value]="row?.value+column?.value+'N'" type="radio"
                     id="row-N{{houseHold? question?.hhQueNo : question?.queNo}}{{i}}{{idx}}">
                 <label class="form-check-label"
@@ -55,7 +55,7 @@
                 </label>
             </div>
 <!--  -->
-            <span class="danger" *ngIf="buttonClicked && childFormGroup.get('' +question?.queId + row.value + column?.value)?.errors?.required">
+            <span class="danger" *ngIf="childFormGroup.get('' +question?.queNo + row.value + column?.value)?.errors?.required && buttonClicked">
                 {{'required.select-all-answers' | translate}}
             </span> 
 

@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   host: 'https://dev23.denologix.com/sitapi/'
+ // host: 'https://portaluat.numeris.ca/webapi/'
 };
 
 /*

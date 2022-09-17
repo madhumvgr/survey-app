@@ -58,7 +58,7 @@ export class MatrixSubLevelComponent implements OnChanges {
           if (subQues.selected && subQues.selected.length != 0) {
             if( subQues?.queType != "RB") {
               let value = subQues.selected[0].answer;
-              if(subQues.mandatory){
+              if(subQues.mandatory && !subQues.disabled){
                 this.childFormGroup.addControl('' + subQues?.queId, new FormControl(value, Validators.required));
               }
               else{
@@ -71,13 +71,18 @@ export class MatrixSubLevelComponent implements OnChanges {
             
           }
           else {
-            if(subQues.mandatory){
+            if(subQues.mandatory && !subQues.disabled){
               this.childFormGroup.addControl('' + subQues?.queId, new FormControl('',Validators.required));
             }else{
               this.childFormGroup.addControl('' + subQues?.queId, new FormControl(''));
             }
           }
           if (subQues.subSurveyQueAnsDTO) {
+            let subAnswer : any;
+            subQues?.selected?.forEach((value:any) => {
+              subAnswer = value.answer
+            })
+            console.log(subAnswer);
             let sub2LevQues = subQues.subSurveyQueAnsDTO;
             sub2LevQues.forEach(sub2Lev => {
               
@@ -88,20 +93,20 @@ export class MatrixSubLevelComponent implements OnChanges {
                 } else {
                   sub2LevAns = sub2Lev.selected[0].rowValue;
                 }
-                if(subQues.mandatory){
-                  this.childFormGroup.addControl('' + subQues?.queId, new FormControl('',));
+                if(subQues.mandatory && !subQues.disabled){
+                  this.childFormGroup.addControl('' + subQues?.queId, new FormControl(''));
                 }else{
                   this.childFormGroup.addControl('' + subQues?.queId, new FormControl(''));
                 }
 
-                if(sub2Lev.mandatory){
+                if(sub2Lev.mandatory && !subQues.disabled){
                   this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(sub2LevAns,Validators.required))
                 }else{
-                  this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(sub2LevAns))
+                  this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(sub2LevAns? sub2LevAns : ''))
                 }
                 
               } else {
-                if(sub2Lev.mandatory){
+                if( subQues.mandatory && sub2Lev.mandatory && !subQues.disabled && subAnswer != 'N'){
                   this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl('',Validators.required))
                 }else{
                   this.childFormGroup.addControl('' + subQues?.queId + '' + sub2Lev.queId, new FormControl(''))
@@ -173,6 +178,26 @@ export class MatrixSubLevelComponent implements OnChanges {
         this.question.answer = value;
         this.question.questionLevel1Id = null;
         this.question.skip= skip;
+       // this.childFormGroup.removeControl('otherDescription');
+      const subLevel = this.question.subSurveyQueAnsDTO?.find((r: any) => r.queId == subQuesId);
+      if(subLevel?.subSurveyQueAnsDTO && value == 'N') {
+        subLevel?.subSurveyQueAnsDTO.forEach((que: any)=> {
+          if(que.mandatory) {
+            this.childFormGroup.removeControl('' + subLevel?.queId + '' + que.queId);
+            this.parentForm.addControl('' + this.question?.queId, this.childFormGroup);
+      }
+        } )
+      } else if(subLevel?.subSurveyQueAnsDTO && value == 'Y'){
+        subLevel?.subSurveyQueAnsDTO.forEach((que: any)=> {
+          if(que.mandatory) {
+            this.childFormGroup.addControl('' + subLevel?.queId + '' + que.queId, new FormControl('',Validators.required));
+        //    this.childFormGroup.removeControl('' + subLevel?.queId + '' + que.queId);
+            this.parentForm.addControl('' + this.question?.queId, this.childFormGroup);
+          }
+      });
+
+      }
+      //  this.childFormGroup.removeControl('' + subQues?.queId + '' + sub2Lev.queId)
       } else {
         this.question.answer = "Y";
         this.question.questionLevel1Id = value;

@@ -88,6 +88,11 @@ export class LoginComponent extends BaseComponent implements OnInit {
     return this.loginForm.controls;
   }
 
+forgotPassword() {
+
+  this.router.navigate(['/login/forgot-password']);
+}
+
   onSubmit() {
     this.showError = false;
     this.submitted = true;

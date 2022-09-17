@@ -63,6 +63,9 @@
                             (focusOut)="changeEvent($event,true,false,false, subQ?.mainQueId, subQ?.queId, 'YES-NO-CY')"
                             (change)="changeEvent($event,true,false,false, subQ?.mainQueId, subQ?.queId)"
                             [formControlName]="subQuestion?.queId+''+subQ?.queId|| ''">
+                            <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId+''+subQ?.queId)?.errors?.required && buttonClicked">
+                                {{'required.select-answer' | translate}}
+                            </span>   
                     </div>
                     <div *ngIf="subQ.queType =='RB'" class="mb-2">
                         <h4>{{ isFrance? subQ?.titleFr: subQ?.title}}</h4>
@@ -75,7 +78,13 @@
                             <label class="form-check-label" for = "{{subQuestion?.queId}}{{subQ?.queId}}{{i}}">{{isFrance?
                                 row?.frText: row?.text}} {{isFrance?
                                     row?.frDescription: row?.description}}</label>
-                        </div>
+                                    
+                    </div>
+                    <div>
+                        <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId+''+subQ?.queId)?.errors?.required && buttonClicked">
+                            {{'required.select-answer' | translate}}
+                        </span> 
+            </div>
                     </div>
                     <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required && buttonClicked">
                         {{'required.select-answer' | translate}}

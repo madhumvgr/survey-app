@@ -338,12 +338,11 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
           this.localmodalConfig = {
             isBackAction: false
           }
-        // } else {
-        //   this.questionaireService.customRead(QuestionConstants.vam_questionaire + '/' + this.memberNo).subscribe(list => {
-        //     this.questionList = list;
-        //     this.transForm();
-        //   })
-        // }
+        } else {
+          this.questionaireService.customRead(QuestionConstants.vam_questionaire + '/' + this.memberNo).subscribe(list => {
+            this.questionList = list;
+            this.transForm();
+          })
         }
     }
     }

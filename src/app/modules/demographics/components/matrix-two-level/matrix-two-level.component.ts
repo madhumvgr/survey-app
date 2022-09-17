@@ -56,22 +56,22 @@ export class MatrixTwoLevelComponent implements OnChanges {
                temp = prevValue?.colValue+prevValue?.rowValue+prevValue?.answer;
               }
               if (prevValue && prevValue.colValue) {
-                this.childFormGroup.addControl('' + this.question?.queId +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer, Validators.required));
+                this.childFormGroup.addControl('' + this.question?.queNo +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer, Validators.required));
               }else {
-                this.childFormGroup.addControl('' + this.question?.queId + row.value+col.value, new FormControl('', Validators.required))
+                this.childFormGroup.addControl('' + this.question?.queNo + row.value+col.value, new FormControl('', Validators.required))
               }
             } else {
               if (prevValue && prevValue.colValue) {
-                this.childFormGroup.addControl('' + this.question?.queId +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer));
+                this.childFormGroup.addControl('' + this.question?.queNo +row.value+ col.value, new FormControl(prevValue?.colValue+prevValue?.rowValue+prevValue?.answer));
               }else {
-                this.childFormGroup.addControl('' + this.question?.queId + row.value+col.value, new FormControl(''))
+                this.childFormGroup.addControl('' + this.question?.queNo + row.value+col.value, new FormControl(''))
               }
             }
           });
         });
       }
       
-      this.parentForm.addControl('' + this.question?.queId, this.childFormGroup);
+      this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
       this.onlyOnce = true;
     }
   }
@@ -98,7 +98,8 @@ export class MatrixTwoLevelComponent implements OnChanges {
   }
 
   changeEvent(value: any, colSeq: any,answer:any) {
-    this.parentForm.get('' + this.question?.queId)?.get('' + this.question.queId)?.setValue(value+answer);
+  this.childFormGroup.get('' + this.question?.queId +value+ colSeq)?.setValue(answer);
+ // this.parentForm.get('' + this.question?.queNo)?.get('' +this.question?.queNo+value+colSeq)?.setValue(answer);
     this.question.answer = answer;
     this.question.questionLevel1Id = value;
     this.question.questionLevel2Id = colSeq;

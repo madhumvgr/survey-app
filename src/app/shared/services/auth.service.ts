@@ -66,6 +66,7 @@ export class AuthService {
   doLogout() {
     let removeToken = this.localStorageService.removeAllItem();
     if (removeToken == null) {
+      this.localStorageService.setLanguageItem("en");
       this.router.navigate(['/login/login']);
     }
   }

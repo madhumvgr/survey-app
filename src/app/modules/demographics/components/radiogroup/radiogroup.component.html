@@ -15,16 +15,15 @@
             <!-- <label for="inputEmail" class="form-label">test</label> -->
             <div>{{'demographics.textfield-Label' | translate}}</div>
             <input type="text" class="form-control focusedInput"  formControlName="otherDescription" (mouseleave)="focusOut($event)">
-            
+            <div *ngIf ="panelListType == 'SSP'">
             <span class="danger" *ngIf="this.childFormGroup.controls['otherDescription'].errors?.required && panelListType == 'SSP' && buttonClicked">
                 {{'required.select-answer' | translate}}
             </span>
+            </div>
         </ng-container>
+        <span class="danger" *ngIf="radioFormControl.errors?.required && buttonClicked">
+            {{'required.select-all-answers' | translate}}
+        </span>
        
-    </div>
-    <div *ngIf = "panelListType == 'SSP'">
-    <span class="danger" *ngIf="this.childFormGroup.controls['' + this.question?.queId].errors?.required && buttonClicked && panelListType == 'SSP' ">
-        {{'required.select-answer' | translate}}
-    </span>
     </div>
 </div>

@@ -85,7 +85,7 @@ export class TextComponent implements OnChanges {
     }else{
       questionNo= this.question?.queId;
     }
-    this.parentForm.get(''+questionNo)?.get(''+questionNo)?.setValue(value);
+    this.parentForm.get(''+questionNo)?.setValue(value);
     //console.log( event.target.checked);
     this.question.answer ="Y";
     this.question.otherDescription = value;

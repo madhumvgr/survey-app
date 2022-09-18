@@ -171,7 +171,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     }else if(this.notUsed) {
       const message = 'deviceInformation.success';
       const message1 = 'notInUse.not_in_use_msg';
-      this.localStorageService.setSubmitDevice(this.deviceName);
+     // this.localStorageService.setSubmitDevice(this.deviceName);
       this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message1, inputRoute:"deviceList" } });
      }else if(this.singleMemeber) {
        this.router.navigateByUrl('survey/deviceUsage/' + this.deviceState + '/' + this.deviceId);
@@ -188,7 +188,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       res => {console.log(res);
    //   const message = "'deviceInformation.success' + this.deviceName+'.'";
       console.log(message);
-      this.localStorageService.setSubmitDevice(this.deviceName);
+      //this.localStorageService.setSubmitDevice(this.deviceName);
         this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"submit_device"} });
 
       });

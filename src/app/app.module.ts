@@ -75,7 +75,7 @@ import { PendingChangesGuard } from './shared/services/pending-changes.guard';
     PendingChangesGuard,
     {provide: LocationStrategy,
       useClass: HashLocationStrategy},
-    CookieService
+  //  CookieService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]

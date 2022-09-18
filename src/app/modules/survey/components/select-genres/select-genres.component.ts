@@ -420,7 +420,7 @@ verifyNextpage() {
 }
 
   resubmitForm(routeUrl: any, stateObject: any) {
-   // this.ignoreCanDeactivate = true;
+    this.ignoreCanDeactivate = true;
     let controls = this.genreFormArray.controls;
     // if(arrayForm instanceof FormArray){
     let count = 0;

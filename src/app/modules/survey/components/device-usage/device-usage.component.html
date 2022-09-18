@@ -70,11 +70,11 @@
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
                     <button type="submit" class="btn btn-dark" (click) = "backButton()">{{'deviceUsage.backButton' | translate}}</button>
-                    <button type="button" class="btn btn-secondary ms-md-3" (click)="openModal()" >{{'deviceUsage.SaveButton' | translate}}</button>
+                    <button type="button" class="btn btn-secondary ms-md-3" (click)="openModal()" *ngIf ="!isCompleted">{{'deviceUsage.SaveButton' | translate}}</button>
                     <ng-container >
                         <button type="button" (click)="submit()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit && isCompleted">{{'deviceUsage.submit' | translate}}</button>
                     </ng-container>
-                    <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit && isCompleted">Re-Submit</button>
+                    <!-- <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit && isCompleted">Re-Submit</button> -->
 
                 </div>
 

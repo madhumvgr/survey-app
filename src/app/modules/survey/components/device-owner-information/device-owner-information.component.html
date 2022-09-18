@@ -55,15 +55,16 @@
 
                     <!-- Action buttons -->
                     <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "!sspUserFlow">
-                        <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceInformation/' + deviceState + '/' + deviceId]">{{'deviceOwner.backButton' | translate}}</button>
-                        <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()" >{{'deviceOwner.SaveButton' | translate}}</button>
+                        <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceInformation/' + deviceState + '/' + deviceId]" *ngIf ="!resubmit">{{'deviceOwner.backButton' | translate}}</button>
+                        <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()" *ngIf ="!resubmit">{{'deviceOwner.SaveButton' | translate}}</button>
                         <button type="button" (click)="nextPage()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{'deviceOwner.continueButton'| translate}}</button>
-                            <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
+                        <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/completed-devices/Completed/' +deviceId]" *ngIf ="resubmit">{{'deviceInformation.cancelButton' | translate}}</button>
+                        <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">Re-Submit</button>
                     </div>
                     <div class="col-xs-6 d-grid gap-2 d-md-block" *ngIf = "sspUserFlow">
                         <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceInformation/' + deviceState + '/' + deviceId]">{{'deviceOwner.backButton' | translate}}</button>
                         <button type="submit" class="btn btn-secondary ms-md-3" (click)="openModal()" >{{'deviceOwner.SaveButton' | translate}}</button>
-                            <button type="submit" (click)="surveySubmit()" class="btn btn-primary ms-md-3">{{'deviceUsage.submit' | translate}}</button>
+                        <button type="submit" (click)="surveySubmit()" class="btn btn-primary ms-md-3">{{'deviceUsage.submit' | translate}}</button>
                     </div>
                 </form>
             </div>

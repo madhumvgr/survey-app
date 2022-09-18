@@ -7,6 +7,12 @@ export class UrlConstants {
     public static registerUser = "api/register";
     public static registerKeyForOtp = "api/portal-user-otps"
     public static getExistingHomes = "api/prod-homes"
+    public static homeId = "api/admin-search-home/"
+    public static adminControl = "api/admin-take-control/"
+    public static resetOwner = "api/admin-reset-household-data/"
+    public static resetInd = "api/admin-reset-individual-data/"
+    public static audit = "api/admin-audit-data/"
+    public static uploadFile = "api/admin-reset-user-data"
 }
 
 export class DeviceConstants {
@@ -17,6 +23,7 @@ export class DeviceConstants {
     public static memberListByDeviceId ="api/memberListByDeviceId/"; 
     public static memberDeviceUsagePostUrl= "api/memberDeviceUsage";
     public static memberDeviceUsageGetUrl= "api/memberListByDeviceId/"
+    public static resetDeviceByDeviceId ="api/reset-device-survey/"; 
     
  
     public static deviceInfo="api/deviceInfo/";

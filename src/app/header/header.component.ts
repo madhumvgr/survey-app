@@ -27,6 +27,8 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   showOnlyMenu="none";
   fullName: any;
   currentWindowWidth: any;
+  homeN0: any;
+  showAdminMSg: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   constructor(public authService:AuthService,private translate: TranslateService,
@@ -64,6 +66,9 @@ export class HeaderComponent extends BaseComponent implements OnInit {
         })
       }));
     }
+    this.authService.quersionSubjectRecevier$$.subscribe((res: boolean) => {
+      this.showAdminMSg = this.localStorageService.getItem(StorageItem.TAKECONTROL) == 'true' ? true: false;
+    })
   }
 
   @HostListener('window:resize')
@@ -96,8 +101,16 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     this.showOnlyMenu = isOpen? "block":"none";
   }
 
-  exitEvent(isBackAction:boolean) {
-    this.authService.doLogout();
-   }
+  exitEvent(isBackAction: boolean) {
+    if (!this.showAdminMSg) {
+      this.authService.doLogout();
+    } else {
+      this.router.navigate(['/admin/' + '9990470']);
+      this.authService.SetQuestionValid(false)
+      this.localStorageService.setTakeControl(false);
+      this.authService.SetQuestionValid(false)
+    }
+
+  }
 
 }

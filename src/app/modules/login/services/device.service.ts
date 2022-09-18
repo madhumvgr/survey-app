@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -15,7 +15,7 @@ export class DeviceService extends ResourceService<User> {
     [x: string]: any;
     existingHomes: any;
     genreIds: Array<Number> =[];
-
+    headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
     constructor( public httpClient: HttpClient) {
       super(
         httpClient,
@@ -56,6 +56,10 @@ export class DeviceService extends ResourceService<User> {
 
     public updateDeviceMember(item:any){
       return this.customCreate(item,DeviceConstants.deviceOwnerByDeviceId);
+    }
+
+    public resetDevice(deviceId:any){
+      return this.customCreate("",DeviceConstants.resetDeviceByDeviceId+deviceId);
     }
 
     public updateDeviceMemberWithPercentage(item:any[]){
@@ -109,6 +113,38 @@ export class DeviceService extends ResourceService<User> {
       .get(`${environment.host}${UrlConstants.getExistingHomes}`)
       .pipe(map(data => data));
 
+    } public adminControl(homeNo:string){
+      return this.customCreate({},UrlConstants.adminControl+homeNo);
     }
 
+    public resetOwner(homeNo:string){
+      return this.customCreate({},UrlConstants.resetOwner+homeNo);
+    }
+
+    public resetInd(homeNo:string, memberNo:any){
+      return this.customCreate({},UrlConstants.resetInd + homeNo + '/' + memberNo);
+    }
+
+    public getAuditData(homeNo: String){
+      return this.getCustomRequest(UrlConstants.audit + homeNo);
+
+    }
+
+    public uploadFile(){
+      return this.customCreate({},UrlConstants.uploadFile);
+    }
+
+    postFile(formData: FormData): Observable<boolean> {
+      const endpoint = 'https://dev23.denologix.com/sitapi/api/admin-reset-user-data';
+      // const formData: FormData = new FormData();
+      // formData.append('file', fileToUpload, fileToUpload.name );
+      const options = {} as any;
+      return this.httpClient
+        .post(endpoint,formData, {
+          headers: {
+            'Content-Type': 'file'
+          },
+        })
+       .pipe(map(() => { return true; }))
+  }
   }

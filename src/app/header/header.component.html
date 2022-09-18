@@ -1,3 +1,18 @@
+<!--BANNER Entire Portal Control INSERT ABOVE MAIN MeNU!!!!-->
+<section class="px-3" *ngIf="showAdminMSg">
+  <div class="container">
+      <form class="mb-4">
+          <div class="row align-items-center shadow-sm rounded admin-color p-2 m-0">
+              <label for="take-control" class="form-label col-md-8 col-sm-12 mt-2">Currently in control of the Household 0013: 
+              <b>{{this.fullName}}</b></label>
+              <div class="col-md-4 col-sm-12 mt-2 mb-3">
+                  <button type="button" class="btn btn-secondary admin-button-color" (click)="openModal()">Exit Household</button>
+              </div>
+          </div>
+      </form>
+  </div>
+</section>
+
 <nav class="navbar bg-white px-3">
   <div class="container d-flex">
     <a [routerLink]="['/welcome']" class="navbar-brand flex-grow-1" *ngIf="isMenu">
@@ -8,7 +23,7 @@
     </a>
     <ng-container *ngIf="!isFrance else english">
       <a *ngIf="currentWindowWidth < 992" (click)="changeLanguage('fr')"  href='javascript:void(0);'>FR</a>
-      <a *ngIf="currentWindowWidth >= 992" (click)="changeLanguage('fr')"  href='javascript:void(0);'>Français</a>
+      <a *ngIf="currentWindowWidth >= 992" (click)="changeLanguage('fr')"  href='javascript:void(0);'>français</a>
     </ng-container>
     <ng-template #english>
       <a *ngIf="currentWindowWidth < 992" (click)="changeLanguage('en')"  href='javascript:void(0);'>EN</a>
@@ -50,7 +65,8 @@
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem [routerLink]="['/account-settings/account-settings']">{{'accountSettings.title' | translate}}
+            <button ngbDropdownItem [routerLink]="['/account-settings/account-settings']">{{'accountSettings.title' |
+              translate}}
               &nbsp; &nbsp; &nbsp;
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
@@ -64,10 +80,12 @@
               <mat-icon aria-hidden="false">chevron_right</mat-icon>
             </button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem (click)="openModal()">{{"menu.logout" | translate}}
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              <mat-icon aria-hidden="false">chevron_right</mat-icon>
-            </button>
+            
+              <button  *ngIf="!showAdminMSg" ngbDropdownItem (click)="openModal()">{{"menu.logout" | translate}}
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <mat-icon aria-hidden="false">chevron_right</mat-icon>
+              </button>
+            
           </div>
         </div>
       </div>
@@ -97,6 +115,15 @@
   <!--end Container-->
 </section>
 <!--end Section-->
-<modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)" [logOut] = true>
-  <!--  body of the modal  -->
-</modal>
+<div *ngIf="!showAdminMSg">
+  <modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)"
+    [logOut]=true>
+
+  </modal>
+</div>
+<div *ngIf="showAdminMSg">
+  <modal #modal [modalConfig]="modalConfig" (cancelEvent)="cancelEvent($event)" (exitEvent)="exitEvent($event)"
+    [exitHousehold]=true>
+
+  </modal>
+</div>

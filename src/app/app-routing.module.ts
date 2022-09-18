@@ -8,6 +8,7 @@ import { AuthGuard } from './shared/services/auth.guard';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MatIconModule } from '@angular/material/icon'
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 const routes: Routes = [
   { 
@@ -39,6 +40,9 @@ const routes: Routes = [
   },
   { path: 'maintenance', 
     component: MaintenanceComponent 
+  },
+  { path: 'admin/:homeNo', 
+    component: AdminComponent 
   },
   { path: '**', 
     component: PageNotfoundComponent 

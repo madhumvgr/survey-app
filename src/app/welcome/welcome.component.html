@@ -1,9 +1,7 @@
  <!--Notification Bar-->
  <app-header></app-header>
 <!--<ng-container *ngIf="isRegister else button">
-
     Notifications count : <a href="/notification">10 </a>
-
 </ng-container> 
 <ng-template #button>
 <input type="button" value="Register for notification" (click)="registerForNotifi()"/>
@@ -23,10 +21,10 @@
 
 <!-- Quick Start Cards Section-->
 
-<section class="px-3 pb-4">
-<div class="container">
-    <div class="row g-6">
-        <h2>{{ 'welcomePage.quickStart' | translate }}<span class="h2-separator"></span></h2>
+<section class="px-3 pb-4" *ngIf="isAdmin == null">
+    <div class="container">
+        <div class="row g-6">
+            <h2>{{ 'welcomePage.quickStart' | translate }}<span class="h2-separator"></span></h2>
 
         <!-- Card -->
         <div class="card welcome-card col-sm-6 bg-transparent border-0">
@@ -61,13 +59,77 @@
                     <div class="card-body">
                     <h5 class="card-title">{{'welcomePage.techSupportLabel' | translate}}</h5>
                     <p class="card-text">{{'welcomePage.techSupportText' | translate}}</p>
-                        <a class="btn btn-light" [routerLink]="['/support/techsupport']" >{{'welcomePage.techSupportButton' | translate}}</a>
+                            <a class="btn btn-light"
+                                [routerLink]="['/support/techsupport']">{{'welcomePage.techSupportButton' |
+                                translate}}</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div><!--end Row-->
-</div><!--end Container-->
-</section><!--end Section-->
+        </div>
+    </div>
+</section>
+
+<!-- Admin welocme view -->
+<section class="px-3 pb-4" *ngIf="isAdmin == 'Y'">
+    <div class="container">
+
+        <div class="row">
+            <h2 class="mb-3">Quick start<span class="h2-separator"></span></h2>
+            <p class="mb-4">Provide short description for this section... lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+
+            <!--Search Houshold-->
+            <h3>Search Household</h3>
+            <form class="mb-4" [formGroup]="form">
+                <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
+                    <label for="search-household" class="form-label mt-2">Enter Household ID Number </label>
+                    <div class="col-md-10 col-sm-12 mt-2 mb-3">
+                        <input type="input-field" class="form-control" id="homeID" formControlName="homeID">
+                    </div>  
+                    <div class="col-md-2 mt-2 mb-3">
+                        <button type="button" class="btn btn-primary"  (click)="onSearch()">Search</button>
+                    </div>
+                </div>
+            </form>
+
+
+            <!--Reset Household by file upload-->
+            <h3>Reset By File Upload</h3>
+            <!-- <form>
+                <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
+                    <p class="mt-2">Select file to upload: </p>
+                    <div class="col-12 mb-3">
+                        <button type="button" class="btn btn-light">Select</button>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="h3-separator"></div>
+                    </div>
+                    <p class="mt-2">Click here to upload File : <span class="selected-file-name">Santosh Captured File Name must be reflected between span tags here before the upload button clicked below!</span> </p>
+                    <div class="col-12 mb-3">
+                        <button type="button" class="btn btn-secondary">Upload</button>
+                    </div>
+                </div>
+            </form> -->
+
+            <form>
+                <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
+                    <p class="mt-2">Select file to upload: </p>
+                    <div class="col-12 mb-3">
+                        <input type="file" class="btn btn-light" (change)="handleFileInput($event)">
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="h3-separator"></div>
+                    </div>
+                    <p class="mt-2">Click here to upload File : <span class="selected-file-name">Santosh Captured File Name must be reflected between span tags here before the upload button clicked below!</span> </p>
+                    <div class="col-12 mb-3">
+                        <button type="button" class="btn btn-secondary" (click)="uploadFileToActivity()">Upload</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+
 <app-footer></app-footer>

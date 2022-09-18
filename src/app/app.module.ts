@@ -27,6 +27,8 @@ import { DemographicsModule } from './modules/demographics/demographics.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { CookieService } from 'ngx-cookie-service';
+import { AdminComponent } from './admin/admin/admin.component';
+import { PendingChangesGuard } from './shared/services/pending-changes.guard';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { CookieService } from 'ngx-cookie-service';
     Page403Component,
     PageNotfoundComponent,
     HomeComponent,
-    MaintenanceComponent
+    MaintenanceComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { CookieService } from 'ngx-cookie-service';
       multi: true,
     },
     AuthGuard,
+    PendingChangesGuard,
     {provide: LocationStrategy,
       useClass: HashLocationStrategy},
     CookieService

@@ -1,19 +1,32 @@
 <ng-template #modal>
   <div class="modal-header">
     <h5 class="modal-title" *ngIf="logOut || IsFromLogin">{{"modalWindow.confirmTittle" | translate }}</h5>
-    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && !IsFromVam">{{"modalWindow.modalTitle" | translate }}</h5>
-    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && IsFromVam">{{"modalWindow.confirmTittle" | translate }} </h5>
+    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin &&  !isFromAdmin  && !exitHousehold && !IsFromVam">Save and Exit</h5>
+    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && !isFromAdmin && !exitHousehold && !IsFromVam">{{"modalWindow.modalTitle" | translate }}</h5>
+    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && isFromAdmin">Take control over portal ?</h5>
+    <h5 class="modal-title" *ngIf="exitHousehold">Exit Household ?</h5>
   </div>
 
   <div class="modal-body" *ngIf="logOut && !IsFromLogin">
     {{"modalWindow.confirmationDescription" | translate }}
   </div>
-  <div class="modal-body" *ngIf="!logOut && !IsFromLogin && !IsFromVam">
+  <div class="modal-body" *ngIf="!logOut && !IsFromLogin && !isFromAdmin && !exitHousehold"></div>
+  <div class="modal-body" *ngIf="!logOut && !IsFromLogin && !IsFromVam && !isFromAdmin && !exitHousehold">
     {{"modalWindow.content" | translate }}
   </div>
-  <div class="modal-body" *ngIf="!logOut && IsFromLogin">
+  <div class="modal-body" *ngIf="!logOut && IsFromLogin && !isFromAdmin">
     {{"modalWindow.errorMSg" | translate }}
   </div>
+  <div class="modal-body" *ngIf="!logOut && !IsFromLogin && isFromAdmin">
+    Please ensure that household owner is not currently submitting any progress and not logged in.
+  </div>
+
+  <div class="modal-body" *ngIf="exitHousehold">
+    Are you sure you want exit household?
+  </div>
+  <!-- <div class="modal-body" *ngIf="isFromAdmin">
+    Are you sure you want to exit household: 0013 ?
+  </div> -->
   <div class="modal-body" *ngIf="!logOut && !IsFromLogin && IsFromVam">
     {{"modalWindow.vamModalBody" | translate }}
   </div>
@@ -38,5 +51,6 @@
         {{ "modalWindow.closeButtonLabelLogout" | translate }}
       </button>
     </ng-container>
+
   </div>
 </ng-template>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../models/user.model';
@@ -15,6 +15,8 @@ export class AuthService {
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
+  public quersionSubject = new BehaviorSubject<any>(false);    
+  public quersionSubjectRecevier$$ = this.quersionSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -93,5 +95,10 @@ export class AuthService {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);
+  }
+
+  SetQuestionValid(value:any) {
+    let temp = this.localStorageService.getItem(StorageItem.TAKECONTROL);
+    this.quersionSubject.next(temp)
   }
 }

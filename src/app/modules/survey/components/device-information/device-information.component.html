@@ -119,12 +119,12 @@
                 </div>
                 <!-- Action buttons -->
                 <div class="col-xs-6 d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]">{{"deviceInformation.backButton" | translate }}</button>
-                    <button type="button" (click)="openModal()"  class="btn btn-secondary ms-md-3">{{"deviceInformation.SaveButton" | translate }}</button>
-                    <button type="submit" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{"deviceInformation.continueButton" | translate }}</button>
-                    <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">{{"deviceInformation.resumitButton" | translate }}</button>
-                </div>
-
+            </div>
+            <button type="submit" class="btn btn-dark" [routerLink] = "['/survey/deviceList/'+deviceState]" *ngIf ="!resubmit">{{"deviceInformation.backButton" | translate }}</button>
+            <button type="button" (click)="openModal()"  class="btn btn-secondary ms-md-3" *ngIf ="!resubmit">{{"deviceInformation.SaveButton" | translate }}</button>
+            <button type="submit" (click)="continueNavigate()" class="btn btn-primary ms-md-3" *ngIf ="!resubmit">{{"deviceInformation.continueButton" | translate }}</button>
+            <button type="button"  class="btn btn-dark"  [routerLink] = "['/survey/completed-devices/Completed/' +deviceId]" *ngIf ="resubmit">{{"deviceInformation.cancelButton" | translate }}</button>
+            <button type="button" (click)="resubmitForm()" class="btn btn-primary ms-md-3" *ngIf ="resubmit">{{"deviceInformation.resumitButton" | translate }}</button>
             </div>
             <!--end Col-->
         </div>

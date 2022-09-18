@@ -1,12 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { ModalComponent, ModalConfig } from 'src/app/modules/shared/components/modal/modal.component';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { ConfirmationDialogService } from '../select-genres/confirm-dialog.service';
+import { map } from 'rxjs/operators';
 export interface Owner {
   memberName: string;
   memberNo: string;
@@ -41,13 +44,27 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
   memberName:any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
+  
+  isNotAutoSave$: Observable<any>=new Observable();
+  isNotAutoSave = false;
+  submitCall = false
+  memberChanged: any;
+
   deviceOwnerInfoForm: FormGroup = this.fb.group({});
-  constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute,
+  constructor(private fb: FormBuilder, private Activatedroute: ActivatedRoute, private route: ActivatedRoute,
     private router: Router, private deviceService: DeviceService, private localStorageService:LocalStorageService,
-    private translate: TranslateService) {
+    private translate: TranslateService, private confirmationDialogService: ConfirmationDialogService) {
       super();
       this.deviceName = this.localStorageService.getItem(StorageItem.DEVICENAME);
      }
+
+     canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+      if (this.deviceOwnerInfoForm.dirty && !this.submitCall) {
+        return super.canDeactivate(this.confirmationDialogService, this.isNotAutoSave);
+      } else {
+        return true;
+      }
+    }
 
      ngAfterViewInit(){
       super.afterViewInit(this.modalComponent);
@@ -64,6 +81,15 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     if(this.deviceState =="Inprogress") {
       this.deviceStatus = "In Progress"
     }else {
+      if (this.deviceState == "Completed") {
+        this.isNotAutoSave$ = this.route.queryParamMap.pipe(
+          map((params: ParamMap) => params.get('isNotAutoSave')),
+        );
+        this.isNotAutoSave$.subscribe(param => {
+          this.isNotAutoSave = param;
+          console.log(this.isNotAutoSave);
+        });
+      }
       this.deviceStatus = this.deviceState;
     }
     if(this.deviceState == "Completed") {
@@ -129,11 +155,13 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       "memberName": selectedOwn["memberName"]
     }
 
+    if (!this.isNotAutoSave) {
     this.deviceService.updateDeviceMember(device).subscribe(response => {
       console.log(response);
       this.memeberNo =device.memberNo;
       this.memberName = device.memberName;
     });
+  }
   }
 
   nextPage() {
@@ -176,9 +204,31 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
    }
 
-   resubmitForm() {
-    const message = 'deviceInformation.resubmit';
-    this.router.navigate(['survey/Thankyou'], {state: {message: message}});
-  }
-
+    resubmitForm() {
+      if(this.deviceOwnerInfoForm.dirty) {
+        this.openConfirmDialog();
+      } else {
+        const message = 'deviceInformation.success';
+        this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" } });
+      }
+    }
+    
+      openConfirmDialog(){
+        this.submitCall = true;
+        this.confirmationDialogService.confirm('Are you sure', 'Do you really want to update the device owner.?', 'IAM SURE', 'NO')
+        .then((confirmed) => {
+          if(confirmed){
+            const message = 'deviceInformation.resubmit';
+            this.deviceService.updateDeviceMember(this.memberChanged).subscribe(response => {
+              console.log(response);
+              this.memeberNo = this.memberChanged.memberNo;
+              this.memberName = this.memberChanged.memberName;
+            });
+            this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Completed" } });
+          }
+        })
+        .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+      }
+    
+  
 }

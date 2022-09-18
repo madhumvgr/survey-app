@@ -45,6 +45,8 @@ export class LocalStorageService {
     this.setItem(StorageItem.FULLNAME,userName);
   }
 
+  
+
   private setItem(key:string,value:string){
     localStorage.setItem(key,value);
   }
@@ -65,6 +67,10 @@ export class LocalStorageService {
     localStorage.clear();
   }
 
+  setTakeControl(value:any){
+    this.setItem(StorageItem.TAKECONTROL,value);
+   }
+
 }
 export enum StorageItem{
   LANG ='lang',
@@ -76,5 +82,6 @@ export enum StorageItem{
   FULLNAME='fullName',
   INDIVIDUALNAME='individualName',
   PANELLISTTYPE = 'panellistType',
-  SUBMITDEVICE = 'submitDevice'
+  SUBMITDEVICE = 'submitDevice',
+  TAKECONTROL = 'takeControl',
 }

@@ -478,7 +478,8 @@
         "success": "Your progress has been saved. You can return at any point to continue the survey.",
         "success2": "You have successfully submitted information for ",
         "resubmit": "Thank you for updating your information!",
-        "error": "Please choose one of the options."
+        "error": "Please choose one of the options.",
+        "cancelButton": "Cancel"
         },
     "faqSSPQuestions": {
         "content": "Contents",

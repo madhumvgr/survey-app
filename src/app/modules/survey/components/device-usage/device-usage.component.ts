@@ -69,8 +69,12 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
     });
   }
   continueNavigate(memberNo:any,memberName:any){ 
+    if(this.deviceState == "Completed") {
+      this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { queryParams: { isNotAutoSave: true }, state: { memberName: memberName } });
+    } else {
     this.router.navigate(['survey/selectGeneres/'+this.deviceState+'/'+memberNo+'/'+this.deviceId], { state: { memberName: memberName } });
   }
+}
 
   submit() {
     let message: any;  
@@ -95,8 +99,13 @@ export class DeviceUsageComponent extends BaseComponent implements OnInit {
   backButton() {
     if(this.totalMembers == 1) {
       this.router.navigateByUrl('/survey/deviceOwnerInformation/' + this.deviceState + '/' + this.deviceId);
-    } else  {
-      this.router.navigateByUrl('/survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
+    } else  { 
+      if(this.isCompleted) {
+        this.router.navigateByUrl('/survey/completed-devices/' +this.deviceState+ '/' +this.deviceId);
+      } else {
+        this.router.navigateByUrl('/survey/multiUserList/' + this.deviceState + '/' + this.deviceId);
+       }
+     
     }
   }
 

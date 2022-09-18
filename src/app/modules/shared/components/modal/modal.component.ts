@@ -20,6 +20,11 @@ export class ModalComponent implements OnInit {
   public IsFromLogin: ModalConfig["logOut"];
 
   @Input()
+  public isFromAdmin: ModalConfig["houseHoldLogOut"] = false;
+
+  @Input()
+  public exitHousehold: ModalConfig["householdExit"];
+  @Input()
   public IsFromVam: ModalConfig["vam"];
 
   @Output() 
@@ -70,5 +75,7 @@ export interface ModalConfig {
   hideCloseButton?(): boolean
   hideDismissButton?(): boolean
   logOut?: boolean;
+  houseHoldLogOut?: boolean;
+  householdExit?:boolean;
   vam?: boolean;
 }

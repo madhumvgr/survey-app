@@ -75,20 +75,20 @@
                     <p><strong>{{"deviceInformation.address" | translate }}:</strong></p>
                     <span>{{deviceInformation?.macAddress}}</span>
                 </div>
-            </div>
+                </div>
         </div><!--end Row-->
     </div><!--end Container-->
 </section><!--end Section-->
           
 <!-- Sections Overview -->
-<section class="px-3 pb-5">
+<section class="px-3 pb-5" *ngIf ="panelListType == 'VAM'">
     <div class="container">
-        <div class="row g-4">
+        <div class="row g-4" *ngIf = "userSize != '0'">
             <h2>Completed sections<span class="h2-separator"></span></h2>
             <p class="mt-2 mb-0">Select section to review or make changes.</p>
 
              <!-- Section-->
-             <a [routerLink] = "['/survey/deviceInformation/'+deviceState+ '/' +deviceId]">
+             <a [routerLink] = "['/survey/deviceInformation/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
                         <div class="h1 mb-0">segment</div>
@@ -103,7 +103,7 @@
             </a>
 
              <!-- Section-->
-             <a [routerLink] = "['/survey/deviceOwnerInformation/'+deviceState+ '/' +deviceId]">
+             <a [routerLink] = "['/survey/deviceOwnerInformation/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
                         <div class="h1 mb-0">segment</div>
@@ -118,7 +118,7 @@
             </a>
 
              <!-- Section-->
-             <a [routerLink] = "['/survey/multiUserList/'+deviceState+ '/' +deviceId]">
+             <a [routerLink] = "['/survey/multiUserList/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
                         <div class="h1 mb-0">segment</div>
@@ -133,7 +133,7 @@
             </a>
 
              <!-- Section-->
-             <a [routerLink] = "['/survey/deviceUsage/'+deviceState+ '/' +deviceId]">
+             <a [routerLink] = "['/survey/deviceUsage/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
                 <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
                     <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
                         <div class="h1 mb-0">segment</div>
@@ -148,5 +148,112 @@
             </a>
 
         </div><!--end Row-->
+
+        <div class="row g-4" *ngIf = "userSize == '0'">
+            <h2>Completed sections<span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0">Select section to review or make changes.</p>
+
+             <!-- Section-->
+             <a [routerLink] = "['/survey/deviceInformation/'+deviceState+ '/' +deviceId]"  [queryParams]="{ isNotAutoSave: true}">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                        <div class="h1 mb-0">segment</div>
+                    </i>
+                    <div class="ps-3">
+                        <h3 class="m-0">Device information</h3> 
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+             <!-- Section-->
+             <a [routerLink] = "['/survey/deviceOwnerInformation/'+deviceState+ '/' +deviceId]"  [queryParams]="{ isNotAutoSave: true}">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                        <div class="h1 mb-0">segment</div>
+                    </i>
+                    <div class="ps-3">
+                        <h3 class="m-0">Owner information</h3> 
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+             <!-- Section-->
+             <a (click)="preSelectPage(true)">               
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                        <div class="h1 mb-0">segment</div>
+                    </i>
+                    <div class="ps-3">
+                        <h3 class="m-0">Pre-selected GENRES Page</h3> 
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+             </a>
+
+             <!-- Section-->
+             <a (click)="preSelectPage(false)">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                        <div class="h1 mb-0">segment</div>
+                    </i>
+                    <div class="ps-3">
+                        <h3 class="m-0">Pre-selected Tv Internet channels page</h3> 
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+              </a>
+
+        </div><!--end Row-->
     </div><!--end Container-->
 </section><!--end Section-->
+<section *ngIf ="panelListType == 'SSP'">
+    <div class="container">
+        <div class="row g-4" *ngIf = "userSize != '0'">
+            <h2>Completed sections<span class="h2-separator"></span></h2>
+            <p class="mt-2 mb-0">Select section to review or make changes.</p>
+
+             <!-- Section-->
+             <a [routerLink] = "['/survey/deviceInformation/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                        <div class="h1 mb-0">segment</div>
+                    </i>
+                    <div class="ps-3">
+                        <h3 class="m-0">Device information</h3> 
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+             <!-- Section-->
+             <a [routerLink] = "['/survey/deviceOwnerInformation/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
+                <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+                    <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                        <div class="h1 mb-0">segment</div>
+                    </i>
+                    <div class="ps-3">
+                        <h3 class="m-0">Owner information</h3> 
+                    </div>
+                    <i class="material-icons ms-auto pe-3">  
+                        arrow_forward_ios
+                    </i>
+                </div>
+            </a>
+
+</div>
+</div>
+
+
+</section>

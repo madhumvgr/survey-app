@@ -474,7 +474,8 @@
         "success": "Vos progrès ont été enregistrés. Vous pouvez revenir à tout moment pour poursuivre le sondage.",
         "success2": "Vous avez soumis avec succès des informations pour",
         "resubmit": "Merci d'avoir mis à jour vos informations! ",
-        "error": "Merci de choisir une de ces options."
+        "error": "Merci de choisir une de ces options.",
+        "cancelButton": "Cancel"
     },
     "faqSSPQuestions": {
         "content": "Table des matières",

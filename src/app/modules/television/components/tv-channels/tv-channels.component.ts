@@ -419,7 +419,22 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
       this.router.navigateByUrl('/television/tv-selectChannel/' + this.memberNo);
     } else {  
       if(this.deviceState == "Completed") {
-        this.router.navigate(['/survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true} });
+        let dirtyCount=0;
+        let weekDayStationValue, weekEndstationValue;
+        this.stationForm.forEach( (form,i) => {
+          weekDayStationValue = this.stationForm[i]?.get('weekDays');
+          weekEndstationValue = this.stationForm[i]?.get('weekEnds');
+    
+          if(weekDayStationValue?.dirty || weekEndstationValue?.dirty ){
+            dirtyCount++;
+          }
+        });
+        if(dirtyCount > 0) {
+          this.openConfirmDialog('/survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list , { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true} });
+        } else {
+          this.router.navigate(['/survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true} });
+
+        }
       } else {
       this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName } });
     }

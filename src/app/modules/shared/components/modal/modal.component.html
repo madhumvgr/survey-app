@@ -3,6 +3,7 @@
     <h5 class="modal-title" *ngIf="logOut || IsFromLogin">{{"modalWindow.confirmTittle" | translate }}</h5>
     <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin &&  !isFromAdmin  && !exitHousehold && !IsFromVam">Save and Exit</h5>
     <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && !isFromAdmin && !exitHousehold && !IsFromVam">{{"modalWindow.modalTitle" | translate }}</h5>
+    <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && IsFromVam">{{"modalWindow.confirmTittle" | translate }} </h5>
     <h5 class="modal-title" *ngIf="!logOut && !IsFromLogin && isFromAdmin">Take control over portal ?</h5>
     <h5 class="modal-title" *ngIf="exitHousehold">Exit Household ?</h5>
   </div>

@@ -10,7 +10,7 @@ import { DeviceService } from '../../services/device.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
 import { DeviceConstants } from "src/app/shared/models/url-constants";
-//import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -43,8 +43,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private customValidator: CustomvalidationService,
     private userService: UserService,
-    private localStorageService: LocalStorageService, //private cookieService: CookieService,
-    private router: Router, private deviceService: DeviceService) { super() }
+    private localStorageService: LocalStorageService, private cookieService: CookieService,
+    private router: Router, private deviceService: DeviceService, private activatedroute: ActivatedRoute) { super() }
 
 
 
@@ -54,20 +54,15 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this.show = true;
     this.hide = false;
     this.lang = this.localStorageService.getItem(StorageItem.LANG)
-    //const cookieValue = this.cookieService.get('hideCookie');
-    //if(!cookieValue) {
-      //this.showCookies =true;
-    //}
-    //const autoLogout = this.activatedroute.snapshot.queryParams['logout'];
-    //if(autoLogout == 'autologout'){
-      //this.showAutologoutMsg = true;
-    //}
+    const cookieValue = this.cookieService.get('hideCookie');
+    if(!cookieValue) {
+      this.showCookies =true;
+    }
+    const autoLogout = this.activatedroute.snapshot.queryParams['logout'];
+    if(autoLogout == 'autologout'){
+      this.showAutologoutMsg = true;
+    }
     console.log(this.showCookies);
-    // const cookieValue = this.cookieService.get('hideCookie');
-    // if(!cookieValue) {
-    //   this.showCookies =true;
-    // }
-    // console.log(this.showCookies);
     this.loginForm = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', Validators.compose([Validators.required])],
@@ -81,8 +76,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   setCookie(value: string) {
     this.showCookies = false;
-   // this.cookieService.set('hideCookie', value);
-   // this.cookieService.set('LANG', this.lang);
+    this.cookieService.set('hideCookie', value);
+    this.cookieService.set('LANG', this.lang);
   }
 
   navigateTo() {

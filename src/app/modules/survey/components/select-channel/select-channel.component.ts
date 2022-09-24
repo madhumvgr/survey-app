@@ -104,7 +104,10 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
     } else {
       this.memberName = this.router.getCurrentNavigation()?.extras?.state?.memberName;
-    }
+      if(!this.memberName){
+        this.memberName = this.localStorageService.getItem(StorageItem.MEMBERNAME);
+      }   
+     }
 
   }
 
@@ -291,11 +294,10 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
             this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe(
               res => {
                 this.deviceService.updateMemberSurvey(this.deviceId, this.memberNo).subscribe();
-               this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
-               const message1 = 'deviceInformation.success2';
-               //this.localStorageService.setSubmitDevice(this.deviceName);
-               this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message1, inputRoute:"submit_device", deviceName: this.deviceName  } });
-               });
+                this.deviceService.updateHomeSurvey(this.deviceId).subscribe();
+                this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+              //  this.openConfirmDialog('survey/Thankyou/deviceList/' + this.deviceState, { state: { message: message, inputRoute: "deviceList" } });
+              });
           }
         } else{
           if (this.userCount != 0) {
@@ -463,7 +465,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       this.router.navigate(['/survey/completed-devices/Completed' + '/' + this.deviceId], { queryParams: { isNotAutoSave: true } });
     }
     else {
-      if (this.list == "true") {
+      if (this.list != "true") {
         this.router.navigate(['/survey/selectGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { memberName: this.memberName }, queryParams: { isNotAutoSave: true } });
       } else {
         this.router.navigate(['/survey/deviceGeneres/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId], { state: { memberName: this.memberName }, queryParams: { isNotAutoSave: true } });

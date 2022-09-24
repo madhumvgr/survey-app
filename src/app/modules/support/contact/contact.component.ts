@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { DeviceService } from '../../login/services/device.service';
 import { TechSupport } from '../connect/connect.component';
 
@@ -15,13 +16,15 @@ export class ContactComponent implements OnInit {
   techSupport: TechSupport={};
   error: boolean = false;
   language: any;
-  constructor(private deviceService: DeviceService, private router: Router) { 
+  panelistType: any;
+  constructor(private deviceService: DeviceService, private router: Router, private localStorageService: LocalStorageService) { 
     this.subject;
     this.description;
    
   }
 
   ngOnInit(): void {
+    this.panelistType =  this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
   }
 
   submit(){

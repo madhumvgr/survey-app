@@ -29,6 +29,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   currentWindowWidth: any;
   homeN0: any;
   showAdminMSg: any;
+  @Input() homeId : any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   constructor(public authService:AuthService,private translate: TranslateService,
@@ -105,7 +106,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     if (!this.showAdminMSg) {
       this.authService.doLogout();
     } else {
-      this.router.navigate(['/admin/' + '9990470']);
+      this.router.navigate(['/admin/' + this.homeId]);
       this.authService.SetQuestionValid(false)
       this.localStorageService.setTakeControl(false);
       this.authService.SetQuestionValid(false)

@@ -435,7 +435,7 @@ export class TvChannelsComponent extends BaseComponent implements OnInit {
           this.router.navigate(['/survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true} });
 
         }
-      } else {
+         } else {
       this.router.navigate(['survey/selectChannel/' + this.deviceState + '/' + this.memberNo + '/' + this.deviceId+'/'+this.list] , { state: { memberName: this.memberName } });
     }
   }

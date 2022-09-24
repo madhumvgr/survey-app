@@ -62,10 +62,19 @@ if(this.deviceInfoFormControl.numberOfUsers.dirty) {
       } else {
       const message = "Thank you , please note that this device is now Available for you to complete on the 'IN PROGRESS DEVICE SECTION' to complete.";
       // call reset api.
-      this.deviceService.resetDevice(this.deviceId).subscribe(response => {
-        console.log(response);
-        this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Complete_Inprogress" } });
-      });
+      this.deviceInfoForm.patchValue({
+        deviceId: this.deviceId
+      })
+      this.deviceService.create(this.deviceInfoForm.value).subscribe(res => {
+        if(this.nickName) {
+          this.deviceName = this.nickName;
+          this.localStorageService.setDeviceName(this.nickName);
+        }
+        this.deviceService.resetDevice(this.deviceId).subscribe(response => {
+          console.log(response);
+          this.router.navigate(['survey/device/Thankyou/'+this.deviceState+ '/' +this.deviceId], { state: { message: message, inputRoute: "Complete_Inprogress" } });
+        });
+    })
     }
     }
   })

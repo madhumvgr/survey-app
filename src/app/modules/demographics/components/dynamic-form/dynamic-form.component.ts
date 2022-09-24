@@ -118,11 +118,11 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
       if (this.houseHold) {
         this.router.navigate(['/demographics/questionaire/true/' + this.memberNo + '/' + this.newPage + '/true']).then(() => {
-          window.location.reload();
+          //window.location.reload();
         });
       } else {
         this.router.navigate(['/demographics/questionaire/' + this.memberNo + '/' + this.homeNo + '/' + this.newPage]).then(() => {
-          window.location.reload();
+         // window.location.reload();
 
         });
       }
@@ -166,7 +166,15 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   changeEvent(question: any) {
-    console.log(question);
+    for(var i =0;i< this.questionList.length;i++){
+      if(question.queId== this.questionList[i].queId){
+        let obj = {rowValue: 0, colValue: null, answer: '', otherDesc: null};
+        obj.rowValue = question.questionLevel1Id;
+        question.selected[0]= obj;
+        this.questionList[i] = question;
+        break;
+      }
+    }
 
     let obj: any = {
     }
@@ -232,7 +240,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-        window.location.reload();
+       // window.location.reload();
       } else {
         this.skipQuestions = [];
       }
@@ -244,7 +252,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-        window.location.reload();
+       // window.location.reload();
       } else {
         this.skipQuestions = [];
       }
@@ -256,7 +264,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-        window.location.reload();
+       // window.location.reload();
       } else {
         this.skipQuestions = [];
       }
@@ -268,7 +276,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-        window.location.reload();
+       // window.location.reload();
       } else {
         this.skipQuestions = [];
       }

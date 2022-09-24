@@ -123,7 +123,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
     if (this.deviceState == "Inprogress") {
       this.deviceStatus = "In Progress"
     } else {
-      if (this.deviceState == "Completed") {
+      if (this.deviceState == "Completed" && !this.isTvGenere) {
         this.isNotAutoSave$ = this.activatedroute.queryParamMap.pipe(
           map((params: ParamMap) => params.get('isNotAutoSave')),
         );
@@ -323,7 +323,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       this.deviceService.saveGenreIds(selectedOrderIds);
       if (this.isTvGenere) {
         const device = "none";
-        this.openConfirmDialog('television/tv-channels/' + this.memberNo + '/' + device, { state: { memberName: this.memberName },  queryParams: {isNotAutoSave: true}} );
+        this.router.navigate(['television/tv-channels/' + this.memberNo + '/' + device], { state: { memberName: this.memberName }} );
       } else {
         if (this.deviceState == "Completed") {
           this.openConfirmDialog('survey/tv-Channels/' + this.deviceState + '/' + this.deviceId + '/' + this.memberNo + '/' + this.userCount + '/' + this.list, { state: { memberName: this.memberName }, queryParams: {isNotAutoSave: true}});

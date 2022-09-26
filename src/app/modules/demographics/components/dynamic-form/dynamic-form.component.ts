@@ -74,6 +74,12 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     this.questionaireService.quersionSubjectRecevier$$.subscribe((res: any) => {
       this.buttonClicked = res
     })
+    window.addEventListener('popstate',
+    // Add your callback here
+    () => {
+      this.pageChange(window.location.href.split('/').pop());
+    } );
+
     this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
     if (this.panelListType == "SSP") {
       this.lastSubmit = true;

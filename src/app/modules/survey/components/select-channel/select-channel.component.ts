@@ -351,7 +351,7 @@ export class SelectChannelComponent extends BaseComponent implements OnInit {
       }
     }
     if(dirtyCount > 0) {
-      this.confirmationDialogService.confirm('Are you sure', 'Do you really want to update the submitted answers.?', 'IAM SURE', 'NO')
+      this.confirmationDialogService.confirm('completedDevices.warning-tittle', 'completedDevices.warning-msg5', 'completedDevices.warning-btn2', 'completedDevices.warning-btn1')
       .then((confirmed) => {
         if (confirmed) {
           this.resubmitForm(routeUrl, stateObject);

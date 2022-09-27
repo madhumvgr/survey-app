@@ -45,14 +45,15 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
   }
 
   openConfirmDialog(){
+    const warningTittle ="completedDevices.warning-tittle";
     let message: any;
     if(this.deviceInfoForm.value.numberOfUsers == 0 || this.deviceInfoForm.value.numberOfUsers == 1){
-      message = "All members that did submit their informations will be lost and you will need to start over with this device in the in progress section."
+      message = "completedDevices.warning-msg1"
     } else if(this.deviceInfoForm.value.numberOfUsers == 4) {
       message = "All members that did submit their informations will be lost and  this device in the Not in use section."
     }
 if(this.deviceInfoFormControl.numberOfUsers.dirty) {
-  this.confirmationDialogService.confirm('Are you sure?.', message, 'IAM SURE', 'NO')
+  this.confirmationDialogService.confirm(warningTittle, message, 'completedDevices.warning-btn2', 'completedDevices.warning-btn1')
   .then((confirmed) => {
     if(confirmed){
       if(this.deviceInfoForm.value.numberOfUsers == 4) {
@@ -83,7 +84,7 @@ if(this.deviceInfoFormControl.numberOfUsers.dirty) {
 
 } else  {
   const message = "You want to update the device name"
-  this.confirmationDialogService.confirm('Are you sure?.', message, 'IAM SURE', 'NO')
+  this.confirmationDialogService.confirm('completedDevices.warning-tittle', message, 'completedDevices.warning-btn2', 'completedDevices.warning-btn1')
   .then((confirmed) => {
     if(confirmed){
         this.deviceService.create(this.deviceInfoForm.value).subscribe(res => {

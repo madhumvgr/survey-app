@@ -27,6 +27,7 @@ export class WelcomeComponent implements OnInit {
   homeID: any;
   isAdmin: any;
   fileToUpload!: File;
+  fileName: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   form = new FormGroup({
@@ -91,8 +92,9 @@ export class WelcomeComponent implements OnInit {
   }
 
   handleFileInput(event: any) {
-  console.log(event.target.files[0])
+  console.log(event.target.files[0].name)
   this.fileToUpload = event.target.files[0]
+  this.fileName = event.target.files[0].name;
   debugger;
   }
 

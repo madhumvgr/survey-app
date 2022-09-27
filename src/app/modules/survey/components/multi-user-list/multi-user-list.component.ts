@@ -283,7 +283,7 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
 
   openConfirmDialog(){
     this.submitCall = true;
-    this.confirmationDialogService.confirm('Please confirmv jgnbkrgn.', 'Do you really want to vhamrfanreijfnvjerv nvtnfivtt... ?')
+    this.confirmationDialogService.confirm('completedDevices.warning-tittle.', 'completedDevices.warning-msg5', 'completedDevices.warning-btn2', 'completedDevices.warning-btn1')
     .then((confirmed) => {
       if(confirmed){
         const message = 'deviceInformation.resubmit';

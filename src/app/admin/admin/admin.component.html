@@ -5,9 +5,9 @@
   <div class="container">
       <div class="row">
           <div class="col-12">
-              <h1>Household: {{this.homeNo}}</h1>
+              <h1>{{'houseHold.title' | translate}}: {{this.homeNo}}</h1>
               <p>
-                  Provide short description for this page... incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                 {{'admin.description' | translate}}
               </p>
           </div>
       </div>
@@ -17,28 +17,28 @@
   <div class="container">
 
       <div class="row">
-          <h2 class="mb-3">Manage Household Members<span class="h2-separator"></span></h2>
-          <p class="mb-4">Any important info goes here that Admin has to consider. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  </p>
+          <h2 class="mb-3">{{'admin.page2Tittle' | translate}}<span class="h2-separator"></span></h2>
+          <p class="mb-4">{{'admin.page2Desc' | translate}}</p>
 
           <!--Entire Portal Control-->
-          <h3>Entire Portal Control</h3>
+          <h3>{{'admin.page2Tittle2' | translate}}</h3>
           <form class="mb-4">
               <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
-                  <label for="take-control" class="form-label col-10 mt-2">Take control over the entire portal on the behalf of the household owner.</label>
+                  <label for="take-control" class="form-label col-10 mt-2">{{'admin.page2Desc2' | translate}}</label>
                   <div class="col-12 mt-2 mb-3">
-                      <button type="button" class="btn btn-primary" (click)="openModal()">Take Control</button>
+                      <button type="button" class="btn btn-primary" (click)="openModal()">{{'admin.page2btn1' | translate}}</button>
                   </div>
               </div>
           </form>
 
           <!--Entire Portal Control-->
-          <h3>Reset Household Owner Survey</h3>
+          <h3>{{'admin.page2Tittle3' | translate}}</h3>
           <form class="mb-4">
               <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
-                  <label *ngIf="this.OwnerNoReset" for="take-control" class="form-label col-10 mt-2">Reset demographics survey for the head of the house.{{this.adminName}}{{this.lastModified}}</label>
-                  <label *ngIf="this.ownerResetDone" for="take-control" class="form-label col-10 mt-2">Successfully reseted by {{this.adminName}} on {{this.lastModified}}</label>
+                  <label *ngIf="this.OwnerNoReset" for="take-control" class="form-label col-10 mt-2">{{'admin.page2Desc3' | translate}}.{{this.adminName}}{{this.lastModified}}</label>
+                  <label *ngIf="this.ownerResetDone" for="take-control" class="form-label col-10 mt-2">{{'admin.page2Desc5' | translate}} {{this.adminName}} on {{this.lastModified}}</label>
                   <div class="col-12 mt-2 mb-3">
-                      <button type="button" class="btn btn-primary" (click)="resetOwner()" *ngIf="this.OwnerNoReset">Reset</button>
+                      <button type="button" class="btn btn-primary" (click)="resetOwner()" *ngIf="this.OwnerNoReset">{{'admin.page2btn2' | translate}}</button>
                   </div>
                   <div class="col-12 mt-2 mb-3">
                     <button type="button" class="btn btn-primary" (click)="resetOwner()" *ngIf="this.ownerResetDone">Reset Again</button>
@@ -47,16 +47,16 @@
           </form>
 
           <!--Reset Individual Member Survey-->
-          <h3>Reset Individual Member Survey</h3>
+          <h3>{{'admin.page2Tittle4' | translate}}</h3>
           <form class="mb-4">
               <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
-                  <label *ngIf="this.noReset" for="search-household" class="form-label mt-2">Enter ID number below to reset demographics survey for an individual user in the hosehold</label>
-                  <label *ngIf="this.resetDone" for="take-control" class="form-label col-10 mt-2">Successfully reseted by {{this.adminName}} on {{this.lastModified}}</label>
+                  <label *ngIf="this.noReset" for="search-household" class="form-label mt-2">{{'admin.page2Desc4' | translate}}</label> 
+                  <label *ngIf="this.resetDone" for="take-control" class="form-label col-10 mt-2">{{'admin.page2Desc5' | translate}} {{this.adminName}} on {{this.lastModified}}</label>
                   <div class="col-md-6 col-sm-12 mt-2 mb-3">
                       <input type="input-field" class="form-control" id="search-household" name="memberNo" [(ngModel)]="memberNo">
                   </div>  
                   <div class="col-12 mt-2 mb-3">
-                      <button type="button" class="btn btn-primary" (click)="resetIndSurvey()" *ngIf="this.noReset">Reset</button>
+                      <button type="button" class="btn btn-primary" (click)="resetIndSurvey()" *ngIf="this.noReset">{{'admin.page2btn2' | translate}}</button>
                   </div>
                   <div class="col-12 mt-2 mb-3">
                     <button type="button" class="btn btn-primary" (click)="resetOwner()" *ngIf="this.resetDone">Reset Again</button>

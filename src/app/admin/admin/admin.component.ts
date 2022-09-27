@@ -5,7 +5,7 @@ import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { NotificationService } from 'src/app/modules/notification/service/notification.service';
 import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { BaseComponent } from 'src/app/shared/util/base.util';
 
@@ -19,6 +19,7 @@ export class AdminComponent extends BaseComponent implements OnInit {
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   memberNo: any;
+  lang: any;
   constructor(private authService: AuthService,
     private zone: NgZone,
     private notifService: NotificationService,
@@ -44,6 +45,7 @@ export class AdminComponent extends BaseComponent implements OnInit {
   lastModified: any;
 
   ngOnInit(): void {
+    this.lang = this.localStorageService.getItem(StorageItem.LANG)
   }
 
   ngAfterViewInit() {

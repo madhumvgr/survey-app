@@ -215,7 +215,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
     
       openConfirmDialog(){
         this.submitCall = true;
-        this.confirmationDialogService.confirm('Are you sure', 'Do you really want to update the device owner.?', 'IAM SURE', 'NO')
+        this.confirmationDialogService.confirm('completedDevices.warning-tittle', 'completedDevices.warning-msg2', 'completedDevices.warning-btn2', 'completedDevices.warning-btn1')
         .then((confirmed) => {
           if(confirmed){
             const message = 'deviceInformation.resubmit';

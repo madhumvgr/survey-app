@@ -131,7 +131,10 @@ forgotPassword() {
                 this.localStorageService.setPanellistType(this.panelistType);
                 this.router.navigate(['/welcome']);
 
-              } else {
+              } 
+              else if (response.isAdmin == "Y") {
+                this.router.navigate(['/welcome']);
+              }else {
                 this.router.navigate(['/maintenance']);
               }
             }

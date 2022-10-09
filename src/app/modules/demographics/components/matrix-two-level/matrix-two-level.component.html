@@ -55,7 +55,7 @@
                 </label>
             </div>
 <!--  -->
-            <span class="danger" *ngIf="childFormGroup.get('' +question?.queNo + row.value + column?.value)?.errors?.required && buttonClicked">
+            <span class="danger" *ngIf="childFormGroup.get('' +question?.queNo + row.value + column?.value)?.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage">
                 {{'required.select-all-answers' | translate}}
             </span> 
 

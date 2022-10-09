@@ -12,6 +12,11 @@ import { QuestionaireService } from '../../quersionarie.service';
 export class YesNoComponent implements OnInit, OnChanges {
 
   @Input()
+  pageButtonClicked:any;
+  
+  @Input() newPage:any;
+  urlPage:any;
+  @Input()
   parentForm!: FormGroup;
   childFormGroup!: FormGroup;
   onlyOnce = false;
@@ -58,6 +63,7 @@ export class YesNoComponent implements OnInit, OnChanges {
     this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
       this.buttonClicked = res
     })
+    this.urlPage=window.location.href.split('/').pop();
   }
 
   get yesNoFormControl() {

@@ -17,6 +17,11 @@ export class MatrixRbComponent implements OnChanges {
   onlyOnce = false;
   @Input() question!: Question;
 
+  @Input()
+  pageButtonClicked:any;
+  
+  @Input() newPage:any;
+  urlPage:any;
   //cols: Column[] = [];
   groupedCols : any;
   isFrance: any = false;
@@ -78,6 +83,7 @@ export class MatrixRbComponent implements OnChanges {
     this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
       this.buttonClicked = res
     })
+    this.urlPage=window.location.href.split('/').pop();
   }
   getPrevSelectedValue(selected: any[] | undefined, value: any) {
     if (selected) {

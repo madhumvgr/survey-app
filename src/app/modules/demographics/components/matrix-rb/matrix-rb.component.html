@@ -43,8 +43,9 @@
                     </label>
                 </div>
             </ng-container>
+            
             <div *ngIf="groupedCols[row.value]">
-            <span class="danger" *ngIf="childFormGroup.get('' + this.question?.queNo + row.value)?.errors?.required && buttonClicked">
+            <span class="danger" *ngIf="childFormGroup.get('' + this.question?.queNo + row.value)?.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage">
                 {{'required.select-answer' | translate}}
           </span>
         </div>

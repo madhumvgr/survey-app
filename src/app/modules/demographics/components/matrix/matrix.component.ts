@@ -26,7 +26,12 @@ export class MatrixComponent implements OnChanges {
    }
   @Output()
   public changeEvent1 = new EventEmitter();
+  urlPage:any;
   @Input() houseHold:any;
+  @Input()
+  pageButtonClicked:any;
+  
+  @Input() newPage:any;
   ngOnChanges(changes: SimpleChanges): void {
     let yesCol = {
       description: "",
@@ -85,6 +90,7 @@ export class MatrixComponent implements OnChanges {
     this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
       this.buttonClicked = res
     })
+    this.urlPage=window.location.href.split('/').pop();
   }
   getPrevSelectedValue(selected: any[] | undefined, value: any) {
     if (selected) {

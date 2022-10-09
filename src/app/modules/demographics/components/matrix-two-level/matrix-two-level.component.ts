@@ -16,6 +16,12 @@ export class MatrixTwoLevelComponent implements OnChanges {
   onlyOnce = false;
   @Input() question!: Question;
   @Input() houseHold: any;
+  
+  @Input()
+  pageButtonClicked:any;
+  
+  @Input() newPage:any;
+  urlPage:any;
   @Input() questionId:any;
   cols: Column[] = [];
   isFrance: any = false;
@@ -79,6 +85,7 @@ export class MatrixTwoLevelComponent implements OnChanges {
     this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
       this.buttonClicked = res
     })
+    this.urlPage=window.location.href.split('/').pop();
   }
   getPrevSelectedValue(selected: any[] | undefined, value: any, colValue : any) {
     if (selected) {

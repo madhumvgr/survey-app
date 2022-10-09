@@ -7,25 +7,25 @@
                     <app-radiogroup [newPage]="newPage" [pageButtonClicked]="pageButtonClicked" [isButtonPressed]="isButtonPressed" *ngIf="question.maxLevel==1" [houseHold]="houseHold" [parentForm]="parentForm"
                         (changeEvent1)="changeEvent($event)" [question]="question"></app-radiogroup>
                     </ng-container>
-                    <app-matrix-rb *ngIf="question.maxLevel==2" [houseHold]="houseHold" [parentForm]="parentForm"
+                    <app-matrix-rb [newPage]="newPage" [pageButtonClicked]="pageButtonClicked" *ngIf="question.maxLevel==2" [houseHold]="houseHold" [parentForm]="parentForm"
                         (changeEvent1)="changeEvent($event)" [question]="question"></app-matrix-rb>
                 </div>
                 <div *ngSwitchCase="'YES-NO'">
                     <ng-container [ngSwitch]="question.maxLevel">
                         <ng-container *ngSwitchCase="0">
-                            <app-yesNo [houseHold]="houseHold" [parentForm]="parentForm"
+                            <app-yesNo [newPage]="newPage" [pageButtonClicked]="pageButtonClicked" [houseHold]="houseHold" [parentForm]="parentForm"
                                 (changeEvent1)="changeEvent($event)" [question]="question">
                             </app-yesNo>
                         </ng-container>
 
                         <ng-container *ngSwitchCase="1">
-                            <app-matrix [houseHold]="houseHold" [parentForm]="parentForm"
+                            <app-matrix [newPage]="newPage" [pageButtonClicked]="pageButtonClicked" [houseHold]="houseHold" [parentForm]="parentForm"
                                 (changeEvent1)="changeEvent($event)" [question]="question">
                             </app-matrix>
                         </ng-container>
 
                         <ng-container *ngSwitchCase="2">
-                            <app-matrix-two-level [houseHold]="houseHold" [parentForm]="parentForm"
+                            <app-matrix-two-level [newPage]="newPage" [pageButtonClicked]="pageButtonClicked" [houseHold]="houseHold" [parentForm]="parentForm"
                                 (changeEvent1)="changeEvent($event)" [question]="question">
                             </app-matrix-two-level>
                         </ng-container>

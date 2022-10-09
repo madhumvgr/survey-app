@@ -1,5 +1,4 @@
 <div class="mb-4">
-
     <!-- <h4>{{houseHold? question?.hhQueNo : question?.queNo }}.{{ isFrance? question?.titleFr: question?.title}}</h4> -->
     <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
     <h4>{{isFrance? question?.descriptionFr: question?.description}}</h4>
@@ -21,7 +20,7 @@
             </span>
             </div>
         </ng-container>
-        <span class="danger" *ngIf="radioFormControl.errors?.required && buttonClicked">
+        <span class="danger" *ngIf="radioFormControl.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage">
             {{'required.select-all-answers' | translate}}
         </span>
        

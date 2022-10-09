@@ -25,6 +25,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   @Input() memberNo: any;
   @Input() memberName: any;
   @Input() houseHold: any;
+
+  pageButtonClicked:any =new Map();
   @Input()
   questionList: Question[] = [];
   @Output()
@@ -44,6 +46,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   lastSubmit = false;
   skipQuestions: any = [];
   buttonClicked: any = false;
+  isButtonPressed:any = false;
 
   localmodalConfig = {
     isBackAction: true
@@ -93,7 +96,11 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
 
   pageChange(newPage: any) {
+    this.pageButtonClicked.clear();
+    this.pageButtonClicked.set(newPage,true);
+    this.questionaireService.SetQuestionValid(this.pageButtonClicked);
     this.newPage = newPage;
+    this.isButtonPressed = true;
     if (this.panelListType == "VAM" && (this.newPage >= this.config.currentPage)) {
       let formNotTouched = false;
       Object.keys(this.parentForm.controls).forEach(key => {
@@ -118,7 +125,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   redirect() {
-    this.questionaireService.SetQuestionValid(true)
+    //this.questionaireService.SetQuestionValid(true);
     if (this.parentForm.valid || (this.newPage < this.config.currentPage)) {
       this.config.currentPage = this.newPage;
       //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
@@ -312,7 +319,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   review(event: boolean) {
-    this.questionaireService.SetQuestionValid(true)
+   // this.questionaireService.SetQuestionValid(true)
     this.markCompleteEvent.emit({ isBack: false });
     if (this.parentForm.valid) {
       const panelistType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);

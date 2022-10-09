@@ -13,6 +13,13 @@ export class RadiogroupComponent implements OnChanges {
 
   @Input()
   parentForm!: FormGroup;
+
+  @Input()
+  pageButtonClicked:any;
+
+  clonePageButtonClicked:any;
+  @Input()
+  isButtonPressed!: FormGroup;
   childFormGroup!: FormGroup;
   onlyOnce = false;
   isFrance: any = false;
@@ -20,6 +27,11 @@ export class RadiogroupComponent implements OnChanges {
   displayError: boolean = false;
   @Input() question!: any;
   @Input() houseHold: any;
+
+  @Input() newPage:any;
+  
+  urlPage:any;
+
   panelListType: any;
   lastRow: any;
   buttonClicked: any = false;
@@ -33,11 +45,14 @@ export class RadiogroupComponent implements OnChanges {
   ngOnInit(): void {
     this.questionaireService.quersionSubjectRecevier$$.subscribe((res: any) => {
       this.buttonClicked = res;
+      console.log(this.buttonClicked);
     })
     this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
+    this.urlPage=window.location.href.split('/').pop();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
     if (!this.onlyOnce && this.question) {
       this.childFormGroup = new FormGroup({

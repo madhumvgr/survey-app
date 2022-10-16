@@ -129,7 +129,7 @@
                     [routerLink]="['/demographics/demographics-individual-members']">{{"deviceInformation.backButton" | translate }}</button>
 
                 <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage() && !isReview"
-                    (click)="p.previous()">{{"deviceInformation.backButton" | translate }}</button>
+                    (click)="backClick(p)">{{"deviceInformation.backButton" | translate }}</button>
 
                 <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage() && isReview"
                     (click)="goToLastPage()">{{"deviceInformation.backButton" | translate }}</button>
@@ -142,7 +142,7 @@
                 <button type="button" class="btn btn-dark" *ngIf="p.isFirstPage() && isReview"
                     (click)="goToLastPage()">{{"deviceInformation.backButton" | translate }}</button>
 
-                <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage()" (click)="p.previous()">{{"deviceInformation.backButton" | translate }}</button>
+                <button type="button" class="btn btn-dark" *ngIf="!p.isFirstPage()" (click)="backClick(p)">{{"deviceInformation.backButton" | translate }}</button>
             </ng-container>
 
 

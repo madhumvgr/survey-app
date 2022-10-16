@@ -53,13 +53,14 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
   newPage: any;
   reviewSurvey: boolean = false;
+  itemsPerPage = 2;
 
   constructor(public questionaireService: QuestionaireService, private translate: TranslateService,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
     super();
     this.config = {
       currentPage: 1,
-      itemsPerPage: 2
+      itemsPerPage: this.itemsPerPage
     };
     this.localStorageService.getLanguageSubject().subscribe(val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
@@ -500,5 +501,19 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     this.localmodalConfig = {
       isBackAction: true
     }
+  }
+
+  backClick(p:any){
+    // remove last page questions. 
+    var allControls:any[] =[];
+    var count =0;
+    Object.keys(this.parentForm.controls).forEach(key => {
+      count ++;
+      allControls.push(key);
+    });
+    for( let i=allControls.length-1; i>= allControls.length-this.itemsPerPage; i-- ){
+      this.parentForm.removeControl(allControls[i]);
+    }
+    p.previous();
   }
 }

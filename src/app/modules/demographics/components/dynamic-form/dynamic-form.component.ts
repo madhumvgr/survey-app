@@ -254,7 +254,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-       // window.location.reload();
+        window.location.reload();
       } else {
         this.skipQuestions = [];
       }
@@ -266,7 +266,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-       // window.location.reload();
+        window.location.reload();
       } else {
         this.skipQuestions = [];
       }
@@ -278,7 +278,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-       // window.location.reload();
+        window.location.reload();
       } else {
         this.skipQuestions = [];
       }
@@ -290,7 +290,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
-       // window.location.reload();
+        window.location.reload();
       } else {
         this.skipQuestions = [];
       }

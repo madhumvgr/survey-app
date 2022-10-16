@@ -30,10 +30,9 @@
 
             <input id="row{{houseHold? question?.hhQueNo : question?.queNo}}"
                  [formControlName]="question?.queNo ||  question?.queId ||''"
-                type="text" class="form-control" (keyup)="setup($event)" maxlength="7">           
+                type="text" class="form-control"  maxlength="7">           
         </div>
-        <span class="danger" *ngIf ="!set">{{'required.postal-error' | translate}}</span>
-        
+        <span class="danger" *ngIf ="textFormControl.errors?.pattern">{{'required.postal-error' | translate}}</span>
 
         <span class="danger" *ngIf="textFormControl.errors?.required && buttonClicked">
             {{'required.select-answer' | translate}}

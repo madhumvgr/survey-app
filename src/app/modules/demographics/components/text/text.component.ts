@@ -56,7 +56,7 @@ export class TextComponent implements OnChanges {
         questionNo= this.question?.queId;
       }
       if (this.question?.mandatory) {
-        this.childFormGroup.addControl('' +questionNo , new FormControl(prevValue?prevValue?.otherDesc:'', Validators.required));
+        this.childFormGroup.addControl('' +questionNo , new FormControl(prevValue?prevValue?.otherDesc:'', [Validators.required,Validators.pattern(/[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]/)]));
       } else {
           this.childFormGroup.addControl('' + questionNo, new FormControl(''));
       }

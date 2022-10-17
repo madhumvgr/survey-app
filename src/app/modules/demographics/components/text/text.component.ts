@@ -21,7 +21,7 @@ export class TextComponent implements OnChanges {
   @Input() question!: any ;
   @Input() houseHold:any;
   buttonClicked: any = false;
-  pattern: RegExp = /[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]/;
+  pattern: RegExp = /[a-zA-Z][0-9][a-zA-Z][\s]?[0-9][a-zA-Z][0-9]/;
 
   set: boolean = true;
  // input: string;
@@ -56,7 +56,9 @@ export class TextComponent implements OnChanges {
         questionNo= this.question?.queId;
       }
       if (this.question?.mandatory) {
-        this.childFormGroup.addControl('' +questionNo , new FormControl(prevValue?prevValue?.otherDesc:'', [Validators.required,Validators.pattern(/[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]/)]));
+     //   this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.rowValue:''));
+
+        this.childFormGroup.addControl('' + questionNo, new FormControl(prevValue?prevValue?.otherDesc:'', [Validators.required,Validators.pattern(/[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]/)]));
       } else {
           this.childFormGroup.addControl('' + questionNo, new FormControl(''));
       }
@@ -85,7 +87,7 @@ export class TextComponent implements OnChanges {
     }else{
       questionNo= this.question?.queId;
     }
-    this.parentForm.get(''+questionNo)?.setValue(value);
+    this.parentForm.get(''+questionNo)?.get('' + questionNo)?.setValue(value);
     //console.log( event.target.checked);
     this.question.answer ="Y";
     this.question.otherDescription = value;

@@ -29,8 +29,8 @@
         <div class="form-check mb-2">
 
             <input id="row{{houseHold? question?.hhQueNo : question?.queNo}}"
-                 [formControlName]="question?.queNo ||  question?.queId ||''"
-                type="text" class="form-control"  maxlength="7">           
+            [formControlName]="question?.queNo ||  question?.queId ||''"
+                type="text" class="form-control"  maxlength="7" (focus)="focusOut($event)">           
         </div>
         <span class="danger" *ngIf ="textFormControl.errors?.pattern">{{'required.postal-error' | translate}}</span>
 

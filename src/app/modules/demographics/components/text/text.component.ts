@@ -87,14 +87,20 @@ export class TextComponent implements OnChanges {
     }else{
       questionNo= this.question?.queId;
     }
-    this.parentForm.get(''+questionNo)?.get('' + questionNo)?.setValue(value);
-    //console.log( event.target.checked);
-    this.question.answer ="Y";
-    this.question.otherDescription = value;
-    this.question.questionLevel1Id = null;
-    this.question.questionLevel2Id = null;
-    //this.question.queType ="YES-NO";
-    this.changeEvent1.emit(this.question);
+
+    if(!value.match(this.pattern)){
+      this.textFormControl.setErrors({'pattern':'true'});
+    }else{
+      this.textFormControl?.setValue(value);
+      //console.log( event.target.checked);
+      this.question.answer ="Y";
+      this.question.otherDescription = value;
+      this.question.questionLevel1Id = null;
+      this.question.questionLevel2Id = null;
+      //this.question.queType ="YES-NO";
+      this.changeEvent1.emit(this.question);
+    }
+    
   }
 
   setup(value: any) {

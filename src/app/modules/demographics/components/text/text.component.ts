@@ -49,6 +49,9 @@ export class TextComponent implements OnChanges {
       if(selected){
          prevValue= selected[selected.length -1];
       }
+      if(this.question.otherDescription){
+        prevValue.otherDesc = this.question.otherDescription
+      }
       let questionNo;
       if(this.question?.queNo){
         questionNo= this.question?.queNo;

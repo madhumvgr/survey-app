@@ -29,12 +29,12 @@
         <div class="form-check mb-2">
 
             <input id="row{{houseHold? question?.hhQueNo : question?.queNo}}"
-                 [formControlName]="question?.queNo ||  question?.queId ||''" (blur) ="focusOut($event)"
-                type="text" class="form-control"  maxlength="7">           
+                 [formControlName]="question?.queNo ||  question?.queId ||''" (mouseleave) ="focusOut($event)"
+                type="text" class="form-control"  maxlength="6">           
         </div>
         <span class="danger" *ngIf ="textFormControl.errors?.pattern">{{'required.postal-error' | translate}}</span>
 
-        <span class="danger" *ngIf="textFormControl.errors?.required && buttonClicked">
+        <span class="danger" *ngIf="textFormControl.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage">
             {{'required.select-answer' | translate}}
         </span>
 

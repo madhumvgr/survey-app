@@ -47,6 +47,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   skipQuestions: any = [];
   buttonClicked: any = false;
   isButtonPressed:any = false;
+  lastPage:any;
 
   localmodalConfig = {
     isBackAction: true
@@ -212,14 +213,6 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['condQueType'] = question.condQueType;
       obj['condMaxLevel'] = question.condMaxLevel;
       obj['condOtherDescription'] = question.condOtherDescription;
-      // let skip = question.skip;
-      // if (skip && skip != '') {
-      //   this.skipQuestions = skip.split(',').map(Number);
-      //   console.log(this.skipQuestions);
-      //   window.location.reload();
-      // } else {
-      //   this.skipQuestions = [];
-      // }
     } else {
       obj['questionId'] = question.queId;
       obj['queType'] = question.queType;
@@ -229,21 +222,6 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['memberNo'] = this.memberNo;
       obj['maxLevel'] = question.maxLevel;
       obj['otherDescription'] = question.otherDescription;
-      // let skip = question.skip;
-      // if (skip && skip != '') {
-      //   this.skipQuestions = skip.split(',').map(Number);
-      //   console.log(this.skipQuestions);
-      //   window.location.reload();
-      // } else {
-      //   this.skipQuestions = [];
-      // }
-      // obj['condQuestionId'] = question.condQuestionId;
-      // obj['condQuestionLevel1Id'] = question.condQuestionLevel1Id;
-      //   obj['condQuestionLevel2Id'] = question.condQuestionLevel2Id;
-      //   obj['condAnswer'] = question.condAnswer;
-      //   obj['condQueType'] = question.condQueType;
-      //   obj['condMaxLevel'] = question.condMaxLevel;
-      //   obj['condOtherDescription'] = question.condOtherDescription;
     }
 
     if (this.houseHold && this.panelListType != "VAM") {
@@ -308,7 +286,9 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
   cancelEvent(isBackAction: boolean) {
     this.isCancelClicked = true;
-    console.log(isBackAction);
+   if(this.config.currentPage == this.lastPage){
+    window.location.reload();
+   }
   }
 
   submit() {
@@ -320,6 +300,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   review(event: boolean) {
+    this.lastPage = this.config.currentPage;
    // this.questionaireService.SetQuestionValid(true)
     this.markCompleteEvent.emit({ isBack: false });
     if (this.parentForm.valid) {

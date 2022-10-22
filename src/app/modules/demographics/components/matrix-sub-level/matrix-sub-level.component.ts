@@ -23,6 +23,11 @@ export class MatrixSubLevelComponent implements OnChanges {
   cols: Column[] = [];
   isFrance: any = false;
   buttonClicked: any = false;
+  urlPage:any;
+  @Input()
+  pageButtonClicked:any;
+  
+  @Input() newPage:any;
   constructor(private localStorageService: LocalStorageService,  public questionaireService: QuestionaireService) {
     this.localStorageService.getLanguageSubject().subscribe(val => {
       this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
@@ -35,6 +40,7 @@ export class MatrixSubLevelComponent implements OnChanges {
     this.questionaireService.quersionSubjectRecevier$$.subscribe((res:any)=>{
       this.buttonClicked = res
     })
+    this.urlPage=window.location.href.split('/').pop();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

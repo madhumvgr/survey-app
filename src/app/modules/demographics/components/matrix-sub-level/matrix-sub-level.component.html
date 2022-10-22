@@ -81,12 +81,12 @@
                                     
                     </div>
                     <div>
-                        <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId+''+subQ?.queId)?.errors?.required && buttonClicked">
+                        <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId+''+subQ?.queId)?.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage">
                             {{'required.select-answer' | translate}}
                         </span> 
             </div>
                     </div>
-                    <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required && buttonClicked">
+                    <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage">
                         {{'required.select-answer' | translate}}
                     </span>  
                 </div>

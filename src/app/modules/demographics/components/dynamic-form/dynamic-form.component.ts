@@ -82,7 +82,14 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     window.addEventListener('popstate',
     // Add your callback here
     () => {
-      this.pageChange(window.location.href.split('/').pop());
+      var pageNo;
+      pageNo = window.location.href.split('/').pop();
+      if(pageNo){
+        this.pageChange(pageNo);
+        if(pageNo < this.newPage){
+          this.backClick();
+        }
+      }
     } );
 
     this.panelListType = this.localStorageService.getItem(StorageItem.PANELLISTTYPE);
@@ -484,7 +491,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     }
   }
 
-  backClick(p:any){
+  backClick(p?:any){
     // remove last page questions. 
     var allControls:any[] =[];
     var count =0;
@@ -495,6 +502,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     for( let i=allControls.length-1; i>= allControls.length-this.itemsPerPage; i-- ){
       this.parentForm.removeControl(allControls[i]);
     }
-    p.previous();
+    if(p){
+      p.previous();
+    }
   }
 }

@@ -104,6 +104,9 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
       if (response) {
         this.coViewerForm.coViewerPerce.setValue('' + response['coViewerPerce']);
         this.coViewerForm.singleViewerPe.setValue('' + response['singleViewerPe']);
+      } else {
+        this.coViewerForm.coViewerPerce.setValue(0);
+        this.coViewerForm.singleViewerPe.setValue(0);
       }
     });
   }
@@ -230,6 +233,7 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
   resubmitForm() {
     const message = 'deviceInformation.resubmit';
     let arrayForm=this.multiUserListForm.controls['arr'] as FormArray;
+    let coViewerForm = this.multiUserCoViewerForm.controls['arr'] as FormArray;
     let controls = arrayForm.controls;
    // if(arrayForm instanceof FormArray){
      let count=0;
@@ -257,33 +261,31 @@ export class MultiUserListComponent extends BaseComponent implements OnInit, Com
 
   updateCoviewerDeviceForm(){
     const message = 'deviceInformation.resubmit';
-    let arrayForm1=this.multiUserListForm.controls['arr'] as FormArray;
+    let arrayForm1=this.multiUserCoViewerForm;
+
     let controls1 = arrayForm1.controls;
    // if(arrayForm instanceof FormArray){
      let count1=0;
      let dirtyCount1=0;
-      for (let control1 of controls1) {
-        if(control1.dirty){
-          dirtyCount1++;
-         let value1=control1.value;
-         this.deviceService.updateDeviceMemberWithPercentage(value1).subscribe(
-          res => {
-            count1++;
-            if(count1== dirtyCount1){
-              this.router.navigate(['survey/Thankyou'], {state: {message: message}});
-            }
-          }
-        );
+     if(arrayForm1.dirty){
+      dirtyCount1++;
+     let value1=controls1.value;
+     this.deviceService.updateCoviewerWithPercentage(this.multiUserCoViewerForm.value).subscribe(
+      res => {
+        count1++;
+        if(count1== dirtyCount1){
+          this.router.navigate(['survey/Thankyou'], {state: {message: message}});
         }
       }
-      if(dirtyCount1 ==0){
+    );
+    } else {
         this.router.navigate(['survey/Thankyou'], {state: {message: message}});
       }
   }
 
   openConfirmDialog(){
     this.submitCall = true;
-    this.confirmationDialogService.confirm('completedDevices.warning-tittle.', 'completedDevices.warning-msg5', 'completedDevices.warning-btn2', 'completedDevices.warning-btn1')
+    this.confirmationDialogService.confirm('completedDevices.warning-tittle', 'completedDevices.warning-msg5', 'completedDevices.warning-btn2', 'completedDevices.warning-btn1')
     .then((confirmed) => {
       if(confirmed){
         const message = 'deviceInformation.resubmit';

@@ -154,7 +154,7 @@ export class DeviceOwnerInformationComponent extends BaseComponent implements On
       "memberNo": selectedOwn["memberNo"],
       "memberName": selectedOwn["memberName"]
     }
-
+   this.memberChanged = device;
     if (!this.isNotAutoSave) {
     this.deviceService.updateDeviceMember(device).subscribe(response => {
       console.log(response);

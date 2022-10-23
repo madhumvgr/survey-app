@@ -218,7 +218,7 @@
 </section><!--end Section-->
 <section *ngIf ="panelListType == 'SSP'">
     <div class="container">
-        <div class="row g-4" *ngIf = "userSize != '0'">
+        <div class="row g-4" *ngIf = "userSize == '0'">
             <h2>{{'completedDevices.sub-heading' | translate}}<span class="h2-separator"></span></h2>
             <p class="mt-2 mb-0">{{'completedDevices.sub-description' | translate}}</p>
 
@@ -253,5 +253,69 @@
             </a>
 
 </div>
+<div class="row g-4" *ngIf = "userSize != '0'">
+    <h2>{{'completedDevices.sub-heading' | translate}}<span class="h2-separator"></span></h2>
+    <p class="mt-2 mb-0">{{'completedDevices.sub-description' | translate}}</p>
+
+     <!-- Section-->
+     <a [routerLink] = "['/survey/deviceInformation/'+deviceState+ '/' +deviceId]"  [queryParams]="{ isNotAutoSave: true}">
+        <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+            <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                <div class="h1 mb-0">segment</div>
+            </i>
+            <div class="ps-3">
+                <h3 class="m-0">{{'completedDevices.label1' | translate}}</h3> 
+            </div>
+            <i class="material-icons ms-auto pe-3">  
+                arrow_forward_ios
+            </i>
+        </div>
+     </a>
+
+      <!-- Section-->
+      <a [routerLink] = "['/survey/deviceOwnerInformation/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
+        <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+            <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                <div class="h1 mb-0">segment</div>
+            </i>
+            <div class="ps-3">
+                <h3 class="m-0">{{'completedDevices.label2' | translate}}</h3> 
+            </div>
+            <i class="material-icons ms-auto pe-3">  
+                arrow_forward_ios
+            </i>
+        </div>
+    </a>
+
+     <!-- Section-->
+     <a [routerLink] = "['/survey/multiUserList/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
+        <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+            <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                <div class="h1 mb-0">segment</div>
+            </i>
+            <div class="ps-3">
+                <h3 class="m-0">{{'completedDevices.label3' | translate}}</h3> 
+            </div>
+            <i class="material-icons ms-auto pe-3">  
+                arrow_forward_ios
+            </i>
+        </div>
+    </a>
+
+     <!-- Section-->
+     <a [routerLink] = "['/survey/deviceUsage/'+deviceState+ '/' +deviceId]" [queryParams]="{ isNotAutoSave: true}">
+        <div class="message-card d-flex align-items-center bg-white shadow-sm rounded">
+            <i class="material-icons p-3 completed-devices-icon d-flex  align-items-center h-100">
+                <div class="h1 mb-0">segment</div>
+            </i>
+            <div class="ps-3">
+                <h3 class="m-0">{{'completedDevices.label4' | translate}}</h3> 
+            </div>
+            <i class="material-icons ms-auto pe-3">  
+                arrow_forward_ios
+            </i>
+        </div>
+    </a>
+</div><!--end Row-->
 </div>
 </section>

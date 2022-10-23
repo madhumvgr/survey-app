@@ -21,7 +21,7 @@
 
 <!-- Quick Start Cards Section-->
 
-<section class="px-3 pb-4" *ngIf="isAdmin == null">
+<section class="px-3 pb-4" *ngIf="isAdmin == 'N' || isAdmin == null || isAdmin == '' ">
     <div class="container">
         <div class="row g-6">
             <h2>{{ 'welcomePage.quickStart' | translate }}<span class="h2-separator"></span></h2>

@@ -19,11 +19,11 @@
     {{"modalWindow.errorMSg" | translate }}
   </div>
   <div class="modal-body" *ngIf="!logOut && !IsFromLogin && isFromAdmin">
-    Please ensure that household owner is not currently submitting any progress and not logged in.
+    {{"modalWindow.adminControl" | translate}}
   </div>
 
   <div class="modal-body" *ngIf="exitHousehold">
-    Are you sure you want exit household?
+    {{"modalWindow.controlExit" | translate }} 
   </div>
   <!-- <div class="modal-body" *ngIf="isFromAdmin">
     Are you sure you want to exit household: 0013 ?

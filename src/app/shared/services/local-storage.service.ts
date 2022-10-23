@@ -45,7 +45,9 @@ export class LocalStorageService {
     this.setItem(StorageItem.FULLNAME,userName);
   }
 
-  
+  setHomeId(homeNo:string){
+    this.setItem(StorageItem.HOMEID,homeNo);
+  }
 
   private setItem(key:string,value:string){
     localStorage.setItem(key,value);
@@ -63,8 +65,16 @@ export class LocalStorageService {
     this.setItem(StorageItem.SUBMITDEVICE,value);
   }
 
+  setAdmin(value: string) {
+    this.setItem(StorageItem.ADMIN,value);
+  }
+
   removeAllItem() {
     localStorage.clear();
+  }
+
+  setAdminName(value:string){
+    this.setItem(StorageItem.ADMINNAME,value);
   }
 
   setTakeControl(value:any){
@@ -84,4 +94,7 @@ export enum StorageItem{
   PANELLISTTYPE = 'panellistType',
   SUBMITDEVICE = 'submitDevice',
   TAKECONTROL = 'takeControl',
+  HOMEID = 'homeId',
+  ADMIN = 'isAdmin',
+  ADMINNAME = 'adminName'
 }

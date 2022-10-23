@@ -39,8 +39,11 @@ export class RegistrationComponent implements OnInit {
     this.show = true;
     this.hide = false;
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required]],
-      password: ['',
+     email: ['',  Validators.compose([
+      Validators.required,
+      Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/),
+    ])],
+     password: ['',
         Validators.compose([
           Validators.required,
           // check whether the entered password has a number

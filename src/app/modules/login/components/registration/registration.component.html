@@ -38,13 +38,14 @@
                         <div class="mb-3">
                             <label for="inputEmail" class="form-label">{{"registrationForm.userName" |
                                 translate}}</label>
-                            <input type="text" class="form-control" id="inputEmail" formControlName="email">
+                                <input type="text" class="form-control"  formControlName="email">
+                                <!-- -->
                             <span class="text-danger"
                                 *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
                                 {{"registrationForm.emailRequired" | translate}}
                             </span>
                             <span class="text-danger"
-                                *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
+                                *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.pattern">
                                 {{"registrationForm.emailError" | translate}}
                             </span>
                         </div>

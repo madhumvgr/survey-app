@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DeviceService } from 'src/app/modules/login/services/device.service';
 import { NotificationService } from 'src/app/modules/notification/service/notification.service';
 import { ModalComponent } from 'src/app/modules/shared/components/modal/modal.component';
+import { DeviceConstants } from 'src/app/shared/models/url-constants';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LocalStorageService, StorageItem } from 'src/app/shared/services/local-storage.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
@@ -59,12 +60,18 @@ export class AdminComponent extends BaseComponent implements OnInit {
   takeControl() {
     this.deviceService.adminControl(this.homeNo).subscribe((response: { [x: string]: string; id_token: any; id: any; }) => {
       if (response) {
-        console.log(response.id_token);
+        console.log("admin-check",response);
         console.log(response.id);
         this.localStorageService.setIdToken(response['id_token']);
         this.localStorageService.setTakeControl(true);
         this.router.navigate(['/welcome']);
         this.authService.SetQuestionValid(true)
+        this.deviceService.getCustomRequest(DeviceConstants.deviceDetails).subscribe(response => {
+          if (response) {
+            console.log(response);
+            this.localStorageService.setPanellistType(response.panelistType);
+          }
+        });
       }
     })
   }
@@ -122,4 +129,8 @@ export class AdminComponent extends BaseComponent implements OnInit {
     })
   }
 
+  mainPage() {
+    this.localStorageService.setAdmin("Y");
+    this.router.navigate(['/landing']);
+  }
 }

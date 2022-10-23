@@ -35,7 +35,7 @@ export class BaseComponent {
     // returning false will show a confirm dialog before navigating away
     if(isNotAutoSave){
       var isYes = true;
-       confirmationDialogService.confirm('ARE YOU SURE ', 'Are you sure you want To Cancel? All the new changes will be unsaved!?', 'IAM SURE', 'NO')
+       confirmationDialogService.confirm('completedDevices.warning-tittle', 'completedDevices.warning-msg2', 'completedDevices.warning-btn6', 'completedDevices.warning-btn1')
       .then((confirmed) => isYes= !confirmed)
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
       return confirmationDialogService.navigateAwaySelection$;

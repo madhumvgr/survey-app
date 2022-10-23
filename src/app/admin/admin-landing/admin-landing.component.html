@@ -1,0 +1,97 @@
+ <!--Notification Bar-->
+ <app-header [homeId] = "+this.form.value.homeID"></app-header>
+<!--<ng-container *ngIf="isRegister else button">
+    Notifications count : <a href="/notification">10 </a>
+</ng-container> 
+<ng-template #button>
+<input type="button" value="Register for notification" (click)="registerForNotifi()"/>
+</ng-template>-->
+
+<section class="px-3 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="ellipsis">
+                <h1>{{ 'welcomePage.title' | translate }}, {{name}}</h1>
+              </div>
+            </div>
+        </div><!--end Row-->
+    <!--end Container-->
+    </section><!--end Section-->
+
+<!-- Admin welocme view -->
+<section class="px-3 pb-4">
+    <div class="container">
+
+        <div class="row">
+            <h2 class="mb-3">{{'admin.subTittle' | translate}}<span class="h2-separator"></span></h2>
+            <p class="mb-4"></p>
+
+            <!--Search Houshold-->
+            <h3>{{'admin.subTittle2' | translate}}</h3>
+            <form class="mb-4" [formGroup]="form">
+                <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
+                    <label for="search-household" class="form-label mt-2">{{'admin.subDesc2' | translate}} </label>
+                    <div class="col-md-10 col-sm-12 mt-2 mb-3">
+                        <input type="input-field" class="form-control" id="homeID" formControlName="homeID">
+                    </div>  
+                    <div class="col-md-2 mt-2 mb-3">
+                        <button type="button" class="btn btn-primary"  (click)="onSearch()">{{'admin.subDesc3' | translate}}</button>
+                    </div>
+                    <div *ngIf ="searchError" class ="text-danger"><b>Please Enter Correct ID</b></div>
+                </div>
+            </form>
+
+
+            <!--Reset Household by file upload-->
+            <h3>{{'admin.subTittle3' | translate}}</h3>
+            <!-- <form>
+                <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
+                    <p class="mt-2">Select file to upload: </p>
+                    <div class="col-12 mb-3">
+                        <button type="button" class="btn btn-light">Select</button>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="h3-separator"></div>
+                    </div>
+                    <p class="mt-2">Click here to upload File : <span class="selected-file-name">Santosh Captured File Name must be reflected between span tags here before the upload button clicked below!</span> </p>
+                    <div class="col-12 mb-3">
+                        <button type="button" class="btn btn-secondary">Upload</button>
+                    </div>
+                </div>
+            </form> -->
+
+            <form>
+                <div class="row align-items-center shadow-sm rounded bg-white p-2 m-0">
+                    <p class="mt-2">{{'admin.subDesc4' | translate}}</p>
+                    <div class="col-12 mb-3">
+                        <!-- <input type="file" class="btn btn-light" (change)="handleFileInput($event)"> -->
+                        <div class="input-group custom-file-button">
+                            <label class="input-group-text" for="inputGroupFile">{{'admin.uploadBtn' | translate}}</label>
+                            <input type="file" class="custom-file-input" id="inputGroupFile" (change)="handleFileInput($event)" accept=".xlsx">
+                          </div>
+                          <!-- <div class="input-group mt-3">
+                            <label class="input-group-text" for ="inputGroupFile">Customisable File Input</label>
+                            <label tabindex="0" class="form-control" id ="inputGroupFile">
+                              Custom Input Text
+                              <input type="file" class="invisible">
+                            </label>
+                          </div> -->
+                        
+                    </div>
+                    <div *ngIf ="uploadStatus" class="text-danger"><b>{{ "admin.error2" | translate}}</b></div>
+                    <div class="col-12 mb-3">
+                        <div class="h3-separator"></div>
+                    </div>
+                    <p class="mt-2">{{'admin.subDesc5' | translate}} <span class="selected-file-name">{{fileName}}</span> </p>
+                    <span class="pb-2 text-success" *ngIf ="successMsg">{{"admin.uploadMsg" | translate}}</span>
+                    <div class="col-12 mb-3">
+                        <button type="button" class="btn btn-primary" (click)="uploadFileToActivity()">{{'admin.subTittle4' | translate}}</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

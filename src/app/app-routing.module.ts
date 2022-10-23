@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MatIconModule } from '@angular/material/icon'
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { AdminLandingComponent } from './admin/admin-landing/admin-landing.component';
 
 const routes: Routes = [
   { 
@@ -17,6 +18,11 @@ const routes: Routes = [
       {
         path: 'welcome',
         component: WelcomeComponent,
+        canActivate: [AuthGuard] 
+      },
+      {
+        path: 'landing',
+        component: AdminLandingComponent,
         canActivate: [AuthGuard] 
       },
       { path: 'login', loadChildren: () => import(`./modules/login/login.module`).then(m => m.LoginModule) },

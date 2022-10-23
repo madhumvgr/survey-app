@@ -30,6 +30,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   homeN0: any;
   showAdminMSg: any;
   @Input() homeId : any;
+  homeNo: any;
   @ViewChild('modal')
   private modalComponent!: ModalComponent;
   constructor(public authService:AuthService,private translate: TranslateService,
@@ -40,6 +41,8 @@ export class HeaderComponent extends BaseComponent implements OnInit {
      private router: Router, private Activatedroute: ActivatedRoute) { 
       super();
     this.isFrance = this.localStorageService.getItem(StorageItem.LANG) === "fr";
+    this.homeNo = this.localStorageService.getItem(StorageItem.HOMEID);
+    this.fullName = this.localStorageService.getItem(StorageItem.ADMINNAME);
  //   this.fullName = this.localStorageService.getItem(StorageItem.FULLNAME);
   }
   ngAfterViewInit(){
@@ -48,8 +51,6 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentWindowWidth = window.innerWidth;
-
-    this.fullName = this.localStorageService.getItem(StorageItem.FULLNAME);
     if(this.isMenu){
       this.notifService.getMessageList();
       this.subscription.add(this.sharedService.getMessagesObservable().subscribe((data:any) => {
@@ -102,11 +103,12 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     this.showOnlyMenu = isOpen? "block":"none";
   }
 
-  exitEvent(isBackAction: boolean) {
+  exitEvent(isBackAction: boolean, home ?: string) {
     if (!this.showAdminMSg) {
       this.authService.doLogout();
     } else {
-      this.router.navigate(['/admin/' + this.homeId]);
+      console.log("home", home);
+      this.router.navigate(['/admin/' + home]);
       this.authService.SetQuestionValid(false)
       this.localStorageService.setTakeControl(false);
       this.authService.SetQuestionValid(false)

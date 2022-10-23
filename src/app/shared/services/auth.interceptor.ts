@@ -28,6 +28,13 @@ export class AuthInterceptor implements HttpInterceptor {
         // if we need to set any token. 
         const token = this.localStorageService.getItem(StorageItem.ID_TOKEN);
         if (token) {
+            if(req.url.includes('admin-reset-user-data')){
+                req = req.clone({
+    
+                    headers: req.headers.set(this.AUTH_HEADER, "Bearer " + token)
+    
+                });
+            } else {
             //req = req.clone({ headers: req.headers.set('id_token', '' + token) });
             req = req.clone({
                 headers: req.headers.set(this.AUTH_HEADER, "Bearer " + token)
@@ -37,6 +44,8 @@ export class AuthInterceptor implements HttpInterceptor {
                     headers: req.headers.set("Content-Type", "application/json")
                 });
             }
+            
+        }
         }
         // else {
         //     // not a login user, navigate to login page. 

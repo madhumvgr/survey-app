@@ -50,7 +50,7 @@ export class DeviceInformationComponent extends BaseComponent implements OnInit,
     if(this.deviceInfoForm.value.numberOfUsers == 0 || this.deviceInfoForm.value.numberOfUsers == 1){
       message = "completedDevices.warning-msg1"
     } else if(this.deviceInfoForm.value.numberOfUsers == 4) {
-      message = "All members that did submit their informations will be lost and  this device in the Not in use section."
+      message = "completedDevices.warning-msg8"
     }
 if(this.deviceInfoFormControl.numberOfUsers.dirty) {
   this.confirmationDialogService.confirm(warningTittle, message, 'completedDevices.warning-btn2', 'completedDevices.warning-btn1')
@@ -59,9 +59,9 @@ if(this.deviceInfoFormControl.numberOfUsers.dirty) {
       if(this.deviceInfoForm.value.numberOfUsers == 4) {
         this.setNotInuse();
      //   const message = this.translate.instant('deviceInformation.success') +this.deviceName+ this.translate.instant('deviceInformation.success');
-        this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"deviceList" } });
+        this.router.navigate(['survey/Thankyou/deviceList/' +this.deviceState], { state: { message: message, inputRoute:"notUsed" } });
       } else {
-      const message = "Thank you , please note that this device is now Available for you to complete on the 'IN PROGRESS DEVICE SECTION' to complete.";
+      const message = "completedDevices.warning-msg7";
       // call reset api.
       this.deviceInfoForm.patchValue({
         deviceId: this.deviceId

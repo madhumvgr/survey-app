@@ -1,14 +1,25 @@
 
 <app-header></app-header>
 <!-- <button  type="submit" (click)="openModal()" class="btn btn-primary ms-md-3">Take Control</button> -->
-<section class="px-3">
+
+<nav class="px-3 mt-4">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a role="button" (click) = "mainPage()">{{'admin.label7' | translate}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{'houseHold.title' | translate}}: {{this.homeNo}}</li>
+            <!--has to reflect devices name here-->
+        </ol>
+    </div>
+</nav>
+
+<section class="px-3 mb-4">
   <div class="container">
       <div class="row">
           <div class="col-12">
               <h1>{{'houseHold.title' | translate}}: {{this.homeNo}}</h1>
-              <p>
+              <!-- <p>
                  {{'admin.description' | translate}}
-              </p>
+              </p> -->
           </div>
       </div>
   </div>
@@ -18,7 +29,7 @@
 
       <div class="row">
           <h2 class="mb-3">{{'admin.page2Tittle' | translate}}<span class="h2-separator"></span></h2>
-          <p class="mb-4">{{'admin.page2Desc' | translate}}</p>
+          <!-- <p class="mb-4">{{'admin.page2Desc' | translate}}</p> -->
 
           <!--Entire Portal Control-->
           <h3>{{'admin.page2Tittle2' | translate}}</h3>
@@ -41,7 +52,7 @@
                       <button type="button" class="btn btn-primary" (click)="resetOwner()" *ngIf="this.OwnerNoReset">{{'admin.page2btn2' | translate}}</button>
                   </div>
                   <div class="col-12 mt-2 mb-3">
-                    <button type="button" class="btn btn-primary" (click)="resetOwner()" *ngIf="this.ownerResetDone">Reset Again</button>
+                    <button type="button" class="btn btn-primary" (click)="resetOwner()" *ngIf="this.ownerResetDone">{{'admin.page2btn4' | translate}}</button>
                   </div>
               </div>
           </form>
@@ -59,7 +70,7 @@
                       <button type="button" class="btn btn-primary" (click)="resetIndSurvey()" *ngIf="this.noReset">{{'admin.page2btn2' | translate}}</button>
                   </div>
                   <div class="col-12 mt-2 mb-3">
-                    <button type="button" class="btn btn-primary" (click)="resetOwner()" *ngIf="this.resetDone">Reset Again</button>
+                    <button type="button" class="btn btn-primary" (click)="resetIndSurvey()" *ngIf="this.resetDone">{{'admin.page2btn4' | translate}}</button>
                   </div>
               </div>
           </form>

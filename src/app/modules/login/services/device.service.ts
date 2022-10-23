@@ -135,16 +135,12 @@ export class DeviceService extends ResourceService<User> {
     }
 
     postFile(formData: FormData): Observable<boolean> {
-      const endpoint = 'https://dev23.denologix.com/sitapi/api/admin-reset-user-data';
+      const endpoint = environment.host+'api/admin-reset-user-data';
       // const formData: FormData = new FormData();
       // formData.append('file', fileToUpload, fileToUpload.name );
       const options = {} as any;
       return this.httpClient
-        .post(endpoint,formData, {
-          headers: {
-            'Content-Type': 'file'
-          },
-        })
+        .post(endpoint,formData)
        .pipe(map(() => { return true; }))
   }
   }

@@ -29,6 +29,7 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminComponent } from './admin/admin/admin.component';
 import { PendingChangesGuard } from './shared/services/pending-changes.guard';
+import { AdminLandingComponent } from './admin/admin-landing/admin-landing.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { PendingChangesGuard } from './shared/services/pending-changes.guard';
     PageNotfoundComponent,
     HomeComponent,
     MaintenanceComponent,
-    AdminComponent
+    AdminComponent,
+    AdminLandingComponent
   ],
   imports: [
     BrowserModule,

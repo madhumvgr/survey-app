@@ -131,18 +131,16 @@ forgotPassword() {
                 this.localStorageService.setPanellistType(this.panelistType);
                 this.router.navigate(['/welcome']);
 
-              } 
-              else if (response.isAdmin == "Y") {
-                this.router.navigate(['/welcome']);
-              }else {
+              }  else if (response.isAdmin == "Y") {
+                const fullName = response.firstName+ ' ' +response.lastName;
+               this.localStorageService.setAdminName(fullName);
+                this.localStorageService.setAdmin(response.isAdmin);
+                this.router.navigate(['/landing']);
+              } else {
                 this.router.navigate(['/maintenance']);
               }
             }
           });
-
-
-
-
         }
       }, err => this.showError = true);
 

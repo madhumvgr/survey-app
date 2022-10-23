@@ -287,15 +287,16 @@ export class SelectGenresComponent extends BaseComponent implements OnInit, Comp
     item['memberNo'] = this.memberNo;
     this.deviceService.updateSelectGenres(item).
       subscribe((response: any) => {
+        if (this.panelListType == 'SSP') {
+          this.submitted = true;
+      }
         console.log("Update record");
       });
      }
     this.timeLinesForm.get('genere')?.setValue(
         this.timeLinesForm.controls['genere'].value.map((value: boolean) => false)
     );
-    if (this.panelListType == 'SSP') {
-        this.submitted = true;
-    }
+   
   }
   submit() {
     this.submitCall = true;

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/modules/login/model/question.model';
 import { QuestionaireService } from '../../quersionarie.service';
@@ -57,6 +57,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   itemsPerPage = 2;
 
   constructor(public questionaireService: QuestionaireService, private translate: TranslateService,
+    private el: ElementRef,
     private route: ActivatedRoute, private router: Router, public fb: FormBuilder, private localStorageService: LocalStorageService) {
     super();
     this.config = {
@@ -299,11 +300,20 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   }
 
   submit() {
+    
     if (this.parentForm.status != "VALID") {
       this.redirect();
+      this.markCompleteEvent.emit({ isSubmit: true });
       return;
+    }else{
+        // scroll to error.
+        const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+          ".errorClass"
+        );
+        firstInvalidControl.scrollIntoView(); //without smooth behavior
+        this.markCompleteEvent.emit({ isSubmit: true });
+        return;
     }
-    this.markCompleteEvent.emit({ isSubmit: true });
   }
 
   review(event: boolean) {

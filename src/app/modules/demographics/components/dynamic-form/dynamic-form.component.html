@@ -1,6 +1,6 @@
 <div [formGroup]="parentForm" class="shadow-sm rounded bg-white p-4 mb-4">
     <ng-container *ngIf="!isReview">
-        <div *ngFor="let question of questionList | paginate: config">
+        <div class="errorClass" *ngFor="let question of questionList | paginate: config">
             <ng-container [ngSwitch]="question.queType">
                 <div *ngSwitchCase="'RB'">
                     <ng-container *ngIf="!skipQuestions.includes(question.queId)"> 

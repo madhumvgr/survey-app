@@ -150,7 +150,11 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
         });
       }
     } else {
-      this.parentForm.invalid;
+          // scroll to error.
+          const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+            ".ng-invalid"
+          );
+          firstInvalidControl.scrollIntoView(); //without smooth behavior
     }
   }
 
@@ -303,17 +307,9 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     
     if (this.parentForm.status != "VALID") {
       this.redirect();
-      this.markCompleteEvent.emit({ isSubmit: true });
       return;
-    }else{
-        // scroll to error.
-        const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
-          ".errorClass"
-        );
-        firstInvalidControl.scrollIntoView(); //without smooth behavior
-        this.markCompleteEvent.emit({ isSubmit: true });
-        return;
     }
+    this.markCompleteEvent.emit({ isSubmit: true });
   }
 
   review(event: boolean) {

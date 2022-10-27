@@ -26,7 +26,8 @@ export class MatrixSubLevelComponent implements OnChanges {
   urlPage:any;
   @Input()
   pageButtonClicked:any;
-  
+  @Input()
+  isButtonPressed!: FormGroup;
   @Input() newPage:any;
   constructor(private localStorageService: LocalStorageService,  public questionaireService: QuestionaireService) {
     this.localStorageService.getLanguageSubject().subscribe(val => {

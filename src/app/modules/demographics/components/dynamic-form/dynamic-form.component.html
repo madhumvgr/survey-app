@@ -44,7 +44,7 @@
                 </div>
 
                 <div *ngSwitchCase="''">
-                    <app-matrix-sub-level [houseHold]="houseHold" [parentForm]="parentForm"
+                    <app-matrix-sub-level [houseHold]="houseHold" [parentForm]="parentForm" [isButtonPressed]="isButtonPressed"
                         (changeEvent1)="changeEvent($event)" [question]="question">
 
                     </app-matrix-sub-level>

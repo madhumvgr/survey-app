@@ -86,10 +86,11 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       var pageNo;
       pageNo = window.location.href.split('/').pop();
       if(pageNo){
-        this.pageChange(pageNo);
         if(pageNo < this.newPage){
           this.backClick();
         }
+        this.pageChange(pageNo);
+        
       }
     } );
 
@@ -140,7 +141,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       this.config.currentPage = this.newPage;
       //this.router.navigate(['/demographics/questionaire/'+this.memberNo+'/'+this.homeNo], { queryParams: { page: newPage } });
       if (this.houseHold) {
-        this.router.navigate(['/demographics/questionaire/true/' + this.memberNo + '/' + this.newPage + '/true']).then(() => {
+        this.router.navigate(['/demographics/questionaire/true/' + this.memberNo + '/true/' + this.newPage]).then(() => {
           //window.location.reload();
         });
       } else {

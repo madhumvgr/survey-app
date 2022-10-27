@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'demographics-owner-confirmation', component: DemograpgicsOwnerConfirmationComponent },
       { path: 'demographics-owner-thankyou', component: DemograpgicsOwnerThankyouComponent },
       { path: 'questionaire/:memberNo/:homeNo/:pageNo', component: QuestionarieComponent },
-      { path: 'questionaire/:houseHold/:memberNo/:pageNo/:houseHold1', component: QuestionarieComponent },
+      { path: 'questionaire/:houseHold/:memberNo/:houseHold1/:pageNo', component: QuestionarieComponent },
       { path: 'Thankyou', component: ThankyouComponent },
       { path: '', pathMatch: 'full', redirectTo: 'login/registerkey' }
     ],

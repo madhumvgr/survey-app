@@ -35,7 +35,7 @@
         <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}+'1'">{{'demographics.option2' | translate}}</label>
         
     </div>
-    <span class="danger" *ngIf="yesNoFormControl.errors?.required && buttonClicked && pageButtonClicked?.get(newPage) && urlPage!=newPage">
+    <span class="danger" *ngIf="yesNoFormControl.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage">
         {{'required.select-answer' | translate}}
     </span> 
 

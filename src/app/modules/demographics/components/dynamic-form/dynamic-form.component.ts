@@ -196,7 +196,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   changeEvent(question: any) {
     for(var i =0;i< this.questionList.length;i++){
       if(question.queId== this.questionList[i].queId){
-        let obj = {rowValue: 0, colValue: null, answer: '', otherDesc: null};
+        let obj = {rowValue: 0, colValue: null, answer: question.answer, otherDesc: null};
         obj.rowValue = question.questionLevel1Id;
         question.selected[0]= obj;
         this.questionList[i] = question;

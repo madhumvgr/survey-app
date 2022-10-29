@@ -32,7 +32,7 @@
                     </ng-container>
                 </div>
                 <div *ngSwitchCase="'matrix-yes-no'">
-                    <app-matrix-sub-level>
+                    <app-matrix-sub-level [newPage]="newPage" [pageButtonClicked]="pageButtonClicked">
 
                     </app-matrix-sub-level>
                 </div>
@@ -45,7 +45,7 @@
 
                 <div *ngSwitchCase="''">
                     <app-matrix-sub-level [houseHold]="houseHold" [parentForm]="parentForm" [isButtonPressed]="isButtonPressed"
-                        (changeEvent1)="changeEvent($event)" [question]="question">
+                        (changeEvent1)="changeEvent($event)" [question]="question" [newPage]="newPage" [pageButtonClicked]="pageButtonClicked">
 
                     </app-matrix-sub-level>
                 </div>

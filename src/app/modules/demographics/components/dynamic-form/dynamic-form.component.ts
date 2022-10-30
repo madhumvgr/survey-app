@@ -196,11 +196,63 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   changeEvent(question: any) {
     for(var i =0;i< this.questionList.length;i++){
       if(question.queId== this.questionList[i].queId){
+        // get current question. 
         let obj = {rowValue: question.questionLevel1Id, colValue: question.questionLevel2Id, answer: question.answer, otherDesc: null};
         obj.rowValue = question.questionLevel1Id;
-        question.selected[0]= obj;
-        this.questionList[i] = question;
-        break;
+       if(question.type== "matrix" && question.queType == "YES-NO" && question.maxLevel == "2"){
+        var selectedVal = question.selected;
+        if(selectedVal && selectedVal.length >0){
+          var isPresent = false;
+          // check the question is already in present in the selected
+          for (var j=0;j < selectedVal.length;j++) {
+                if(selectedVal[j].colValue == question.questionLevel2Id){
+                  selectedVal[j]= obj;
+                  isPresent = true;
+                  break;
+                }
+          }
+          if(!isPresent){
+            question.selected.push(obj);
+            this.questionList[i] = question;
+          }else{
+            question.selected = selectedVal;
+            this.questionList[i] = question;
+          }
+        }else{
+          question.selected[0]= obj;
+          this.questionList[i] = question;
+          break;
+        }
+       }
+       else if(question.type== "matrix" && question.queType == "YES-NO"){
+          var selectedVal = question.selected;
+          if(selectedVal && selectedVal.length >0){
+            var isPresent = false;
+            // check the question is already in present in the selected
+            for (var j=0;j < selectedVal.length;j++) {
+                  if(selectedVal[j].rowValue == question.questionLevel1Id){
+                    selectedVal[j]= obj;
+                    isPresent = true;
+                    break;
+                  }
+            }
+            if(!isPresent){
+              question.selected.push(obj);
+              this.questionList[i] = question;
+            }else{
+              question.selected = selectedVal;
+              this.questionList[i] = question;
+            }
+          }else{
+            question.selected[0]= obj;
+            this.questionList[i] = question;
+            break;
+          }
+        }else{
+          question.selected[0]= obj;
+          this.questionList[i] = question;
+          break;
+        }
       }
     }
 
@@ -239,21 +291,19 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
 
     if (this.houseHold && this.panelListType != "VAM") {
       this.questionaireService.customCreate(obj, QuestionConstants.houseHoldAnswers).subscribe(data => {
-        console.log(data);
+        let skip = question.skip;
+        if (skip && skip != '') {
+          this.skipQuestions = skip.split(',').map(Number);
+          console.log(this.skipQuestions);
+          window.location.reload();
+        } else {
+          this.skipQuestions = [];
+        }
       });
-      let skip = question.skip;
-      if (skip && skip != '') {
-        this.skipQuestions = skip.split(',').map(Number);
-        console.log(this.skipQuestions);
-        window.location.reload();
-      } else {
-        this.skipQuestions = [];
-      }
+     
     } else if (this.houseHold == undefined && this.panelListType != "VAM") {
       this.questionaireService.customCreate(obj, QuestionConstants.answers).subscribe(data => {
-        console.log(data);
-      });
-      let skip = question.skip;
+        let skip = question.skip;
       if (skip && skip != '') {
         this.skipQuestions = skip.split(',').map(Number);
         console.log(this.skipQuestions);
@@ -261,6 +311,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       } else {
         this.skipQuestions = [];
       }
+      });
+      
     } else if (this.houseHold == undefined && this.panelListType == "VAM") {
       this.questionaireService.customCreate(obj, QuestionConstants.vam_answers).subscribe(data => {
         console.log(data);

@@ -25,14 +25,14 @@
     <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
     <h4>{{isFrance? question?.descriptionFr: question?.description}}</h4>
     <div class="form-check mb-2">
-        <input class="form-check-input" type="radio"  [formControlName]=" this.questionNo" (change)="changeEvent('Y')"  
-        value="Y" id="row{{houseHold? question?.hhQueNo : question?.queNo}}">
+        <input class="form-check-input" type="radio"  [formControlName]="questionNo" (change)="changeEvent('Y')"  
+        value="Y" id="row{{houseHold? questionNo : question?.queNo}}">
         <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}">{{'demographics.option1' | translate}}</label>
     </div>
     <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" [formControlName]=" this.questionNo" (change)="changeEvent('N')"
+        <input class="form-check-input" type="radio" [formControlName]="questionNo" (change)="changeEvent('N')"
         value="N" id="row{{houseHold? question?.hhQueNo : question?.queNo}}+'1'">
-        <label class="form-check-label" for="row{{houseHold? question?.hhQueNo : question?.queNo}}+'1'">{{'demographics.option2' | translate}}</label>
+        <label class="form-check-label" for="row{{houseHold? questionNo : question?.queNo}}+'1'">{{'demographics.option2' | translate}}</label>
         
     </div>
     <span class="danger" *ngIf="yesNoFormControl.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage">

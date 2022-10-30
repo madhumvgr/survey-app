@@ -30,9 +30,15 @@ export class MatrixComponent implements OnChanges {
   @Input() houseHold:any;
   @Input()
   pageButtonClicked:any;
-  
+  questionNo: string= "0";
   @Input() newPage:any;
   ngOnChanges(changes: SimpleChanges): void {
+
+    if(this.houseHold){
+      this.questionNo = ""+this.question?.queId; 
+    }else{
+      this.questionNo = ""+this.question?.queNo;
+    }
     let yesCol = {
       description: "",
       frDescription: "",
@@ -68,12 +74,12 @@ export class MatrixComponent implements OnChanges {
           prevValue = this.getPrevSelectedValue(this.question.selected, row.value);
           console.log(prevValue);
           if (this.question?.mandatory) {
-            this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.answer, Validators.required));
+            this.childFormGroup.addControl('' + this.questionNo + row.value, new FormControl(prevValue?.answer, Validators.required));
           } else {
             if (prevValue && prevValue.answer)
-              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(prevValue?.answer));
+              this.childFormGroup.addControl('' + this.questionNo + row.value, new FormControl(prevValue?.answer));
             else {
-              this.childFormGroup.addControl('' + this.question?.queNo + row.value, new FormControl(''))
+              this.childFormGroup.addControl('' + this.questionNo + row.value, new FormControl(''))
             }
           }
         });
@@ -82,7 +88,7 @@ export class MatrixComponent implements OnChanges {
       // if (groupedCols) {
       //   this.cols = groupedCols[Object.keys(groupedCols)[0]];
       // }
-      this.parentForm.addControl('' + this.question?.queNo, this.childFormGroup);
+      this.parentForm.addControl('' + this.questionNo, this.childFormGroup);
       this.onlyOnce = true;
     }
   }
@@ -99,7 +105,7 @@ export class MatrixComponent implements OnChanges {
   }
 
   changeEvent(colSeq: any, value: any, skip?: any) {
-    this.parentForm.get('' + this.question?.queNo)?.get('' + this.question.queNo)?.setValue(value);
+    this.parentForm.get('' + this.questionNo)?.get('' + this.questionNo)?.setValue(value);
     this.question.answer =  value;
     this.question.questionLevel1Id = colSeq;
     this.question.questionLevel2Id = null;

@@ -43,7 +43,6 @@
             </div>
 
         </div>
-        errors:{{childFormGroup.get(''+subQuestion?.queId)?.errors | json }}
         <span class="danger" *ngIf="childFormGroup.get(''+subQuestion?.queId)?.errors?.required && pageButtonClicked?.get(newPage) && urlPage!=newPage ">
           {{'required.select-answer' | translate}}
         </span> 

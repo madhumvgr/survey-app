@@ -35,7 +35,7 @@ export class YesNoComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.houseHold){
-      this.questionNo = ""+this.question?.hhQueNo; 
+      this.questionNo = ""+this.question?.queId; 
     }else{
       this.questionNo = ""+this.question?.queNo;
     }

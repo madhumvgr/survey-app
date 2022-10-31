@@ -255,6 +255,16 @@ export class MatrixSubLevelComponent implements OnChanges {
       this.question.condMaxLevel = "1";
       this.question.condOtherDescription = value.target.value;
       this.question.extraCond = "YES-NO-CY";
+      this.question.subSurveyQueAnsDTO?.forEach( (e:any) => {
+        if(e.queId == subQuesId){
+          e.subSurveyQueAnsDTO.forEach ( (l:any) => {
+            if( l.queId == condId){
+                let selected = l.selected[0];
+                selected.otherDesc = value.target.value;
+            }
+          });
+        }
+      });
     }
     this.changeEvent1.emit(this.question);
   }

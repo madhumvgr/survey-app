@@ -264,7 +264,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       } else {
         obj['queType'] = question.queType;
       }
-      obj['questionId'] = question.queId;
+      obj['questionId'] = question.subQuestion? question.subQuestion:question.queId;
       obj['questionLevel1Id'] = question?.questionLevel1Id;
       obj['questionLevel2Id'] = question.questionLevel2Id;
       obj['answer'] = question?.answer;
@@ -279,7 +279,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
       obj['condMaxLevel'] = question.condMaxLevel;
       obj['condOtherDescription'] = question.condOtherDescription;
     } else {
-      obj['questionId'] = question.queId;
+      obj['questionId'] = question.subQuestion?question.subQuestion:question.queId;
       obj['queType'] = question.queType;
       obj['questionLevel1Id'] = question.questionLevel1Id;
       obj['questionLevel2Id'] = question.questionLevel2Id;

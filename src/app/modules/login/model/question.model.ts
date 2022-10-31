@@ -36,6 +36,7 @@ export class Question extends Resource {
   condOtherDescription?: string;
   extraCond?: string;
   disabled?: boolean;
+  subQuestion?:string;
   }
 
 export class QuestionSerializer {

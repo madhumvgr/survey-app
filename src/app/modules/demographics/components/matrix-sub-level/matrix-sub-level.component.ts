@@ -151,7 +151,7 @@ export class MatrixSubLevelComponent implements OnChanges {
   }
 
   changeEvent(value: any, isText: boolean, isLevel1: boolean, isLevel: boolean, subQuesId: any, condId?: any, type?: any, skip?: string) {
-    let questionNo;
+    let questionNo:any;
     if (this.question?.queNo) {
       questionNo = this.question?.queNo;
     } else {
@@ -180,7 +180,7 @@ export class MatrixSubLevelComponent implements OnChanges {
     }
     if (isLevel) {
       this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
-      this.question.queId = subQuesId;
+      this.question.subQuestion = subQuesId;
       if(type == "YES-NO-CY") {
         this.question.answer = value;
         this.question.questionLevel1Id = null;
@@ -221,7 +221,7 @@ export class MatrixSubLevelComponent implements OnChanges {
       this.question.extraCond = type;
     } else if (isLevel1) {
       this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
-      this.question.queId = subQuesId;
+      this.question.subQuestion = subQuesId;
       this.question.condQuestionId = condId;
       this.question.queType = ""
       this.question.condQuestionLevel1Id = value;
@@ -232,9 +232,19 @@ export class MatrixSubLevelComponent implements OnChanges {
       this.question.condMaxLevel = "1";
       this.question.condOtherDescription = "";
       this.question.extraCond = type;
+      this.question.subSurveyQueAnsDTO?.forEach( (e:any) => {
+        if(e.queId == subQuesId){
+          e.subSurveyQueAnsDTO.forEach ( (l:any) => {
+            if( l.queId == condId){
+                let selected = l.selected[0];
+                selected.rowValue = parseInt(value);
+            }
+          });
+        }
+      });
     } else if (isText) {
       this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
-      this.question.queId = subQuesId;
+      this.question.subQuestion = subQuesId;
       this.question.condQuestionId = condId;
       this.question.queType = ""
       this.question.answer = "Y";

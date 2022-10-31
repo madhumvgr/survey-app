@@ -205,7 +205,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
           var isPresent = false;
           // check the question is already in present in the selected
           for (var j=0;j < selectedVal.length;j++) {
-                if(selectedVal[j].colValue == question.questionLevel2Id){
+                if(selectedVal[j].colValue == question.questionLevel2Id && selectedVal[j].rowValue == question.questionLevel1Id){
                   selectedVal[j]= obj;
                   isPresent = true;
                   break;
@@ -224,7 +224,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
           break;
         }
        }
-       else if(question.type== "matrix" && question.queType == "YES-NO"){
+       else if(question.type == "matrix" && (question.queType == "YES-NO" || question.queType == 'RB')){
           var selectedVal = question.selected;
           if(selectedVal && selectedVal.length >0){
             var isPresent = false;
@@ -359,7 +359,8 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
   submit() {
     
     if (this.parentForm.status != "VALID") {
-      this.redirect();
+    //  this.redirect();
+    this.pageChange(this.config.page);
       return;
     }
     this.markCompleteEvent.emit({ isSubmit: true });

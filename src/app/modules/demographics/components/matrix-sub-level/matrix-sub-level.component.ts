@@ -237,7 +237,13 @@ export class MatrixSubLevelComponent implements OnChanges {
           e.subSurveyQueAnsDTO.forEach ( (l:any) => {
             if( l.queId == condId){
                 let selected = l.selected[0];
-                selected.rowValue = parseInt(value);
+                if(selected){
+                  selected.rowValue = parseInt(value);
+                }else{
+                  selected ={};
+                  selected['rowValue'] = parseInt(value);
+                  l.selected.push(selected);
+                }
             }
           });
         }
@@ -260,7 +266,13 @@ export class MatrixSubLevelComponent implements OnChanges {
           e.subSurveyQueAnsDTO.forEach ( (l:any) => {
             if( l.queId == condId){
                 let selected = l.selected[0];
-                selected.otherDesc = value.target.value;
+                if(selected){
+                  selected.otherDesc = value.target.value;  
+                }else{
+                  selected ={};
+                  selected['otherDesc'] = value.target.value;  
+                  l.selected.push(selected);
+                }
             }
           });
         }

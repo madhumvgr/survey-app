@@ -219,6 +219,22 @@ export class MatrixSubLevelComponent implements OnChanges {
       this.question.condMaxLevel = "1";
       this.question.condOtherDescription = "";
       this.question.extraCond = type;
+      this.question.subSurveyQueAnsDTO?.forEach( (e:any) => {
+        if(e.queId == subQuesId){
+                let selected = e.selected[0];
+                if(selected){
+                   if(selected.rowValue){
+                    selected.rowValue = parseInt(value);
+                   }else{
+                    selected.answer = value;
+                   }
+                }else{
+                  selected ={};
+                  selected['rowValue'] = parseInt(value);
+                  e.selected.push(selected);
+                }
+            }
+      });
     } else if (isLevel1) {
       this.parentForm.get('' + questionNo)?.get('' + questionNo)?.setValue(value);
       this.question.subQuestion = subQuesId;

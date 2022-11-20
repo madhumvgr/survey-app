@@ -27,7 +27,7 @@
 
 <br />
 <ng-container>
-    <div [formGroup]="childFormGroup" class="mb-4">
+    <form [formGroup]="childFormGroup" class="mb-4">
         <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
         <h4>{{ isFrance? question?.descriptionFr: question?.description}}</h4>
         <div *ngFor="let row of question?.row;let j=index">
@@ -54,7 +54,7 @@
                 {{'required.select-answer' | translate}}
             </span>
         </div>
-    </div>
+    </form>
     <!-- <span class="danger" *ngIf="childFormGroup?.invalid && buttonClicked">
         {{'required.select-all-answers' | translate}}
     </span> -->

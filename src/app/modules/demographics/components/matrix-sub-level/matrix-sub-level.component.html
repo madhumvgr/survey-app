@@ -1,5 +1,5 @@
 <br />
-<ng-container [formGroup]="childFormGroup">
+<form [formGroup]="childFormGroup">
     <h4>{{ isFrance? question?.titleFr: question?.title}}</h4>
     <h4>{{isFrance? question?.descriptionFr: question?.description}}</h4>
     <ng-container *ngFor="let subQuestion of question.subSurveyQueAnsDTO">
@@ -105,4 +105,4 @@
             </ng-container>
         </div>
     </div> -->
-</ng-container>
+</form>

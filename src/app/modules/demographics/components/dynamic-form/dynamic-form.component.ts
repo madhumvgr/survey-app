@@ -153,7 +153,7 @@ export class DynamicFormComponent extends BaseComponent implements OnInit, OnCha
     } else {
           // scroll to error.
           const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
-            ".ng-invalid"
+            "form .ng-invalid"
           );
           firstInvalidControl.scrollIntoView(); //without smooth behavior
     }
